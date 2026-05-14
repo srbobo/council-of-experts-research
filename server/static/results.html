@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — Results</title>
+  <meta name="description" content="Same-case head-to-head: local council vs Opus single-shot vs Opus-as-council.">
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">A/B</a>
+        <a href="/results" class="active">Results</a>
+        <a href="/process">Process</a>
+        <a href="/architecture">Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wide">
+    <section class="stack-lg">
+      <div>
+        <h1>Same-case head-to-head</h1>
+        <p class="text-soft">
+          Captured runs for two test cases — one stressing recency / training-cutoff honesty
+          (GLP-1 employer coverage), the other stressing jurisdictional vocabulary discipline
+          (cross-border digital therapeutic launch). Each case shows three outputs side by
+          side: the local 4-model council, single-shot Claude Opus 4.7, and Opus playing all
+          four council seats. Analysis below.
+        </p>
+      </div>
+
+      <!-- Case selector + prompt display. Wired up by results.js. -->
+      <div class="card stack" id="case-panel">
+        <div>
+          <label for="case-select">Case</label>
+          <select id="case-select" disabled>
+            <option>Loading…</option>
+          </select>
+        </div>
+        <div>
+          <label for="prompt-display">Prompt (read-only)</label>
+          <textarea id="prompt-display" readonly></textarea>
+        </div>
+      </div>
+
+      <!-- Three-column comparison grid, mirroring the A/B page layout. -->
+      <section id="results-grid" class="grid-3">
+        <article class="card">
+          <h3 class="card__title">Local Council</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus single-shot</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus-as-council</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+      </section>
+
+      <!-- Per-case analysis prose. Toggled by results.js based on selection. -->
+      <section class="column" id="analysis-panel" style="padding-top: var(--space-5)">
+        <hr style="margin-bottom: var(--space-5)">
+
+        <!-- Interactive rubric controls. Click a row in the rubric table to
+             highlight supporting evidence in each column's text body; click
+             again to remove. The chip strip below shows currently-active
+             rubrics with a color swatch that matches the highlight color. -->
+        <div id="rubric-controls" class="rubric-controls hidden" aria-live="polite">
+          <span class="rubric-controls__label">Active highlights:</span>
+          <span id="rubric-active-chips" class="rubric-controls__chips"></span>
+          <button id="rubric-clear" type="button" class="rubric-controls__clear">Clear all</button>
+        </div>
+        <p class="text-faint" id="rubric-hint" style="margin-top: var(--space-3); font-size: var(--size-2);">
+          Tip: click a rubric row below to highlight matching language in each column's response.
+        </p>
+
+        <!-- Case 4 analysis — shown when case_4 is selected -->
+        <div data-analysis="case_4_glp1_employer_coverage" class="hidden stack-lg">
+          <h2>Analysis — GLP-1 employer coverage</h2>
+          <p class="text-soft">
+            Case 4 stresses <strong>recency / training-cutoff honesty</strong>: GLP-1 evidence,
+            FDA decisions, employer-benefit guidance, and rebate dynamics have all moved fast
+            since most models' training cutoffs. The question is whether each mode names the
+            specific places its knowledge is plausibly stale, rather than asserting confidently
+            or generically disclaiming.
+          </p>
+
+          <h3>Rubric scoring</h3>
+          <table style="width:100%; border-collapse:collapse; font-size:var(--size-2)">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+                <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Rubric item</th>
+                <th style="padding: var(--space-2); text-align:center;">Local</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus single</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus council</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rubric-row" data-rubric="c4-hc-durability" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: durability of weight loss + rebound risk (STEP 4)</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-hc-efficacy" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: semaglutide vs tirzepatide efficacy/tolerability</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-legal-ada" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: ADA risk on weight-based criteria</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-legal-erisa" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: ERISA fiduciary duty (CAA 2021) + MHPAEA</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-fin-pmpm" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: PMPM with sensitivity ranges</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-fin-stoploss" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: reinsurance / stop-loss</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-cutoff" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Training-cutoff disclosure (all seats)</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-redflag">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">🚩 Red flag: named studies as if latest</td>
+                <td style="text-align:center; color:var(--color-error)"><strong>triggered</strong></td>
+                <td style="text-align:center">avoided</td>
+                <td style="text-align:center">avoided</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>The headline finding: the local council fabricated citations</h3>
+          <p>
+            Three concrete confabulations in the local-council Healthcare seat:
+          </p>
+          <ul>
+            <li><strong>"SEMIMAN trial"</strong> — does not exist. The semaglutide obesity pivotal trial is STEP 1 (Wilding et al., <em>NEJM</em> 2021).</li>
+            <li><strong>"Marso SP et al. … STEP"</strong> — STEP 1 was authored by Wilding et al. Steven Marso is the lead author of SUSTAIN-6 (the diabetes outcomes trial). Wrong author attached to the right trial.</li>
+            <li><strong>"Armstrong M et al. … SURMOUNT-1"</strong> — SURMOUNT-1 was authored by Jastreboff et al., <em>NEJM</em> 2022. Armstrong didn't run SURMOUNT-1.</li>
+          </ul>
+          <p>
+            All three are confidently presented in a "References" footer block with NEJM/Lancet
+            journal-style formatting that mimics a peer-reviewed citation list. This is the worst
+            possible failure mode for a domain fine-tune — the model is supposed to be more
+            reliable on medical literature than a generalist, and is instead producing confident,
+            plausible-shaped fabrications.
+          </p>
+
+          <h3>Both Opus modes produce article-grade output</h3>
+          <p>
+            opus-council names <code>FMC Corp. v. Holliday, 498 U.S. 52 (1990)</code>, <em>Pilot
+            Life</em>, <em>Morriss v. BNSF</em>, <em>Francis v. Meriden</em>, and
+            <em>Lewandowski v. Johnson &amp; Johnson</em> (filed 2024); cites STEP 1, STEP 4,
+            SURMOUNT-1, and SELECT correctly; produces a $18.70 PMPM with ±25% sensitivity;
+            surfaces five specific cross-domain tensions including the
+            CAA 2021 fiduciary × PBM rebate-driven formulary tension. opus-single is more
+            compact but covers the same conceptual surface; it names more recent specifics
+            (CVS Caremark Zepbound exclusion, oral semaglutide approval December 2025,
+            orforglipron April 2026), some of which are worth verifying externally.
+          </p>
+        </div>
+
+        <!-- Case 2 analysis — shown when case_2 is selected -->
+        <div data-analysis="case_2_cross_border_digital_therapeutic" class="hidden stack-lg">
+          <h2>Analysis — Cross-border digital therapeutic launch</h2>
+          <p class="text-soft">
+            Case 2 stresses <strong>jurisdictional vocabulary discipline</strong>: a US-cleared
+            SaMD launching simultaneously in the UK and Germany has to keep multiple regulatory
+            regimes distinct (MHRA vs BfArM, UK GDPR vs EU GDPR, UK MDR 2002 vs EU MDR 2017/745,
+            DiGA pathway vs NHS commissioning). This is the case explicitly designed to be hard
+            on jurisdictional precision.
+          </p>
+
+          <h3>Rubric scoring</h3>
+          <table style="width:100%; border-collapse:collapse; font-size:var(--size-2)">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+                <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Rubric item</th>
+                <th style="padding: var(--space-2); text-align:center;">Local</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus single</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus council</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rubric-row" data-rubric="c2-hc-frameworks" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: Distinguishes FDA / MHRA / BfArM / DiGA frameworks</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-hc-pve" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: Notes DiGA requires pVE study</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-legal-gdpr" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: Keeps UK GDPR / EU GDPR distinct post-Brexit</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-legal-sgb" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: Addresses German national health-data law (SGB V) on top of GDPR</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-fin-revenue" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: US payer / NHS / DiGA as three distinct revenue mechanics</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-synth-juris" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Synthesis: jurisdictions separately architected</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-redflag">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">🚩 Red flag: FDA approval/clearance as controlling in UK/DE</td>
+                <td style="text-align:center; color:var(--color-error)"><strong>partial</strong></td>
+                <td style="text-align:center">avoided</td>
+                <td style="text-align:center">avoided</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>The local council missed the central pathway</h3>
+          <p>
+            Five specific failures in the local council, in a case designed to test exactly
+            these things:
+          </p>
+          <ul>
+            <li>
+              <strong>DiGA — the Digitale Gesundheitsanwendung framework — is never mentioned.</strong>
+              This is the central prescription-DTx reimbursement pathway in Germany. opus-single
+              spent half its volume on DiGA mechanics (pVE evidence, §139e SGB V, BfArM
+              provisional vs permanent listing, GKV-SV negotiation). The local council didn't
+              surface its existence.
+            </li>
+            <li>
+              <strong>UK GDPR and EU GDPR are treated as one regime.</strong> Saul calls the
+              Data Protection Act 2018 "based on GDPR" — post-Brexit divergence (the textbook
+              jurisdictional-vocabulary test) is invisible.
+            </li>
+            <li>
+              <strong>Saul cites MDD and IVDD as live regulation.</strong> The MDD was replaced
+              by MDR in May 2021, and IVDD by IVDR in May 2022. Listing all three as concurrent
+              live frameworks is wrong for 2026.
+            </li>
+            <li>
+              <strong>The Healthcare seat misreports its own training cutoff.</strong> Quote:
+              "trained up to 2021." Llama 3.1 (Med42's backbone) has data through late 2023.
+              This false epistemic humility justifies vague disclaiming of developments that
+              fall within the model's actual training window.
+            </li>
+            <li>
+              <strong>The Finance seat invents entities.</strong> "Digital Therapeutics
+              Accelerator" (not a real NHS body), "Digital Therapeutics Association" framed as
+              a German guideline-setter (DTA is a US industry trade group), "NHS Business
+              Services Authority evaluates products" (BSA handles payments, not evaluation —
+              NICE/ICBs do that).
+            </li>
+          </ul>
+
+          <h3>Where opus-council pulled ahead of opus-single</h3>
+          <p>
+            Three things in the opus-council output that the opus-single integration didn't
+            catch — load-bearing for the article's "what does seat isolation buy you" question:
+          </p>
+          <ul>
+            <li>
+              <strong>§34(1) Nr. 4 SGB V with the 2022 narrow exception for severe tobacco
+              dependence (ICD-10 F17.2)</strong> allowing two reimbursed pharmacotherapy
+              attempts within three years. This is a micro-statutory detail very few people in
+              the field would surface unprompted.
+            </li>
+            <li>
+              <strong>The §34 × adjunct trial design tension.</strong> Healthcare independently
+              recommended an "adjunctive" trial design; Legal/Finance separately observed that
+              adjunct pharmacotherapy is largely out-of-pocket for the reimbursed German cohort.
+              A single mind writing all four roles probably smooths past that contradiction —
+              the orchestrated mode's seat isolation surfaces it.
+            </li>
+            <li>
+              <strong>The AI Act × MDR product-design decision.</strong> Adaptive ML
+              personalization triggers high-risk AI Act stack under Article 6(1) — correctly
+              framed as a design decision that has to be made <em>before</em> clinical-
+              investigation protocol lock, not as a downstream compliance afterthought.
+            </li>
+          </ul>
+        </div>
+
+        <hr style="margin: var(--space-5) 0">
+
+        <h2>Pattern across both cases</h2>
+        <p>
+          Two cases, two failure modes (recency honesty + jurisdictional vocabulary), one
+          consistent pattern. Local council produces structurally-correct but substantively-thin
+          output with specific confabulations and false-cutoff disclaiming. Both Opus modes hit
+          every rubric must-have. opus-council does slightly more than opus-single: more case
+          law, more statute pin-cites, and the orchestrated mode's seat-isolation produces
+          cross-domain tensions (case 2's §34 × adjunct trial design; case 4's CAA fiduciary ×
+          rebate-driven formulary) that a single mind likely smooths past.
+        </p>
+        <p>
+          The article frame this points to is not "specialization beats frontier" but rather:
+          <em>architecture preserved, fine-tunes underperformed, frontier dominated even without
+          architectural scaffolding, and orchestration adds value at frontier scale via seat
+          isolation forcing tension extraction.</em>
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/architecture">Architecture</a> · <a href="/process">Process</a></span>
+    </div>
+  </footer>
+
+  <div id="overlay-root" aria-live="polite"></div>
+
+  <!-- Bump the ?v= query on every results.js change so browsers don't serve
+       a stale copy after edits. Cheap version-pinning without touching the
+       server's cache headers. -->
+  <script src="/static/js/results.js?v=6"></script>
+</body>
+</html>

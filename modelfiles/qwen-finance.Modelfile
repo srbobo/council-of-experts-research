@@ -1,0 +1,27 @@
+# Wraps the upstream Qwen-Open-Finance-R-8B (FP8-Q8_0 GGUF) with a proper
+# ChatML chat template. The HuggingFace upload `pate2464/Qwen-Open-Finance-R-8B-FP8-Q8_0-GGUF`
+# arrives at Ollama with a passthrough template (just `{{ .Prompt }}`), which
+# silently discards system prompts and puts the model into raw-completion mode.
+#
+# Symptoms when used without this fix (observed 2026-05-05 on case 1):
+#   - Input tokens for any chat call drop to ~64 regardless of system-prompt size
+#   - Output starts by echoing the user prompt verbatim before answering
+#   - Output runs to the max_tokens cap (model has no <|im_end|> stop signal)
+#
+# Qwen3-family models use ChatML format, so we apply the standard template here
+# and add the ChatML stop tokens. Weights are unchanged; only the template
+# manifest is rewritten.
+#
+# Build with:  ollama create qwen-finance-r:coe -f modelfiles/qwen-finance.Modelfile
+
+FROM huggingface.co/pate2464/Qwen-Open-Finance-R-8B-FP8-Q8_0-GGUF
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>"""
+
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|im_start|>"

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — A/B</title>
+  <meta name="description" content="A/B test the local Council of Experts against Claude Opus 4.7.">
+  <!-- No external resources. All assets self-hosted under /static/. -->
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/" class="active">A/B</a>
+        <a href="/results">Results</a>
+        <a href="/process">Process</a>
+        <a href="/architecture">Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wide">
+    <section class="stack-lg">
+      <div>
+        <h1>Run a comparison</h1>
+        <p class="text-soft">
+          Pick a canonical case or write your own. The query runs through
+          three modes side-by-side: the local 4-model council, single-shot
+          Claude Opus 4.7, and Opus playing all four council seats.
+        </p>
+      </div>
+
+      <!-- Query input area. Wired up in Phase 3.3. -->
+      <div class="card stack" id="query-panel">
+        <div>
+          <label for="case-select">Test case</label>
+          <select id="case-select" disabled>
+            <option>Loading cases…</option>
+          </select>
+        </div>
+        <div>
+          <label for="prompt-input">Or write your own prompt</label>
+          <textarea id="prompt-input" placeholder="A free-form question that spans clinical, legal, or financial dimensions…"></textarea>
+        </div>
+        <div>
+          <label>Modes</label>
+          <div class="flex" id="mode-checkboxes">
+            <label class="flex"><input type="checkbox" value="local-council" checked> Local Council</label>
+            <label class="flex"><input type="checkbox" value="opus-single"> Opus single-shot</label>
+            <label class="flex"><input type="checkbox" value="opus-council"> Opus-as-council</label>
+          </div>
+        </div>
+        <div class="flex-between">
+          <span class="budget" id="budget-indicator" aria-live="polite">
+            <span>Budget</span>
+            <span class="budget__track"><span class="budget__fill" style="width: 0%"></span></span>
+            <span class="mono" id="budget-text">$0.00 / $0.00</span>
+          </span>
+          <button class="button" id="run-button" disabled>Run</button>
+        </div>
+      </div>
+
+      <!-- Three-column comparison grid. Lit up by 3.3. -->
+      <section id="results-grid" class="grid-3">
+        <article class="card">
+          <h3 class="card__title">Local Council</h3>
+          <p class="text-faint">Awaiting run…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus single-shot</h3>
+          <p class="text-faint">Awaiting run…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus-as-council</h3>
+          <p class="text-faint">Awaiting run…</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/architecture">Architecture</a> · <a href="/process">Process</a></span>
+    </div>
+  </footer>
+
+  <!-- Overlay root for the column-expander modal. App.js fills this with
+       a copy of the expanded column when the user clicks ⤢ in a card header,
+       and empties it when the user clicks ×, the backdrop, or presses ESC. -->
+  <div id="overlay-root" aria-live="polite"></div>
+
+  <!-- Frontend logic for the A/B page lands in Phase 3.3 -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

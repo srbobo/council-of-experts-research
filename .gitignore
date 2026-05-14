@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Virtual envs (uv puts its venv in .venv by default)
+.venv/
+venv/
+
+# Local env files (never commit real keys/secrets)
+.env
+.env.local
+
+# Run artifacts — generated per deliberation, not source.
+# Live audit logs (one folder per run) stay local; the curated imports under
+# bench/runs/imported/ are checked in because they power the Results tab demo
+# and aren't cheaply regenerable (each one cost real Opus tokens or minutes
+# of local M5 inference).
+#
+# Leading slash anchors patterns to repo root so `runs/` doesn't also match
+# `bench/runs/` and shadow the negation below.
+/runs/
+/bench/runs/*
+!/bench/runs/imported/
+!/bench/runs/imported/**
+/bench/reports/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Tooling caches
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log

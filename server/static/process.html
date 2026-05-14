@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — Process</title>
+  <meta name="description" content="What the Council of Experts is and why it's worth testing.">
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">A/B</a>
+        <a href="/results">Results</a>
+        <a href="/process" class="active">Process</a>
+        <a href="/architecture">Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="column">
+    <h1>How it works</h1>
+    <p class="text-soft">
+      A plain-English walkthrough of what this is, why it exists, and how
+      the test is set up. The technical detail lives on the
+      <a href="/architecture">Architecture</a> page.
+    </p>
+
+    <h2>What this is</h2>
+    <p>
+      Most people who work with AI today reach for one general-purpose model
+      (ChatGPT, Claude, Gemini) and ask it complicated, multi-domain questions.
+      That works surprisingly well, but it has two costs: the data leaves
+      your machine, and the model is a generalist — strong everywhere,
+      a specialist nowhere.
+    </p>
+    <p>
+      This project tests an alternative: a small <em>council</em> of four
+      specialized models running entirely on a laptop. One model leads the
+      conversation; three others — fine-tuned on healthcare, law, and finance
+      respectively — contribute their domain expertise. Then we put the
+      council's answer side-by-side with what frontier Claude (Opus 4.7)
+      produces on its own.
+    </p>
+
+    <h2>Why fine-tunes matter</h2>
+    <p>
+      A useful analogy: you have a complicated business question that
+      touches medicine, law, and money. You can call one extremely smart
+      generalist, or you can convene three actual specialists plus a chair
+      who synthesizes their input.
+    </p>
+    <p>
+      The generalist will give you a good answer fast. But the specialists
+      will use precise jurisdictional vocabulary, name the right regulatory
+      bodies, distinguish standard of care from emerging practice, and call
+      out where the analysis depends on assumptions vs facts. Those are
+      properties of training data, not of intelligence.
+    </p>
+    <p>
+      This experiment asks: <strong>do small specialist fine-tunes — running
+      on your own machine — capture enough of that domain texture to be
+      worth the operational complexity?</strong>
+    </p>
+
+    <h2>How the test works</h2>
+    <p>
+      The same question runs through three pipelines simultaneously:
+    </p>
+    <ul>
+      <li>
+        <strong>Local Council</strong> — four small models on the laptop.
+        A 14-billion-parameter Lead model decomposes the question and
+        dispatches sub-questions to whichever specialists are relevant;
+        the specialists answer; the Lead synthesizes the final response,
+        explicitly surfacing tensions across the three domains.
+      </li>
+      <li>
+        <strong>Opus single-shot</strong> — one call to Claude Opus 4.7
+        with a neutral system prompt. The "frontier model on its own"
+        baseline.
+      </li>
+      <li>
+        <strong>Opus-as-council</strong> — the exact same orchestration
+        loop as the local council, but with Opus playing every seat.
+        This isolates the question of model vs architecture: same prompts,
+        same reasoning structure, only the underlying weights differ.
+      </li>
+    </ul>
+
+    <h2>What we're measuring</h2>
+    <p>
+      Four properties, no single metric of "winning":
+    </p>
+    <ul>
+      <li>
+        <strong>Privacy.</strong> The local council never sends a byte off
+        the machine. The Opus columns send the prompt to Anthropic. For
+        sensitive material, that's a load-bearing difference.
+      </li>
+      <li>
+        <strong>Cost.</strong> Local: zero per query after the one-time
+        hardware investment. Opus: about 18 cents per query at current
+        rates (verified against published pricing, with a hard $10/run
+        budget cap that aborts before exceeding).
+      </li>
+      <li>
+        <strong>Quality.</strong> Did the answer stay in lane? Did it
+        surface real tensions instead of just listing concerns? Did it
+        flag training-cutoff uncertainty when relevant? Did it preserve
+        modeled assumptions instead of laundering them as facts? The
+        five canonical test cases each target a specific failure mode.
+      </li>
+      <li>
+        <strong>Latency.</strong> Local: about 5 minutes per question
+        (sequential mode on a fanless laptop). Opus: a few seconds for
+        single-shot, about a minute for the full council architecture.
+      </li>
+    </ul>
+
+    <h2>Honesty about limits</h2>
+    <p>
+      Three things this experiment doesn't try to do:
+    </p>
+    <ul>
+      <li>
+        It doesn't claim local fine-tunes beat frontier models on raw
+        capability. They almost certainly don't.
+      </li>
+      <li>
+        It doesn't run multiple trials per case for variance — one run
+        each, low temperature, subjective human review. That's enough to
+        spot consistent patterns, not enough for statistical claims.
+      </li>
+      <li>
+        It doesn't auto-grade the outputs. Scoring is a person reading
+        each answer against a per-case rubric (alert fatigue mentioned?
+        FDA pathway flagged correctly? UK and EU GDPR kept distinct?).
+      </li>
+    </ul>
+
+    <h2>What we found</h2>
+    <p class="text-faint">
+      Final findings land here after Phase 4 review. For now, see the
+      <a href="/">A/B page</a> to run the experiment yourself.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/architecture">Architecture</a> · <a href="/">A/B</a></span>
+    </div>
+  </footer>
+</body>
+</html>

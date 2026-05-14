@@ -1,0 +1,93 @@
+Recommendation: Cover with tightly designed utilization management, structured as a clinically integrated program rather than an open formulary benefit
+The defensible answer for most 5,000-employee self-insured plans in 2026 is conditional coverage — open the obesity indication, but only inside a program that combines BMI/comorbidity gating, mandatory enrollment in a lifestyle/behavioral component, response-based continuation criteria, and contracted preferred-product placement. A flat "diabetes only" exclusion is increasingly hard to sustain on talent, clinical, and (in some jurisdictions) legal grounds; a flat "open access" benefit is financially reckless at this employer size. The middle path is where most sophisticated self-funded sponsors are landing, per the 2026 Business Group on Health survey showing roughly two-thirds of large employers now cover for weight management, with the active question being how rather than whether.
+Below is the build-out across the three dimensions, plus a concrete UM design.
+Clinical dimension
+Efficacy is established and now broader than weight alone. STEP 1 produced ~15% mean weight loss with semaglutide 2.4 mg at 68 weeks; SURMOUNT-1 produced ~15–21% with tirzepatide at 72 weeks depending on dose. More importantly, the indication landscape has expanded beyond weight: semaglutide carries an FDA cardiovascular indication (SELECT trial, ~20% MACE reduction in patients with established CVD and overweight/obesity), tirzepatide has the moderate-to-severe OSA indication (SURMOUNT-OSA), and as of December 2025 oral semaglutide 25 mg (Wegovy pill) was FDA-approved with launch in January 2026, followed by Lilly's orforglipron approval on April 1, 2026 as the first oral non-peptide GLP-1 without food/water restrictions. This matters for plan design: the line between "lifestyle drug" and "chronic disease drug" is now harder to defend as a categorical exclusion.
+Discontinuation is the binding clinical reality. Real-world commercial data (multiple PBM and Blue plan analyses 2024–2025) consistently shows that roughly half to two-thirds of patients discontinue within 12 months, and STEP 4 / SURMOUNT-4 confirm that weight regain follows discontinuation. The clinical implication for plan design is that a plan that pays for 4–6 months of titration and then loses the patient gets all the cost and almost none of the durable benefit. Selection criteria and continuation criteria are therefore where clinical value is actually created or destroyed.
+Safety is well-characterized. GI adverse events dominate (nausea, vomiting, constipation), with rarer signals around gallbladder disease, pancreatitis, and gastroparesis. Black-box for medullary thyroid carcinoma (MEN2/family history exclusion). None of this changes the coverage calculus, but it does support requiring physician oversight rather than direct-to-consumer-only prescribing channels.
+Legal dimension
+ERISA preemption gives you wide latitude — but it is not unlimited. As a self-insured ERISA plan, you are not bound by state insurance mandates requiring obesity drug coverage. That core preemption is settled. The exposure points are:
+
+ADA / ACA Section 1557 disability discrimination. The majority federal rule is that obesity alone is not an ADA disability unless caused by an underlying physiological condition; a Maine federal court dismissed a 1557 claim premised on a categorical obesity treatment exclusion. But this is unsettled — minority circuits have gone the other way, and a Maine Human Rights Act parallel claim survived. Coverage limited by "weight loss" language but applied uniformly is generally defensible; coverage that excludes treatment specifically when used for an underlying disabling condition (e.g., obesity-driven OSA, severe CVD) is the higher-risk design.
+State weight-discrimination laws. Michigan, several municipalities (including NYC and San Francisco), and a growing list of jurisdictions treat weight as a protected class for employment purposes. This generally doesn't directly mandate plan coverage, but it raises the litigation temperature around exclusions that visibly disadvantage employees in those locations.
+MHPAEA exposure if obesity treatment intersects with binge eating disorder or other mental health diagnoses and the coverage rules differ.
+HIPAA wellness program nondiscrimination if you tie coverage eligibility to BMI thresholds or program participation — health-contingent components require the reasonable-alternative-standard structure.
+ERISA fiduciary duty. The newer angle is that participants and their counsel are framing categorical exclusions as fiduciary breaches given evolving standards of care. This is mostly a litigation-cost risk rather than a high merit-success risk today, but it is trending.
+
+Practical legal posture: A plan that (a) covers GLP-1s for obesity on uniform clinical criteria, (b) documents the clinical and financial rationale for each design choice in the plan sponsor's benefits committee minutes, (c) applies criteria consistently regardless of employee classification, and (d) reviews design annually as standards evolve has materially lower legal exposure than either a flat exclusion or an undocumented ad hoc design.
+Financial dimension
+Here is where the analysis gets sharpest. The following numbers are modeled assumptions that should be replaced with your actual claims data and PBM contract terms before any decision is finalized.
+Population sizing (modeled):
+
+5,000 employees × ~1.8 covered lives/EE = ~9,000 lives; ~7,000 adults
+Adult obesity prevalence (BMI ≥30): ~40% nationally → ~2,800 clinically eligible adults
+Including BMI 27–29.9 with comorbidity: ~50% of adults eligible → ~3,500
+Realistic utilization with tight UM: 3–6% of adult lives; with loose UM: 8–12%+
+
+Tight UM utilization: ~210–420 members
+Loose UM utilization: ~560–840+ members
+
+
+
+Per-member cost (modeled, US 2026):
+
+WAC list price ~$1,000–$1,350/month (~$12,000–$16,000/year)
+Net cost after PBM rebates: ~$6,500–$9,500/year per fully-adherent member is a defensible planning range, but rebate economics are deteriorating in 2026 as competition and direct-to-consumer cash channels (LillyDirect, NovoCare, the proposed TrumpRx federal pricing platform) pressure list-to-net spreads, and CVS Caremark's announced exclusion of Zepbound effective July 1 is changing the rebate landscape industrywide. Get your PBM's specific 2026/2027 net-cost commitment in writing.
+Discontinuation curve flattens annual exposure: a member starting in Q2 and discontinuing in Q4 generates ~6–8 months of cost, not 12.
+
+Worked example (modeled, single year, tight UM):
+
+350 members on therapy at any given time × $8,000 net annual cost = ~$2.8M/year
+Loose UM scenario: 700 members × $8,000 = ~$5.6M/year
+Plan size context: a 9,000-life plan typically runs $50–70M total medical+Rx spend, with Rx at $15–22M. GLP-1s in the tight scenario become ~15% of Rx spend; loose, ~25–30%.
+
+Medical offset is real but modest in years 1–3. Most peer-reviewed and consulting models (Milliman, IFEBP, peer-reviewed) project 10–25% short-term medical offset, primarily from delayed diabetes progression, fewer cardiovascular events in the SELECT population, and reduced OSA-related utilization. Full ROI horizon is typically 5–8 years, longer than most employee tenures — which is a structural problem for the employer ROI case but not for an individual employee's clinical case.
+The financial decision is really about three levers:
+
+Utilization rate (controlled by UM criteria) — by far the biggest lever
+Net unit cost (controlled by PBM contracting, preferred product selection, manufacturer direct programs)
+Persistence on therapy (controlled by lifestyle program integration and response-based continuation)
+
+A plan that wins on lever 2 but loses on lever 1 still loses overall. UM is the dominant driver.
+Recommended utilization management criteria
+Initial authorization:
+
+BMI ≥30, OR BMI ≥27 with at least one documented weight-related comorbidity (T2D, hypertension, dyslipidemia, OSA, established CVD, NAFLD). Match FDA labeling rather than tightening below it — tightening below label invites disparate-impact challenge.
+Adult age (≥18).
+Documentation of ≥3 months of prior lifestyle modification attempts (clinic-documented, not self-attested; this is enforceable through PBM PA).
+Mandatory concurrent enrollment in a contracted lifestyle/behavioral program (Omada, Virta, Vida, employer's existing wellness vendor, or PBM-integrated program). Coverage is contingent on active program engagement, not just one-time enrollment.
+Prescriber attestation: no contraindications (personal/family MTC or MEN2 history, history of pancreatitis, active gastroparesis).
+Preferred product designation: pick one of injectable semaglutide or tirzepatide as primary preferred, with the other as second-line, based on which gets you the better net contract. Reassess at each plan year given the CVS/Zepbound dynamics.
+
+Continuation authorization (re-auth at 4 months, then every 6–12 months):
+
+≥5% body weight reduction from baseline at 4-month checkpoint, ≥10% at 12 months — these are clinically standard response thresholds and align with the FDA's own response criteria.
+Continued engagement with lifestyle program (verified engagement, not just attestation).
+Without meeting response thresholds: discontinuation of coverage, with explicit appeal pathway documented (this matters for both clinical legitimacy and Section 1557 defensibility).
+
+Quantity and channel controls:
+
+30-day fills only initially; 90-day mail order after stable maintenance dose.
+Step pricing tier alignment with preferred product.
+No coverage for compounded semaglutide/tirzepatide (FDA shortage status resolved; remaining compounded supply is largely outside 503A/503B regulatory comfort).
+Consider channel restriction to specific telehealth/care-management partners if PBM offers preferred pricing.
+
+Oral GLP-1 handling (new in 2026):
+
+Place oral semaglutide and orforglipron on formulary but evaluate net cost carefully — early launch pricing rarely beats established injectable contracts. Convenience/adherence advantage is real but doesn't justify a worse unit economics deal in year one. Reassess at 2027 renewal.
+
+Implementation considerations
+
+Document the rationale. Have your benefits committee minute the clinical evidence reviewed, the financial modeling done, and the consistency-of-application standard. This is your fiduciary record and your litigation defense.
+Communicate the program clearly at open enrollment. Most member complaints (and a meaningful fraction of legal complaints) are downstream of unclear plan language, not the underlying design.
+Stop-loss check. GLP-1 utilization at the loose end of the range can move your specific stop-loss laser placements and aggregate attachment. Coordinate with your stop-loss carrier before plan-year quoting.
+Tax treatment. GLP-1s for diagnosed obesity are HSA/FSA-eligible per IRS Publication 502 (treatment of a specific disease); pure cosmetic weight loss is not. Plan communications should make this distinction.
+Revisit annually, not quarterly. The market is moving fast — generic liraglutide expected 2027, more orals, CagriSema and retatrutide in pipeline, federal pricing initiatives forming — but mid-year design changes generate worse member experience and worse legal posture than annual recalibration.
+
+Where the recommendation could shift
+
+Workforce demographics: A predominantly young, low-obesity-prevalence professional workforce changes the financial calculus materially in favor of coverage; a workforce with high baseline obesity prevalence and tight margins pushes toward tighter UM or, in extremis, the diabetes-only design.
+Talent market: If you compete for talent against employers covering obesity GLP-1s (now ~67% of large employers), exclusion is increasingly a recruiting liability worth pricing.
+Pipeline/pricing developments: Liraglutide generic, oral GLP-1 net pricing post-launch, TrumpRx implementation specifics, and PBM 2027 formulary positions could all materially shift unit economics in the next 12–18 months.
+
+If you want, I can take this a layer deeper on any of three places where the design choices have the biggest leverage: PBM contract terms to negotiate, the lifestyle-program integration design (which sub-vendor architecture works for a 5,000-EE population), or the stop-loss and budget modeling under different uptake scenarios.

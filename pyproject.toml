@@ -1,0 +1,69 @@
+[project]
+name = "council-of-experts"
+version = "0.1.0"
+description = "Local multi-agent council with three domain fine-tunes plus Phi-4 lead, with optional A/B benchmark against Claude Opus 4.7"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Sam Bobo" }]
+
+# Base dependencies — everything needed to run the local council.
+# No cloud SDKs here; that lives in the [bench] extra so the council itself
+# stays "no network" by construction.
+dependencies = [
+  # Ollama Python client — wraps /api/chat against the local Ollama daemon
+  "ollama>=0.4.0",
+  # Pydantic v2 — runtime-validated typed records for cabinet, test cases, audit log
+  "pydantic>=2.8",
+  # Loads BENCH_BUDGET_USD and other config from .env into os.environ
+  "python-dotenv>=1.0",
+  # Pretty CLI: colored panels, tables, streaming text
+  "rich>=13.7",
+  # Structured logging — backs the orchestrator's audit log
+  "structlog>=24.4",
+  # Async HTTP client — used by thermal.py to read pmset / ioreg without shelling out
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# Bench harness — only needed when comparing against Claude Opus.
+# Per Sam's directive 2026-05-05: install but do not run live; BENCH_BUDGET_USD=0.
+bench = [
+  # Anthropic Python SDK — supports prompt caching and extended thinking
+  "anthropic>=0.40",
+]
+# Web UI — Phase 3 dependency, listed early so we don't churn pyproject later.
+server = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  # Server-Sent Events for streaming agent outputs to the browser
+  "sse-starlette>=2.1",
+]
+# Dev tools — testing + linting
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+council = "council.__main__:main"
+bench = "bench.runner:main"
+coe-server = "server.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["council", "bench", "examples", "server"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
