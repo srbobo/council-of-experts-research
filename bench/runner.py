@@ -44,11 +44,17 @@ from council.thermal import ThermalGuard
 from .cost_guard import BudgetExceeded, CostGuard
 from .opus_council import run_opus_council
 from .opus_single import run_opus_single
+from .opus_swap import list_swap_modes, is_swap_mode, run_swap
 
 console = Console()
 
-# Available modes. ``all`` is a convenience alias the CLI expands to all three.
-ALL_MODES = ["local-council", "opus-single", "opus-council"]
+# Available modes. ``all`` expands to the three baseline modes (local, opus
+# single-shot, opus-as-council). The pathway-3 swap variants are in
+# ``SWAP_MODES`` — opted into explicitly via --modes or --all-swaps so a
+# routine ``--modes all`` doesn't accidentally burn budget across 5 hybrids.
+BASELINE_MODES = ["local-council", "opus-single", "opus-council"]
+SWAP_MODES = list_swap_modes()
+ALL_MODES = BASELINE_MODES + SWAP_MODES
 
 
 def _stamp() -> str:
@@ -122,6 +128,25 @@ async def _run_opus_council(query: str, guard: CostGuard) -> dict[str, Any]:
     }
 
 
+async def _run_swap(mode: str, query: str, guard: CostGuard) -> dict[str, Any]:
+    """Hybrid cabinet: one phase served by Opus, the other four by local Ollama.
+
+    Used for pathway-3 specialist-swap experiments. Audit log shape is
+    identical to ``local-council`` / ``opus-council``; the difference is
+    the per-turn ``backend`` field on each AgentTurn and the
+    ``cabinet_backends`` map on the DeliberationResult, both of which
+    record which phase actually went to Opus.
+    """
+    result = await run_swap(mode, query, cost_guard=guard)
+    return {
+        "mode": mode,
+        "query": query,
+        "final_output": result.final_output,
+        "total_latency_ms": result.total_latency_ms,
+        "deliberation": result.to_dict(),
+    }
+
+
 async def _compare(case_id: str, modes: list[str]) -> int:
     """Run one case through the selected modes, persist results, summarize."""
     # Lazy import — keeps `python -m bench` workable even if examples/ moved.
@@ -161,6 +186,10 @@ async def _compare(case_id: str, modes: list[str]) -> int:
                 result = await _run_opus_single(case.prompt, guard)
             elif mode == "opus-council":
                 result = await _run_opus_council(case.prompt, guard)
+            elif is_swap_mode(mode):
+                # Hybrid cabinet — exactly one phase served by Opus, the
+                # other four by local Ollama. Pathway-3 ablation.
+                result = await _run_swap(mode, case.prompt, guard)
             else:
                 console.print(f"[red]Unknown mode: {mode}[/red]")
                 continue
@@ -237,7 +266,13 @@ def main() -> int:
     p_compare.add_argument(
         "--modes",
         default="all",
-        help=f"Comma-separated subset of {ALL_MODES} or 'all' (default)",
+        help=(
+            "Comma-separated mode list. Special values: "
+            "'all' = baseline trio (local-council, opus-single, opus-council); "
+            "'all-swaps' = the 5 pathway-3 swap variants; "
+            "'everything' = both. "
+            f"Individual modes: {ALL_MODES}"
+        ),
     )
 
     args = parser.parse_args()
@@ -245,7 +280,12 @@ def main() -> int:
     if args.cmd == "compare":
         modes_str = args.modes.strip()
         if modes_str == "all":
-            modes = list(ALL_MODES)
+            # Backward-compatible default: just the three baselines.
+            modes = list(BASELINE_MODES)
+        elif modes_str == "all-swaps":
+            modes = list(SWAP_MODES)
+        elif modes_str == "everything":
+            modes = list(BASELINE_MODES) + list(SWAP_MODES)
         else:
             modes = [m.strip() for m in modes_str.split(",") if m.strip()]
             invalid = [m for m in modes if m not in ALL_MODES]

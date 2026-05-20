@@ -51,6 +51,73 @@ SEAT_SYSTEM_PROMPTS: dict[str, str] = {
 # (defensive: planner sometimes hallucinates extra options).
 VALID_SEATS: frozenset[str] = frozenset({"healthcare", "legal", "finance"})
 
+# Phase identifiers used by CabinetBackends routing. Five distinct backends are
+# possible per deliberation: planner (Lead's decomposition), each of the three
+# specialist seats, and synthesis (Lead's final integration). Splitting planner
+# from synthesis lets pathway-3 swap experiments isolate whether the gap is in
+# *deciding which questions to ask* vs *combining the seats' answers*.
+PHASE_IDS = ("planner", "healthcare", "legal", "finance", "synthesis")
+
+
+@dataclass
+class CabinetBackends:
+    """Per-phase backend routing for the council.
+
+    Each of the five phases (planner, three seats, synthesis) can be served by
+    an independently chosen ``ChatFn``. The default constructor builds a uniform
+    cabinet where every phase uses the same backend — that's how ``local-council``
+    and ``opus-council`` both work today. Swap experiments override one phase
+    at a time to isolate where capability gaps live.
+
+    ``name`` is a short slug used to tag audit logs and surface the cabinet in
+    UI (e.g. ``"local"``, ``"opus"``, ``"swap-legal-opus"``).
+
+    ``backend_tags`` is a phase → human-readable backend label map for the
+    audit log so a reader can see exactly which model played which seat.
+    """
+
+    planner: ChatFn
+    healthcare: ChatFn
+    legal: ChatFn
+    finance: ChatFn
+    synthesis: ChatFn
+    name: str = "local"
+    backend_tags: dict[str, str] = field(default_factory=dict)
+
+    def for_phase(self, phase_id: str) -> ChatFn:
+        """Return the ChatFn registered for ``phase_id``.
+
+        Raises KeyError for unknown phases — the orchestrator only ever asks
+        for the five canonical IDs in ``PHASE_IDS``, so a missing key here
+        is a programming error worth surfacing loudly.
+        """
+        return getattr(self, phase_id)
+
+    @classmethod
+    def uniform(
+        cls,
+        chat_fn: ChatFn,
+        *,
+        name: str = "local",
+        tag: str = "",
+    ) -> "CabinetBackends":
+        """Build a cabinet where every phase uses the same backend.
+
+        This is the backward-compatible path: callers that only pass
+        ``chat_fn`` to ``deliberate()`` get a uniform cabinet built from it,
+        so ``local-council`` and ``opus-council`` modes work unchanged.
+        """
+        tag = tag or name
+        return cls(
+            planner=chat_fn,
+            healthcare=chat_fn,
+            legal=chat_fn,
+            finance=chat_fn,
+            synthesis=chat_fn,
+            name=name,
+            backend_tags={p: tag for p in PHASE_IDS},
+        )
+
 
 @dataclass
 class AgentTurn:
@@ -65,6 +132,10 @@ class AgentTurn:
     eval_count: int                               # output tokens
     prompt_eval_count: int                        # input tokens
     raw_response: dict[str, Any] = field(default_factory=dict)
+    # Which backend actually executed this turn — "ollama" for local, "opus"
+    # for the Anthropic-backed wrapper, or any custom tag a swap config sets.
+    # Defaulted so historical audit logs deserialized via dataclasses still load.
+    backend: str = ""
 
 
 @dataclass
@@ -85,6 +156,12 @@ class DeliberationResult:
     # which already carry input_messages on their AgentTurn). Defaulted to
     # empty list so historical runs deserialized without this field still load.
     plan_input_messages: list[dict[str, str]] = field(default_factory=list)
+    # Cabinet provenance — short name (e.g. "local", "opus", "swap-legal-opus")
+    # plus the per-phase backend tag map. Lets pathway-3 swap analyses tell at
+    # a glance which model played which phase. Both default-empty so older
+    # audit logs (which lack these fields) round-trip cleanly.
+    cabinet_name: str = ""
+    cabinet_backends: dict[str, str] = field(default_factory=dict)
 
     @property
     def total_latency_ms(self) -> int:
@@ -220,8 +297,16 @@ def _build_turn(
     member: CabinetMember,
     messages: list[dict[str, str]],
     response: ChatResponse,
+    *,
+    backend: str = "",
 ) -> AgentTurn:
-    """Bundle a chat call into an AgentTurn for the audit log."""
+    """Bundle a chat call into an AgentTurn for the audit log.
+
+    ``backend`` is the cabinet's tag for which model actually served the call
+    (e.g. ``"ollama"`` for the local Phi-4, ``"opus"`` for the Anthropic-backed
+    wrapper). Captured here so swap experiments can be read off the audit log
+    without re-running anything.
+    """
     return AgentTurn(
         seat=seat,
         member_name=member.name,
@@ -232,6 +317,7 @@ def _build_turn(
         eval_count=response.eval_count,
         prompt_eval_count=response.prompt_eval_count,
         raw_response=response.raw,
+        backend=backend,
     )
 
 
@@ -245,7 +331,8 @@ async def deliberate(
     *,
     thermal: ThermalGuard,
     on_phase: callable | None = None,  # optional progress callback: on_phase(stage, detail)
-    chat_fn: ChatFn | None = None,  # injectable chat backend; defaults to local Ollama
+    chat_fn: ChatFn | None = None,  # uniform backend (back-compat); see also cabinet=
+    cabinet: "CabinetBackends | None" = None,  # per-phase routing for swap experiments
     on_token: Callable[[str, str], None] | None = None,  # (phase_tag, delta)
 ) -> DeliberationResult:
     """Run the 3-phase council on a single user query.
@@ -258,10 +345,14 @@ async def deliberate(
     itself doesn't depend on rich/console output so the bench harness can drive
     it silently.
 
-    ``chat_fn`` lets a caller swap the model backend. Defaults to the local
-    Ollama-backed ``council.models.chat``; the bench harness passes an
-    Anthropic-backed wrapper so the same orchestration logic produces an
-    Opus-as-council comparison without duplicating any code.
+    ``chat_fn`` is the back-compat single-backend path: all five phases use
+    the same chat callable (this is how ``local-council`` and ``opus-council``
+    have always worked). Mutually exclusive with ``cabinet=``.
+
+    ``cabinet`` enables per-phase backend routing — used by pathway-3 swap
+    experiments to play one seat with a different backend (e.g. local Phi-4
+    lead + local Med42 + Opus Legal + local Qwen-Finance). Each of the five
+    phases (planner, three seats, synthesis) can be independently assigned.
 
     ``on_token`` is an optional per-delta callback for live token streaming.
     The orchestrator tags each delta with the phase it came from (one of
@@ -272,8 +363,23 @@ async def deliberate(
     wrapper currently accepts and ignores it (streaming for Opus lands
     in a follow-up change).
     """
-    # Bind the backend once at the top of the function so the rest of the body is unchanged.
-    chat = chat_fn if chat_fn is not None else _default_chat
+    # Resolve the cabinet. Precedence: explicit cabinet > chat_fn (wrapped into
+    # uniform) > local default. Once resolved, every per-phase chat call goes
+    # through cabinet.for_phase(...), so the rest of the body doesn't care
+    # whether one model or five are in play.
+    if cabinet is not None and chat_fn is not None:
+        raise ValueError(
+            "deliberate(): pass either chat_fn= (uniform backend) or cabinet= "
+            "(per-phase routing), not both."
+        )
+    if cabinet is None:
+        backend_fn = chat_fn if chat_fn is not None else _default_chat
+        # Tag inference: a custom chat_fn coming from bench (Opus) won't be the
+        # default; everything else is local Ollama. The bench harness sets a
+        # better tag explicitly via cabinet=, so this inference only matters
+        # for the chat_fn= back-compat path.
+        inferred_tag = "ollama" if backend_fn is _default_chat else "custom"
+        cabinet = CabinetBackends.uniform(backend_fn, name=inferred_tag, tag=inferred_tag)
 
     # Helper to bind a phase tag onto the user's on_token callback. Returns
     # None when no live-token consumer was supplied so the chat backend can
@@ -297,7 +403,7 @@ async def deliberate(
     # Temperature 0.0 here — we want deterministic JSON, not creative routing.
     # max_tokens raised to 1024 because the planner now produces step-back reasoning
     # plus a multi-field JSON (core_question + sub_questions per route).
-    planner_response = await chat(
+    planner_response = await cabinet.for_phase("planner")(
         LEAD, planner_messages,
         temperature=0.0, max_tokens=1024,
         on_token=_phase_token_cb("planner"),
@@ -348,12 +454,15 @@ async def deliberate(
         ]
         # Stream this seat's output tokens tagged with the seat name so the
         # frontend can route them to the right live buffer.
-        agent_response = await chat(
+        agent_response = await cabinet.for_phase(seat)(
             member, agent_messages,
             temperature=0.2,
             on_token=_phase_token_cb(seat),
         )
-        turns.append(_build_turn(seat, member, agent_messages, agent_response))
+        turns.append(_build_turn(
+            seat, member, agent_messages, agent_response,
+            backend=cabinet.backend_tags.get(seat, ""),
+        ))
 
     # -------------------------------------------------------------------------
     # Phase 3: Lead synthesizes (or answers directly if no routes).
@@ -382,12 +491,15 @@ async def deliberate(
         {"role": "system", "content": synthesis_system},
         {"role": "user", "content": synthesis_user},
     ]
-    synthesis_response = await chat(
+    synthesis_response = await cabinet.for_phase("synthesis")(
         LEAD, synthesis_messages,
         temperature=0.2,
         on_token=_phase_token_cb("synthesis"),
     )
-    synthesis_turn = _build_turn("lead", LEAD, synthesis_messages, synthesis_response)
+    synthesis_turn = _build_turn(
+        "lead", LEAD, synthesis_messages, synthesis_response,
+        backend=cabinet.backend_tags.get("synthesis", ""),
+    )
 
     finished_at = _now_iso()
 
@@ -402,6 +514,8 @@ async def deliberate(
         synthesis=synthesis_turn,
         final_output=synthesis_response.content,
         plan_input_messages=planner_messages,
+        cabinet_name=cabinet.name,
+        cabinet_backends=dict(cabinet.backend_tags),
     )
 
 

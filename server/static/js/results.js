@@ -22,13 +22,41 @@
     { id: "case_2_cross_border_digital_therapeutic",  label: "Case 2 — Cross-border digital therapeutic launch" },
   ];
 
-  // Display order for the three mode columns. Keep aligned with A/B page.
-  const MODE_ORDER = ["local-council", "opus-single", "opus-council"];
+  // Baseline modes always shown (in this order), even if no run is present.
+  // Aligned with A/B page so the visual identity is consistent across tabs.
+  const BASELINE_MODE_ORDER = ["local-council", "opus-single", "opus-council"];
+
+  // Pathway-3 swap variants — hybrid cabinets where one phase is served by
+  // Opus and the other four by local Ollama. Added to the grid only when
+  // imported runs actually exist for them (otherwise 8 always-visible
+  // columns would crowd the page). Order matches the deliberation phase
+  // order (planner → 3 seats → synthesis) so a reader scanning left-to-right
+  // sees the gap walk through the pipeline.
+  const SWAP_MODE_ORDER = [
+    "swap-planner-opus",
+    "swap-healthcare-opus",
+    "swap-legal-opus",
+    "swap-finance-opus",
+    "swap-synthesis-opus",
+  ];
+
   const MODE_TITLES = {
-    "local-council": "Local Council",
-    "opus-single":   "Opus single-shot",
-    "opus-council":  "Opus-as-council",
+    "local-council":         "Local Council",
+    "opus-single":           "Opus single-shot",
+    "opus-council":          "Opus-as-council",
+    "swap-planner-opus":     "Swap · Planner→Opus",
+    "swap-healthcare-opus":  "Swap · Healthcare→Opus",
+    "swap-legal-opus":       "Swap · Legal→Opus",
+    "swap-finance-opus":     "Swap · Finance→Opus",
+    "swap-synthesis-opus":   "Swap · Synthesis→Opus",
   };
+
+  // Compute the actual columns to render: baselines always, swaps only when
+  // a run exists for them. Keeps the page tidy until the experiment lands.
+  function activeModeOrder(modesMap) {
+    const swapsPresent = SWAP_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
+    return BASELINE_MODE_ORDER.concat(swapsPresent);
+  }
 
   /* -------------------------------------------------------------------------
    * State
@@ -705,10 +733,15 @@
       const allThinking = [...structuredThinking, ...thinking];
       const seatLabel = seatLabels[turn.seat] || turn.seat;
       const memberName = turn.member_name ? ` — ${turn.member_name}` : "";
+      // For pathway-3 swap runs each turn carries which backend served it.
+      // Surface it in the meta line so a reader walking through the
+      // inspector sees per-phase composition without cross-referencing
+      // the cabinet badge.
+      const backendTag = turn.backend ? ` · backend: ${turn.backend}` : "";
       const tokMeta = `${turn.prompt_eval_count || 0} tok in · ${turn.eval_count || 0} tok out`;
       sections.push(renderPhase({
         label: seatLabel + memberName,
-        meta: `${fmtMs(turn.latency_ms)} · ${tokMeta}`,
+        meta: `${fmtMs(turn.latency_ms)} · ${tokMeta}${backendTag}`,
         systemPrompt: inputs.system,
         userMessage: inputs.user,
         thinking: allThinking,
@@ -1059,6 +1092,35 @@
     return wrapInspector(phases);
   }
 
+  // Describe the cabinet composition for a v2 imported run. Returns either
+  // null (for runs that predate the per-phase backend recording, or for
+  // baseline modes where the composition is uniform), or an object with a
+  // short badge label and a longer tooltip listing every phase → backend.
+  //
+  // Used only by the column header meta row to give the swap runs an
+  // at-a-glance "Opus playing Healthcare" tag. The full breakdown lives
+  // in the inspector's per-phase backend column.
+  function describeCabinet(run) {
+    const delib = run && run.deliberation;
+    if (!delib) return null;
+    const backends = delib.cabinet_backends || {};
+    const entries = Object.entries(backends);
+    if (entries.length === 0) return null;
+    const opusPhases = entries.filter(([, tag]) => tag === "opus").map(([p]) => p);
+    const localPhases = entries.filter(([, tag]) => tag === "ollama").map(([p]) => p);
+    // Uniform cabinet — nothing interesting to highlight on the badge.
+    if (opusPhases.length === entries.length || localPhases.length === entries.length) {
+      return null;
+    }
+    // Mixed cabinet → swap mode. Surface the swapped phase(s) explicitly.
+    const swapped = opusPhases.map((p) => p[0].toUpperCase() + p.slice(1)).join(", ");
+    const label = `Opus · ${swapped}`;
+    const tooltip = entries
+      .map(([p, tag]) => `${p}: ${tag}`)
+      .join("\n");
+    return { label, tooltip };
+  }
+
   // Extract the "final answer" portion of a run for the top body of the
   // column — the bit that's logically equivalent to local-council's
   // synthesis output. This keeps the top component consistent across
@@ -1172,12 +1234,15 @@
     renderAnalysisPanel();
   }
 
-  // Render the three result columns plus the overlay (if any column is
-  // currently expanded). Re-applies active rubric highlights after the
-  // DOM is rebuilt, since innerHTML wipes the previous <mark> wrappers.
+  // Render the result columns plus the overlay (if any column is currently
+  // expanded). Column set is dynamic: the three baselines always show, and
+  // any pathway-3 swap variant with an imported run appears after the
+  // baselines in canonical phase order. Re-applies active rubric highlights
+  // after the DOM is rebuilt, since innerHTML wipes the previous marks.
   function renderGrid() {
     if (!currentData) return;
-    els.grid.innerHTML = MODE_ORDER
+    const modes = activeModeOrder(currentData.modes);
+    els.grid.innerHTML = modes
       .map((mode) => renderColumn(mode, currentData.modes[mode]))
       .join("");
     if (els.overlayRoot) {
@@ -1211,10 +1276,21 @@
     const sourceTag = run.source === "audit_log_link" ? "from audit log" : "manual paste";
     const charCount = (run.final_output || "").length;
     const modelLabel = run.model || "";
+
+    // For pathway-3 swap runs the audit log records which phase actually
+    // went to Opus (the rest stayed local Ollama). Surface that here so a
+    // reader scanning the grid sees the cabinet composition at a glance,
+    // without having to open the inspector.
+    const cabinetTag = describeCabinet(run);
+    const cabinetBadge = cabinetTag
+      ? `<span class="cabinet-badge" title="${escapeHtml(cabinetTag.tooltip)}">${escapeHtml(cabinetTag.label)}</span>`
+      : "";
+
     const meta = `<div class="card__meta" style="margin-bottom: var(--space-3); display:flex; flex-wrap:wrap; gap:var(--space-3);">
       <span><span class="pill" data-status="completed">imported</span></span>
       <span title="${escapeHtml(modelLabel)}">${escapeHtml(sourceTag)} · v${run.schema_version}</span>
       <span>${charCount.toLocaleString()} chars</span>
+      ${cabinetBadge}
     </div>`;
 
     // Top body shows the model's final-answer equivalent: synthesis for
