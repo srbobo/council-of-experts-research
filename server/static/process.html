@@ -90,6 +90,441 @@
       </li>
     </ul>
 
+    <h2>The five test cases — design and cutoff alignment</h2>
+    <p class="text-soft">
+      The case battery is intentionally divergent: each prompt stresses a
+      different way the council can go wrong. Three of the five cases also
+      sit at or past the local cabinet's training cutoffs in load-bearing
+      ways, which matters because the cutoffs aren't uniform — Saul
+      anchors to ~Aug 2023, Med42 to Dec 2023, Phi-4 to Jun 2024, and only
+      Qwen-Finance reaches into 2025 (see the
+      <a href="/architecture">Architecture page cabinet table</a>). Today
+      is mid-2026, so each case sits 14–32 months past the relevant
+      backbone.
+    </p>
+    <p class="text-soft">
+      For each case below: what failure mode it's designed to provoke,
+      why it was structured that way, the specific knowledge each domain
+      needs to surface, and a frank assessment of whether that knowledge
+      lives inside the local cabinet's training window or has drifted
+      past it.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- CASE 1                                                        -->
+    <!-- ============================================================ -->
+    <h3>Case 1 — AI clinical decision support rollout</h3>
+    <p>
+      <strong>Failure mode tested:</strong> synthesis under competing
+      recommendations.
+    </p>
+    <p>
+      <strong>Rationale.</strong> The most legible three-domain case. A
+      12-hospital health system is rolling out a sepsis-risk CDS tool via
+      per-seat annual subscription. Each specialist has well-established
+      doctrine to draw on (alert-fatigue tolerance, FDA SaMD classification,
+      subscription-vs-usage pricing). The case tests whether the Lead can
+      integrate three legible specialist contributions into a coherent v1
+      design — not whether any individual seat can dig up obscure
+      knowledge.
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Knowledge needed</th>
+          <th style="padding: var(--space-2) var(--space-3)">First-relevant date</th>
+          <th style="padding: var(--space-2) 0">Cutoff risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Alert-fatigue literature, sepsis-scoring debates (Epic critique 2021)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Pre-2023</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">FDA SaMD framework, Class II classification doctrine</td>
+          <td style="padding: var(--space-2) var(--space-3)">2017 guidance, stable</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Subscription / per-encounter / outcomes-based pricing structure</td>
+          <td style="padding: var(--space-2) var(--space-3)">Cutoff-insensitive</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Verdict — ✅ Within boundaries.</strong> No load-bearing
+      dependency on post-2024 rulemaking. Even Saul's Aug 2023 corpus
+      covers FDA SaMD doctrine fully. The case stresses synthesis, not
+      recency. A correct local-council answer is fully achievable in
+      principle; if it fails, the failure points at the architecture
+      (or the Lead's integration), not at stale training data.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- CASE 2                                                        -->
+    <!-- ============================================================ -->
+    <h3>Case 2 — Cross-border digital therapeutic launch (US / UK / DE)</h3>
+    <p>
+      <strong>Failure mode tested:</strong> jurisdictional vocabulary
+      discipline.
+    </p>
+    <p>
+      <strong>Rationale.</strong> A US-cleared prescription SaMD launching
+      in the UK and Germany is the textbook case for keeping multiple
+      regulatory regimes distinct (FDA vs MHRA vs BfArM; UK GDPR vs EU
+      GDPR post-Brexit; UK MDR 2002 vs EU MDR 2017/745; DiGA reimbursement
+      vs NHS commissioning vs US payer billing). Models that conflate
+      these — or that treat FDA clearance as carrying any direct
+      regulatory weight in the EU — fail visibly. The case is designed to
+      reward jurisdictional precision and penalize translation-layer
+      shortcuts.
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Knowledge needed</th>
+          <th style="padding: var(--space-2) var(--space-3)">First-relevant date</th>
+          <th style="padding: var(--space-2) 0">Cutoff risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">FDA SaMD pathway</td>
+          <td style="padding: var(--space-2) var(--space-3)">2017+</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">DiGA framework + §139e SGB V (BfArM listing)</td>
+          <td style="padding: var(--space-2) var(--space-3)">2019/2020</td>
+          <td style="padding: var(--space-2) 0">None — well inside all cutoffs</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">UK GDPR vs EU GDPR post-Brexit divergence</td>
+          <td style="padding: var(--space-2) var(--space-3)">2021</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">EU MDR 2017/745 (replaces MDD)</td>
+          <td style="padding: var(--space-2) var(--space-3)">In force May 2021</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">
+            <strong>EU AI Act high-risk classification for medical SaMD (Annex III × MDR)</strong>
+          </td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>Entered into force Aug 2024</strong></td>
+          <td style="padding: var(--space-2) 0"><strong>Past Healthcare (Dec 2023) and Legal (Aug 2023) cutoffs</strong></td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">UK Data Protection and Digital Information Act</td>
+          <td style="padding: var(--space-2) var(--space-3)">2024</td>
+          <td style="padding: var(--space-2) 0">Past Legal cutoff</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Verdict — ⚠️ Edge.</strong> The core framework (DiGA, GDPR,
+      MDR) is all well within cutoffs and answerable accurately. The new
+      wrinkle is the EU AI Act × MDR intersection: an adaptive ML
+      smoking-cessation DTx triggers high-risk AI Act obligations on top
+      of MDR conformity assessment, and that intersection only became
+      operative in late 2024 — past both Healthcare and Legal seat
+      backbones. opus-council surfaces it explicitly; the local council
+      cannot.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- CASE 3                                                        -->
+    <!-- ============================================================ -->
+    <h3>Case 3 — Capitated Medicare Advantage risk contract</h3>
+    <p>
+      <strong>Failure mode tested:</strong> quantitative framework discipline.
+    </p>
+    <p>
+      <strong>Rationale.</strong> A 40-physician primary-care group is
+      being offered a $1,180 PMPM full-risk capitated contract for a
+      25,000-member panel. The case tests whether each seat can do (and
+      show) actual quantitative work — actuarial reserves, breakeven
+      utilization, stop-loss layering — rather than hand-wave with
+      adjectives. It's also the case most exposed to currently-evolving
+      CMS rulemaking, which makes it the case where stale training data
+      can produce confidently wrong numbers most easily.
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Knowledge needed</th>
+          <th style="padding: var(--space-2) var(--space-3)">First-relevant date</th>
+          <th style="padding: var(--space-2) 0">Cutoff risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Stark Law / Anti-Kickback Statute structure</td>
+          <td style="padding: var(--space-2) var(--space-3)">Decades-stable</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HEDIS measure set specifics (year-over-year drift)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Annually refreshed</td>
+          <td style="padding: var(--space-2) 0">Med42 has HEDIS 2023 at best</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">
+            <strong>CMS-HCC V28 risk-adjustment model transition</strong>
+          </td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>Phased 2024–2026 (33% / 67% / 100% V28)</strong></td>
+          <td style="padding: var(--space-2) 0"><strong>Saul + Med42 anchored to V24 weights</strong></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">MA quality reporting / Star Ratings methodology changes</td>
+          <td style="padding: var(--space-2) var(--space-3)">Annual 2024–2026</td>
+          <td style="padding: var(--space-2) 0">Past Healthcare / Legal cutoffs</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">CMS-4201-F (MA Final Rule restricting AI/algorithm in prior authorization)</td>
+          <td style="padding: var(--space-2) var(--space-3)">April 2024</td>
+          <td style="padding: var(--space-2) 0">Past Legal cutoff</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">2025/2026 MA payment rates (Rate Announcements)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Apr 2024 / Apr 2025</td>
+          <td style="padding: var(--space-2) 0">Only Finance + Lead know</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Verdict — ⚠️ Problematic.</strong> The V28 risk-adjustment
+      transition is the operational reality for any current MA capitated
+      contract — actuarial reserves built on V24 weights will be wrong
+      by single-digit-percent margins that matter at scale. A local-council
+      answer using V24 logic could pass the rubric's quantitative-discipline
+      bar (shows math, breaks even, layers stop-loss) while being
+      <em>confidently wrong</em> for a 2026 contract. This is the case
+      where adding a recency-honesty rubric item would close the silent
+      failure mode.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- CASE 4                                                        -->
+    <!-- ============================================================ -->
+    <h3>Case 4 — GLP-1 employer coverage decision</h3>
+    <p>
+      <strong>Failure mode tested:</strong> recency / training-cutoff honesty.
+    </p>
+    <p>
+      <strong>Rationale.</strong> A 5,000-employee self-insured employer
+      decides whether to extend GLP-1 coverage from diabetes-only to
+      obesity, and under what utilization-management criteria. The
+      clinical, legal, and financial facts on this question move in
+      quarter-by-quarter increments: new SELECT-class outcomes data,
+      compounding-pharmacy enforcement shifts, EEOC obesity-as-disability
+      activity, CVS Caremark exclusion announcements, oral-GLP-1
+      approvals, list-vs-net price drift. This is the case designed
+      explicitly to test whether each seat <em>flags</em> what its
+      knowledge can't cover — not whether it knows the post-cutoff
+      events themselves.
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Knowledge needed</th>
+          <th style="padding: var(--space-2) var(--space-3)">First-relevant date</th>
+          <th style="padding: var(--space-2) 0">Cutoff risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">STEP / SURMOUNT trial program, STEP 4 weight-regain</td>
+          <td style="padding: var(--space-2) var(--space-3)">2021–2023</td>
+          <td style="padding: var(--space-2) 0">Within all cutoffs</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">SELECT cardiovascular outcomes (Lincoff et al.)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Published Nov 2023</td>
+          <td style="padding: var(--space-2) 0">Edge — Healthcare just inside, Legal past</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">SURMOUNT-OSA, tirzepatide moderate-severe OSA label</td>
+          <td style="padding: var(--space-2) var(--space-3)">Jun 2024</td>
+          <td style="padding: var(--space-2) 0">Past Healthcare / Legal backbones</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Oral semaglutide for obesity FDA approval</td>
+          <td style="padding: var(--space-2) var(--space-3)">Dec 2025</td>
+          <td style="padding: var(--space-2) 0">Past all local backbones</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Orforglipron (first oral non-peptide GLP-1) approval</td>
+          <td style="padding: var(--space-2) var(--space-3)">April 2026</td>
+          <td style="padding: var(--space-2) 0">Past all local backbones</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">CVS Caremark Zepbound formulary exclusion</td>
+          <td style="padding: var(--space-2) var(--space-3)">Aug 2025</td>
+          <td style="padding: var(--space-2) 0">Only Finance may know (~Feb 2025 + Jul fine-tune)</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Lewandowski v. Johnson &amp; Johnson (ERISA / PBM rebates)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Filed Feb 2024</td>
+          <td style="padding: var(--space-2) 0">Past Legal backbone, marginally inside Mar 2024 fine-tune</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Verdict — ✅ Intentional.</strong> The case lands partly
+      outside the cutoffs by design. The rubric does not reward citing
+      the post-cutoff events — it rewards each seat explicitly disclaiming
+      that its knowledge on net pricing, recent rulings, and post-2024
+      label expansions may be stale. Failure here is confident
+      assertion, not missing information.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- CASE 5                                                        -->
+    <!-- ============================================================ -->
+    <h3>Case 5 — Nonprofit community hospital → private-equity conversion</h3>
+    <p>
+      <strong>Failure mode tested:</strong> adversarial cross-domain tension.
+    </p>
+    <p>
+      <strong>Rationale.</strong> The hardest case in the battery. A
+      90-bed rural nonprofit being acquired by a PE sponsor through a
+      conversion + sale-leaseback structure looks routine to each
+      specialist individually (the lawyer focuses on AG approval; the
+      accountant focuses on lease economics; the clinician focuses on
+      service-line continuity). The case is engineered so the
+      <em>tension between</em> the three is the real finding: the
+      sale-leaseback that maximizes sponsor return creates fragile
+      operating economics that destabilize clinical service continuity
+      and invite state AG scrutiny under the charitable-trust doctrine.
+      A model that produces three sensible single-domain answers and
+      then writes a synthesis that elides the conflict has failed.
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Knowledge needed</th>
+          <th style="padding: var(--space-2) var(--space-3)">First-relevant date</th>
+          <th style="padding: var(--space-2) 0">Cutoff risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">State AG nonprofit-conversion review (e.g. CA §5914, NY NPCL Art. 5)</td>
+          <td style="padding: var(--space-2) var(--space-3)">Decades-stable</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Charitable-trust doctrine, foundation-spinout obligations</td>
+          <td style="padding: var(--space-2) var(--space-3)">Common law, stable</td>
+          <td style="padding: var(--space-2) 0">None</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HSR antitrust review thresholds</td>
+          <td style="padding: var(--space-2) var(--space-3)">Annually adjusted, framework stable</td>
+          <td style="padding: var(--space-2) 0">Low</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">PE-ownership-of-hospitals clinical-outcomes literature (Cerullo, Bruch, Bain)</td>
+          <td style="padding: var(--space-2) var(--space-3)">2020–2023</td>
+          <td style="padding: var(--space-2) 0">Within Med42 cutoff</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">
+            <strong>Steward Health Care bankruptcy (canonical sale-leaseback collapse case)</strong>
+          </td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>Filed May 2024</strong></td>
+          <td style="padding: var(--space-2) 0"><strong>Past Healthcare / Legal; only Phi-4 just edges in</strong></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">
+            <strong>California AB 3129 and similar state PE-healthcare bills</strong>
+          </td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>2024–2025</strong></td>
+          <td style="padding: var(--space-2) 0"><strong>Past Legal cutoff entirely</strong></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">2023 DOJ/FTC Merger Guidelines</td>
+          <td style="padding: var(--space-2) var(--space-3)">Dec 2023</td>
+          <td style="padding: var(--space-2) 0">Just within Med42, past Saul</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">FTC PE-healthcare investigation, Senate HELP report on PE</td>
+          <td style="padding: var(--space-2) var(--space-3)">2024–2025</td>
+          <td style="padding: var(--space-2) 0">Past Legal cutoff</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Verdict — ⚠️ Edge.</strong> The analytical frame
+      (sale-leaseback collapse risk, charitable-trust constraints, state
+      AG review) is timeless and fully within Saul's training corpus. But
+      the load-bearing contemporary case study (Steward), the live
+      legislative response (CA AB 3129 and copycats), and the federal
+      enforcement posture (FTC PE-healthcare focus) all sit at or past
+      the Legal seat's backbone. A correct-shaped answer is possible
+      using the Hahnemann (2019) playbook; a current-aware answer is
+      not.
+    </p>
+
+    <!-- ============================================================ -->
+    <!-- Summary recap table                                            -->
+    <!-- ============================================================ -->
+    <h3>Summary — case battery against the cutoffs</h3>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case</th>
+          <th style="padding: var(--space-2) var(--space-3)">Failure mode tested</th>
+          <th style="padding: var(--space-2) var(--space-3)">Recency posture</th>
+          <th style="padding: var(--space-2) 0">Recommended action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>1</strong> · CDS rollout</td>
+          <td style="padding: var(--space-2) var(--space-3)">Synthesis</td>
+          <td style="padding: var(--space-2) var(--space-3)">Stable corpus</td>
+          <td style="padding: var(--space-2) 0">None — keep as is</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>2</strong> · Cross-border DTx</td>
+          <td style="padding: var(--space-2) var(--space-3)">Jurisdictional</td>
+          <td style="padding: var(--space-2) var(--space-3)">DiGA / GDPR / MDR in-corpus; <strong>EU AI Act × MDR past cutoff</strong></td>
+          <td style="padding: var(--space-2) 0">Add recency rubric item for AI Act</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>3</strong> · MA capitation</td>
+          <td style="padding: var(--space-2) var(--space-3)">Quantitative</td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>CMS-HCC V28 phase-in past cutoff; load-bearing</strong></td>
+          <td style="padding: var(--space-2) 0">Add rubric item OR reframe prompt</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>4</strong> · GLP-1 coverage</td>
+          <td style="padding: var(--space-2) var(--space-3)">Recency honesty</td>
+          <td style="padding: var(--space-2) var(--space-3)">Intentionally past cutoff</td>
+          <td style="padding: var(--space-2) 0">None — by design</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>5</strong> · PE hospital conversion</td>
+          <td style="padding: var(--space-2) var(--space-3)">Adversarial cross-domain</td>
+          <td style="padding: var(--space-2) var(--space-3)">Frame stable; <strong>Steward + state-PE legislation past cutoff</strong></td>
+          <td style="padding: var(--space-2) 0">Add should-have rubric item for Steward</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      The strongest pending change is <strong>Case 3</strong>: as written,
+      a local-council answer with V24-anchored actuarial reasoning would
+      pass the existing quantitative-discipline rubric while being
+      materially wrong for a 2026 contract. That's a silent failure mode
+      the rubric currently can't catch and probably should.
+    </p>
+
     <h2>What we're measuring</h2>
     <p>
       Four properties, no single metric of "winning":

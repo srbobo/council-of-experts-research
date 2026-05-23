@@ -35,7 +35,9 @@
           <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Seat</th>
           <th style="padding: var(--space-2) var(--space-3)">Model</th>
           <th style="padding: var(--space-2) var(--space-3)">Backbone</th>
-          <th style="padding: var(--space-2) 0">Quant</th>
+          <th style="padding: var(--space-2) var(--space-3)">Quant</th>
+          <th style="padding: var(--space-2) var(--space-3)">Backbone cutoff</th>
+          <th style="padding: var(--space-2) 0">Fine-tune released</th>
         </tr>
       </thead>
       <tbody style="font-size: var(--size-2);">
@@ -43,25 +45,33 @@
           <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Lead</strong></td>
           <td style="padding: var(--space-2) var(--space-3)">Phi-4 14B</td>
           <td style="padding: var(--space-2) var(--space-3)">Microsoft Phi-4</td>
-          <td style="padding: var(--space-2) 0" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)">Jun 2024</td>
+          <td style="padding: var(--space-2) 0">Dec 2024</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--color-border);">
           <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Healthcare</strong></td>
           <td style="padding: var(--space-2) var(--space-3)">Llama3-Med42-8B</td>
           <td style="padding: var(--space-2) var(--space-3)">Llama 3.1 8B</td>
-          <td style="padding: var(--space-2) 0" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)">Dec 2023</td>
+          <td style="padding: var(--space-2) 0">Aug 2024</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--color-border);">
           <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Legal</strong></td>
           <td style="padding: var(--space-2) var(--space-3)">Saul-7B-Instruct-v1</td>
-          <td style="padding: var(--space-2) var(--space-3)">Mistral 7B</td>
-          <td style="padding: var(--space-2) 0" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)">Mistral 7B v0.1</td>
+          <td style="padding: var(--space-2) var(--space-3)" class="mono">Q4_K_M</td>
+          <td style="padding: var(--space-2) var(--space-3)">~Aug 2023</td>
+          <td style="padding: var(--space-2) 0">Mar 2024</td>
         </tr>
         <tr>
           <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Finance</strong></td>
           <td style="padding: var(--space-2) var(--space-3)">Qwen-Open-Finance-R-8B</td>
           <td style="padding: var(--space-2) var(--space-3)">Qwen3-8B</td>
-          <td style="padding: var(--space-2) 0" class="mono">Q8_0</td>
+          <td style="padding: var(--space-2) var(--space-3)" class="mono">Q8_0</td>
+          <td style="padding: var(--space-2) var(--space-3)">~Feb 2025</td>
+          <td style="padding: var(--space-2) 0">Jul 2025</td>
         </tr>
       </tbody>
     </table>
@@ -72,6 +82,30 @@
       pretrain of Mistral 7B on 30+ billion tokens of US/UK/CA/AU legal
       text; Qwen-Open-Finance-R is DragonLLM's instruction tune of
       Qwen3-8B-Base on a 50%+ finance-domain corpus.
+    </p>
+    <p>
+      <strong>Why two date columns?</strong> A fine-tune adds domain text
+      on top of a pretrained backbone, but it does <em>not</em> refresh the
+      backbone's world model. The Healthcare seat's Llama 3.1 backbone is
+      anchored at Dec 2023 for facts about anything other than its
+      clinical-corpus delta — so when Med42 reasons about, say, the FDA
+      approval status of a drug, it's drawing on Dec 2023 Llama plus
+      whatever clinical-pathway text was in m42-health's 2024 fine-tune
+      corpus, not on a true 2024 world model. Spread across the cabinet,
+      the effective &quot;recency horizon&quot; ranges from late 2023
+      (Legal) to early 2025 (Finance), which is exactly the kind of thing
+      <a href="/results">case 4</a> probes — the Healthcare seat
+      misreporting its own cutoff as 2021 (it's actually Dec 2023) is the
+      epistemic-honesty failure mode that test was designed to catch.
+    </p>
+    <p>
+      These dates are best-public-evidence summaries — Microsoft, Meta,
+      Mistral, and Alibaba publish backbone cutoffs differently (some
+      precise, some &quot;approximately&quot;), and the fine-tune release
+      dates come from each lab's HuggingFace card or paper. Treat the
+      backbone cutoff column as anchoring the model's <em>generalist</em>
+      knowledge; the fine-tune layer can push specific domain facts
+      forward but does not retroactively update everything else.
     </p>
     <p>
       The Lead is intentionally <em>not</em> industry-specialized. An
