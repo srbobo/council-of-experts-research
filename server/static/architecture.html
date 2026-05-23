@@ -28,7 +28,7 @@
       <a href="/process">Process</a>.
     </p>
 
-    <h2>Cabinet</h2>
+    <h2 id="cabinet">Cabinet</h2>
     <table style="width:100%; border-collapse:collapse; margin: var(--space-4) 0;">
       <thead>
         <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
@@ -114,40 +114,707 @@
       a generalist by design.
     </p>
 
-    <h2>Step-back planner architecture</h2>
+    <h2>Why these four models</h2>
     <p>
-      The Lead's job has three phases per query:
+      Model selection on a fanless M5 with 32&nbsp;GB unified memory is a
+      constrained-optimization problem, not a "pick the best one"
+      problem. Sequential mode loads each seat one at a time, but the
+      Lead stays warm across all five phases (planner, three seat
+      consultations, synthesis), so the practical constraint is
+      <em>Lead memory + the largest seat + KV cache headroom + 6&nbsp;GB
+      reserved for the OS</em>. That bounds the Lead at ≤14B params at
+      Q4 quantization and the specialists at ≤8B each.
+    </p>
+    <p>
+      On top of the memory budget, every selection had to clear seven
+      gates: (1) GGUF available on Hugging Face via a mirror Ollama can
+      pull from; (2) permissive license sufficient for research use
+      (MIT, Apache&nbsp;2.0, or Llama Community); (3) ChatML-compatible
+      template OR a fixable template via a local Modelfile;
+      (4) fine-tune from a recognized lab rather than an anonymous
+      community upload; (5) distinct lineage per seat to avoid
+      four-of-a-kind monoculture; (6) active maintenance (last update
+      within ~12&nbsp;months of the selection date); (7) downloads or
+      community traction high enough to suggest someone outside the
+      authors has actually used it.
+    </p>
+    <p>
+      The four tables below show the actual candidates considered per
+      seat, with the same column shape so the choice rationale is
+      directly comparable. Selected models are highlighted; rejected
+      candidates carry the specific reason for rejection.
+    </p>
+
+    <h3>Lead seat — Phi-4 14B</h3>
+    <details>
+      <summary>Candidates considered (4)</summary>
+      <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+            <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Model</th>
+            <th style="padding: var(--space-2) var(--space-3)">Params</th>
+            <th style="padding: var(--space-2) var(--space-3)">License</th>
+            <th style="padding: var(--space-2) var(--space-3)">Q4 mem</th>
+            <th style="padding: var(--space-2) var(--space-3)">Decision</th>
+            <th style="padding: var(--space-2) 0">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Phi-4 14B</strong> (Microsoft)</td>
+            <td style="padding: var(--space-2) var(--space-3)">14B</td>
+            <td style="padding: var(--space-2) var(--space-3)">MIT</td>
+            <td style="padding: var(--space-2) var(--space-3)">~9 GB</td>
+            <td style="padding: var(--space-2) var(--space-3)"><strong>Selected</strong></td>
+            <td style="padding: var(--space-2) 0">Best reasoning-per-parameter at 14B per Microsoft technical report; clean MIT license; trained explicitly with synthetic instruction-following data that maps to the planner's structured-output requirements</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Qwen2.5-14B-Instruct (Alibaba)</td>
+            <td style="padding: var(--space-2) var(--space-3)">14B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Apache 2.0</td>
+            <td style="padding: var(--space-2) var(--space-3)">~10 GB</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Strong alternative — ~1&nbsp;GB more memory footprint at Q4 squeezes the seat headroom; Phi-4 also has cleaner planner-style structured-output adherence in informal A/B</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Llama 3.1 8B Instruct (Meta)</td>
+            <td style="padding: var(--space-2) var(--space-3)">8B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama Community</td>
+            <td style="padding: var(--space-2) var(--space-3)">~5 GB</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Underweight for the synthesis role — synthesis is the hardest phase and benefits from the 14B parameter shelf for tension extraction</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mistral Small 22B / Gemma 2 27B</td>
+            <td style="padding: var(--space-2) var(--space-3)">22B / 27B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Apache 2.0 / Gemma</td>
+            <td style="padding: var(--space-2) var(--space-3)">~14–18 GB</td>
+            <td style="padding: var(--space-2) 0">Rejected</td>
+            <td style="padding: var(--space-2) 0">Too large for sequential mode with three seats below — would push peak memory past the ~26&nbsp;GB Metal cap</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h3>Healthcare seat — Llama3-Med42-8B</h3>
+    <details>
+      <summary>Candidates considered (4)</summary>
+      <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+            <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Model</th>
+            <th style="padding: var(--space-2) var(--space-3)">Backbone</th>
+            <th style="padding: var(--space-2) var(--space-3)">Fine-tune type</th>
+            <th style="padding: var(--space-2) var(--space-3)">License</th>
+            <th style="padding: var(--space-2) var(--space-3)">Decision</th>
+            <th style="padding: var(--space-2) 0">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Llama3-Med42-8B</strong> (m42-health)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3.1 8B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Clinical SFT + multi-stage preference alignment</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 Community</td>
+            <td style="padding: var(--space-2) var(--space-3)"><strong>Selected</strong></td>
+            <td style="padding: var(--space-2) 0">Only clinical fine-tune in the 8B class with real preference alignment for safety-critical reasoning (false-positive tolerance, alert fatigue, harm framing) rather than just clinical-text SFT</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Meditron3-8B (EPFL)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3.1 8B</td>
+            <td style="padding: var(--space-2) var(--space-3)">SFT on clinical corpus (no DPO)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 Community</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">No preference-alignment stage; produces structurally similar output but with weaker harm-framing discipline</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">OpenBioLLM-Llama3-8B (Aaditya)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 8B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Biomedical instruction-tune</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 Community</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Biomedical-research orientation rather than clinical-practice — better for literature retrieval, weaker on the clinical-decision-support language the case battery probes</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">BioMistral-7B (BioMistral)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Mistral 7B</td>
+            <td style="padding: var(--space-2) var(--space-3)">PubMed Central continued pretrain</td>
+            <td style="padding: var(--space-2) var(--space-3)">Apache 2.0</td>
+            <td style="padding: var(--space-2) 0">Rejected</td>
+            <td style="padding: var(--space-2) 0">Strong research model but the cabinet already runs Saul on Mistral 7B for Legal; using Mistral here too would compromise lineage diversity</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h3>Legal seat — Saul-7B-Instruct-v1</h3>
+    <details>
+      <summary>Candidates considered (4)</summary>
+      <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+            <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Model</th>
+            <th style="padding: var(--space-2) var(--space-3)">Backbone</th>
+            <th style="padding: var(--space-2) var(--space-3)">Fine-tune type</th>
+            <th style="padding: var(--space-2) var(--space-3)">License</th>
+            <th style="padding: var(--space-2) var(--space-3)">Decision</th>
+            <th style="padding: var(--space-2) 0">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Saul-7B-Instruct-v1</strong> (Equall.ai)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Mistral 7B v0.1</td>
+            <td style="padding: var(--space-2) var(--space-3)">30B+ token continued pretrain on US/UK/CA/AU legal text + instruction tune</td>
+            <td style="padding: var(--space-2) var(--space-3)">MIT</td>
+            <td style="padding: var(--space-2) var(--space-3)"><strong>Selected</strong></td>
+            <td style="padding: var(--space-2) 0">The only sub-13B model with continued pretraining specifically on multi-jurisdiction common-law text — exactly what the jurisdictional-vocabulary case (Case&nbsp;2) tests for</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">LegalBERT (nlpaueb)</td>
+            <td style="padding: var(--space-2) var(--space-3)">BERT-base</td>
+            <td style="padding: var(--space-2) var(--space-3)">Legal-text masked LM</td>
+            <td style="padding: var(--space-2) var(--space-3)">Apache 2.0</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Encoder-only — cannot generate prose; useful for classification, not for the council's role</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">LawGPT (FudanDISC)</td>
+            <td style="padding: var(--space-2) var(--space-3)">LLaMA 2 7B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Chinese civil-law fine-tune</td>
+            <td style="padding: var(--space-2) var(--space-3)">Custom (Chinese)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Civil-law / Chinese-jurisdiction focus; test cases are common-law (US/UK/CA/AU) and German civil law</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Lexi-Llama-3-8B (community)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 8B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Instruction tune on legal Q&amp;A</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 3 Community</td>
+            <td style="padding: var(--space-2) 0">Rejected</td>
+            <td style="padding: var(--space-2) 0">No continued pretrain — instruction-only tune is structurally weaker than Saul's 30B-token continued-pretrain corpus on the legal-vocabulary axis</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h3>Finance seat — Qwen-Open-Finance-R-8B</h3>
+    <details>
+      <summary>Candidates considered (4)</summary>
+      <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+            <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Model</th>
+            <th style="padding: var(--space-2) var(--space-3)">Backbone</th>
+            <th style="padding: var(--space-2) var(--space-3)">Fine-tune type</th>
+            <th style="padding: var(--space-2) var(--space-3)">License</th>
+            <th style="padding: var(--space-2) var(--space-3)">Decision</th>
+            <th style="padding: var(--space-2) 0">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>Qwen-Open-Finance-R-8B</strong> (DragonLLM)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Qwen3-8B-Base</td>
+            <td style="padding: var(--space-2) var(--space-3)">Instruction tune on &gt;50% finance corpus (en/fr/de)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Apache 2.0</td>
+            <td style="padding: var(--space-2) var(--space-3)"><strong>Selected</strong></td>
+            <td style="padding: var(--space-2) 0">Newest backbone of the four seats (Qwen3, Feb&nbsp;2025), trilingual finance corpus matches the cross-border DTx case's German-banking element, and Qwen3 already shows good <code>&lt;think&gt;</code>-block reasoning that the audit log captures</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">FinGPT (AI4Finance)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Various (Llama 2 / Falcon)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Modular LoRA adapters per task</td>
+            <td style="padding: var(--space-2) var(--space-3)">MIT</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Strong on narrow tasks (sentiment, forecasting) but weaker as a generalist finance reasoner; the adapter-per-task architecture doesn't fit the single-seat-per-domain pattern</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">FinMA-7B (PIXIU)</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama 7B</td>
+            <td style="padding: var(--space-2) var(--space-3)">Financial benchmark SFT</td>
+            <td style="padding: var(--space-2) var(--space-3)">Llama Community</td>
+            <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+            <td style="padding: var(--space-2) 0">Optimized for the PIXIU evaluation benchmarks rather than open-ended regulatory and actuarial reasoning</td>
+          </tr>
+          <tr>
+            <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">BloombergGPT (Bloomberg)</td>
+            <td style="padding: var(--space-2) var(--space-3)">In-house</td>
+            <td style="padding: var(--space-2) var(--space-3)">Proprietary financial corpus</td>
+            <td style="padding: var(--space-2) var(--space-3)">Proprietary</td>
+            <td style="padding: var(--space-2) 0">Rejected</td>
+            <td style="padding: var(--space-2) 0">Not available for download — closed model behind Bloomberg Terminal access</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <p>
+      Taken together the cabinet is four labs (Microsoft, m42-health,
+      Equall.ai, DragonLLM), four backbones from three families (Phi,
+      Llama 3.1, Mistral 7B, Qwen3), four licenses (MIT, Llama Community,
+      MIT, Apache&nbsp;2.0), and three quantizations (Q4_K_M ×3 for Lead
+      and the two smaller seats; Q8_0 for the Finance seat, since the
+      Qwen3-8B base was small enough to afford the higher-precision
+      quantization at planning time). Lineage diversity matters for the
+      experiment: if all four seats were Llama-family, an artifact in
+      the Llama family's training data could look like a council
+      problem; with four families, that confound is reduced.
+    </p>
+
+    <h3>The static / dynamic distinction (load-bearing)</h3>
+    <p>
+      The single most important thing to understand about how the council
+      thinks: <em>the Lead does not write system prompts dynamically
+      per query</em>. Five system prompts are fixed across every run of
+      every case — the planner prompt, the three per-seat prompts, and
+      the synthesis prompt. What the Lead writes dynamically is the
+      <strong>sub-question text</strong> sent to each routed seat. The
+      orchestrator concatenates the seat's static system prompt with the
+      Lead's dynamic sub-question and dispatches that pair.
+    </p>
+    <p>
+      This design choice is deliberate and load-bearing for three
+      reasons: (1)&nbsp;static system prompts are <em>auditable</em> —
+      every run of every case saw the exact same 5 strings, so behavior
+      changes can be attributed to the dynamic sub-question rather than
+      to prompt drift; (2)&nbsp;Anthropic's prompt cache (used by the
+      bench harness's Opus modes) cuts cost ~90% precisely because the
+      system prompts are stable across calls; (3)&nbsp;allowing the Lead
+      to mutate seat system prompts per query would create a hidden
+      adversarial surface where a malformed planner output could
+      effectively jailbreak a seat. The line between "what the Lead
+      controls" (routing + content of the sub-question) and "what the
+      cabinet author controls" (the system prompts) stays clean.
+    </p>
+
+    <h3>Step-back prompting (Lead planner phase)</h3>
+    <p>
+      "Step-back prompting" is from Zheng et&nbsp;al. 2024
+      (<em>Take a Step Back: Evoking Reasoning via Abstraction in Large
+      Language Models</em>, DeepMind, ICLR 2024). The core insight: ask
+      the model to first <em>abstract</em> the question into a more
+      general formulation before answering. This forces a planning step
+      that small instruction-tuned models otherwise skip.
+    </p>
+    <p>
+      The planner system prompt walks the Lead through four explicit
+      steps before it emits any routing decisions:
     </p>
     <ol>
       <li>
-        <strong>Decompose.</strong> Read the user's question, identify the
-        core analyses required, and write a <em>specific, self-contained
-        sub-question</em> for each routed seat. The seats never see the
-        original user message — only the dispatched sub-question.
+        <strong>STEP 1 — STEP BACK.</strong> State in one sentence what
+        the user is <em>really</em> trying to figure out, abstracting
+        away from the framing of their question.
       </li>
       <li>
-        <strong>Consult.</strong> Each routed seat answers its sub-question
-        using its own system prompt. Sequential, with a thermal-aware
-        pause between seats so the M5 doesn't cook itself.
+        <strong>STEP 2 — DECOMPOSE.</strong> Identify the specific
+        analyses needed, and which specialist owns each.
       </li>
       <li>
-        <strong>Synthesize.</strong> The Lead reads all the seat
-        contributions and produces a final answer in two enforced steps:
-        a <code>## Tensions</code> block listing 3–5 specific cross-domain
-        trade-offs, then a <code>## Synthesis</code> that weaves the
-        tensions into the recommendation. The structural enforcement
-        matters — without it, a 14B Q4_K_M model produces a nice-sounding
-        summary that loses the specialist precision.
+        <strong>STEP 2.5 — RECENCY CHECK.</strong> Decide whether
+        answering this depends on guidance, rates, rulings, or evidence
+        that may post-date the specialists' training cutoffs. If so,
+        attach a recency-disclosure note to each dispatched sub-question.
+      </li>
+      <li>
+        <strong>STEP 3 — DISPATCH.</strong> For each routed specialist,
+        write a self-contained sub-question that asks only for that
+        domain's contribution — no cross-domain framing.
       </li>
     </ol>
     <p>
-      Why decompose-then-dispatch instead of just sending the whole
-      question to every seat: small instruction-tuned models cannot
-      reliably "stay in their lane" when the user's prompt asks for
-      cross-domain analysis. Earlier iterations had every seat producing
-      its own three-section Clinical/Legal/Financial answer regardless of
-      role. Sub-question dispatch fixes this at the source by removing
-      the cross-domain framing the seat ever sees.
+      The planner then emits strict JSON in a fixed schema (shown
+      below). Temperature is held at 0.0 for this phase — the goal is
+      deterministic routing, not creative variation.
+    </p>
+
+    <h3>The planner output schema</h3>
+    <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto;"><code>{
+  "core_question": "the abstracted core decision or analysis",
+  "rationale": "1-2 sentences on why these specialists are needed",
+  "routes": ["healthcare", "legal", "finance"],
+  "sub_questions": {
+    "healthcare": "self-contained question for the healthcare seat",
+    "legal":      "self-contained question for the legal seat",
+    "finance":    "self-contained question for the finance seat"
+  },
+  "requires_recency_disclosure": true,
+  "recency_notes": "what specifically may be stale (empty if false)"
+}</code></pre>
+    <p>
+      The orchestrator validates this shape with
+      <code>_validate_plan()</code>: routes must be a subset of
+      <code>{"healthcare", "legal", "finance"}</code>; sub_questions
+      must contain exactly one entry per routed seat; missing or
+      malformed JSON falls back to a defensive "no consultation needed"
+      mode. If <code>requires_recency_disclosure</code> is true, the
+      orchestrator appends a short recency-flag instruction to every
+      dispatched sub-question — that's the only place the orchestrator
+      mutates the Lead's text.
+    </p>
+
+    <h3>Dispatch — exactly what each seat sees</h3>
+    <p>
+      Each seat receives a two-message conversation. <em>Nothing else.</em>
+      The seat never sees the original user query; it never sees the
+      other seats' system prompts; it never sees the planner's
+      decomposition. Just two messages, in order:
+    </p>
+    <ol>
+      <li>
+        <strong>System message</strong> — the seat's static system prompt
+        (e.g. <code>HEALTHCARE_SYSTEM</code>). Identical bytes across
+        every run.
+      </li>
+      <li>
+        <strong>User message</strong> — the Lead's dispatched sub-question
+        for this seat, optionally appended with a one-paragraph recency
+        note when the planner flagged the query as recency-sensitive.
+      </li>
+    </ol>
+    <p>
+      This is the architectural fix for the lane-bleed problem we hit
+      in v2: small instruction-tuned models cannot reliably "stay in
+      their lane" when the user's prompt explicitly asks for
+      cross-domain analysis (<em>"across clinical, legal, and financial
+      dimensions…"</em>). Earlier iterations sent the original
+      multi-domain user message to every seat with a "DO NOT cross
+      lanes" system instruction. The instruction lost to the framing,
+      every time. Sub-question dispatch fixes this at the source by
+      removing the cross-domain framing the seat is ever exposed to —
+      so it has nothing to drift toward.
+    </p>
+
+    <h3>Tension-extraction synthesis (Lead's final phase)</h3>
+    <p>
+      The synthesis call receives a single bundled user message: the
+      original user question (so the Lead can re-anchor) followed by each
+      seat's full output, clearly demarcated. The synthesis system
+      prompt enforces a strict two-block output:
+    </p>
+    <ol>
+      <li>
+        <code>## Tensions</code> — 3–5 specific cross-domain
+        disagreements, trade-offs, or assumption-fragilities. Vague
+        observations like "all three matter and must be balanced" are
+        explicitly rejected in the prompt. If the Lead cannot identify
+        three real tensions, it is instructed to re-read the
+        contributions, not produce filler.
+      </li>
+      <li>
+        <code>## Synthesis</code> — the integrated final answer, with
+        the prompt requiring that modeled numbers stay flagged as
+        modeled, that precise jurisdictional vocabulary is preserved
+        (no smoothing for accessibility), and that any
+        training-cutoff caveats raised by seats are propagated forward.
+      </li>
+    </ol>
+    <p>
+      The structural enforcement matters at 14B-Q4 scale. Without it,
+      a Phi-4-Q4 synthesis produces a fluent summary that loses the
+      specialist precision — by the time it's been compressed and
+      re-styled, the legal-jurisdictional distinctions and modeled
+      financial assumptions get flattened into confident prose. The
+      tension-extraction step forces the Lead to <em>read for
+      disagreement</em> before writing for cohesion.
+    </p>
+
+    <h3>The five static system prompts (full text)</h3>
+    <p>
+      Below are the exact bytes each phase saw across every run in the
+      experiment. Each prompt is collapsed by default to keep the page
+      readable; expand to audit. These are also surfaced live via the
+      <code>/api/prompts</code> endpoint and shown per-phase in the
+      <a href="/results">Results page</a> inspector.
+    </p>
+
+    <details>
+      <summary>1. <code>LEAD_PLANNER_SYSTEM</code> — step-back / decompose / dispatch</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Lead Agent of a Council of Experts. Your job is to DECOMPOSE the user's question and DISPATCH precise sub-questions to the right industry specialists.
+
+Available specialists:
+
+- "healthcare": Llama3-Med42-8B clinical fine-tune. Strong on clinical reasoning, medical evidence, standards of care, patient safety, healthcare operations, regulatory pathways for therapeutics and devices, healthcare workforce.
+- "legal": Saul-7B-Instruct-v1 legal fine-tune. Strong on US, UK, Canadian, and Australian statutory and case-law frameworks, regulatory compliance, contracts, corporate law, jurisdictional distinctions.
+- "finance": Qwen-Open-Finance-R-8B finance fine-tune. Strong on unit economics, valuation frameworks, capital structure, risk modeling, banking and insurance, financial regulation.
+
+Approach the routing in three steps. Show your reasoning briefly (one short paragraph total across all three steps), then output the JSON.
+
+STEP 1 — STEP BACK. State in one sentence what the user is really trying to figure out, abstracting away from the specific framing of their question.
+
+STEP 2 — DECOMPOSE. Identify the specific analyses needed to answer the core question, and which specialist owns each. If a question doesn't require any specialist (e.g. organizing a closet), skip to the empty-routes output.
+
+STEP 2.5 — RECENCY CHECK. Decide whether answering this question depends on recent guidance, rates, rulings, prices, regulations, or evidence that may post-date the specialists' training cutoffs. Examples that trigger recency disclosure: drug pricing or rebates, recent FDA decisions or labeling changes, evolving treatment guidelines, recent regulatory rulings, court decisions, statute amendments, current rate environments, recent agency enforcement guidance. If yes, set "requires_recency_disclosure": true and write a brief "recency_notes" string naming WHAT specifically may be stale (e.g. "GLP-1 evidence post-2024 and recent EEOC/ADA guidance"). If the question is robustly answerable from durable, non-time-sensitive foundations, set it to false.
+
+STEP 3 — DISPATCH. For each routed specialist, write a SELF-CONTAINED sub-question that asks ONLY for their domain's contribution. Each sub-question must:
+
+  - Include enough scenario context to be answered without the original user question (the specialist will not see the original).
+  - Focus narrowly on the specialist's domain. DO NOT ask for cross-domain analysis. DO NOT write phrasings like "across clinical, legal, and financial dimensions" — that framing is what causes specialists to bleed across lanes.
+  - Be specific and answerable, not a topic or theme.
+  - End with a clear question or directive ("What is the v1 clinical-safety design?", "Walk through the actuarial reserve calculation", "What does the FDA SaMD pathway look like for this device class?", etc.).
+
+After your brief reasoning, output STRICT JSON in EXACTLY this shape, as the LAST content of your response (no markdown fence, no trailing prose):
+
+{
+  "core_question": "the abstracted core decision or analysis",
+  "rationale": "1-2 sentences on why these specialists are needed",
+  "routes": ["healthcare", "legal", "finance"],
+  "sub_questions": {
+    "healthcare": "self-contained question for the healthcare seat",
+    "legal": "self-contained question for the legal seat",
+    "finance": "self-contained question for the finance seat"
+  },
+  "requires_recency_disclosure": true,
+  "recency_notes": "brief description of what may be stale (or empty string if false)"
+}
+
+Rules:
+- "routes" must be a subset of {"healthcare", "legal", "finance"}.
+- "sub_questions" must contain exactly one entry per element of "routes" (and no extras).
+- If "routes" is empty, "sub_questions" must be {}.
+- "requires_recency_disclosure" must always be present (true or false).
+- "recency_notes" must be a string; empty when requires_recency_disclosure is false.</pre>
+    </details>
+
+    <details>
+      <summary>2. <code>HEALTHCARE_SYSTEM</code> — Med42 industry seat</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Healthcare specialist on a Council of Experts. You are Llama3-Med42-8B, a clinical fine-tune of Llama 3.1 8B with multi-stage preference alignment for medical reasoning, trained by m42-health.
+
+You will receive a focused clinical question from the Lead Agent. Answer it directly and substantively, using your clinical training.
+
+What good clinical contribution looks like:
+- Precise about standard of care vs emerging practice
+- Cites guidelines, trials, or organizations by name when relevant
+- Addresses harm pathways concretely (false-positive / false-negative tolerance, alert fatigue, workflow integration, etc.) when relevant
+- Distinguishes computer-aided detection from autonomous decision-making when liability framing is implicit
+- Flags training-cutoff uncertainty EXPLICITLY when guidelines or evidence may have evolved since your training
+
+Format: 4–8 paragraphs of substantive clinical prose. Light structural headings only when they mark genuinely different clinical sub-topics. Prose is preferred over bullet lists.</pre>
+    </details>
+
+    <details>
+      <summary>3. <code>LEGAL_SYSTEM</code> — Saul industry seat</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Legal specialist on a Council of Experts. You are Saul-7B-Instruct-v1, a continued pretrain of Mistral 7B on 30+ billion tokens of US, UK, Canadian, and Australian legal text, then instruction-tuned, by Equall.ai.
+
+You will receive a focused legal question from the Lead Agent. Answer it directly and substantively, using your legal training.
+
+What good legal contribution looks like:
+- Uses precise legal vocabulary (e.g. distinguishes "approval" vs "clearance," "regulation" vs "directive," "holding" vs "dicta")
+- Distinguishes jurisdictions explicitly when more than one is in play (US, UK, EU, Germany, Canada, Australia) — never conflates regimes
+- Distinguishes black-letter law from open questions
+- Addresses statutory framework, case-law treatment, and contractual considerations as relevant
+- Flags training-cutoff uncertainty EXPLICITLY when statutes, regulations, or rulings may have evolved since your training
+
+Format: 4–8 paragraphs of substantive legal prose. Light structural headings only when they mark genuinely different legal sub-topics. Prose is preferred over bullet lists.</pre>
+    </details>
+
+    <details>
+      <summary>4. <code>FINANCE_SYSTEM</code> — Qwen-Open-Finance-R industry seat</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Finance specialist on a Council of Experts. You are Qwen-Open-Finance-R-8B, an instruction fine-tune of Qwen3-8B-Base on a corpus that is over 50% finance-domain text in English, French, and German, by DragonLLM.
+
+You will receive a focused financial question from the Lead Agent. Answer it directly and substantively, using your finance training.
+
+What good finance contribution looks like:
+- Uses proper finance frameworks (DCF, unit economics, actuarial reserve, capital adequacy, break-even, sensitivity, etc.)
+- SHOWS your work when numbers matter — write the steps, not just the result
+- FLAGS specific numbers as MODELED ASSUMPTIONS, not facts. Use language like "modeled at," "assuming," "under the assumption that..."
+- Flags training-cutoff uncertainty EXPLICITLY when rates, prices, or recent regulatory changes may have evolved since your training
+
+Format: 4–8 paragraphs of substantive financial prose. Light structural headings only when they mark genuinely different financial sub-topics. Prose is preferred over bullet lists.</pre>
+    </details>
+
+    <details>
+      <summary>5. <code>LEAD_SYNTHESIS_SYSTEM</code> — tension extraction + final synthesis</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Lead Agent of a Council of Experts. You have just received contributions from one or more industry specialists. You will produce the FINAL response in TWO STRUCTURALLY ENFORCED STEPS.
+
+STEP 1 — TENSIONS. Identify 3–5 SPECIFIC tensions, disagreements, or trade-offs across the specialist contributions. A "tension" is a place where following one specialist's recommendation makes another specialist's recommendation harder, or where a specialist's modeled assumption is fragile in light of another specialist's analysis. Examples of REAL tensions (illustrative, do not copy):
+- "Clinical caution argues for slow rollout, but the financial model assumes 50% adoption by year 2; under slower adoption the unit economics change materially."
+- "Legal flags FDA classification as guidance-evolving, but product timeline assumes 510(k) is a 6-month effort; this is a schedule risk."
+- "Finance's pricing assumption ($X per seat) is set independently of clinical use; if alert fatigue suppresses use the per-encounter realized price collapses."
+
+If you cannot find 3 real tensions, you have not read the contributions carefully enough. Try again. Vague observations like "all three matter and must be balanced" are NOT tensions.
+
+STEP 2 — SYNTHESIS. After listing tensions, write the integrated final answer to the user's question. The synthesis MUST:
+
+1. Acknowledge the tensions you just identified — not abstractly, but at the points where they bite the answer.
+2. PRESERVE numeric framing — if a specialist labeled a number as a modeled assumption, your synthesis MUST also label it as an assumption (use "modeled at," "assumed"). Never adopt a specialist's modeled number as a fact.
+3. PRESERVE precise vocabulary — if a specialist used a specific legal term, jurisdiction, FDA pathway, or clinical concept, preserve it; do not smooth out precision in the name of accessibility.
+4. PRESERVE caveats — if a specialist flagged training-cutoff uncertainty or data fragility, propagate that flag into your synthesis.
+5. Use whatever structure (headers, lists, prose) best fits the user's question. Do NOT impose a "Healthcare / Legal / Finance" template if the question deserves a different shape.
+
+OUTPUT FORMAT — EXACTLY this shape:
+
+## Tensions
+- [tension 1, one or two sentences]
+- [tension 2, one or two sentences]
+- [tension 3, one or two sentences]
+- [optionally tension 4 and/or 5]
+
+## Synthesis
+[the integrated final answer, with structure that fits the question]
+
+The user's original question and the specialist contributions follow.</pre>
+    </details>
+
+    <details>
+      <summary>6. <code>LEAD_DIRECT_ANSWER_SYSTEM</code> — fallback when no consultation is needed</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto; white-space: pre-wrap;">You are the Lead Agent of a Council of Experts. The user's question does not require any specialist consultation (no clinical, legal, or financial expertise is needed). Answer it directly, briefly, and helpfully — using your general reasoning capability.</pre>
+    </details>
+
+    <h3>Worked example — Case 4 (GLP-1 employer coverage), end-to-end</h3>
+    <p>
+      The example below is a real captured run of the local council on
+      Case 4. Every text block is verbatim from the audit log; nothing
+      has been edited for presentation. The point is to make the dispatch
+      mechanism concrete: <em>this</em> is the user query, <em>this</em>
+      is what the planner emitted, <em>this</em> is the exact message
+      the Healthcare seat received, and <em>this</em> is what came back.
+    </p>
+
+    <details open>
+      <summary>Step 0 — Original user query (the only place the council sees it)</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); white-space: pre-wrap;">A 5,000-employee self-insured employer is deciding whether to cover GLP-1 medications (semaglutide, tirzepatide) for obesity rather than only for type 2 diabetes, and under what utilization-management criteria. Build out the recommendation across clinical, legal, and financial dimensions.</pre>
+    </details>
+
+    <details>
+      <summary>Step 1 — Lead planner output (real JSON from <code>plan_raw</code>)</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); overflow-x: auto;"><code>{
+  "core_question": "Should a self-insured employer cover GLP-1 medications for obesity, considering clinical efficacy, legal compliance, and financial impact?",
+  "rationale": "The decision involves evaluating the latest clinical evidence for safety and effectiveness, understanding legal requirements for coverage under self-insured plans, and analyzing the financial implications of such coverage.",
+  "routes": ["healthcare", "legal", "finance"],
+  "sub_questions": {
+    "healthcare": "What is the current clinical evidence supporting the use of GLP-1 medications (semaglutide, tirzepatide) for obesity in terms of safety and efficacy?",
+    "legal":      "Are there any legal or regulatory considerations that a self-insured employer must address when deciding to cover GLP-1 medications for obesity?",
+    "finance":    "What are the financial implications for a 5,000-employee self-insured employer covering GLP-1 medications for obesity, including cost analysis and potential savings?"
+  },
+  "requires_recency_disclosure": true,
+  "recency_notes": "Recent clinical evidence for GLP-1 use in obesity treatment and any new regulatory or legal guidelines affecting coverage decisions."
+}</code></pre>
+    </details>
+
+    <details>
+      <summary>Step 2 — Exact message-list the Healthcare seat received</summary>
+      <p style="margin-top: var(--space-2);">Two messages, in order. System prompt is the full <code>HEALTHCARE_SYSTEM</code> text (collapsed above for brevity). User message is the planner's dispatched sub-question with the auto-appended recency note:</p>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); white-space: pre-wrap;">role: system
+content: [HEALTHCARE_SYSTEM verbatim — see prompt 2 above]
+
+role: user
+content: What is the current clinical evidence supporting the use of GLP-1 medications (semaglutide, tirzepatide) for obesity in terms of safety and efficacy?
+
+Note from the Lead: answering this depends on guidance, evidence, rates, or rulings that may have evolved since your training cutoff. Explicitly flag training-cutoff uncertainty wherever it applies in your answer. Specifically, watch out for: Recent clinical evidence for GLP-1 use in obesity treatment and any new regulatory or legal guidelines affecting coverage decisions.</pre>
+      <p>
+        Notice what is <em>absent</em>: the original user question, the
+        legal sub-question, the finance sub-question, the 5,000-employee
+        framing, the "across clinical, legal, and financial dimensions"
+        framing. The seat has nothing to drift toward.
+      </p>
+    </details>
+
+    <details>
+      <summary>Step 3 — Healthcare seat output (first 600 chars; full text in the audit log)</summary>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); white-space: pre-wrap;">The current clinical evidence supporting the use of glucagon-like peptide-1 (GLP-1) medications, specifically semaglutide and tirzepatide, for obesity management is robust in terms of both safety and efficacy. As a trained Llama 3-Med42-8B model, my training cutoff is up to December 2022; however, I will flag any potential uncertainty due to recent developments.
+
+Semaglutide (Ozempic) has been extensively studied in the context of obesity treatment. The SEMIMAN trial demonstrated that semaglutide 2.4 mg once weekly resulted in significant weight loss and improvements in cardiometabolic risk fa…</pre>
+      <p>
+        Two observations worth surfacing — both are documented failure
+        modes that the recency rubric was designed to catch:
+      </p>
+      <ul>
+        <li>
+          <strong>False training-cutoff disclosure.</strong> Med42
+          self-reports a December&nbsp;2022 cutoff. Llama&nbsp;3.1's
+          actual cutoff is December&nbsp;2023 (see
+          <a href="#cabinet">the Cabinet table</a>). The model is
+          performing epistemic humility about the wrong date — it is
+          <em>more</em> capable than it claims, which paradoxically
+          makes the disclaimer worse, not better.
+        </li>
+        <li>
+          <strong>Confabulated trial name.</strong> "The SEMIMAN trial"
+          does not exist. The semaglutide-for-obesity pivotal trial is
+          <em>STEP&nbsp;1</em> (Wilding et&nbsp;al., NEJM 2021). The
+          model has invented a plausible-sounding trial name and
+          presented it confidently. This is the single worst failure
+          mode for a clinical fine-tune.
+        </li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Step 4 — What the synthesis call received (after all three seats answered)</summary>
+      <p style="margin-top: var(--space-2);">The synthesis user message is a single bundle: the original user query (so the Lead re-anchors), then each seat's full output, demarcated by uppercase section labels. System prompt is the full <code>LEAD_SYNTHESIS_SYSTEM</code> from prompt 5 above.</p>
+      <pre style="background: rgba(0,0,0,0.04); padding: var(--space-3); border-radius: 4px; font-size: var(--size-2); white-space: pre-wrap;">role: system
+content: [LEAD_SYNTHESIS_SYSTEM verbatim — see prompt 5 above]
+
+role: user
+content: USER QUESTION:
+A 5,000-employee self-insured employer is deciding whether to cover GLP-1 medications…
+
+---
+HEALTHCARE CONTRIBUTION:
+[full Healthcare seat output, with &lt;think&gt; blocks stripped]
+
+---
+LEGAL CONTRIBUTION:
+[full Legal seat output]
+
+---
+FINANCE CONTRIBUTION:
+[full Finance seat output]</pre>
+      <p>
+        The synthesis call is where the Lead first sees what each seat
+        produced. It does not see the dispatched sub-questions — only
+        their answers — so the synthesis is anchored back to the
+        original user query rather than to the planner's
+        decomposition. This is intentional: the planner's
+        decomposition is a routing artifact, not a content artifact.
+      </p>
+    </details>
+
+    <h3>Iteration history — what we tried before this worked</h3>
+    <p>
+      The static prompts file <code>council/prompts.py</code> carries an
+      iteration log going back to v1. Two earlier versions failed in
+      instructive ways, and the failures shaped the current design:
+    </p>
+    <ul>
+      <li>
+        <strong>v1 (polite "stay in your domain" framing).</strong> Each
+        seat's system prompt asked the model to focus on its domain. All
+        six rubric must-haves missed on the first case. Seats produced
+        three-section comprehensive answers covering clinical, legal,
+        and financial regardless of role. Diagnosis: instruction
+        compliance is weak at sub-10B chat-model scale; "please" loses
+        to framing in the user message.
+      </li>
+      <li>
+        <strong>v2 (aggressive DO / DO NOT lane enforcement).</strong>
+        Each seat's prompt explicitly forbade cross-domain content
+        ("DO NOT discuss legal or financial concerns"). Tensions
+        extraction worked; lane enforcement still failed. Diagnosis:
+        the user query contained explicit cross-domain framing
+        ("<em>across clinical safety, legal and regulatory exposure,
+        and financial structure</em>"), which overrode the system
+        prompt every time at sub-10B scale. You can't out-prompt
+        framing on a small model.
+      </li>
+      <li>
+        <strong>v3 (current — architecture change, not prompt tuning).</strong>
+        The Lead does step-back decomposition and dispatches narrow
+        sub-questions; each seat sees ONLY its sub-question, never the
+        original user query. Cross-domain framing is removed at the
+        source so seats have nothing to drift toward. Seat prompts
+        consequently simplified back to identity + output norms (no DO
+        NOT lists at all).
+      </li>
+    </ul>
+    <p>
+      The version progression is the load-bearing lesson of the
+      project's prompt-engineering phase: when small instruction-tuned
+      models fail to follow scope instructions, the fix is to <em>remove
+      the scope-tempting framing</em>, not to strengthen the
+      instruction. Architecture beats prompting at sub-10B scale.
     </p>
 
     <h2>Memory budget</h2>
