@@ -537,7 +537,22 @@
     "local-council": "Local Council",
     "opus-single": "Opus single-shot",
     "opus-council": "Opus-as-council",
+    "gptoss-single": "gpt-oss single-shot",
+    "gptoss-council": "gpt-oss as-council",
   };
+
+  // Canonical column order — when the user selects multiple modes, render
+  // them in this order so the grid reads consistently left-to-right:
+  // local baseline → frontier (Opus) → MoE (gpt-oss). Modes not in this
+  // list fall through to alphabetical at the end (defensive in case a
+  // new mode is added on the server before this list is updated).
+  const MODE_DISPLAY_ORDER = [
+    "local-council",
+    "opus-single",
+    "opus-council",
+    "gptoss-single",
+    "gptoss-council",
+  ];
 
   // Build the overlay markup, or "" if no mode is expanded.
   // The overlay wraps a fresh render of the same column so live tokens flow
@@ -589,12 +604,20 @@
     });
 
     // ---- Render the grid ----
-    const seats = [
-      { key: "local-council", title: MODE_TITLES["local-council"] },
-      { key: "opus-single", title: MODE_TITLES["opus-single"] },
-      { key: "opus-council", title: MODE_TITLES["opus-council"] },
-    ];
-    els.grid.innerHTML = seats.map(({ key, title }) => renderColumn(key, title)).join("");
+    // Iterate the user-selected modes (those present in `columns` state)
+    // rather than a hardcoded baseline triplet. Order them via the
+    // canonical MODE_DISPLAY_ORDER above so the grid reads consistently
+    // even when the user adds gpt-oss columns alongside the Opus ones.
+    // Before the first run, fall back to the three baselines so the
+    // page has placeholder columns at load time.
+    const activeKeys = Object.keys(columns);
+    const seatKeys = (activeKeys.length > 0)
+      ? MODE_DISPLAY_ORDER.filter((k) => activeKeys.includes(k))
+          .concat(activeKeys.filter((k) => !MODE_DISPLAY_ORDER.includes(k)))
+      : ["local-council", "opus-single", "opus-council"];
+    els.grid.innerHTML = seatKeys
+      .map((key) => renderColumn(key, MODE_TITLES[key] || key))
+      .join("");
 
     // ---- Render the overlay (or empty it) ----
     if (els.overlayRoot) {

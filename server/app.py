@@ -139,8 +139,15 @@ async def start_run(req: RunRequest) -> RunResponse:
     if req.case_id and req.prompt:
         raise HTTPException(400, "Provide case_id OR prompt, not both.")
 
-    # Validate modes
-    valid_modes = {"local-council", "opus-single", "opus-council"}
+    # Validate modes. The five baselines map one-for-one to the bench
+    # CLI's BASELINE_MODES + MOE_MODES buckets; the swap variants don't
+    # surface in the live A/B page (they're CLI-only for now since they
+    # consume Opus $ at a different cadence than baselines).
+    valid_modes = {
+        "local-council",
+        "opus-single", "opus-council",
+        "gptoss-single", "gptoss-council",
+    }
     invalid = [m for m in req.modes if m not in valid_modes]
     if invalid:
         raise HTTPException(400, f"Invalid mode(s): {invalid}. Allowed: {sorted(valid_modes)}")

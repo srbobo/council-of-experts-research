@@ -217,10 +217,17 @@ li + li { margin-top: var(--space-2); }
   padding: var(--space-6) var(--space-4) var(--space-7);
 }
 
-/* Three-column grid for the A/B comparison columns. Stacks on narrow screens. */
+/* Comparison-column grid for the A/B page. Uses auto-fit so the grid
+ * gracefully scales from 1 column (only local-council selected) to 5
+ * columns (all baselines + both gpt-oss MoE modes) without needing a
+ * separate class per column count. min(280px) keeps text readable;
+ * stacks on narrow screens via the @media rule.
+ *
+ * Class name kept as `grid-3` for backwards-compatibility with the
+ * existing markup; the rule is now generic. */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-3);
 }
 

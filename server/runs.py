@@ -153,6 +153,10 @@ class RunManager:
                     result = await self._run_opus_single(state, guard)
                 elif mode == "opus-council":
                     result = await self._run_opus_council(state, guard)
+                elif mode == "gptoss-single":
+                    result = await self._run_gptoss_single(state)
+                elif mode == "gptoss-council":
+                    result = await self._run_gptoss_council(state)
                 else:
                     raise ValueError(f"Unknown mode: {mode}")
 
@@ -291,6 +295,65 @@ class RunManager:
         )
         return {
             "mode": "opus-council",
+            "final_output": result.final_output,
+            "total_latency_ms": result.total_latency_ms,
+            "deliberation": result.to_dict(),
+        }
+
+    async def _run_gptoss_single(self, state: RunState) -> dict[str, Any]:
+        """One gpt-oss-20B call via Ollama. Local, no cost-guard interaction.
+
+        Wraps ``bench/gptoss_single.run_gptoss_single`` and emits a coarse
+        progress signal so the UI's progress strip has something to render.
+        """
+        from bench.gptoss_single import run_gptoss_single
+
+        on_phase = self._make_phase_emitter(state, "gptoss-single")
+        on_phase("calling", "gpt-oss-20B single-shot")
+        result = await run_gptoss_single(state.prompt)
+        return {
+            "mode": "gptoss-single",
+            "final_output": result.final_output,
+            "total_latency_ms": result.latency_ms,
+            "tokens": {"input": result.input_tokens, "output": result.output_tokens},
+            "system_prompt": result.system_prompt,
+            "raw_response": result.raw,
+        }
+
+    async def _run_gptoss_council(self, state: RunState) -> dict[str, Any]:
+        """gpt-oss-20B plays every seat via the council orchestrator.
+
+        Uses a per-phase CabinetBackends configured to route every call
+        to gpt-oss; mirrors opus_council but stays local. Phase events
+        feed through so the UI's progress strip lights up per phase like
+        the other council modes.
+        """
+        from council.cabinet import GPT_OSS_20B
+        from council.models import chat as local_chat
+        from council.orchestrator import CabinetBackends
+
+        on_phase = self._make_phase_emitter(state, "gptoss-council")
+
+        async def gptoss_chat(_seat_member, messages, **kwargs):
+            # Override the seat's CabinetMember so every phase actually
+            # runs gpt-oss-20B; the seat-role identity (system prompt +
+            # sub-question) flows through unchanged.
+            return await local_chat(GPT_OSS_20B, messages, **kwargs)
+
+        cabinet = CabinetBackends.uniform(
+            gptoss_chat,
+            name="gptoss-council",
+            tag="ollama:gpt-oss:20b",
+        )
+        thermal = ThermalGuard.from_env()
+        result = await council_deliberate(
+            state.prompt,
+            thermal=thermal,
+            on_phase=on_phase,
+            cabinet=cabinet,
+        )
+        return {
+            "mode": "gptoss-council",
             "final_output": result.final_output,
             "total_latency_ms": result.total_latency_ms,
             "deliberation": result.to_dict(),

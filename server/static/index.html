@@ -6,7 +6,7 @@
   <title>Council of Experts — A/B</title>
   <meta name="description" content="A/B test the local Council of Experts against Claude Opus 4.7.">
   <!-- No external resources. All assets self-hosted under /static/. -->
-  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+  <link rel="stylesheet" href="/static/css/styles.css?v=4">
 </head>
 <body>
   <header class="site-header">
@@ -50,6 +50,8 @@
             <label class="flex"><input type="checkbox" value="local-council" checked> Local Council</label>
             <label class="flex"><input type="checkbox" value="opus-single"> Opus single-shot</label>
             <label class="flex"><input type="checkbox" value="opus-council"> Opus-as-council</label>
+            <label class="flex"><input type="checkbox" value="gptoss-single"> gpt-oss single-shot</label>
+            <label class="flex"><input type="checkbox" value="gptoss-council"> gpt-oss as-council</label>
           </div>
         </div>
         <div class="flex-between">
@@ -62,7 +64,11 @@
         </div>
       </div>
 
-      <!-- Three-column comparison grid. Lit up by 3.3. -->
+      <!-- Comparison grid. app.js rebuilds this with one column per
+           selected mode after the user starts a run, so the initial
+           markup is a placeholder for the default selection (Local
+           Council). Once gpt-oss-* is selected the grid extends to
+           include those columns. -->
       <section id="results-grid" class="grid-3">
         <article class="card">
           <h3 class="card__title">Local Council</h3>
@@ -93,6 +99,6 @@
   <div id="overlay-root" aria-live="polite"></div>
 
   <!-- Frontend logic for the A/B page lands in Phase 3.3 -->
-  <script src="/static/js/app.js"></script>
+  <script src="/static/js/app.js?v=2"></script>
 </body>
 </html>
