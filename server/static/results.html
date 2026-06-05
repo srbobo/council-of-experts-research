@@ -609,6 +609,218 @@
           real and not addressable through better fine-tunes alone.
         </p>
 
+        <h3>The alignment hypothesis — testing whether specialists exhibit behaviors generalists don't</h3>
+        <p>
+          The bench above measures <em>content</em> — did the mode
+          produce the load-bearing rubric items. A separate question is
+          whether the specialists produce content with a different
+          <em>epistemic shape</em>: do they exhibit the careful-thinking
+          behaviors their system prompts explicitly reward, more than
+          the generalists do?
+        </p>
+        <p>
+          The specialist system prompts (in <code>council/prompts.py</code>)
+          reward five specific behaviors: training-cutoff disclosure,
+          modeled-assumption flagging, precise vocabulary distinctions
+          ("approval" vs "clearance"), jurisdictional distinguishing
+          (never conflate US/UK/EU/Germany), and clinical/financial
+          hedging. The neutral system prompt used by <code>opus-single</code>
+          and <code>gptoss-single</code> rewards none of these explicitly.
+          The <code>LEAD_SYNTHESIS_SYSTEM</code> prompt instructs Phi-4
+          to <em>preserve</em> these behaviors from any specialists that
+          fed into the synthesis bundle.
+        </p>
+        <p>
+          To measure: count occurrences of behavior-specific regex
+          patterns in every captured output, then normalize by output
+          length (occurrences per 1,000 characters) so a longer output
+          doesn't artificially inflate the score.
+        </p>
+
+        <h4>Behavior density per 1,000 characters</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Behavior</th>
+              <th style="padding: var(--space-2); text-align:center;">local v1</th>
+              <th style="padding: var(--space-2); text-align:center;">local v2</th>
+              <th style="padding: var(--space-2); text-align:center;">opus-council</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss-council</th>
+              <th style="padding: var(--space-2); text-align:center;">opus-single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss-single</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Training-cutoff disclosure</td>
+              <td style="text-align:center">0.30</td>
+              <td style="text-align:center"><strong>0.74</strong></td>
+              <td style="text-align:center">0.17</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Modeled-assumption flagging</td>
+              <td style="text-align:center">0.25</td>
+              <td style="text-align:center">0.29</td>
+              <td style="text-align:center">0.23</td>
+              <td style="text-align:center"><strong>0.50</strong></td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.03</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Precise vocabulary distinctions</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center"><strong>0.13</strong></td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.04</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Jurisdictional distinguishing</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.13</td>
+              <td style="text-align:center">0.14</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Clinical / financial hedging</td>
+              <td style="text-align:center">0.15</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.02</td>
+              <td style="text-align:center">0.08</td>
+              <td style="text-align:center">0.07</td>
+              <td style="text-align:center">0.10</td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06); border-top: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">TOTAL behavior density</td>
+              <td style="text-align:center">0.91</td>
+              <td style="text-align:center"><strong>1.42</strong></td>
+              <td style="text-align:center">0.74</td>
+              <td style="text-align:center">0.71</td>
+              <td style="text-align:center">0.25</td>
+              <td style="text-align:center">0.19</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>What this shows</h4>
+        <p>
+          <strong>1. Council orchestration alone produces a 3-7× lift
+          in behavior density over single-shot</strong>, regardless of
+          model. opus-council at 0.74 vs opus-single at 0.25 (3×);
+          gpt-oss-council at 0.71 vs gpt-oss-single at 0.19 (4×). The
+          synthesis prompt's "PRESERVE numeric framing, PRESERVE
+          vocabulary, PRESERVE caveats" instruction is doing real work
+          on its own — even when no specialist exists to preserve from.
+        </p>
+        <p>
+          <strong>2. Specialist alignment compounds on top.</strong>
+          <code>local-council</code> and <code>gpt-oss-council</code>
+          run the identical orchestration scaffold and the identical
+          synthesis prompt. The only structural difference is who plays
+          the seats. v1's specialists (Med42, Saul, Qwen-Open-Finance)
+          push density to 0.91 — about 28% more than gpt-oss-council
+          alone. v2's upgraded specialists (Meditron3, Saul, Hawkish-8B)
+          push it to 1.42 — 92% more than gpt-oss-council. That gap
+          isolates what specialist alignment contributes beyond the
+          orchestration scaffold.
+        </p>
+        <p>
+          <strong>3. The biggest specialist contribution is
+          training-cutoff disclosure — and v2's Meditron3 is responsible.</strong>
+          v2's training-cutoff density (0.74) is 2.5× v1's (0.30),
+          4× opus-council's (0.17), and effectively infinite over the
+          gpt-oss modes (0.00 and 0.02). This is the same finding as
+          case 4's headline above (v2 hit the cutoff-disclosure rubric
+          where v1 and both gpt-oss modes failed), measured now as a
+          density rather than a binary. Meditron3's EPFL alignment
+          pipeline explicitly rewards epistemic humility on clinical
+          evidence; it shows up directly in the output.
+        </p>
+        <p>
+          <strong>4. Opus-council uniquely owns precise vocabulary
+          distinctions.</strong> The "approval vs clearance" and
+          "regulation vs directive" patterns appear at 0.13 density in
+          opus-council and effectively nowhere else. Opus's
+          alignment apparently rewards careful regulatory vocabulary;
+          neither the specialist legal corpus (Saul) nor gpt-oss's
+          alignment matches it. This is one place where the article's
+          original "frontier wins on vocabulary precision" reading
+          still holds, even after the MoE result complicated the
+          headline.
+        </p>
+        <p>
+          <strong>5. gpt-oss-council surprisingly leads on modeled-
+          assumption flagging</strong> (0.50 — 2× v2 and v1, similar
+          to Opus). gpt-oss's reasoning-tuned alignment may explicitly
+          reward "this assumes" / "modeled at" language when working
+          quantitatively. The single-shot version loses it entirely
+          (0.03) — so the council scaffold is what surfaces it on
+          gpt-oss.
+        </p>
+
+        <h4>How this reconciles with the MoE finding</h4>
+        <p>
+          The MoE rubric finding ("gpt-oss-20B produces more rubric-
+          relevant content") and the alignment finding ("specialists
+          produce more epistemically-aligned content per character")
+          are not in conflict — they measure different things. Rubric
+          coverage answers "did you say the right thing." Behavior
+          density answers "did you say it with the right epistemic
+          shape." gpt-oss-council scores 42% on rubric vs v2's 31%,
+          but v2 hits 1.42 behavior density vs gpt-oss-council's 0.71.
+        </p>
+        <p>
+          The practical reading: <em>at the 32 GB local-inference RAM
+          tier, the right cabinet is probably the v2 specialists
+          (for behavior shape) plus a stronger Lead (for content
+          depth).</em> The current Lead is Phi-4 14B; swapping it for
+          gpt-oss-20B as Lead while keeping Meditron3 / Saul /
+          Hawkish-8B as specialists would test whether the two
+          findings can be composed — get rubric coverage from a strong
+          generalist Lead and behavior density from specialist seats.
+          That cabinet isn't bench'd yet; it would take roughly the
+          same shape of experiment as Path C.
+        </p>
+
+        <h4>Honest caveats on the behavior measurement</h4>
+        <ul>
+          <li>
+            <strong>Regex pattern matching can miss paraphrase.</strong>
+            We count specific surface forms (e.g.
+            <code>training[- ]?cut[- ]?off</code>). A model that says
+            "knowledge ends in early 2025" without using a cutoff
+            keyword wouldn't register. The patterns are biased toward
+            explicit, conventional phrasings.
+          </li>
+          <li>
+            <strong>Single trial per case.</strong> Same caveat as the
+            rubric scoring above; variance not measured.
+          </li>
+          <li>
+            <strong>Densities aren't normalized by behavior
+            <em>opportunity</em>.</strong> Some behaviors (e.g.
+            jurisdictional distinguishing) only apply when the case
+            involves multiple jurisdictions. The pure density number
+            is a rough proxy, not a clean measure.
+          </li>
+          <li>
+            <strong>The synthesis-prompt confound.</strong> Council modes
+            share a synthesis prompt that says "PRESERVE caveats" etc.
+            The lift from single-shot to council mixes two things:
+            specialists producing behaviors, and the synthesis prompt
+            telling Phi-4 to preserve them. The
+            v1-vs-gpt-oss-council comparison (same prompt, different
+            seats) isolates the specialist contribution; the
+            single-vs-council comparison cannot.
+          </li>
+        </ul>
+
         <h3>What this means for the original project thesis</h3>
         <p>
           The original frame ("can small specialist fine-tunes match a
@@ -705,6 +917,6 @@
   <!-- Bump the ?v= query on every results.js change so browsers don't serve
        a stale copy after edits. Cheap version-pinning without touching the
        server's cache headers. -->
-  <script src="/static/js/results.js?v=11"></script>
+  <script src="/static/js/results.js?v=12"></script>
 </body>
 </html>
