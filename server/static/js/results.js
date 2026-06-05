@@ -26,6 +26,14 @@
   // Aligned with A/B page so the visual identity is consistent across tabs.
   const BASELINE_MODE_ORDER = ["local-council", "opus-single", "opus-council"];
 
+  // MoE baselines — local gpt-oss-20B counterparts to opus-single /
+  // opus-council. Appear only when imported runs exist for them (same
+  // rule as swap variants) so the page doesn't show empty MoE columns
+  // before the user runs the MoE bench. Ordered to sit alongside their
+  // Opus counterparts conceptually: frontier-single → MoE-single,
+  // frontier-council → MoE-council.
+  const MOE_MODE_ORDER = ["gptoss-single", "gptoss-council"];
+
   // Pathway-3 swap variants — hybrid cabinets where one phase is served by
   // Opus and the other four by local Ollama. Added to the grid only when
   // imported runs actually exist for them (otherwise 8 always-visible
@@ -45,8 +53,8 @@
     "swap-legal-opus",
     "swap-finance-opus",
     "swap-synthesis-opus",
-    // Local-only Phi-4 swaps (plumbing validation + 14B-generalist-vs-8B-specialist ablation)
-    "swap-healthcare-phi4",
+    // Local-only Phi-4 swaps (generalist-vs-specialist ablation; the
+    // healthcare-phi4 variant was removed after plumbing validation).
     "swap-legal-phi4",
     "swap-finance-phi4",
   ];
@@ -55,21 +63,24 @@
     "local-council":         "Local Council",
     "opus-single":           "Opus single-shot",
     "opus-council":          "Opus-as-council",
+    "gptoss-single":         "gpt-oss-20B single-shot",
+    "gptoss-council":        "gpt-oss-20B as-council",
     "swap-planner-opus":     "Swap · Planner→Opus",
     "swap-healthcare-opus":  "Swap · Healthcare→Opus",
     "swap-legal-opus":       "Swap · Legal→Opus",
     "swap-finance-opus":     "Swap · Finance→Opus",
     "swap-synthesis-opus":   "Swap · Synthesis→Opus",
-    "swap-healthcare-phi4":  "Swap · Healthcare→Phi-4",
     "swap-legal-phi4":       "Swap · Legal→Phi-4",
     "swap-finance-phi4":     "Swap · Finance→Phi-4",
   };
 
-  // Compute the actual columns to render: baselines always, swaps only when
-  // a run exists for them. Keeps the page tidy until the experiment lands.
+  // Compute the actual columns to render: baselines always, MoE +
+  // swap variants only when an imported run exists for them. Keeps the
+  // page tidy until the corresponding bench runs land.
   function activeModeOrder(modesMap) {
+    const moePresent  = MOE_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
     const swapsPresent = SWAP_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
-    return BASELINE_MODE_ORDER.concat(swapsPresent);
+    return BASELINE_MODE_ORDER.concat(moePresent, swapsPresent);
   }
 
   /* -------------------------------------------------------------------------
@@ -1123,14 +1134,32 @@
     // Bucket each phase by what played it. "ollama" is the default local
     // chat (whichever fine-tune the seat owns); anything else is an
     // override worth surfacing on the badge.
-    //   - "opus"           → Opus-swap variants (pathway-3 frontier)
-    //   - "ollama:<tag>"   → local-only swap variants (e.g. Phi-4
-    //                        playing a seat for plumbing validation)
+    //   - "opus"             → Opus-swap variants (pathway-3 frontier)
+    //   - "ollama:<tag>"     → local non-default backend (e.g. Phi-4
+    //                          playing a seat, or gpt-oss as council)
     const defaultPhases  = entries.filter(([, tag]) => tag === "ollama").map(([p]) => p);
     const overridePhases = entries.filter(([, tag]) => tag !== "ollama" && tag !== "");
-    // Uniform cabinet — nothing interesting to highlight on the badge.
-    if (defaultPhases.length === entries.length || overridePhases.length === entries.length) {
-      return null;
+    // All-default — uniform local cabinet, nothing to surface.
+    if (defaultPhases.length === entries.length) return null;
+    // All-override with a single backend — uniform cabinet using one
+    // non-default model (opus-council, gptoss-council). Show a tidy
+    // "<Backend> · uniform cabinet" badge so the reader sees this is a
+    // single-model run, not a swap.
+    if (overridePhases.length === entries.length) {
+      const uniqueBackends = new Set(overridePhases.map(([, t]) => t));
+      if (uniqueBackends.size === 1) {
+        const tag = overridePhases[0][1];
+        const display = tag.startsWith("ollama:gpt-oss") ? "gpt-oss-20B"
+                      : tag.startsWith("ollama:") ? tag.replace("ollama:", "")
+                      : tag === "opus" ? "Opus 4.7"
+                      : tag;
+        return {
+          label: `${display} · uniform cabinet`,
+          tooltip: entries.map(([p, t]) => `${p}: ${t}`).join("\n"),
+        };
+      }
+      // Multiple non-default backends but no default — exotic; fall
+      // through to the mixed-cabinet display below.
     }
     // Pretty-print the override label. Group by backend so a hypothetical
     // multi-phase swap ("Healthcare + Legal both Opus") reads cleanly.

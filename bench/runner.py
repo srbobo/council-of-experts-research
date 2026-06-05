@@ -42,6 +42,8 @@ from council.orchestrator import deliberate as council_deliberate, save_audit_lo
 from council.thermal import ThermalGuard
 
 from .cost_guard import BudgetExceeded, CostGuard
+from .gptoss_council import run_gptoss_council
+from .gptoss_single import run_gptoss_single
 from .local_swap import is_local_swap_mode, list_local_swap_modes, run_local_swap
 from .opus_council import run_opus_council
 from .opus_single import run_opus_single
@@ -50,19 +52,25 @@ from .opus_swap import list_swap_modes, is_swap_mode, run_swap
 console = Console()
 
 # Available modes — bucketed by cost / network behavior:
-#   BASELINE_MODES   — local-council + the two Opus baselines
+#   BASELINE_MODES   — local-council + the two Opus baselines (frontier)
+#   MOE_MODES        — gpt-oss-20B baselines (MoE, local, no API spend)
 #   SWAP_MODES       — pathway-3 Opus-swap hybrids (one Opus call each)
-#   LOCAL_SWAP_MODES — local-only swap variants (Phi-4 plays one seat) used
-#                      to validate the swap plumbing without spending Opus $
+#   LOCAL_SWAP_MODES — local-only swap variants (Phi-4 plays one seat)
+#
+# The MoE modes parallel the Opus modes one-for-one (single + council)
+# so a reader can compare "council vs single-shot" both for a frontier
+# proprietary (Opus) and for a strong local MoE (gpt-oss). They are
+# additional, not replacements — neither is a stand-in for the other.
 #
 # ``--modes all`` expands to the BASELINE trio only, so a routine bench run
 # never accidentally burns Opus budget across the hybrid matrix. The
-# ``all-swaps`` / ``everything`` / ``local-swaps`` aliases are explicit
-# opt-ins into the larger run shapes.
+# ``all-swaps`` / ``local-swaps`` / ``all-moe`` / ``everything`` aliases
+# are explicit opt-ins into the larger run shapes.
 BASELINE_MODES = ["local-council", "opus-single", "opus-council"]
+MOE_MODES = ["gptoss-single", "gptoss-council"]
 SWAP_MODES = list_swap_modes()
 LOCAL_SWAP_MODES = list_local_swap_modes()
-ALL_MODES = BASELINE_MODES + SWAP_MODES + LOCAL_SWAP_MODES
+ALL_MODES = BASELINE_MODES + MOE_MODES + SWAP_MODES + LOCAL_SWAP_MODES
 
 
 def _stamp() -> str:
@@ -155,6 +163,40 @@ async def _run_swap(mode: str, query: str, guard: CostGuard) -> dict[str, Any]:
     }
 
 
+async def _run_gptoss_single(query: str) -> dict[str, Any]:
+    """One gpt-oss-20B call, no council architecture, no Opus spend.
+
+    Local MoE comparison column paralleling opus-single. Same neutral
+    system prompt; the only thing that differs is the model.
+    """
+    result = await run_gptoss_single(query)
+    return {
+        "mode": "gptoss-single",
+        "query": query,
+        "final_output": result.final_output,
+        "total_latency_ms": result.latency_ms,
+        "tokens": {"input": result.input_tokens, "output": result.output_tokens},
+    }
+
+
+async def _run_gptoss_council(query: str) -> dict[str, Any]:
+    """gpt-oss-20B plays every seat in the council architecture, locally.
+
+    Mirrors opus-council in role assignment but routes every phase
+    through the local gpt-oss-20B model. Used to ask "what does the
+    council architecture buy us on top of a strong open-weights MoE?"
+    without spending Opus $.
+    """
+    result = await run_gptoss_council(query)
+    return {
+        "mode": "gptoss-council",
+        "query": query,
+        "final_output": result.final_output,
+        "total_latency_ms": result.total_latency_ms,
+        "deliberation": result.to_dict(),
+    }
+
+
 async def _run_local_swap(mode: str, query: str) -> dict[str, Any]:
     """Local-only swap: one specialist seat served by Phi-4 instead of its
     fine-tune; the rest of the cabinet stays unchanged.
@@ -213,6 +255,14 @@ async def _compare(case_id: str, modes: list[str]) -> int:
                 result = await _run_opus_single(case.prompt, guard)
             elif mode == "opus-council":
                 result = await _run_opus_council(case.prompt, guard)
+            elif mode == "gptoss-single":
+                # Local MoE single-shot — gpt-oss-20B via Ollama, no
+                # API spend, parallel to opus-single.
+                result = await _run_gptoss_single(case.prompt)
+            elif mode == "gptoss-council":
+                # Local MoE council — gpt-oss-20B plays every seat,
+                # parallel to opus-council.
+                result = await _run_gptoss_council(case.prompt)
             elif is_swap_mode(mode):
                 # Hybrid cabinet — exactly one phase served by Opus, the
                 # other four by local Ollama. Pathway-3 ablation.
@@ -302,9 +352,10 @@ def main() -> int:
         help=(
             "Comma-separated mode list. Special values: "
             "'all' = baseline trio (local-council, opus-single, opus-council); "
+            "'all-moe' = the 2 gpt-oss MoE baselines (gptoss-single, gptoss-council; local, no spend); "
             "'all-swaps' = the 5 pathway-3 Opus swap variants (requires budget); "
-            "'local-swaps' = the 3 local-only Phi-4 swap variants (no Opus spend); "
-            "'everything' = baseline + all swaps. "
+            "'local-swaps' = the 2 local-only Phi-4 swap variants (no Opus spend); "
+            "'everything' = baseline + MoE + all swaps. "
             f"Individual modes: {ALL_MODES}"
         ),
     )
@@ -316,12 +367,14 @@ def main() -> int:
         if modes_str == "all":
             # Backward-compatible default: just the three baselines.
             modes = list(BASELINE_MODES)
+        elif modes_str == "all-moe":
+            modes = list(MOE_MODES)
         elif modes_str == "all-swaps":
             modes = list(SWAP_MODES)
         elif modes_str == "local-swaps":
             modes = list(LOCAL_SWAP_MODES)
         elif modes_str == "everything":
-            modes = list(BASELINE_MODES) + list(SWAP_MODES) + list(LOCAL_SWAP_MODES)
+            modes = list(BASELINE_MODES) + list(MOE_MODES) + list(SWAP_MODES) + list(LOCAL_SWAP_MODES)
         else:
             modes = [m.strip() for m in modes_str.split(",") if m.strip()]
             invalid = [m for m in modes if m not in ALL_MODES]

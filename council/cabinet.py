@@ -111,6 +111,44 @@ CABINET: dict[SeatRole, CabinetMember] = {
 }
 
 
+# -----------------------------------------------------------------------------
+# Comparison-only models — not council members.
+#
+# These are CabinetMember records for models the bench harness uses as
+# *alternatives* to the council, not as members of it. They live here so
+# the bench modules can reuse the same model-metadata shape (name, tag,
+# quantization, memory) the council uses, without complicating the
+# council's CABINET dict — which the orchestrator iterates over as the
+# canonical seat list.
+#
+# GPT_OSS_20B is the MoE local alternative to Opus 4.7 for benchmarking
+# the council architecture. Picked over Qwen3-30B-A3B (~18 GB, tighter),
+# Mixtral 8x7B (~26 GB at Q4, too large to comfortably share memory with
+# Phi-4), and Gemma 4 26B MoE (~17 GB, weaker reasoning benchmarks than
+# gpt-oss at the time of selection). gpt-oss-20B's ~3.6B active params
+# (MoE design) keep per-token latency low while the 20B total capacity
+# provides headroom for reasoning. OpenAI's first open-weights release;
+# Apache 2.0; designed by OpenAI specifically for "lower latency, local,
+# or specialized use-cases."
+# -----------------------------------------------------------------------------
+
+GPT_OSS_20B = CabinetMember(
+    # `seat` is required by the Pydantic model; reuse "lead" since the
+    # gpt-oss comparison modes use this member in lead-equivalent roles
+    # (single-shot answer, or every phase of a uniform gpt-oss council).
+    # The audit log distinguishes via the bench mode name + the per-turn
+    # `backend` field on AgentTurn, not via `seat`.
+    seat="lead",
+    name="gpt-oss-20B (OpenAI, MoE)",
+    backbone="gpt-oss-20B",
+    fine_tune_type="mixture-of-experts; ~3.6B active params; reasoning-tuned",
+    ollama_tag="gpt-oss:20b",
+    quantization="Q4_K_M",
+    memory_gb=14.0,
+    license="Apache 2.0",
+)
+
+
 def all_industry_seats() -> list[CabinetMember]:
     """Return the three industry agents in deterministic order.
 

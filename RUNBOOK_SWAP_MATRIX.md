@@ -20,6 +20,49 @@ actually lives** — planner? one specific specialist? the synthesis step?
 
 Total architectural code change: ~200 LOC.
 
+## MoE local alternative — gpt-oss-20B (no Opus spend)
+
+The bench harness ships a second pair of comparison modes that mirror
+opus-single / opus-council but use gpt-oss-20B (OpenAI's first open-
+weights release, MoE design, Apache 2.0) instead of Opus 4.7. Lets you
+ask "what does the council architecture buy us on top of a strong open
+local model?" without any API spend.
+
+```bash
+# One-time: pull gpt-oss-20B via Ollama (~14 GB download)
+ollama pull gpt-oss:20b
+
+# Run the MoE baselines on case 4 + case 2
+python -m bench compare --case case_4_glp1_employer_coverage --modes all-moe
+python -m bench compare --case case_2_cross_border_digital_therapeutic --modes all-moe
+```
+
+Why gpt-oss-20B as the top MoE pick over alternatives:
+
+- **Fits comfortably alongside Phi-4 in sequential mode** — 14 GB
+  baseline + 9 GB Phi-4 = 23 GB peak, well under the 26 GB Metal cap.
+  Qwen3-30B-A3B (~18 GB) and Mixtral 8x7B (~26 GB Q4) are tighter.
+- **MoE with ~3.6B active parameters** — per-token latency stays low
+  even though total capacity is 20B.
+- **Reasoning-tuned by a frontier lab** — matches the council's
+  planning + synthesis use case better than instruction-only MoEs.
+- **Apache 2.0** — clean license for research distribution.
+- **Released for exactly this use** — OpenAI describes the 20B variant
+  as designed for "lower latency, local, or specialized use-cases."
+
+Two modes available:
+
+- `gptoss-single` — one gpt-oss-20B call with a neutral system prompt
+  (the same prompt opus-single uses, so the comparison isn't muddled
+  by a prompt difference between baselines)
+- `gptoss-council` — gpt-oss-20B plays every seat in the council
+  orchestration. Same prompts, same loop as opus-council; only the
+  model differs.
+
+Both modes record `cabinet_backends` with `"ollama:gpt-oss:20b"` for
+every phase so the audit log is honest about what ran. The Results UI
+surfaces a "gpt-oss-20B · uniform cabinet" badge in the column header.
+
 ## Local-only plumbing validation (no Opus spend)
 
 Before lifting the budget cap, you can validate the entire swap-matrix
@@ -34,14 +77,15 @@ python -m bench compare --case case_4_glp1_employer_coverage --modes local-swaps
 python -m bench compare --case case_2_cross_border_digital_therapeutic --modes local-swaps
 ```
 
-Three local-swap variants are defined:
+Two local-swap variants are defined:
 
-- `swap-healthcare-phi4` — Phi-4 plays Healthcare (Med42 sidelined)
 - `swap-legal-phi4` — Phi-4 plays Legal (Saul sidelined)
 - `swap-finance-phi4` — Phi-4 plays Finance (Qwen-Finance sidelined)
 
 (No `swap-planner-phi4` or `swap-synthesis-phi4`: Phi-4 already serves
-those phases in the baseline, so a swap would be a no-op.)
+those phases in the baseline, so a swap would be a no-op.
+`swap-healthcare-phi4` was removed after the plumbing-validation run
+on case 4 confirmed the CabinetBackends routing works end-to-end.)
 
 The audit log records `cabinet_backends.<phase> = "ollama:phi4:14b"`
 for the swapped phase — explicitly labeled as Phi-4, NOT as an Opus

@@ -80,13 +80,16 @@ def _make_swap_chat(swap_member: CabinetMember) -> ChatFn:
     return swap_chat
 
 
-# The three canonical local-swap variants. Synthesis and planner are
-# already served by Phi-4 in the local-council baseline (since LEAD plays
-# both phases), so a "swap-synthesis-phi4" or "swap-planner-phi4" would
-# be a no-op. Only the three specialist seats produce a meaningful
-# swap-vs-baseline contrast for this validation experiment.
+# The local-swap variants. Synthesis and planner are already served by
+# Phi-4 in the local-council baseline (since LEAD plays both phases), so
+# a "swap-synthesis-phi4" or "swap-planner-phi4" would be a no-op.
+#
+# swap-healthcare-phi4 was removed on user request after the plumbing
+# validation run on case 4 confirmed CabinetBackends routing works end-
+# to-end (commit 5a3c0dd → removed in a later commit). The two remaining
+# variants stay as optional generalist-vs-specialist ablation probes for
+# the legal and finance seats.
 SWAP_VARIANTS: dict[str, str] = {
-    "swap-healthcare-phi4": "healthcare",
     "swap-legal-phi4": "legal",
     "swap-finance-phi4": "finance",
 }
