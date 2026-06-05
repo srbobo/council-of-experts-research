@@ -32,12 +32,23 @@
   // columns would crowd the page). Order matches the deliberation phase
   // order (planner → 3 seats → synthesis) so a reader scanning left-to-right
   // sees the gap walk through the pipeline.
+  //
+  // Local-only Phi-4 swap variants come AFTER the Opus swaps in the column
+  // order so the page reads "baselines → Opus swaps → local-only swaps."
+  // The local swaps are explicitly named with "phi4" (not "opus") so the
+  // audit log and the UI both surface what actually ran — no Opus-stand-in
+  // mislabeling.
   const SWAP_MODE_ORDER = [
+    // Opus swaps (pathway-3 frontier ablation; require BENCH_BUDGET_USD > 0)
     "swap-planner-opus",
     "swap-healthcare-opus",
     "swap-legal-opus",
     "swap-finance-opus",
     "swap-synthesis-opus",
+    // Local-only Phi-4 swaps (plumbing validation + 14B-generalist-vs-8B-specialist ablation)
+    "swap-healthcare-phi4",
+    "swap-legal-phi4",
+    "swap-finance-phi4",
   ];
 
   const MODE_TITLES = {
@@ -49,6 +60,9 @@
     "swap-legal-opus":       "Swap · Legal→Opus",
     "swap-finance-opus":     "Swap · Finance→Opus",
     "swap-synthesis-opus":   "Swap · Synthesis→Opus",
+    "swap-healthcare-phi4":  "Swap · Healthcare→Phi-4",
+    "swap-legal-phi4":       "Swap · Legal→Phi-4",
+    "swap-finance-phi4":     "Swap · Finance→Phi-4",
   };
 
   // Compute the actual columns to render: baselines always, swaps only when
@@ -1106,15 +1120,34 @@
     const backends = delib.cabinet_backends || {};
     const entries = Object.entries(backends);
     if (entries.length === 0) return null;
-    const opusPhases = entries.filter(([, tag]) => tag === "opus").map(([p]) => p);
-    const localPhases = entries.filter(([, tag]) => tag === "ollama").map(([p]) => p);
+    // Bucket each phase by what played it. "ollama" is the default local
+    // chat (whichever fine-tune the seat owns); anything else is an
+    // override worth surfacing on the badge.
+    //   - "opus"           → Opus-swap variants (pathway-3 frontier)
+    //   - "ollama:<tag>"   → local-only swap variants (e.g. Phi-4
+    //                        playing a seat for plumbing validation)
+    const defaultPhases  = entries.filter(([, tag]) => tag === "ollama").map(([p]) => p);
+    const overridePhases = entries.filter(([, tag]) => tag !== "ollama" && tag !== "");
     // Uniform cabinet — nothing interesting to highlight on the badge.
-    if (opusPhases.length === entries.length || localPhases.length === entries.length) {
+    if (defaultPhases.length === entries.length || overridePhases.length === entries.length) {
       return null;
     }
-    // Mixed cabinet → swap mode. Surface the swapped phase(s) explicitly.
-    const swapped = opusPhases.map((p) => p[0].toUpperCase() + p.slice(1)).join(", ");
-    const label = `Opus · ${swapped}`;
+    // Pretty-print the override label. Group by backend so a hypothetical
+    // multi-phase swap ("Healthcare + Legal both Opus") reads cleanly.
+    const byBackend = new Map();
+    for (const [phase, tag] of overridePhases) {
+      // Compact display name for the backend — strip the "ollama:" prefix
+      // since "ollama:phi4:14b" is verbose for a badge.
+      const display = tag.startsWith("ollama:") ? "Phi-4" : tag === "opus" ? "Opus" : tag;
+      if (!byBackend.has(display)) byBackend.set(display, []);
+      byBackend.get(display).push(phase);
+    }
+    const labelParts = [];
+    for (const [backend, phases] of byBackend) {
+      const phaseList = phases.map((p) => p[0].toUpperCase() + p.slice(1)).join(", ");
+      labelParts.push(`${backend} · ${phaseList}`);
+    }
+    const label = labelParts.join(" / ");
     const tooltip = entries
       .map(([p, tag]) => `${p}: ${tag}`)
       .join("\n");

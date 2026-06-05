@@ -20,6 +20,42 @@ actually lives** — planner? one specific specialist? the synthesis step?
 
 Total architectural code change: ~200 LOC.
 
+## Local-only plumbing validation (no Opus spend)
+
+Before lifting the budget cap, you can validate the entire swap-matrix
+pipeline using local-only inference. The `swap-<phase>-phi4` modes
+substitute the Lead's Phi-4 14B for one specialist seat. Phi-4 is
+already loaded (it plays planner + synthesis), so this adds one
+extra inference per run, no model downloads.
+
+```bash
+# Validate the architecture with zero Opus spend
+python -m bench compare --case case_4_glp1_employer_coverage --modes local-swaps
+python -m bench compare --case case_2_cross_border_digital_therapeutic --modes local-swaps
+```
+
+Three local-swap variants are defined:
+
+- `swap-healthcare-phi4` — Phi-4 plays Healthcare (Med42 sidelined)
+- `swap-legal-phi4` — Phi-4 plays Legal (Saul sidelined)
+- `swap-finance-phi4` — Phi-4 plays Finance (Qwen-Finance sidelined)
+
+(No `swap-planner-phi4` or `swap-synthesis-phi4`: Phi-4 already serves
+those phases in the baseline, so a swap would be a no-op.)
+
+The audit log records `cabinet_backends.<phase> = "ollama:phi4:14b"`
+for the swapped phase — explicitly labeled as Phi-4, NOT as an Opus
+stand-in. The Results page surfaces this as a "Phi-4 · `<Phase>`"
+cabinet badge so no later reader can mistake a 14B local model for
+frontier capability.
+
+The natural ablation question this answers, beyond plumbing
+validation: **does a 14B generalist (Phi-4) outperform an 8B
+specialist (Med42 / Saul / Qwen-Finance) when playing that seat?**
+If yes, the specialist-fine-tune premise of the project is weaker
+than assumed. If no, specialization beats raw capability at this
+scale.
+
 ## Execution (when budget cap lifts)
 
 The bench is currently held at `BENCH_BUDGET_USD=0`. To run the matrix:

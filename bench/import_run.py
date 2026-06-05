@@ -86,10 +86,21 @@ def main() -> int:
         except json.JSONDecodeError as e:
             print(f"error: audit log is not valid JSON: {e}", file=sys.stderr)
             return 2
-        # The audit log is a DeliberationResult.to_dict(). Its final_output
-        # is the synthesis text; embed the full deliberation as a sibling
-        # field so the Phase 4 report builder can pull planner reasoning,
-        # per-seat outputs, sub-questions, and timing without re-parsing.
+        # Two audit-log shapes coexist in the project:
+        #   (a) Raw DeliberationResult.to_dict() — produced by the council
+        #       CLI's save_audit_log() and lives under runs/. Top-level
+        #       keys: query, started_at, plan, turns, synthesis, …
+        #   (b) Bench-wrapped envelope — produced by bench/runner.py's
+        #       _save_run() and lives under bench/runs/<timestamp>/.
+        #       Top-level keys: mode, query, final_output, total_latency_ms,
+        #       deliberation (where the raw DeliberationResult lives).
+        # Detect via the presence of a nested 'deliberation' that itself
+        # looks like a DeliberationResult (has 'plan' or 'turns'); unwrap
+        # so the imported file always carries shape (a) under its
+        # 'deliberation' key — that's what the Results UI expects.
+        nested = audit.get("deliberation")
+        if isinstance(nested, dict) and ("plan" in nested or "turns" in nested):
+            audit = nested  # unwrap bench envelope → raw DeliberationResult
         if "final_output" not in audit:
             print("error: audit log missing 'final_output' — wrong file?", file=sys.stderr)
             return 2

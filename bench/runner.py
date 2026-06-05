@@ -42,19 +42,27 @@ from council.orchestrator import deliberate as council_deliberate, save_audit_lo
 from council.thermal import ThermalGuard
 
 from .cost_guard import BudgetExceeded, CostGuard
+from .local_swap import is_local_swap_mode, list_local_swap_modes, run_local_swap
 from .opus_council import run_opus_council
 from .opus_single import run_opus_single
 from .opus_swap import list_swap_modes, is_swap_mode, run_swap
 
 console = Console()
 
-# Available modes. ``all`` expands to the three baseline modes (local, opus
-# single-shot, opus-as-council). The pathway-3 swap variants are in
-# ``SWAP_MODES`` — opted into explicitly via --modes or --all-swaps so a
-# routine ``--modes all`` doesn't accidentally burn budget across 5 hybrids.
+# Available modes — bucketed by cost / network behavior:
+#   BASELINE_MODES   — local-council + the two Opus baselines
+#   SWAP_MODES       — pathway-3 Opus-swap hybrids (one Opus call each)
+#   LOCAL_SWAP_MODES — local-only swap variants (Phi-4 plays one seat) used
+#                      to validate the swap plumbing without spending Opus $
+#
+# ``--modes all`` expands to the BASELINE trio only, so a routine bench run
+# never accidentally burns Opus budget across the hybrid matrix. The
+# ``all-swaps`` / ``everything`` / ``local-swaps`` aliases are explicit
+# opt-ins into the larger run shapes.
 BASELINE_MODES = ["local-council", "opus-single", "opus-council"]
 SWAP_MODES = list_swap_modes()
-ALL_MODES = BASELINE_MODES + SWAP_MODES
+LOCAL_SWAP_MODES = list_local_swap_modes()
+ALL_MODES = BASELINE_MODES + SWAP_MODES + LOCAL_SWAP_MODES
 
 
 def _stamp() -> str:
@@ -147,6 +155,25 @@ async def _run_swap(mode: str, query: str, guard: CostGuard) -> dict[str, Any]:
     }
 
 
+async def _run_local_swap(mode: str, query: str) -> dict[str, Any]:
+    """Local-only swap: one specialist seat served by Phi-4 instead of its
+    fine-tune; the rest of the cabinet stays unchanged.
+
+    Validates the swap-matrix plumbing end-to-end with zero Opus spend.
+    The audit log records the actual model that played the swapped phase
+    via ``cabinet_backends[<phase>] = "ollama:phi4:14b"``, so a reader
+    sees what really ran — no Opus-stand-in mislabeling.
+    """
+    result = await run_local_swap(mode, query)
+    return {
+        "mode": mode,
+        "query": query,
+        "final_output": result.final_output,
+        "total_latency_ms": result.total_latency_ms,
+        "deliberation": result.to_dict(),
+    }
+
+
 async def _compare(case_id: str, modes: list[str]) -> int:
     """Run one case through the selected modes, persist results, summarize."""
     # Lazy import — keeps `python -m bench` workable even if examples/ moved.
@@ -190,6 +217,12 @@ async def _compare(case_id: str, modes: list[str]) -> int:
                 # Hybrid cabinet — exactly one phase served by Opus, the
                 # other four by local Ollama. Pathway-3 ablation.
                 result = await _run_swap(mode, case.prompt, guard)
+            elif is_local_swap_mode(mode):
+                # Local-only swap — one phase served by Phi-4 instead of
+                # its assigned fine-tune. Used to validate the swap-matrix
+                # plumbing without spending Opus $. No cost guard
+                # interaction; doesn't touch the budget ledger.
+                result = await _run_local_swap(mode, case.prompt)
             else:
                 console.print(f"[red]Unknown mode: {mode}[/red]")
                 continue
@@ -269,8 +302,9 @@ def main() -> int:
         help=(
             "Comma-separated mode list. Special values: "
             "'all' = baseline trio (local-council, opus-single, opus-council); "
-            "'all-swaps' = the 5 pathway-3 swap variants; "
-            "'everything' = both. "
+            "'all-swaps' = the 5 pathway-3 Opus swap variants (requires budget); "
+            "'local-swaps' = the 3 local-only Phi-4 swap variants (no Opus spend); "
+            "'everything' = baseline + all swaps. "
             f"Individual modes: {ALL_MODES}"
         ),
     )
@@ -284,8 +318,10 @@ def main() -> int:
             modes = list(BASELINE_MODES)
         elif modes_str == "all-swaps":
             modes = list(SWAP_MODES)
+        elif modes_str == "local-swaps":
+            modes = list(LOCAL_SWAP_MODES)
         elif modes_str == "everything":
-            modes = list(BASELINE_MODES) + list(SWAP_MODES)
+            modes = list(BASELINE_MODES) + list(SWAP_MODES) + list(LOCAL_SWAP_MODES)
         else:
             modes = [m.strip() for m in modes_str.split(",") if m.strip()]
             invalid = [m for m in modes if m not in ALL_MODES]
