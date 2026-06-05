@@ -48,6 +48,7 @@ from .local_swap import is_local_swap_mode, list_local_swap_modes, run_local_swa
 from .opus_council import run_opus_council
 from .opus_single import run_opus_single
 from .opus_swap import list_swap_modes, is_swap_mode, run_swap
+from .upgraded_council import run_upgraded_council
 
 console = Console()
 
@@ -70,7 +71,12 @@ BASELINE_MODES = ["local-council", "opus-single", "opus-council"]
 MOE_MODES = ["gptoss-single", "gptoss-council"]
 SWAP_MODES = list_swap_modes()
 LOCAL_SWAP_MODES = list_local_swap_modes()
-ALL_MODES = BASELINE_MODES + MOE_MODES + SWAP_MODES + LOCAL_SWAP_MODES
+# Specialist-upgrade investigation (Path C) — same orchestration as
+# local-council with Healthcare swapped to Meditron3-Qwen2.5-7B and Finance
+# swapped to Llama-3.1-Hawkish-8B. Surfaces as its own column in the
+# Results UI so a reader can compare v1-vs-v2 directly.
+UPGRADED_MODES = ["local-council-v2"]
+ALL_MODES = BASELINE_MODES + MOE_MODES + UPGRADED_MODES + SWAP_MODES + LOCAL_SWAP_MODES
 
 
 def _stamp() -> str:
@@ -156,6 +162,23 @@ async def _run_swap(mode: str, query: str, guard: CostGuard) -> dict[str, Any]:
     result = await run_swap(mode, query, cost_guard=guard)
     return {
         "mode": mode,
+        "query": query,
+        "final_output": result.final_output,
+        "total_latency_ms": result.total_latency_ms,
+        "deliberation": result.to_dict(),
+    }
+
+
+async def _run_upgraded_council(query: str) -> dict[str, Any]:
+    """The same orchestration as local-council, with Healthcare and Finance
+    seats swapped to Meditron3-Qwen2.5-7B and Llama-3.1-Hawkish-8B.
+
+    Used to test whether targeted specialist upgrades close any of the gap
+    to gpt-oss-20B. Local-only — no API spend, no cost guard interaction.
+    """
+    result = await run_upgraded_council(query)
+    return {
+        "mode": "local-council-v2",
         "query": query,
         "final_output": result.final_output,
         "total_latency_ms": result.total_latency_ms,
@@ -251,6 +274,11 @@ async def _compare(case_id: str, modes: list[str]) -> int:
         try:
             if mode == "local-council":
                 result = await _run_local_council(case.prompt)
+            elif mode == "local-council-v2":
+                # Same orchestration as local-council; Healthcare and Finance
+                # seats swapped to Meditron3-Qwen2.5-7B + Hawkish-8B
+                # (Path C of the specialist-upgrade investigation).
+                result = await _run_upgraded_council(case.prompt)
             elif mode == "opus-single":
                 result = await _run_opus_single(case.prompt, guard)
             elif mode == "opus-council":

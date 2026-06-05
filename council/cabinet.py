@@ -112,6 +112,55 @@ CABINET: dict[SeatRole, CabinetMember] = {
 
 
 # -----------------------------------------------------------------------------
+# Cabinet v2 — upgraded specialist seats (Path C of the specialist-upgrade
+# search, mid-2026). Healthcare and Finance get newer/different fine-tunes;
+# Legal stays unchanged (Saul-7B-Instruct-v1 remains the only US/UK/CA/AU
+# common-law fine-tune at the 7-8B class — no upgrade exists at this size).
+#
+# Reasoning per seat:
+#   - HEALTHCARE_V2 (Meditron3-Qwen2.5-7B, EPFL May 2026): newer backbone
+#     (Qwen2.5 Sep 2024) than the v1 Med42's Llama 3.1 (Dec 2023). Trades
+#     Med42's multi-stage preference alignment for a more recent world model.
+#   - FINANCE_V2 (Hawkish-8B, mukaj Dec 2025): the first 8B model to pass
+#     CFA Level 1 mock at 71.4%. Llama 3.1 base. Academic/research-only
+#     license — acceptable for this research project. Trades the multi-
+#     lingual finance corpus of Qwen-Open-Finance for documented benchmark
+#     wins on quantitative finance reasoning.
+#   - LEGAL stays as v1's Saul — no peer exists at this size.
+# -----------------------------------------------------------------------------
+
+HEALTHCARE_V2 = CabinetMember(
+    seat="healthcare",
+    name="Meditron3-Qwen2.5-7B (EPFL)",
+    backbone="Qwen2.5 7B",
+    fine_tune_type="continued pretrain + instruction tune on clinical corpus by EPFL; active maintenance",
+    ollama_tag="huggingface.co/mradermacher/Meditron3-Qwen2.5-7B-GGUF:Q4_K_M",
+    quantization="Q4_K_M",
+    memory_gb=4.8,
+    license="Qwen Research / permissive (review terms before production)",
+)
+
+FINANCE_V2 = CabinetMember(
+    seat="finance",
+    name="Llama-3.1-Hawkish-8B (mukaj)",
+    backbone="Llama 3.1 8B",
+    fine_tune_type="50M-token financial instruction tune; CFA Level 1 mock pass at 71.4% (first 8B to do so)",
+    ollama_tag="huggingface.co/bartowski/Llama-3.1-Hawkish-8B-GGUF:Q4_K_M",
+    quantization="Q4_K_M",
+    memory_gb=5.0,
+    license="Llama 3.1 + academic/research-only restriction (no production use)",
+)
+
+# v2 cabinet retains LEAD and LEGAL from v1; only HEALTHCARE and FINANCE swap.
+CABINET_V2: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD,
+    "healthcare": HEALTHCARE_V2,
+    "legal": LEGAL,
+    "finance": FINANCE_V2,
+}
+
+
+# -----------------------------------------------------------------------------
 # Comparison-only models — not council members.
 #
 # These are CabinetMember records for models the bench harness uses as

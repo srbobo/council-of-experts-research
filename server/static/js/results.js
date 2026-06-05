@@ -31,7 +31,9 @@
 
   // Baseline modes always shown (in this order), even if no run is present.
   // Aligned with A/B page so the visual identity is consistent across tabs.
-  const BASELINE_MODE_ORDER = ["local-council", "opus-single", "opus-council"];
+  // local-council-v2 sits immediately after local-council so the v1-vs-v2
+  // comparison reads left-to-right when both have imported runs.
+  const BASELINE_MODE_ORDER = ["local-council", "local-council-v2", "opus-single", "opus-council"];
 
   // MoE baselines — local gpt-oss-20B counterparts to opus-single /
   // opus-council. Appear only when imported runs exist for them (same
@@ -67,7 +69,8 @@
   ];
 
   const MODE_TITLES = {
-    "local-council":         "Local Council",
+    "local-council":         "Local Council (v1)",
+    "local-council-v2":      "Local Council (v2 — upgraded specialists)",
     "opus-single":           "Opus single-shot",
     "opus-council":          "Opus-as-council",
     "gptoss-single":         "gpt-oss-20B single-shot",
@@ -81,13 +84,19 @@
     "swap-finance-phi4":     "Swap · Finance→Phi-4",
   };
 
-  // Compute the actual columns to render: baselines always, MoE +
-  // swap variants only when an imported run exists for them. Keeps the
-  // page tidy until the corresponding bench runs land.
+  // Compute the actual columns to render: only show a column when its
+  // imported run exists. Exception: local-council always shows even
+  // without a run (it's the headline comparison baseline). The other
+  // four baseline modes plus MoE plus swap variants only appear when
+  // their respective imports exist — keeps the page tidy as new modes
+  // get bench'd over time.
   function activeModeOrder(modesMap) {
+    const baselinesPresent = BASELINE_MODE_ORDER.filter(
+      (m) => m === "local-council" || (modesMap && modesMap[m])
+    );
     const moePresent  = MOE_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
     const swapsPresent = SWAP_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
-    return BASELINE_MODE_ORDER.concat(moePresent, swapsPresent);
+    return baselinesPresent.concat(moePresent, swapsPresent);
   }
 
   /* -------------------------------------------------------------------------

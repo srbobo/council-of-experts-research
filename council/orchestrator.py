@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Awaitable, Callable
 
-from .cabinet import CABINET, LEAD, CabinetMember
+from .cabinet import CABINET, LEAD, CabinetMember, SeatRole
 from .models import ChatResponse
 from .models import chat as _default_chat  # Ollama-backed chat; injectable for benchmark backends
 from .prompts import (
@@ -333,6 +333,7 @@ async def deliberate(
     on_phase: callable | None = None,  # optional progress callback: on_phase(stage, detail)
     chat_fn: ChatFn | None = None,  # uniform backend (back-compat); see also cabinet=
     cabinet: "CabinetBackends | None" = None,  # per-phase routing for swap experiments
+    cabinet_members: dict[SeatRole, CabinetMember] | None = None,  # override CABINET dict per-call
     on_token: Callable[[str, str], None] | None = None,  # (phase_tag, delta)
 ) -> DeliberationResult:
     """Run the 3-phase council on a single user query.
@@ -353,6 +354,13 @@ async def deliberate(
     experiments to play one seat with a different backend (e.g. local Phi-4
     lead + local Med42 + Opus Legal + local Qwen-Finance). Each of the five
     phases (planner, three seats, synthesis) can be independently assigned.
+
+    ``cabinet_members`` overrides the module-level ``CABINET`` dict, letting
+    a caller swap in alternative ``CabinetMember`` records per seat for a
+    single deliberation. The bench harness uses this for the
+    ``local-council-v2`` mode (Path C of the specialist-upgrade
+    investigation) so the upgraded cabinet doesn't bleed into other modes
+    sharing the same process.
 
     ``on_token`` is an optional per-delta callback for live token streaming.
     The orchestrator tags each delta with the phase it came from (one of
@@ -430,6 +438,11 @@ async def deliberate(
     # -------------------------------------------------------------------------
     # Phase 2: Consult each routed industry agent in turn (sequential).
     # -------------------------------------------------------------------------
+    # Use the caller's cabinet override if provided (Path C v2 cabinet); fall
+    # back to the module-level CABINET. The override is per-call so multiple
+    # modes can share this orchestrator without their cabinets mutating
+    # each other.
+    members_map = cabinet_members if cabinet_members is not None else CABINET
     turns: list[AgentTurn] = []
     for i, seat in enumerate(routes):
         if i > 0:
@@ -438,7 +451,7 @@ async def deliberate(
                 on_phase("pause", f"Thermal pause ({thermal.base_pause_seconds}s)")
             await thermal.between_agents()
 
-        member = CABINET[seat]
+        member = members_map[seat]
         if on_phase:
             on_phase("consult", f"Consulting {seat} ({member.name})")
 
