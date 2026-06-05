@@ -479,15 +479,21 @@
       const r = await fetch("/api/budget");
       budget = await r.json();
       renderBudget();
-      // Disable Opus modes if cap is zero — they'd refuse anyway, no point
-      // letting the user check them and get a confusing partial result.
+      // Disable ONLY the Opus modes when the budget cap is zero. The
+      // gpt-oss modes are local Ollama calls and don't touch the cost
+      // guard, so they should stay enabled regardless of budget state.
+      // (Older versions of this code disabled every non-local mode,
+      // which silently included the new gpt-oss checkboxes — fixed.)
       const paused = budget.cap_usd <= 0;
+      const budgeted = (value) => value === "opus-single" || value === "opus-council";
       els.modeBoxes.forEach((box) => {
-        if (box.value !== "local-council") {
+        if (budgeted(box.value)) {
           box.disabled = paused;
           if (paused) {
             box.checked = false;
             box.parentElement.title = "Budget cap is $0; raise BENCH_BUDGET_USD to enable Opus modes.";
+          } else {
+            box.parentElement.title = "";
           }
         }
       });
