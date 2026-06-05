@@ -610,6 +610,87 @@
         </p>
 
         <h3>The alignment hypothesis — testing whether specialists exhibit behaviors generalists don't</h3>
+
+        <details style="margin-bottom: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: 4px; background: rgba(0,0,0,0.02);">
+          <summary><strong>What "alignment" means in this analysis</strong> &mdash; click to expand</summary>
+          <p style="margin-top: var(--space-2);">
+            <em>Alignment</em>, as used throughout this section, refers
+            specifically to the <strong>post-pretraining training
+            procedures</strong> that shape what behaviors a model is
+            <em>rewarded for producing</em> at inference time. It is
+            distinct from the <em>pretraining corpus</em>, which shapes
+            what knowledge the model has <em>access to</em>. Two axes,
+            deliberately separated:
+          </p>
+          <ul>
+            <li>
+              <strong>Pretraining corpus</strong> &mdash; shapes
+              capability ceiling. Initial training via next-token
+              prediction on large text corpora (e.g. Llama 3.1's
+              ~15&nbsp;T tokens). Determines what the model
+              <em>knows</em>.
+            </li>
+            <li>
+              <strong>Alignment</strong> &mdash; shapes disposition at
+              inference. Includes SFT (supervised fine-tuning on
+              input-output pairs), RLHF (RL from human feedback), DPO
+              (direct preference optimization), Constitutional AI
+              (model self-critique against written principles), and
+              RLAIF (RL from AI feedback). Determines what the model
+              <em>chooses to produce</em>.
+            </li>
+          </ul>
+          <p>
+            Each specialist in the cabinet uses different alignment
+            mechanisms: Med42 uses multi-stage preference learning;
+            Meditron3 uses clinician-validated SFT chains; Saul uses
+            continued pretrain + instruction SFT; Qwen-Open-Finance
+            uses instruction SFT; Hawkish-8B uses CFA-curriculum SFT.
+            Frontier models: Opus 4.7 uses Constitutional AI + RLHF;
+            gpt-oss-20B uses reasoning-tuned post-training (specifics
+            undisclosed). All shape disposition; none add
+            pretraining-scale knowledge.
+          </p>
+          <p>
+            <strong>What this measurement cannot separate.</strong> Our
+            behavior-density metric captures the model's
+            <em>combined</em> disposition &mdash; the result of
+            pretraining + SFT + preference learning + instruction
+            tuning, all stacked. A behavior could come from any of:
+            (a) frequent exemplars in pretraining, (b) curated SFT
+            data, (c) preference-learning reward signal. The metric
+            does not isolate which. When we say "Meditron3's alignment
+            produces training-cutoff disclosure," we strictly mean the
+            <em>full post-pretraining stack on Qwen2.5</em> does so at
+            higher density than the <em>full post-pretraining stack on
+            gpt-oss</em>.
+          </p>
+          <p>
+            <strong>What we are <em>not</em> calling alignment.</strong>
+            Three near-meanings excluded here:
+          </p>
+          <ul>
+            <li>
+              <em>AI safety / existential risk</em> framing (does the
+              model pursue endorsed goals?) &mdash; out of scope.
+            </li>
+            <li>
+              <em>Refusal training / harmlessness</em> &mdash; a
+              subset of alignment we don't measure. None of our
+              behavior patterns are refusal patterns.
+            </li>
+            <li>
+              <em>Value alignment</em> in the philosophical sense
+              (does the model share human values?) &mdash; out of
+              scope.
+            </li>
+          </ul>
+          <p>
+            We mean the narrow, mechanical sense: post-training
+            procedures that change what a model emits.
+          </p>
+        </details>
+
         <p>
           The bench above measures <em>content</em> — did the mode
           produce the load-bearing rubric items. A separate question is
@@ -917,6 +998,6 @@
   <!-- Bump the ?v= query on every results.js change so browsers don't serve
        a stale copy after edits. Cheap version-pinning without touching the
        server's cache headers. -->
-  <script src="/static/js/results.js?v=12"></script>
+  <script src="/static/js/results.js?v=13"></script>
 </body>
 </html>
