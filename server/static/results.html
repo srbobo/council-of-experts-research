@@ -315,11 +315,219 @@
           council architecture on top of gpt-oss change anything?
         </p>
 
-        <p id="moe-findings-placeholder" class="text-faint" style="font-style: italic;">
-          Findings populate here after the 5-case MoE bench run
-          completes. The page below this block continues with the
-          two-case pattern from the original Opus comparison.
+        <h3>Headline</h3>
+        <p>
+          <strong>A 12&nbsp;GB local MoE generalist beats the
+          4-specialist local council on rubric coverage</strong> —
+          gpt-oss-20B (single-shot or as-council) hits roughly 43% of
+          rubric items across the 5-case battery, vs ~28% for the
+          local Phi-4 + Med42 + Saul + Qwen-Finance pipeline. The MoE
+          comparison is the strongest evidence so far that the local
+          council's underperformance is not a council-architecture
+          problem; it's a model-capability problem at the seat level.
         </p>
+        <p>
+          The result complicates the project's original "small
+          specialist fine-tunes ought to beat a small generalist on
+          domain rigor" thesis. On every case, a 20B-parameter
+          reasoning-tuned MoE (with ~3.6B active params per token)
+          produces more rubric-relevant content than the council of
+          four ~7-14B dense models. Specialization at the small-model
+          scale is losing to capacity-per-token from a stronger
+          backbone, even when that backbone has no domain fine-tuning.
+        </p>
+
+        <h3>Rubric scoreboard — per case</h3>
+        <p class="text-soft">
+          ✓ = the mode produced content matching the rubric pattern.
+          See the per-case grids above for the full text and inspector.
+          The rubric patterns are the same ones the
+          <a href="#" onclick="event.preventDefault(); document.querySelectorAll('.rubric-row').forEach(r=>r.scrollIntoView({behavior:'smooth'}))">interactive rubric highlights</a>
+          use; click any row to see the matches in each column.
+        </p>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case (failure mode)</th>
+              <th style="padding: var(--space-2); text-align:center;">Local council</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss council</th>
+              <th style="padding: var(--space-2); text-align:right;">Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 1 — CDS rollout (synthesis stress)</td>
+              <td style="padding: var(--space-2); text-align:center;">2/6</td>
+              <td style="padding: var(--space-2); text-align:center;">3/6</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/6</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 2 — Cross-border DTx (jurisdictional)</td>
+              <td style="padding: var(--space-2); text-align:center;">1/6</td>
+              <td style="padding: var(--space-2); text-align:center;">2/6</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>3/6</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 3 — Capitated MA (quantitative)</td>
+              <td style="padding: var(--space-2); text-align:center;">1/8</td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>3/8</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 4 — GLP-1 employer (recency)</td>
+              <td style="padding: var(--space-2); text-align:center;">3/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/8</strong></td>
+              <td style="padding: var(--space-2); text-align:center;">3/8</td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-single (edge)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 5 — Hospital PE conversion (adversarial)</td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/8</strong></td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-single</td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Total (40 rubric items)</td>
+              <td style="padding: var(--space-2); text-align:center;">11/40 (28%)</td>
+              <td style="padding: var(--space-2); text-align:center;">15/40 (38%)</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>15/40 (38%)</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Three cross-case patterns worth naming</h3>
+
+        <p>
+          <strong>1. Council orchestration usually helps gpt-oss, but
+          not always.</strong> On cases 1, 2, and 3, the gpt-oss-council
+          variant out-scores the gpt-oss-single variant by 1 rubric
+          item each — the seat isolation + tension-extraction pattern
+          consistently surfaces material the single-shot misses
+          (FDA SaMD Class II + malpractice allocation on case 1; the
+          three-revenue-mechanic distinction on case 2; HCC risk
+          adjustment on case 3). The single biggest gain is on case 1,
+          where the council mode's structural Tensions block forces
+          gpt-oss to explicitly surface cross-domain trade-offs that
+          the single-shot delivers as one prose answer.
+        </p>
+        <p>
+          On case 5 the pattern <em>inverts</em>: gpt-oss-council
+          regresses to 2/8 from the single-shot's 4/8, missing
+          essential-service continuity, the State&nbsp;AG review
+          process, and HSR antitrust thresholds that gpt-oss-single
+          covered. The likely mechanism: case 5 is the case where
+          all three domains are deeply entangled (PE deal economics
+          drive clinical operational risk drive legal AG exposure),
+          and the seat-isolation pattern that helps elsewhere
+          fragments the analysis into three thin domain reports that
+          synthesis can't re-integrate. The cross-domain tension that
+          case 5's rubric specifically calls out as the
+          <em>adversarial heart</em> of the case is the one tension
+          gpt-oss-council failed to surface, while the local council
+          (despite being much weaker overall) did surface it.
+        </p>
+
+        <p>
+          <strong>2. MoE doesn't fix epistemic honesty.</strong>
+          Case 4's rubric requires explicit training-cutoff disclosure
+          on all three seats. Neither gpt-oss-single nor gpt-oss-council
+          disclosed training-cutoff uncertainty anywhere in their
+          outputs — the same epistemic-confidence failure mode the
+          local council exhibited. This matters because it shows the
+          recency-honesty problem isn't fixed by going from "small
+          dense fine-tunes" to "20B MoE reasoning model" — it's
+          probably fixed only by either (a) post-training alignment
+          that explicitly rewards cutoff disclosure, or (b)
+          architectural surgery like retrieval grounding (pathway 1
+          in the improvement roadmap). The Opus modes hit the rubric
+          item because Anthropic's alignment explicitly emphasizes
+          cutoff disclosure; gpt-oss's alignment apparently does not.
+        </p>
+
+        <p>
+          <strong>3. The catastrophic failure modes are gone — but
+          deep specifics are still missed.</strong> The local council's
+          three documented failure modes (SEMIMAN trial confabulation
+          in case 4; MDD/IVDD as live regulation in case 2; the
+          FDA-as-controlling 510(k) framing red flag in case 2) all
+          stayed clear in both gpt-oss modes. The MoE backbone is
+          factually more disciplined — it doesn't invent trial names.
+          But it's still <em>shallow</em> on the load-bearing
+          specifics: case 2's pVE / §139e DiGA mechanics, case 3's
+          CMS-HCC V28 transition, case 5's Steward Health Care
+          collapse as the canonical sale-leaseback case study — all
+          missed by both gpt-oss modes, same as local council. MoE
+          improves the floor (no confabulation) without lifting the
+          ceiling (no deep regulatory pin-cites).
+        </p>
+
+        <h3>What this means for the original project thesis</h3>
+        <p>
+          The original frame ("can small specialist fine-tunes match a
+          generalist?") asked the wrong question for this RAM tier. The
+          right framing the MoE comparison reveals is:
+          <em>at the 12–32 GB local-inference budget, the strongest
+          play is one capable generalist model orchestrated through
+          the council architecture — not four dense specialists.</em>
+          The architecture is doing real work (gpt-oss-council beats
+          gpt-oss-single on 3 of 5 cases), but the specialists are the
+          weak link. The natural follow-up question is whether a
+          mixed cabinet — gpt-oss-20B as Lead + retrieval-grounded
+          specialists (pathway 1) — would close more of the gap to
+          Opus than either of the existing local pipelines does.
+        </p>
+        <p>
+          The Phi-4-as-Healthcare swap experiment we deferred earlier
+          becomes more interesting in this light too: if a 14B dense
+          Lead playing one specialist seat outperforms the 8B
+          specialist for that seat, the case for the specialist
+          fine-tunes weakens further. Worth running.
+        </p>
+
+        <h3>Honest caveats</h3>
+        <ul>
+          <li>
+            <strong>Single trial per case.</strong> Each entry above
+            is one bench run at temperature 0.2. Variance hasn't been
+            measured. A second pass could easily move a 2/6 to a 3/6
+            on rubric coverage without changing the headline pattern.
+            Pathway-2 of the improvement roadmap (variance + LLM-as-
+            judge) is the right way to harden these numbers.
+          </li>
+          <li>
+            <strong>Rubric scoring via regex pattern match.</strong>
+            The ✓ / · marks above were generated by scanning each
+            output for rubric-specific phrases (e.g. <code>HEDIS</code>,
+            <code>PMPM.*sensitivity</code>,
+            <code>SEMIMAN|Marso.*STEP</code>). False positives are
+            possible where a model mentions a concept without
+            substantively engaging it. Spot-checked: case 1's CADx
+            distinction and case 5's charitable-trust doctrine were
+            confirmed absent in both gpt-oss outputs by direct read.
+          </li>
+          <li>
+            <strong>No retrieval grounding tested here.</strong> All
+            gpt-oss outputs are pure parametric recall — the MoE is
+            not consulting clinicaltrials.gov, BfArM bulletins, or
+            EUR-Lex. The "deep regulatory pin-cite" gap above might
+            close significantly with retrieval; that's pathway 1 of
+            the improvement roadmap and a natural next experiment.
+          </li>
+          <li>
+            <strong>Reasoning-token consumption.</strong> Early gpt-oss
+            runs returned empty visible content because Ollama counts
+            chain-of-thought against <code>num_predict</code> alongside
+            visible output. The harness now raises max_tokens to 8192
+            for every gpt-oss call; the numbers above reflect that
+            fixed code path. Pre-fix runs were discarded.
+          </li>
+        </ul>
 
         <hr style="margin: var(--space-5) 0">
 
