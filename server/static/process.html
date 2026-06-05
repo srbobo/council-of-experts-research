@@ -67,7 +67,10 @@
 
     <h2>How the test works</h2>
     <p>
-      The same question runs through three pipelines simultaneously:
+      The same question runs through five pipelines simultaneously —
+      three baseline pipelines and two later additions that test a
+      different model architecture (Mixture-of-Experts) without leaving
+      the laptop:
     </p>
     <ul>
       <li>
@@ -88,7 +91,29 @@
         This isolates the question of model vs architecture: same prompts,
         same reasoning structure, only the underlying weights differ.
       </li>
+      <li>
+        <strong>gpt-oss single-shot</strong> — one call to gpt-oss-20B,
+        OpenAI's first open-weights release. A <em>Mixture-of-Experts</em>
+        model that runs locally on the laptop with the same neutral
+        system prompt as Opus single-shot. The "what does a strong
+        local open MoE produce on its own" baseline.
+      </li>
+      <li>
+        <strong>gpt-oss as-council</strong> — gpt-oss-20B playing every
+        seat in the same orchestration loop. Lets us ask "does the
+        council architecture buy anything on top of a strong open MoE
+        generalist?" without spending Opus money or leaving the laptop.
+      </li>
     </ul>
+    <p>
+      For a plain-English explanation of what Mixture-of-Experts is and
+      why it's worth a separate comparison surface, see the
+      <a href="/architecture">Architecture page's MoE section</a>. In
+      short: MoE models trade memory for compute by storing more total
+      knowledge but only activating a fraction of it per token — a
+      genuinely different architectural category from the dense
+      transformers in the existing cabinet.
+    </p>
 
     <h2>The five test cases — design and cutoff alignment</h2>
     <p class="text-soft">

@@ -41,9 +41,21 @@ def _make_gptoss_chat():
     to play every seat. The seat's role identity (system prompt,
     sub-question) flows through unchanged; only the underlying model
     differs.
+
+    The wrapper also raises ``max_tokens`` to 8192 on every phase. gpt-oss
+    is a reasoning model; Ollama counts its chain-of-thought against the
+    ``num_predict`` budget, so the orchestrator's per-phase defaults
+    (1024 for the planner, 2048 for seats and synthesis) frequently
+    exhaust on reasoning alone, leaving the visible message empty. 8192
+    gives ~6K reasoning + ~2K visible content of headroom across every
+    phase. The override is unconditional — passing a lower max_tokens
+    through kwargs would silently re-introduce the empty-content bug.
     """
     async def gptoss_chat(_seat_member, messages, **kwargs):
-        return await local_chat(GPT_OSS_20B, messages, **kwargs)
+        # Drop any caller-supplied max_tokens; gpt-oss reasoning needs
+        # the larger budget regardless of what phase invoked it.
+        kwargs.pop("max_tokens", None)
+        return await local_chat(GPT_OSS_20B, messages, max_tokens=8192, **kwargs)
     return gptoss_chat
 
 

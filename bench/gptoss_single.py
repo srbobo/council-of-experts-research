@@ -56,13 +56,20 @@ async def run_gptoss_single(query: str) -> GptOssSingleResult:
     Local-only — no cost guard, no API spend, no Anthropic SDK. Returns a
     result with the same fields as ``OpusSingleResult`` so the bench
     runner can serialize either uniformly.
+
+    ``max_tokens`` is raised well above the council default (2048) because
+    gpt-oss is a reasoning model: Ollama counts its chain-of-thought
+    against the same ``num_predict`` budget as visible content, so the
+    default 2048 frequently exhausts on reasoning alone, leaving the
+    visible message empty. 8192 gives ~6K reasoning tokens of headroom
+    plus ~2K of answer.
     """
     messages = [
         {"role": "system", "content": SINGLE_SHOT_SYSTEM},
         {"role": "user", "content": query},
     ]
 
-    response = await local_chat(GPT_OSS_20B, messages)
+    response = await local_chat(GPT_OSS_20B, messages, max_tokens=8192)
 
     return GptOssSingleResult(
         query=query,

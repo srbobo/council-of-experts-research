@@ -848,7 +848,9 @@ FINANCE CONTRIBUTION:
 
     <h2>Bench methodology</h2>
     <p>
-      Three modes run side-by-side on the same input:
+      Five modes run side-by-side on the same input — three baseline
+      modes plus a separate Mixture-of-Experts comparison surface added
+      after the headline experiment:
     </p>
     <ul>
       <li>
@@ -867,13 +869,172 @@ FINANCE CONTRIBUTION:
         same per-seat dispatch, same tension-extraction synthesis prompt.
         Only the model differs.
       </li>
+      <li>
+        <code>gptoss-single</code> — one gpt-oss-20B call (OpenAI's
+        first open-weights release, MoE design, runs locally via Ollama).
+        Same neutral system prompt as <code>opus-single</code> so the
+        comparison isn't muddled by prompt drift.
+      </li>
+      <li>
+        <code>gptoss-council</code> — gpt-oss-20B playing every seat in
+        the council architecture, mirroring <code>opus-council</code>
+        but local. Tests "does the council architecture buy us anything
+        on top of a strong open MoE generalist?"
+      </li>
     </ul>
     <p>
-      The architectural payoff is that <code>opus-council</code> is
-      ~30 lines of code on top of the existing orchestrator — the
+      The architectural payoff is that each new model surface is
+      ~30-50 lines of code on top of the existing orchestrator — the
       orchestrator's <code>chat_fn</code> parameter accepts an
-      Anthropic-backed callable in place of the Ollama-backed default.
-      Same prompts, same loop, same audit-log shape.
+      Anthropic-backed callable for Opus modes or an Ollama-backed
+      callable for gpt-oss modes. Same prompts, same loop, same audit-log
+      shape across all five modes.
+    </p>
+
+    <h2 id="moe">Mixture-of-Experts (MoE) architecture — reference</h2>
+    <p>
+      The two <code>gptoss-*</code> modes use gpt-oss-20B, which has a
+      <em>different fundamental architecture</em> than the dense
+      transformers used by every other model in the cabinet (Phi-4 14B,
+      Llama 3.1 8B, Mistral 7B, and the dense variant of Qwen3-8B are
+      all standard dense transformers). Because this architectural
+      difference matters for interpreting the comparison results, here
+      is a quick reference on what MoE is and what it changes.
+    </p>
+
+    <h3>Dense transformer vs MoE — what changes</h3>
+    <p>
+      A standard ("dense") transformer activates every parameter on
+      every token. A 14B dense model passes each token through ~14
+      billion parameters; an 8B dense model passes each token through
+      ~8 billion. Memory and per-token compute scale with the full
+      parameter count.
+    </p>
+    <p>
+      A Mixture-of-Experts model replaces specific layers (typically
+      the feed-forward layers, which carry most of a transformer's
+      parameters) with <em>multiple parallel "expert" sublayers plus a
+      learned router</em>. For each token, the router picks the top
+      <em>k</em> experts (commonly 1, 2, or 4 out of dozens) and only
+      those experts compute. Memory still has to hold all experts (you
+      don't know which will be picked until inference time), but
+      <em>per-token compute is bounded by the active experts, not the
+      total parameter count</em>.
+    </p>
+    <p>
+      Concretely: gpt-oss-20B has 20 billion total parameters but
+      activates roughly 3.6 billion per token. So its memory footprint
+      is roughly that of a dense 20B model (~14 GB at Q4), but its
+      per-token compute and latency are closer to a dense 4B. The trade
+      that buys is more model capacity (more "knowledge" stored in
+      experts) without paying the dense-compute cost for capacity you
+      don't use on a given token.
+    </p>
+
+    <h3>Why MoE matters for this experiment</h3>
+    <p>
+      Three reasons MoE is worth a separate comparison surface, not
+      just another model swap:
+    </p>
+    <ol>
+      <li>
+        <strong>Capacity vs latency trade.</strong> If MoE delivers
+        meaningful capability gains over a dense 14B (Phi-4) at
+        comparable latency, that's a load-bearing finding for any
+        future "scale up locally" decision — you'd reach for MoE
+        first, dense second. If it doesn't, the case for the simpler
+        dense architecture stays strong.
+      </li>
+      <li>
+        <strong>Architectural diversity in the cabinet.</strong> Right
+        now every council seat is a dense transformer. An MoE
+        comparison column gives us an honest read on whether the
+        cabinet's failure modes (confabulation, false-cutoff
+        disclosures, missed jurisdictional specifics) are dense-
+        transformer failures or general-small-model failures.
+      </li>
+      <li>
+        <strong>Reasoning-tuned architecture.</strong> OpenAI tuned
+        gpt-oss specifically for reasoning workloads, which is what
+        the council's planning + tension-extraction phases stress most.
+        A reasoning-tuned MoE is genuinely <em>a different model
+        category</em>, not a sibling of the existing seats.
+      </li>
+    </ol>
+
+    <h3>Why gpt-oss-20B specifically as the MoE pick</h3>
+    <p>
+      Selection criteria for the MoE comparison model matched the same
+      seven gates the council seats had to clear (memory budget, GGUF,
+      license, template, recognized lab, distinct lineage, active
+      maintenance). The top candidates considered:
+    </p>
+    <table style="width:100%; border-collapse:collapse; margin: var(--space-3) 0; font-size: var(--size-2);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
+          <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Model</th>
+          <th style="padding: var(--space-2) var(--space-3)">Total params</th>
+          <th style="padding: var(--space-2) var(--space-3)">Active params</th>
+          <th style="padding: var(--space-2) var(--space-3)">Q4 size</th>
+          <th style="padding: var(--space-2) var(--space-3)">Decision</th>
+          <th style="padding: var(--space-2) 0">Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0"><strong>gpt-oss-20B</strong> (OpenAI)</td>
+          <td style="padding: var(--space-2) var(--space-3)">20B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~3.6B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~14 GB</td>
+          <td style="padding: var(--space-2) var(--space-3)"><strong>Selected</strong></td>
+          <td style="padding: var(--space-2) 0">Frontier-lab provenance; reasoning-tuned by OpenAI specifically for "local or specialized use-cases"; Apache 2.0; comfortable headroom alongside Phi-4 (14 + 9 = 23 GB peak, under the 26 GB Metal cap)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Qwen3-30B-A3B (Alibaba)</td>
+          <td style="padding: var(--space-2) var(--space-3)">30B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~3B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~18 GB</td>
+          <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+          <td style="padding: var(--space-2) 0">Strong runner-up — but 18 + 9 = 27 GB peak alongside Phi-4, just over the Metal cap. Would force Phi-4 unload between phases, breaking the warm-Lead pattern</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mixtral 8x7B (Mistral)</td>
+          <td style="padding: var(--space-2) var(--space-3)">47B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~13B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~26 GB</td>
+          <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+          <td style="padding: var(--space-2) 0">Too large to share memory with Phi-4 on a 32 GB M5 — would require running council mode with the Lead unloaded, breaking the warm-Lead assumption</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Phi-3.5-MoE (Microsoft)</td>
+          <td style="padding: var(--space-2) var(--space-3)">42B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~7B</td>
+          <td style="padding: var(--space-2) var(--space-3)">~22 GB</td>
+          <td style="padding: var(--space-2) var(--space-3)">Rejected</td>
+          <td style="padding: var(--space-2) 0">Older than gpt-oss; larger memory footprint; redundant Phi-family lineage with Phi-4 already in the cabinet</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Gemma 4 26B MoE (Google)</td>
+          <td style="padding: var(--space-2) var(--space-3)">26B</td>
+          <td style="padding: var(--space-2) var(--space-3)">varies</td>
+          <td style="padding: var(--space-2) var(--space-3)">~17 GB</td>
+          <td style="padding: var(--space-2) 0">Rejected</td>
+          <td style="padding: var(--space-2) 0">Weaker reasoning benchmarks than gpt-oss at this size; reasoning is the dimension MoE is most useful on for this experiment</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      gpt-oss-20B is therefore the MoE comparison surface throughout
+      the bench. It appears as two explicit modes in the
+      <a href="/results">Results page</a> and in the
+      <a href="/">A/B page</a>: <code>gptoss-single</code> (one
+      single-shot call, parallel to <code>opus-single</code>) and
+      <code>gptoss-council</code> (gpt-oss playing every seat in the
+      orchestration, parallel to <code>opus-council</code>). It is
+      explicitly <em>not</em> labeled as a frontier stand-in — gpt-oss
+      is a strong open-weights model, but it is not Opus-class
+      capability. The Results UI cabinet badge reads "gpt-oss-20B ·
+      uniform cabinet" so no later reader can confuse the two.
     </p>
 
     <h2>Cost and budget enforcement</h2>

@@ -17,9 +17,16 @@
    * Cases shown on this page. Restricted to the two with full 3-mode
    * comparisons; if more cases get captured later, add them here.
    * ---------------------------------------------------------------------- */
+  // All five canonical cases. Originally restricted to 2 + 4 (the only
+  // cases with a full 3-mode capture against Opus), but extended to all
+  // 5 after the MoE bench landed — gpt-oss-single + gpt-oss-council now
+  // exist for every case, so the selector should expose them.
   const CASES = [
-    { id: "case_4_glp1_employer_coverage",            label: "Case 4 — GLP-1 employer coverage" },
+    { id: "case_1_clinical_decision_support",          label: "Case 1 — AI clinical decision support rollout" },
     { id: "case_2_cross_border_digital_therapeutic",  label: "Case 2 — Cross-border digital therapeutic launch" },
+    { id: "case_3_capitated_risk_contract",            label: "Case 3 — Capitated Medicare Advantage risk contract" },
+    { id: "case_4_glp1_employer_coverage",            label: "Case 4 — GLP-1 employer coverage" },
+    { id: "case_5_nonprofit_hospital_pe_conversion",  label: "Case 5 — Nonprofit hospital PE conversion" },
   ];
 
   // Baseline modes always shown (in this order), even if no run is present.
@@ -292,17 +299,33 @@
     };
   }
 
-  // Anthropic responses can carry structured thinking blocks under
-  // content[].type === "thinking". Opus paste-ins don't include these
-  // (they were stripped at copy time), but the helper is here so a future
-  // live-bench Opus run would surface them automatically.
+  // Pull structured thinking from a raw chat response. Three shapes
+  // accommodated:
+  //   (1) Anthropic adaptive thinking — content[].type === "thinking"
+  //       with the reasoning under .thinking or .text. Opus modes.
+  //   (2) Ollama gpt-oss reasoning — top-level message.thinking string.
+  //       The gpt-oss-20B Ollama runtime emits chain-of-thought as a
+  //       distinct field on the message rather than mixing it into the
+  //       visible content.
+  //   (3) Inline <think>...</think> blocks embedded in the visible text
+  //       — handled separately by ``splitThinking`` on the speech path.
+  // Returns an array of strings (one per distinct thinking block) so the
+  // inspector can render them as their own collapsible disclosures.
   function extractStructuredThinking(rawResponse) {
-    if (!rawResponse || !Array.isArray(rawResponse.content)) return [];
+    if (!rawResponse) return [];
     const blocks = [];
-    for (const b of rawResponse.content) {
-      if (b && b.type === "thinking" && (b.thinking || b.text)) {
-        blocks.push((b.thinking || b.text || "").trim());
+    // (1) Anthropic-style content blocks
+    if (Array.isArray(rawResponse.content)) {
+      for (const b of rawResponse.content) {
+        if (b && b.type === "thinking" && (b.thinking || b.text)) {
+          blocks.push((b.thinking || b.text || "").trim());
+        }
       }
+    }
+    // (2) Ollama-style message.thinking — gpt-oss reasoning trace
+    const ollamaThinking = rawResponse.message && rawResponse.message.thinking;
+    if (typeof ollamaThinking === "string" && ollamaThinking.trim()) {
+      blocks.push(ollamaThinking.trim());
     }
     return blocks;
   }
