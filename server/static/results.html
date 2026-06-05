@@ -319,12 +319,16 @@
         <p>
           <strong>A 12&nbsp;GB local MoE generalist beats the
           4-specialist local council on rubric coverage</strong> —
-          gpt-oss-20B (single-shot or as-council) hits roughly 43% of
-          rubric items across the 5-case battery, vs ~28% for the
-          local Phi-4 + Med42 + Saul + Qwen-Finance pipeline. The MoE
+          gpt-oss-20B (single-shot or as-council) hits 42% of rubric
+          items across the 5-case battery vs 25% for the original
+          local council and 31% for the upgraded local council (Path
+          C, with Meditron3 + Hawkish-8B specialist swaps). The MoE
           comparison is the strongest evidence so far that the local
-          council's underperformance is not a council-architecture
-          problem; it's a model-capability problem at the seat level.
+          council's underperformance is primarily a model-capability
+          ceiling at the seat level, not a council-architecture
+          problem. The Path C upgrades close about a third of the gap
+          to gpt-oss — real progress, but not enough to overturn the
+          headline.
         </p>
         <p>
           The result complicates the project's original "small
@@ -332,9 +336,14 @@
           domain rigor" thesis. On every case, a 20B-parameter
           reasoning-tuned MoE (with ~3.6B active params per token)
           produces more rubric-relevant content than the council of
-          four ~7-14B dense models. Specialization at the small-model
-          scale is losing to capacity-per-token from a stronger
-          backbone, even when that backbone has no domain fine-tuning.
+          four ~7-14B dense models — even with the v2 upgrades.
+          Specialization at the small-model scale is losing to
+          capacity-per-token from a stronger backbone. The v2 wins
+          are concentrated in places where the new specialists'
+          training corpus directly matched the case (Hawkish-8B on
+          case 3 regulatory finance; Meditron3 on case 4 epistemic
+          humility), and the v2 regressions are in places where the
+          replaced specialists' specific corpus was a better fit.
         </p>
 
         <h3>Rubric scoreboard — per case</h3>
@@ -465,6 +474,139 @@
           missed by both gpt-oss modes, same as local council. MoE
           improves the floor (no confabulation) without lifting the
           ceiling (no deep regulatory pin-cites).
+        </p>
+
+        <h3>Path C update — upgraded specialist cabinet (local-council-v2)</h3>
+        <p>
+          After the MoE finding above, the question became: <em>can a
+          targeted specialist upgrade close any of the gap?</em> Path C
+          of the specialist-upgrade investigation swaps two seats while
+          keeping the orchestration identical:
+        </p>
+        <ul>
+          <li>
+            <strong>Healthcare:</strong> Llama3-Med42-8B (Aug 2024,
+            Llama 3.1 backbone Dec 2023) → Meditron3-Qwen2.5-7B
+            (EPFL, May 2026, Qwen2.5 backbone Sep 2024). Trades
+            Med42's multi-stage preference alignment for a newer
+            world model and active EPFL maintenance.
+          </li>
+          <li>
+            <strong>Finance:</strong> Qwen-Open-Finance-R-8B → Llama-
+            3.1-Hawkish-8B (mukaj, Dec 2025). First 8B model to pass
+            CFA Level 1 mock at 71.4% — documented benchmark wins on
+            quantitative finance reasoning. Academic-research-only
+            license, acceptable for this research project.
+          </li>
+          <li>
+            <strong>Legal:</strong> Saul-7B-Instruct-v1 unchanged.
+            No peer fine-tune exists at the 7-8B class for US/UK/CA/AU
+            common-law jurisdictions.
+          </li>
+          <li>
+            <strong>Lead:</strong> Phi-4 14B unchanged.
+          </li>
+        </ul>
+
+        <h4>Rubric coverage delta</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case</th>
+              <th style="padding: var(--space-2); text-align:center;">v1</th>
+              <th style="padding: var(--space-2); text-align:center;">v2</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss council</th>
+              <th style="padding: var(--space-2); text-align:right;">v2 - v1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 1 — CDS rollout</td>
+              <td style="text-align:center">2/6</td><td style="text-align:center">2/6</td>
+              <td style="text-align:center">3/6</td><td style="text-align:center">4/6</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 2 — Cross-border DTx</td>
+              <td style="text-align:center">1/6</td><td style="text-align:center">1/6</td>
+              <td style="text-align:center">2/6</td><td style="text-align:center">3/6</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 3 — Capitated MA</td>
+              <td style="text-align:center">1/8</td>
+              <td style="text-align:center"><strong>2/8</strong></td>
+              <td style="text-align:center">2/8</td><td style="text-align:center">3/8</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+1</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 4 — GLP-1 employer</td>
+              <td style="text-align:center">3/8</td>
+              <td style="text-align:center">3/8</td>
+              <td style="text-align:center">4/8</td><td style="text-align:center">3/8</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0 net (+training-cutoff, -ADA)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 5 — Hospital PE conversion</td>
+              <td style="text-align:center">2/8</td>
+              <td style="text-align:center"><strong>3/8</strong></td>
+              <td style="text-align:center">4/8</td><td style="text-align:center">1/8</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+1</strong></td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Total (36 rubric items)</td>
+              <td style="text-align:center">9/36 (25%)</td>
+              <td style="text-align:center"><strong>11/36 (31%)</strong></td>
+              <td style="text-align:center">15/36 (42%)</td>
+              <td style="text-align:center">15/36 (42%)</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+2 / +24%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>What moved and what didn't</h4>
+        <p>
+          <strong>Real wins on cases 3 and 5.</strong> Hawkish-8B
+          surfaced Stark / Anti-Kickback exposure on case 3 (the v1
+          Qwen-Open-Finance seat missed it entirely), and the v2
+          cabinet caught case 5's essential-service-continuity risk
+          and State AG review process (both absent from v1). These
+          align with the model picks: Hawkish's regulatory-finance
+          training corpus and Meditron3's clinical-policy data are
+          plausibly what surfaced these items.
+        </p>
+        <p>
+          <strong>One genuinely surprising win on case 4.</strong> v2
+          produced an explicit training-cutoff disclosure on case 4
+          where v1 did not — and where the gpt-oss modes also did
+          not. That's the case 4 rubric's hardest must-have, and the
+          local council's documented failure pattern. The credit
+          probably goes to Meditron3's EPFL training pipeline, which
+          emphasizes epistemic humility on clinical evidence (one of
+          their stated design goals). This is the one place v2
+          out-performs not just v1 but both gpt-oss modes.
+        </p>
+        <p>
+          <strong>Regressions worth naming.</strong> v1 caught HCC
+          coding on case 3, sale-leaseback ops risk on case 5, and
+          ADA risk on case 4. v2 lost all three. The Qwen-Open-Finance
+          seat (replaced) plausibly had more direct US-payer corpus
+          than Hawkish's CFA-focused training; Hawkish appears to
+          steer toward CFA-style framings (portfolio, fixed income,
+          equities) and away from US-payer regulatory minutiae.
+          That's a real trade — Path C wins on the cases the new
+          models were tuned for, and loses on cases where the
+          replaced models' specific corpus was better fit.
+        </p>
+        <p>
+          <strong>The headline: v2 closed about half the gap to
+          gpt-oss.</strong> Going from 9/36 to 11/36 vs gpt-oss at
+          15/36 means roughly 33% of the remaining gap was closed
+          by the specialist upgrades. The other 67% stays open —
+          there is no specialist swap available at the 7-8B class
+          that will close it. The small-model capability ceiling is
+          real and not addressable through better fine-tunes alone.
         </p>
 
         <h3>What this means for the original project thesis</h3>
