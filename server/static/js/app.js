@@ -704,12 +704,15 @@
       // matched single-shot also completed. window.disposition lives in
       // disposition.js (loaded before app.js). The formulas + behavior
       // patterns are documented at /results "Aggregate Disposition Scores."
+      //
+      // Tooltips use a CSS-based pattern (data-tooltip + ::after) instead
+      // of the native title= attribute. Native title tooltips have a
+      // ~700ms delay before appearing and don't render newlines reliably
+      // across browsers; the CSS approach is instant and respects \n via
+      // white-space: pre-line.
       let dispoMeta = "";
       if (window.disposition && col.finalText) {
         const cds = window.disposition.computeCDS(col.finalText);
-        // ALR requires both a council mode and its matched single-shot.
-        // pairedSingleMode(modeKey) returns null when not applicable
-        // (e.g. modeKey is itself a single-shot).
         const pairedKey = window.disposition.pairedSingleMode(modeKey);
         let alrPill = "";
         if (pairedKey && pairedKey !== modeKey) {
@@ -718,11 +721,13 @@
             const pairedCDS = window.disposition.computeCDS(pairedCol.finalText);
             const alr = window.disposition.computeALR(cds.wlbd, pairedCDS.wlbd);
             if (alr != null) {
-              alrPill = `<span class="dispo-pill" title="Architectural Lift Ratio (this mode's behavior density / ${escapeHtml(pairedKey)}'s).&#10;Higher = council architecture amplifies disposition more than single-shot.">ALR ${window.disposition.fmtALR(alr)}</span>`;
+              const alrTip = `Architectural Lift Ratio\nThis mode's behavior density ÷ ${pairedKey}'s\nHigher = council architecture amplifies\ndisposition more than single-shot.\n\nThis mode density: ${cds.wlbd.toFixed(2)} / 1k chars\n${pairedKey}: ${pairedCDS.wlbd.toFixed(2)} / 1k chars`;
+              alrPill = `<span class="dispo-pill" data-tooltip="${escapeHtml(alrTip)}">ALR ${window.disposition.fmtALR(alr)}</span>`;
             }
           }
         }
-        const cdsPill = `<span class="dispo-pill dispo-pill--cds" title="Composite Disposition Score = (occurrences per 1k chars) × √(distinct behaviors / 5).&#10;Behaviors: training-cutoff disclosure, modeled-assumption flagging, precise vocabulary, jurisdictional distinguishing, hedging.&#10;${cds.distinct}/5 behaviors exhibited, ${cds.wlbd.toFixed(2)} per 1k chars density.">CDS ${window.disposition.fmtCDS(cds.cds)}</span>`;
+        const cdsTip = `Composite Disposition Score\nCDS = (behaviors / 1k chars) × √(distinct / 5)\n\nBehaviors tracked:\n• training-cutoff disclosure\n• modeled-assumption flagging\n• precise vocabulary distinctions\n• jurisdictional distinguishing\n• clinical/financial hedging\n\nThis output:\n${cds.distinct}/5 behaviors exhibited\n${cds.wlbd.toFixed(2)} occurrences per 1k chars`;
+        const cdsPill = `<span class="dispo-pill dispo-pill--cds" data-tooltip="${escapeHtml(cdsTip)}">CDS ${window.disposition.fmtCDS(cds.cds)}</span>`;
         dispoMeta = `<div class="dispo-meta" style="margin-bottom:0.5rem">
           ${cdsPill}
           ${alrPill}

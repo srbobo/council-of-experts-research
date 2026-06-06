@@ -726,6 +726,10 @@ mark.rubric-mark[data-color-slot="sand"]  { background-color: rgba(192, 174, 124
   align-items: center;
 }
 .dispo-pill {
+  /* `position: relative` is the anchor for the ::after tooltip;
+   * without it the absolutely-positioned tooltip would attach to the
+   * card or even the viewport. */
+  position: relative;
   display: inline-block;
   padding: 0.1em 0.6em;
   border-radius: 999px;
@@ -746,6 +750,58 @@ mark.rubric-mark[data-color-slot="sand"]  { background-color: rgba(192, 174, 124
 .dispo-pill:hover {
   border-color: var(--color-text);
   color: var(--color-text);
+}
+
+/* Custom tooltip via ::after. Instant appearance (no native title delay)
+ * and respects \n via white-space: pre-line so the multi-line formula
+ * descriptions render correctly. Positioned above the pill with a small
+ * gap; pointer-events: none means hovering the tooltip itself doesn't
+ * cause flicker (the tooltip can't intercept the hover). */
+.dispo-pill[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.6em 0.85em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  white-space: pre-line;
+  text-align: left;
+  width: max-content;
+  max-width: 320px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+  /* Slight elevation so the tooltip reads as floating above the page. */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Small downward-pointing triangle so the tooltip visually anchors
+ * to its pill. */
+.dispo-pill[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--color-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+}
+
+.dispo-pill[data-tooltip]:hover::after,
+.dispo-pill[data-tooltip]:hover::before {
+  opacity: 1;
 }
 
 /* Cabinet badge — shows up in a column header's meta row for pathway-3
