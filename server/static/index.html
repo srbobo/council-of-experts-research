@@ -6,7 +6,7 @@
   <title>Council of Experts — A/B</title>
   <meta name="description" content="A/B test the local Council of Experts against Claude Opus 4.7.">
   <!-- No external resources. All assets self-hosted under /static/. -->
-  <link rel="stylesheet" href="/static/css/styles.css?v=4">
+  <link rel="stylesheet" href="/static/css/styles.css?v=5">
 </head>
 <body>
   <header class="site-header">
@@ -99,6 +99,10 @@
   <div id="overlay-root" aria-live="polite"></div>
 
   <!-- Frontend logic for the A/B page lands in Phase 3.3 -->
-  <script src="/static/js/app.js?v=3"></script>
+  <!-- disposition.js attaches window.disposition with client-side CDS/ALR
+       helpers. Load BEFORE app.js so the symbol exists when app.js
+       renders per-mode completion metadata. -->
+  <script src="/static/js/disposition.js?v=1"></script>
+  <script src="/static/js/app.js?v=4"></script>
 </body>
 </html>

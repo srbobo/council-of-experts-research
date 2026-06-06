@@ -700,7 +700,35 @@
           final_output: col.finalText,
         });
       }
-      body = `<div class="card__meta" style="margin-bottom:0.5rem">
+      // Live disposition score — CDS for this column, ALR pill if the
+      // matched single-shot also completed. window.disposition lives in
+      // disposition.js (loaded before app.js). The formulas + behavior
+      // patterns are documented at /results "Aggregate Disposition Scores."
+      let dispoMeta = "";
+      if (window.disposition && col.finalText) {
+        const cds = window.disposition.computeCDS(col.finalText);
+        // ALR requires both a council mode and its matched single-shot.
+        // pairedSingleMode(modeKey) returns null when not applicable
+        // (e.g. modeKey is itself a single-shot).
+        const pairedKey = window.disposition.pairedSingleMode(modeKey);
+        let alrPill = "";
+        if (pairedKey && pairedKey !== modeKey) {
+          const pairedCol = columns[pairedKey];
+          if (pairedCol && pairedCol.status === "completed" && pairedCol.finalText) {
+            const pairedCDS = window.disposition.computeCDS(pairedCol.finalText);
+            const alr = window.disposition.computeALR(cds.wlbd, pairedCDS.wlbd);
+            if (alr != null) {
+              alrPill = `<span class="dispo-pill" title="Architectural Lift Ratio (this mode's behavior density / ${escapeHtml(pairedKey)}'s).&#10;Higher = council architecture amplifies disposition more than single-shot.">ALR ${window.disposition.fmtALR(alr)}</span>`;
+            }
+          }
+        }
+        const cdsPill = `<span class="dispo-pill dispo-pill--cds" title="Composite Disposition Score = (occurrences per 1k chars) × √(distinct behaviors / 5).&#10;Behaviors: training-cutoff disclosure, modeled-assumption flagging, precise vocabulary, jurisdictional distinguishing, hedging.&#10;${cds.distinct}/5 behaviors exhibited, ${cds.wlbd.toFixed(2)} per 1k chars density.">CDS ${window.disposition.fmtCDS(cds.cds)}</span>`;
+        dispoMeta = `<div class="dispo-meta" style="margin-bottom:0.5rem">
+          ${cdsPill}
+          ${alrPill}
+        </div>`;
+      }
+      body = `${dispoMeta}<div class="card__meta" style="margin-bottom:0.5rem">
                 ${fingerprintHtml(col.routes)}
                 <span style="margin-left:0.5rem">${fmtMs(col.totalLatencyMs)}</span>
                 ${col.tokens ? `<span style="margin-left:0.5rem">${col.tokens.input}↓ ${col.tokens.output}↑ tok</span>` : ""}

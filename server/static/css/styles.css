@@ -715,6 +715,39 @@ mark.rubric-mark[data-color-slot="sand"]  { background-color: rgba(192, 174, 124
   border-color: var(--color-text-soft);
 }
 
+/* Disposition score pills — live CDS + ALR shown in A/B page column
+ * meta line after a run completes. The CDS pill is amber-accented
+ * (it's the primary metric); the ALR pill uses the soft border-only
+ * style so two pills don't compete visually. Hover for full formula. */
+.dispo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+.dispo-pill {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-soft);
+  cursor: help;
+  white-space: nowrap;
+}
+.dispo-pill--cds {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(199, 121, 63, 0.06);
+}
+.dispo-pill:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
 /* Cabinet badge — shows up in a column header's meta row for pathway-3
  * swap runs (hybrid cabinets). Reads "Opus · Legal" or similar so a
  * reader scanning the grid sees which phase got the swap without having
