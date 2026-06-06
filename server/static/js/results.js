@@ -27,6 +27,8 @@
     { id: "case_3_capitated_risk_contract",            label: "Case 3 — Capitated Medicare Advantage risk contract" },
     { id: "case_4_glp1_employer_coverage",            label: "Case 4 — GLP-1 employer coverage" },
     { id: "case_5_nonprofit_hospital_pe_conversion",  label: "Case 5 — Nonprofit hospital PE conversion" },
+    { id: "case_6_trigger_heavy_biotech_ma",          label: "Case 6 — Trigger-heavy: cross-border biotech M&A" },
+    { id: "case_7_trigger_light_baseline",            label: "Case 7 — Trigger-light baseline: hybrid-work strategy" },
   ];
 
   // Baseline modes always shown (in this order), even if no run is present.

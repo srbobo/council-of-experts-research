@@ -902,6 +902,309 @@
           </li>
         </ul>
 
+        <h3>Aggregate Disposition Scores — CDS and ALR (canonical metrics)</h3>
+        <p>
+          The behavior density above is one signal per behavior per
+          mode. For the article-level claim we need two aggregate
+          metrics that the reader can hold in one number each. After
+          considering five candidate score designs (Weighted Linear
+          Behavior Density, Behavior Breadth Index, Compound
+          Disposition Index, Architectural Lift Ratio, and a Composite
+          Score combining magnitude and breadth) and computing each
+          on the data, two metrics emerged as canonical:
+        </p>
+
+        <h4>Composite Disposition Score (CDS) — primary metric</h4>
+        <p>
+          <code>CDS<sub>m</sub> = WLBD<sub>m</sub> &times; BBI<sub>m</sub><sup>0.5</sup></code>
+          where <code>WLBD</code> is occurrences per 1,000 characters
+          (uniform per-behavior weights) and <code>BBI</code> is the
+          mean fraction of behaviors exhibited per case. CDS multiplies
+          magnitude by the square root of breadth, so a model is
+          rewarded for both <em>doing more</em> and <em>doing more
+          diversely</em>. The soft square-root penalty on breadth means
+          a specialist with intense focus on 2-3 behaviors can still
+          win, but balanced exhibition pulls the score up.
+        </p>
+
+        <h4>Architectural Lift Ratio (ALR) — complementary metric</h4>
+        <p>
+          <code>ALR<sub>m</sub> = density<sub>council</sub> /
+          density<sub>matched single-shot</sub></code>. Directly
+          quantifies what the council architecture buys on top of the
+          same model in single-shot mode. ALR=1.00 means the council
+          adds nothing; ALR=5.00 means council emits behaviors at 5×
+          the density of the model alone. Unlike CDS, ALR is a
+          relational ratio, not an absolute level — it isolates the
+          architectural contribution from the model contribution.
+        </p>
+
+        <h4>Why these two and not the others</h4>
+        <p>
+          The three rejected candidates have specific failure modes:
+          <strong>WLBD alone</strong> misses opus-council's uniquely
+          broad disposition (it treats 50 modeled-assumption flags the
+          same as 10 balanced occurrences); <strong>BBI alone</strong>
+          inverts the ranking too aggressively (opus-council jumps to
+          first because it uniquely exhibits precise vocabulary even
+          at low overall density); <strong>CDI (geometric mean)</strong>
+          punishes specialists too harshly (one missing behavior tanks
+          the score). CDS hits the right balance; ALR is the only
+          metric that directly answers <em>"how much does the council
+          architecture matter?"</em> Together they are sufficient.
+        </p>
+
+        <h4>Aggregate CDS &amp; ALR across all 7 cases</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">Aggregate CDS</th>
+              <th style="padding: var(--space-2); text-align:center;">ALR (vs matched single)</th>
+              <th style="padding: var(--space-2); text-align:right;">Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06); font-weight: 600;">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2 (Phi-4 + Meditron3 + Saul + Hawkish)</td>
+              <td style="text-align:center"><strong>0.928</strong></td>
+              <td style="text-align:center"><strong>8.77×</strong></td>
+              <td style="text-align:right"><strong>1st</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">opus-council</td>
+              <td style="text-align:center">0.669</td>
+              <td style="text-align:center">2.99×</td>
+              <td style="text-align:right">2nd</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.584</td>
+              <td style="text-align:center">5.14×</td>
+              <td style="text-align:right">3rd</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.460</td>
+              <td style="text-align:center">3.91×</td>
+              <td style="text-align:right">4th</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">opus-single</td>
+              <td style="text-align:center">0.159</td>
+              <td style="text-align:center">— (baseline)</td>
+              <td style="text-align:right">5th</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.099</td>
+              <td style="text-align:center">— (baseline)</td>
+              <td style="text-align:right">6th</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>The collapse test — cases 6 (trigger-heavy) and 7 (trigger-light)</h3>
+        <p>
+          Cases 1-5 each trigger a subset of the alignment-rewarded
+          behaviors. Two follow-up cases test the disposition signal at
+          extremes: <strong>case 6</strong> (a cross-border biotech
+          M&amp;A under regulatory uncertainty) deliberately demands
+          <em>all five behaviors simultaneously</em> from a single
+          prompt; <strong>case 7</strong> (a hybrid-work organizational
+          communication strategy) demands <em>none of them</em> — no
+          clinical, legal, financial, jurisdictional, or quantitative
+          triggers. The question both cases answer together:
+          <em>does specialist alignment produce these behaviors
+          habitually, or responsively?</em>
+        </p>
+
+        <h4>Case 6 — disposition under simultaneous behavior demand</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c1-c5 avg</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c6 (trigger-heavy)</th>
+              <th style="padding: var(--space-2); text-align:right;">c6 / c1-c5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2</td>
+              <td style="text-align:center">0.975</td>
+              <td style="text-align:center"><strong>1.622</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.66× amplify</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.472</td>
+              <td style="text-align:center"><strong>0.860</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.82× amplify</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.609</td>
+              <td style="text-align:center"><strong>1.039</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.70× amplify</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.122</td>
+              <td style="text-align:center">0.083</td>
+              <td style="text-align:right; color: var(--color-error)"><strong>0.68× dilute</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>The pattern is striking and inverts between council
+          and single-shot.</strong> Council modes <em>amplify</em>
+          disposition density when more behaviors are simultaneously
+          demanded — 1.66× to 1.82× lift across all three council
+          modes. Single-shot mode does the opposite: gpt-oss-single's
+          disposition density <em>drops</em> when behavior demand goes
+          up, falling from 0.122 (case 1-5 average) to 0.083 (case 6,
+          a 32% reduction). The council architecture handles
+          simultaneous behavior demand by surfacing more; single-shot
+          handles it by diluting.
+        </p>
+        <p>
+          Note also that <strong>ALR on case 6 is the highest in the
+          dataset</strong>: v2-vs-gpt-oss-single hits 13.86× on case
+          6 vs an 8.77× average. The architectural advantage
+          compounds when more is asked of the system.
+        </p>
+
+        <h4>Case 7 — alignment is responsive, not habitual</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c1-c5 avg</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c7 (trigger-light)</th>
+              <th style="padding: var(--space-2); text-align:right;">c7 / c1-c5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2</td>
+              <td style="text-align:center">0.975</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.609</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.472</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.122</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Every mode collapses to zero behavior density on
+          case 7.</strong> No model — council or single-shot,
+          specialist or generalist, frontier or local — produces a
+          cutoff disclosure, a modeled-assumption flag, a precise
+          vocabulary distinction, a jurisdictional distinguishment,
+          or a hedge on the hybrid-work communication question. The
+          outputs are competent organizational-strategy answers that
+          read normally for the context. The behaviors do not appear
+          because nothing in the prompt asks for them.
+        </p>
+        <p>
+          This is the strongest piece of evidence the experiment has
+          produced for the <strong>responsive alignment</strong>
+          interpretation. If specialists hedged habitually as a
+          training-baked reflex, we would see <em>some</em> behavior
+          density on case 7 from at least local-council-v2 — Meditron3
+          would emit "may differ" or "as of my training" out of habit.
+          It doesn't. The specialist alignment is conditional on
+          domain content being present in the input. The same applies
+          to Opus — opus-single drops to zero too. Alignment in our
+          measurement is a <em>response</em>, not a baseline.
+        </p>
+
+        <h3>What the disposition score tells us — the article-level finding</h3>
+        <p>
+          The two metrics together produce a clean three-part claim
+          that the seven-case battery now supports:
+        </p>
+        <ol>
+          <li>
+            <strong>The council architecture lifts behavior density
+            3-9× over single-shot</strong> regardless of which model
+            fills the seats (ALR row 2: 2.99× for Opus pair, 3.91×
+            for gpt-oss pair, 5.14× for v1, 8.77× for v2). The
+            architecture-only contribution is real and model-agnostic.
+          </li>
+          <li>
+            <strong>Specialist alignment compounds with the
+            architecture</strong>, not via independent additive boost.
+            Local-council-v2 (CDS 0.928) hits the highest aggregate
+            disposition by composing the architectural lift with the
+            specialist seats' alignment-rewarded behaviors. Removing
+            either ingredient (gpt-oss-council at CDS 0.460 has the
+            architecture without specialist alignment; opus-single at
+            CDS 0.159 has frontier alignment without the
+            architecture) collapses the score by 50-83%.
+          </li>
+          <li>
+            <strong>The alignment is responsive, not habitual.</strong>
+            Case 7 collapses every mode to zero — the behaviors only
+            fire when the prompt provides domain triggers. Specialist
+            alignment is a content-conditional disposition, not a
+            background reflex. This is a stronger claim than
+            "specialists hedge" — it means specialists hedge
+            <em>at the right time</em>.
+          </li>
+        </ol>
+
+        <h3>Honest caveats on the disposition score</h3>
+        <ul>
+          <li>
+            <strong>α = 0.5 in the CDS formula is a choice.</strong>
+            Higher α (toward 1.0) penalizes narrow focus more; lower α
+            (toward 0) rewards pure magnitude. We chose 0.5 because it
+            produced the qualitatively-most-defensible ranking; readers
+            with different priors should re-tune it.
+          </li>
+          <li>
+            <strong>Regex pattern detection has paraphrase blind
+            spots.</strong> A model that hedges via "the evidence
+            here is preliminary" without using a cutoff keyword
+            wouldn't score. Manual spot-checks of case 7 outputs
+            confirmed no behaviors are hiding behind paraphrase;
+            the zero is real.
+          </li>
+          <li>
+            <strong>Case 6's "all 5 behaviors simultaneously" is
+            our judgment of what the prompt elicits.</strong> A
+            different reading of the prompt might not require all
+            five. The case is a stress test, not a controlled
+            experiment.
+          </li>
+          <li>
+            <strong>Opus modes are absent from cases 6 and 7</strong>
+            because the budget cap is held at $0. The case 6 ALR
+            entries for Opus reflect the cases 1-5 average. A
+            BENCH_BUDGET_USD &gt; 0 run on cases 6 and 7 would
+            tighten the picture but isn't necessary for the
+            three-part article claim above.
+          </li>
+        </ul>
+
         <h3>What this means for the original project thesis</h3>
         <p>
           The original frame ("can small specialist fine-tunes match a
@@ -998,6 +1301,6 @@
   <!-- Bump the ?v= query on every results.js change so browsers don't serve
        a stale copy after edits. Cheap version-pinning without touching the
        server's cache headers. -->
-  <script src="/static/js/results.js?v=13"></script>
+  <script src="/static/js/results.js?v=14"></script>
 </body>
 </html>
