@@ -334,6 +334,7 @@ async def deliberate(
     chat_fn: ChatFn | None = None,  # uniform backend (back-compat); see also cabinet=
     cabinet: "CabinetBackends | None" = None,  # per-phase routing for swap experiments
     cabinet_members: dict[SeatRole, CabinetMember] | None = None,  # override CABINET dict per-call
+    seat_system_prompts: dict[str, str] | None = None,  # override SEAT_SYSTEM_PROMPTS per-call
     on_token: Callable[[str, str], None] | None = None,  # (phase_tag, delta)
 ) -> DeliberationResult:
     """Run the 3-phase council on a single user query.
@@ -361,6 +362,12 @@ async def deliberate(
     ``local-council-v2`` mode (Path C of the specialist-upgrade
     investigation) so the upgraded cabinet doesn't bleed into other modes
     sharing the same process.
+
+    ``seat_system_prompts`` overrides individual entries of
+    ``SEAT_SYSTEM_PROMPTS`` per call — used by the prompt-transfer arm of
+    the DPO experiment (``local-council-spec``) to append the behavior-spec
+    addendum to ONE seat's prompt without mutating the frozen module-level
+    prompts. Seats not present in the dict keep their defaults.
 
     ``on_token`` is an optional per-delta callback for live token streaming.
     The orchestrator tags each delta with the phase it came from (one of
@@ -461,8 +468,9 @@ async def deliberate(
         # The fallback to original query is handled in _validate_plan above.
         seat_query = plan["sub_questions"][seat]
 
+        seat_prompt = (seat_system_prompts or {}).get(seat, SEAT_SYSTEM_PROMPTS[seat])
         agent_messages = [
-            {"role": "system", "content": SEAT_SYSTEM_PROMPTS[seat]},
+            {"role": "system", "content": seat_prompt},
             {"role": "user", "content": seat_query},
         ]
         # Stream this seat's output tokens tagged with the seat name so the

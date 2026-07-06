@@ -45,6 +45,15 @@
   // frontier-council → MoE-council.
   const MOE_MODE_ORDER = ["gptoss-single", "gptoss-council"];
 
+  // DPO + prompt-transfer experiment arms — appear after the MoE columns
+  // when imported runs exist (same conditional-display rule).
+  const DPO_MODE_ORDER = [
+    "local-council-repro",
+    "gptoss-single-spec",
+    "local-council-spec",
+    "local-council-dpo",
+  ];
+
   // Pathway-3 swap variants — hybrid cabinets where one phase is served by
   // Opus and the other four by local Ollama. Added to the grid only when
   // imported runs actually exist for them (otherwise 8 always-visible
@@ -77,6 +86,10 @@
     "opus-council":          "Opus-as-council",
     "gptoss-single":         "gpt-oss-20B single-shot",
     "gptoss-council":        "gpt-oss-20B as-council",
+    "local-council-repro":   "DPO arm A′ — Saul repro conversion",
+    "gptoss-single-spec":    "DPO arm B1 — gpt-oss + behavior spec",
+    "local-council-spec":    "DPO arm B2 — Saul + behavior spec",
+    "local-council-dpo":     "DPO arm C — Saul LoRA-DPO",
     "swap-planner-opus":     "Swap · Planner→Opus",
     "swap-healthcare-opus":  "Swap · Healthcare→Opus",
     "swap-legal-opus":       "Swap · Legal→Opus",
@@ -97,8 +110,9 @@
       (m) => m === "local-council" || (modesMap && modesMap[m])
     );
     const moePresent  = MOE_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
+    const dpoPresent  = DPO_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
     const swapsPresent = SWAP_MODE_ORDER.filter((m) => modesMap && modesMap[m]);
-    return baselinesPresent.concat(moePresent, swapsPresent);
+    return baselinesPresent.concat(moePresent, dpoPresent, swapsPresent);
   }
 
   /* -------------------------------------------------------------------------

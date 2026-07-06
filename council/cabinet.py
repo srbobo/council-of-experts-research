@@ -161,6 +161,58 @@ CABINET_V2: dict[SeatRole, CabinetMember] = {
 
 
 # -----------------------------------------------------------------------------
+# DPO experiment cabinets (RUNBOOK_DPO_PROMPT_TRANSFER.md).
+#
+# LEGAL_REPRO — arm A': the SAME Saul weights re-converted through our own
+# fp16 → GGUF → Q4_K_M pipeline (train/). Conversion control: the only
+# delta vs LEGAL is the conversion path; the only delta vs LEGAL_DPO will
+# be the LoRA weights. Template/params copied verbatim from the
+# MaziyarPanahi tag.
+#
+# LEGAL_DPO — arm C: created in Phase 3 after training; tag reserved here
+# so the bench mode can be wired before the model exists (the run fails
+# loudly with a missing-model error if invoked early, which is the
+# desired behavior).
+# -----------------------------------------------------------------------------
+
+LEGAL_REPRO = CabinetMember(
+    seat="legal",
+    name="Saul-7B-Instruct-v1 (repro conversion)",
+    backbone="Mistral 7B",
+    fine_tune_type="identical weights to LEGAL; re-converted via train/ pipeline (conversion control)",
+    ollama_tag="saul-repro:coe",
+    quantization="Q4_K_M",
+    memory_gb=5.0,
+    license="MIT",
+)
+
+LEGAL_DPO = CabinetMember(
+    seat="legal",
+    name="Saul-7B-DPO (behavior-targeted LoRA)",
+    backbone="Mistral 7B",
+    fine_tune_type="LoRA-DPO on ~400 content-controlled disposition preference pairs (arm C)",
+    ollama_tag="saul-dpo:coe",
+    quantization="Q4_K_M",
+    memory_gb=5.0,
+    license="MIT (derived)",
+)
+
+CABINET_REPRO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD,
+    "healthcare": HEALTHCARE,
+    "legal": LEGAL_REPRO,
+    "finance": FINANCE,
+}
+
+CABINET_DPO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD,
+    "healthcare": HEALTHCARE,
+    "legal": LEGAL_DPO,
+    "finance": FINANCE,
+}
+
+
+# -----------------------------------------------------------------------------
 # Comparison-only models — not council members.
 #
 # These are CabinetMember records for models the bench harness uses as

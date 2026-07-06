@@ -40,3 +40,11 @@ venv/
 
 # Logs
 *.log
+
+# Training pipeline (DPO experiment) — models, clones, and venv are
+# multi-GB artifacts; the dataset + configs DO get committed from data/
+/train/models/
+/train/llama.cpp/
+/train/mlx/
+/train/gguf/
+/.venv-train/

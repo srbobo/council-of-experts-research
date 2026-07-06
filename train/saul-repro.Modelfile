@@ -1,0 +1,9 @@
+# Arm A' of the DPO + prompt-transfer experiment: the UNMODIFIED Saul
+# weights re-converted through our own fp16->GGUF->Q4_K_M pipeline.
+# Template + params copied verbatim from the MaziyarPanahi GGUF tag so
+# the only delta vs the production seat is the conversion path, and the
+# only delta vs saul-dpo:coe will be the LoRA weights.
+FROM ./gguf/saul-repro-Q4_K_M.gguf
+TEMPLATE [INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]
+PARAMETER stop [INST]
+PARAMETER stop [/INST]

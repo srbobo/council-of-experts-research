@@ -1,0 +1,5 @@
+
+TEMPLATE [INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]
+PARAMETER stop [INST]
+PARAMETER stop [/INST]
+

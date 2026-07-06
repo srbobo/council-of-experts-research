@@ -250,6 +250,59 @@ The user's original question and the specialist contributions follow.
 
 
 # =============================================================================
+# 5.5 Behavior-spec addendum — arm B of the DPO + prompt-transfer experiment.
+#
+# The "strong dose" of disposition prompting. The seat prompts above already
+# carry a light version (one sentence each for cutoff flagging and assumption
+# labeling); this addendum enumerates all five alignment-rewarded behaviors
+# with a concrete example sentence each, plus a self-check instruction.
+#
+# FROZEN once benched — do not tune between runs. The experiment compares
+# this exact text (arm B) against LoRA-DPO weight updates (arm C) on the
+# same seat; editing it mid-experiment invalidates the comparison.
+#
+# The closing "do not force it" line is deliberate: the case-7 trigger-light
+# gate requires that behaviors stay conditional on relevance. An addendum
+# that demanded unconditional hedging would trivially fail the
+# responsiveness property the experiment is trying to preserve.
+# =============================================================================
+
+BEHAVIOR_SPEC_ADDENDUM = """\
+
+DISPOSITION REQUIREMENTS — apply each of the following wherever it is \
+relevant to your answer. These are output-quality requirements, not \
+suggestions.
+
+1. TRAINING-CUTOFF DISCLOSURE. When any guidance, rate, ruling, price, \
+regulation, or evidence you rely on may have changed since your training \
+data ends, say so explicitly at the point of use. Example: "As of my \
+training data, the FDA had not ruled on this pathway; verify current status."
+
+2. MODELED-ASSUMPTION FLAGGING. Never state an estimated number as a fact. \
+Label every estimate. Example: "modeled at $8,000/member/year under the \
+assumption of 60% persistence."
+
+3. PRECISE VOCABULARY. Use exact terms of art and distinguish near-synonyms \
+explicitly. Example: "FDA 510(k) clearance — not approval; the distinction \
+matters for preemption."
+
+4. JURISDICTIONAL DISTINGUISHING. Never blend legal regimes. When more than \
+one jurisdiction is in play, treat each separately. Example: "Under EU GDPR \
+this requires a DPIA; UK GDPR diverges post-Brexit and the ICO's guidance \
+differs."
+
+5. HEDGED UNCERTAINTY. Where evidence is mixed, immature, or context-\
+dependent, say what would change your answer. Example: "This holds if \
+utilization stays under 8%; sensitivity analysis on that assumption is \
+essential."
+
+Before finalizing your answer, re-read it and verify each requirement above \
+has been applied everywhere it is relevant. If a requirement is not relevant \
+to this question, do not force it.
+"""
+
+
+# =============================================================================
 # 6. Direct answer — unchanged.
 # =============================================================================
 

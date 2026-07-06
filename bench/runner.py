@@ -42,6 +42,12 @@ from council.orchestrator import deliberate as council_deliberate, save_audit_lo
 from council.thermal import ThermalGuard
 
 from .cost_guard import BudgetExceeded, CostGuard
+from .dpo_experiment import (
+    run_council_dpo,
+    run_council_repro,
+    run_council_spec,
+    run_gptoss_single_spec,
+)
 from .gptoss_council import run_gptoss_council
 from .gptoss_single import run_gptoss_single
 from .local_swap import is_local_swap_mode, list_local_swap_modes, run_local_swap
@@ -76,7 +82,19 @@ LOCAL_SWAP_MODES = list_local_swap_modes()
 # swapped to Llama-3.1-Hawkish-8B. Surfaces as its own column in the
 # Results UI so a reader can compare v1-vs-v2 directly.
 UPGRADED_MODES = ["local-council-v2"]
-ALL_MODES = BASELINE_MODES + MOE_MODES + UPGRADED_MODES + SWAP_MODES + LOCAL_SWAP_MODES
+# DPO + prompt-transfer experiment arms (RUNBOOK_DPO_PROMPT_TRANSFER.md).
+# 'dpo-experiment' alias expands to the three arms runnable before training
+# completes; local-council-dpo joins once saul-dpo:coe exists.
+DPO_EXPERIMENT_MODES = [
+    "local-council-repro",   # A' — conversion control
+    "gptoss-single-spec",    # B1 — spec addendum on the generalist
+    "local-council-spec",    # B2 — spec addendum on the Saul seat
+    "local-council-dpo",     # C  — LoRA-DPO'd Saul (after Phase 3)
+]
+ALL_MODES = (
+    BASELINE_MODES + MOE_MODES + UPGRADED_MODES
+    + DPO_EXPERIMENT_MODES + SWAP_MODES + LOCAL_SWAP_MODES
+)
 
 
 def _stamp() -> str:
@@ -287,6 +305,36 @@ async def _compare(case_id: str, modes: list[str]) -> int:
                 # Local MoE single-shot — gpt-oss-20B via Ollama, no
                 # API spend, parallel to opus-single.
                 result = await _run_gptoss_single(case.prompt)
+            elif mode == "local-council-repro":
+                # Arm A' — conversion control (saul-repro:coe).
+                r = await run_council_repro(case.prompt)
+                result = {"mode": mode, "query": case.prompt,
+                          "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms,
+                          "deliberation": r.to_dict()}
+            elif mode == "gptoss-single-spec":
+                # Arm B1 — behavior-spec addendum on the generalist.
+                rs = await run_gptoss_single_spec(case.prompt)
+                result = {"mode": mode, "query": case.prompt,
+                          "final_output": rs.final_output,
+                          "total_latency_ms": rs.latency_ms,
+                          "tokens": {"input": rs.input_tokens, "output": rs.output_tokens},
+                          "system_prompt": rs.system_prompt,
+                          "raw_response": rs.raw}
+            elif mode == "local-council-spec":
+                # Arm B2 — behavior-spec addendum on the Saul seat only.
+                r = await run_council_spec(case.prompt)
+                result = {"mode": mode, "query": case.prompt,
+                          "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms,
+                          "deliberation": r.to_dict()}
+            elif mode == "local-council-dpo":
+                # Arm C — LoRA-DPO'd Saul. Fails loudly pre-Phase-3.
+                r = await run_council_dpo(case.prompt)
+                result = {"mode": mode, "query": case.prompt,
+                          "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms,
+                          "deliberation": r.to_dict()}
             elif mode == "gptoss-council":
                 # Local MoE council — gpt-oss-20B plays every seat,
                 # parallel to opus-council.
@@ -401,6 +449,10 @@ def main() -> int:
             modes = list(SWAP_MODES)
         elif modes_str == "local-swaps":
             modes = list(LOCAL_SWAP_MODES)
+        elif modes_str == "dpo-experiment":
+            # The three arms runnable before training completes; add
+            # local-council-dpo explicitly once saul-dpo:coe exists.
+            modes = ["local-council-repro", "gptoss-single-spec", "local-council-spec"]
         elif modes_str == "everything":
             modes = list(BASELINE_MODES) + list(MOE_MODES) + list(SWAP_MODES) + list(LOCAL_SWAP_MODES)
         else:

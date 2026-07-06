@@ -67,3 +67,6 @@ select = ["E", "F", "W", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+# train/ holds the DPO pipeline's llama.cpp clone + model artifacts —
+# its bundled test suites are not ours to run.
+norecursedirs = ["train", ".venv-train"]
