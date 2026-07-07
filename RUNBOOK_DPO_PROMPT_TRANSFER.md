@@ -173,6 +173,62 @@ prompt's PRESERVE instructions.
 Write the verdict against the pre-registered grid into the Results page;
 new section "Installing disposition — the interventional test."
 
+## INTERIM RESULTS — Phase 1 (recorded 2026-07-07, before any training)
+
+21/21 runs completed (one case-3 gptoss-single-spec re-run after an
+empty-output reasoning-budget exhaustion). Single run per case; the
+variance pass comes in Phase 4.
+
+### Final-output CDS (aggregate over 7 cases)
+
+| Arm | Mode | Agg CDS | Case 7 (gate) |
+|---|---|---|---|
+| A  | local-council        | 0.584 | 0.000 ✅ |
+| A′ | local-council-repro  | 0.624 | 0.000 ✅ |
+| B2 | local-council-spec   | 0.522 | 0.000 ✅ |
+| —  | gptoss-single        | 0.099 | 0.000 ✅ |
+| B1 | gptoss-single-spec   | 0.589 | **0.985 ❌ GATE FAILED** |
+
+### Seat-level legal density (primary endpoint; occurrences/1k chars in the legal turn)
+
+| Arm | Mode | Agg seat density |
+|---|---|---|
+| A  | local-council        | 0.74 |
+| A′ | local-council-repro  | 0.82 |
+| B2 | local-council-spec   | **1.93 (≈2.4× baseline)** |
+
+### Three findings
+
+1. **A′ ≈ A — the conversion control passes.** 0.624 vs 0.584 aggregate,
+   with per-case scatter (e.g. case 1: 0.946 vs 0.428 on identical
+   weights) that quantifies single-run noise. C-vs-A′ is the valid
+   comparison, as designed.
+
+2. **B1 fails the responsiveness gate.** The behavior spec lifted
+   gpt-oss-single's disposition 6× (0.099 → 0.589) — but it also produced
+   "(as of my training data)" and "actual results may vary" on the
+   trigger-light organizational-communication case (case-7 CDS 0.985,
+   where every other mode is 0.000), despite the addendum's explicit
+   "do not force it" clause. Prompting installed the behaviors
+   **indiscriminately** — it made them habitual, not responsive. The
+   case-7 gate caught the *prompt* arm before we trained anything.
+
+3. **B2 lifts the seat but the synthesis dilutes it.** Saul's seat-level
+   density rose ≈2.4× under the spec addendum (case 5: 0.82 → 4.86), yet
+   final-output CDS stayed flat (0.522 vs 0.584). Phi-4's synthesis is
+   not carrying the increased seat disposition through, despite the
+   PRESERVE instructions. The disposition bottleneck has TWO stages —
+   seat emission AND synthesis preservation — and prompting only moved
+   the first.
+
+### Bar this sets for arm C (DPO)
+
+DPO'd Saul must (a) lift seat-level density at least comparably to B2's
+2.4×, (b) **stay ≈0 on case 7** — the thing B1 could not do — and
+(c) ideally survive synthesis better. If DPO hedges responsively where
+prompting hedged indiscriminately, weight-level preference learning
+wins on alignment *quality* even at equal magnitude.
+
 ## Risks
 
 | Risk | Mitigation |
