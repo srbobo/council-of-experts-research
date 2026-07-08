@@ -59,6 +59,17 @@ GATE = {
 RATIO_LO, RATIO_HI = 0.8, 1.4
 
 
+def content_overlap(a: str, b: str) -> float:
+    """Jaccard over capitalized tokens (statutes, entities, terms of art) —
+    a cheap proxy for 'chosen and rejected carry the same substance.'
+    Enforces the pre-registered content-control principle: pairs must
+    differ in behavior, not content."""
+    caps_a = set(re.findall(r"\b[A-Z][A-Za-z]{2,}\b", a))
+    caps_b = set(re.findall(r"\b[A-Z][A-Za-z]{2,}\b", b))
+    union = caps_a | caps_b
+    return len(caps_a & caps_b) / len(union) if union else 1.0
+
+
 def amended_pass(rec: dict) -> bool:
     chosen_distinct = sum(1 for v in rec["chosen_behaviors"].values() if v > 0)
     rej_hits = sum(
@@ -66,7 +77,8 @@ def amended_pass(rec: dict) -> bool:
         for pats in GATE.values() for p in pats
     )
     return (chosen_distinct >= 2 and rej_hits == 0
-            and RATIO_LO <= rec["len_ratio"] <= RATIO_HI)
+            and RATIO_LO <= rec["len_ratio"] <= RATIO_HI
+            and content_overlap(rec["chosen"], rec["rejected"]) >= 0.35)
 
 
 def main() -> int:
