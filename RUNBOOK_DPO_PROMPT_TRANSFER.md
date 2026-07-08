@@ -229,6 +229,30 @@ DPO'd Saul must (a) lift seat-level density at least comparably to B2's
 prompting hedged indiscriminately, weight-level preference learning
 wins on alignment *quality* even at equal magnitude.
 
+## PROTOCOL AMENDMENT — pair-selection filters (2026-07-08, pre-training)
+
+Applied after 136/200 prompts had generated and BEFORE any training.
+Rationale, measured on the actual records:
+
+1. **Rejected-gate `jurisd` patterns narrowed to meta-commentary only.**
+   The original gate included `federal…state` co-occurrence and
+   `preempt*`. In legal analyses those are substantive content the
+   strip-rewrite correctly refuses to remove (content control), so
+   affected records could never pass — a design flaw in the gate, not
+   a rigor relaxation. All 16 rejected-gate leaks in the first 136
+   records were this pattern class. The CDS measurement used for
+   evaluation is UNCHANGED; only pair selection is affected.
+2. **Length-ratio window 0.8–1.3 → 0.8–1.4.** Weaving hedge phrases in
+   genuinely lengthens text; the 1.3–1.5 band held most drops. 1.4
+   rescues the bulk while still guarding DPO's documented length bias.
+
+Yield on the first 136 records: 24% (original) → 50% (amended),
+projecting ~100 pairs at completion vs ~47 — the difference between
+trainable and not. Implemented in `train/rescore_split.py`, which
+re-scores the append-only raw log uniformly (no cherry-picking) and
+reports both filter sets' counts. The raw log preserves every record,
+so re-scoring under the original gates remains possible at any time.
+
 ## Risks
 
 | Risk | Mitigation |
