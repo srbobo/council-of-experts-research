@@ -16,20 +16,41 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 PY=.venv-train/bin/python
-MODEL=train/models/Saul-7B-Instruct-v1
+MODEL_HF=train/models/Saul-7B-Instruct-v1
+MODEL=train/mlx/saul-bf16
 DATA=train/data/dpo_pairs
 ADAPTERS=train/adapters/saul-dpo
 FUSED=train/models/Saul-7B-DPO-fused
 
+# Free unified memory: the fp32 checkpoint is 27 GB; training needs the
+# bf16 copy (~14 GB) plus activations, so Ollama's resident models must
+# be evicted first (gpt-oss alone holds ~13.7 GB).
+echo "=== unloading ollama models ==="
+# `ollama ps` has no --format flag (that error killed this script once,
+# under pipefail, with the failure masked by an outer `| tail`). Parse
+# the table instead, and armor the whole block against set -e.
+(ollama ps 2>/dev/null | awk 'NR>1 && $1 != "" {print $1}' || true) | while read -r m; do
+  echo "  stopping $m"
+  ollama stop "$m" 2>/dev/null || true
+done
+ollama ps || true
+
+# Convert fp32 HF checkpoint -> MLX bf16 once (idempotent).
+if [ ! -d "$MODEL" ]; then
+  echo "=== converting HF fp32 -> MLX bf16 ==="
+  $PY -m mlx_lm convert --hf-path "$MODEL_HF" --mlx-path "$MODEL" --dtype bfloat16
+fi
+
 N_TRAIN=$(wc -l < $DATA/train.jsonl | tr -d ' ')
-# ~1 epoch at batch 1 x grad-accum 4; cap for safety on the first run.
-ITERS=$(( N_TRAIN > 400 ? 400 : N_TRAIN ))
+# ~4 epochs of forward passes at batch 1 x grad-accum 4 over 91 pairs.
+ITERS=$(( N_TRAIN * 4 > 400 ? 400 : N_TRAIN * 4 ))
 echo "=== Phase 3: DPO training ($N_TRAIN pairs, $ITERS iters) ==="
 
 $PY -m mlx_lm_lora.train \
   --model "$MODEL" \
   --train \
   --train-mode dpo \
+  --load-in-4bits \
   --train-type lora \
   --data "$DATA" \
   --beta 0.1 \
@@ -43,7 +64,8 @@ $PY -m mlx_lm_lora.train \
   --steps-per-report 10 \
   --steps-per-eval 50 \
   --save-every 100 \
-  --max-seq-length 3072 \
+  --max-seq-length 1792 \
+  --grad-checkpoint \
   --seed 42
 
 echo "=== fusing adapters ==="

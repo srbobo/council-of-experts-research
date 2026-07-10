@@ -253,6 +253,33 @@ re-scores the append-only raw log uniformly (no cherry-picking) and
 reports both filter sets' counts. The raw log preserves every record,
 so re-scoring under the original gates remains possible at any time.
 
+## TRAINING LOG — Phase 3 attempts (2026-07-10)
+
+1. **Attempt 1** — died at the ollama-unload step: `ollama ps --format`
+   is not a real flag; under `set -euo pipefail` the pipeline failure
+   killed the script, and the outer `| tail` masked the exit code.
+   Fixed (parse the table; armor the block) and hardened the launcher
+   to log to file with the real exit code.
+2. **Attempt 2** — bf16 base, seq-len 3072: Metal OOM at iter 0.
+   Root causes found: `iogpu.wired_limit_mb` reset to 0 on reboot
+   (default cap ≈21 GB, not the 26 GB the council setup assumed), and
+   seq-len was 2× oversized (dataset max = 1,698 tokens).
+3. **Attempt 3** — bf16, seq-len 1792: OOM again.
+4. **Attempt 4** — bf16 + `--grad-checkpoint`: OOM again. Conclusion:
+   DPO's chosen/rejected dual-forward on a bf16 7B does not fit ~21 GB.
+5. **Attempt 5** — `--load-in-4bits` (QLoRA-style), the plan's
+   documented Fallback: base weights ≈4 GB.
+
+**Caveat recorded for the writeup:** arm C's adapters are trained
+against the 4-bit-loaded base, then fused into the bf16 base (standard
+QLoRA practice) before the same f16-GGUF → Q4_K_M conversion used for
+A′. The fused weights therefore embed base-quantization error that A′'s
+path lacks. Both tags end at Q4_K_M, so the deltas are second-order,
+but C-vs-A′ is no longer a *pure* weights-only comparison — it is
+"LoRA weights + 4-bit training round-trip" vs baseline. A cleaner bf16
+run needs `sudo sysctl iogpu.wired_limit_mb=26000` (resets every
+reboot); rerunning Phase 3 under that cap removes the caveat.
+
 ## Risks
 
 | Risk | Mitigation |
