@@ -267,8 +267,23 @@ so re-scoring under the original gates remains possible at any time.
 3. **Attempt 3** — bf16, seq-len 1792: OOM again.
 4. **Attempt 4** — bf16 + `--grad-checkpoint`: OOM again. Conclusion:
    DPO's chosen/rejected dual-forward on a bf16 7B does not fit ~21 GB.
-5. **Attempt 5** — `--load-in-4bits` (QLoRA-style), the plan's
-   documented Fallback: base weights ≈4 GB.
+5. **Attempt 5** — `--load-in-4bits` (QLoRA-style): OOM again, still
+   at iter 0.
+6. **Diagnostics** — minimal-footprint tests isolated the fault:
+   DPO @ 512 tokens / 4 LoRA layers / batch 1 OOMs in BOTH bf16 and
+   4-bit, while (a) plain MLX matmuls run, (b) `mx.device_info()`
+   reports 26.8 GB available (the OS default is fine — the sysctl
+   theory was wrong), (c) stock `mlx_lm` SFT LoRA trains at 15.4 GB
+   peak on the same model, and (d) **ORPO mode in the same package
+   trains cleanly at the same scale**. Conclusion: `mlx_lm_lora`'s
+   DPO trainer has a structural memory bug on this stack; the fault
+   is mode-specific, not capacity- or config-related.
+7. **Attempt 6 (adopted)** — **ORPO**, the plan's pre-registered
+   Fallback 1: preference-based post-training on the same
+   chosen/rejected pairs, no reference model. Arm C is therefore
+   "preference training via ORPO"; artifact names retain `dpo` for
+   continuity (`saul-dpo:coe`), with this note as the correction.
+   4-bit base + grad-checkpoint + seq-len 1792, 364 iters.
 
 **Caveat recorded for the writeup:** arm C's adapters are trained
 against the 4-bit-loaded base, then fused into the bf16 base (standard

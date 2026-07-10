@@ -49,12 +49,11 @@ echo "=== Phase 3: DPO training ($N_TRAIN pairs, $ITERS iters) ==="
 $PY -m mlx_lm_lora.train \
   --model "$MODEL" \
   --train \
-  --train-mode dpo \
+  --train-mode orpo \
   --load-in-4bits \
   --train-type lora \
   --data "$DATA" \
   --beta 0.1 \
-  --dpo-cpo-loss-type sigmoid \
   --batch-size 1 \
   --gradient-accumulation-steps 4 \
   --learning-rate 5e-6 \
