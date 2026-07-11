@@ -256,3 +256,25 @@ def all_industry_seats() -> list[CabinetMember]:
     Used by the orchestrator so audit logs show the same seat order across runs.
     """
     return [HEALTHCARE, LEGAL, FINANCE]
+
+
+# Cell 1 of the paper-hardening matrix: SFT-on-chosen control seat.
+# Same pairs' chosen responses, same LoRA config/seed as LEGAL_DPO —
+# only the training objective differs (SFT vs ORPO). P1 comparator.
+LEGAL_SFT = CabinetMember(
+    seat="legal",
+    name="Saul-7B-SFT-chosen (control)",
+    backbone="Mistral 7B",
+    fine_tune_type="LoRA SFT on the 91 chosen responses only (no preference signal) — P1 control",
+    ollama_tag="saul-sft:coe",
+    quantization="Q4_K_M",
+    memory_gb=5.0,
+    license="MIT (derived)",
+)
+
+CABINET_SFT: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD,
+    "healthcare": HEALTHCARE,
+    "legal": LEGAL_SFT,
+    "finance": FINANCE,
+}

@@ -52,6 +52,7 @@
     "gptoss-single-spec",
     "local-council-spec",
     "local-council-dpo",
+    "local-council-sft",
   ];
 
   // Pathway-3 swap variants — hybrid cabinets where one phase is served by
@@ -90,6 +91,7 @@
     "gptoss-single-spec":    "DPO arm B1 — gpt-oss + behavior spec",
     "local-council-spec":    "DPO arm B2 — Saul + behavior spec",
     "local-council-dpo":     "DPO arm C — Saul LoRA-DPO",
+    "local-council-sft":     "P1 control — Saul SFT-on-chosen",
     "swap-planner-opus":     "Swap · Planner→Opus",
     "swap-healthcare-opus":  "Swap · Healthcare→Opus",
     "swap-legal-opus":       "Swap · Legal→Opus",
