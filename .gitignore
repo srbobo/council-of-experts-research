@@ -48,3 +48,10 @@ venv/
 /train/mlx/
 /train/gguf/
 /.venv-train/
+
+# ORPO adapter dir: track ONLY the final adapters + config (the 40 MB
+# reproducibility core). The auto-fused 4-bit model and intermediate
+# checkpoints are multi-GB build artifacts.
+/train/adapters/**/model.safetensors
+/train/adapters/**/model.safetensors.index.json
+/train/adapters/**/0*_adapters.safetensors

@@ -295,6 +295,57 @@ but C-vs-A′ is no longer a *pure* weights-only comparison — it is
 run needs `sudo sysctl iogpu.wired_limit_mb=26000` (resets every
 reboot); rerunning Phase 3 under that cap removes the caveat.
 
+## FINAL VERDICT — recorded 2026-07-10, all arms benched (single run/case)
+
+### Endpoints (aggregate over 7 cases; seat = Saul legal turn)
+
+| Arm | Seat density | Final-output CDS | Case-7 gate | Rubric |
+|---|---|---|---|---|
+| A  local-council | 0.74 | 0.584 | 0 ✅ | 9/36 |
+| A′ repro control | 0.82 | 0.624 | 0 ✅ | 12/36 |
+| B1 spec on generalist | — | 0.589 | **0.985 ❌** | — |
+| B2 spec on seat | **1.93 (2.4×)** | 0.522 (worst) | 0 ✅ | — |
+| C  ORPO'd seat | 1.00 (1.2×) | **0.738 (best)** | seat 0.00 ✅ | 12/36 |
+
+### Against the pre-registered grid
+
+**Neither clean row fired; the result is a split verdict on quality vs
+magnitude:**
+
+- **C failed criterion (a)**: 1.2× aggregate seat lift (1.7× on the
+  legal-heavy cases 2/5/6; 4.0× on case 2 alone, the most
+  legal-trigger-dense) — short of the pre-registered ≥2×.
+- **C passed criterion (b), the responsiveness gate**: the trained seat
+  emitted 0.00 density on case 7. (The run's small 0.095 final-output
+  CDS traces to the untrained Finance seat plus planner routing
+  variance — case 7 routed seats in this run where prior runs went
+  direct — not to the intervention.)
+- **C passed criterion (c)**: rubric 12/36, identical to A′ — zero
+  content tax.
+- **C's surprise win — synthesis durability**: B2's larger seat lift
+  (2.4×) collapsed through synthesis to the WORST final CDS (0.522);
+  C's smaller lift carried through to the BEST local final CDS
+  (0.738, +18% over A′). Interpretation: prompt-injected behaviors
+  arrive as detachable boilerplate the synthesis strips; ORPO-trained
+  behaviors are woven into the seat's prose and survive integration.
+
+### The three-sentence summary
+
+Prompting buys a bigger raw disposition lift but deploys it
+indiscriminately (B1 hedged on the trigger-light case) and fragilely
+(B2's gains died in synthesis). Weight-level preference training
+(ORPO) bought a smaller lift that is responsive (0.00 on case 7,
+4× on the most trigger-dense case), synthesis-durable (best final
+CDS of any local arm), and content-free of charge (rubric unchanged).
+At 91 pairs and a single run per case this is directional, not
+definitive — but the direction is consistent: **prompting changes
+what a model says; preference training changes when it says it.**
+
+### Known limitations
+- ORPO not DPO (mlx_lm_lora DPO trainer OOM bug); 4-bit training
+  round-trip vs A′'s bf16 path; 91 pairs; single run per case;
+  regex-based scoring; planner routing variance visible on case 7.
+
 ## Risks
 
 | Risk | Mitigation |

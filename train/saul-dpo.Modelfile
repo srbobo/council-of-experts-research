@@ -1,0 +1,7 @@
+# Arm C of the DPO + prompt-transfer experiment: Saul-7B with behavior-
+# targeted LoRA-DPO fused in. Same conversion pipeline and template as
+# saul-repro:coe — the only delta is the trained weights.
+FROM ./gguf/saul-dpo-Q4_K_M.gguf
+TEMPLATE [INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]
+PARAMETER stop [INST]
+PARAMETER stop [/INST]
