@@ -26,13 +26,37 @@ fi
 N_TRAIN=$(wc -l < $DATA/train.jsonl | tr -d ' ')
 ITERS=$(( N_TRAIN * 4 > 400 ? 400 : N_TRAIN * 4 ))
 echo "=== SFT-on-chosen: $N_TRAIN completions, $ITERS iters ==="
-$PY -m mlx_lm_lora.train \
-  --model "$MODEL" --train --train-mode sft --load-in-4bits \
-  --train-type lora --data "$DATA" --mask-prompt \
-  --batch-size 1 --gradient-accumulation-steps 4 \
-  --learning-rate 5e-6 --iters "$ITERS" --num-layers 16 \
-  --adapter-path "$ADAPTERS" --steps-per-report 20 \
-  --save-every 200 --max-seq-length 1792 --grad-checkpoint --seed 42
+# Resume-aware training: checkpoint every 50 iters; on crash (e.g. GPU
+# memory contention from interactive Ollama use), retry up to 4 times,
+# resuming from the latest checkpoint and running only the REMAINING iters.
+attempt=0
+while [ $attempt -lt 4 ]; do
+  attempt=$((attempt+1))
+  DONE_ITERS=0
+  RESUME_ARGS=""
+  latest=$(ls "$ADAPTERS"/0*_adapters.safetensors 2>/dev/null | sort | tail -1 || true)
+  if [ -n "$latest" ]; then
+    DONE_ITERS=$(basename "$latest" | sed 's/^0*//; s/_adapters.safetensors//')
+    RESUME_ARGS="--resume-adapter-file $latest"
+    echo "=== resuming from iter $DONE_ITERS (attempt $attempt) ==="
+  fi
+  REMAIN=$(( ITERS - DONE_ITERS ))
+  [ $REMAIN -le 0 ] && break
+  set +e
+  $PY -m mlx_lm_lora.train \
+    --model "$MODEL" --train --train-mode sft --load-in-4bits \
+    --train-type lora --data "$DATA" --mask-prompt \
+    --batch-size 1 --gradient-accumulation-steps 4 \
+    --learning-rate 5e-6 --iters "$REMAIN" --num-layers 16 \
+    --adapter-path "$ADAPTERS" --steps-per-report 20 $RESUME_ARGS \
+    --save-every 50 --max-seq-length 1792 --grad-checkpoint --seed 42
+  rc=$?
+  set -e
+  [ $rc -eq 0 ] && break
+  echo "=== training crashed (rc=$rc); waiting 5 min for memory to free ==="
+  sleep 300
+done
+[ $rc -ne 0 ] && { echo "TRAINING FAILED AFTER 4 ATTEMPTS"; exit 1; }
 
 echo "=== fuse -> GGUF -> ollama ==="
 $PY -m mlx_lm fuse --model "$MODEL" --adapter-path "$ADAPTERS" --save-path "$FUSED"

@@ -47,3 +47,25 @@ Predictions registered here BEFORE any cell executes (2026-07-11).
 Tier-1 cleanup deleted training intermediates; all recipes committed.
 Cell 1 re-downloads Saul + reconverts bf16 via the idempotent block in
 `run_phase3.sh`-style scripts (~20 min).
+
+## P1 VERDICT — recorded 2026-07-11 (cell 1 complete, single run/case)
+
+**P1 CONFIRMED, strongly.** SFT-on-chosen (same pairs' chosen responses,
+same LoRA/iters/seed as ORPO, only the objective differs):
+
+| Endpoint | A′ repro | SFT-on-chosen | ORPO |
+|---|---|---|---|
+| Seat density (agg) | 0.82 | **1.69 (2.1×)** | 1.00 (1.2×) |
+| Case-7 gate (seat) | — | **1.59 ❌ FAILED** | 0.00 ✅ |
+| Final-output CDS | 0.624 | **0.443 (worst)** | **0.738 (best)** |
+
+SFT bought the BIGGEST raw seat lift — and deployed it indiscriminately
+(hedged on the trigger-light case, density 1.59 where ORPO emitted 0.00)
+and fragilely (worst synthesis survival of any arm, below even baseline).
+The failure signature is identical to prompting's (B1 gate failure, B2
+synthesis collapse). The contrastive preference signal — the only
+ingredient SFT lacks — is load-bearing for BOTH quality properties.
+
+Upgraded one-liner: **exemplar training and prompting change what a
+model says; preference training changes when it says it — and only
+preference-trained behaviors survive synthesis.**
