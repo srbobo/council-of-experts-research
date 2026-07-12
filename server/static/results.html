@@ -1205,6 +1205,69 @@
           </li>
         </ul>
 
+        <h3 id="installing-disposition">Installing disposition — the interventional test (ORPO vs SFT vs prompting)</h3>
+        <details style="margin-bottom: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: 4px; background: rgba(0,0,0,0.02);">
+          <summary><strong>Definitions used in this section</strong></summary>
+          <ul>
+            <li><strong>Seat</strong>: one specialist model answering only its dispatched sub-question (here: Saul, the Legal seat).</li>
+            <li><strong>Synthesizer / Lead</strong>: the model (Phi-4 14B) that compresses all seat outputs into the final answer — the pipeline's last writer.</li>
+            <li><strong>Disposition</strong>: what a model <em>chooses to emit</em> independent of what it knows — five behavior families: training-cutoff disclosure, modeled-assumption flagging, precise vocabulary distinctions, jurisdictional distinguishing, and hedging.</li>
+            <li><strong>Hedging</strong>: stated conditionality of a claim ("this may vary if…") — not refusal, not vagueness.</li>
+            <li><strong>Synthesis stripping</strong>: behaviors measurably present at a seat's output but absent from the final output after the Lead's compression.</li>
+            <li><strong>Responsive vs habitual</strong>: responsive behaviors appear only when domain triggers warrant them (tested by the trigger-light case 7 gate); habitual behaviors fire regardless.</li>
+          </ul>
+        </details>
+        <p>
+          We attempted to <em>install</em> disposition into the Legal seat three ways, each
+          compared against a conversion-control baseline (same Saul weights, our pipeline):
+          a strong behavior-spec <strong>prompt</strong>; <strong>SFT</strong> on 91
+          behavior-rich exemplar responses; and <strong>ORPO</strong> (reference-free
+          preference training) on the same 91 responses paired with behavior-stripped
+          rejections. Single-variable design: same LoRA config, iterations, and seed —
+          only the objective differs. Full pre-registration, protocol amendments, and
+          training log live in RUNBOOK_DPO_PROMPT_TRANSFER.md and
+          RUNBOOK_PAPER_HARDENING.md in the repo.
+        </p>
+        <h4>The verdict at n=5 seeds per cell (140 runs, bootstrap 95% CIs)</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead><tr style="border-bottom:1px solid var(--color-border); text-align:left;">
+            <th style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Arm</th>
+            <th style="padding:var(--space-2); text-align:center;">Seat density [CI]</th>
+            <th style="padding:var(--space-2); text-align:center;">Final CDS [CI]</th>
+            <th style="padding:var(--space-2); text-align:right;">Case-7 gate</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Baseline (repro)</td><td style="text-align:center">0.89 [0.69–1.11]</td><td style="text-align:center"><strong>0.86 [0.64–1.08]</strong></td><td style="text-align:right">0.96</td></tr>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Prompting (spec)</td><td style="text-align:center"><strong>1.85 [1.42–2.32]</strong></td><td style="text-align:center">0.59 [0.40–0.81]</td><td style="text-align:right">3.03 ❌</td></tr>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">SFT-on-chosen</td><td style="text-align:center"><strong>1.77 [1.46–2.09]</strong></td><td style="text-align:center">0.58 [0.43–0.73]</td><td style="text-align:right">1.21 ❌</td></tr>
+            <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">ORPO (preference)</td><td style="text-align:center">0.87 [0.60–1.17]</td><td style="text-align:center">0.66 [0.49–0.85]</td><td style="text-align:right"><strong>0.15 ✅ below baseline</strong></td></tr>
+          </tbody>
+        </table>
+        <h4>The two findings that survived error bars</h4>
+        <p>
+          <strong>1. Synthesis stripping is real.</strong> Prompting and SFT install large,
+          statistically clear seat-level lifts (~2× baseline, non-overlapping CIs) — and the
+          synthesizer removes them: final-output disposition lands at or <em>below</em> the
+          untrained baseline, despite the synthesis prompt's explicit PRESERVE instructions.
+          The mechanism hypothesis (registered, untested): installed hedges arrive as
+          detachable boilerplate sentences a compressing editor drops first, whereas hedges
+          woven into content-bearing claims cannot be removed without removing the claim.
+        </p>
+        <p>
+          <strong>2. Preference training uniquely improves responsiveness.</strong> ORPO at
+          this dose (91 pairs) installs no measurable magnitude — its single-run lift was
+          noise — but it is the only arm that <em>suppresses</em> indiscriminate hedging on
+          the trigger-light case, scoring below even the untrained baseline. Prompting and
+          SFT both fail this gate, hedging where nothing warrants it.
+        </p>
+        <p>
+          Revised one-liner: <em>prompting and exemplar training install loud but
+          indiscriminate dispositions that synthesis strips; preference training at this
+          dose installs little — but is the only mechanism that improves when the model
+          hedges rather than how much.</em> The open question promoted to top priority is
+          dose-response: whether ~500 pairs installs magnitude where 91 could not.
+        </p>
+
         <h3>What this means for the original project thesis</h3>
         <p>
           The original frame ("can small specialist fine-tunes match a
@@ -1301,6 +1364,6 @@
   <!-- Bump the ?v= query on every results.js change so browsers don't serve
        a stale copy after edits. Cheap version-pinning without touching the
        server's cache headers. -->
-  <script src="/static/js/results.js?v=16"></script>
+  <script src="/static/js/results.js?v=17"></script>
 </body>
 </html>
