@@ -69,3 +69,29 @@ ingredient SFT lacks — is load-bearing for BOTH quality properties.
 Upgraded one-liner: **exemplar training and prompting change what a
 model says; preference training changes when it says it — and only
 preference-trained behaviors survive synthesis.**
+
+## Paper framing notes (captured 2026-07-11)
+
+The council architecture is instrument-plus-co-star, not vestigial
+branding. Structure the paper as:
+
+1. **Apparatus** — council (planner → seats → tension-extraction
+   synthesis), 7 cases, two-axis metrics (content rubric / disposition
+   CDS+ALR).
+2. **Result 1: architecture shapes disposition** — ALR 3–9× lift,
+   model-agnostic; case-6 amplification vs single-shot dilution.
+   (Council-as-finding.)
+3. **Result 2: installation mechanisms at the seat** — prompting vs
+   SFT-on-chosen vs ORPO; the P1 triangle (magnitude vs responsiveness).
+4. **Result 3: durability through synthesis** — only preference-trained
+   behaviors survive the aggregator. (Council-as-testbed; the novelty
+   defense against single-model uncertainty-training literature.)
+5. **Motivation/background** — the specialist-content negative results
+   (confabulation, MoE comparison, Path C ceiling) as the arc that led
+   to disposition. Negative result, not a contribution.
+
+Title direction: disposition in multi-agent pipelines. Do NOT frame as
+"specialists vs frontier" (crowded, and our own data killed it).
+One-liner: exemplar training and prompting change what a model says;
+preference training changes when it says it — and only preference-
+trained behaviors survive synthesis.
