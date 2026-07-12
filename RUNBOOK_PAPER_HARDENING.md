@@ -122,3 +122,31 @@ indiscriminate dispositions that synthesis strips; preference training
 at this dose installs little — but is the only mechanism that improves
 when the model hedges rather than how much. Dose-response (more pairs)
 is now the priority open question, ahead of cells 3-5.
+
+## GLOSSARY — define these in every write-up (paper, README, Results page)
+
+- **Seat**: one specialist model in the council, answering only its
+  dispatched sub-question (e.g. Saul = the Legal seat).
+- **Synthesizer / Lead**: the model (Phi-4 14B) that receives all seat
+  outputs plus the original question and compresses them into the final
+  answer. The pipeline's last writer.
+- **Synthesis stripping**: removal of seat-emitted behaviors during that
+  compression — measured as behavior density present at the seat output
+  but absent from the final output.
+- **Disposition**: what a model *chooses to emit* independent of what it
+  knows — operationalized as the five behavior families below, measured
+  per 1,000 chars (density) and via CDS (density × √breadth).
+- **The five behaviors**: (1) training-cutoff disclosure; (2)
+  modeled-assumption flagging ("modeled at", "assuming"); (3) precise
+  vocabulary distinctions ("clearance vs approval"); (4) jurisdictional
+  distinguishing (never blending legal regimes); (5) **hedging** =
+  stated conditionality of a claim ("this may vary if…", sensitivity
+  language) — NOT refusal or vagueness.
+- **Responsive vs habitual**: a behavior is responsive if it appears
+  when domain triggers warrant it and is absent otherwise (case-7
+  trigger-light gate); habitual if emitted regardless.
+- **Alignment**: post-pretraining procedures (SFT, RLHF, DPO/ORPO/CPO)
+  shaping disposition — distinct from the pretraining corpus, which
+  shapes knowledge.
+- **CDS / ALR / seat density**: defined in RUNBOOK_DPO_PROMPT_TRANSFER
+  and the Results page "Aggregate Disposition Scores" section.
