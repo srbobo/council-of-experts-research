@@ -150,3 +150,28 @@ is now the priority open question, ahead of cells 3-5.
   shapes knowledge.
 - **CDS / ALR / seat density**: defined in RUNBOOK_DPO_PROMPT_TRANSFER
   and the Results page "Aggregate Disposition Scores" section.
+
+## P8 VERDICT — entanglement hypothesis FALSIFIED (2026-07-12, 102 runs)
+
+| Arm | Markers | Entangled share | Retention (final/seat density) |
+|---|---|---|---|
+| repro | 55 | 56% | 1.08 |
+| spec | 92 | 61% | 0.49 |
+| ORPO | 56 | 61% | 0.96 |
+| SFT | 150 | 67% | 0.49 |
+
+The pre-registered falsification fired: survival is **arm-dependent but
+not position-dependent**. Entangled share is flat across arms (SFT's
+markers are the MOST content-entangled yet retain worst);
+correlation(entangled-share, retention) r = −0.10 ≈ 0.
+
+**Revised mechanism hypothesis — synthesizer register (normalization):**
+final-output density sits in a narrow band (0.58–0.86) regardless of
+seat input density (0.87–1.85). The Lead appears to write at its own
+preferred epistemic register, largely independent of what the seat
+emits — "stripping" is the mechanical consequence of pushing a
+high-density input through a fixed-register writer. ORPO "survives"
+because it never exceeded the register. This makes cell 6 (synthesizer
+ablation: 3 Leads × PRESERVE on/off) the decisive next test: different
+Leads should exhibit different registers, and PRESERVE should modulate
+the band if instructions matter at all.
