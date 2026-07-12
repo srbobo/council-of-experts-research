@@ -335,6 +335,7 @@ async def deliberate(
     cabinet: "CabinetBackends | None" = None,  # per-phase routing for swap experiments
     cabinet_members: dict[SeatRole, CabinetMember] | None = None,  # override CABINET dict per-call
     seat_system_prompts: dict[str, str] | None = None,  # override SEAT_SYSTEM_PROMPTS per-call
+    synthesis_system_override: str | None = None,  # cell-6 ablation: replace LEAD_SYNTHESIS_SYSTEM
     on_token: Callable[[str, str], None] | None = None,  # (phase_tag, delta)
 ) -> DeliberationResult:
     """Run the 3-phase council on a single user query.
@@ -502,7 +503,7 @@ async def deliberate(
             cleaned = _strip_thinking(turn.output_text)
             sections.append(f"---\n{turn.seat.upper()} CONTRIBUTION:\n{cleaned}\n")
         synthesis_user = "\n".join(sections)
-        synthesis_system = LEAD_SYNTHESIS_SYSTEM
+        synthesis_system = synthesis_system_override or LEAD_SYNTHESIS_SYSTEM
     else:
         # Off-topic path: Lead answers directly without consultation.
         synthesis_user = query
