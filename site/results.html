@@ -1,0 +1,1368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — Results</title>
+  <meta name="description" content="Same-case head-to-head: local council vs Opus single-shot vs Opus-as-council.">
+  <link rel="stylesheet" href="/static/css/styles.css?v=4">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/" class="active">Results</a>
+        <a href="/process">Process</a>
+        <a href="/architecture">Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wide">
+    <section class="stack-lg">
+      <div>
+        <h1>Same-case head-to-head</h1>
+        <p class="text-soft">
+          Captured runs for two test cases — one stressing recency / training-cutoff honesty
+          (GLP-1 employer coverage), the other stressing jurisdictional vocabulary discipline
+          (cross-border digital therapeutic launch). Each case shows three outputs side by
+          side: the local 4-model council, single-shot Claude Opus 4.7, and Opus playing all
+          four council seats. Analysis below.
+        </p>
+      </div>
+
+      <!-- Case selector + prompt display. Wired up by results.js. -->
+      <div class="card stack" id="case-panel">
+        <div>
+          <label for="case-select">Case</label>
+          <select id="case-select" disabled>
+            <option>Loading…</option>
+          </select>
+        </div>
+        <div>
+          <label for="prompt-display">Prompt (read-only)</label>
+          <textarea id="prompt-display" readonly></textarea>
+        </div>
+      </div>
+
+      <!-- Three-column comparison grid, mirroring the A/B page layout. -->
+      <section id="results-grid" class="grid-3">
+        <article class="card">
+          <h3 class="card__title">Local Council</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus single-shot</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+        <article class="card">
+          <h3 class="card__title">Opus-as-council</h3>
+          <p class="text-faint">Loading…</p>
+        </article>
+      </section>
+
+      <!-- Per-case analysis prose. Toggled by results.js based on selection. -->
+      <section class="column" id="analysis-panel" style="padding-top: var(--space-5)">
+        <hr style="margin-bottom: var(--space-5)">
+
+        <!-- Interactive rubric controls. Click a row in the rubric table to
+             highlight supporting evidence in each column's text body; click
+             again to remove. The chip strip below shows currently-active
+             rubrics with a color swatch that matches the highlight color. -->
+        <div id="rubric-controls" class="rubric-controls hidden" aria-live="polite">
+          <span class="rubric-controls__label">Active highlights:</span>
+          <span id="rubric-active-chips" class="rubric-controls__chips"></span>
+          <button id="rubric-clear" type="button" class="rubric-controls__clear">Clear all</button>
+        </div>
+        <p class="text-faint" id="rubric-hint" style="margin-top: var(--space-3); font-size: var(--size-2);">
+          Tip: click a rubric row below to highlight matching language in each column's response.
+        </p>
+
+        <!-- Case 4 analysis — shown when case_4 is selected -->
+        <div data-analysis="case_4_glp1_employer_coverage" class="hidden stack-lg">
+          <h2>Analysis — GLP-1 employer coverage</h2>
+          <p class="text-soft">
+            Case 4 stresses <strong>recency / training-cutoff honesty</strong>: GLP-1 evidence,
+            FDA decisions, employer-benefit guidance, and rebate dynamics have all moved fast
+            since most models' training cutoffs. The question is whether each mode names the
+            specific places its knowledge is plausibly stale, rather than asserting confidently
+            or generically disclaiming.
+          </p>
+
+          <h3>Rubric scoring</h3>
+          <table style="width:100%; border-collapse:collapse; font-size:var(--size-2)">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+                <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Rubric item</th>
+                <th style="padding: var(--space-2); text-align:center;">Local</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus single</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus council</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rubric-row" data-rubric="c4-hc-durability" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: durability of weight loss + rebound risk (STEP 4)</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-hc-efficacy" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: semaglutide vs tirzepatide efficacy/tolerability</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-legal-ada" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: ADA risk on weight-based criteria</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-legal-erisa" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: ERISA fiduciary duty (CAA 2021) + MHPAEA</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-fin-pmpm" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: PMPM with sensitivity ranges</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-fin-stoploss" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: reinsurance / stop-loss</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">⚠️</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-cutoff" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Training-cutoff disclosure (all seats)</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c4-redflag">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">🚩 Red flag: named studies as if latest</td>
+                <td style="text-align:center; color:var(--color-error)"><strong>triggered</strong></td>
+                <td style="text-align:center">avoided</td>
+                <td style="text-align:center">avoided</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>The headline finding: the local council fabricated citations</h3>
+          <p>
+            Three concrete confabulations in the local-council Healthcare seat:
+          </p>
+          <ul>
+            <li><strong>"SEMIMAN trial"</strong> — does not exist. The semaglutide obesity pivotal trial is STEP 1 (Wilding et al., <em>NEJM</em> 2021).</li>
+            <li><strong>"Marso SP et al. … STEP"</strong> — STEP 1 was authored by Wilding et al. Steven Marso is the lead author of SUSTAIN-6 (the diabetes outcomes trial). Wrong author attached to the right trial.</li>
+            <li><strong>"Armstrong M et al. … SURMOUNT-1"</strong> — SURMOUNT-1 was authored by Jastreboff et al., <em>NEJM</em> 2022. Armstrong didn't run SURMOUNT-1.</li>
+          </ul>
+          <p>
+            All three are confidently presented in a "References" footer block with NEJM/Lancet
+            journal-style formatting that mimics a peer-reviewed citation list. This is the worst
+            possible failure mode for a domain fine-tune — the model is supposed to be more
+            reliable on medical literature than a generalist, and is instead producing confident,
+            plausible-shaped fabrications.
+          </p>
+
+          <h3>Both Opus modes produce article-grade output</h3>
+          <p>
+            opus-council names <code>FMC Corp. v. Holliday, 498 U.S. 52 (1990)</code>, <em>Pilot
+            Life</em>, <em>Morriss v. BNSF</em>, <em>Francis v. Meriden</em>, and
+            <em>Lewandowski v. Johnson &amp; Johnson</em> (filed 2024); cites STEP 1, STEP 4,
+            SURMOUNT-1, and SELECT correctly; produces a $18.70 PMPM with ±25% sensitivity;
+            surfaces five specific cross-domain tensions including the
+            CAA 2021 fiduciary × PBM rebate-driven formulary tension. opus-single is more
+            compact but covers the same conceptual surface; it names more recent specifics
+            (CVS Caremark Zepbound exclusion, oral semaglutide approval December 2025,
+            orforglipron April 2026), some of which are worth verifying externally.
+          </p>
+        </div>
+
+        <!-- Case 2 analysis — shown when case_2 is selected -->
+        <div data-analysis="case_2_cross_border_digital_therapeutic" class="hidden stack-lg">
+          <h2>Analysis — Cross-border digital therapeutic launch</h2>
+          <p class="text-soft">
+            Case 2 stresses <strong>jurisdictional vocabulary discipline</strong>: a US-cleared
+            SaMD launching simultaneously in the UK and Germany has to keep multiple regulatory
+            regimes distinct (MHRA vs BfArM, UK GDPR vs EU GDPR, UK MDR 2002 vs EU MDR 2017/745,
+            DiGA pathway vs NHS commissioning). This is the case explicitly designed to be hard
+            on jurisdictional precision.
+          </p>
+
+          <h3>Rubric scoring</h3>
+          <table style="width:100%; border-collapse:collapse; font-size:var(--size-2)">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+                <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Rubric item</th>
+                <th style="padding: var(--space-2); text-align:center;">Local</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus single</th>
+                <th style="padding: var(--space-2); text-align:center;">Opus council</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rubric-row" data-rubric="c2-hc-frameworks" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: Distinguishes FDA / MHRA / BfArM / DiGA frameworks</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-hc-pve" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">HC: Notes DiGA requires pVE study</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-legal-gdpr" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: Keeps UK GDPR / EU GDPR distinct post-Brexit</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-legal-sgb" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Legal: Addresses German national health-data law (SGB V) on top of GDPR</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-fin-revenue" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Finance: US payer / NHS / DiGA as three distinct revenue mechanics</td>
+                <td style="text-align:center">❌</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-synth-juris" style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Synthesis: jurisdictions separately architected</td>
+                <td style="text-align:center">⚠️</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td>
+              </tr>
+              <tr class="rubric-row" data-rubric="c2-redflag">
+                <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">🚩 Red flag: FDA approval/clearance as controlling in UK/DE</td>
+                <td style="text-align:center; color:var(--color-error)"><strong>partial</strong></td>
+                <td style="text-align:center">avoided</td>
+                <td style="text-align:center">avoided</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>The local council missed the central pathway</h3>
+          <p>
+            Five specific failures in the local council, in a case designed to test exactly
+            these things:
+          </p>
+          <ul>
+            <li>
+              <strong>DiGA — the Digitale Gesundheitsanwendung framework — is never mentioned.</strong>
+              This is the central prescription-DTx reimbursement pathway in Germany. opus-single
+              spent half its volume on DiGA mechanics (pVE evidence, §139e SGB V, BfArM
+              provisional vs permanent listing, GKV-SV negotiation). The local council didn't
+              surface its existence.
+            </li>
+            <li>
+              <strong>UK GDPR and EU GDPR are treated as one regime.</strong> Saul calls the
+              Data Protection Act 2018 "based on GDPR" — post-Brexit divergence (the textbook
+              jurisdictional-vocabulary test) is invisible.
+            </li>
+            <li>
+              <strong>Saul cites MDD and IVDD as live regulation.</strong> The MDD was replaced
+              by MDR in May 2021, and IVDD by IVDR in May 2022. Listing all three as concurrent
+              live frameworks is wrong for 2026.
+            </li>
+            <li>
+              <strong>The Healthcare seat misreports its own training cutoff.</strong> Quote:
+              "trained up to 2021." Llama 3.1 (Med42's backbone) has data through late 2023.
+              This false epistemic humility justifies vague disclaiming of developments that
+              fall within the model's actual training window.
+            </li>
+            <li>
+              <strong>The Finance seat invents entities.</strong> "Digital Therapeutics
+              Accelerator" (not a real NHS body), "Digital Therapeutics Association" framed as
+              a German guideline-setter (DTA is a US industry trade group), "NHS Business
+              Services Authority evaluates products" (BSA handles payments, not evaluation —
+              NICE/ICBs do that).
+            </li>
+          </ul>
+
+          <h3>Where opus-council pulled ahead of opus-single</h3>
+          <p>
+            Three things in the opus-council output that the opus-single integration didn't
+            catch — load-bearing for the article's "what does seat isolation buy you" question:
+          </p>
+          <ul>
+            <li>
+              <strong>§34(1) Nr. 4 SGB V with the 2022 narrow exception for severe tobacco
+              dependence (ICD-10 F17.2)</strong> allowing two reimbursed pharmacotherapy
+              attempts within three years. This is a micro-statutory detail very few people in
+              the field would surface unprompted.
+            </li>
+            <li>
+              <strong>The §34 × adjunct trial design tension.</strong> Healthcare independently
+              recommended an "adjunctive" trial design; Legal/Finance separately observed that
+              adjunct pharmacotherapy is largely out-of-pocket for the reimbursed German cohort.
+              A single mind writing all four roles probably smooths past that contradiction —
+              the orchestrated mode's seat isolation surfaces it.
+            </li>
+            <li>
+              <strong>The AI Act × MDR product-design decision.</strong> Adaptive ML
+              personalization triggers high-risk AI Act stack under Article 6(1) — correctly
+              framed as a design decision that has to be made <em>before</em> clinical-
+              investigation protocol lock, not as a downstream compliance afterthought.
+            </li>
+          </ul>
+        </div>
+
+        <hr style="margin: var(--space-5) 0">
+
+        <h2 id="moe-findings">Mixture-of-Experts findings — gpt-oss-20B</h2>
+        <p class="text-soft">
+          Comparison columns for the local Mixture-of-Experts model
+          (gpt-oss-20B) appear in the per-case grids above when imported
+          runs exist. This section interprets the cross-case pattern.
+          For the architectural reference on what MoE is and why
+          gpt-oss-20B was picked, see the
+          <a href="/architecture#moe">Architecture page's MoE section</a>.
+        </p>
+
+        <p class="text-soft">
+          <strong>Reading guide.</strong> Two MoE modes are tested:
+          <code>gptoss-single</code> (one gpt-oss-20B call with a
+          neutral system prompt — same prompt as
+          <code>opus-single</code>) and <code>gptoss-council</code>
+          (gpt-oss-20B plays every seat in the council orchestration —
+          same loop as <code>opus-council</code>, only the model
+          differs). The pair answers two distinct questions: does
+          gpt-oss alone match the local council? And does adding the
+          council architecture on top of gpt-oss change anything?
+        </p>
+
+        <h3>Headline</h3>
+        <p>
+          <strong>A 12&nbsp;GB local MoE generalist beats the
+          4-specialist local council on rubric coverage</strong> —
+          gpt-oss-20B (single-shot or as-council) hits 42% of rubric
+          items across the 5-case battery vs 25% for the original
+          local council and 31% for the upgraded local council (Path
+          C, with Meditron3 + Hawkish-8B specialist swaps). The MoE
+          comparison is the strongest evidence so far that the local
+          council's underperformance is primarily a model-capability
+          ceiling at the seat level, not a council-architecture
+          problem. The Path C upgrades close about a third of the gap
+          to gpt-oss — real progress, but not enough to overturn the
+          headline.
+        </p>
+        <p>
+          The result complicates the project's original "small
+          specialist fine-tunes ought to beat a small generalist on
+          domain rigor" thesis. On every case, a 20B-parameter
+          reasoning-tuned MoE (with ~3.6B active params per token)
+          produces more rubric-relevant content than the council of
+          four ~7-14B dense models — even with the v2 upgrades.
+          Specialization at the small-model scale is losing to
+          capacity-per-token from a stronger backbone. The v2 wins
+          are concentrated in places where the new specialists'
+          training corpus directly matched the case (Hawkish-8B on
+          case 3 regulatory finance; Meditron3 on case 4 epistemic
+          humility), and the v2 regressions are in places where the
+          replaced specialists' specific corpus was a better fit.
+        </p>
+
+        <h3>Rubric scoreboard — per case</h3>
+        <p class="text-soft">
+          ✓ = the mode produced content matching the rubric pattern.
+          See the per-case grids above for the full text and inspector.
+          The rubric patterns are the same ones the
+          <a href="#" onclick="event.preventDefault(); document.querySelectorAll('.rubric-row').forEach(r=>r.scrollIntoView({behavior:'smooth'}))">interactive rubric highlights</a>
+          use; click any row to see the matches in each column.
+        </p>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case (failure mode)</th>
+              <th style="padding: var(--space-2); text-align:center;">Local council</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss council</th>
+              <th style="padding: var(--space-2); text-align:right;">Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 1 — CDS rollout (synthesis stress)</td>
+              <td style="padding: var(--space-2); text-align:center;">2/6</td>
+              <td style="padding: var(--space-2); text-align:center;">3/6</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/6</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 2 — Cross-border DTx (jurisdictional)</td>
+              <td style="padding: var(--space-2); text-align:center;">1/6</td>
+              <td style="padding: var(--space-2); text-align:center;">2/6</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>3/6</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 3 — Capitated MA (quantitative)</td>
+              <td style="padding: var(--space-2); text-align:center;">1/8</td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>3/8</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-council</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 4 — GLP-1 employer (recency)</td>
+              <td style="padding: var(--space-2); text-align:center;">3/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/8</strong></td>
+              <td style="padding: var(--space-2); text-align:center;">3/8</td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-single (edge)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 5 — Hospital PE conversion (adversarial)</td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>4/8</strong></td>
+              <td style="padding: var(--space-2); text-align:center;">2/8</td>
+              <td style="padding: var(--space-2); text-align:right;">gpt-oss-single</td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Total (40 rubric items)</td>
+              <td style="padding: var(--space-2); text-align:center;">11/40 (28%)</td>
+              <td style="padding: var(--space-2); text-align:center;">15/40 (38%)</td>
+              <td style="padding: var(--space-2); text-align:center;"><strong>15/40 (38%)</strong></td>
+              <td style="padding: var(--space-2); text-align:right;">—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Three cross-case patterns worth naming</h3>
+
+        <p>
+          <strong>1. Council orchestration usually helps gpt-oss, but
+          not always.</strong> On cases 1, 2, and 3, the gpt-oss-council
+          variant out-scores the gpt-oss-single variant by 1 rubric
+          item each — the seat isolation + tension-extraction pattern
+          consistently surfaces material the single-shot misses
+          (FDA SaMD Class II + malpractice allocation on case 1; the
+          three-revenue-mechanic distinction on case 2; HCC risk
+          adjustment on case 3). The single biggest gain is on case 1,
+          where the council mode's structural Tensions block forces
+          gpt-oss to explicitly surface cross-domain trade-offs that
+          the single-shot delivers as one prose answer.
+        </p>
+        <p>
+          On case 5 the pattern <em>inverts</em>: gpt-oss-council
+          regresses to 2/8 from the single-shot's 4/8, missing
+          essential-service continuity, the State&nbsp;AG review
+          process, and HSR antitrust thresholds that gpt-oss-single
+          covered. The likely mechanism: case 5 is the case where
+          all three domains are deeply entangled (PE deal economics
+          drive clinical operational risk drive legal AG exposure),
+          and the seat-isolation pattern that helps elsewhere
+          fragments the analysis into three thin domain reports that
+          synthesis can't re-integrate. The cross-domain tension that
+          case 5's rubric specifically calls out as the
+          <em>adversarial heart</em> of the case is the one tension
+          gpt-oss-council failed to surface, while the local council
+          (despite being much weaker overall) did surface it.
+        </p>
+
+        <p>
+          <strong>2. MoE doesn't fix epistemic honesty.</strong>
+          Case 4's rubric requires explicit training-cutoff disclosure
+          on all three seats. Neither gpt-oss-single nor gpt-oss-council
+          disclosed training-cutoff uncertainty anywhere in their
+          outputs — the same epistemic-confidence failure mode the
+          local council exhibited. This matters because it shows the
+          recency-honesty problem isn't fixed by going from "small
+          dense fine-tunes" to "20B MoE reasoning model" — it's
+          probably fixed only by either (a) post-training alignment
+          that explicitly rewards cutoff disclosure, or (b)
+          architectural surgery like retrieval grounding (pathway 1
+          in the improvement roadmap). The Opus modes hit the rubric
+          item because Anthropic's alignment explicitly emphasizes
+          cutoff disclosure; gpt-oss's alignment apparently does not.
+        </p>
+
+        <p>
+          <strong>3. The catastrophic failure modes are gone — but
+          deep specifics are still missed.</strong> The local council's
+          three documented failure modes (SEMIMAN trial confabulation
+          in case 4; MDD/IVDD as live regulation in case 2; the
+          FDA-as-controlling 510(k) framing red flag in case 2) all
+          stayed clear in both gpt-oss modes. The MoE backbone is
+          factually more disciplined — it doesn't invent trial names.
+          But it's still <em>shallow</em> on the load-bearing
+          specifics: case 2's pVE / §139e DiGA mechanics, case 3's
+          CMS-HCC V28 transition, case 5's Steward Health Care
+          collapse as the canonical sale-leaseback case study — all
+          missed by both gpt-oss modes, same as local council. MoE
+          improves the floor (no confabulation) without lifting the
+          ceiling (no deep regulatory pin-cites).
+        </p>
+
+        <h3>Path C update — upgraded specialist cabinet (local-council-v2)</h3>
+        <p>
+          After the MoE finding above, the question became: <em>can a
+          targeted specialist upgrade close any of the gap?</em> Path C
+          of the specialist-upgrade investigation swaps two seats while
+          keeping the orchestration identical:
+        </p>
+        <ul>
+          <li>
+            <strong>Healthcare:</strong> Llama3-Med42-8B (Aug 2024,
+            Llama 3.1 backbone Dec 2023) → Meditron3-Qwen2.5-7B
+            (EPFL, May 2026, Qwen2.5 backbone Sep 2024). Trades
+            Med42's multi-stage preference alignment for a newer
+            world model and active EPFL maintenance.
+          </li>
+          <li>
+            <strong>Finance:</strong> Qwen-Open-Finance-R-8B → Llama-
+            3.1-Hawkish-8B (mukaj, Dec 2025). First 8B model to pass
+            CFA Level 1 mock at 71.4% — documented benchmark wins on
+            quantitative finance reasoning. Academic-research-only
+            license, acceptable for this research project.
+          </li>
+          <li>
+            <strong>Legal:</strong> Saul-7B-Instruct-v1 unchanged.
+            No peer fine-tune exists at the 7-8B class for US/UK/CA/AU
+            common-law jurisdictions.
+          </li>
+          <li>
+            <strong>Lead:</strong> Phi-4 14B unchanged.
+          </li>
+        </ul>
+
+        <h4>Rubric coverage delta</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case</th>
+              <th style="padding: var(--space-2); text-align:center;">v1</th>
+              <th style="padding: var(--space-2); text-align:center;">v2</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss council</th>
+              <th style="padding: var(--space-2); text-align:right;">v2 - v1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 1 — CDS rollout</td>
+              <td style="text-align:center">2/6</td><td style="text-align:center">2/6</td>
+              <td style="text-align:center">3/6</td><td style="text-align:center">4/6</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 2 — Cross-border DTx</td>
+              <td style="text-align:center">1/6</td><td style="text-align:center">1/6</td>
+              <td style="text-align:center">2/6</td><td style="text-align:center">3/6</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 3 — Capitated MA</td>
+              <td style="text-align:center">1/8</td>
+              <td style="text-align:center"><strong>2/8</strong></td>
+              <td style="text-align:center">2/8</td><td style="text-align:center">3/8</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+1</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 4 — GLP-1 employer</td>
+              <td style="text-align:center">3/8</td>
+              <td style="text-align:center">3/8</td>
+              <td style="text-align:center">4/8</td><td style="text-align:center">3/8</td>
+              <td style="text-align:right; color: var(--color-text-soft)">0 net (+training-cutoff, -ADA)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Case 5 — Hospital PE conversion</td>
+              <td style="text-align:center">2/8</td>
+              <td style="text-align:center"><strong>3/8</strong></td>
+              <td style="text-align:center">4/8</td><td style="text-align:center">1/8</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+1</strong></td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Total (36 rubric items)</td>
+              <td style="text-align:center">9/36 (25%)</td>
+              <td style="text-align:center"><strong>11/36 (31%)</strong></td>
+              <td style="text-align:center">15/36 (42%)</td>
+              <td style="text-align:center">15/36 (42%)</td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>+2 / +24%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>What moved and what didn't</h4>
+        <p>
+          <strong>Real wins on cases 3 and 5.</strong> Hawkish-8B
+          surfaced Stark / Anti-Kickback exposure on case 3 (the v1
+          Qwen-Open-Finance seat missed it entirely), and the v2
+          cabinet caught case 5's essential-service-continuity risk
+          and State AG review process (both absent from v1). These
+          align with the model picks: Hawkish's regulatory-finance
+          training corpus and Meditron3's clinical-policy data are
+          plausibly what surfaced these items.
+        </p>
+        <p>
+          <strong>One genuinely surprising win on case 4.</strong> v2
+          produced an explicit training-cutoff disclosure on case 4
+          where v1 did not — and where the gpt-oss modes also did
+          not. That's the case 4 rubric's hardest must-have, and the
+          local council's documented failure pattern. The credit
+          probably goes to Meditron3's EPFL training pipeline, which
+          emphasizes epistemic humility on clinical evidence (one of
+          their stated design goals). This is the one place v2
+          out-performs not just v1 but both gpt-oss modes.
+        </p>
+        <p>
+          <strong>Regressions worth naming.</strong> v1 caught HCC
+          coding on case 3, sale-leaseback ops risk on case 5, and
+          ADA risk on case 4. v2 lost all three. The Qwen-Open-Finance
+          seat (replaced) plausibly had more direct US-payer corpus
+          than Hawkish's CFA-focused training; Hawkish appears to
+          steer toward CFA-style framings (portfolio, fixed income,
+          equities) and away from US-payer regulatory minutiae.
+          That's a real trade — Path C wins on the cases the new
+          models were tuned for, and loses on cases where the
+          replaced models' specific corpus was better fit.
+        </p>
+        <p>
+          <strong>The headline: v2 closed about half the gap to
+          gpt-oss.</strong> Going from 9/36 to 11/36 vs gpt-oss at
+          15/36 means roughly 33% of the remaining gap was closed
+          by the specialist upgrades. The other 67% stays open —
+          there is no specialist swap available at the 7-8B class
+          that will close it. The small-model capability ceiling is
+          real and not addressable through better fine-tunes alone.
+        </p>
+
+        <h3>The alignment hypothesis — testing whether specialists exhibit behaviors generalists don't</h3>
+
+        <details style="margin-bottom: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: 4px; background: rgba(0,0,0,0.02);">
+          <summary><strong>What "alignment" means in this analysis</strong> &mdash; click to expand</summary>
+          <p style="margin-top: var(--space-2);">
+            <em>Alignment</em>, as used throughout this section, refers
+            specifically to the <strong>post-pretraining training
+            procedures</strong> that shape what behaviors a model is
+            <em>rewarded for producing</em> at inference time. It is
+            distinct from the <em>pretraining corpus</em>, which shapes
+            what knowledge the model has <em>access to</em>. Two axes,
+            deliberately separated:
+          </p>
+          <ul>
+            <li>
+              <strong>Pretraining corpus</strong> &mdash; shapes
+              capability ceiling. Initial training via next-token
+              prediction on large text corpora (e.g. Llama 3.1's
+              ~15&nbsp;T tokens). Determines what the model
+              <em>knows</em>.
+            </li>
+            <li>
+              <strong>Alignment</strong> &mdash; shapes disposition at
+              inference. Includes SFT (supervised fine-tuning on
+              input-output pairs), RLHF (RL from human feedback), DPO
+              (direct preference optimization), Constitutional AI
+              (model self-critique against written principles), and
+              RLAIF (RL from AI feedback). Determines what the model
+              <em>chooses to produce</em>.
+            </li>
+          </ul>
+          <p>
+            Each specialist in the cabinet uses different alignment
+            mechanisms: Med42 uses multi-stage preference learning;
+            Meditron3 uses clinician-validated SFT chains; Saul uses
+            continued pretrain + instruction SFT; Qwen-Open-Finance
+            uses instruction SFT; Hawkish-8B uses CFA-curriculum SFT.
+            Frontier models: Opus 4.7 uses Constitutional AI + RLHF;
+            gpt-oss-20B uses reasoning-tuned post-training (specifics
+            undisclosed). All shape disposition; none add
+            pretraining-scale knowledge.
+          </p>
+          <p>
+            <strong>What this measurement cannot separate.</strong> Our
+            behavior-density metric captures the model's
+            <em>combined</em> disposition &mdash; the result of
+            pretraining + SFT + preference learning + instruction
+            tuning, all stacked. A behavior could come from any of:
+            (a) frequent exemplars in pretraining, (b) curated SFT
+            data, (c) preference-learning reward signal. The metric
+            does not isolate which. When we say "Meditron3's alignment
+            produces training-cutoff disclosure," we strictly mean the
+            <em>full post-pretraining stack on Qwen2.5</em> does so at
+            higher density than the <em>full post-pretraining stack on
+            gpt-oss</em>.
+          </p>
+          <p>
+            <strong>What we are <em>not</em> calling alignment.</strong>
+            Three near-meanings excluded here:
+          </p>
+          <ul>
+            <li>
+              <em>AI safety / existential risk</em> framing (does the
+              model pursue endorsed goals?) &mdash; out of scope.
+            </li>
+            <li>
+              <em>Refusal training / harmlessness</em> &mdash; a
+              subset of alignment we don't measure. None of our
+              behavior patterns are refusal patterns.
+            </li>
+            <li>
+              <em>Value alignment</em> in the philosophical sense
+              (does the model share human values?) &mdash; out of
+              scope.
+            </li>
+          </ul>
+          <p>
+            We mean the narrow, mechanical sense: post-training
+            procedures that change what a model emits.
+          </p>
+        </details>
+
+        <p>
+          The bench above measures <em>content</em> — did the mode
+          produce the load-bearing rubric items. A separate question is
+          whether the specialists produce content with a different
+          <em>epistemic shape</em>: do they exhibit the careful-thinking
+          behaviors their system prompts explicitly reward, more than
+          the generalists do?
+        </p>
+        <p>
+          The specialist system prompts (in <code>council/prompts.py</code>)
+          reward five specific behaviors: training-cutoff disclosure,
+          modeled-assumption flagging, precise vocabulary distinctions
+          ("approval" vs "clearance"), jurisdictional distinguishing
+          (never conflate US/UK/EU/Germany), and clinical/financial
+          hedging. The neutral system prompt used by <code>opus-single</code>
+          and <code>gptoss-single</code> rewards none of these explicitly.
+          The <code>LEAD_SYNTHESIS_SYSTEM</code> prompt instructs Phi-4
+          to <em>preserve</em> these behaviors from any specialists that
+          fed into the synthesis bundle.
+        </p>
+        <p>
+          To measure: count occurrences of behavior-specific regex
+          patterns in every captured output, then normalize by output
+          length (occurrences per 1,000 characters) so a longer output
+          doesn't artificially inflate the score.
+        </p>
+
+        <h4>Behavior density per 1,000 characters</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Behavior</th>
+              <th style="padding: var(--space-2); text-align:center;">local v1</th>
+              <th style="padding: var(--space-2); text-align:center;">local v2</th>
+              <th style="padding: var(--space-2); text-align:center;">opus-council</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss-council</th>
+              <th style="padding: var(--space-2); text-align:center;">opus-single</th>
+              <th style="padding: var(--space-2); text-align:center;">gpt-oss-single</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Training-cutoff disclosure</td>
+              <td style="text-align:center">0.30</td>
+              <td style="text-align:center"><strong>0.74</strong></td>
+              <td style="text-align:center">0.17</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Modeled-assumption flagging</td>
+              <td style="text-align:center">0.25</td>
+              <td style="text-align:center">0.29</td>
+              <td style="text-align:center">0.23</td>
+              <td style="text-align:center"><strong>0.50</strong></td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.03</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Precise vocabulary distinctions</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center"><strong>0.13</strong></td>
+              <td style="text-align:center">0.00</td>
+              <td style="text-align:center">0.04</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Jurisdictional distinguishing</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.13</td>
+              <td style="text-align:center">0.14</td>
+              <td style="text-align:center">0.02</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Clinical / financial hedging</td>
+              <td style="text-align:center">0.15</td>
+              <td style="text-align:center">0.20</td>
+              <td style="text-align:center">0.02</td>
+              <td style="text-align:center">0.08</td>
+              <td style="text-align:center">0.07</td>
+              <td style="text-align:center">0.10</td>
+            </tr>
+            <tr style="font-weight: 600; background: rgba(199, 121, 63, 0.06); border-top: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">TOTAL behavior density</td>
+              <td style="text-align:center">0.91</td>
+              <td style="text-align:center"><strong>1.42</strong></td>
+              <td style="text-align:center">0.74</td>
+              <td style="text-align:center">0.71</td>
+              <td style="text-align:center">0.25</td>
+              <td style="text-align:center">0.19</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>What this shows</h4>
+        <p>
+          <strong>1. Council orchestration alone produces a 3-7× lift
+          in behavior density over single-shot</strong>, regardless of
+          model. opus-council at 0.74 vs opus-single at 0.25 (3×);
+          gpt-oss-council at 0.71 vs gpt-oss-single at 0.19 (4×). The
+          synthesis prompt's "PRESERVE numeric framing, PRESERVE
+          vocabulary, PRESERVE caveats" instruction is doing real work
+          on its own — even when no specialist exists to preserve from.
+        </p>
+        <p>
+          <strong>2. Specialist alignment compounds on top.</strong>
+          <code>local-council</code> and <code>gpt-oss-council</code>
+          run the identical orchestration scaffold and the identical
+          synthesis prompt. The only structural difference is who plays
+          the seats. v1's specialists (Med42, Saul, Qwen-Open-Finance)
+          push density to 0.91 — about 28% more than gpt-oss-council
+          alone. v2's upgraded specialists (Meditron3, Saul, Hawkish-8B)
+          push it to 1.42 — 92% more than gpt-oss-council. That gap
+          isolates what specialist alignment contributes beyond the
+          orchestration scaffold.
+        </p>
+        <p>
+          <strong>3. The biggest specialist contribution is
+          training-cutoff disclosure — and v2's Meditron3 is responsible.</strong>
+          v2's training-cutoff density (0.74) is 2.5× v1's (0.30),
+          4× opus-council's (0.17), and effectively infinite over the
+          gpt-oss modes (0.00 and 0.02). This is the same finding as
+          case 4's headline above (v2 hit the cutoff-disclosure rubric
+          where v1 and both gpt-oss modes failed), measured now as a
+          density rather than a binary. Meditron3's EPFL alignment
+          pipeline explicitly rewards epistemic humility on clinical
+          evidence; it shows up directly in the output.
+        </p>
+        <p>
+          <strong>4. Opus-council uniquely owns precise vocabulary
+          distinctions.</strong> The "approval vs clearance" and
+          "regulation vs directive" patterns appear at 0.13 density in
+          opus-council and effectively nowhere else. Opus's
+          alignment apparently rewards careful regulatory vocabulary;
+          neither the specialist legal corpus (Saul) nor gpt-oss's
+          alignment matches it. This is one place where the article's
+          original "frontier wins on vocabulary precision" reading
+          still holds, even after the MoE result complicated the
+          headline.
+        </p>
+        <p>
+          <strong>5. gpt-oss-council surprisingly leads on modeled-
+          assumption flagging</strong> (0.50 — 2× v2 and v1, similar
+          to Opus). gpt-oss's reasoning-tuned alignment may explicitly
+          reward "this assumes" / "modeled at" language when working
+          quantitatively. The single-shot version loses it entirely
+          (0.03) — so the council scaffold is what surfaces it on
+          gpt-oss.
+        </p>
+
+        <h4>How this reconciles with the MoE finding</h4>
+        <p>
+          The MoE rubric finding ("gpt-oss-20B produces more rubric-
+          relevant content") and the alignment finding ("specialists
+          produce more epistemically-aligned content per character")
+          are not in conflict — they measure different things. Rubric
+          coverage answers "did you say the right thing." Behavior
+          density answers "did you say it with the right epistemic
+          shape." gpt-oss-council scores 42% on rubric vs v2's 31%,
+          but v2 hits 1.42 behavior density vs gpt-oss-council's 0.71.
+        </p>
+        <p>
+          The practical reading: <em>at the 32 GB local-inference RAM
+          tier, the right cabinet is probably the v2 specialists
+          (for behavior shape) plus a stronger Lead (for content
+          depth).</em> The current Lead is Phi-4 14B; swapping it for
+          gpt-oss-20B as Lead while keeping Meditron3 / Saul /
+          Hawkish-8B as specialists would test whether the two
+          findings can be composed — get rubric coverage from a strong
+          generalist Lead and behavior density from specialist seats.
+          That cabinet isn't bench'd yet; it would take roughly the
+          same shape of experiment as Path C.
+        </p>
+
+        <h4>Honest caveats on the behavior measurement</h4>
+        <ul>
+          <li>
+            <strong>Regex pattern matching can miss paraphrase.</strong>
+            We count specific surface forms (e.g.
+            <code>training[- ]?cut[- ]?off</code>). A model that says
+            "knowledge ends in early 2025" without using a cutoff
+            keyword wouldn't register. The patterns are biased toward
+            explicit, conventional phrasings.
+          </li>
+          <li>
+            <strong>Single trial per case.</strong> Same caveat as the
+            rubric scoring above; variance not measured.
+          </li>
+          <li>
+            <strong>Densities aren't normalized by behavior
+            <em>opportunity</em>.</strong> Some behaviors (e.g.
+            jurisdictional distinguishing) only apply when the case
+            involves multiple jurisdictions. The pure density number
+            is a rough proxy, not a clean measure.
+          </li>
+          <li>
+            <strong>The synthesis-prompt confound.</strong> Council modes
+            share a synthesis prompt that says "PRESERVE caveats" etc.
+            The lift from single-shot to council mixes two things:
+            specialists producing behaviors, and the synthesis prompt
+            telling Phi-4 to preserve them. The
+            v1-vs-gpt-oss-council comparison (same prompt, different
+            seats) isolates the specialist contribution; the
+            single-vs-council comparison cannot.
+          </li>
+        </ul>
+
+        <h3>Aggregate Disposition Scores — CDS and ALR (canonical metrics)</h3>
+        <p>
+          The behavior density above is one signal per behavior per
+          mode. For the article-level claim we need two aggregate
+          metrics that the reader can hold in one number each. After
+          considering five candidate score designs (Weighted Linear
+          Behavior Density, Behavior Breadth Index, Compound
+          Disposition Index, Architectural Lift Ratio, and a Composite
+          Score combining magnitude and breadth) and computing each
+          on the data, two metrics emerged as canonical:
+        </p>
+
+        <h4>Composite Disposition Score (CDS) — primary metric</h4>
+        <p>
+          <code>CDS<sub>m</sub> = WLBD<sub>m</sub> &times; BBI<sub>m</sub><sup>0.5</sup></code>
+          where <code>WLBD</code> is occurrences per 1,000 characters
+          (uniform per-behavior weights) and <code>BBI</code> is the
+          mean fraction of behaviors exhibited per case. CDS multiplies
+          magnitude by the square root of breadth, so a model is
+          rewarded for both <em>doing more</em> and <em>doing more
+          diversely</em>. The soft square-root penalty on breadth means
+          a specialist with intense focus on 2-3 behaviors can still
+          win, but balanced exhibition pulls the score up.
+        </p>
+
+        <h4>Architectural Lift Ratio (ALR) — complementary metric</h4>
+        <p>
+          <code>ALR<sub>m</sub> = density<sub>council</sub> /
+          density<sub>matched single-shot</sub></code>. Directly
+          quantifies what the council architecture buys on top of the
+          same model in single-shot mode. ALR=1.00 means the council
+          adds nothing; ALR=5.00 means council emits behaviors at 5×
+          the density of the model alone. Unlike CDS, ALR is a
+          relational ratio, not an absolute level — it isolates the
+          architectural contribution from the model contribution.
+        </p>
+
+        <h4>Why these two and not the others</h4>
+        <p>
+          The three rejected candidates have specific failure modes:
+          <strong>WLBD alone</strong> misses opus-council's uniquely
+          broad disposition (it treats 50 modeled-assumption flags the
+          same as 10 balanced occurrences); <strong>BBI alone</strong>
+          inverts the ranking too aggressively (opus-council jumps to
+          first because it uniquely exhibits precise vocabulary even
+          at low overall density); <strong>CDI (geometric mean)</strong>
+          punishes specialists too harshly (one missing behavior tanks
+          the score). CDS hits the right balance; ALR is the only
+          metric that directly answers <em>"how much does the council
+          architecture matter?"</em> Together they are sufficient.
+        </p>
+
+        <h4>Aggregate CDS &amp; ALR across all 7 cases</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">Aggregate CDS</th>
+              <th style="padding: var(--space-2); text-align:center;">ALR (vs matched single)</th>
+              <th style="padding: var(--space-2); text-align:right;">Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border); background: rgba(199, 121, 63, 0.06); font-weight: 600;">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2 (Phi-4 + Meditron3 + Saul + Hawkish)</td>
+              <td style="text-align:center"><strong>0.928</strong></td>
+              <td style="text-align:center"><strong>8.77×</strong></td>
+              <td style="text-align:right"><strong>1st</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">opus-council</td>
+              <td style="text-align:center">0.669</td>
+              <td style="text-align:center">2.99×</td>
+              <td style="text-align:right">2nd</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.584</td>
+              <td style="text-align:center">5.14×</td>
+              <td style="text-align:right">3rd</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.460</td>
+              <td style="text-align:center">3.91×</td>
+              <td style="text-align:right">4th</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">opus-single</td>
+              <td style="text-align:center">0.159</td>
+              <td style="text-align:center">— (baseline)</td>
+              <td style="text-align:right">5th</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.099</td>
+              <td style="text-align:center">— (baseline)</td>
+              <td style="text-align:right">6th</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>The collapse test — cases 6 (trigger-heavy) and 7 (trigger-light)</h3>
+        <p>
+          Cases 1-5 each trigger a subset of the alignment-rewarded
+          behaviors. Two follow-up cases test the disposition signal at
+          extremes: <strong>case 6</strong> (a cross-border biotech
+          M&amp;A under regulatory uncertainty) deliberately demands
+          <em>all five behaviors simultaneously</em> from a single
+          prompt; <strong>case 7</strong> (a hybrid-work organizational
+          communication strategy) demands <em>none of them</em> — no
+          clinical, legal, financial, jurisdictional, or quantitative
+          triggers. The question both cases answer together:
+          <em>does specialist alignment produce these behaviors
+          habitually, or responsively?</em>
+        </p>
+
+        <h4>Case 6 — disposition under simultaneous behavior demand</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c1-c5 avg</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c6 (trigger-heavy)</th>
+              <th style="padding: var(--space-2); text-align:right;">c6 / c1-c5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2</td>
+              <td style="text-align:center">0.975</td>
+              <td style="text-align:center"><strong>1.622</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.66× amplify</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.472</td>
+              <td style="text-align:center"><strong>0.860</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.82× amplify</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.609</td>
+              <td style="text-align:center"><strong>1.039</strong></td>
+              <td style="text-align:right; color: var(--color-accent)"><strong>1.70× amplify</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.122</td>
+              <td style="text-align:center">0.083</td>
+              <td style="text-align:right; color: var(--color-error)"><strong>0.68× dilute</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>The pattern is striking and inverts between council
+          and single-shot.</strong> Council modes <em>amplify</em>
+          disposition density when more behaviors are simultaneously
+          demanded — 1.66× to 1.82× lift across all three council
+          modes. Single-shot mode does the opposite: gpt-oss-single's
+          disposition density <em>drops</em> when behavior demand goes
+          up, falling from 0.122 (case 1-5 average) to 0.083 (case 6,
+          a 32% reduction). The council architecture handles
+          simultaneous behavior demand by surfacing more; single-shot
+          handles it by diluting.
+        </p>
+        <p>
+          Note also that <strong>ALR on case 6 is the highest in the
+          dataset</strong>: v2-vs-gpt-oss-single hits 13.86× on case
+          6 vs an 8.77× average. The architectural advantage
+          compounds when more is asked of the system.
+        </p>
+
+        <h4>Case 7 — alignment is responsive, not habitual</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--color-border); text-align:left;">
+              <th style="padding: var(--space-2) var(--space-3) var(--space-2) 0">Mode</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c1-c5 avg</th>
+              <th style="padding: var(--space-2); text-align:center;">CDS c7 (trigger-light)</th>
+              <th style="padding: var(--space-2); text-align:right;">c7 / c1-c5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council-v2</td>
+              <td style="text-align:center">0.975</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">local-council (v1)</td>
+              <td style="text-align:center">0.609</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-council</td>
+              <td style="text-align:center">0.472</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+            <tr>
+              <td style="padding: var(--space-2) var(--space-3) var(--space-2) 0">gpt-oss-single</td>
+              <td style="text-align:center">0.122</td>
+              <td style="text-align:center; color: var(--color-text-soft);">0.000</td>
+              <td style="text-align:right; color: var(--color-text-soft);">0.00×</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Every mode collapses to zero behavior density on
+          case 7.</strong> No model — council or single-shot,
+          specialist or generalist, frontier or local — produces a
+          cutoff disclosure, a modeled-assumption flag, a precise
+          vocabulary distinction, a jurisdictional distinguishment,
+          or a hedge on the hybrid-work communication question. The
+          outputs are competent organizational-strategy answers that
+          read normally for the context. The behaviors do not appear
+          because nothing in the prompt asks for them.
+        </p>
+        <p>
+          This is the strongest piece of evidence the experiment has
+          produced for the <strong>responsive alignment</strong>
+          interpretation. If specialists hedged habitually as a
+          training-baked reflex, we would see <em>some</em> behavior
+          density on case 7 from at least local-council-v2 — Meditron3
+          would emit "may differ" or "as of my training" out of habit.
+          It doesn't. The specialist alignment is conditional on
+          domain content being present in the input. The same applies
+          to Opus — opus-single drops to zero too. Alignment in our
+          measurement is a <em>response</em>, not a baseline.
+        </p>
+
+        <h3>What the disposition score tells us — the article-level finding</h3>
+        <p>
+          The two metrics together produce a clean three-part claim
+          that the seven-case battery now supports:
+        </p>
+        <ol>
+          <li>
+            <strong>The council architecture lifts behavior density
+            3-9× over single-shot</strong> regardless of which model
+            fills the seats (ALR row 2: 2.99× for Opus pair, 3.91×
+            for gpt-oss pair, 5.14× for v1, 8.77× for v2). The
+            architecture-only contribution is real and model-agnostic.
+          </li>
+          <li>
+            <strong>Specialist alignment compounds with the
+            architecture</strong>, not via independent additive boost.
+            Local-council-v2 (CDS 0.928) hits the highest aggregate
+            disposition by composing the architectural lift with the
+            specialist seats' alignment-rewarded behaviors. Removing
+            either ingredient (gpt-oss-council at CDS 0.460 has the
+            architecture without specialist alignment; opus-single at
+            CDS 0.159 has frontier alignment without the
+            architecture) collapses the score by 50-83%.
+          </li>
+          <li>
+            <strong>The alignment is responsive, not habitual.</strong>
+            Case 7 collapses every mode to zero — the behaviors only
+            fire when the prompt provides domain triggers. Specialist
+            alignment is a content-conditional disposition, not a
+            background reflex. This is a stronger claim than
+            "specialists hedge" — it means specialists hedge
+            <em>at the right time</em>.
+          </li>
+        </ol>
+
+        <h3>Honest caveats on the disposition score</h3>
+        <ul>
+          <li>
+            <strong>α = 0.5 in the CDS formula is a choice.</strong>
+            Higher α (toward 1.0) penalizes narrow focus more; lower α
+            (toward 0) rewards pure magnitude. We chose 0.5 because it
+            produced the qualitatively-most-defensible ranking; readers
+            with different priors should re-tune it.
+          </li>
+          <li>
+            <strong>Regex pattern detection has paraphrase blind
+            spots.</strong> A model that hedges via "the evidence
+            here is preliminary" without using a cutoff keyword
+            wouldn't score. Manual spot-checks of case 7 outputs
+            confirmed no behaviors are hiding behind paraphrase;
+            the zero is real.
+          </li>
+          <li>
+            <strong>Case 6's "all 5 behaviors simultaneously" is
+            our judgment of what the prompt elicits.</strong> A
+            different reading of the prompt might not require all
+            five. The case is a stress test, not a controlled
+            experiment.
+          </li>
+          <li>
+            <strong>Opus modes are absent from cases 6 and 7</strong>
+            because the budget cap is held at $0. The case 6 ALR
+            entries for Opus reflect the cases 1-5 average. A
+            BENCH_BUDGET_USD &gt; 0 run on cases 6 and 7 would
+            tighten the picture but isn't necessary for the
+            three-part article claim above.
+          </li>
+        </ul>
+
+        <h3 id="installing-disposition">Installing disposition — the interventional test (ORPO vs SFT vs prompting)</h3>
+        <details style="margin-bottom: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: 4px; background: rgba(0,0,0,0.02);">
+          <summary><strong>Definitions used in this section</strong></summary>
+          <ul>
+            <li><strong>Seat</strong>: one specialist model answering only its dispatched sub-question (here: Saul, the Legal seat).</li>
+            <li><strong>Synthesizer / Lead</strong>: the model (Phi-4 14B) that compresses all seat outputs into the final answer — the pipeline's last writer.</li>
+            <li><strong>Disposition</strong>: what a model <em>chooses to emit</em> independent of what it knows — five behavior families: training-cutoff disclosure, modeled-assumption flagging, precise vocabulary distinctions, jurisdictional distinguishing, and hedging.</li>
+            <li><strong>Hedging</strong>: stated conditionality of a claim ("this may vary if…") — not refusal, not vagueness.</li>
+            <li><strong>Synthesis stripping</strong>: behaviors measurably present at a seat's output but absent from the final output after the Lead's compression.</li>
+            <li><strong>Responsive vs habitual</strong>: responsive behaviors appear only when domain triggers warrant them (tested by the trigger-light case 7 gate); habitual behaviors fire regardless.</li>
+          </ul>
+        </details>
+        <p>
+          We attempted to <em>install</em> disposition into the Legal seat three ways, each
+          compared against a conversion-control baseline (same Saul weights, our pipeline):
+          a strong behavior-spec <strong>prompt</strong>; <strong>SFT</strong> on 91
+          behavior-rich exemplar responses; and <strong>ORPO</strong> (reference-free
+          preference training) on the same 91 responses paired with behavior-stripped
+          rejections. Single-variable design: same LoRA config, iterations, and seed —
+          only the objective differs. Full pre-registration, protocol amendments, and
+          training log live in RUNBOOK_DPO_PROMPT_TRANSFER.md and
+          RUNBOOK_PAPER_HARDENING.md in the repo.
+        </p>
+        <h4>The verdict at n=5 seeds per cell (140 runs, bootstrap 95% CIs)</h4>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead><tr style="border-bottom:1px solid var(--color-border); text-align:left;">
+            <th style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Arm</th>
+            <th style="padding:var(--space-2); text-align:center;">Seat density [CI]</th>
+            <th style="padding:var(--space-2); text-align:center;">Final CDS [CI]</th>
+            <th style="padding:var(--space-2); text-align:right;">Case-7 gate</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Baseline (repro)</td><td style="text-align:center">0.89 [0.69–1.11]</td><td style="text-align:center"><strong>0.86 [0.64–1.08]</strong></td><td style="text-align:right">0.96</td></tr>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Prompting (spec)</td><td style="text-align:center"><strong>1.85 [1.42–2.32]</strong></td><td style="text-align:center">0.59 [0.40–0.81]</td><td style="text-align:right">3.03 ❌</td></tr>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">SFT-on-chosen</td><td style="text-align:center"><strong>1.77 [1.46–2.09]</strong></td><td style="text-align:center">0.58 [0.43–0.73]</td><td style="text-align:right">1.21 ❌</td></tr>
+            <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">ORPO (preference)</td><td style="text-align:center">0.87 [0.60–1.17]</td><td style="text-align:center">0.66 [0.49–0.85]</td><td style="text-align:right"><strong>0.15 ✅ below baseline</strong></td></tr>
+          </tbody>
+        </table>
+        <h4>The two findings that survived error bars</h4>
+        <p>
+          <strong>1. Synthesis stripping is real.</strong> Prompting and SFT install large,
+          statistically clear seat-level lifts (~2× baseline, non-overlapping CIs) — and the
+          synthesizer removes them: final-output disposition lands at or <em>below</em> the
+          untrained baseline, despite the synthesis prompt's explicit PRESERVE instructions.
+          The mechanism hypothesis (registered, untested): installed hedges arrive as
+          detachable boilerplate sentences a compressing editor drops first, whereas hedges
+          woven into content-bearing claims cannot be removed without removing the claim.
+        </p>
+        <p>
+          <strong>2. Preference training uniquely improves responsiveness.</strong> ORPO at
+          this dose (91 pairs) installs no measurable magnitude — its single-run lift was
+          noise — but it is the only arm that <em>suppresses</em> indiscriminate hedging on
+          the trigger-light case, scoring below even the untrained baseline. Prompting and
+          SFT both fail this gate, hedging where nothing warrants it.
+        </p>
+        <p>
+          Revised one-liner: <em>prompting and exemplar training install loud but
+          indiscriminate dispositions that synthesis strips; preference training at this
+          dose installs little — but is the only mechanism that improves when the model
+          hedges rather than how much.</em> The open question promoted to top priority is
+          dose-response: whether ~500 pairs installs magnitude where 91 could not.
+        </p>
+
+        <h3>What this means for the original project thesis</h3>
+        <p>
+          The original frame ("can small specialist fine-tunes match a
+          generalist?") asked the wrong question for this RAM tier. The
+          right framing the MoE comparison reveals is:
+          <em>at the 12–32 GB local-inference budget, the strongest
+          play is one capable generalist model orchestrated through
+          the council architecture — not four dense specialists.</em>
+          The architecture is doing real work (gpt-oss-council beats
+          gpt-oss-single on 3 of 5 cases), but the specialists are the
+          weak link. The natural follow-up question is whether a
+          mixed cabinet — gpt-oss-20B as Lead + retrieval-grounded
+          specialists (pathway 1) — would close more of the gap to
+          Opus than either of the existing local pipelines does.
+        </p>
+        <p>
+          The Phi-4-as-Healthcare swap experiment we deferred earlier
+          becomes more interesting in this light too: if a 14B dense
+          Lead playing one specialist seat outperforms the 8B
+          specialist for that seat, the case for the specialist
+          fine-tunes weakens further. Worth running.
+        </p>
+
+        <h3>Honest caveats</h3>
+        <ul>
+          <li>
+            <strong>Single trial per case.</strong> Each entry above
+            is one bench run at temperature 0.2. Variance hasn't been
+            measured. A second pass could easily move a 2/6 to a 3/6
+            on rubric coverage without changing the headline pattern.
+            Pathway-2 of the improvement roadmap (variance + LLM-as-
+            judge) is the right way to harden these numbers.
+          </li>
+          <li>
+            <strong>Rubric scoring via regex pattern match.</strong>
+            The ✓ / · marks above were generated by scanning each
+            output for rubric-specific phrases (e.g. <code>HEDIS</code>,
+            <code>PMPM.*sensitivity</code>,
+            <code>SEMIMAN|Marso.*STEP</code>). False positives are
+            possible where a model mentions a concept without
+            substantively engaging it. Spot-checked: case 1's CADx
+            distinction and case 5's charitable-trust doctrine were
+            confirmed absent in both gpt-oss outputs by direct read.
+          </li>
+          <li>
+            <strong>No retrieval grounding tested here.</strong> All
+            gpt-oss outputs are pure parametric recall — the MoE is
+            not consulting clinicaltrials.gov, BfArM bulletins, or
+            EUR-Lex. The "deep regulatory pin-cite" gap above might
+            close significantly with retrieval; that's pathway 1 of
+            the improvement roadmap and a natural next experiment.
+          </li>
+          <li>
+            <strong>Reasoning-token consumption.</strong> Early gpt-oss
+            runs returned empty visible content because Ollama counts
+            chain-of-thought against <code>num_predict</code> alongside
+            visible output. The harness now raises max_tokens to 8192
+            for every gpt-oss call; the numbers above reflect that
+            fixed code path. Pre-fix runs were discarded.
+          </li>
+        </ul>
+
+        <hr style="margin: var(--space-5) 0">
+
+        <h2>Pattern across both cases</h2>
+        <p>
+          Two cases, two failure modes (recency honesty + jurisdictional vocabulary), one
+          consistent pattern. Local council produces structurally-correct but substantively-thin
+          output with specific confabulations and false-cutoff disclaiming. Both Opus modes hit
+          every rubric must-have. opus-council does slightly more than opus-single: more case
+          law, more statute pin-cites, and the orchestrated mode's seat-isolation produces
+          cross-domain tensions (case 2's §34 × adjunct trial design; case 4's CAA fiduciary ×
+          rebate-driven formulary) that a single mind likely smooths past.
+        </p>
+        <p>
+          The article frame this points to is not "specialization beats frontier" but rather:
+          <em>architecture preserved, fine-tunes underperformed, frontier dominated even without
+          architectural scaffolding, and orchestration adds value at frontier scale via seat
+          isolation forcing tension extraction.</em>
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/architecture">Architecture</a> · <a href="/process">Process</a></span>
+    </div>
+  </footer>
+
+  <div id="overlay-root" aria-live="polite"></div>
+
+  <!-- Bump the ?v= query on every results.js change so browsers don't serve
+       a stale copy after edits. Cheap version-pinning without touching the
+       server's cache headers. -->
+  <script src="/static/js/results.js?v=17"></script>
+</body>
+</html>

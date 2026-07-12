@@ -1,0 +1,22 @@
+# Netlify config for the static Council of Experts write-up.
+#
+# The deployable site is pre-built into ./site by scripts/build_site.py and
+# committed, so there is no build step to run on Netlify — just publish the
+# directory. Regenerate locally with:
+#
+#     uv run --extra bench python scripts/build_site.py
+#
+# then commit the updated site/ directory.
+
+[build]
+  publish = "site"
+  command = ""
+
+# Serve the Results page (index.html) for the bare root. Netlify already maps
+# /results -> results.html, /process -> process.html, etc. for the in-page
+# links, so no per-page redirects are needed.
+
+[[headers]]
+  for = "/static/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
