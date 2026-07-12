@@ -95,3 +95,30 @@ Title direction: disposition in multi-agent pipelines. Do NOT frame as
 One-liner: exemplar training and prompting change what a model says;
 preference training changes when it says it — and only preference-
 trained behaviors survive synthesis.
+
+## CELL 2 VERDICT — bootstrap CIs, 140 runs (2026-07-12)
+
+| Arm | Seat density [95% CI] | Final CDS [95% CI] | Case-7 gate (mean) |
+|---|---|---|---|
+| repro | 0.89 [0.69,1.11] | **0.859 [0.64,1.08]** | 0.96 |
+| spec  | **1.85 [1.42,2.32]** | 0.590 [0.40,0.81] | 3.03 ❌ |
+| ORPO  | 0.87 [0.60,1.17] | 0.655 [0.49,0.85] | **0.15 ✅ (below baseline)** |
+| SFT   | **1.77 [1.46,2.09]** | 0.575 [0.43,0.73] | 1.21 ❌ |
+
+**What survives error bars:** (1) prompting and SFT install large seat
+lifts (CIs clear of baseline) that synthesis STRIPS — both final CDS
+at/below baseline. The stripping finding is now solid. (2) ORPO is the
+only arm that improves the responsiveness gate — 0.15 on trigger-light,
+below even the untrained baseline's 0.96.
+
+**What does NOT survive:** ORPO's single-run seat lift (1.2×) and
+best-final-CDS were noise — with n=5 ORPO ≈ baseline on both. The
+case-2 4× lift washed out. At 91 pairs, ORPO installs little; its
+distinguishing property is that it degrades nothing and uniquely
+SUPPRESSES indiscriminate hedging.
+
+**Revised one-liner:** prompting and exemplar training install loud but
+indiscriminate dispositions that synthesis strips; preference training
+at this dose installs little — but is the only mechanism that improves
+when the model hedges rather than how much. Dose-response (more pairs)
+is now the priority open question, ahead of cells 3-5.
