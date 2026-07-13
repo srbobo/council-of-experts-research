@@ -113,6 +113,13 @@ simultaneously) and case 7 (*trigger-light*: an organizational-strategy
 question warranting none). Case 7 is the **responsiveness gate**: any
 arm emitting disposition there is behaving habitually, not responsively.
 
+**Scale.** 251 imported, audited runs at time of writing (append-only
+JSON, one file per run, each carrying per-phase inputs/outputs/backends);
+all inference via Ollama on one fanless M5 MacBook Air, 32 GB unified
+memory, 26.8 GB Metal working set. Runs are nondeterministic across
+repeats even at temperature 0 (runtime batching); we treat repeats as
+seeds and report bootstrap intervals.
+
 **Metrics.** Behavior density = pattern-matched occurrences of the five
 behavior families per 1,000 characters. CDS = density × √(distinct
 behaviors/5). ALR = council density / matched single-shot density.
@@ -136,8 +143,10 @@ training; predictions were pre-registered before each cell ran.
 ## 4 Result 1: architecture shapes disposition
 
 Across seven cases, council configurations emit 3–9× the behavior density
-of matched single-shot baselines (ALR: Opus pair 2.99×, gpt-oss pair
-3.91×, local v1 5.14×, upgraded v2 8.77×) — the synthesis prompt's
+of matched single-shot baselines. Aggregate CDS: specialists-v2 0.928,
+Opus-as-council 0.669, specialists-v1 0.584, gpt-oss-as-council 0.460,
+Opus single-shot 0.159, gpt-oss single-shot 0.099. ALR: Opus pair 2.99×,
+gpt-oss pair 3.91×, local v1 5.14×, upgraded v2 8.77× — the synthesis prompt's
 preservation scaffold does real work even with no specialist alignment in
 the seats. Under the trigger-heavy case the asymmetry sharpens: council
 modes rise to 1.66–1.82× their per-case baseline while single-shot falls
@@ -165,6 +174,15 @@ untrained baseline. ORPO at this dose installs no significant magnitude;
 its effect is qualitative — it is the only arm that *suppresses*
 unwarranted hedging below baseline while leaving trigger-case behavior
 intact and imposing no content tax (rubric coverage identical to A′).
+Two further details. First, prompting was tested at two loci: on the
+generalist single-shot (a 6× final-output lift, 0.099 → 0.589, that
+failed the gate at 0.985 — emitting "as of my training data" on an
+organizational-strategy question) and on the seat (the table above).
+Second, content is unaffected by successful installation: rubric
+coverage is 12/36 for both A′ and ORPO (9/36 for the original
+production seat) — no content tax. Gate cells use n = 4–5 (the planner
+routes no specialists on the trigger-light case in some runs; routing
+variability is itself Ollama-runtime nondeterminism at temperature 0).
 Summary: *prompting and exemplar training change what a model says;
 preference training changes when it says it.*
 
@@ -172,10 +190,13 @@ preference training changes when it says it.*
 
 Why do installed behaviors vanish? A pre-registered entanglement
 hypothesis — content-woven markers survive aggregation, detached
-boilerplate is stripped — was **refuted**: entangled share is flat across
-arms (56–67%), retention splits by arm not position (baseline 1.08, ORPO
-0.96 vs prompting/SFT 0.49), and entanglement does not predict retention
-(r = −0.10, n = 102).
+boilerplate is stripped — was **refuted**: entangled share is flat across arms (baseline 56%,
+prompting 61%, ORPO 61%, SFT 67% — SFT's markers are the *most*
+content-woven yet retain worst), retention splits by arm not position
+(baseline 1.08, ORPO 0.96 vs prompting 0.49, SFT 0.49), and entanglement
+does not predict retention (r = −0.10 over 102 runs). Notably the
+refuted hypothesis and the overturned PRESERVE prediction (below) were
+both pre-registered — we report them as part of the record.
 
 A 72-run ablation (2 input arms × 3 synthesizer models × PRESERVE
 instructions on/off × 6 cases) located the mechanism:
