@@ -242,6 +242,117 @@ protocol amendments, verdicts (including refuted hypotheses), the
 github.com/srbobo/council-of-experts-research. Glossary of all terms:
 RUNBOOK_PAPER_HARDENING.md.
 
+
+## Appendix A — Glossary
+
+- **Seat**: one specialist model in the council, answering only its
+  dispatched sub-question (e.g., Saul-7B = the legal seat).
+- **Synthesizer / Lead**: the model that receives all seat outputs plus
+  the original question and compresses them into the final answer — the
+  pipeline's last writer.
+- **Disposition**: what a model chooses to emit independent of what it
+  knows, operationalized as five behavior families: (1) training-cutoff
+  disclosure; (2) modeled-assumption flagging ("modeled at", "assuming");
+  (3) precise vocabulary distinctions ("clearance vs approval");
+  (4) jurisdictional distinguishing (never blending legal regimes);
+  (5) **hedging** — stated conditionality of a claim ("this may vary
+  if…"), *not* refusal or vagueness.
+- **Synthesis stripping**: behavior density present at a seat's output
+  but absent from the final output after synthesis.
+- **Synthesizer register**: a Lead model's characteristic output
+  disposition density — writer-specific and largely independent of seat
+  input (§6).
+- **Responsive vs habitual**: responsive behaviors appear only when
+  domain triggers warrant them (trigger-light gate, case 7); habitual
+  behaviors fire regardless.
+- **Alignment**: post-pretraining procedures (SFT, RLHF, DPO/ORPO/CPO)
+  shaping disposition, as distinct from the pretraining corpus, which
+  shapes knowledge.
+
+## Appendix B — Model selection
+
+Every selection cleared seven gates: (1) GGUF availability on a mirror
+Ollama can pull; (2) research-permissive license; (3) ChatML-compatible
+or locally fixable chat template; (4) recognized-lab provenance;
+(5) distinct lineage per seat (four labs, three model families — a
+family-level training artifact cannot masquerade as a council effect);
+(6) active maintenance; (7) evidence of third-party use.
+
+**Memory budget.** Sequential mode holds the Lead warm across all five
+phases, so peak ≈ M_lead + max_seat M_seat + KV + OS reserve ≤ 32 GB;
+Metal's recommended working set on the test machine is 26.8 GB. This
+bounds the Lead at ≤14B (Q4) and seats at ≤8B.
+
+**Lead: Phi-4-14B** (MIT) — best reasoning-per-parameter at 14B for
+structured planner output; Qwen2.5-14B rejected on memory headroom,
+Llama-3.1-8B on synthesis capacity, 22–27B dense models on the Metal cap.
+The Lead is deliberately *not* domain-tuned: an industry-tuned Lead would
+bias synthesis toward its own domain.
+
+**Healthcare: Llama3-Med42-8B** — the only 8B clinical fine-tune with a
+multi-stage *preference-alignment* stage (vs SFT-only Meditron3/
+OpenBioLLM; BioMistral rejected for Mistral-lineage collision with the
+legal seat). **Legal: Saul-7B-Instruct-v1** — the only sub-13B continued
+pretrain (30B+ tokens) on multi-jurisdiction common-law text; no peer
+exists at this scale. **Finance: Qwen-Open-Finance-R-8B** — newest
+backbone of any seat (Qwen3), >50% finance corpus (en/fr/de).
+**MoE comparator: gpt-oss-20B** — ~3.6B active parameters, reasoning-
+tuned, Apache-2.0; fits beside the Lead (14+9=23 GB < 26.8 GB), unlike
+Qwen3-30B-A3B (27 GB) or Mixtral-8x7B (35 GB).
+
+## Appendix C — Metrics and estimation
+
+Let B be the five behavior families and P_b the regex pattern set for
+family b. For text t:
+
+- **Density**  d(t) = (1000/|t|) · Σ_{b∈B} Σ_{p∈P_b} |matches(p, t)|,
+  with |t| in characters.
+- **Breadth**  k(t) = |{ b ∈ B : ∃p∈P_b, matches(p,t) ≠ ∅ }| / |B|.
+- **Composite Disposition Score**  CDS(t) = d(t) · √k(t). The square
+  root softly penalizes narrow emission without letting one absent
+  family zero the score (a geometric mean was rejected for exactly that
+  failure). α = ½ is a design choice; sensitivity to α is unreported.
+- **Architectural Lift Ratio**  ALR_m = d̄_council(m) / d̄_single(m̂),
+  where m̂ is the matched single-shot backbone (opus↔opus, gptoss↔gptoss;
+  local councils use gptoss-single as nearest open generalist).
+- **Retention**  R = d(final) / d(seat), clipped to [0, 2].
+- **Seat-level density** is computed on the specialist's own turn text
+  from the audit log; final density on the synthesized output. Density
+  normalizes per character and therefore rewards concision; per-claim
+  normalization is future work (§8).
+- **Uncertainty**: percentile bootstrap over runs (10⁴ resamples), 95%
+  intervals; n = 30 run-level observations per arm for trigger cases
+  (6 cases × 5 seeds), n = 4–5 for the trigger-light gate.
+- **Entanglement test (refuted)**: a marker sentence is *entangled* if
+  it also matches content signals (digits, §, U.S.C., case cites,
+  multi-word proper nouns); association with retention was assessed by
+  Pearson r over runs (r = −0.10, n = 102).
+
+## Appendix D — Pair construction and training configuration
+
+**Pair gates** (all must pass): chosen exhibits ≥ 2 distinct behavior
+families; rejected exhibits 0 across all five; length ratio
+0.8 ≤ |chosen|/|rejected| ≤ 1.4 (guarding DPO-family length bias);
+content overlap J(C(c), C(r)) ≥ 0.35 where C(·) is the set of
+capitalized tokens and J is Jaccard similarity |A∩B|/|A∪B|; leakage
+screen against all seven evaluation cases. Yield: 200 prompts → 99
+pairs (91/4/4 train/valid/test).
+
+**ORPO objective** (Hong et al. 2024): L = L_SFT + λ·L_OR with
+L_OR = −log σ( log odds_θ(y_w|x) − log odds_θ(y_l|x) ),
+odds_θ(y|x) = P_θ(y|x) / (1 − P_θ(y|x)) — a reference-free preference
+penalty added to the NLL of the chosen response.
+
+**Configuration**: LoRA rank 8, scale 10, applied to the last 16 layers
+(10.5M trainable ≈ 0.145%); base loaded 4-bit; lr 5·10⁻⁶; batch 1 with
+gradient accumulation 4; max sequence 1,792 (dataset p100 = 1,698);
+364 iterations (~4 epochs of forward passes); gradient checkpointing;
+seed 42. The SFT control is identical except `--train-mode sft
+--mask-prompt` on chosen-only data. Fused adapters follow the same
+fp16→GGUF→Q4_K_M conversion as the untrained control (A′), so the only
+delta between compared artifacts is the trained weights (plus a
+documented 4-bit training round-trip absent from A′).
+
 ## References (verified 2026-07-13)
 
 - Du, Y., Li, S., Torralba, A., Tenenbaum, J., Mordatch, I. Improving Factuality and Reasoning in Language Models through Multiagent Debate. arXiv:2305.14325 (2023; ICML 2024).
