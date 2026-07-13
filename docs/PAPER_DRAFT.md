@@ -176,8 +176,10 @@ unwarranted hedging below baseline while leaving trigger-case behavior
 intact and imposing no content tax (rubric coverage identical to A′).
 Two further details. First, prompting was tested at two loci: on the
 generalist single-shot (a 6× final-output lift, 0.099 → 0.589, that
-failed the gate at 0.985 — emitting "as of my training data" on an
-organizational-strategy question) and on the seat (the table above).
+failed the gate at 0.985 — its answer to the hybrid-work
+communication question opened a section "Current State Snapshot (as of
+my training data)" and closed with "actual results may vary": disclosure
+theater where nothing warranted disclosure) and on the seat (the table above).
 Second, content is unaffected by successful installation: rubric
 coverage is 12/36 for both A′ and ORPO (9/36 for the original
 production seat) — no content tax. Gate cells use n = 4–5 (the planner
@@ -333,6 +335,10 @@ family b. For text t:
   root softly penalizes narrow emission without letting one absent
   family zero the score (a geometric mean was rejected for exactly that
   failure). α = ½ is a design choice; sensitivity to α is unreported.
+- *Worked example.* A 1,000-character seat answer containing "as of my
+  training data (2024)" (cutoff), "modeled at $8,000 assuming 60%
+  persistence" (modeled ×2), and "this may vary if the statute changes"
+  (hedging) has d = 4.0, k = 3/5, CDS = 4.0·√0.6 ≈ 3.10.
 - **Architectural Lift Ratio**  ALR_m = d̄_council(m) / d̄_single(m̂),
   where m̂ is the matched single-shot backbone (opus↔opus, gptoss↔gptoss;
   local councils use gptoss-single as nearest open generalist).
@@ -358,6 +364,16 @@ content overlap J(C(c), C(r)) ≥ 0.35 where C(·) is the set of
 capitalized tokens and J is Jaccard similarity |A∩B|/|A∪B|; leakage
 screen against all seven evaluation cases. Yield: 200 prompts → 99
 pairs (91/4/4 train/valid/test).
+
+*Example pair (selection rule: the first pair generated, verbatim
+excerpts; topic: export-control compliance).* **Chosen:** "…As of my
+training data up to 2023, BIS issued 2023 guidance that classifies such
+devices under ECCN 9A999 or 9B999… Assuming that the 2024 updates remain
+in force, the 2024 update to the China Entity List…" **Rejected (same
+substance, stripped):** "…BIS issued 2023 guidance that classifies such
+devices under ECCN 9A999 or 9B999… The 2024 update to the China Entity
+List… applies to any export of a controlled item…" The pair shares its
+statutory content; only the epistemic posture differs.
 
 **ORPO objective** (Hong et al. 2024): L = L_SFT + λ·L_OR with
 L_OR = −log σ( log odds_θ(y_w|x) − log odds_θ(y_l|x) ),
