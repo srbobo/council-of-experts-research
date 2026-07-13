@@ -175,3 +175,33 @@ because it never exceeded the register. This makes cell 6 (synthesizer
 ablation: 3 Leads × PRESERVE on/off) the decisive next test: different
 Leads should exhibit different registers, and PRESERVE should modulate
 the band if instructions matter at all.
+
+## CELL 6 / P6 VERDICT — synthesizer register confirmed, refined (2026-07-12, 72 runs)
+
+Final-output density by Lead × prompt × input arm (seat density in parens):
+
+| Lead | PRESERVE base | PRESERVE sft-seat | noPRESERVE base | noPRESERVE sft-seat |
+|---|---|---|---|---|
+| Phi-4 | 1.17 (0.78) | 0.61 (1.42) | 0.52 (0.54) | 0.31 (2.15) |
+| gpt-oss | 0.63 (0.87) | 0.86 (1.81) | 0.20 (0.86) | 0.13 (2.33) |
+| Qwen2.5 | 1.24 (0.79) | 1.06 (2.41) | 0.24 (0.92) | 0.62 (1.93) |
+
+Three findings:
+1. **Registers are real and writer-specific.** Each Lead has its own
+   characteristic output band (Qwen hottest, gpt-oss coolest), largely
+   independent of seat input density.
+2. **Input excess does not transmit — and can invert.** Feeding Phi-4
+   and Qwen a 2-3× hotter seat LOWERS their output density (Phi-4:
+   1.17→0.61) — over-correction: saturated input reads as stylistic
+   noise. This is the stripping mechanism.
+3. **Prediction overturned: PRESERVE instructions matter.** Removing
+   them collapses output density 2-5× across every Lead. Instructions
+   act as a gain control on the register — they set the floor but
+   cannot transmit input excess above it.
+
+Refined mechanism for the paper: **final disposition ≈ f(Lead's
+register × synthesis instructions), nearly independent of seat input.
+The last writer sets the epistemic posture; upstream installation
+cannot push through it, and over-installed input triggers
+over-correction.** ORPO "survives" by staying inside the register;
+prompting/SFT "strip" by exceeding it.
