@@ -67,14 +67,14 @@ consumer-hardware protocol with append-only audit logs for all 300+ runs.
 **Multi-agent orchestration.** Debate and role-played collaboration
 improve factuality and reasoning (Du et al. 2023; Mixture-of-Agents, Wang
 et al. 2024; MedAgents/MDAgents), and recent work compares orchestration
-against the strongest single model (Beyond-the-Strongest-LLM 2025;
-MAS-Orchestra 2026). This literature measures content outcomes; we measure
+against the strongest single model (Tian et al. 2025) or trains
+orchestrators end-to-end (MAS-Orchestra, Ke et al. 2026). This literature measures content outcomes; we measure
 what orchestration does to epistemic behavior, and find an amplification
 effect independent of the model filling the seats.
 
 **Specialists vs generalists.** Evidence is mixed on whether small domain
-fine-tunes beat larger generalists in-domain (TRIDENT 2025; domain-FT vs
-RAG comparisons 2026). Our content results replicate the negative side
+fine-tunes beat larger generalists in-domain (Trident-Bench, a safety-focused benchmark, Hui et al. 2025;
+domain-FT vs RAG comparisons at 4B scale, 2026). Our content results replicate the negative side
 (a 20B open MoE outperforms a four-specialist council 42% → 25–31% on
 rubric coverage) and motivate the pivot: the surviving specialist value is
 dispositional, not informational.
@@ -241,3 +241,23 @@ protocol amendments, verdicts (including refuted hypotheses), the
 99-pair dataset, LoRA adapters, and regeneration scripts:
 github.com/srbobo/council-of-experts-research. Glossary of all terms:
 RUNBOOK_PAPER_HARDENING.md.
+
+## References (verified 2026-07-13)
+
+- Du, Y., Li, S., Torralba, A., Tenenbaum, J., Mordatch, I. Improving Factuality and Reasoning in Language Models through Multiagent Debate. arXiv:2305.14325 (2023; ICML 2024).
+- Wang, J., et al. Mixture-of-Agents Enhances Large Language Model Capabilities. arXiv:2406.04692 (2024).
+- Tang, X., et al. MedAgents: LLMs as Collaborators for Zero-shot Medical Reasoning. arXiv:2311.10537 (2023).
+- Kim, Y., et al. MDAgents: An Adaptive Collaboration of LLMs for Medical Decision-Making. NeurIPS 2024; arXiv:2404.15155.
+- Tian, A.X., et al. Beyond the Strongest LLM: Multi-Turn Multi-Agent Orchestration vs. Single LLMs on Benchmarks. arXiv:2509.23537 (2025).
+- Ke, Z., Ming, Y., Xu, A., et al. MAS-Orchestra: Understanding and Improving Multi-Agent Reasoning Through Holistic Orchestration and Controlled Benchmarks. arXiv:2601.14652 (2026).
+- Hui, Z., Dong, Y.R., Shareghi, E., Collier, N. TRIDENT: Benchmarking LLM Safety in Finance, Medicine, and Law. arXiv:2507.21134 (2025).
+- Lin, S., Hilton, J., Evans, O. Teaching Models to Express Their Uncertainty in Words. arXiv:2205.14334 (2022).
+- Mielke, S.J., et al. Reducing Conversational Agents' Overconfidence through Linguistic Calibration. TACL (2022).
+- Kadavath, S., et al. Language Models (Mostly) Know What They Know. arXiv:2207.05221 (2022).
+- Zhang, H., et al. R-Tuning: Instructing Large Language Models to Say 'I Don't Know'. NAACL 2024; arXiv:2311.09677.
+- Zong, H., Li, B., Long, Y., et al. I-CALM: Incentivizing Confidence-Aware Abstention for LLM Hallucination Mitigation. arXiv:2604.03904 (2026).
+- Wu, S., Gustafsson, F.K., et al. BAS: A Decision-Theoretic Approach to Evaluating Large Language Model Confidence. arXiv:2604.03216 (2026).
+- Rafailov, R., et al. Direct Preference Optimization: Your Language Model is Secretly a Reward Model. NeurIPS 2023; arXiv:2305.18290.
+- Hong, J., Lee, N., Thorne, J. ORPO: Monolithic Preference Optimization without Reference Model. EMNLP 2024; arXiv:2403.07691.
+- Park, R., et al. Disentangling Length from Quality in Direct Preference Optimization. arXiv:2403.19159 (2024).
+- Zheng, H.S., et al. Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models. ICLR 2024; arXiv:2310.06117.
