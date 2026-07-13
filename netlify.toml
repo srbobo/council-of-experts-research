@@ -12,6 +12,14 @@
   publish = "site"
   command = ""
 
+# BUILDS PAUSED (per Sam, 2026-07-13). Netlify runs `ignore` before every
+# build; exit 0 = skip. This unconditionally skips all deploys until we
+# lift it. To resume: delete this [build.ignore] block (or change the
+# command to `git diff --quiet HEAD^ HEAD -- site/` to build only when the
+# published site/ dir changed) and push.
+[build.ignore]
+  command = "exit 0"
+
 # Serve the Results page (index.html) for the bare root. Netlify already maps
 # /results -> results.html, /process -> process.html, etc. for the in-page
 # links, so no per-page redirects are needed.
