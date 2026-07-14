@@ -1229,6 +1229,26 @@
           training log live in RUNBOOK_DPO_PROMPT_TRANSFER.md and
           RUNBOOK_PAPER_HARDENING.md in the repo.
         </p>
+        <details style="margin-bottom: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: 4px; background: rgba(0,0,0,0.02);">
+          <summary><strong>How the preference pairs were built (content-controlled construction)</strong></summary>
+          <p>
+            Each pair starts from one base answer to a legal-domain prompt, which is then
+            rewritten twice by the same model: <code>REWRITE_ADD</code> weaves the five
+            behavior families into the substance (chosen), <code>REWRITE_STRIP</code>
+            removes every epistemic marker while preserving the legal content (rejected).
+            Because chosen and rejected are rewrites of the <em>same</em> base answer, the
+            preference signal is the disposition itself, not the content. Every pair must
+            pass five gates: chosen exhibits ≥2 distinct behavior families; rejected
+            exhibits zero; length ratio 0.8–1.4 (guarding the documented DPO-family length
+            bias); content overlap Jaccard ≥ 0.35 on capitalized tokens (guarding topic
+            drift); and a leakage screen against all seven evaluation cases. Yield: 200
+            prompts → 99 pairs for the original run; 500 prompts → 292 pairs for the
+            dose-response run. One protocol amendment (documented before training):
+            the jurisdictional gate patterns were narrowed to meta-language only, because
+            the originals matched substantive legal content the strip-rewrite correctly
+            refuses to remove.
+          </p>
+        </details>
         <h4>The verdict at n=5 seeds per cell (140 runs, bootstrap 95% CIs)</h4>
         <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
           <thead><tr style="border-bottom:1px solid var(--color-border); text-align:left;">
@@ -1250,9 +1270,15 @@
           statistically clear seat-level lifts (~2× baseline, non-overlapping CIs) — and the
           synthesizer removes them: final-output disposition lands at or <em>below</em> the
           untrained baseline, despite the synthesis prompt's explicit PRESERVE instructions.
-          The mechanism hypothesis (registered, untested): installed hedges arrive as
-          detachable boilerplate sentences a compressing editor drops first, whereas hedges
-          woven into content-bearing claims cannot be removed without removing the claim.
+          Our pre-registered mechanism hypothesis — installed hedges arrive as detachable
+          boilerplate a compressing editor drops first, while hedges woven into
+          content-bearing claims survive — was <strong>refuted</strong> when tested:
+          entangled share is flat across arms (baseline 56%, prompting 61%, ORPO 61%,
+          SFT 67% — SFT's markers are the <em>most</em> content-woven yet retain worst),
+          retention splits by arm not by position (baseline 1.08, ORPO 0.96 vs prompting
+          0.49, SFT 0.49), and entanglement does not predict retention (Pearson
+          r&nbsp;=&nbsp;−0.10 over 102 runs). The actual mechanism is the synthesizer
+          register, located by the ablation below.
         </p>
         <p>
           <strong>2. Preference training uniquely improves responsiveness.</strong> ORPO at
@@ -1263,10 +1289,44 @@
         </p>
         <p>
           Revised one-liner: <em>prompting and exemplar training install loud but
-          indiscriminate dispositions that synthesis strips; preference training at this
-          dose installs little — but is the only mechanism that improves when the model
-          hedges rather than how much.</em> The open question promoted to top priority is
-          dose-response: whether ~500 pairs installs magnitude where 91 could not.
+          indiscriminate dispositions that synthesis strips; preference training installs
+          little — but is the only mechanism that improves when the model hedges rather
+          than how much.</em>
+        </p>
+
+        <h4>The dose-response test — the null is dose-invariant (35 runs, completed 2026-07-14)</h4>
+        <p>
+          The natural objection to the ORPO null is "you just didn't train on enough
+          pairs." We tested it: the pair-generation pipeline was extended to 500 prompts,
+          yielding <strong>292 gated pairs (3.2× dose)</strong>, and the seat was retrained
+          <strong>epoch-matched</strong> to the 91-pair run (16 epochs; 1,056 iterations),
+          so the only variable is the number of distinct examples. Result:
+        </p>
+        <table style="width:100%; border-collapse:collapse; font-size:var(--size-2); margin: var(--space-3) 0;">
+          <thead><tr style="border-bottom:1px solid var(--color-border); text-align:left;">
+            <th style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Arm</th>
+            <th style="padding:var(--space-2); text-align:center;">Seat density [CI]</th>
+            <th style="padding:var(--space-2); text-align:center;">Final CDS [CI]</th>
+            <th style="padding:var(--space-2); text-align:right;">Case-7 gate</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">Baseline (A′)</td><td style="text-align:center">0.84 [0.63–1.06]</td><td style="text-align:center">0.85 [0.63–1.07]</td><td style="text-align:right">0.96</td></tr>
+            <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">ORPO, 91 pairs</td><td style="text-align:center">0.85 [0.58–1.15]</td><td style="text-align:center">0.66 [0.50–0.85]</td><td style="text-align:right"><strong>0.15</strong></td></tr>
+            <tr><td style="padding:var(--space-2) var(--space-3) var(--space-2) 0">ORPO, 292 pairs (3.2×)</td><td style="text-align:center">0.84 [0.58–1.11]</td><td style="text-align:center">0.69 [0.51–0.90]</td><td style="text-align:right">0.49</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Tripling the preference data moved seat-level magnitude by <strong>zero</strong>
+          (0.84 vs 0.85 vs baseline 0.84) — even though the larger set raised training-time
+          preference accuracy from 0.48 to 0.94. The model internalized the preference far
+          better and emitted no more behavior for it: ORPO's seat effect is not gradual
+          installation of magnitude but a bounded suppression of unwarranted behavior.
+          One honest wrinkle: the suppression itself weakened slightly with dose (the
+          trigger-light gate rose from 0.15 to 0.49, still below baseline) — more diverse
+          pairs modestly broadened where the model deploys hedging. The dose-invariance is
+          the register mechanism's corollary (below): if the Lead's band, not the seat's
+          input, sets output disposition, no amount of preference data at the seat can
+          raise it.
         </p>
 
         <h4>The mechanism, located (synthesizer-register ablation — 72 runs)</h4>
@@ -1303,6 +1363,34 @@
           Practical implication: to control a pipeline's epistemic posture, tune the
           synthesizer's instructions and choose the last writer deliberately — installing
           behavior upstream is mostly futile.
+        </p>
+
+        <h3 id="the-paper">The paper — "The Last Writer Wins" (arXiv draft) and full data availability</h3>
+        <p>
+          The complete research program above is written up as an arXiv-targeted paper:
+          <a href="paper.pdf"><strong>The Last Writer Wins: Installing Epistemic Disposition
+          in Multi-Agent LLM Pipelines</strong></a> (PDF, 8 pages — abstract, three results,
+          limitations, glossary, model-selection rationale, metric equations, pair-construction
+          gates, and a fully verified 24-entry bibliography). A final prior-art audit found no
+          existing work combining the content/disposition split, the three-way installation
+          comparison into a pipeline seat, and the synthesizer-register mechanism; the nearest
+          neighbors (a synthesizer-adapter line acknowledging aggregation loses behavior,
+          the epistemic-marker-faithfulness line, and preference-data-scaling results showing
+          more pairs ≠ better behavior) are cited and differentiated in §2 of the paper.
+        </p>
+        <p>
+          <strong>Every number is traceable.</strong> All 287 imported audited runs — each
+          carrying per-phase inputs, outputs, backends, and scores — live in the repo as
+          append-only JSON, indexed by a regenerable
+          <a href="https://github.com/srbobo/council-of-experts-research/blob/main/docs/RUN_LEDGER.md">run
+          ledger</a> that documents every prompt, output excerpt, and score across all runs.
+          Pre-registrations, protocol amendments, and verdicts — including the two
+          <em>refuted</em> pre-registered hypotheses (content entanglement; PRESERVE-instructions-don't-matter)
+          — are recorded in
+          <a href="https://github.com/srbobo/council-of-experts-research/blob/main/RUNBOOK_PAPER_HARDENING.md">RUNBOOK_PAPER_HARDENING.md</a>.
+          The 99- and 292-pair preference datasets, LoRA adapters, training scripts, and the
+          LaTeX source are all committed. Everything ran on one 32&nbsp;GB consumer machine at
+          $0 API cost.
         </p>
 
         <h3>What this means for the original project thesis</h3>

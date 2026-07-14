@@ -72,6 +72,8 @@ def copy_assets() -> None:
     shutil.copytree(STATIC / "css", SITE / "static" / "css")
     shutil.copytree(STATIC / "fonts", SITE / "static" / "fonts")
     shutil.copyfile(STATIC / "js" / "results.js", SITE / "static" / "js" / "results.js")
+    # The compiled arXiv-draft PDF, linked from the Results page ("The paper").
+    shutil.copyfile(ROOT / "docs" / "paper.pdf", SITE / "paper.pdf")
 
 
 def bake_data() -> None:
