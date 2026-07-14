@@ -11,6 +11,8 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\Urlmuskip=0mu plus 1mu\relax  % allow URLs to break at any point
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{pifont}
@@ -29,6 +31,7 @@
 \date{Draft v0.2 --- July 2026 \quad$\vert$\quad Target: arXiv cs.CL}
 
 \begin{document}
+\sloppy  % prefer inter-word stretch over overfull boxes (arXiv-safe)
 \maketitle
 
 \begin{abstract}
@@ -167,7 +170,7 @@ The square root in CDS softly penalizes narrow emission without letting one abse
 \bibitem{masorchestra} Ke, Z.\ et al.\ MAS-Orchestra: Understanding and Improving Multi-Agent Reasoning. arXiv:2601.14652 (2026).
 \bibitem{parallelsynth} Towards Direct Latent-Space Synthesis for Parallel Branches in LLM-Agent Workflows. arXiv:2606.14672 (2026).
 \bibitem{trident} Hui, Z., Dong, Y.R., Shareghi, E., Collier, N. TRIDENT: Benchmarking LLM Safety in Finance, Medicine, and Law. arXiv:2507.21134 (2025).
-\bibitem{medftrag} Domain Fine-Tuning vs.\ Retrieval-Augmented Generation for Medical MCQA at 4B. arXiv:2604.23801 (2026).
+\bibitem{medftrag} Buskila, A.A. Domain Fine-Tuning vs.\ Retrieval-Augmented Generation for Medical Multiple-Choice Question Answering: A Controlled Comparison at the 4B-Parameter Scale. arXiv:2604.23801 (2026).
 \bibitem{lin2022} Lin, S., Hilton, J., Evans, O. Teaching Models to Express Their Uncertainty in Words. arXiv:2205.14334 (2022).
 \bibitem{mielke2022} Mielke, S.J.\ et al.\ Reducing Conversational Agents' Overconfidence through Linguistic Calibration. TACL (2022).
 \bibitem{kadavath2022} Kadavath, S.\ et al.\ Language Models (Mostly) Know What They Know. arXiv:2207.05221 (2022).

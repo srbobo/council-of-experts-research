@@ -1,3 +1,9 @@
+> **SUPERSEDED — this Markdown is no longer the canonical paper.**
+> The authoritative source is `docs/paper.tex` (LaTeX, arXiv article class),
+> compiled to `docs/paper.pdf`. This file is retained only for its
+> prior-art audit trail and edit history; do not edit it for content —
+> edit `paper.tex` and recompile with `cd docs && tectonic paper.tex`.
+
 # The Last Writer Wins: Installing Epistemic Disposition in Multi-Agent LLM Pipelines
 
 **Sam Bobo** — draft v0.1, 2026-07-13. Target: arXiv cs.CL.
