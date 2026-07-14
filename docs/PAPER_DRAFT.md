@@ -69,9 +69,14 @@ consumer-hardware protocol with append-only audit logs for all 287 runs.
 improve factuality and reasoning (Du et al. 2023; Mixture-of-Agents, Wang
 et al. 2024; MedAgents/MDAgents), and recent work compares orchestration
 against the strongest single model (Tian et al. 2025) or trains
-orchestrators end-to-end (MAS-Orchestra, Ke et al. 2026). This literature measures content outcomes; we measure
-what orchestration does to epistemic behavior, and find an amplification
-effect independent of the model filling the seats.
+orchestrators end-to-end (MAS-Orchestra, Ke et al. 2026). This literature measures content outcomes. The closest work on the
+*aggregation* step, Parallel-Synthesis (2026, arXiv:2606.14672), trains a
+synthesizer adapter and explicitly distills reasoning behavior from
+text-concatenation synthesis — an implicit acknowledgment that naive
+aggregation loses behavior, which our register mechanism explains and
+quantifies for epistemic behavior specifically. We measure what
+orchestration does to epistemic behavior and find an amplification effect
+independent of the model filling the seats.
 
 **Specialists vs generalists.** Evidence is mixed on whether small domain
 fine-tunes beat larger generalists in-domain (Trident-Bench, a safety-focused benchmark, Hui et al. 2025;
@@ -84,15 +89,26 @@ dispositional, not informational.
 al. 2022), linguistic calibration (Mielke et al. 2022), knowing-what-you-
 know (Kadavath et al. 2022), abstention training (R-Tuning 2024) and
 recent confidence-aware abstention work (I-CALM 2026; BAS 2026) train and
-evaluate single models end-to-end. We add the pipeline dimension: a seat's
-trained uncertainty behavior must survive an aggregator, and mostly does
-not.
+evaluate single models end-to-end. A parallel line asks whether epistemic
+markers *faithfully* track a model's internal confidence — and finds
+systematic deficiencies (Wang et al. 2026, arXiv:2605.28778;
+epistemic–rhetorical miscalibration, arXiv:2604.19768; epistemic-marker
+reliability, arXiv:2505.24778). Our contribution is orthogonal to
+faithfulness: we take marker *emission* as the observable and ask where
+it originates and survives in a pipeline, not whether it is calibrated to
+hidden confidence. A seat's trained uncertainty behavior must survive an
+aggregator, and mostly does not.
 
 **Preference optimization for behavior.** DPO (Rafailov et al. 2023) and
 ORPO (Hong et al. 2024) are standard for style/behavior shaping; DPO's
 length bias is documented (Park et al. 2024), which our pair-construction
-controls address. Comparisons of system-prompt steering vs preference
-training exist for single models; we compare them *through* a pipeline.
+controls address. Preference-data scaling is itself contested: simply adding more
+samples per prompt often fails to improve and can degrade downstream
+behavior (Finding the Sweet Spot, 2025, arXiv:2502.16825; AIR,
+arXiv:2504.03612) — consistent with our dose-invariance null, which we
+further attribute to a downstream aggregation ceiling rather than to the
+optimizer. Comparisons of system-prompt steering vs preference training
+exist for single models; we compare them *through* a pipeline.
 
 ## 3 Apparatus
 
@@ -429,3 +445,21 @@ documented 4-bit training round-trip absent from A′).
 - Hong, J., Lee, N., Thorne, J. ORPO: Monolithic Preference Optimization without Reference Model. EMNLP 2024; arXiv:2403.07691.
 - Park, R., et al. Disentangling Length from Quality in Direct Preference Optimization. arXiv:2403.19159 (2024).
 - Zheng, H.S., et al. Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models. ICLR 2024; arXiv:2310.06117.
+
+## Prior-art audit note (2026-07-14)
+
+Final sweep found three nearest-neighbor lines, all now cited and
+differentiated:
+1. **Parallel-Synthesis (2606.14672)** — trains a synthesizer to distill
+   behavior lost in concatenation aggregation. Corroborates that
+   aggregation loses behavior; does not identify the register mechanism
+   or study epistemic behavior. Our closest architectural neighbor.
+2. **Epistemic-marker faithfulness (2605.28778, 2604.19768, 2505.24778)**
+   — whether markers track hidden confidence. Orthogonal: we study marker
+   emission/survival in a pipeline, not calibration to internal state.
+3. **Preference-data scaling (2502.16825, 2504.03612)** — more pairs ≠
+   better behavior. Corroborates our dose-invariance from the optimizer
+   side; we add the aggregation-ceiling explanation.
+No paper was found combining (a) a two-axis content/disposition split,
+(b) prompting-vs-SFT-vs-preference installation into a pipeline seat, and
+(c) the synthesizer-register mechanism. The core contribution stands.
