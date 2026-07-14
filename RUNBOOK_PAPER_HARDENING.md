@@ -205,3 +205,32 @@ The last writer sets the epistemic posture; upstream installation
 cannot push through it, and over-installed input triggers
 over-correction.** ORPO "survives" by staying inside the register;
 prompting/SFT "strip" by exceeding it.
+
+## DOSE-RESPONSE VERDICT — 3.2× dose (2026-07-14, 35 v2 runs, deduped to 5/case, bootstrap CIs)
+
+| Arm | Seat density [95% CI] | Final CDS [95% CI] | Case-7 gate |
+|---|---|---|---|
+| A′ baseline | 0.84 [0.63,1.06] | 0.849 [0.63,1.07] | 0.96 |
+| ORPO 91 pairs (v1) | 0.85 [0.58,1.15] | 0.655 [0.50,0.85] | **0.15** |
+| ORPO 292 pairs (v2, 3.2×) | 0.84 [0.58,1.11] | 0.689 [0.51,0.90] | 0.49 |
+
+**Dose does NOT install magnitude.** v2 seat density (0.84) is
+indistinguishable from v1 (0.85) and baseline (0.84) — a 3.2× data
+increase, epoch-matched, moved seat-level disposition by zero. Despite
+v2's much stronger training-set preference accuracy (val acc 0.94 vs
+v1's ~0.48), the learned preference did not surface as more emitted
+behavior. This is strong evidence that ORPO's effect on this seat is
+NOT gradual installation of magnitude.
+
+**The responsiveness effect weakened with dose.** v1's striking
+gate suppression (0.15, below baseline 0.96) rose to 0.49 at v2 — still
+below baseline, but the effect is smaller. Tentative reading: more
+diverse pairs slightly broadened where the model deploys hedging.
+
+**Consolidated finding for the paper:** magnitude is bounded by the
+synthesizer register (cell 6), not by preference-data dose; preference
+training's distinctive contribution is *suppression of unwarranted
+hedging*, and even that does not strengthen — and may dilute — with
+more data. The paper's §5/§8 dose question resolves as: *3× dose did
+not install seat-level magnitude; ORPO's value is responsiveness, not
+installation.*

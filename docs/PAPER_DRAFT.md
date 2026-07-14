@@ -170,7 +170,7 @@ Prompting and SFT install real seat-level magnitude (CIs exclude
 baseline) — and both fail the gate, hedging on the trigger-free case
 (prompting despite its explicit "do not force it" clause). Both also lose
 their gains at the pipeline output: final CDS lands at or below the
-untrained baseline. ORPO at this dose installs no significant magnitude;
+untrained baseline. ORPO installs no significant magnitude even at 3.2× dose (292 pairs, epoch-matched: seat density 0.84 [0.58,1.11] vs 91-pair 0.85 and baseline 0.84, despite training preference-accuracy rising from 0.48 to 0.94);
 its effect is qualitative — it is the only arm that *suppresses*
 unwarranted hedging below baseline while leaving trigger-case behavior
 intact and imposing no content tax (rubric coverage identical to A′).
