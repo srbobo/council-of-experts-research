@@ -1,0 +1,4 @@
+FROM ./gguf/saul-dpo-v2-Q4_K_M.gguf
+TEMPLATE [INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]
+PARAMETER stop [INST]
+PARAMETER stop [/INST]

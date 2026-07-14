@@ -278,3 +278,11 @@ CABINET_SFT: dict[SeatRole, CabinetMember] = {
     "legal": LEGAL_SFT,
     "finance": FINANCE,
 }
+
+
+LEGAL_DPO_V2 = CabinetMember(
+    seat="legal", name="Saul-7B-ORPO-v2 (292 pairs, 16 epochs)", backbone="Mistral 7B",
+    fine_tune_type="ORPO at 3.2x dose (dose-response cell), epoch-matched to v1",
+    ollama_tag="saul-dpo-v2:coe", quantization="Q4_K_M", memory_gb=5.0, license="MIT (derived)")
+CABINET_DPO_V2: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_DPO_V2, "finance": FINANCE}

@@ -44,6 +44,7 @@ from council.thermal import ThermalGuard
 from .cost_guard import BudgetExceeded, CostGuard
 from .dpo_experiment import (
     run_council_dpo,
+    run_council_dpo_v2,
     run_council_sft,
     run_council_repro,
     run_council_spec,
@@ -92,6 +93,7 @@ DPO_EXPERIMENT_MODES = [
     "local-council-spec",    # B2 — spec addendum on the Saul seat
     "local-council-dpo",     # C  — LoRA-DPO'd Saul (after Phase 3)
     "local-council-sft",     # P1 control — SFT-on-chosen Saul
+    "local-council-dpo-v2",  # dose-response — 3.2x ORPO
 ]
 ALL_MODES = (
     BASELINE_MODES + MOE_MODES + UPGRADED_MODES
@@ -330,6 +332,10 @@ async def _compare(case_id: str, modes: list[str]) -> int:
                           "final_output": r.final_output,
                           "total_latency_ms": r.total_latency_ms,
                           "deliberation": r.to_dict()}
+            elif mode == "local-council-dpo-v2":
+                r = await run_council_dpo_v2(case.prompt)
+                result = {"mode": mode, "query": case.prompt, "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms, "deliberation": r.to_dict()}
             elif mode == "local-council-sft":
                 # P1 control — SFT-on-chosen Saul (paper-hardening cell 1).
                 r = await run_council_sft(case.prompt)

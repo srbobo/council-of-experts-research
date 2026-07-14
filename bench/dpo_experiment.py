@@ -20,7 +20,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from council.cabinet import CABINET_DPO, CABINET_REPRO, CABINET_SFT, GPT_OSS_20B
+from council.cabinet import CABINET_DPO, CABINET_DPO_V2, CABINET_REPRO, CABINET_SFT, GPT_OSS_20B
 from council.models import chat as local_chat
 from council.orchestrator import DeliberationResult, deliberate
 from council.prompts import BEHAVIOR_SPEC_ADDENDUM, LEGAL_SYSTEM
@@ -104,3 +104,9 @@ async def run_council_sft(query: str) -> DeliberationResult:
     """Cell 1 (P1 control) — v1 cabinet with the SFT-on-chosen Saul."""
     thermal = ThermalGuard.from_env()
     return await deliberate(query, thermal=thermal, cabinet_members=CABINET_SFT)
+
+
+async def run_council_dpo_v2(query: str) -> DeliberationResult:
+    """Dose-response cell — v1 cabinet with the 3.2x-dose ORPO Saul."""
+    thermal = ThermalGuard.from_env()
+    return await deliberate(query, thermal=thermal, cabinet_members=CABINET_DPO_V2)
