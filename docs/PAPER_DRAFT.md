@@ -10,7 +10,7 @@ what a model chooses to emit independent of what it knows, operationalized
 as five epistemic behaviors (training-cutoff disclosure, modeled-assumption
 flagging, precise vocabulary distinctions, jurisdictional distinguishing,
 and hedging) — and ask where disposition in a pipeline comes from and
-whether it can be installed. Across 300+ audited runs of a four-model
+whether it can be installed. Across ~290 audited runs of a four-model
 "Council of Experts" on consumer hardware, we find: (1) the pipeline
 architecture itself lifts disposition density 3–9× over single-shot use,
 model-agnostically, and *amplifies* under simultaneous behavioral demand
@@ -20,7 +20,8 @@ exemplars produce large seat-level lifts (≈2×, bootstrap CIs excluding
 baseline) that are indiscriminate — both hedge on a trigger-free control
 case — and that vanish from the pipeline's final output; reference-free
 preference optimization (ORPO) on content-controlled pairs installs no
-measurable magnitude at our dose but is the only mechanism that *improves*
+measurable seat-level magnitude — invariant to a 3.2× increase in
+preference data — but is the only mechanism that *improves*
 responsiveness, suppressing unwarranted hedging below the untrained
 baseline; (3) the mechanism is not sentence-level content entanglement
 (refuted, r = −0.10) but a **synthesizer register**: each aggregator model
@@ -60,7 +61,7 @@ pre-registered predictions, with a trigger-free control case that
 separates *responsive* from *habitual* behavior; (iii) identification and
 ablation of the **synthesizer register** as the mechanism governing which
 installed behaviors reach the pipeline's output; (iv) a fully local, $0,
-consumer-hardware protocol with append-only audit logs for all 300+ runs.
+consumer-hardware protocol with append-only audit logs for all 287 runs.
 
 ## 2 Related work
 
@@ -113,7 +114,7 @@ simultaneously) and case 7 (*trigger-light*: an organizational-strategy
 question warranting none). Case 7 is the **responsiveness gate**: any
 arm emitting disposition there is behaving habitually, not responsively.
 
-**Scale.** 251 imported, audited runs at time of writing (append-only
+**Scale.** 287 imported, audited runs at time of writing (append-only
 JSON, one file per run, each carrying per-phase inputs/outputs/backends);
 all inference via Ollama on one fanless M5 MacBook Air, 32 GB unified
 memory, 26.8 GB Metal working set. Runs are nondeterministic across
@@ -170,10 +171,22 @@ Prompting and SFT install real seat-level magnitude (CIs exclude
 baseline) — and both fail the gate, hedging on the trigger-free case
 (prompting despite its explicit "do not force it" clause). Both also lose
 their gains at the pipeline output: final CDS lands at or below the
-untrained baseline. ORPO installs no significant magnitude even at 3.2× dose (292 pairs, epoch-matched: seat density 0.84 [0.58,1.11] vs 91-pair 0.85 and baseline 0.84, despite training preference-accuracy rising from 0.48 to 0.94);
+untrained baseline. ORPO installs no significant seat-level magnitude;
 its effect is qualitative — it is the only arm that *suppresses*
 unwarranted hedging below baseline while leaving trigger-case behavior
 intact and imposing no content tax (rubric coverage identical to A′).
+**The null is dose-invariant.** Retraining ORPO at 3.2× dose (292
+content-controlled pairs, epoch-matched to the 91-pair run) moved
+seat-level magnitude by zero: seat density 0.84 [0.58, 1.11] vs the
+91-pair 0.85 and baseline 0.84, even though the larger set raised
+training-time preference accuracy from 0.48 to 0.94. More preference
+data was internalized but not emitted — strong evidence that ORPO's
+seat effect is not gradual installation of magnitude but a bounded
+suppression of unwarranted behavior. (The suppression itself weakened
+slightly with dose: the trigger-light gate rose from 0.15 to 0.49,
+still below baseline; more diverse pairs modestly broadened where the
+model deploys hedging.)
+
 Two further details. First, prompting was tested at two loci: on the
 generalist single-shot (a 6× final-output lift, 0.099 → 0.589, that
 failed the gate at 0.985 — its answer to the hybrid-work
@@ -218,7 +231,10 @@ output 2–5× on every synthesizer (overturning our registered prediction
 that instructions would not matter). Mechanism: *final disposition ≈
 f(register × instructions), nearly independent of seat input. ORPO
 "survives" by staying inside the register; prompting and SFT "strip" by
-exceeding it.*
+exceeding it.* The dose-invariance of §5 is the register's corollary:
+if the aggregator's band, not the seat's input, sets output disposition,
+then no amount of additional preference data at the seat can raise it —
+which is exactly what 3.2× dose showed.
 
 ## 7 Background: why disposition, not content
 
@@ -239,9 +255,11 @@ Pattern-based scoring has paraphrase blind spots and rewards concision
 replication is planned. ORPO substitutes for DPO due to a memory defect
 in the only local DPO trainer available (documented); claims are scoped
 to reference-free preference optimization. One trained seat, one base
-model (Mistral-7B-v0.1, weakly aligned), 91 pairs (a 2.7× dose-response
-run is in progress), n = 5 seeds, seven self-authored cases, and three
-local synthesizers ≤ 20B — frontier aggregators untested. All experiments
+model (Mistral-7B-v0.1, weakly aligned), a preference-data range of
+91–292 pairs (the 3.2× dose-response run showed no magnitude gain but
+does not exclude effects at far larger scale), n = 5 seeds, seven
+self-authored cases, and three local synthesizers ≤ 20B — frontier
+aggregators untested. All experiments
 ran on one consumer machine at $0 API cost; we regard the reproducibility
 this buys as partial compensation for the scale it forgoes.
 
@@ -252,16 +270,18 @@ stages: it is set by the last writer's register and that writer's
 instructions. Upstream installation by prompting or exemplar tuning
 produces loud but indiscriminate behavior that the aggregator strips;
 preference optimization produces quiet, responsive behavior that
-survives by conformity. Builders who want calibrated pipelines should
+survives by conformity — and whose seat-level magnitude does not grow
+with more preference data, because the aggregator's register, not the
+seat, sets the ceiling. Builders who want calibrated pipelines should
 tune the synthesizer's instructions and choose the final model
 deliberately — and evaluate disposition at the pipeline's mouth, not the
 seat.
 
 ## Reproducibility
 
-All code, prompts, 251+ imported audited runs, pre-registrations,
+All code, prompts, 287 imported audited runs, pre-registrations,
 protocol amendments, verdicts (including refuted hypotheses), the
-99-pair dataset, LoRA adapters, and regeneration scripts:
+99- and 292-pair datasets, LoRA adapters, and regeneration scripts:
 github.com/srbobo/council-of-experts-research. Glossary of all terms:
 RUNBOOK_PAPER_HARDENING.md.
 
