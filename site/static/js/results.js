@@ -129,6 +129,60 @@
   // stay stable as rubrics get toggled in/out.
   const activeRubrics = new Set();
 
+  // Disposition lens — the paper's five behavior families, each with a
+  // FIXED color slot (unlike rubrics, whose colors rotate by toggle order:
+  // the family↔color mapping must stay stable so the legend stays true).
+  // Patterns are a JS port of the bench scorer's regex families; the bench
+  // scorer is canonical — keep in sync when it changes.
+  const DISPOSITION_FAMILIES = [
+    { id: "cutoff", label: "Training-cutoff disclosure", short: "cutoff", slot: "blue",
+      desc: "Names the knowledge boundary: “as of my training data…”" },
+    { id: "modeled", label: "Modeled-assumption flagging", short: "modeled", slot: "amber",
+      desc: "Labels numbers as modeled: “assuming 60% persistence…”" },
+    { id: "precision", label: "Precise vocabulary", short: "precise", slot: "sage",
+      desc: "Regulatory distinctions: clearance vs approval, 510(k) pathway language" },
+    { id: "jurisdiction", label: "Jurisdictional distinguishing", short: "jurisd.", slot: "lilac",
+      desc: "Keeps legal regimes separate: UK GDPR vs EU GDPR, preemption" },
+    { id: "hedging", label: "Hedging (stated conditionality)", short: "hedge", slot: "rose",
+      desc: "Conditions a claim — “may vary if…” — not refusal, not vagueness" },
+  ];
+  const DISPOSITION_PATTERNS = {
+    cutoff: [
+      /training[- ]?cut[- ]?off/gi, /knowledge cut[- ]?off/gi,
+      /may (?:be |have )(?:stale|outdated|evolved)/gi, /post[- ]?cut[- ]?off/gi,
+      /after my training/gi, /verify (?:current|latest|recent)/gi,
+      /as of (?:my )?(?:training|knowledge|20\d\d)/gi,
+    ],
+    modeled: [
+      /modell?ed at/gi, /\bassume[ds]? (?:that|the)/gi,
+      /\bassuming (?:that|the|a |an |\d)/gi, /under the assumption/gi,
+      /this assumes?/gi, /\bwe assume\b/gi, /\bhypothetical(?:ly)?\b/gi,
+    ],
+    precision: [
+      /approval[^.\n]{0,60}(?:vs\.?|versus|not)[^.\n]{0,60}clearance/gi,
+      /clearance[^.\n]{0,60}(?:vs\.?|versus|not)[^.\n]{0,60}approval/gi,
+      /distinguish(?:es|ing|ed)? between/gi, /standard[- ]of[- ]care/gi,
+      /(?:510\(k\)|de novo|PMA)\s+(?:clearance|approval|pathway)/gi,
+      /\b(?:NDA|BLA)\s+approval\b/gi,
+    ],
+    jurisdiction: [
+      /\bUK\s?GDPR\b/g, /\bEU\s?GDPR\b/g, /post[- ]Brexit/gi,
+      /each\s+(?:jurisdiction|country|state|regime)/gi, /preempt(?:ion|s|ed)?/gi,
+    ],
+    hedging: [
+      /false[- ](?:positive|negative)/gi, /alert fatigue/gi,
+      /real[- ]world\s+(?:evidence|data)/gi, /sensitivity (?:analysis|range|to|of)/gi,
+      /low\/?high (?:case|scenario|estimate)/gi, /±\s?\d/g,
+      /\b(?:may|might|could)\s+(?:vary|differ|change)\b/gi,
+    ],
+  };
+  // Families currently toggled on (insertion order preserved, like rubrics).
+  const activeDispositions = new Set();
+  const dispositionSlot = (id) =>
+    (DISPOSITION_FAMILIES.find((f) => f.id === id) || {}).slot || "sand";
+  const dispositionLabel = (id) =>
+    (DISPOSITION_FAMILIES.find((f) => f.id === id) || {}).label || id;
+
   // Standing note on Opus paste-in captures — the manual paste flow doesn't
   // preserve extended thinking blocks, so we surface that limitation in the
   // reasoning slot rather than silently omitting it.
@@ -562,7 +616,7 @@
   // rubric's color (deterministic; first-toggle wins on conflict).
   // No-op when activeRubrics is empty.
   function highlightElement(rootEl) {
-    if (!rootEl || activeRubrics.size === 0) return;
+    if (!rootEl || (activeRubrics.size === 0 && activeDispositions.size === 0)) return;
     const slots = buildColorSlotMap();
 
     // Collect text nodes up front; mutating the tree while walking it is
@@ -572,7 +626,7 @@
         // Skip nodes already inside a mark (avoid double-wrapping on
         // re-render) and skip empty text.
         if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        if (node.parentElement && node.parentElement.closest("mark.rubric-mark")) {
+        if (node.parentElement && node.parentElement.closest("mark.rubric-mark, mark.disp-mark")) {
           return NodeFilter.FILTER_REJECT;
         }
         return NodeFilter.FILTER_ACCEPT;
@@ -592,6 +646,17 @@
           while ((m = re.exec(text)) !== null) {
             if (m[0].length === 0) { re.lastIndex++; continue; }
             matches.push({ start: m.index, end: m.index + m[0].length, rubricId: id });
+          }
+        }
+      }
+      for (const id of activeDispositions) {
+        const patterns = DISPOSITION_PATTERNS[id] || [];
+        for (const re of patterns) {
+          re.lastIndex = 0;
+          let m;
+          while ((m = re.exec(text)) !== null) {
+            if (m[0].length === 0) { re.lastIndex++; continue; }
+            matches.push({ start: m.index, end: m.index + m[0].length, family: id });
           }
         }
       }
@@ -620,10 +685,17 @@
           frag.appendChild(document.createTextNode(text.slice(cursor, m.start)));
         }
         const mark = document.createElement("mark");
-        mark.className = "rubric-mark";
-        mark.dataset.rubric = m.rubricId;
-        mark.dataset.colorSlot = slots.get(m.rubricId) || "amber";
-        mark.title = rubricLabel(m.rubricId);
+        if (m.family) {
+          mark.className = "disp-mark";
+          mark.dataset.family = m.family;
+          mark.dataset.colorSlot = dispositionSlot(m.family);
+          mark.title = dispositionLabel(m.family);
+        } else {
+          mark.className = "rubric-mark";
+          mark.dataset.rubric = m.rubricId;
+          mark.dataset.colorSlot = slots.get(m.rubricId) || "amber";
+          mark.title = rubricLabel(m.rubricId);
+        }
         mark.textContent = text.slice(m.start, m.end);
         frag.appendChild(mark);
         cursor = m.end;
@@ -703,6 +775,70 @@
     activeRubrics.clear();
     renderGrid();
     renderRubricControls();
+  }
+
+  /* -------------------------------------------------------------------------
+   * Disposition lens — chip strip + per-column tallies. Chips toggle the
+   * five paper behavior families; every visible output column then shows
+   * its matches color-coded, with a per-family count under the column
+   * title so density differences read at a glance.
+   * ---------------------------------------------------------------------- */
+  function renderDispositionLens() {
+    const host = document.getElementById("disp-lens-chips");
+    if (!host) return;
+    const allOn = activeDispositions.size === DISPOSITION_FAMILIES.length;
+    host.innerHTML = DISPOSITION_FAMILIES.map((f) => `
+      <button type="button"
+              class="disp-chip${activeDispositions.has(f.id) ? " disp-chip--active" : ""}"
+              data-family="${f.id}" data-color-slot="${f.slot}"
+              aria-pressed="${activeDispositions.has(f.id) ? "true" : "false"}"
+              data-tooltip="${escapeHtml(f.desc)}">${escapeHtml(f.label)}</button>
+    `).join("") + `
+      <button type="button" class="disp-chip disp-chip--all" id="disp-all"
+              data-tooltip="Toggle all five families at once">${allOn ? "Clear all" : "All five"}</button>`;
+  }
+
+  function renderDispositionTallies() {
+    document
+      .querySelectorAll("#results-grid > article.card, #overlay-root article.card")
+      .forEach((card) => {
+        let tally = card.querySelector(".disp-tally");
+        if (activeDispositions.size === 0) {
+          if (tally) tally.remove();
+          return;
+        }
+        const counts = DISPOSITION_FAMILIES
+          .filter((f) => activeDispositions.has(f.id))
+          .map((f) => ({
+            f,
+            n: card.querySelectorAll(`mark.disp-mark[data-family="${f.id}"]`).length,
+          }));
+        if (!tally) {
+          tally = document.createElement("div");
+          tally.className = "disp-tally";
+          const title = card.querySelector(".card__title");
+          if (title && title.parentNode) {
+            title.parentNode.insertBefore(tally, title.nextSibling);
+          } else {
+            card.prepend(tally);
+          }
+        }
+        tally.innerHTML = counts.map(({ f, n }) => `
+          <span class="disp-tally__item${n === 0 ? " disp-tally__item--zero" : ""}"
+                data-color-slot="${f.slot}"
+                data-tooltip="${escapeHtml(f.label)}">${escapeHtml(f.short)} ${n}</span>`).join("");
+      });
+  }
+
+  function toggleDisposition(familyId) {
+    if (!DISPOSITION_PATTERNS[familyId]) return;
+    if (activeDispositions.has(familyId)) {
+      activeDispositions.delete(familyId);
+    } else {
+      activeDispositions.add(familyId);
+    }
+    renderGrid();
+    renderDispositionLens();
   }
 
   /* -------------------------------------------------------------------------
@@ -1362,6 +1498,7 @@
     }
     document.body.classList.toggle("has-overlay", !!expandedMode);
     applyRubricHighlights();
+    renderDispositionTallies();
   }
 
   function renderColumn(modeKey, run) {
@@ -1492,6 +1629,23 @@
       return;
     }
 
+    // Disposition-lens chips — family toggle or the all/clear button.
+    const dchip = e.target.closest(".disp-chip");
+    if (dchip) {
+      if (dchip.id === "disp-all") {
+        if (activeDispositions.size === DISPOSITION_FAMILIES.length) {
+          activeDispositions.clear();
+        } else {
+          DISPOSITION_FAMILIES.forEach((f) => activeDispositions.add(f.id));
+        }
+        renderGrid();
+        renderDispositionLens();
+      } else if (dchip.dataset.family) {
+        toggleDisposition(dchip.dataset.family);
+      }
+      return;
+    }
+
     // Active-chip click → remove that rubric. Whole chip is clickable;
     // the × is just a visual affordance.
     const chip = e.target.closest(".rubric-chip");
@@ -1521,6 +1675,7 @@
    * fetch fails (logged, non-blocking).
    * ---------------------------------------------------------------------- */
   (async () => {
+    renderDispositionLens();
     await loadPrompts();
     initCaseSelector();
   })();

@@ -1176,3 +1176,109 @@ mark.rubric-mark[data-color-slot="sand"]  { background-color: rgba(192, 174, 124
 body.has-overlay {
   overflow: hidden;
 }
+
+/* --------------------------------------------------------------------------
+ * Disposition lens — the paper's five behavior families color-coded inside
+ * the output columns. Marks reuse the rubric slot hues but add a solid
+ * underline so lens marks stay distinguishable from rubric highlights when
+ * both are active. Family↔color mapping is FIXED (see results.js), unlike
+ * rubric slots which rotate by toggle order.
+ * -------------------------------------------------------------------------- */
+mark.disp-mark {
+  border-radius: 2px;
+  padding: 0 0.15em;
+  margin: 0 -0.05em;
+  color: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 2px solid transparent;
+}
+mark.disp-mark[data-color-slot="amber"] { background-color: rgba(199, 121, 63, 0.24); border-bottom-color: rgba(199, 121, 63, 0.9); }
+mark.disp-mark[data-color-slot="sage"]  { background-color: rgba(120, 158, 102, 0.26); border-bottom-color: rgba(120, 158, 102, 0.9); }
+mark.disp-mark[data-color-slot="blue"]  { background-color: rgba(110, 152, 196, 0.26); border-bottom-color: rgba(110, 152, 196, 0.9); }
+mark.disp-mark[data-color-slot="rose"]  { background-color: rgba(206, 122, 130, 0.26); border-bottom-color: rgba(206, 122, 130, 0.9); }
+mark.disp-mark[data-color-slot="lilac"] { background-color: rgba(168, 152, 200, 0.28); border-bottom-color: rgba(168, 152, 200, 0.9); }
+
+#disposition-lens .disp-lens__head { margin-bottom: var(--space-3); }
+
+.disp-lens__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.disp-chip {
+  position: relative;
+  font: inherit;
+  font-size: var(--size-2);
+  padding: 0.3em 0.85em;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+.disp-chip:hover { border-color: var(--color-text); }
+.disp-chip:focus-visible { outline: 2px solid var(--color-text); outline-offset: 2px; }
+
+.disp-chip--active[data-color-slot="amber"] { background-color: rgba(199, 121, 63, 0.24); border-color: rgba(199, 121, 63, 0.9); }
+.disp-chip--active[data-color-slot="sage"]  { background-color: rgba(120, 158, 102, 0.26); border-color: rgba(120, 158, 102, 0.9); }
+.disp-chip--active[data-color-slot="blue"]  { background-color: rgba(110, 152, 196, 0.26); border-color: rgba(110, 152, 196, 0.9); }
+.disp-chip--active[data-color-slot="rose"]  { background-color: rgba(206, 122, 130, 0.26); border-color: rgba(206, 122, 130, 0.9); }
+.disp-chip--active[data-color-slot="lilac"] { background-color: rgba(168, 152, 200, 0.28); border-color: rgba(168, 152, 200, 0.9); }
+
+/* Per-column tally strip injected under each column title when the lens is
+ * on. Zero counts stay visible but dimmed — "this column emitted none" is
+ * the finding, not noise. */
+.disp-tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 var(--space-3);
+}
+.disp-tally__item {
+  position: relative;
+  font-size: var(--size-2);
+  font-variant-numeric: tabular-nums;
+  padding: 0.1em 0.55em;
+  border-radius: 3px;
+  border-bottom: 2px solid transparent;
+}
+.disp-tally__item[data-color-slot="amber"] { background-color: rgba(199, 121, 63, 0.18); border-bottom-color: rgba(199, 121, 63, 0.85); }
+.disp-tally__item[data-color-slot="sage"]  { background-color: rgba(120, 158, 102, 0.20); border-bottom-color: rgba(120, 158, 102, 0.85); }
+.disp-tally__item[data-color-slot="blue"]  { background-color: rgba(110, 152, 196, 0.20); border-bottom-color: rgba(110, 152, 196, 0.85); }
+.disp-tally__item[data-color-slot="rose"]  { background-color: rgba(206, 122, 130, 0.20); border-bottom-color: rgba(206, 122, 130, 0.85); }
+.disp-tally__item[data-color-slot="lilac"] { background-color: rgba(168, 152, 200, 0.22); border-bottom-color: rgba(168, 152, 200, 0.85); }
+.disp-tally__item--zero { opacity: 0.45; }
+
+/* Instant tooltips for lens chips + tally items — same mechanism as the
+ * .dispo-pill tooltips above (::after bubble, no native-title delay). */
+.disp-chip[data-tooltip]::after,
+.disp-tally__item[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 0.6em 0.85em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: pre-line;
+  text-align: left;
+  width: max-content;
+  max-width: 320px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.disp-chip[data-tooltip]:hover::after,
+.disp-tally__item[data-tooltip]:hover::after {
+  opacity: 1;
+}
