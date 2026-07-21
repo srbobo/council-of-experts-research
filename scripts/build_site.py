@@ -48,7 +48,7 @@ CASE_IDS = [
 
 # Pages carried over to the static site. index.html (the A/B runner) is dropped;
 # the Results page becomes the home page instead.
-STATIC_PAGES = ["results.html", "process.html", "architecture.html"]
+STATIC_PAGES = ["results.html", "process.html", "architecture.html", "cells.html", "routes.html"]
 
 
 def clean() -> None:
@@ -125,6 +125,8 @@ NAV_TEMPLATE = """      <nav class="primary-nav" aria-label="Primary">
         <a href="/"{results_active}>Results</a>
         <a href="/process"{process_active}>Process</a>
         <a href="/architecture"{architecture_active}>Architecture</a>
+        <a href="/cells"{cells_active}>Cells</a>
+        <a href="/routes"{routes_active}>Routes</a>
       </nav>"""
 
 NAV_RE = re.compile(
@@ -137,6 +139,8 @@ def rewrite_nav(html: str, active: str) -> str:
         results_active=' class="active"' if active == "results" else "",
         process_active=' class="active"' if active == "process" else "",
         architecture_active=' class="active"' if active == "architecture" else "",
+        cells_active=' class="active"' if active == "cells" else "",
+        routes_active=' class="active"' if active == "routes" else "",
     )
     new, n = NAV_RE.subn(nav, html)
     if n != 1:

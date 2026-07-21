@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — Research Routes</title>
+  <meta name="description" content="A tree diagram of the research journey: every route, dead-end, pivot, and the finding each branch produced.">
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+  <style>
+    /* Research-routes tree — scoped under .rt-map, built in the site palette. */
+    .rt-map { --rt-confirm: var(--color-success); --rt-refute: var(--color-error); --rt-pivot: var(--color-warn); }
+    .rt-head { text-align: center; margin-bottom: var(--space-4); }
+    .rt-legend {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2) var(--space-4);
+      margin: var(--space-4) auto var(--space-6); padding: var(--space-3) var(--space-4); max-width: 46rem;
+      border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface);
+      font-family: var(--font-mono); font-size: var(--size-1); color: var(--color-text-soft);
+    }
+    .rt-legend span { display: inline-flex; align-items: center; gap: var(--space-2); }
+    .rt-sw { width: 1.4rem; border-top-width: 3px; border-top-style: solid; display: inline-block; }
+    .rt-sw.take { border-color: var(--color-accent); }
+    .rt-sw.dead { border-color: var(--rt-refute); border-top-style: dashed; }
+    .rt-sw.defer { border-color: var(--color-text-faint); border-top-style: dotted; }
+    .rt-sw.piv { border-color: var(--rt-pivot); }
+    .rt-sw.fin { width: .7rem; height: .7rem; border: 0; border-radius: 2px; background: var(--color-text); }
+
+    .rt-map { display: flex; flex-direction: column; align-items: center; }
+    .rt-link { width: 2px; background: var(--color-border); }
+    .rt-link.h2 { height: 2rem; }
+    .rt-link.h3 { height: 2.6rem; }
+    .rt-link.take { background: var(--color-accent); width: 2.5px; }
+
+    .rt-node {
+      border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-surface);
+      padding: var(--space-3) var(--space-4); width: min(38rem, 100%); position: relative;
+    }
+    .rt-lbl {
+      font-family: var(--font-mono); font-size: var(--size-1); letter-spacing: .06em;
+      text-transform: uppercase; color: var(--color-text-faint); margin-bottom: var(--space-1);
+      display: flex; justify-content: space-between; gap: var(--space-2); align-items: baseline;
+    }
+    .rt-title { font-weight: 700; font-size: var(--size-4); line-height: 1.25; }
+    .rt-body { color: var(--color-text); font-size: var(--size-2); margin-top: var(--space-1); }
+    .rt-body.muted { color: var(--color-text-soft); }
+    .rt-res {
+      margin-top: var(--space-2); font-family: var(--font-mono); font-size: var(--size-1);
+      display: inline-flex; align-items: center; gap: var(--space-1); padding: .22rem .55rem;
+      border-radius: 4px; line-height: 1.35;
+    }
+    .r-confirm { background: color-mix(in srgb, var(--rt-confirm) 12%, transparent); color: var(--rt-confirm); border: 1px solid var(--rt-confirm); }
+    .r-refute  { background: color-mix(in srgb, var(--rt-refute) 10%, transparent); color: var(--rt-refute); border: 1px solid var(--rt-refute); }
+    .r-num     { background: color-mix(in srgb, var(--color-accent) 12%, transparent); color: var(--color-accent); border: 1px solid var(--color-accent); }
+    .r-null    { background: transparent; color: var(--color-text-faint); border: 1px dashed var(--color-text-faint); }
+
+    .rt-node.root  { border-color: var(--color-text); border-width: 1.5px; background: var(--color-bg); }
+    .rt-node.test  { border-left: 4px solid var(--color-accent); }
+    .rt-node.piv {
+      border: 1.5px solid var(--rt-pivot); background: color-mix(in srgb, var(--rt-pivot) 9%, transparent);
+      width: min(34rem, 100%); text-align: center;
+    }
+    .rt-node.piv .rt-title { font-style: italic; font-weight: 600; color: var(--rt-pivot); font-size: var(--size-3); }
+    .rt-plbl { font-family: var(--font-mono); font-size: var(--size-1); letter-spacing: .1em; text-transform: uppercase; color: var(--rt-pivot); display: block; margin-bottom: var(--space-1); }
+    .rt-node.fin { border: 0; background: var(--color-text); color: var(--color-bg); width: min(42rem, 100%); padding: var(--space-4) var(--space-5); }
+    .rt-node.fin .rt-lbl { color: var(--color-bg); opacity: .7; }
+    .rt-node.fin .rt-title { font-size: var(--size-6); }
+    .rt-node.fin .rt-body { color: var(--color-bg); opacity: .92; margin-top: var(--space-2); font-size: var(--size-2); }
+
+    .rt-badge { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; padding: .12rem .4rem; border-radius: 3px; border: 1px solid var(--color-accent); color: var(--color-accent); white-space: nowrap; }
+
+    .rt-fork { width: 100%; position: relative; padding-top: 1.4rem; }
+    .rt-stem { position: absolute; top: 0; left: 50%; width: 2px; height: 1.4rem; background: var(--color-border); transform: translateX(-50%); }
+    .rt-bar { position: absolute; top: 1.4rem; height: 0; border-top: 2px solid var(--color-border); left: calc(50% / var(--n)); right: calc(50% / var(--n)); }
+    .rt-row { display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: var(--space-3); padding-top: 1.5rem; }
+    .rt-row > .rt-branch { position: relative; }
+    .rt-row > .rt-branch::before { content: ""; position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); width: 2px; height: 1.5rem; background: var(--color-border); }
+    .rt-branch.take::before  { background: var(--color-accent); width: 2.5px; }
+    .rt-branch.dead::before  { background: var(--rt-refute); }
+    .rt-branch.defer::before { background: transparent; border-left: 1.5px dotted var(--color-text-faint); width: 0; }
+    .rt-branch .rt-node { width: 100%; }
+    .rt-branch.take  .rt-node { border-color: var(--color-accent); border-width: 1.5px; }
+    .rt-branch.dead  .rt-node { border-color: var(--rt-refute); border-style: dashed; background: color-mix(in srgb, var(--rt-refute) 7%, transparent); }
+    .rt-branch.defer .rt-node { border-color: var(--color-text-faint); border-style: dotted; opacity: .82; }
+
+    .rt-cap { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; margin-top: var(--space-2); display: block; }
+    .rt-cap.dead { color: var(--rt-refute); }
+    .rt-cap.defer { color: var(--color-text-faint); }
+    .rt-cap.take { color: var(--color-accent); }
+    .rt-node code { font-family: var(--font-mono); font-size: .85em; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 3px; padding: .05em .3em; }
+
+    @media (max-width: 620px) {
+      .rt-row { grid-template-columns: 1fr; gap: var(--space-4); padding-top: 1.2rem; }
+      .rt-bar, .rt-stem { display: none; }
+      .rt-row > .rt-branch::before { top: -1.2rem; height: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">Results</a>
+        <a href="/process">Process</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/cells">Cells</a>
+        <a href="/routes" class="active">Routes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="column">
+    <header class="rt-head">
+      <h1>Research routes — the journey as a tree</h1>
+      <p class="text-soft">Every route the program actually took — from the original content bet, through the dead-ends and forced detours, to the finding each branch produced. The bold spine is the path that reached the thesis. For the cell-by-cell data behind each stop, see <a href="/cells">Cells</a>.</p>
+    </header>
+
+    <div class="rt-legend">
+      <span><span class="rt-sw take"></span>Path taken</span>
+      <span><span class="rt-sw dead"></span>Dead-end / refuted</span>
+      <span><span class="rt-sw defer"></span>Not taken / deferred</span>
+      <span><span class="rt-sw piv"></span>Pivot</span>
+      <span><span class="rt-sw fin"></span>Final finding</span>
+    </div>
+
+    <div class="rt-map">
+
+      <div class="rt-node root">
+        <div class="rt-lbl"><span>Stop 01 · the bet</span></div>
+        <div class="rt-title">Can four small specialists beat one generalist?</div>
+        <div class="rt-body">4-model council (Phi-4 Lead + Med42 / Saul / Qwen-Finance seats) vs. baselines on a 5-case rubric battery.</div>
+        <span class="rt-res r-refute">&#10007; Council 25% rubric &middot; confabulated a trial, treated repealed law as live</span>
+      </div>
+
+      <div class="rt-link h2"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 02 · isolate the cause</span></div>
+        <div class="rt-title">MoE comparison — run a strong local generalist</div>
+        <div class="rt-body">gpt-oss-20B, single-shot and as-council, through the same cases.</div>
+        <span class="rt-res r-num">gpt-oss 42% — beats the council &middot; but also fails cutoff disclosure</span>
+        <div class="rt-body muted" style="margin-top:var(--space-2)">Diagnosis: a <strong>seat-level capability ceiling</strong>, not an architecture problem. Can a targeted upgrade close it?</div>
+      </div>
+
+      <div class="rt-fork" style="--n:3">
+        <div class="rt-stem"></div><div class="rt-bar"></div>
+        <div class="rt-row">
+          <div class="rt-branch defer"><div class="rt-node">
+            <div class="rt-lbl"><span>Path A</span></div>
+            <div class="rt-title">Retrieval grounding</div>
+            <div class="rt-body">Give seats live sources (EUR-Lex, clinicaltrials.gov) to fix recency + depth.</div>
+            <span class="rt-cap defer">&#9671; Deferred — the fix for what remained, never run</span>
+          </div></div>
+          <div class="rt-branch defer"><div class="rt-node">
+            <div class="rt-lbl"><span>Path B</span></div>
+            <div class="rt-title">Cabinet / Lead swaps</div>
+            <div class="rt-body">Route individual phases to a stronger model to locate the gap.</div>
+            <span class="rt-cap defer">&#9671; Partial — plumbing validated, matrix budget-capped</span>
+          </div></div>
+          <div class="rt-branch take"><div class="rt-node">
+            <div class="rt-lbl"><span>Path C</span><span class="rt-badge">taken</span></div>
+            <div class="rt-title">Specialist seat upgrade</div>
+            <div class="rt-body">Swap two seats &rarr; <code>local-council-v2</code> (Meditron3 + Hawkish-8B).</div>
+            <span class="rt-res r-num" style="margin-top:var(--space-2)">31% &middot; closes &#8531; of gap &middot; highest CDS 0.928</span>
+            <span class="rt-cap take">&#8627; Ceiling is structural — no better 7&ndash;8B swap exists</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="rt-link h3"></div>
+
+      <div class="rt-node piv">
+        <span class="rt-plbl">Pivot &#8470; 1 — the reframe that saved the project</span>
+        <div class="rt-title">Content is capped at this RAM tier — but the specialists kept winning on <u>disposition</u>. Where does that come from, and can it be installed?</div>
+      </div>
+
+      <div class="rt-link h3 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 03 · observational sweep</span><span class="rt-badge">Result 1</span></div>
+        <div class="rt-title">Does the architecture itself shape disposition?</div>
+        <div class="rt-body">Council vs. single-shot across model families, before any training.</div>
+        <span class="rt-res r-confirm">&#10003; Confirmed — architecture lifts disposition 3&ndash;9&times;, model-agnostic, amplifies under load</span>
+      </div>
+
+      <div class="rt-link h2 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 04 · the installation experiment</span><span class="rt-badge">Result 2 · Cells 1–2</span></div>
+        <div class="rt-title">Can disposition be <em>installed</em> into one seat?</div>
+        <div class="rt-body">Legal seat, four arms, 5 seeds &times; 7 cases = 140 runs, bootstrap CIs. (DPO trainer OOM'd &rarr; pre-registered fallback to <strong>ORPO</strong>.)</div>
+      </div>
+
+      <div class="rt-fork" style="--n:3">
+        <div class="rt-stem"></div><div class="rt-bar"></div>
+        <div class="rt-row">
+          <div class="rt-branch dead"><div class="rt-node">
+            <div class="rt-lbl"><span>Arm · Prompting</span></div>
+            <div class="rt-title">Behavior-spec prompt</div>
+            <span class="rt-res r-num" style="margin-top:var(--space-1)">installs ~2&times; at seat</span>
+            <span class="rt-cap dead">&#10007; Indiscriminate (gate 3.03) &amp; stripped by synthesis</span>
+          </div></div>
+          <div class="rt-branch dead"><div class="rt-node">
+            <div class="rt-lbl"><span>Arm · SFT</span></div>
+            <div class="rt-title">Fine-tune on exemplars</div>
+            <span class="rt-res r-num" style="margin-top:var(--space-1)">installs ~2&times; at seat</span>
+            <span class="rt-cap dead">&#10007; Indiscriminate (gate 1.21) &amp; stripped by synthesis</span>
+          </div></div>
+          <div class="rt-branch take"><div class="rt-node">
+            <div class="rt-lbl"><span>Arm · ORPO</span><span class="rt-badge">carries</span></div>
+            <div class="rt-title">Preference optimization</div>
+            <span class="rt-res r-confirm" style="margin-top:var(--space-1)">&#10003; suppresses hedging, gate 0.15</span>
+            <span class="rt-cap take">&#8627; No magnitude — but the only arm that improves responsiveness</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="rt-link h3"></div>
+
+      <div class="rt-node piv">
+        <span class="rt-plbl">Pivot &#8470; 2 — the central puzzle</span>
+        <div class="rt-title">Installed behaviors <u>vanish</u> at the pipeline's output. Why?</div>
+      </div>
+
+      <div class="rt-fork" style="--n:2">
+        <div class="rt-stem"></div><div class="rt-bar"></div>
+        <div class="rt-row">
+          <div class="rt-branch dead"><div class="rt-node">
+            <div class="rt-lbl"><span>Cell 10 · Hypothesis P8</span></div>
+            <div class="rt-title">Content entanglement</div>
+            <div class="rt-body">Woven markers survive; detached boilerplate is stripped.</div>
+            <span class="rt-res r-refute" style="margin-top:var(--space-1)">&#10007; Refuted &middot; r = &minus;0.10 (102 runs)</span>
+            <span class="rt-cap dead">&rarr; but the refutation redirected the hunt: retention splits by <em>arm</em>, not position</span>
+          </div></div>
+          <div class="rt-branch take"><div class="rt-node">
+            <div class="rt-lbl"><span>Cell 6 · 72-run ablation</span><span class="rt-badge">Result 3</span></div>
+            <div class="rt-title">Synthesizer-register ablation</div>
+            <div class="rt-body">3 Leads &times; PRESERVE on/off &times; hot vs. base seat.</div>
+            <span class="rt-res r-confirm" style="margin-top:var(--space-1)">&#10003; Mechanism located</span>
+            <span class="rt-cap take">&#8627; Writer-specific bands &middot; over-dense input inverts &middot; PRESERVE = gain control</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="rt-link h3 take"></div>
+
+      <div class="rt-node piv">
+        <span class="rt-plbl">Pivot &#8470; 3 — closing the last objection</span>
+        <div class="rt-title">Was the ORPO magnitude-null just under-trained?</div>
+      </div>
+
+      <div class="rt-link h2 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 05 · dose-response</span></div>
+        <div class="rt-title">Retrain at 3.2&times; dose, epoch-matched</div>
+        <div class="rt-body">292 content-controlled pairs vs. the original 91; 35 runs.</div>
+        <span class="rt-res r-null">&#9675; Dose-invariant null — seat magnitude 0.84 vs 0.85, even as train accuracy rose 0.48 &rarr; 0.94</span>
+        <div class="rt-body muted" style="margin-top:var(--space-2)">Magnitude is bounded by the <strong>register</strong>, not the data — exactly what Cell 6 predicts.</div>
+      </div>
+
+      <div class="rt-link h3 take"></div>
+
+      <div class="rt-node fin">
+        <div class="rt-lbl"><span>End result · the thesis</span></div>
+        <div class="rt-title">The Last Writer Wins</div>
+        <div class="rt-body">Pipeline disposition is not additive across stages — it is set by the last writer's register and that writer's instructions. Prompting and SFT install loud, indiscriminate behavior the aggregator strips; preference optimization installs quiet, responsive behavior that survives by conformity, and no amount of data raises it. <strong>Tune the synthesizer; evaluate at the pipeline's mouth, not the seat.</strong></div>
+      </div>
+
+    </div>
+
+    <p class="text-faint" style="text-align:center; margin-top:var(--space-6); font-size:var(--size-1)">
+      Full paper: <em>The Last Writer Wins: Installing Epistemic Disposition in Multi-Agent LLM Pipelines</em> &middot;
+      <a href="https://github.com/srbobo/council-of-experts-research">source &amp; 287 audited runs</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/cells">Cells</a> · <a href="/architecture">Architecture</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council of Experts — Cells &amp; Predictions</title>
+  <meta name="description" content="The pre-registered paper-hardening matrix: what a cell is, every cell and prediction, and the analysis with data.">
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+  <style>
+    /* Cells matrix — scoped cm-*. Site palette, light-only. */
+    .cm-lead { max-width: 46rem; }
+    .cm-def {
+      border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent);
+      background: var(--color-surface); border-radius: 8px; padding: var(--space-3) var(--space-4);
+      margin: var(--space-4) 0 var(--space-5);
+    }
+    .cm-def dt { font-weight: 700; margin-top: var(--space-3); }
+    .cm-def dt:first-child { margin-top: 0; }
+    .cm-def dd { margin: var(--space-1) 0 0; color: var(--color-text-soft); }
+
+    /* Status board -------------------------------------------------------- */
+    .cm-board {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      gap: var(--space-3); margin: var(--space-4) 0 var(--space-6);
+    }
+    .cm-tile {
+      border: 1px solid var(--color-border); border-radius: 8px; padding: var(--space-3);
+      background: var(--color-bg); display: flex; flex-direction: column; gap: var(--space-2);
+      position: relative;
+    }
+    .cm-tile.done { border-left: 4px solid var(--color-success); }
+    .cm-tile.queued { border-style: dashed; opacity: .8; }
+    .cm-tile__top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+    .cm-num { font-family: var(--font-mono); font-size: var(--size-5); font-weight: 700; color: var(--color-accent); line-height: 1; }
+    .cm-num.dose { font-size: var(--size-3); }
+    .cm-name { font-weight: 700; font-size: var(--size-3); line-height: 1.2; }
+    .cm-tile__meta { font-family: var(--font-mono); font-size: var(--size-1); color: var(--color-text-faint); }
+    .cm-tile__foot { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; margin-top: auto; }
+    .cm-status { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .45rem; border-radius: 3px; }
+    .cm-status.done { background: color-mix(in srgb, var(--color-success) 15%, transparent); color: var(--color-success); }
+    .cm-status.queued { background: transparent; color: var(--color-text-faint); border: 1px dashed var(--color-text-faint); }
+
+    /* Prediction chip w/ tooltip ------------------------------------------ */
+    .pchip {
+      position: relative; font-family: var(--font-mono); font-size: .68rem; font-weight: 600;
+      letter-spacing: .04em; padding: .15rem .45rem; border-radius: 3px; cursor: help;
+      border: 1px solid var(--color-accent); color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    }
+    .pchip[data-tip]::after {
+      content: attr(data-tip); position: absolute; bottom: calc(100% + 9px); left: 0;
+      background: var(--color-text); color: var(--color-bg); padding: .65em .8em; border-radius: 5px;
+      font-family: var(--font-body); font-size: .8rem; font-weight: 400; letter-spacing: 0; line-height: 1.5;
+      white-space: normal; width: max-content; max-width: 300px; text-align: left;
+      opacity: 0; pointer-events: none; transition: opacity .14s ease; z-index: 50;
+      box-shadow: 0 6px 18px rgba(0,0,0,.16);
+    }
+    .pchip[data-tip]::before {
+      content: ""; position: absolute; bottom: calc(100% + 3px); left: 1rem;
+      border: 6px solid transparent; border-top-color: var(--color-text);
+      opacity: 0; pointer-events: none; transition: opacity .14s ease; z-index: 50;
+    }
+    .pchip[data-tip]:hover::after, .pchip[data-tip]:hover::before,
+    .pchip[data-tip]:focus-visible::after, .pchip[data-tip]:focus-visible::before { opacity: 1; }
+
+    /* Cell detail sections ------------------------------------------------ */
+    .cm-cell { border-top: 1px solid var(--color-border); padding-top: var(--space-5); margin-top: var(--space-5); }
+    .cm-cell__head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); }
+    .cm-cell__num { font-family: var(--font-mono); font-weight: 700; color: var(--color-accent); font-size: var(--size-4); }
+    .cm-verdict { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 3px; }
+    .cm-verdict.confirm { background: color-mix(in srgb, var(--color-success) 15%, transparent); color: var(--color-success); }
+    .cm-verdict.refute  { background: color-mix(in srgb, var(--color-error) 13%, transparent); color: var(--color-error); }
+    .cm-verdict.null    { color: var(--color-text-faint); border: 1px dashed var(--color-text-faint); }
+
+    .cm-tablewrap { overflow-x: auto; margin: var(--space-3) 0; }
+    table.cm-data { border-collapse: collapse; width: 100%; font-size: var(--size-2); font-variant-numeric: tabular-nums; }
+    table.cm-data th, table.cm-data td { text-align: left; padding: .5rem .8rem .5rem 0; border-bottom: 1px solid var(--color-border); white-space: nowrap; }
+    table.cm-data th { font-family: var(--font-mono); font-size: var(--size-1); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-faint); font-weight: 500; }
+    table.cm-data td.n { text-align: right; font-family: var(--font-mono); font-size: var(--size-2); }
+    table.cm-data tr.hl td { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+    .cm-fail { color: var(--color-error); font-weight: 600; }
+    .cm-pass { color: var(--color-success); font-weight: 600; }
+
+    /* Predictions glossary (footer) --------------------------------------- */
+    .cm-preds { border-top: 2px solid var(--color-text); margin-top: var(--space-6); padding-top: var(--space-4); }
+    .cm-pred { display: grid; grid-template-columns: 3rem 1fr; gap: var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); align-items: start; }
+    .cm-pred__id { font-family: var(--font-mono); font-weight: 700; color: var(--color-accent); }
+    .cm-pred__body { font-size: var(--size-2); }
+    .cm-pred__body .fals { display: block; color: var(--color-text-faint); font-size: var(--size-1); margin-top: .2rem; }
+    .cm-pred__body .outcome { font-family: var(--font-mono); font-size: var(--size-1); margin-left: .4rem; }
+    .outcome.confirm { color: var(--color-success); }
+    .outcome.refute { color: var(--color-error); }
+    .outcome.null { color: var(--color-text-faint); }
+    .outcome.open { color: var(--color-warn); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="brand">Council of Experts</a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">Results</a>
+        <a href="/process">Process</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/cells" class="active">Cells</a>
+        <a href="/routes">Routes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="column">
+    <h1>Cells &amp; predictions — the pre-registered matrix</h1>
+    <p class="text-soft cm-lead">
+      Once disposition became the question, the program was hardened as a <strong>pre-registered
+      experimental matrix</strong>. Every hypothesis was written down, in falsifiable form, <em>before</em>
+      the test that could kill it ran. This page defines the matrix, shows which cells executed and what
+      each returned with data, and lists every prediction. The narrative route through these cells is on
+      the <a href="/routes">Routes</a> page.
+    </p>
+
+    <div class="cm-def">
+      <dl>
+        <dt>Cell</dt>
+        <dd>One unit of the paper-hardening matrix: a specific, isolated test with defined arms,
+        endpoints, and a success/failure criterion fixed in advance. Cells were numbered 1&ndash;10 on
+        2026-07-11, with a dose-response cell added after Cell&nbsp;2 flagged it as the priority open
+        question.</dd>
+        <dt>Prediction (P#)</dt>
+        <dd>A falsifiable claim registered <em>before</em> its cell ran, each paired with an explicit
+        "falsified if&hellip;" condition. Registering the prediction in advance is what makes a refutation
+        meaningful rather than a post-hoc story. Hover any <span class="pchip" data-tip="Prediction registered in advance with a falsification condition. Hover a P-chip anywhere on this page to read it.">P#</span> chip to read the full prediction.</dd>
+        <dt>Endpoints</dt>
+        <dd>The three numbers every installation cell reports: <strong>seat density</strong> (behavior
+        emitted at the specialist's own output), <strong>final CDS</strong> (behavior surviving at the
+        pipeline's synthesized output), and the <strong>case-7 gate</strong> (behavior emitted on the
+        trigger-light control, where the correct amount is zero).</dd>
+        <dt>Arms</dt>
+        <dd><strong>A&prime;</strong> conversion-control baseline &middot; <strong>spec</strong> behavior-spec
+        prompting &middot; <strong>SFT</strong> fine-tune on chosen exemplars &middot; <strong>ORPO</strong>
+        reference-free preference optimization.</dd>
+      </dl>
+    </div>
+
+    <h2>Status board</h2>
+    <p class="text-soft">Four cells executed; six remain queued under the $0 constraint (none blocks a
+    published claim). Hover a prediction chip for its definition.</p>
+
+    <div class="cm-board">
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num">1</span></div>
+        <div class="cm-name">SFT-on-chosen control</div>
+        <div class="cm-tile__meta">single run/case</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="SFT-on-chosen installs weaker / less-responsive disposition than ORPO — the contrastive signal is load-bearing, not mere exemplar exposure. Falsified if SFT matches ORPO on seat density AND case-7 gate AND synthesis durability.">P1</span><span class="cm-status done">✓ Confirmed</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num">2</span></div>
+        <div class="cm-name">Variance pass</div>
+        <div class="cm-tile__meta">140 runs · 5 seeds × 4 arms × 7 cases</div>
+        <div class="cm-tile__foot"><span class="cm-status done">✓ Executed</span><span class="cm-tile__meta">revised Cell 1</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num">6</span></div>
+        <div class="cm-name">Synthesizer-register ablation</div>
+        <div class="cm-tile__meta">72 runs · 3 Leads × PRESERVE</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="Synthesis durability holds across 3 local Leads (Phi-4, gpt-oss-20B, Qwen2.5-7B) and weakens without PRESERVE instructions for prompted-but-not-trained behaviors. Falsified if durability is Phi-4-only or PRESERVE-independent.">P6</span><span class="cm-status done">✓ Confirmed*</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num">10</span></div>
+        <div class="cm-name">Marker-position analysis</div>
+        <div class="cm-tile__meta">102 runs · existing logs</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="Trained behaviors are content-entangled (markers co-occur with entities/statutes in-sentence); prompted behaviors are detached; entangled markers survive synthesis at higher rates regardless of arm. Falsified if survival is arm-dependent but not position-dependent.">P8</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">✗ Falsified</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num dose">+dose</span></div>
+        <div class="cm-name">Dose-response</div>
+        <div class="cm-tile__meta">35 runs · 292 pairs, epoch-matched</div>
+        <div class="cm-tile__foot"><span class="cm-status done">✓ Executed</span><span class="cm-tile__meta">dose-invariant</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">3</span></div>
+        <div class="cm-name">Seat interventions</div>
+        <div class="cm-tile__meta">ORPO on finance + healthcare seats</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect: seat lift, gate pass, durability. Falsified if no lift or gate failure.">P2</span><span class="pchip" data-tip="ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. Falsified if Med42's lift ≥ the finance seat's lift.">P3</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">4</span></div>
+        <div class="cm-name">Cross-base</div>
+        <div class="cm-tile__meta">legal pairs on 2 aligned bases</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="The same pairs on Llama-3.1-8B-Instruct and Qwen2.5-7B-Instruct produce the effect with smaller magnitude on the already-aligned bases than on the Mistral-v0.1-based Saul. Falsified if the effect is absent on aligned bases, or larger.">P4</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">5</span></div>
+        <div class="cm-name">CPO arm</div>
+        <div class="cm-tile__meta">second reference-free optimizer on Saul</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="CPO replicates ORPO — method robustness across reference-free preference objectives. Falsified if CPO fails where ORPO succeeded.">P5</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">7</span></div>
+        <div class="cm-name">Scoring hardening</div>
+        <div class="cm-tile__meta">LLM judge + human validation + per-claim</div>
+        <div class="cm-tile__foot"><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">8</span></div>
+        <div class="cm-name">Seat expansion</div>
+        <div class="cm-tile__meta">OpenBioLLM + BioMistral as seats</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="Observational: OpenBioLLM-8B (DPO'd) scores high disposition; BioMistral-7B (pretrain-only) scores low. Falsified if inverted or flat.">P7</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">9</span></div>
+        <div class="cm-name">External anchor</div>
+        <div class="cm-tile__meta">public abstention/uncertainty benchmark</div>
+        <div class="cm-tile__foot"><span class="cm-status queued">Queued</span></div>
+      </div>
+    </div>
+
+    <h2>The executed cells, with data</h2>
+
+    <!-- CELL 1 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 1</span>
+        <span class="cm-name">SFT-on-chosen control</span>
+        <span class="pchip" data-tip="SFT-on-chosen installs weaker / less-responsive disposition than ORPO — the contrastive signal is load-bearing, not mere exemplar exposure.">P1</span>
+        <span class="cm-verdict confirm">✓ Confirmed</span>
+      </div>
+      <p class="text-soft">The gatekeeper — the only cell that could invalidate the headline. Identical LoRA config,
+      iterations, and seed as ORPO; <em>only the objective differs</em> (SFT on chosen responses vs. ORPO's
+      chosen-vs-rejected preference). Single run/case.</p>
+      <div class="cm-tablewrap"><table class="cm-data">
+        <thead><tr><th>Endpoint</th><th class="n">A&prime; baseline</th><th class="n">SFT-on-chosen</th><th class="n">ORPO</th></tr></thead>
+        <tbody>
+          <tr><td>Seat density</td><td class="n">0.82</td><td class="n"><strong>1.69 (2.1×)</strong></td><td class="n">1.00 (1.2×)</td></tr>
+          <tr><td>Case-7 gate</td><td class="n">—</td><td class="n cm-fail">1.59 ✗ failed</td><td class="n cm-pass">0.00 ✓</td></tr>
+          <tr><td>Final CDS</td><td class="n">0.624</td><td class="n cm-fail">0.443 (worst)</td><td class="n">0.738 (best)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-soft">SFT bought the biggest raw seat lift, then deployed it indiscriminately (hedged where
+      nothing warranted it) and fragilely (worst synthesis survival). The contrastive signal — SFT's only missing
+      ingredient — is load-bearing for both quality properties.</p>
+    </section>
+
+    <!-- CELL 2 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 2</span>
+        <span class="cm-name">Variance pass — 140 runs, bootstrap 95% CIs</span>
+        <span class="cm-verdict confirm">✓ Executed</span>
+      </div>
+      <p class="text-soft">The rigor cell. It <strong>revised Cell 1's single-run numbers</strong>: ORPO's flashy
+      single-run "1.2× lift / best-CDS" turned out to be noise. 5 seeds × 4 arms × 7 cases.</p>
+      <div class="cm-tablewrap"><table class="cm-data">
+        <thead><tr><th>Arm</th><th class="n">Seat density [95% CI]</th><th class="n">Final CDS [95% CI]</th><th class="n">Case-7 gate</th></tr></thead>
+        <tbody>
+          <tr><td>A&prime; (repro)</td><td class="n">0.89 [0.69, 1.11]</td><td class="n"><strong>0.859 [0.64, 1.08]</strong></td><td class="n">0.96</td></tr>
+          <tr><td>spec (prompting)</td><td class="n"><strong>1.85 [1.42, 2.32]</strong></td><td class="n">0.590</td><td class="n cm-fail">3.03 ✗</td></tr>
+          <tr class="hl"><td>ORPO</td><td class="n">0.87 [0.60, 1.17]</td><td class="n">0.655</td><td class="n cm-pass">0.15 ✓</td></tr>
+          <tr><td>SFT</td><td class="n"><strong>1.77 [1.46, 2.09]</strong></td><td class="n">0.575</td><td class="n cm-fail">1.21 ✗</td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-soft"><strong>Survives error bars:</strong> prompting + SFT install real ~2× seat lifts (CIs
+      clear of baseline) that synthesis strips (final CDS at/below baseline); ORPO installs no magnitude but uniquely
+      suppresses unwarranted hedging (0.15, below baseline's 0.96). This cell flagged dose-response as the priority
+      open question.</p>
+    </section>
+
+    <!-- CELL 6 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 6</span>
+        <span class="cm-name">Synthesizer-register ablation — 72 runs</span>
+        <span class="pchip" data-tip="Synthesis durability holds across 3 local Leads and weakens without PRESERVE instructions for prompted-but-not-trained behaviors.">P6</span>
+        <span class="cm-verdict confirm">✓ Confirmed, own prediction overturned</span>
+      </div>
+      <p class="text-soft">The decisive cell. 3 Leads × PRESERVE on/off × base vs. hot (SFT) seat. Values are
+      final-output density; seat input density in parentheses.</p>
+      <div class="cm-tablewrap"><table class="cm-data">
+        <thead><tr><th>Lead</th><th class="n">PRESERVE, base</th><th class="n">PRESERVE, hot seat</th><th class="n">no-PRESERVE, base</th><th class="n">no-PRESERVE, hot</th></tr></thead>
+        <tbody>
+          <tr><td>Phi-4</td><td class="n">1.17 (0.78)</td><td class="n"><strong>0.61 (1.42) — inverts</strong></td><td class="n">0.52 (0.54)</td><td class="n">0.31 (2.15)</td></tr>
+          <tr><td>gpt-oss</td><td class="n">0.63 (0.87)</td><td class="n">0.86 (1.81)</td><td class="n">0.20 (0.86)</td><td class="n">0.13 (2.33)</td></tr>
+          <tr><td>Qwen2.5</td><td class="n">1.24 (0.79)</td><td class="n">1.06 (2.41)</td><td class="n">0.24 (0.92)</td><td class="n">0.62 (1.93)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-soft">Three findings: <strong>(1)</strong> registers are writer-specific (each Lead has its own
+      band, Qwen hottest, gpt-oss coolest); <strong>(2)</strong> over-dense input does not transmit and can invert
+      output (Phi-4: 1.17 → 0.61); <strong>(3)</strong> PRESERVE is a gain control — removing it collapses density 2–5×
+      on every Lead, overturning our own registered prediction that instructions wouldn't matter. Mechanism:
+      <em>final disposition ≈ f(register × instructions), nearly independent of seat input.</em></p>
+    </section>
+
+    <!-- CELL 10 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 10</span>
+        <span class="cm-name">Marker-position analysis — 102 runs</span>
+        <span class="pchip" data-tip="Trained behaviors are content-entangled and survive synthesis at higher rates regardless of arm. Falsified if survival is arm-dependent but not position-dependent.">P8</span>
+        <span class="cm-verdict refute">✗ Falsified</span>
+      </div>
+      <p class="text-soft">Tested whether content-woven markers survive aggregation while detached boilerplate gets
+      stripped. The falsification is what pointed at the register and designed Cell 6.</p>
+      <div class="cm-tablewrap"><table class="cm-data">
+        <thead><tr><th>Arm</th><th class="n">Markers</th><th class="n">Entangled share</th><th class="n">Retention (final/seat)</th></tr></thead>
+        <tbody>
+          <tr><td>A&prime; (repro)</td><td class="n">55</td><td class="n">56%</td><td class="n">1.08</td></tr>
+          <tr><td>spec</td><td class="n">92</td><td class="n">61%</td><td class="n">0.49</td></tr>
+          <tr><td>ORPO</td><td class="n">56</td><td class="n">61%</td><td class="n">0.96</td></tr>
+          <tr><td>SFT</td><td class="n">150</td><td class="n">67%</td><td class="n cm-fail">0.49</td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-soft">Survival is arm-dependent, <em>not</em> position-dependent — SFT's markers are the most
+      content-woven yet retain worst; correlation(entanglement, retention) <strong>r = &minus;0.10 ≈ 0</strong>.
+      Entanglement does not explain stripping. The register does.</p>
+    </section>
+
+    <!-- DOSE -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">+dose</span>
+        <span class="cm-name">Dose-response — 35 runs, 292 pairs (3.2×)</span>
+        <span class="cm-verdict null">○ Dose-invariant null</span>
+      </div>
+      <p class="text-soft">Added after Cell 2. Extended pair generation to 500 prompts → 292 gated pairs, retrained
+      <strong>epoch-matched</strong> to the 91-pair run (1,056 iterations) so the only variable is the number of
+      distinct examples.</p>
+      <div class="cm-tablewrap"><table class="cm-data">
+        <thead><tr><th>Arm</th><th class="n">Seat density [CI]</th><th class="n">Final CDS [CI]</th><th class="n">Case-7 gate</th></tr></thead>
+        <tbody>
+          <tr><td>A&prime; baseline</td><td class="n">0.84 [0.63, 1.06]</td><td class="n">0.85 [0.63, 1.07]</td><td class="n">0.96</td></tr>
+          <tr><td>ORPO, 91 pairs</td><td class="n">0.85 [0.58, 1.15]</td><td class="n">0.66 [0.50, 0.85]</td><td class="n cm-pass">0.15</td></tr>
+          <tr class="hl"><td>ORPO, 292 pairs (3.2×)</td><td class="n">0.84 [0.58, 1.11]</td><td class="n">0.69 [0.51, 0.90]</td><td class="n">0.49</td></tr>
+        </tbody>
+      </table></div>
+      <p class="text-soft">Tripling the data moved seat magnitude by <strong>zero</strong> (0.84 vs 0.85 vs 0.84), even
+      as training preference-accuracy rose 0.48 → 0.94. Magnitude is bounded by the register, not by data — the
+      corollary Cell 6 predicts. (Honest wrinkle: the suppression itself weakened slightly with dose, gate 0.15 → 0.49,
+      still below baseline.)</p>
+    </section>
+
+    <!-- PREDICTIONS GLOSSARY -->
+    <section class="cm-preds">
+      <h2>All predictions — registered in advance</h2>
+      <p class="text-soft">Each was written down before its cell ran, with the exact condition that would falsify it.
+      The outcome tag shows how it resolved.</p>
+
+      <div class="cm-pred"><div class="cm-pred__id">P1</div><div class="cm-pred__body">SFT-on-chosen installs weaker / less-responsive disposition than ORPO — the contrastive signal is load-bearing, not mere exemplar exposure. <span class="outcome confirm">✓ confirmed (Cell 1)</span><span class="fals">Falsified if: SFT matches ORPO on seat density AND case-7 gate AND synthesis durability.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P2</div><div class="cm-pred__body">ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect (seat lift, gate pass, durability). <span class="outcome open">◔ queued (Cell 3)</span><span class="fals">Falsified if: no lift, or gate failure.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P3</div><div class="cm-pred__body">ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. <span class="outcome open">◔ queued (Cell 3)</span><span class="fals">Falsified if: Med42's lift ≥ the finance seat's lift.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P4</div><div class="cm-pred__body">Cross-base: the same pairs on Llama-3.1-8B and Qwen2.5-7B produce the effect with smaller magnitude on the aligned bases than on the Mistral-v0.1-based Saul. <span class="outcome open">◔ queued (Cell 4)</span><span class="fals">Falsified if: effect absent on aligned bases, or larger.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P5</div><div class="cm-pred__body">CPO replicates ORPO — method robustness across reference-free preference objectives. <span class="outcome open">◔ queued (Cell 5)</span><span class="fals">Falsified if: CPO fails where ORPO succeeded.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P6</div><div class="cm-pred__body">Synthesis durability holds across 3 local Leads (Phi-4, gpt-oss-20B, Qwen2.5-7B) and weakens without PRESERVE instructions. <span class="outcome confirm">✓ confirmed, refined (Cell 6)</span><span class="fals">Falsified if: durability is Phi-4-only or PRESERVE-independent. (The PRESERVE half was overturned — instructions matter more than predicted.)</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P7</div><div class="cm-pred__body">Observational: OpenBioLLM-8B (DPO'd) scores high disposition; BioMistral-7B (pretrain-only) scores low. <span class="outcome open">◔ queued (Cell 8)</span><span class="fals">Falsified if: inverted or flat.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P8</div><div class="cm-pred__body">Trained behaviors are content-entangled (markers co-occur with entities/statutes in-sentence); entangled markers survive synthesis at higher rates regardless of arm. <span class="outcome refute">✗ falsified (Cell 10)</span><span class="fals">Falsified if: survival is arm-dependent but not position-dependent — which is exactly what happened (r = &minus;0.10).</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P9</div><div class="cm-pred__body">Behavior-specificity: training on 3 of 5 behaviors does NOT lift the held-out 2. <span class="outcome null">— untested</span><span class="fals">Falsified if: held-out behaviors lift comparably (training installs generic hedging). No dedicated cell executed.</span></div></div>
+    </section>
+
+    <p class="text-faint" style="margin-top:var(--space-5); font-size:var(--size-1)">
+      Full pre-registration, protocol amendments, and verdicts:
+      <a href="https://github.com/srbobo/council-of-experts-research/blob/main/RUNBOOK_PAPER_HARDENING.md">RUNBOOK_PAPER_HARDENING.md</a>
+      &middot; per-run data: <a href="https://github.com/srbobo/council-of-experts-research/blob/main/docs/RUN_LEDGER.md">run ledger</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Council of Experts · v0.1.0 · Local PoC</span>
+      <span><a href="/routes">Routes</a> · <a href="/architecture">Architecture</a></span>
+    </div>
+  </footer>
+</body>
+</html>

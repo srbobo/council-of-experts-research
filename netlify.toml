@@ -12,12 +12,14 @@
   publish = "site"
   command = ""
 
-# Builds resumed (per Sam, 2026-07-17) after a pause since 2026-07-13.
-# No [build.ignore] block: every push deploys. If deploy churn from
-# docs-only commits ever becomes annoying, add:
-#   [build.ignore]
-#     command = "git diff --quiet HEAD^ HEAD -- site/"
-# to deploy only when the published site/ directory changed.
+# BUILDS PAUSED AGAIN (per Sam, 2026-07-18) while staging the research
+# routes + cells matrix pages. Netlify runs `ignore` before every build;
+# exit 0 = skip, so this unconditionally skips all deploys until lifted.
+# To resume: delete this [build.ignore] block (or set the command to
+# `git diff --quiet HEAD^ HEAD -- site/` to deploy only on site changes)
+# and push.
+[build.ignore]
+  command = "exit 0"
 
 # Serve the Results page (index.html) for the bare root. Netlify already maps
 # /results -> results.html, /process -> process.html, etc. for the in-page
