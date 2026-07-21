@@ -149,6 +149,14 @@
         <dd><strong>A&prime;</strong> conversion-control baseline &middot; <strong>spec</strong> behavior-spec
         prompting &middot; <strong>SFT</strong> fine-tune on chosen exemplars &middot; <strong>ORPO</strong>
         reference-free preference optimization.</dd>
+        <dt>Dose &middot; dose-response</dt>
+        <dd>Borrowed from pharmacology: <strong>dose</strong> is the <em>amount of preference-training data</em> —
+        the number of content-controlled pairs the seat is trained on (91 in the original run, 292 in the
+        dose-response cell, hence "3.2&times; dose"). A <strong>dose-response</strong> test increases the dose and
+        asks whether the installed behavior scales with it, exactly as one would vary a drug dose and measure the
+        response. To keep dose the <em>only</em> variable, the higher-dose retrain is <strong>epoch-matched</strong>
+        — the same number of passes through the data (16 epochs) — so more pairs, not longer training, is what
+        changes. The finding was a <em>dose-invariant null</em>: tripling the dose moved the response by zero.</dd>
       </dl>
     </div>
 
