@@ -65,7 +65,18 @@
 
     /* Cell detail sections ------------------------------------------------ */
     .cm-cell { border-top: 1px solid var(--color-border); padding-top: var(--space-5); margin-top: var(--space-5); }
-    .cm-cell__head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); }
+    .cm-cell__head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-3); }
+    /* Three-part explainer: Hypothesis / Experiment / Results. */
+    .cm-part { border-left: 2px solid var(--color-border); padding-left: var(--space-3); margin: var(--space-3) 0; }
+    .cm-part.hyp { border-left-color: var(--color-accent); }
+    .cm-part.exp { border-left-color: var(--color-text-faint); }
+    .cm-part.res { border-left-color: var(--color-text); }
+    .cm-part__lbl { font-family: var(--font-mono); font-size: var(--size-1); letter-spacing: .1em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: var(--space-1); }
+    .cm-part.hyp .cm-part__lbl { color: var(--color-accent); }
+    .cm-part.exp .cm-part__lbl { color: var(--color-text-faint); }
+    .cm-part.res .cm-part__lbl { color: var(--color-text); }
+    .cm-part p { margin: 0; }
+    .cm-part p + p { margin-top: var(--space-2); }
     .cm-cell__num { font-family: var(--font-mono); font-weight: 700; color: var(--color-accent); font-size: var(--size-4); }
     .cm-verdict { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 3px; }
     .cm-verdict.confirm { background: color-mix(in srgb, var(--color-success) 15%, transparent); color: var(--color-success); }
@@ -224,20 +235,29 @@
         <span class="pchip" data-tip="SFT-on-chosen installs weaker / less-responsive disposition than ORPO — the contrastive signal is load-bearing, not mere exemplar exposure.">P1</span>
         <span class="cm-verdict confirm">✓ Confirmed</span>
       </div>
-      <p class="text-soft">The gatekeeper — the only cell that could invalidate the headline. Identical LoRA config,
-      iterations, and seed as ORPO; <em>only the objective differs</em> (SFT on chosen responses vs. ORPO's
-      chosen-vs-rejected preference). Single run/case.</p>
-      <div class="cm-tablewrap"><table class="cm-data">
-        <thead><tr><th>Endpoint</th><th class="n">A&prime; baseline</th><th class="n">SFT-on-chosen</th><th class="n">ORPO</th></tr></thead>
-        <tbody>
-          <tr><td>Seat density</td><td class="n">0.82</td><td class="n"><strong>1.69 (2.1×)</strong></td><td class="n">1.00 (1.2×)</td></tr>
-          <tr><td>Case-7 gate</td><td class="n">—</td><td class="n cm-fail">1.59 ✗ failed</td><td class="n cm-pass">0.00 ✓</td></tr>
-          <tr><td>Final CDS</td><td class="n">0.624</td><td class="n cm-fail">0.443 (worst)</td><td class="n">0.738 (best)</td></tr>
-        </tbody>
-      </table></div>
-      <p class="text-soft">SFT bought the biggest raw seat lift, then deployed it indiscriminately (hedged where
-      nothing warranted it) and fragilely (worst synthesis survival). The contrastive signal — SFT's only missing
-      ingredient — is load-bearing for both quality properties.</p>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P1)</span>
+        <p>SFT-on-chosen installs <em>weaker</em>, less-responsive disposition than ORPO — the contrastive
+        preference signal is load-bearing, not mere exemplar exposure. (Falsified if SFT matches ORPO on seat
+        density AND case-7 gate AND synthesis durability.)</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>The gatekeeper — the only cell that could invalidate the headline. Train an SFT arm on the same pairs'
+        <em>chosen</em> responses with identical LoRA config, iterations, and seed as ORPO, so <em>only the
+        objective differs</em>. Bench all three arms (A&prime; / SFT / ORPO) on the three endpoints. Single run/case.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Endpoint</th><th class="n">A&prime; baseline</th><th class="n">SFT-on-chosen</th><th class="n">ORPO</th></tr></thead>
+          <tbody>
+            <tr><td>Seat density</td><td class="n">0.82</td><td class="n"><strong>1.69 (2.1×)</strong></td><td class="n">1.00 (1.2×)</td></tr>
+            <tr><td>Case-7 gate</td><td class="n">—</td><td class="n cm-fail">1.59 ✗ failed</td><td class="n cm-pass">0.00 ✓</td></tr>
+            <tr><td>Final CDS</td><td class="n">0.624</td><td class="n cm-fail">0.443 (worst)</td><td class="n">0.738 (best)</td></tr>
+          </tbody>
+        </table></div>
+        <p>SFT bought the biggest raw seat lift, then deployed it indiscriminately (hedged where nothing warranted
+        it) and fragilely (worst synthesis survival). The contrastive signal — SFT's only missing ingredient — is
+        load-bearing for both quality properties. <strong>P1 confirmed.</strong></p>
+      </div>
     </section>
 
     <!-- CELL 2 -->
@@ -247,21 +267,29 @@
         <span class="cm-name">Variance pass — 140 runs, bootstrap 95% CIs</span>
         <span class="cm-verdict confirm">✓ Executed</span>
       </div>
-      <p class="text-soft">The rigor cell. It <strong>revised Cell 1's single-run numbers</strong>: ORPO's flashy
-      single-run "1.2× lift / best-CDS" turned out to be noise. 5 seeds × 4 arms × 7 cases.</p>
-      <div class="cm-tablewrap"><table class="cm-data">
-        <thead><tr><th>Arm</th><th class="n">Seat density [95% CI]</th><th class="n">Final CDS [95% CI]</th><th class="n">Case-7 gate</th></tr></thead>
-        <tbody>
-          <tr><td>A&prime; (repro)</td><td class="n">0.89 [0.69, 1.11]</td><td class="n"><strong>0.859 [0.64, 1.08]</strong></td><td class="n">0.96</td></tr>
-          <tr><td>spec (prompting)</td><td class="n"><strong>1.85 [1.42, 2.32]</strong></td><td class="n">0.590</td><td class="n cm-fail">3.03 ✗</td></tr>
-          <tr class="hl"><td>ORPO</td><td class="n">0.87 [0.60, 1.17]</td><td class="n">0.655</td><td class="n cm-pass">0.15 ✓</td></tr>
-          <tr><td>SFT</td><td class="n"><strong>1.77 [1.46, 2.09]</strong></td><td class="n">0.575</td><td class="n cm-fail">1.21 ✗</td></tr>
-        </tbody>
-      </table></div>
-      <p class="text-soft"><strong>Survives error bars:</strong> prompting + SFT install real ~2× seat lifts (CIs
-      clear of baseline) that synthesis strips (final CDS at/below baseline); ORPO installs no magnitude but uniquely
-      suppresses unwarranted hedging (0.15, below baseline's 0.96). This cell flagged dose-response as the priority
-      open question.</p>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis</span>
+        <p>Cell 1's single-run verdicts are trustworthy only if they survive replication. Do the installed lifts,
+        the gate failures, and the stripping hold up with error bars — or were any of them noise at n=1?</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>Run 5 seeds of each arm (A&prime; / spec / SFT / ORPO) across all 7 cases — 140 runs — and report each
+        endpoint as a mean with a bootstrap 95% CI (10<sup>4</sup> resamples over run-level observations).</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">Seat density [95% CI]</th><th class="n">Final CDS [95% CI]</th><th class="n">Case-7 gate</th></tr></thead>
+          <tbody>
+            <tr><td>A&prime; (repro)</td><td class="n">0.89 [0.69, 1.11]</td><td class="n"><strong>0.859 [0.64, 1.08]</strong></td><td class="n">0.96</td></tr>
+            <tr><td>spec (prompting)</td><td class="n"><strong>1.85 [1.42, 2.32]</strong></td><td class="n">0.590</td><td class="n cm-fail">3.03 ✗</td></tr>
+            <tr class="hl"><td>ORPO</td><td class="n">0.87 [0.60, 1.17]</td><td class="n">0.655</td><td class="n cm-pass">0.15 ✓</td></tr>
+            <tr><td>SFT</td><td class="n"><strong>1.77 [1.46, 2.09]</strong></td><td class="n">0.575</td><td class="n cm-fail">1.21 ✗</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Revised Cell 1.</strong> ORPO's flashy single-run "1.2× lift / best-CDS" was noise — at n=5 it sits
+        on baseline. What survives the error bars: prompting + SFT install real ~2× seat lifts (CIs clear of baseline)
+        that synthesis strips (final CDS at/below baseline); ORPO installs no magnitude but uniquely suppresses
+        unwarranted hedging (0.15, below baseline's 0.96). This cell flagged dose-response as the priority open question.</p>
+      </div>
     </section>
 
     <!-- CELL 6 -->
@@ -272,21 +300,32 @@
         <span class="pchip" data-tip="Synthesis durability holds across 3 local Leads and weakens without PRESERVE instructions for prompted-but-not-trained behaviors.">P6</span>
         <span class="cm-verdict confirm">✓ Confirmed, own prediction overturned</span>
       </div>
-      <p class="text-soft">The decisive cell. 3 Leads × PRESERVE on/off × base vs. hot (SFT) seat. Values are
-      final-output density; seat input density in parentheses.</p>
-      <div class="cm-tablewrap"><table class="cm-data">
-        <thead><tr><th>Lead</th><th class="n">PRESERVE, base</th><th class="n">PRESERVE, hot seat</th><th class="n">no-PRESERVE, base</th><th class="n">no-PRESERVE, hot</th></tr></thead>
-        <tbody>
-          <tr><td>Phi-4</td><td class="n">1.17 (0.78)</td><td class="n"><strong>0.61 (1.42) — inverts</strong></td><td class="n">0.52 (0.54)</td><td class="n">0.31 (2.15)</td></tr>
-          <tr><td>gpt-oss</td><td class="n">0.63 (0.87)</td><td class="n">0.86 (1.81)</td><td class="n">0.20 (0.86)</td><td class="n">0.13 (2.33)</td></tr>
-          <tr><td>Qwen2.5</td><td class="n">1.24 (0.79)</td><td class="n">1.06 (2.41)</td><td class="n">0.24 (0.92)</td><td class="n">0.62 (1.93)</td></tr>
-        </tbody>
-      </table></div>
-      <p class="text-soft">Three findings: <strong>(1)</strong> registers are writer-specific (each Lead has its own
-      band, Qwen hottest, gpt-oss coolest); <strong>(2)</strong> over-dense input does not transmit and can invert
-      output (Phi-4: 1.17 → 0.61); <strong>(3)</strong> PRESERVE is a gain control — removing it collapses density 2–5×
-      on every Lead, overturning our own registered prediction that instructions wouldn't matter. Mechanism:
-      <em>final disposition ≈ f(register × instructions), nearly independent of seat input.</em></p>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P6)</span>
+        <p>Synthesis durability holds across the 3 local Leads (Phi-4, gpt-oss-20B, Qwen2.5-7B) and weakens without
+        PRESERVE instructions. Following Cell 10's refutation, the sharper claim under test: each Lead writes at its
+        own <strong>register</strong> (a characteristic output-density band), largely independent of seat input —
+        so "stripping" is just an over-dense input being normalized to the Lead's band. (Falsified if durability is
+        Phi-4-only, or if PRESERVE makes no difference.)</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>A full factorial: 3 Leads × PRESERVE on/off × base vs. hot (SFT) seat × 6 cases = 72 runs. Values below are
+        final-output density; seat input density in parentheses, so you can read whether input transmits.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Lead</th><th class="n">PRESERVE, base</th><th class="n">PRESERVE, hot seat</th><th class="n">no-PRESERVE, base</th><th class="n">no-PRESERVE, hot</th></tr></thead>
+          <tbody>
+            <tr><td>Phi-4</td><td class="n">1.17 (0.78)</td><td class="n"><strong>0.61 (1.42) — inverts</strong></td><td class="n">0.52 (0.54)</td><td class="n">0.31 (2.15)</td></tr>
+            <tr><td>gpt-oss</td><td class="n">0.63 (0.87)</td><td class="n">0.86 (1.81)</td><td class="n">0.20 (0.86)</td><td class="n">0.13 (2.33)</td></tr>
+            <tr><td>Qwen2.5</td><td class="n">1.24 (0.79)</td><td class="n">1.06 (2.41)</td><td class="n">0.24 (0.92)</td><td class="n">0.62 (1.93)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Three findings: <strong>(1)</strong> registers are writer-specific (each Lead has its own band, Qwen hottest,
+        gpt-oss coolest); <strong>(2)</strong> over-dense input does not transmit and can invert output (Phi-4: 1.17 → 0.61);
+        <strong>(3)</strong> PRESERVE is a gain control — removing it collapses density 2–5× on every Lead, overturning our
+        own registered prediction that instructions wouldn't matter. Mechanism located:
+        <em>final disposition ≈ f(register × instructions), nearly independent of seat input.</em></p>
+      </div>
     </section>
 
     <!-- CELL 10 -->
@@ -297,20 +336,31 @@
         <span class="pchip" data-tip="Trained behaviors are content-entangled and survive synthesis at higher rates regardless of arm. Falsified if survival is arm-dependent but not position-dependent.">P8</span>
         <span class="cm-verdict refute">✗ Falsified</span>
       </div>
-      <p class="text-soft">Tested whether content-woven markers survive aggregation while detached boilerplate gets
-      stripped. The falsification is what pointed at the register and designed Cell 6.</p>
-      <div class="cm-tablewrap"><table class="cm-data">
-        <thead><tr><th>Arm</th><th class="n">Markers</th><th class="n">Entangled share</th><th class="n">Retention (final/seat)</th></tr></thead>
-        <tbody>
-          <tr><td>A&prime; (repro)</td><td class="n">55</td><td class="n">56%</td><td class="n">1.08</td></tr>
-          <tr><td>spec</td><td class="n">92</td><td class="n">61%</td><td class="n">0.49</td></tr>
-          <tr><td>ORPO</td><td class="n">56</td><td class="n">61%</td><td class="n">0.96</td></tr>
-          <tr><td>SFT</td><td class="n">150</td><td class="n">67%</td><td class="n cm-fail">0.49</td></tr>
-        </tbody>
-      </table></div>
-      <p class="text-soft">Survival is arm-dependent, <em>not</em> position-dependent — SFT's markers are the most
-      content-woven yet retain worst; correlation(entanglement, retention) <strong>r = &minus;0.10 ≈ 0</strong>.
-      Entanglement does not explain stripping. The register does.</p>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P8)</span>
+        <p>Trained behaviors are content-entangled — markers co-occur with entities/statutes in-sentence — while
+        prompted behaviors are detached boilerplate. Entangled markers should therefore survive synthesis at higher
+        rates <em>regardless of which arm produced them</em>. (Falsified if survival is arm-dependent but not
+        position-dependent.)</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>No new runs — a post-hoc analysis of 102 existing audited runs. For each marker, classify it as entangled
+        (co-occurs with content signals: digits, §, U.S.C., case cites, proper nouns) or detached, then measure each
+        arm's entangled share against its retention (final-output density ÷ seat density) and correlate the two.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">Markers</th><th class="n">Entangled share</th><th class="n">Retention (final/seat)</th></tr></thead>
+          <tbody>
+            <tr><td>A&prime; (repro)</td><td class="n">55</td><td class="n">56%</td><td class="n">1.08</td></tr>
+            <tr><td>spec</td><td class="n">92</td><td class="n">61%</td><td class="n">0.49</td></tr>
+            <tr><td>ORPO</td><td class="n">56</td><td class="n">61%</td><td class="n">0.96</td></tr>
+            <tr><td>SFT</td><td class="n">150</td><td class="n">67%</td><td class="n cm-fail">0.49</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Falsified.</strong> Survival is arm-dependent, <em>not</em> position-dependent — SFT's markers are the
+        most content-woven yet retain worst; correlation(entanglement, retention) <strong>r = &minus;0.10 ≈ 0</strong>.
+        Entanglement does not explain stripping. The register (Cell 6) does — and this refutation is what designed Cell 6.</p>
+      </div>
     </section>
 
     <!-- DOSE -->
@@ -320,21 +370,29 @@
         <span class="cm-name">Dose-response — 35 runs, 292 pairs (3.2×)</span>
         <span class="cm-verdict null">○ Dose-invariant null</span>
       </div>
-      <p class="text-soft">Added after Cell 2. Extended pair generation to 500 prompts → 292 gated pairs, retrained
-      <strong>epoch-matched</strong> to the 91-pair run (1,056 iterations) so the only variable is the number of
-      distinct examples.</p>
-      <div class="cm-tablewrap"><table class="cm-data">
-        <thead><tr><th>Arm</th><th class="n">Seat density [CI]</th><th class="n">Final CDS [CI]</th><th class="n">Case-7 gate</th></tr></thead>
-        <tbody>
-          <tr><td>A&prime; baseline</td><td class="n">0.84 [0.63, 1.06]</td><td class="n">0.85 [0.63, 1.07]</td><td class="n">0.96</td></tr>
-          <tr><td>ORPO, 91 pairs</td><td class="n">0.85 [0.58, 1.15]</td><td class="n">0.66 [0.50, 0.85]</td><td class="n cm-pass">0.15</td></tr>
-          <tr class="hl"><td>ORPO, 292 pairs (3.2×)</td><td class="n">0.84 [0.58, 1.11]</td><td class="n">0.69 [0.51, 0.90]</td><td class="n">0.49</td></tr>
-        </tbody>
-      </table></div>
-      <p class="text-soft">Tripling the data moved seat magnitude by <strong>zero</strong> (0.84 vs 0.85 vs 0.84), even
-      as training preference-accuracy rose 0.48 → 0.94. Magnitude is bounded by the register, not by data — the
-      corollary Cell 6 predicts. (Honest wrinkle: the suppression itself weakened slightly with dose, gate 0.15 → 0.49,
-      still below baseline.)</p>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis</span>
+        <p>The natural objection to Cell 2's ORPO magnitude-null: the seat simply wasn't trained on enough pairs.
+        More preference data should install seat-level magnitude where 91 pairs could not.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>Extend pair generation to 500 prompts → 292 gated pairs (3.2× dose) and retrain <strong>epoch-matched</strong>
+        to the 91-pair run (1,056 iterations, 16 epochs) so exposure-per-example is held constant and the <em>only</em>
+        variable is the number of distinct examples. Bench 35 runs; compare against baseline and the 91-pair arm.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">Seat density [CI]</th><th class="n">Final CDS [CI]</th><th class="n">Case-7 gate</th></tr></thead>
+          <tbody>
+            <tr><td>A&prime; baseline</td><td class="n">0.84 [0.63, 1.06]</td><td class="n">0.85 [0.63, 1.07]</td><td class="n">0.96</td></tr>
+            <tr><td>ORPO, 91 pairs</td><td class="n">0.85 [0.58, 1.15]</td><td class="n">0.66 [0.50, 0.85]</td><td class="n cm-pass">0.15</td></tr>
+            <tr class="hl"><td>ORPO, 292 pairs (3.2×)</td><td class="n">0.84 [0.58, 1.11]</td><td class="n">0.69 [0.51, 0.90]</td><td class="n">0.49</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Null — the objection fails.</strong> Tripling the data moved seat magnitude by zero (0.84 vs 0.85 vs 0.84),
+        even as training preference-accuracy rose 0.48 → 0.94: the model learned the preference far better and emitted no
+        more behavior for it. Magnitude is bounded by the register, not by data — the corollary Cell 6 predicts. (Honest
+        wrinkle: the suppression itself weakened slightly with dose, gate 0.15 → 0.49, still below baseline.)</p>
+      </div>
     </section>
 
     <!-- PREDICTIONS GLOSSARY -->
