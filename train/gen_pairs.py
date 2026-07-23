@@ -240,25 +240,55 @@ def leaks(prompt: str) -> bool:
     return any(t in low for t in LEAKAGE_TERMS)
 
 
+def resolve_domain(domain: str):
+    """Return (topics, scenarios, base_role, add, strip, seat_system, out_dir,
+    raw_log) for the requested domain. 'legal' uses this module's inline
+    constants (unchanged); other domains load from train/domains.py so the
+    behavior gates + leakage screen stay shared and identical."""
+    if domain == "legal":
+        return (TOPICS, SCENARIOS,
+                "You are a senior legal analyst. Answer directly and substantively in 3-5 paragraphs of prose. No preamble.",
+                REWRITE_ADD, REWRITE_STRIP, LEGAL_SYSTEM, OUT_DIR, RAW_LOG)
+    from domains import DOMAINS  # noqa: E402
+    import council.prompts as cp  # noqa: E402
+    cfg = DOMAINS[domain]
+    base = Path(__file__).parent / "data"
+    return (cfg.topics, cfg.scenarios, cfg.base_role, cfg.add, cfg.strip,
+            getattr(cp, cfg.seat_system_attr),
+            base / cfg.out_subdir, base / cfg.raw_name)
+
+
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="legal", choices=["legal", "health", "finance"])
+    ap.add_argument("--limit", type=int, default=None,
+                    help="cap the shuffled prompt pool (dose-match to the legal seat)")
+    args = ap.parse_args()
+    (topics, scenarios, base_role, add_tmpl, strip_tmpl,
+     seat_system, out_dir, raw_log) = resolve_domain(args.domain)
+
     random.seed(42)
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    RAW_LOG.parent.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    raw_log.parent.mkdir(parents=True, exist_ok=True)
+    print(f"domain: {args.domain}  ->  {out_dir}", flush=True)
 
     # Deterministic prompt pool: every topic × every scenario.
     prompts = []
-    for topic, context in TOPICS:
-        for tmpl in SCENARIOS:
+    for topic, context in topics:
+        for tmpl in scenarios:
             q = tmpl.format(topic=topic, context=context)
             if not leaks(q):
                 prompts.append(q)
     random.shuffle(prompts)
+    if args.limit:
+        prompts = prompts[:args.limit]
     print(f"prompt pool: {len(prompts)} sub-questions", flush=True)
 
     # Resume support: skip prompts already in the raw log.
     done: set[str] = set()
-    if RAW_LOG.exists():
-        for line in RAW_LOG.open():
+    if raw_log.exists():
+        for line in raw_log.open():
             try:
                 done.add(json.loads(line)["question"])
             except Exception:  # noqa: BLE001
@@ -266,17 +296,17 @@ def main() -> int:
         print(f"resuming: {len(done)} already generated", flush=True)
 
     kept = 0
-    with RAW_LOG.open("a") as raw:
+    with raw_log.open("a") as raw:
         for i, q in enumerate(prompts):
             if q in done:
                 continue
             t0 = time.time()
             base = chat([
-                {"role": "system", "content": "You are a senior legal analyst. Answer directly and substantively in 3-5 paragraphs of prose. No preamble."},
+                {"role": "system", "content": base_role},
                 {"role": "user", "content": q},
             ], temperature=0.7)
-            chosen = chat([{"role": "user", "content": REWRITE_ADD.format(base=base)}])
-            rejected = chat([{"role": "user", "content": REWRITE_STRIP.format(base=base)}])
+            chosen = chat([{"role": "user", "content": add_tmpl.format(base=base)}])
+            rejected = chat([{"role": "user", "content": strip_tmpl.format(base=base)}])
 
             cb, rb = behavior_counts(chosen), behavior_counts(rejected)
             chosen_distinct = sum(1 for v in cb.values() if v > 0)
@@ -298,14 +328,13 @@ def main() -> int:
 
     # Final split from the raw log (idempotent — rebuilds output files).
     passing = []
-    for line in RAW_LOG.open():
+    for line in raw_log.open():
         rec = json.loads(line)
         if rec.get("pass"):
             passing.append({
-                # No "system" key: Saul's template rejects the system role, so
-                # LEGAL_SYSTEM is folded into the prompt — matching the Ollama
-                # runtime's [INST] {{.System}} {{.Prompt}} [/INST] rendering.
-                "prompt": LEGAL_SYSTEM + "\n\n" + rec["question"],
+                # No "system" key: the seat's chat template folds the system
+                # prompt into the prompt text — matching the Ollama runtime.
+                "prompt": seat_system + "\n\n" + rec["question"],
                 "chosen": rec["chosen"],
                 "rejected": rec["rejected"],
             })
@@ -318,7 +347,7 @@ def main() -> int:
         "train": passing[n_val + n_test:],
     }
     for name, rows in splits.items():
-        with (OUT_DIR / f"{name}.jsonl").open("w") as f:
+        with (out_dir / f"{name}.jsonl").open("w") as f:
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
         print(f"{name}: {len(rows)} pairs", flush=True)

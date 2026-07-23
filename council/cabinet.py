@@ -286,3 +286,24 @@ LEGAL_DPO_V2 = CabinetMember(
     ollama_tag="saul-dpo-v2:coe", quantization="Q4_K_M", memory_gb=5.0, license="MIT (derived)")
 CABINET_DPO_V2: dict[SeatRole, CabinetMember] = {
     "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_DPO_V2, "finance": FINANCE}
+
+# -----------------------------------------------------------------------------
+# Cell 3 (healthcare seat, P3) — swaps ONLY the healthcare seat between the
+# med42 conversion-control (A') and the ORPO-trained seat. Legal uses
+# LEGAL_REPRO in both arms so the sole delta is the healthcare training. Both
+# med42 tags carry the native Llama-3 template (built in run_cell3_health.sh),
+# not the stock mismatched-ChatML GGUF.
+HEALTH_REPRO = CabinetMember(
+    seat="healthcare", name="Med42-8B (repro conversion)", backbone="Llama 3.1 8B",
+    fine_tune_type="identical weights to HEALTHCARE; re-converted via train/ pipeline (conversion control)",
+    ollama_tag="med42-repro:coe", quantization="Q4_K_M", memory_gb=5.0,
+    license="Llama 3 Community License")
+HEALTH_ORPO = CabinetMember(
+    seat="healthcare", name="Med42-8B-ORPO (behavior-targeted LoRA)", backbone="Llama 3.1 8B",
+    fine_tune_type="ORPO on 91 content-controlled disposition pairs (Cell 3, dose-matched to legal)",
+    ollama_tag="med42-orpo:coe", quantization="Q4_K_M", memory_gb=5.0,
+    license="Llama 3 Community License (derived)")
+CABINET_HEALTH_REPRO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTH_REPRO, "legal": LEGAL_REPRO, "finance": FINANCE}
+CABINET_HEALTH_ORPO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTH_ORPO, "legal": LEGAL_REPRO, "finance": FINANCE}

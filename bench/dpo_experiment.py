@@ -20,7 +20,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from council.cabinet import CABINET_DPO, CABINET_DPO_V2, CABINET_REPRO, CABINET_SFT, GPT_OSS_20B
+from council.cabinet import (CABINET_DPO, CABINET_DPO_V2, CABINET_HEALTH_ORPO,
+                              CABINET_HEALTH_REPRO, CABINET_REPRO, CABINET_SFT, GPT_OSS_20B)
 from council.models import chat as local_chat
 from council.orchestrator import DeliberationResult, deliberate
 from council.prompts import BEHAVIOR_SPEC_ADDENDUM, LEGAL_SYSTEM
@@ -110,3 +111,15 @@ async def run_council_dpo_v2(query: str) -> DeliberationResult:
     """Dose-response cell — v1 cabinet with the 3.2x-dose ORPO Saul."""
     thermal = ThermalGuard.from_env()
     return await deliberate(query, thermal=thermal, cabinet_members=CABINET_DPO_V2)
+
+
+async def run_council_health_repro(query: str) -> DeliberationResult:
+    """Cell 3 (P3) A' — healthcare seat = med42-repro conversion control."""
+    thermal = ThermalGuard.from_env()
+    return await deliberate(query, thermal=thermal, cabinet_members=CABINET_HEALTH_REPRO)
+
+
+async def run_council_health_orpo(query: str) -> DeliberationResult:
+    """Cell 3 (P3) — healthcare seat = ORPO-trained med42."""
+    thermal = ThermalGuard.from_env()
+    return await deliberate(query, thermal=thermal, cabinet_members=CABINET_HEALTH_ORPO)

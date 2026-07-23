@@ -31,10 +31,21 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from council.prompts import LEGAL_SYSTEM  # noqa: E402
 
-RAW_LOG = Path(__file__).parent / "data" / "dpo_pairs_raw.jsonl"
-OUT_DIR = Path(__file__).parent / "data" / "dpo_pairs"
+_DATA = Path(__file__).parent / "data"
+
+
+def resolve_domain(domain: str):
+    """(raw_log, out_dir, seat_system) for the requested domain."""
+    if domain == "legal":
+        return (_DATA / "dpo_pairs_raw.jsonl", _DATA / "dpo_pairs", LEGAL_SYSTEM)
+    from domains import DOMAINS  # noqa: E402
+    import council.prompts as cp  # noqa: E402
+    cfg = DOMAINS[domain]
+    return (_DATA / cfg.raw_name, _DATA / cfg.out_subdir,
+            getattr(cp, cfg.seat_system_attr))
 
 # Amended rejected gate. cutoff/modeled/precise/hedging unchanged from the
 # generator; jurisd narrowed to meta-commentary.
@@ -82,28 +93,37 @@ def amended_pass(rec: dict) -> bool:
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="legal", choices=["legal", "health", "finance"])
+    ap.add_argument("--cap", type=int, default=None,
+                    help="cap train pairs (dose-match to the legal 91-pair baseline)")
+    args = ap.parse_args()
+    raw_log, out_dir, seat_system = resolve_domain(args.domain)
+
     random.seed(42)
-    recs = [json.loads(l) for l in RAW_LOG.open()]
+    recs = [json.loads(l) for l in raw_log.open()]
     orig = [r for r in recs if r.get("pass")]
     amended = [r for r in recs if amended_pass(r)]
+    print(f"domain: {args.domain}  ({raw_log.name})")
     print(f"records: {len(recs)}")
     print(f"original filters: {len(orig)} pass")
     print(f"amended filters:  {len(amended)} pass")
 
     rows = [{
-        "prompt": LEGAL_SYSTEM + "\n\n" + r["question"],
+        "prompt": seat_system + "\n\n" + r["question"],
         "chosen": r["chosen"],
         "rejected": r["rejected"],
     } for r in amended]
     random.shuffle(rows)
-    n = len(rows)
-    n_val = n_test = max(4, n // 20)
-    splits = {"valid": rows[:n_val],
-              "test": rows[n_val:n_val + n_test],
-              "train": rows[n_val + n_test:]}
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    n_val = n_test = max(4, len(rows) // 20)
+    val, test, train = (rows[:n_val], rows[n_val:n_val + n_test], rows[n_val + n_test:])
+    if args.cap and len(train) > args.cap:
+        train = train[:args.cap]  # dose-match across seats
+    splits = {"valid": val, "test": test, "train": train}
+    out_dir.mkdir(parents=True, exist_ok=True)
     for name, subset in splits.items():
-        with (OUT_DIR / f"{name}.jsonl").open("w") as f:
+        with (out_dir / f"{name}.jsonl").open("w") as f:
             for row in subset:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
         print(f"{name}: {len(subset)}")

@@ -55,3 +55,9 @@ venv/
 /train/adapters/**/model.safetensors
 /train/adapters/**/model.safetensors.index.json
 /train/adapters/**/0*_adapters.safetensors
+
+# Adapter dirs copy the full base tokenizer (Llama-3 tokenizer.json is 1.25M lines) — not needed, regenerable
+/train/adapters/**/tokenizer.json
+/train/adapters/**/tokenizer_config.json
+/train/adapters/**/special_tokens_map.json
+/train/adapters/**/tokenizer.model
