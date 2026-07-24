@@ -234,3 +234,32 @@ hedging*, and even that does not strengthen — and may dilute — with
 more data. The paper's §5/§8 dose question resolves as: *3× dose did
 not install seat-level magnitude; ORPO's value is responsiveness, not
 installation.*
+
+## CELL 3 / P3 VERDICT — healthcare seat, diminishing returns CONFIRMED (2026-07-24, 70 runs)
+
+ORPO on Med42-8B (already multi-stage preference-aligned) vs A' conversion
+control. Both swap ONLY the healthcare seat; legal held at saul-repro to
+isolate the delta. Bootstrap 95% CIs, n=5 seeds x 7 cases per arm.
+
+| Arm | Seat density [95% CI] | Final CDS [95% CI] | Case-7 gate |
+|---|---|---|---|
+| A' (med42-repro) | 1.30 [1.07, 1.54] | 0.723 [0.54, 0.91] | 0.00 (n=5, all dispatched) |
+| ORPO (med42-orpo) | 1.40 [1.15, 1.68] | 0.690 [0.52, 0.87] | 0.00 (n=5) |
+
+**P3 CONFIRMED — diminishing returns on the pre-aligned seat.**
+1. **No magnitude install** — ORPO 1.40 vs A' 1.30, CIs heavily overlapping.
+   Replicates the legal ORPO no-magnitude null on a second, different-lineage
+   seat (Llama-3 Med42 vs Mistral Saul).
+2. **No responsiveness effect to detect** — the healthcare A' baseline already
+   emits 0.00 on the trigger-light case (perfectly responsive even untrained,
+   seat dispatched on all 5/5 runs). ORPO's distinctive contribution on the
+   weakly-aligned legal seat was suppressing unwarranted hedging (gate 0.15 vs
+   baseline 0.96); on an already-aligned seat there is no such slack to act on.
+3. **Synthesis normalizes as usual** — final CDS 0.69 vs 0.72 (overlapping,
+   at/below A'), consistent with the synthesizer register replicating on seat #2.
+
+Interpretation: ORPO's value is responsiveness, and responsiveness improvement
+only manifests where the base model is miscalibrated to begin with. A model that
+arrives pre-aligned (Med42) shows a diminished-to-null ORPO effect — exactly the
+P3 prediction. Caveat: P3 literally compared to the finance seat (P2), which is
+blocked on gated HF access; the diminishing-returns test is vs the legal seat.
