@@ -1,0 +1,10 @@
+FROM ./gguf/qwen-finance-repro-Q4_K_M.gguf
+TEMPLATE """{{ if .System }}<|im_start|>user
+{{ .System }}
+
+{{ .Prompt }}<|im_end|>
+{{ else }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant"""
+PARAMETER stop <|im_start|>
+PARAMETER stop <|im_end|>

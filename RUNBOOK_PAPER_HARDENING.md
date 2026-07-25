@@ -263,3 +263,39 @@ only manifests where the base model is miscalibrated to begin with. A model that
 arrives pre-aligned (Med42) shows a diminished-to-null ORPO effect — exactly the
 P3 prediction. Caveat: P3 literally compared to the finance seat (P2), which is
 blocked on gated HF access; the diminishing-returns test is vs the legal seat.
+
+## CELL 3 / P2 VERDICT — finance seat, ORPO did NOT replicate — FALSIFIED (2026-07-25, 70 runs)
+
+ORPO on Qwen-Open-Finance-R-8B (SFT-only Qwen3 stack, like the weakly-aligned
+legal Saul) vs A' conversion control. Swaps ONLY the finance seat; legal held
+at saul-repro. Bootstrap 95% CIs, n=5 seeds x 7 cases.
+
+| Arm | Seat density [95% CI] | Final CDS [95% CI] | Case-7 gate |
+|---|---|---|---|
+| A' (qwen-finance-repro) | 1.37 [1.18, 1.57] | 0.637 [0.48, 0.81] | 0.81 (n=5, all dispatched) |
+| ORPO (qwen-finance-orpo) | 1.32 [1.14, 1.51] | 0.704 [0.52, 0.90] | 1.21 (n=5) |
+
+**P2 FALSIFIED — the legal-seat ORPO effect did NOT replicate.**
+1. **No magnitude install** — 1.32 vs 1.37, CIs overlapping. Consistent with the
+   robust magnitude null (now confirmed across 3 lineages: Mistral/Saul,
+   Llama-3/Med42, Qwen3/Finance).
+2. **Gate suppression did NOT reproduce — it reversed.** On the legal seat ORPO's
+   distinctive win was suppressing unwarranted hedging (gate 0.96 -> 0.15). The
+   finance A' baseline hedges on the trigger-light case (0.81, like Saul's 0.96),
+   so there WAS slack to suppress — but ORPO made it *worse* (0.81 -> 1.21).
+   P2's falsification condition ("no lift, or gate failure") is met.
+3. Final CDS overlapping (0.70 vs 0.64) — no synthesis-surviving effect either.
+
+**What this means for the paper (important, honest):** the magnitude null
+GENERALIZES (3 seats). But ORPO's *responsiveness* benefit — the one distinctive
+positive finding — does NOT generalize: it appeared only on the legal Saul seat,
+was absent on Med42 (baseline already responsive, nothing to suppress), and
+REVERSED on Qwen-Finance. Result 2's "ORPO uniquely improves responsiveness"
+must be SCOPED to the legal seat; the two-seat replication (P2/P3) failed to
+reproduce it. The pre-registered matrix did its job — it caught a single-seat
+result that did not hold up.
+
+Caveats: gate is n=5 per arm (no CI on the gate itself; 0.81 vs 1.21 is directional,
+not a tight interval). Qwen3 runs a reasoning/<think> mode — a possible confound on
+the finance seat's emitted density that warrants a follow-up with think-stripping
+verified. Neither caveat rescues replication: there is no positive suppression signal.

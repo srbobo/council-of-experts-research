@@ -45,6 +45,8 @@ from .cost_guard import BudgetExceeded, CostGuard
 from .dpo_experiment import (
     run_council_dpo,
     run_council_dpo_v2,
+    run_council_finance_orpo,
+    run_council_finance_repro,
     run_council_health_orpo,
     run_council_health_repro,
     run_council_sft,
@@ -98,6 +100,8 @@ DPO_EXPERIMENT_MODES = [
     "local-council-dpo-v2",  # dose-response — 3.2x ORPO
     "local-council-health-repro",  # Cell 3 P3 — healthcare A' (med42-repro)
     "local-council-health-orpo",   # Cell 3 P3 — healthcare ORPO (med42-orpo)
+    "local-council-finance-repro", # Cell 3 P2 — finance A' (qwen-finance-repro)
+    "local-council-finance-orpo",  # Cell 3 P2 — finance ORPO (qwen-finance-orpo)
 ]
 ALL_MODES = (
     BASELINE_MODES + MOE_MODES + UPGRADED_MODES
@@ -348,6 +352,16 @@ async def _compare(case_id: str, modes: list[str]) -> int:
             elif mode == "local-council-health-orpo":
                 # Cell 3 (P3) — healthcare seat = ORPO-trained med42.
                 r = await run_council_health_orpo(case.prompt)
+                result = {"mode": mode, "query": case.prompt, "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms, "deliberation": r.to_dict()}
+            elif mode == "local-council-finance-repro":
+                # Cell 3 (P2) A' — finance seat = qwen-finance-repro conversion control.
+                r = await run_council_finance_repro(case.prompt)
+                result = {"mode": mode, "query": case.prompt, "final_output": r.final_output,
+                          "total_latency_ms": r.total_latency_ms, "deliberation": r.to_dict()}
+            elif mode == "local-council-finance-orpo":
+                # Cell 3 (P2) — finance seat = ORPO-trained qwen-finance.
+                r = await run_council_finance_orpo(case.prompt)
                 result = {"mode": mode, "query": case.prompt, "final_output": r.final_output,
                           "total_latency_ms": r.total_latency_ms, "deliberation": r.to_dict()}
             elif mode == "local-council-sft":

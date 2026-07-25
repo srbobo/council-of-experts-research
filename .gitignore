@@ -61,3 +61,6 @@ venv/
 /train/adapters/**/tokenizer_config.json
 /train/adapters/**/special_tokens_map.json
 /train/adapters/**/tokenizer.model
+/train/adapters/**/merges.txt
+/train/adapters/**/vocab.json
+/train/adapters/**/added_tokens.json

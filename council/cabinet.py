@@ -307,3 +307,21 @@ CABINET_HEALTH_REPRO: dict[SeatRole, CabinetMember] = {
     "lead": LEAD, "healthcare": HEALTH_REPRO, "legal": LEGAL_REPRO, "finance": FINANCE}
 CABINET_HEALTH_ORPO: dict[SeatRole, CabinetMember] = {
     "lead": LEAD, "healthcare": HEALTH_ORPO, "legal": LEGAL_REPRO, "finance": FINANCE}
+
+# Cell 3 (finance seat, P2) — swaps ONLY the finance seat between the
+# Qwen-Open-Finance conversion-control (A') and the ORPO-trained seat. Both
+# use the Qwen3 ChatML template (folded system-in-user, injected pre-train).
+FINANCE_REPRO = CabinetMember(
+    seat="finance", name="Qwen-Open-Finance-R-8B (repro conversion)", backbone="Qwen3-8B",
+    fine_tune_type="identical weights to FINANCE; re-converted via train/ pipeline (conversion control)",
+    ollama_tag="qwen-finance-repro:coe", quantization="Q4_K_M", memory_gb=5.0,
+    license="Apache-2.0")
+FINANCE_ORPO = CabinetMember(
+    seat="finance", name="Qwen-Open-Finance-R-8B-ORPO (behavior-targeted LoRA)", backbone="Qwen3-8B",
+    fine_tune_type="ORPO on 91 content-controlled disposition pairs (Cell 3, dose-matched)",
+    ollama_tag="qwen-finance-orpo:coe", quantization="Q4_K_M", memory_gb=5.0,
+    license="Apache-2.0 (derived)")
+CABINET_FINANCE_REPRO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_REPRO, "finance": FINANCE_REPRO}
+CABINET_FINANCE_ORPO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_REPRO, "finance": FINANCE_ORPO}
