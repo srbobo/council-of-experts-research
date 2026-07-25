@@ -299,3 +299,93 @@ Caveats: gate is n=5 per arm (no CI on the gate itself; 0.81 vs 1.21 is directio
 not a tight interval). Qwen3 runs a reasoning/<think> mode — a possible confound on
 the finance seat's emitted density that warrants a follow-up with think-stripping
 verified. Neither caveat rescues replication: there is no positive suppression signal.
+
+## CELL 7a PRE-REGISTRATION — NLI instrument (registered 2026-07-25, BEFORE any scoring)
+
+**Purpose.** P2's falsification rests on the regex instrument. Before revising
+Result 2, validate the measurement with an independent semantic instrument:
+zero-shot NLI entailment (DeBERTa-v3-base-MNLI class model, local, $0).
+
+**Method.** Sentence-segment each text (strip Qwen3 <think> blocks first). For
+each sentence x family, score entailment of a fixed hypothesis (one per family,
+frozen below). Family fires for a sentence if P(entail) >= threshold. Text-level
+NLI-density = entailing sentences per 10 sentences (per-claim normalization).
+
+**Frozen hypotheses (v1):**
+- cutoff:  "The writer says their information may be outdated or should be verified."
+- modeled: "The writer labels a number or estimate as an assumption."
+- precise: "The writer explicitly distinguishes between two similar technical terms."
+- jurisd:  "The writer treats different jurisdictions or regulatory regimes separately."
+- hedging: "The writer states conditions under which the claim could change or vary."
+
+**Calibration (Phase B).** Labeled-by-construction set: chosen vs rejected texts
+from the passing pairs of all 3 domains (legal, health, finance; cap 150
+pairs/domain). Metrics: chosen-vs-rejected AUC (overall + per family), accuracy
+at the best threshold; thresholds frozen from this set before Phase C. Caveat
+recorded: per-family positive labels on chosen texts derive partly from the
+generation-time regex gates; the rejected-side label (all families absent) is
+purely constructional (strip instruction + gate).
+
+**Phase C (after calibration).** Re-score with frozen thresholds: legal-seat gate
+(regex said 0.96 -> 0.15), finance gate (0.81 -> 1.21), health gate (0.00/0.00),
+and seat-density orderings for the three magnitude nulls.
+
+**Pre-registered predictions:**
+- P-7a.1: NLI separates chosen from rejected with AUC >= 0.85 overall
+  (falsified if lower — instrument too weak to arbitrate).
+- P-7a.2: NLI confirms the legal gate ordering (ORPO < A' by >= 2x margin).
+- P-7a.3: NLI confirms the finance gate direction (ORPO >= A'; the reversal is real).
+- Decision rule: verdicts where regex and NLI agree are instrument-robust; where
+  they disagree, the finding is downgraded to instrument-dependent pending the
+  judge instrument (Cell 7b).
+
+## CELL 7a VERDICT — NLI instrument (2026-07-25, 289-pair calibration + verdict re-score)
+
+**Calibration (P-7a.1): PASS.** Chosen-vs-rejected AUC 0.929 (gate >= 0.85).
+Per family: cutoff 0.902 (J=0.68, threshold 0.75 — well-calibrated), modeled
+0.885 (J=0.25), jurisd 0.787 (J=0.43), hedging 0.855 (J=0.01 — degenerate cut),
+precise 0.738 (J=0.00 — non-discriminating; fires on ~every sentence at its cut).
+
+**Registered aggregate (all-5-family NLI-density): flawed by design.** The two
+degenerate families flood the sum (precise ~10 hits/10 sentences on everything),
+drowning the discriminating signal. As registered, P-7a.2 and P-7a.3 both FAIL.
+Per-family sensitivity (post-hoc, labeled) on the case-7 gate runs:
+
+| seat | arm | cutoff | modeled | jurisd | hedging* | precise* |
+|---|---|---|---|---|---|---|
+| legal | A' | 1.06 | 1.82 | 0.30 | 4.09 | 9.85 |
+| legal | ORPO | **0.35** | 2.59 | 0.12 | 4.00 | 9.88 |
+| health | A' | 0.00 | 0.30 | 0.00 | 3.86 | 10.00 |
+| health | ORPO | 0.00 | 0.98 | 0.00 | 4.27 | 10.00 |
+| finance | A' | 0.19 | 5.19 | 0.00 | 6.30 | 10.00 |
+| finance | ORPO | 0.14 | 4.32 | 0.00 | 5.27 | 10.00 |
+
+(*degenerate-threshold families, shown for transparency, excluded from findings)
+
+**Findings under the pre-registered decision rule:**
+1. **Magnitude nulls: instrument-robust.** Seat NLI-densities flat across arms on
+   all three seats (16.6/16.8, 16.9/18.0, 23.8/23.8) — agrees with regex.
+2. **Health gate zeros: instrument-robust.** cutoff 0.00/0.00, matches regex exactly.
+3. **Legal gate suppression: instrument-dependent, leaning supported.** The
+   registered aggregate does not reproduce it, but the best-calibrated family
+   (cutoff) shows 3x suppression (1.06 -> 0.35), matching the regex direction
+   (0.96 -> 0.15). Suppression narrows to the cutoff-disclosure component.
+   Cell 7b (pairwise judge) to arbitrate.
+4. **Finance "reversal": NOT reproduced — likely regex artifact.** cutoff flat
+   (0.19 -> 0.14), modeled DOWN (5.19 -> 4.32). NLI shows no increase on any
+   family. Softened claim: on finance, ORPO produced NO suppression (both
+   instruments agree on absence); whether it *worsened* hedging is regex-only.
+   **P2's falsification STANDS under both instruments** (no replication of
+   suppression); only the "reversal" framing is instrument-dependent.
+5. **Construct note:** the NLI hedging hypothesis fires ~4-6/10 on stripped and
+   trigger-light text alike — it measures *substantive conditionality*, which
+   survives marker-stripping, not epistemic marker-hedging. The two instruments
+   measure different constructs for this family; cutoff is the cleanest shared
+   construct and the most trustworthy single gate signal.
+
+**Net for the paper:** magnitude nulls and health zeros are now two-instrument
+robust. Legal suppression survives on the best-calibrated family but requires
+7b for a clean claim. Finance is a non-replication (robust), not necessarily a
+reversal (regex-only). Result 2 revision should say: suppression observed on
+the legal seat (cutoff-component, two instruments directionally agree), absent
+on both replication seats.
