@@ -389,3 +389,70 @@ robust. Legal suppression survives on the best-calibrated family but requires
 reversal (regex-only). Result 2 revision should say: suppression observed on
 the legal seat (cutoff-component, two instruments directionally agree), absent
 on both replication seats.
+
+## CELL 7b PRE-REGISTRATION — pairwise LLM judge (registered 2026-07-25, BEFORE any judging)
+
+**Purpose.** Arbitrate the two instrument-dependent verdicts from Cell 7a:
+(1) legal gate suppression (regex + NLI-cutoff support it; registered NLI
+aggregate does not), (2) finance gate "reversal" (regex-only; NLI flat).
+
+**Design.** Pairwise comparison, never absolute scores. Per seat (legal,
+finance): all 5 A' x 5 ORPO case-7 seat turns = 25 blinded pairs; each judged
+in BOTH orderings by BOTH judges (gpt-oss:20b, qwen2.5:7b-instruct; local,
+temp 0) = 100 calls/seat. Conditions: C1 blinding + randomized A/B; C2
+order-swap (flip = TIE); C3 cross-product pairing; C4 evidence grounding
+(verbatim quotes must substring-match source, else call invalid); C5 dual
+judges; C6 verbosity-bias check (verdict-length correlation reported); C7
+think-stripping + temp 0. Judge prompt frozen in train/judge_instrument.py
+(defines unwarranted hedging = the 4 marker types on a trigger-light question;
+explicitly excludes substance/quality).
+
+**Aggregation.** Per-pair verdict = same winner both orderings, else TIE.
+Win rate over decided pairs, per judge and pooled; two-sided sign test.
+
+**Pre-registered predictions & decision rule:**
+- P-7b.1 (legal): ORPO judged less-hedging in >= 70% of decided pairs under
+  BOTH judges -> suppression CONFIRMED (3-instrument). <= 30% -> REFUTED.
+  Else -> remains instrument-dependent; paper claims it only as such.
+- P-7b.2 (finance): reversal real only if ORPO judged MORE hedging in >= 70%
+  under both judges. NLI predicts failure (flat); ~50/50 -> reversal declared
+  regex artifact, finance claim finalizes as "no effect".
+- Majority-of-3-instruments rules for the paper; per-instrument results
+  reported regardless. Known limitation: both judges are local <= 20B; the
+  dual-judge + evidence-grounding design is the mitigation ($0 constraint).
+
+## CELL 7b VERDICT — pairwise judge (2026-07-25, ~180 calls, dual judges)
+
+**Legal (P-7b.1): CONFIRMED — unanimous.** Every decided, order-consistent
+pair under BOTH judges said the ORPO seat hedges LESS on the trigger-light
+case: gpt-oss 7/7 (p=0.016), qwen2.5 7/7 (p=0.016). Verbosity check clean
+(the "more hedging" text was the longer one in only 43% of decided pairs —
+no length bias). High tie rates (8-11/20) are expected: many ORPO turns emit
+zero hedging, and pairs of near-zero texts tie.
+**Legal gate suppression is now THREE-instrument robust** (regex 0.96->0.15,
+NLI-cutoff 1.06->0.35, judges 14/14 unanimous). This is the paper's Result 2
+positive claim, confirmed and scoped: suppression of unwarranted epistemic
+hedging on the legal seat.
+
+**Finance (P-7b.2): judge instrument INCONCLUSIVE — reversal unsupported.**
+21-23 of 25 pairs per judge were invalid: the evidence-grounding gate (C4)
+rejected verdicts whose quotes did not substring-match the source. Finance
+seat turns are dense markdown/numerics; judges paraphrased quotes. Of the
+scraps that survived: gpt-oss 2 decided (both orpo-more, n=2, p=0.5), qwen
+0 decided; and the finance verbosity check flagged 100% length-confound on
+those few decided pairs. Under the pre-registered rule (>= 70% under BOTH
+judges), the reversal is NOT confirmed.
+**Majority-of-3 final call for finance:** regex says reversal, NLI says flat,
+judge inconclusive -> the reversal is UNSUPPORTED (regex-only). The robust,
+paper-safe finance claim: ORPO produced NO suppression on the finance seat
+(all instruments agree on the absence). P2 remains falsified as a
+non-replication; the "made it worse" framing is dropped.
+
+**CELL 7 CLOSED. Final instrument-robustness ledger:**
+- Magnitude nulls (3 seats): robust (regex + NLI)
+- Health gate zeros: robust (regex + NLI)
+- Legal gate suppression: robust (regex + NLI-cutoff + 2 judges, unanimous)
+- Finance reversal: unsupported (regex-only) -> dropped; finance = no effect
+- Known instrument limits recorded: NLI aggregate flawed by degenerate
+  families; judge C4 gate too strict for dense numeric text (a finding about
+  evidence-grounding, worth a line in the paper's limitations).

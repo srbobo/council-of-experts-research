@@ -1,0 +1,36 @@
+{
+  "legal": {
+    "judges": {
+      "gpt-oss:20b": {
+        "orpo_less": 7,
+        "orpo_more": 0,
+        "tie": 8,
+        "invalid": 5
+      },
+      "qwen2.5:7b-instruct": {
+        "orpo_less": 7,
+        "orpo_more": 0,
+        "tie": 11,
+        "invalid": 2
+      }
+    },
+    "longer_is_more_rate": 0.42857142857142855
+  },
+  "finance": {
+    "judges": {
+      "gpt-oss:20b": {
+        "orpo_less": 0,
+        "orpo_more": 2,
+        "tie": 0,
+        "invalid": 23
+      },
+      "qwen2.5:7b-instruct": {
+        "orpo_less": 0,
+        "orpo_more": 0,
+        "tie": 4,
+        "invalid": 21
+      }
+    },
+    "longer_is_more_rate": 1.0
+  }
+}
