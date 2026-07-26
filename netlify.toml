@@ -12,10 +12,12 @@
   publish = "site"
   command = ""
 
-# ONE-TIME DEPLOY (per Sam, 2026-07-26): pause lifted for this single push
-# to publish the Cells 3/5/7 revision (paper v0.3, updated Cells/Routes/
-# Results pages). The pause is re-applied in the immediately following
-# commit, whose own [build.ignore] skips its deploy.
+# BUILDS PAUSED (re-applied 2026-07-26 after the one-time deploy of the
+# Cells 3/5/7 revision). Netlify runs `ignore` before every build; exit 0 =
+# skip, so this unconditionally skips all deploys until lifted. To resume:
+# delete this [build.ignore] block and push.
+[build.ignore]
+  command = "exit 0"
 
 # Serve the Results page (index.html) for the bare root. Netlify already maps
 # /results -> results.html, /process -> process.html, etc. for the in-page
