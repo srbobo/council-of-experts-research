@@ -1377,13 +1377,36 @@
           behavior upstream is mostly futile.
         </p>
 
+        <h4>Replication &amp; instrument validation (Cells 3, 5, 7) — the revised verdict</h4>
+        <p>
+          Three follow-up cells stress-tested the installation findings.
+          <strong>Replication (Cell 3):</strong> ORPO trained identically on two further seats installed
+          no magnitude on either (the null now spans three model lineages), and the suppression effect
+          did not transfer — the pre-aligned healthcare seat has nothing to suppress (its untrained
+          baseline already emits 0.00 on the trigger-light gate), and the finance seat showed no
+          suppression at all (P2 falsified). <strong>Instrument validation (Cell 7):</strong> a calibrated
+          NLI entailment scorer (chosen-vs-rejected AUC 0.929) plus blinded, order-swapped pairwise
+          judges confirmed the legal suppression as <em>three-instrument robust</em> (judges unanimous,
+          14/14 decided pairs) — and retired the apparent finance hedging <em>increase</em> as an
+          artifact of the regex metric. <strong>Method generality (Cell 5):</strong> CPO on the identical
+          pairs reproduces the suppression (gate 0.37/0.45 under both instruments) but dampens
+          <em>warranted</em> hedging too — selectivity is ORPO-specific (gate÷trigger ratios: baseline
+          1.08, CPO 0.66, ORPO 0.17).
+        </p>
+        <p>
+          Revised summary: <em>prompting and exemplar training change what a model says, loudly and
+          indiscriminately; preference training installs nothing — at best it removes miscalibrated
+          hedging where the base model has it, ORPO selectively and CPO bluntly — and only the last
+          writer decides what survives.</em> Full data on the <a href="/cells">Cells</a> page.
+        </p>
+
         <h3 id="the-paper">The paper — "The Last Writer Wins" (arXiv draft) and full data availability</h3>
         <p>
           The complete research program above is written up as an arXiv-targeted paper:
           <a href="paper.pdf"><strong>The Last Writer Wins: Installing Epistemic Disposition
-          in Multi-Agent LLM Pipelines</strong></a> (PDF, 8 pages — abstract, three results,
+          in Multi-Agent LLM Pipelines</strong></a> (PDF, 10 pages — abstract, three results,
           limitations, glossary, model-selection rationale, metric equations, pair-construction
-          gates, and a fully verified 24-entry bibliography). A final prior-art audit found no
+          gates, and a fully verified 27-entry bibliography). A final prior-art audit found no
           existing work combining the content/disposition split, the three-way installation
           comparison into a pipeline seat, and the synthesizer-register mechanism; the nearest
           neighbors (a synthesizer-adapter line acknowledging aggregation loses behavior,
@@ -1391,7 +1414,7 @@
           more pairs ≠ better behavior) are cited and differentiated in §2 of the paper.
         </p>
         <p>
-          <strong>Every number is traceable.</strong> All 287 imported audited runs — each
+          <strong>Every number is traceable.</strong> All 462 imported audited runs — each
           carrying per-phase inputs, outputs, backends, and scores — live in the repo as
           append-only JSON, indexed by a regenerable
           <a href="https://github.com/srbobo/council-of-experts-research/blob/main/docs/RUN_LEDGER.md">run

@@ -260,6 +260,54 @@
 
       <div class="rt-link h3 take"></div>
 
+      <div class="rt-node piv">
+        <span class="rt-plbl">Pivot &#8470; 4 &mdash; does the one positive finding generalize?</span>
+        <div class="rt-title">ORPO's suppression was a single-seat result. Replicate it &mdash; and validate the instrument it rests on.</div>
+      </div>
+
+      <div class="rt-fork" style="--n:2">
+        <div class="rt-stem"></div><div class="rt-bar"></div>
+        <div class="rt-row">
+          <div class="rt-branch dead"><div class="rt-node">
+            <div class="rt-lbl"><span>Cell 3 &middot; healthcare (P3)</span></div>
+            <div class="rt-title">Pre-aligned seat: nothing to suppress</div>
+            <div class="rt-body">Med42's untrained baseline already emits 0.00 on the gate.</div>
+            <span class="rt-res r-confirm" style="margin-top:var(--space-1)">&#10003; P3 confirmed &mdash; diminishing returns</span>
+            <span class="rt-cap dead">&#8627; no slack on an aligned base &mdash; effect has no purchase</span>
+          </div></div>
+          <div class="rt-branch dead"><div class="rt-node">
+            <div class="rt-lbl"><span>Cell 3 &middot; finance (P2)</span></div>
+            <div class="rt-title">Second lineage: no replication</div>
+            <div class="rt-body">No magnitude, no suppression &mdash; and an apparent hedging <em>increase</em>.</div>
+            <span class="rt-res r-refute" style="margin-top:var(--space-1)">&#10007; P2 falsified</span>
+            <span class="rt-cap dead">&rarr; is the "increase" real &mdash; or is the metric broken?</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="rt-link h3 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 06 &middot; instrument validation</span><span class="rt-badge">Cell 7</span></div>
+        <div class="rt-title">Triangulate the measurement itself</div>
+        <div class="rt-body">Calibrated NLI entailment (AUC 0.929 on construction-labeled pairs) + blinded pairwise dual judges, decision rule pre-registered.</div>
+        <span class="rt-res r-confirm">&#10003; Legal suppression: 3-instrument robust (judges 14/14 unanimous)</span>
+        <div class="rt-body" style="margin-top:var(--space-2)"><span class="rt-res r-refute">&#10007; Finance "reversal": retired as regex artifact</span></div>
+        <div class="rt-body muted" style="margin-top:var(--space-2)">Magnitude nulls + health zeros: robust under both instruments. The triangulation caught a false finding produced by the primary metric.</div>
+      </div>
+
+      <div class="rt-link h2 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 07 &middot; method generality</span><span class="rt-badge">Cell 5</span></div>
+        <div class="rt-title">CPO on the identical pairs &mdash; only the objective differs</div>
+        <div class="rt-body">Same base, data, config, seed as the ORPO arm.</div>
+        <span class="rt-res r-confirm">&#10003; P5 confirmed &mdash; suppression replicates (gate 0.37 / 0.45, both instruments)</span>
+        <div class="rt-body muted" style="margin-top:var(--space-2)">But CPO dampens <strong>warranted</strong> hedging too (0.89 &rarr; 0.56). Selectivity &mdash; suppressing only the unwarranted &mdash; is ORPO-specific (ratios: A&prime; 1.08, CPO 0.66, ORPO 0.17).</div>
+      </div>
+
+      <div class="rt-link h3 take"></div>
+
       <div class="rt-node fin">
         <div class="rt-lbl"><span>End result · the thesis</span></div>
         <div class="rt-title">The Last Writer Wins</div>

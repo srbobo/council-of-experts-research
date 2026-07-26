@@ -168,8 +168,8 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Four cells executed; six remain queued under the $0 constraint (none blocks a
-    published claim). Hover a prediction chip for its definition.</p>
+    <p class="text-soft">Eight cells executed; three remain queued (none blocks a published claim).
+    Hover a prediction chip for its definition.</p>
 
     <div class="cm-board">
       <div class="cm-tile done">
@@ -202,11 +202,11 @@
         <div class="cm-tile__meta">35 runs · 292 pairs, epoch-matched</div>
         <div class="cm-tile__foot"><span class="cm-status done">✓ Executed</span><span class="cm-tile__meta">dose-invariant</span></div>
       </div>
-      <div class="cm-tile queued">
+      <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">3</span></div>
         <div class="cm-name">Seat interventions</div>
-        <div class="cm-tile__meta">ORPO on finance + healthcare seats</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect: seat lift, gate pass, durability. Falsified if no lift or gate failure.">P2</span><span class="pchip" data-tip="ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. Falsified if Med42's lift ≥ the finance seat's lift.">P3</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-tile__meta">140 runs · healthcare + finance seats</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect: seat lift, gate pass, durability. Falsified if no lift or gate failure.">P2</span><span class="pchip" data-tip="ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. Falsified if Med42's lift ≥ the finance seat's lift.">P3</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">P2 ✗</span><span class="cm-status done">P3 ✓</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">4</span></div>
@@ -214,17 +214,17 @@
         <div class="cm-tile__meta">legal pairs on 2 aligned bases</div>
         <div class="cm-tile__foot"><span class="pchip" data-tip="The same pairs on Llama-3.1-8B-Instruct and Qwen2.5-7B-Instruct produce the effect with smaller magnitude on the already-aligned bases than on the Mistral-v0.1-based Saul. Falsified if the effect is absent on aligned bases, or larger.">P4</span><span class="cm-status queued">Queued</span></div>
       </div>
-      <div class="cm-tile queued">
+      <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">5</span></div>
         <div class="cm-name">CPO arm</div>
-        <div class="cm-tile__meta">second reference-free optimizer on Saul</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="CPO replicates ORPO — method robustness across reference-free preference objectives. Falsified if CPO fails where ORPO succeeded.">P5</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-tile__meta">35 runs · same 91 pairs, objective only</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="CPO replicates ORPO — method robustness across reference-free preference objectives. Falsified if CPO fails where ORPO succeeded.">P5</span><span class="cm-status done">✓ Confirmed</span></div>
       </div>
-      <div class="cm-tile queued">
+      <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">7</span></div>
-        <div class="cm-name">Scoring hardening</div>
-        <div class="cm-tile__meta">LLM judge + human validation + per-claim</div>
-        <div class="cm-tile__foot"><span class="cm-status queued">Queued</span></div>
+        <div class="cm-name">Instrument validation</div>
+        <div class="cm-tile__meta">NLI (289-pair calibration) + dual pairwise judges</div>
+        <div class="cm-tile__foot"><span class="cm-status done">✓ Executed</span><span class="cm-tile__meta">no human anchor</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">8</span></div>
@@ -410,6 +410,123 @@
       </div>
     </section>
 
+    <!-- CELL 3 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 3</span>
+        <span class="cm-name">Seat interventions — 140 runs, two replication seats</span>
+        <span class="pchip" data-tip="ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect: seat lift, gate pass, durability. Falsified if no lift or gate failure.">P2</span>
+        <span class="pchip" data-tip="ORPO on Med42 (already preference-aligned) shows diminishing returns. Falsified if Med42's lift ≥ the finance seat's.">P3</span>
+        <span class="cm-verdict refute">P2 ✗ falsified</span>
+        <span class="cm-verdict confirm">P3 ✓ confirmed</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P2 · P3)</span>
+        <p>Does the legal-seat ORPO effect generalize? P2: it replicates on a second weakly-aligned,
+        SFT-only seat (Qwen-Open-Finance, Qwen-3 lineage). P3: it shows diminishing returns on a seat
+        that arrives already preference-aligned (Med42, Llama-3 lineage).</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>For each seat: 91 dose-matched content-controlled pairs generated by the same protocol
+        (domain-parameterized), ORPO trained with the identical recipe (LoRA r8, 364 iters, seed 42),
+        A&prime; conversion controls built for both, correct native chat templates verified, and
+        2 arms &times; 7 cases &times; 5 seeds = 70 runs per seat benched with only the target seat swapped.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Seat / arm</th><th class="n">Seat density [CI]</th><th class="n">Case-7 gate</th></tr></thead>
+          <tbody>
+            <tr><td>health A&prime;</td><td class="n">1.30 [1.07, 1.54]</td><td class="n cm-pass">0.00</td></tr>
+            <tr><td>health ORPO</td><td class="n">1.40 [1.15, 1.68]</td><td class="n cm-pass">0.00</td></tr>
+            <tr><td>finance A&prime;</td><td class="n">1.37 [1.18, 1.57]</td><td class="n">0.81</td></tr>
+            <tr class="hl"><td>finance ORPO</td><td class="n">1.32 [1.14, 1.51]</td><td class="n cm-fail">1.21 (regex) — see Cell 7</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>P3 confirmed:</strong> Med42 shows no magnitude and nothing to suppress — its untrained
+        baseline already emits zero on the trigger-light case (dispatched in all runs). A pre-aligned seat has
+        no miscalibration slack. <strong>P2 falsified:</strong> no magnitude and no suppression on
+        Qwen-Finance — the one positive legal-seat effect did not replicate. The magnitude null now spans
+        three lineages (Mistral, Llama-3, Qwen-3); the suppression is conditional on base miscalibration and
+        not guaranteed even then. The apparent finance <em>increase</em> (0.81 → 1.21) was later retired as
+        instrument artifact by Cell 7.</p>
+      </div>
+    </section>
+
+    <!-- CELL 5 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 5</span>
+        <span class="cm-name">CPO arm — 35 runs, method-generality of the suppression</span>
+        <span class="pchip" data-tip="CPO replicates ORPO — method robustness across reference-free preference objectives. Falsified if CPO fails where ORPO succeeded.">P5</span>
+        <span class="cm-verdict confirm">✓ Confirmed — with a wrinkle</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P5)</span>
+        <p>The legal-seat gate suppression — by then the paper's only positive installation claim — is a
+        property of reference-free preference optimization generally, not an ORPO quirk. Falsified if CPO
+        fails where ORPO succeeded.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>CPO on the exact original 91 legal pairs (reconstructed from the append-only raw log — the
+        dose-response split had overwritten the directory), identical base, LoRA config, iterations, and
+        seed; <em>only the training objective differs</em>. 35 runs; per the post-Cell-7 amendment the gate
+        is scored under both regex and NLI-cutoff.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">Trigger seat [CI]</th><th class="n">Gate regex</th><th class="n">Gate NLI-cutoff</th><th class="n">Selectivity (gate÷trigger)</th></tr></thead>
+          <tbody>
+            <tr><td>A&prime;</td><td class="n">0.89 [0.69, 1.11]</td><td class="n">0.96</td><td class="n">1.06</td><td class="n">1.08</td></tr>
+            <tr class="hl"><td>ORPO</td><td class="n">0.87 [0.60, 1.17]</td><td class="n cm-pass">0.15</td><td class="n cm-pass">0.35</td><td class="n"><strong>0.17</strong></td></tr>
+            <tr><td>CPO</td><td class="n">0.56 [0.34, 0.80]</td><td class="n cm-pass">0.37</td><td class="n cm-pass">0.45</td><td class="n">0.66</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Suppression is method-general</strong> — CPO's gate lands under the pre-registered 0.5&times;
+        bar on both instruments. <strong>But CPO dampens globally:</strong> it also reduced <em>warranted</em>
+        trigger-case hedging (0.89 → 0.56), which ORPO left intact. Suppressing only where hedging is
+        unwarranted — responsiveness — is, in this data, ORPO-specific. (Selectivity ratio is a post-hoc
+        characterization, labeled as such.)</p>
+      </div>
+    </section>
+
+    <!-- CELL 7 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 7</span>
+        <span class="cm-name">Instrument validation — NLI + dual pairwise judges</span>
+        <span class="cm-verdict confirm">✓ Executed (7a + 7b)</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis</span>
+        <p>After P2's falsification, every verdict rested on one unvalidated regex instrument. Are the
+        load-bearing findings — the legal suppression, the finance reversal, the magnitude nulls — properties
+        of the pipeline, or artifacts of the measure?</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p><strong>7a:</strong> a DeBERTa-v3-MNLI zero-shot entailment scorer (one frozen hypothesis per
+        behavior family, per-sentence, think-blocks stripped), calibrated on the construction-labeled pair
+        corpus (289 chosen/rejected pairs, all three domains) with thresholds frozen before verdict
+        re-scoring. <strong>7b:</strong> blinded pairwise judging of A&prime; vs ORPO trigger-light seat
+        outputs — cross-product pairs, both orderings, two local judges, temperature 0, verbatim-quote
+        evidence required, order-inconsistent verdicts counted as ties. Decision rule pre-registered:
+        instruments agree → robust; disagree → instrument-dependent; majority-of-three governs.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Claim</th><th>regex</th><th>NLI</th><th>Judges</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Magnitude nulls (3 seats)</td><td class="n">flat</td><td class="n">flat</td><td class="n">—</td><td class="cm-pass">robust</td></tr>
+            <tr><td>Health gate zeros</td><td class="n">0.00</td><td class="n">0.00</td><td class="n">—</td><td class="cm-pass">robust</td></tr>
+            <tr class="hl"><td>Legal gate suppression</td><td class="n">0.96→0.15</td><td class="n">1.06→0.35</td><td class="n">14/14 unanimous</td><td class="cm-pass"><strong>3-instrument robust</strong></td></tr>
+            <tr><td>Finance "reversal"</td><td class="n">0.81→1.21</td><td class="n">flat</td><td class="n">inconclusive</td><td class="cm-fail">retired as artifact</td></tr>
+          </tbody>
+        </table></div>
+        <p>Calibration AUC 0.929 (P-7a.1 pass); judges unanimous on legal (7/7 + 7/7 decided pairs,
+        sign-test p=0.016 each, no length bias). Two honest instrument limits recorded: two NLI families
+        calibrated degenerately, and the judges' evidence-grounding gate rejected most finance pairs on
+        dense numeric text. The triangulation both confirmed the surviving claims and caught a false
+        finding produced by the primary metric — the strongest argument in the paper for not trusting
+        single-instrument disposition evaluation.</p>
+      </div>
+    </section>
+
     <!-- PREDICTIONS GLOSSARY -->
     <section class="cm-preds">
       <h2>All predictions — registered in advance</h2>
@@ -417,10 +534,10 @@
       The outcome tag shows how it resolved.</p>
 
       <div class="cm-pred"><div class="cm-pred__id">P1</div><div class="cm-pred__body">SFT-on-chosen installs weaker / less-responsive disposition than ORPO — the contrastive signal is load-bearing, not mere exemplar exposure. <span class="outcome confirm">✓ confirmed (Cell 1)</span><span class="fals">Falsified if: SFT matches ORPO on seat density AND case-7 gate AND synthesis durability.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P2</div><div class="cm-pred__body">ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect (seat lift, gate pass, durability). <span class="outcome open">◔ queued (Cell 3)</span><span class="fals">Falsified if: no lift, or gate failure.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P3</div><div class="cm-pred__body">ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. <span class="outcome open">◔ queued (Cell 3)</span><span class="fals">Falsified if: Med42's lift ≥ the finance seat's lift.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P2</div><div class="cm-pred__body">ORPO on Qwen-Open-Finance (an SFT-only stack) replicates the Saul effect (seat lift, gate pass, durability). <span class="outcome refute">✗ falsified (Cell 3) — no magnitude, no suppression</span><span class="fals">Falsified if: no lift, or gate failure.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P3</div><div class="cm-pred__body">ORPO on Med42 (already preference-aligned) shows diminishing returns — a smaller relative lift than the finance seat. <span class="outcome confirm">✓ confirmed (Cell 3) — pre-aligned baseline leaves no slack</span><span class="fals">Falsified if: Med42's lift ≥ the finance seat's lift.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P4</div><div class="cm-pred__body">Cross-base: the same pairs on Llama-3.1-8B and Qwen2.5-7B produce the effect with smaller magnitude on the aligned bases than on the Mistral-v0.1-based Saul. <span class="outcome open">◔ queued (Cell 4)</span><span class="fals">Falsified if: effect absent on aligned bases, or larger.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P5</div><div class="cm-pred__body">CPO replicates ORPO — method robustness across reference-free preference objectives. <span class="outcome open">◔ queued (Cell 5)</span><span class="fals">Falsified if: CPO fails where ORPO succeeded.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P5</div><div class="cm-pred__body">CPO replicates ORPO — method robustness across reference-free preference objectives. <span class="outcome confirm">✓ confirmed (Cell 5) — suppression replicates; selectivity is ORPO-specific</span><span class="fals">Falsified if: CPO fails where ORPO succeeded.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P6</div><div class="cm-pred__body">Synthesis durability holds across 3 local Leads (Phi-4, gpt-oss-20B, Qwen2.5-7B) and weakens without PRESERVE instructions. <span class="outcome confirm">✓ confirmed, refined (Cell 6)</span><span class="fals">Falsified if: durability is Phi-4-only or PRESERVE-independent. (The PRESERVE half was overturned — instructions matter more than predicted.)</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P7</div><div class="cm-pred__body">Observational: OpenBioLLM-8B (DPO'd) scores high disposition; BioMistral-7B (pretrain-only) scores low. <span class="outcome open">◔ queued (Cell 8)</span><span class="fals">Falsified if: inverted or flat.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8</div><div class="cm-pred__body">Trained behaviors are content-entangled (markers co-occur with entities/statutes in-sentence); entangled markers survive synthesis at higher rates regardless of arm. <span class="outcome refute">✗ falsified (Cell 10)</span><span class="fals">Falsified if: survival is arm-dependent but not position-dependent — which is exactly what happened (r = &minus;0.10).</span></div></div>
