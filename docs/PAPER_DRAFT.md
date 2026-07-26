@@ -469,3 +469,25 @@ differentiated:
 No paper was found combining (a) a two-axis content/disposition split,
 (b) prompting-vs-SFT-vs-preference installation into a pipeline seat, and
 (c) the synthesizer-register mechanism. The core contribution stands.
+
+## Prior-art audit note #2 (2026-07-26, post-revision sweep)
+
+Fresh sweep after the v0.3 revision (Cells 3/5/7 integrated). Verdict: core
+contribution stands. Findings:
+1. **Confidence Laundering (2606.20662)** — position paper naming uncertainty
+   loss at agent interfaces; proposes a latent uncertainty carrier. Adjacent in
+   concept to synthesis stripping; no empirical marker measurement, no training
+   arms, no register. Cited + differentiated in §2.
+2. **Numeric uncertainty-propagation line** (UProp 2506.17419; Bayesian agentic
+   RAG 2607.00972; MARGIN 2605.22949) — propagates quantitative confidence
+   through agent steps. Opposite observable to ours (numbers vs emitted
+   linguistic behavior). UProp cited as the line's anchor.
+3. **EPC-AW (2605.23414)** — "epistemic calibration" for plan feasibility in
+   MAS; orthogonal (planning, not emission). Not cited.
+4. False alarm checked: a search hit claiming regex+NLI+judge triangulation
+   precedent resolved to a SemEval stance-detection system (2603.04921) — not
+   an instrument-validation protocol for behavioral metrics.
+No paper found combining: content/disposition split; prompting-vs-SFT-vs-
+ORPO/CPO installation into pipeline seats with cross-lineage replication and a
+trigger-light responsiveness gate; the synthesizer-register mechanism; and
+instrument triangulation that catches a metric artifact. Novelty intact.
