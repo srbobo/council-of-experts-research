@@ -456,3 +456,65 @@ non-replication; the "made it worse" framing is dropped.
 - Known instrument limits recorded: NLI aggregate flawed by degenerate
   families; judge C4 gate too strict for dense numeric text (a finding about
   evidence-grounding, worth a line in the paper's limitations).
+
+## CELL 5 PRE-REGISTRATION — CPO arm (registered 2026-07-25, BEFORE training)
+
+**Purpose.** P5: does CPO reproduce the legal-seat suppression? The legal gate
+suppression is now the paper's only positive installation claim (3-instrument
+robust); Cell 5 tests whether it is a property of reference-free preference
+optimization generally or an ORPO-specific artifact.
+
+**Design.** Identical to the v1 ORPO arm in every respect except the objective:
+same base (Equall/Saul-7B-Instruct-v1, re-downloaded; same bf16 conversion),
+same ORIGINAL 91-pair legal training set (reconstructed from the first 200
+append-only raw-log records under the amended filters + seed-42 shuffle —
+verified to match the v1 split sizes 91/4/4; the current dpo_pairs/ dir holds
+the 264-pair dose split and is NOT used), same LoRA config / 364 iters /
+seed 42, --train-mode cpo (sigmoid loss, beta 0.1). Tag: saul-cpo:coe, same
+Mistral [INST] template as saul-dpo:coe. Mode: local-council-cpo, 7 cases x
+5 seeds = 35 runs.
+
+**Endpoints & instruments.** Same three endpoints vs the cell-2 rows
+(A' 0.89/0.859/0.96; ORPO 0.87/0.655/0.15). Post-Cell-7 amendment: the
+case-7 gate is scored under BOTH regex and NLI-cutoff (threshold 0.75);
+suppression requires directional agreement of both.
+
+**Pre-registered predictions:**
+- P5.1 (magnitude): CPO installs no seat magnitude (CI overlaps A') — expected
+  given the 3-lineage null.
+- P5.2 (suppression): CPO gate < A' gate under both instruments, with regex
+  gate <= 0.5x A' (ORPO achieved 0.15 vs 0.96). Falsified if gate >= A' under
+  either instrument. Partial (between 0.5x and 1x) -> "weaker than ORPO".
+- P5 verdict: replicates fully / partially / fails — reported as-is.
+
+## CELL 5 / P5 VERDICT — CPO replicates suppression; blunter than ORPO (2026-07-26, 35 runs)
+
+CPO on the reconstructed original 91 legal pairs; identical recipe to v1 ORPO
+except the objective. Bootstrap 95% CIs; gate dual-instrument per the
+post-Cell-7 amendment.
+
+| Arm | Seat density (trigger) [CI] | Final CDS [CI] | Gate regex | Gate NLI-cutoff |
+|---|---|---|---|---|
+| A' | 0.89 [0.69, 1.11] | 0.859 | 0.96 | 1.06 |
+| ORPO | 0.87 [0.60, 1.17] | 0.655 | 0.15 | 0.35 |
+| CPO | 0.56 [0.34, 0.80] | 0.638 [0.49, 0.80] | **0.37** | **0.45** |
+
+**P5.2 CONFIRMED — suppression is method-general.** CPO gate is 0.39x A'
+(regex) and 0.42x A' (NLI-cutoff) — both instruments agree, both under the
+pre-registered 0.5x bar. The legal-seat suppression is a property of
+reference-free preference optimization on these pairs, not an ORPO quirk.
+
+**P5.1: no magnitude install (CIs overlap A'), consistent with the null —
+but with a new wrinkle (post-hoc, labeled):** CPO also REDUCED trigger-case
+seat density (0.89 -> 0.56, CIs marginally overlapping), which ORPO did not
+(0.87). Gate:trigger selectivity ratio — A' 1.08, CPO 0.66, ORPO 0.17. Read:
+CPO dampens hedging globally (unwarranted AND warranted alike); ORPO's
+suppression was responsive (targeted at the unwarranted). The suppression
+PHENOMENON generalizes across objectives; the RESPONSIVENESS (selectivity)
+looks ORPO-specific. This selectivity ratio was not pre-registered and is
+reported as an exploratory characterization.
+
+**Result 2 final evidence base:** magnitude null (3 lineages, 2 instruments,
+dose-invariant); legal suppression method-general (ORPO + CPO, 2-3
+instruments); ORPO uniquely selective; no replication of suppression on
+pre-aligned (Med42) or cross-lineage (Qwen-Finance) seats.

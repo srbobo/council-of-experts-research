@@ -1,0 +1,7 @@
+# Cell 5 (P5): Saul-7B with behavior-targeted LoRA-CPO fused in. Same
+# conversion pipeline and template as saul-repro/saul-dpo — the only delta
+# vs saul-dpo is the training objective (CPO vs ORPO).
+FROM ./gguf/saul-cpo-Q4_K_M.gguf
+TEMPLATE [INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]
+PARAMETER stop [INST]
+PARAMETER stop [/INST]

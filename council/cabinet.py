@@ -325,3 +325,12 @@ CABINET_FINANCE_REPRO: dict[SeatRole, CabinetMember] = {
     "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_REPRO, "finance": FINANCE_REPRO}
 CABINET_FINANCE_ORPO: dict[SeatRole, CabinetMember] = {
     "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_REPRO, "finance": FINANCE_ORPO}
+
+# Cell 5 (P5) — CPO objective on the legal seat; identical to LEGAL_DPO except
+# the training objective (CPO vs ORPO) on the same original 91 pairs.
+LEGAL_CPO = CabinetMember(
+    seat="legal", name="Saul-7B-CPO (behavior-targeted LoRA)", backbone="Mistral 7B",
+    fine_tune_type="CPO on the same 91 content-controlled disposition pairs as the ORPO arm (Cell 5)",
+    ollama_tag="saul-cpo:coe", quantization="Q4_K_M", memory_gb=5.0, license="MIT (derived)")
+CABINET_CPO: dict[SeatRole, CabinetMember] = {
+    "lead": LEAD, "healthcare": HEALTHCARE, "legal": LEGAL_CPO, "finance": FINANCE}

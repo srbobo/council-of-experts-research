@@ -20,9 +20,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from council.cabinet import (CABINET_DPO, CABINET_DPO_V2, CABINET_FINANCE_ORPO,
-                              CABINET_FINANCE_REPRO, CABINET_HEALTH_ORPO,
-                              CABINET_HEALTH_REPRO, CABINET_REPRO, CABINET_SFT, GPT_OSS_20B)
+from council.cabinet import (CABINET_CPO, CABINET_DPO, CABINET_DPO_V2,
+                              CABINET_FINANCE_ORPO, CABINET_FINANCE_REPRO,
+                              CABINET_HEALTH_ORPO, CABINET_HEALTH_REPRO,
+                              CABINET_REPRO, CABINET_SFT, GPT_OSS_20B)
 from council.models import chat as local_chat
 from council.orchestrator import DeliberationResult, deliberate
 from council.prompts import BEHAVIOR_SPEC_ADDENDUM, LEGAL_SYSTEM
@@ -136,3 +137,9 @@ async def run_council_finance_orpo(query: str) -> DeliberationResult:
     """Cell 3 (P2) — finance seat = ORPO-trained qwen-finance."""
     thermal = ThermalGuard.from_env()
     return await deliberate(query, thermal=thermal, cabinet_members=CABINET_FINANCE_ORPO)
+
+
+async def run_council_cpo(query: str) -> DeliberationResult:
+    """Cell 5 (P5) — legal seat = CPO-trained Saul (saul-cpo:coe)."""
+    thermal = ThermalGuard.from_env()
+    return await deliberate(query, thermal=thermal, cabinet_members=CABINET_CPO)
