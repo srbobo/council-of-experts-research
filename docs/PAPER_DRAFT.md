@@ -491,3 +491,51 @@ No paper found combining: content/disposition split; prompting-vs-SFT-vs-
 ORPO/CPO installation into pipeline seats with cross-lineage replication and a
 trigger-light responsiveness gate; the synthesizer-register mechanism; and
 instrument triangulation that catches a metric artifact. Novelty intact.
+
+## Prior-art audit note #3 (2026-07-27, post-6b/6c/7c sweep)
+
+Swept for collisions with the newest findings (family-dependent stripping;
+weights-fail-at-every-locus; the gain curve). Verdict: **core contribution
+stands**, but one genuinely close neighbor emerged and is now cited prominently.
+
+**1. Certainty Distortion (arXiv:2606.07951, Belem et al., UC Irvine/MIT, Jun
+2026) — the closest single-model neighbor found to date.** LMs rephrasing
+scientific/clinical text fail to preserve source certainty: up to 75% of
+outputs distorted, 1.5-2x asymmetry toward INFLATING confidence, compounding
+over repeated paraphrase; temperature has no effect; prompt interventions
+reduce but do not eliminate. Human-validated LM-based metric.
+*Overlap:* epistemic markers lost in LM text transformation; prompts partially
+mitigate; model-family differences.
+*Differentiation (all three axes):* (a) architecture — they study ONE model
+rewriting text; we study a multi-agent pipeline with distinct specialist models
+feeding an aggregator; (b) installation — they attempt no training; our core
+contribution is prompting/SFT/ORPO/CPO at both seat and Lead loci, with the
+finding that weights move nothing anywhere; (c) mechanism — they characterize
+distortion RATES; we identify a writer-specific register band nearly
+independent of input, which INVERTS under over-dense input rather than merely
+attenuating, and quantify a graded monotone gain curve.
+*Where they are ahead:* their metric is validated against human annotations;
+ours rests on inter-instrument convergence with no human anchor. Now
+acknowledged in our limitations.
+*Convergent validity:* their "prompt interventions help but don't eliminate"
+and our gain curve reach the same practical conclusion from different setups —
+mutual corroboration, not collision.
+
+**2. Possible or Definite? (arXiv:2606.18471, Jun 2026).** Clinical benchmark,
+1,200 documents / 9,184 uncertainty annotations across five levels; finds LLMs
+preserve uncertainty cues under half the time in summarization/revision.
+Single-model transformation, no pipeline, no training arms, no register. Cited
+alongside the above as the clinical instance of the same single-model failure.
+
+**Verification note.** An automated summary of 2606.07951 initially reported
+that it tested SFT/DPO/ORPO interventions and identified a model "register."
+Reading the actual PDF showed both claims to be false — its mitigations are
+temperature and prompting only. Recorded because the differentiation above
+depends on that correction.
+
+**Still unmatched.** No paper found combining: the content/disposition split;
+installation tested at BOTH pipeline loci across three model lineages and two
+preference objectives; the synthesizer-register mechanism with input inversion;
+a graded instruction gain curve; instrument triangulation that retires one of
+its own findings; and family-dependent stripping (content-bearing behaviors
+survive aggregation, meta-commentary does not). Novelty verdict: intact.
