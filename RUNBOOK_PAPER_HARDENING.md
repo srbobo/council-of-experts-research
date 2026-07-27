@@ -518,3 +518,168 @@ reported as an exploratory characterization.
 dose-invariant); legal suppression method-general (ORPO + CPO, 2-3
 instruments); ORPO uniquely selective; no replication of suppression on
 pre-aligned (Med42) or cross-lineage (Qwen-Finance) seats.
+
+## CELL 6b PRE-REGISTRATION — train the SYNTHESIZER (registered 2026-07-26, BEFORE any pair gen or training)
+
+**Rationale.** Every training intervention so far targeted seats; the register
+claim rests on ablation + corollaries. The paper's practical advice ("tune the
+synthesizer") has never been demonstrated. Cell 6b is the constructive test:
+apply the same content-controlled ORPO protocol ONE LEVEL UP — to the Lead.
+
+**Design.** Lead under test: Qwen2.5-7B-Instruct (already a cell-6 synthesizer,
+hottest register, 7B trains within the 32 GB budget; Phi-4-14B deferred on
+memory). Pairs: sample real synthesis inputs (the Tensions-then-Synthesis
+prompt WITH actual seat outputs) from the audited run corpus; the base answer
+is the recorded/regenerated synthesis; chosen = REWRITE_ADD, rejected =
+REWRITE_STRIP, same five behavior families, same gates (>=2 distinct chosen, 0
+rejected under the amended meta-only gate, ratio 0.8-1.4, Jaccard >= 0.35),
+leakage screen against all 7 cases. Target 91 train pairs (dose-matched to
+every seat arm). Training: identical recipe (LoRA r8/scale10/16 layers, 4-bit,
+lr 5e-6, 364 iters, seq 1792, seed 42, ORPO beta 0.1). Artifacts:
+qwen-lead-repro:coe (A' conversion control) and qwen-lead-orpo:coe.
+
+**Bench.** Cabinet holds all three seats at their PRODUCTION (untrained)
+versions; only the Lead swaps. 2 arms x 7 cases x 5 seeds = 70 runs. Endpoints
+measured at the PIPELINE MOUTH (final output): final density + CDS, and the
+case-7 gate. Gates scored under both regex and NLI-cutoff (post-Cell-7 rule).
+
+**Pre-registered predictions:**
+- P6b.1 (register is trainable): the ORPO'd Lead's final-output density band
+  differs from its A' band on trigger cases -- |delta| >= 0.25 behaviors/1k
+  chars with non-overlapping bootstrap CIs. FALSIFIED if CIs overlap (register
+  robust even to direct training -> instructions are the only lever).
+- P6b.2 (gate improves at the mouth): the ORPO'd Lead's case-7 gate < A' gate
+  under both instruments (the effect seat-ORPO could not deliver downstream).
+- P6b.3 (asymmetry): the Lead-training effect on final output exceeds the
+  largest seat-training effect on final output observed in cells 2/3/5
+  (all seat arms landed final CDS at/below A'). This is the two-sided claim:
+  same protocol, same dose, different locus -> different outcome.
+- Interpretation guard: a null on P6b.1 does NOT rescue seat installation; it
+  would mean the register is a hard architectural ceiling, strengthening the
+  "choose your last writer" advice while weakening "tune it by training".
+
+## CELL 6c PRE-REGISTRATION — gain curve + input additivity (registered 2026-07-26)
+
+**Purpose.** Cell 6 tested PRESERVE instructions binary (on/off) yet the paper
+calls them a "gain control". A gain control implies a monotone response curve.
+Also closes the last alternative to the register: partial additivity of seat input.
+
+**Design (no training; all inference).**
+(a) GAIN CURVE: PRESERVE clause count k in {0,1,2,3} (3 = the production
+    prompt) x 3 Leads (Phi-4, gpt-oss, Qwen2.5) x 6 trigger cases = 72 runs.
+    Clauses removed in a fixed documented order: k=3 production (numeric,
+    vocabulary, caveats); k=2 drops "precise vocabulary"; k=1 drops "numeric
+    framing" too (caveats only); k=0 = the cell-6 no-PRESERVE prompt.
+    CORRECTION (pre-data, 2026-07-26): the registration first wrote k in
+    {0,1,2,4}; the production prompt carries THREE PRESERVE clauses (items
+    2-4 of STEP 2), not four. Levels renumbered to {0,1,2,3}; no other change.
+(b) ADDITIVITY: hot-seat count h in {0,1,2,3} (hot = the SFT high-density seat
+    for that domain; SFT seats exist for legal only, so h counts use the
+    behavior-spec prompt override per seat to create hot inputs) x 1 Lead
+    (Phi-4) x 6 cases = 24 runs.
+(c) ORDER SHUFFLE (rider): DROPPED before running — seat dispatch order is
+    determined by the planner's decomposition, not settable by the caller, so
+    it cannot be varied without confounding the plan itself. P6c.4 is withdrawn
+    (documented here rather than silently omitted).
+
+**Pre-registered predictions:**
+- P6c.1 (monotone gain): final-output density increases monotonically in k for
+  every Lead (Spearman rho >= 0.8 per Lead). Falsified if non-monotone or flat.
+- P6c.2 (bounded gain): the k=3 -> k=0 ratio stays within 2-6x (cell 6 saw
+  2-5x); i.e. instructions modulate the band, they do not unbound it.
+- P6c.3 (non-additivity): final-output density is flat in h (no monotone
+  increase; Spearman rho <= 0.4). Falsified if output tracks hot-seat count,
+  which would restore partial additivity and weaken the register claim.
+- P6c.4 (position invariance): seat-order permutation changes final density by
+  < 0.2 behaviors/1k chars (writer-driven, not context-copy).
+
+### Cell 6b — PROTOCOL AMENDMENT (2026-07-26, pre-training, documented)
+
+**Issue.** Synthesis-level training examples are far longer than seat-level
+ones: the prompt is the full Tensions-then-Synthesis system prompt plus the
+user block carrying every seat's contribution (~2,700-2,900 tok), and the
+completion is a full synthesis (~1,250-1,400 tok). Measured on the generated
+pairs: median 3,339 tokens, max 3,431; **0% fit the 1,792 seq-len used by all
+seat arms**, 100% fit 4,096. Training at 1,792 would truncate the completion
+entirely — the model would train on nothing.
+
+**Amendment.** For Cell 6b ONLY, --max-seq-length is raised 1,792 -> 4,096.
+Every other hyperparameter is unchanged (LoRA r8/scale10/16 layers, 4-bit,
+lr 5e-6, ORPO beta 0.1, 364 iters, seed 42), so the locus (Lead vs seat)
+remains the manipulated variable. This is a necessary consequence of the
+locus change, not a free parameter: seat pairs are short because a seat
+answers one sub-question, syntheses are long because they integrate all of
+them. Memory: 4,096 tok x batch 1 x grad-accum 4 on a 4-bit 7B with gradient
+checkpointing is within the 26.8 GB Metal budget (seat runs peaked ~15 GB at
+1,792; the attention term is the growth, mitigated by checkpointing).
+
+**Reporting.** The paper must state that the Lead arm trains at a longer
+context than the seat arms, and that this is inherent to the locus rather
+than an advantage granted to the Lead: both arms see their own complete
+examples, neither is truncated.
+
+### Cell 6b — DATA-VOLUME AMENDMENT (2026-07-26, pre-training, documented)
+
+**Issue.** At 200 sampled syntheses the amended filters project only ~70 usable
+pairs, short of the 91-pair dose match every seat arm used. Diagnosis from 168
+generated records: strict gate 21%, amended 35%; the dominant failure is the
+LENGTH-RATIO window (58% of records exceed the 1.4 ceiling; median ratio 1.45).
+This is inherent to the locus -- weaving hedges into a ~4,000-character
+synthesis adds proportionally more length than into a short seat answer.
+
+**Options considered.** (a) widen the ratio window to 1.6 for the Lead arm
+(would capture ~70% immediately) -- REJECTED: it weakens the DPO length-bias
+guard and breaks comparability with every seat arm, in exactly the comparison
+this cell exists to make; (b) accept ~70 pairs -- REJECTED: dose mismatch
+becomes a confound; (c) generate from the remaining unused syntheses.
+
+**Amendment (option c).** Extend generation from 200 to the full pool of 325
+unique recorded syntheses (cases 1-5; cases 6 and 7 remain held out). Projected
+~103 amended pairs, clearing 91. NO gate is changed. The prompt pool is
+shuffled with seed 42, so the first 200 are a strict prefix of the 325 -- the
+extension is a pure superset and all existing records are reused. Cost: ~5 h
+additional generation.
+
+## CELL 6b / P6b VERDICT — the register survives DIRECT training of the writer (2026-07-27, 70 runs)
+
+ORPO on the SYNTHESIZER itself (Qwen2.5-7B Lead), 88 content-controlled
+synthesis-level pairs, identical recipe to every seat arm except seq-len
+(4,096; amended pre-training, documented above). All three seats held at their
+PRODUCTION untrained versions; only the Lead swaps. Endpoints measured at the
+PIPELINE MOUTH.
+
+| Arm | Final density [95% CI] | Final CDS [95% CI] | Case-7 gate |
+|---|---|---|---|
+| A' (qwen-lead-repro) | 1.03 [0.79, 1.28] | 0.667 [0.50, 0.86] | 0.15 |
+| ORPO (qwen-lead-orpo) | 0.89 [0.67, 1.11] | 0.581 [0.42, 0.77] | 0.11 |
+
+**P6b.1 FALSIFIED — the register did NOT move.** delta = -0.14 (threshold was
+|>=0.25| with disjoint CIs); the intervals overlap heavily. Training the last
+writer on dose-matched, content-controlled synthesis pairs moved its output
+band no more than training a seat moved the seat's. The A' band (1.03) also
+reproduces this writer's cell-6 register (Qwen PRESERVE-base 1.24), i.e. the
+band is stable across cells.
+
+**P6b.2 directionally satisfied but uninformative:** gate 0.15 -> 0.11. Both
+are near the floor: this Lead's UNTRAINED gate is already 0.15 (vs Phi-4's 0.96
+production baseline), so there was almost no miscalibration slack to remove —
+the same "no slack" situation as the pre-aligned Med42 seat (P3). We do NOT
+claim a suppression effect here.
+
+**P6b.3 (asymmetry) NOT SUPPORTED:** the Lead-training effect on final output
+(-0.14, overlapping) is not larger than the seat-training effects on final
+output; all are indistinguishable from their controls.
+
+**Interpretation (registered guard applies).** The pre-registration stated that
+a null here does not rescue seat installation — it means the register is a hard
+architectural ceiling. That is the reading: disposition at the pipeline mouth
+was not moved by weight-level training at EITHER locus (3 seats + the Lead,
+across ORPO and CPO, dose-invariant to 3.2x). What DOES move it, reliably and
+2-5x, is the synthesis prompt's PRESERVE instructions (cell 6; gain curve in
+6c). The mechanism sharpens to: **final disposition is set by the last writer's
+register, and the accessible control surface is that writer's INSTRUCTIONS, not
+anyone's weights.**
+
+**Caveats recorded:** one Lead only (Qwen2.5-7B; Phi-4-14B deferred on memory);
+88 pairs vs the seat arms' 91 (amended-filter yield, not a design choice);
+gate n=5 and near-floor; seq-len 4,096 vs 1,792 (inherent to the locus).
