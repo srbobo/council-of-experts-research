@@ -804,3 +804,58 @@ disclosure." Two headline claims (the magnitude null; prompt/SFT installation)
 are STRONGER than previously stated -- they are family-general, not cutoff
 artifacts. One (gain-curve monotonicity) must be scoped to the composite. One
 new finding (family-dependent stripping) should be added to Result 3.
+
+## CELL 8 PRE-REGISTRATION — architecture comparison (registered 2026-07-27, BEFORE any runs)
+
+**Motivation.** Result 1 compares the council against NO orchestration only; it
+never compares it against other multi-agent architectures. Cell 6c makes the
+gap urgent: stripping PRESERVE collapses the full council to 0.16 final density
+(BELOW gpt-oss single-shot's 0.19), so the "3-9x architectural lift" may be
+attributable to the synthesis PROMPT rather than the multi-agent topology.
+Existing data hints the council's real advantage is RESPONSIVENESS, not
+magnitude -- gpt-oss single+spec reaches 0.66 density but fails the gate at
+1.27, while gpt-oss-as-council reaches 0.78 and gates at 0.00 -- but those gate
+cells are n=1 and cannot support a claim.
+
+**Arms (all gpt-oss-20B in every role, so architecture is the ONLY variable;
+7 cases x 5 seeds each).**
+1. `arch-single`        -- single-shot, neutral prompt (existing baseline)
+2. `arch-single-spec`   -- single-shot + behavior-spec prompt (unconditional
+                           disposition instruction, no multi-agent structure)
+3. `arch-council`       -- full council: planner -> 3 seats -> Tensions-then-
+                           Synthesis with CONDITIONAL PRESERVE instructions
+4. `arch-flat`          -- same 3 seats, naive merge prompt ("here are three
+                           answers, write one"), NO tension extraction, NO
+                           PRESERVE: multi-agent structure WITHOUT the
+                           conditional instruction
+5. `arch-debate`        -- 2 rounds: seats answer, see each other's answers,
+                           revise; then the same naive merge as arm 4
+6. `arch-refine`        -- single model, draft -> self-critique -> revise
+                           (self-critique as a substitute for specialists)
+
+**Endpoints.** Final-output density and CDS on the 6 trigger cases; the case-7
+gate (n=5 per arm, the discriminating measure this cell exists to power).
+Bootstrap 95% CIs throughout.
+
+**Pre-registered predictions.**
+- P8.1 (magnitude is NOT the council's edge): arm 3 does not exceed arm 2 on
+  trigger-case density by a margin with disjoint CIs. Falsified if the council
+  clearly out-produces the prompted single model.
+- P8.2 (the council's edge is RESPONSIVENESS): arm 3's case-7 gate is lower
+  than arm 2's by >= 2x. Falsified if the gates are comparable or inverted.
+- P8.3 (the conditional instruction is the active ingredient): arm 4 (multi-
+  agent, unconditional/no PRESERVE) gates no better than arm 2 and produces
+  less magnitude than arm 3 -- i.e. multi-agent structure alone buys neither.
+  Falsified if arm 4 matches arm 3 on both endpoints.
+- P8.4 (exploratory, no directional prediction): where do debate and
+  self-refine land on the magnitude/gate plane? Reported descriptively.
+
+**Consequence for the paper, stated in advance.** If P8.1-P8.3 hold, Result 1
+must be REWRITTEN: the architectural lift is not a property of multi-agent
+topology per se but of a conditional preservation instruction applied over
+real specialist signal, and the council's distinctive contribution is
+responsiveness rather than magnitude. If P8.2 is falsified (single+spec gates
+as well as the council), the architecture claim largely dissolves and the
+paper's contribution narrows to the register mechanism. Both outcomes are
+reportable; the second is the one that would cost us most, which is why it is
+registered here before the runs.
