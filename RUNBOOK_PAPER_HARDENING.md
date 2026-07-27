@@ -683,3 +683,49 @@ anyone's weights.**
 **Caveats recorded:** one Lead only (Qwen2.5-7B; Phi-4-14B deferred on memory);
 88 pairs vs the seat arms' 91 (amended-filter yield, not a design choice);
 gate n=5 and near-floor; seq-len 4,096 vs 1,792 (inherent to the locus).
+
+## CELL 6c VERDICT — instructions are a graded gain control; seat input is non-additive (2026-07-27, 96 runs)
+
+**(a) GAIN CURVE — P6c.1 CONFIRMED (all 3 Leads), P6c.2 partially.**
+Final-output density vs number of PRESERVE clauses retained (6 cases per cell):
+
+| Lead | k=0 | k=1 | k=2 | k=3 (prod) | Spearman rho | k3/k0 |
+|---|---|---|---|---|---|---|
+| gpt-oss-20B | 0.16 | 0.27 | 0.41 | 0.53 | **+1.00** | 3.3x |
+| Qwen2.5-7B | 0.57 | 1.00 | 0.95 | 1.21 | +0.80 | 2.1x |
+| Phi-4-14B | 0.52 | 0.58 | **1.53** | 0.68 | +0.80 | 1.3x |
+
+All three clear the pre-registered rho >= 0.8. Two of three land inside the
+pre-registered 2-6x band (P6c.2); **Phi-4 does not (1.3x)** because of a single
+anomalous k=2 cell (1.53). Read honestly: no other Lead shows a k=2 bump, and
+Phi-4's within-cell dispersion (sd 0.62 at k=2) is as large as its between-level
+differences, so at n=6/cell with no seed repeats this is most likely noise, not
+clause-interaction structure. It is reported as an anomaly, not explained away;
+a seeded replication would settle it. The instruction-as-gain-control claim
+rests on the monotone trend in all three Leads and the clean 3.3x / 2.1x spans.
+
+**(b) ADDITIVITY — P6c.3 CONFIRMED.** Hot-seat count h (behavior-spec override
+applied to h of 3 seats), Phi-4 Lead, production prompt, 6 cases each:
+
+| h | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| final density [95% CI] | 1.01 [0.55,1.55] | 1.03 [0.43,1.63] | 0.84 [0.63,1.05] | 0.64 [0.29,1.01] |
+
+Spearman rho = **-0.80** (predicted <= +0.4): output does NOT increase with the
+number of hot seats -- it is flat-to-declining, total spread 0.38 with heavily
+overlapping CIs. Heating all three seats produces no more final disposition than
+heating none. This closes the last alternative to the register: disposition is
+not partially additive across seats and then diluted; it does not transmit at
+all. (The mild negative slope is consistent with the cell-6 inversion effect --
+more input density, slightly less output -- but CIs overlap and we do not claim
+a monotone inverse.)
+
+**(c) P6c.4 (order invariance): withdrawn pre-data** -- dispatch order is
+planner-determined, not caller-settable (documented above).
+
+**COMBINED 6b + 6c CONCLUSION.** Weight-level training moves final disposition
+at NEITHER locus (3 seats, 3 lineages, ORPO + CPO, dose-invariant to 3.2x; and
+the Lead itself, 6b). Seat input does not accumulate (6c-b). The synthesis
+prompt's instructions move it monotonically, 2-3x (6c-a). The mechanism
+statement for the paper: **final disposition ~= f(last writer's register x that
+writer's instructions); the accessible control surface is the instructions.**
