@@ -729,3 +729,78 @@ the Lead itself, 6b). Seat input does not accumulate (6c-b). The synthesis
 prompt's instructions move it monotonically, 2-3x (6c-a). The mechanism
 statement for the paper: **final disposition ~= f(last writer's register x that
 writer's instructions); the accessible control surface is the instructions.**
+
+## CELL 7c — PER-FAMILY, SEAT-MATCHED DECOMPOSITION (2026-07-27, no new runs)
+
+**Motivation.** The composite metric sums five behavior families, but they are
+not uniformly distributed across seats. Scoring all five on one seat (as the
+headline tables do) lets the composite be dominated by training-cutoff
+disclosure and understates families that live elsewhere. Re-decomposition of
+the existing 628 runs; no new inference.
+
+**Family ownership (untrained baseline density per seat):**
+
+| family | healthcare | legal | finance | owner |
+|---|---|---|---|---|
+| cutoff | 0.85 | 0.68 | 0.51 | universal |
+| modeled | 0.00 | 0.00 | 0.25 | **finance** |
+| hedging | 0.38 | 0.02 | 0.33 | **healthcare/finance** |
+| jurisd | 0.05 | 0.14 | 0.13 | legal (weak) |
+| precise | 0.02 | 0.00 | 0.01 | **BELOW DETECTION** |
+
+**Findings.**
+
+1. **Magnitude null is FAMILY-GENERAL (strengthens the paper).** Testing each
+   family on the seat that owns it, ORPO moves none of them: finance/modeled
+   0.40 [0.31,0.49] -> 0.34 [0.24,0.45]; healthcare/hedging 0.33 -> 0.26;
+   legal/jurisd 0.14 -> 0.18. All CIs overlap. The 6b Lead-training null is
+   likewise null in all four detectable families. The null is NOT a
+   cutoff artifact.
+
+2. **Prompt/SFT installation is MULTI-FAMILY (strengthens the paper).** On the
+   legal seat: cutoff 0.68 -> 1.46 (prompt) / 1.21 (SFT); modeled 0.00 -> 0.27
+   (SFT); hedging 0.02 -> 0.23 (SFT). Exemplar training installs behaviors the
+   seat did not previously emit at all. Side effect worth reporting: SFT
+   SUPPRESSED jurisdictional distinguishing (0.14 -> 0.02) while installing the
+   others -- installation is not uniformly additive across families.
+
+3. **NEW: synthesis stripping is NOT uniform across families.** Retention
+   (final density / owner-seat density) at baseline:
+
+   | family | seat | final | retention |
+   |---|---|---|---|
+   | cutoff | 0.68 | 0.47 | **0.69 (stripped)** |
+   | hedging | 0.38 | 0.29 | 0.76 (partly stripped) |
+   | modeled | 0.25 | 0.27 | **1.05 (survives)** |
+   | jurisd | 0.14 | 0.17 | **1.25 (survives)** |
+
+   The families that survive are the CONTENT-BEARING ones -- a modeled number
+   ("modeled at $8,000") and a jurisdictional distinction carry substance the
+   synthesizer needs, whereas cutoff disclosure is meta-commentary it can drop
+   without losing content. This is a family-level version of the entanglement
+   idea that P8 falsified at the ARM level: retention does not split by arm or
+   marker position, but it DOES split by whether the family carries content.
+   Reported as an observation from existing data, not a pre-registered test.
+
+4. **QUALIFIED: gain-curve monotonicity is an AGGREGATE property.** Pooled over
+   3 Leads, no single family is monotone in k: cutoff +0.40, modeled +0.60,
+   hedging +0.40, jurisd -0.80. The composite rises because three families
+   trend up jointly. "Instructions are a graded gain control" is fair for the
+   composite; it is NOT true that each behavior is monotonically controllable.
+
+5. **Non-additivity holds where there is signal:** cutoff rho -0.80, hedging
+   rho -1.00; modeled/jurisd flat (rho 0.00) at densities too low to rank.
+
+6. **`precise` is below detection on every seat (0.00-0.02)** and was the worst
+   family for the NLI instrument too (AUC 0.738, Youden J = 0.00). Two
+   independent instruments fail it. Recommendation: report the four detectable
+   families and state that vocabulary-precision was operationalized but not
+   measurable in these cases -- either the cases do not provoke it or the
+   construct is not detectable as a surface feature.
+
+**Net effect on the paper.** Scope language must change from "five behavior
+families" to "four detectable families, composite dominated by cutoff
+disclosure." Two headline claims (the magnitude null; prompt/SFT installation)
+are STRONGER than previously stated -- they are family-general, not cutoff
+artifacts. One (gain-curve monotonicity) must be scoped to the composite. One
+new finding (family-dependent stripping) should be added to Result 3.
