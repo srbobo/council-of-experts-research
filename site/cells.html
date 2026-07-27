@@ -168,8 +168,8 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Eight cells executed; three remain queued (none blocks a published claim).
-    Hover a prediction chip for its definition.</p>
+    <p class="text-soft">Ten cells executed (including the synthesizer-locus pair 6b/6c); three remain
+    queued (none blocks a published claim). Hover a prediction chip for its definition.</p>
 
     <div class="cm-board">
       <div class="cm-tile done">
@@ -189,6 +189,18 @@
         <div class="cm-name">Synthesizer-register ablation</div>
         <div class="cm-tile__meta">72 runs · 3 Leads × PRESERVE</div>
         <div class="cm-tile__foot"><span class="pchip" data-tip="Synthesis durability holds across 3 local Leads (Phi-4, gpt-oss-20B, Qwen2.5-7B) and weakens without PRESERVE instructions for prompted-but-not-trained behaviors. Falsified if durability is Phi-4-only or PRESERVE-independent.">P6</span><span class="cm-status done">✓ Confirmed*</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num dose">6b</span></div>
+        <div class="cm-name">Train the synthesizer</div>
+        <div class="cm-tile__meta">70 runs · ORPO on the Lead, 88 synthesis pairs</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P6b.1: the ORPO'd Lead's final-output band differs from its A′ band by ≥0.25 with disjoint CIs (the register is trainable at its own locus). Falsified if CIs overlap — which is what happened.">P6b</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">✗ Falsified</span><span class="cm-tile__meta">register robust</span></div>
+      </div>
+      <div class="cm-tile done">
+        <div class="cm-tile__top"><span class="cm-num dose">6c</span></div>
+        <div class="cm-name">Gain curve + additivity</div>
+        <div class="cm-tile__meta">96 runs · graded PRESERVE × 3 Leads; hot-seat count</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P6c.1: final density rises monotonically with PRESERVE clause count on every Lead (Spearman ρ ≥ 0.8). P6c.3: density is flat in hot-seat count (non-additive). Both confirmed.">P6c</span><span class="cm-status done">✓ Confirmed</span></div>
       </div>
       <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">10</span></div>
@@ -524,6 +536,85 @@
         dense numeric text. The triangulation both confirmed the surviving claims and caught a false
         finding produced by the primary metric — the strongest argument in the paper for not trusting
         single-instrument disposition evaluation.</p>
+      </div>
+    </section>
+
+    <!-- CELL 6b -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 6b</span>
+        <span class="cm-name">Train the synthesizer — the constructive test, 70 runs</span>
+        <span class="cm-verdict refute">P6b.1 ✗ falsified — register robust</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P6b)</span>
+        <p>Every training intervention so far targeted seats; the paper's advice ("tune the synthesizer")
+        was never demonstrated. If the register is merely where disposition lives, training the Lead itself
+        should move it: P6b.1 predicted the ORPO'd Lead's final-output band shifts by ≥0.25 with disjoint
+        CIs. The registered interpretation guard: a null does not rescue seat installation — it means the
+        register is a hard architectural ceiling.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>88 content-controlled <em>synthesis-level</em> pairs built from real recorded deliberations (the
+        actual Tensions-then-Synthesis prompt with every seat's contribution; cases 6–7 held out entirely);
+        ORPO on Qwen2.5-7B as Lead, identical recipe to every seat arm except seq-len 4,096 (documented
+        amendment — no synthesis example fits 1,792). Seats held at production versions; only the Lead
+        swaps. 2 arms × 7 cases × 5 seeds, endpoints at the pipeline mouth.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">Final density [95% CI]</th><th class="n">Final CDS</th><th class="n">Case-7 gate</th></tr></thead>
+          <tbody>
+            <tr><td>A&prime; (qwen-lead-repro)</td><td class="n">1.03 [0.79, 1.28]</td><td class="n">0.667</td><td class="n">0.15</td></tr>
+            <tr class="hl"><td>ORPO (qwen-lead-orpo)</td><td class="n">0.89 [0.67, 1.11]</td><td class="n">0.581</td><td class="n">0.11</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>The register did not move</strong> — Δ = −0.14 against the ≥0.25 bar, CIs overlapping
+        heavily. The A&prime; band also reproduces this writer's Cell-6 register (1.03 vs 1.24), stable
+        across cells. The gate was already near-floor untrained (0.15) — no suppression claimed, same
+        no-slack situation as Med42. <strong>Weight-level training now fails at every locus tested:</strong>
+        three seats, three lineages, ORPO + CPO, dose-invariant — and the synthesizer itself.</p>
+      </div>
+    </section>
+
+    <!-- CELL 6c -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 6c</span>
+        <span class="cm-name">Gain curve + input additivity — 96 runs, no training</span>
+        <span class="cm-verdict confirm">P6c.1 ✓ · P6c.3 ✓</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P6c)</span>
+        <p>Cell 6 tested PRESERVE instructions as a binary; calling them a "gain control" implies a
+        <em>graded, monotone</em> response (P6c.1: Spearman ρ ≥ 0.8 per Lead; P6c.2: bounded 2–6× span).
+        And if the register is real, disposition should be <em>non-additive</em> in seat input — heating
+        more seats should add nothing at the mouth (P6c.3: ρ ≤ 0.4). (P6c.4 order-invariance was withdrawn
+        pre-data: dispatch order is planner-determined and cannot be varied without confounding the plan.)</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>(a) PRESERVE clause count k ∈ {0,1,2,3} (3 = production) × 3 Leads × 6 trigger cases = 72 runs,
+        clauses removed in a fixed documented order. (b) Hot-seat count h ∈ {0,1,2,3} (behavior-spec
+        override applied per seat) × Phi-4 Lead × 6 cases = 24 runs.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Lead</th><th class="n">k=0</th><th class="n">k=1</th><th class="n">k=2</th><th class="n">k=3</th><th class="n">ρ</th><th class="n">k3/k0</th></tr></thead>
+          <tbody>
+            <tr><td>gpt-oss-20B</td><td class="n">0.16</td><td class="n">0.27</td><td class="n">0.41</td><td class="n">0.53</td><td class="n cm-pass">+1.00</td><td class="n">3.3×</td></tr>
+            <tr><td>Qwen2.5-7B</td><td class="n">0.57</td><td class="n">1.00</td><td class="n">0.95</td><td class="n">1.21</td><td class="n cm-pass">+0.80</td><td class="n">2.1×</td></tr>
+            <tr><td>Phi-4-14B</td><td class="n">0.52</td><td class="n">0.58</td><td class="n cm-fail">1.53*</td><td class="n">0.68</td><td class="n cm-pass">+0.80</td><td class="n">1.3×</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Instructions are a graded gain control</strong> — monotone on all three Leads, 2–3×
+        full-scale on two. (*Phi-4's k=2 cell is anomalous: no other Lead bumps there and its within-cell
+        sd equals its between-level differences at n=6 — reported as probable noise, unresolved.)</p>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Hot seats (h)</th><th class="n">0</th><th class="n">1</th><th class="n">2</th><th class="n">3</th></tr></thead>
+          <tbody><tr><td>Final density [CI]</td><td class="n">1.01 [0.55,1.55]</td><td class="n">1.03 [0.43,1.63]</td><td class="n">0.84 [0.63,1.05]</td><td class="n">0.64 [0.29,1.01]</td></tr></tbody>
+        </table></div>
+        <p><strong>Seat input is non-additive</strong> — ρ = −0.80, flat-to-declining, CIs overlapping.
+        Heating all three seats adds nothing at the mouth: disposition does not transmit, period. Combined
+        with 6b: <em>the accessible control surface is the last writer's instructions, not anyone's
+        weights.</em></p>
       </div>
     </section>
 

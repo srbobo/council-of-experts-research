@@ -179,3 +179,53 @@ ax.text(8.85, 0.78, r"output $\approx f(\mathrm{register}\times\mathrm{instructi
 fig.savefig(OUT / "fig_schematic.pdf", bbox_inches="tight")
 plt.close(fig)
 print("wrote figs/fig_schematic.pdf")
+
+# ------------------------------------------------- fig 3: gain curve + additivity
+GAIN = {  # lead -> mean final density at k=0..3 (6 cases per cell)
+    "Phi-4-14B":  [0.52, 0.58, 1.53, 0.68],
+    "gpt-oss-20B": [0.16, 0.27, 0.41, 0.53],
+    "Qwen2.5-7B": [0.57, 1.00, 0.95, 1.21],
+}
+ADD = {  # hot-seat count -> (mean, lo, hi)
+    0: (1.01, 0.55, 1.55), 1: (1.03, 0.43, 1.63),
+    2: (0.84, 0.63, 1.05), 3: (0.64, 0.29, 1.01),
+}
+
+fig, (axg, axa) = plt.subplots(1, 2, figsize=(7.0, 2.6),
+                               gridspec_kw={"width_ratios": [1.15, 1]})
+ks = [0, 1, 2, 3]
+for lead, vals in GAIN.items():
+    axg.plot(ks, vals, "-o", color=LEAD_COLORS[lead], lw=1.8, markersize=4,
+             label=lead)
+# flag the Phi-4 k=2 anomaly
+axg.plot([2], [GAIN["Phi-4-14B"][2]], "o", mfc="white",
+         mec=LEAD_COLORS["Phi-4-14B"], markersize=6, zorder=5)
+axg.annotate("anomalous cell\n(n=6, sd 0.62)", xy=(2, 1.53), xytext=(0.75, 1.42),
+             fontsize=6.5, color="#6b6b66",
+             arrowprops=dict(arrowstyle="->", lw=0.6, color="#6b6b66"))
+axg.set_xticks(ks)
+axg.set_xlabel("PRESERVE clauses retained (k)", fontsize=8)
+axg.set_ylabel("final-output density", fontsize=8)
+axg.set_title("Instructions: graded gain control", fontsize=9)
+axg.legend(fontsize=6.5, frameon=False, loc="upper left")
+axg.tick_params(labelsize=8)
+
+hs = sorted(ADD)
+means = [ADD[h][0] for h in hs]
+axa.errorbar(hs, means,
+             yerr=[[ADD[h][0] - ADD[h][1] for h in hs],
+                   [ADD[h][2] - ADD[h][0] for h in hs]],
+             fmt="-o", color="#c7793f", lw=1.8, markersize=4,
+             ecolor=INK, elinewidth=0.9, capsize=2.5)
+axa.set_xticks(hs)
+axa.set_ylim(0, 1.8)
+axa.set_xlabel("hot seats (h of 3)", fontsize=8)
+axa.set_ylabel("final-output density", fontsize=8)
+axa.set_title("Seat input: non-additive", fontsize=9)
+axa.annotate(r"$\rho = -0.80$: heating all seats" + "\nadds nothing at the mouth",
+             xy=(1.45, 1.55), fontsize=6.5, color="#6b6b66", ha="center")
+axa.tick_params(labelsize=8)
+fig.tight_layout(w_pad=2.0)
+fig.savefig(OUT / "fig_gain.pdf", bbox_inches="tight")
+plt.close(fig)
+print("wrote figs/fig_gain.pdf")
