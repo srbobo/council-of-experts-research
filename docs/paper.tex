@@ -30,7 +30,7 @@
 
 \title{\textbf{The Last Writer Wins:\\ Installing Epistemic Disposition in Multi-Agent LLM Pipelines}}
 \author{Sam Bobo}
-\date{Draft v0.4 --- July 2026 \quad$\vert$\quad Target: arXiv cs.CL}
+\date{Draft v0.5 --- July 2026 \quad$\vert$\quad Target: arXiv cs.CL}
 
 \begin{document}
 \sloppy  % prefer inter-word stretch over overfull boxes (arXiv-safe)
@@ -38,7 +38,7 @@
 
 \begin{abstract}
 \noindent
-Multi-agent LLM pipelines route work through specialist models and aggregate their outputs through a synthesizer. We study \emph{disposition}---what a model chooses to emit independent of what it knows, operationalized as five epistemic behaviors (training-cutoff disclosure, modeled-assumption flagging, precise vocabulary distinctions, jurisdictional distinguishing, and hedging)---and ask where disposition in a pipeline comes from and whether it can be installed. Across ${\sim}630$ audited runs of a four-model ``Council of Experts'' on consumer hardware, we find: (1)~the pipeline architecture itself lifts disposition density $3$--$9\times$ over single-shot use, model-agnostically, and \emph{amplifies} under simultaneous behavioral demand where single-shot \emph{dilutes}; (2)~upstream installation fails robustly: prompting and supervised fine-tuning on behavior-rich exemplars produce large seat-level lifts ($\approx 2\times$, bootstrap CIs excluding baseline) that are indiscriminate---both hedge on a trigger-free control case---and that vanish from the pipeline's final output, while reference-free preference optimization installs no seat-level magnitude across three model lineages (Mistral, Llama-3, Qwen-3), invariant to a $3.2\times$ increase in preference data. Preference optimization's one real effect is subtractive and conditional: on the weakly-aligned legal seat it suppresses unwarranted hedging below baseline---a finding that survives triangulation across three instruments (pattern-based, NLI entailment, and unanimous dual LLM judges) and generalizes across objectives (ORPO and CPO), though only ORPO suppresses \emph{selectively}; the effect has no purchase on an already-aligned seat and did not replicate on a third lineage. Triangulation also caught one finding produced by the primary metric alone (an apparent hedging \emph{increase} on the finance seat) and retired it as instrument artifact; (3)~the mechanism is not sentence-level content entanglement (refuted, $r=-0.10$) but a \textbf{synthesizer register}: each aggregator model writes at its own characteristic disposition density, nearly independent of seat input---over-dense input can \emph{invert} output density---while the synthesis prompt's preservation instructions act as a \emph{graded} gain control: output density rises monotonically with the number of preservation clauses on all three synthesizers tested ($2$--$3\times$ full-scale). The register also survives direct attack --- ORPO-training the synthesizer itself on synthesis-level pairs moves its band no more than seat training moved the seats, and heating one, two, or all three seats adds nothing at the pipeline's mouth (non-additive, $\rho=-0.80$). Weight-level training fails at every locus; \textbf{the accessible control surface is the last writer's instructions}. Practically: a pipeline's epistemic posture is governed by its last writer and that writer's instructions; upstream installation is mostly futile. The evidence base: 628 pre-registered, audited runs across three model lineages, six installation arms, and both pipeline loci (seats and the synthesizer itself), scored under three independent instruments with unanimous judge agreement on the surviving positive claim---all \$0-budget and fully reproducible on a single 32\,GB consumer machine.
+Multi-agent LLM pipelines route work through specialist models and aggregate their outputs through a synthesizer. We study \emph{disposition}---what a model chooses to emit independent of what it knows, operationalized as five epistemic behaviors, four of which proved detectable in our cases (training-cutoff disclosure, modeled-assumption flagging, jurisdictional distinguishing, and hedging; vocabulary-precision fell below detection under two independent instruments)---and ask where disposition in a pipeline comes from and whether it can be installed. Across ${\sim}630$ audited runs of a four-model ``Council of Experts'' on consumer hardware, we find: (1)~the pipeline architecture itself lifts disposition density $3$--$9\times$ over single-shot use, model-agnostically, and \emph{amplifies} under simultaneous behavioral demand where single-shot \emph{dilutes}; (2)~upstream installation fails robustly: prompting and supervised fine-tuning on behavior-rich exemplars produce large seat-level lifts ($\approx 2\times$, bootstrap CIs excluding baseline) that are indiscriminate---both hedge on a trigger-free control case---and that vanish from the pipeline's final output, while reference-free preference optimization installs no seat-level magnitude across three model lineages (Mistral, Llama-3, Qwen-3), invariant to a $3.2\times$ increase in preference data. Preference optimization's one real effect is subtractive and conditional: on the weakly-aligned legal seat it suppresses unwarranted hedging below baseline---a finding that survives triangulation across three instruments (pattern-based, NLI entailment, and unanimous dual LLM judges) and generalizes across objectives (ORPO and CPO), though only ORPO suppresses \emph{selectively}; the effect has no purchase on an already-aligned seat and did not replicate on a third lineage. Triangulation also caught one finding produced by the primary metric alone (an apparent hedging \emph{increase} on the finance seat) and retired it as instrument artifact; (3)~the mechanism is not sentence-level content entanglement (refuted, $r=-0.10$) but a \textbf{synthesizer register}: each aggregator model writes at its own characteristic disposition density, nearly independent of seat input---over-dense input can \emph{invert} output density---while the synthesis prompt's preservation instructions act as a \emph{graded} gain control: output density rises monotonically with the number of preservation clauses on all three synthesizers tested ($2$--$3\times$ full-scale). The register also survives direct attack --- ORPO-training the synthesizer itself on synthesis-level pairs moves its band no more than seat training moved the seats, and heating one, two, or all three seats adds nothing at the pipeline's mouth (non-additive, $\rho=-0.80$). Weight-level training fails at every locus; \textbf{the accessible control surface is the last writer's instructions}. Practically: a pipeline's epistemic posture is governed by its last writer and that writer's instructions; upstream installation is mostly futile. The evidence base: 628 pre-registered, audited runs across three model lineages, six installation arms, and both pipeline loci (seats and the synthesizer itself), scored under three independent instruments with unanimous judge agreement on the surviving positive claim---all \$0-budget and fully reproducible on a single 32\,GB consumer machine.
 \end{abstract}
 
 \section{Introduction}
@@ -76,7 +76,7 @@ Final-output disposition (green) is nearly independent of what the seats emit
 
 \textbf{Scale.} 462 imported, audited runs (append-only JSON, one file per run, each carrying per-phase inputs/outputs/backends); all inference via Ollama on one fanless M5 MacBook Air, 32\,GB unified memory, 26.8\,GB Metal working set. Runs are nondeterministic across repeats even at temperature 0 (runtime batching); we treat repeats as seeds and report bootstrap intervals.
 
-\textbf{Metrics.} Behavior density $=$ pattern-matched occurrences of the five behavior families per 1{,}000 characters. $\text{CDS} = \text{density} \times \sqrt{\text{distinct behaviors}/5}$. $\text{ALR} = \text{council density} / \text{matched single-shot density}$. Seat-level density is computed on the specialist's own turn from the audit log; final density on the synthesized output. (Definitions and regexes are versioned with the code; see \S\ref{sec:limits}.)
+\textbf{Metrics.} Behavior density $=$ pattern-matched occurrences of the five behavior families (four detectable; see below) per 1{,}000 characters. $\text{CDS} = \text{density} \times \sqrt{\text{distinct behaviors}/5}$. $\text{ALR} = \text{council density} / \text{matched single-shot density}$. Seat-level density is computed on the specialist's own turn from the audit log; final density on the synthesized output. (Definitions and regexes are versioned with the code; see \S\ref{sec:limits}.) The five families are not uniformly distributed across seats: training-cutoff disclosure is universal (density $0.51$--$0.85$ on every seat), modeled-assumption flagging lives almost entirely on the finance seat ($0.25$ vs.\ $0.00$ elsewhere), hedging on healthcare and finance, jurisdictional distinguishing is thin everywhere, and vocabulary-precision is below detection ($\le 0.02$) on all three. The composite is therefore \emph{cutoff-dominated}, and per-family claims below are tested on the seat that owns the family (App.~\ref{app:family}).
 
 \textbf{Installation arms} (legal seat, single-variable design, seed 42): $\text{A}'$ $=$ conversion-control baseline (identical Saul weights through our fp16$\to$GGUF$\to$Q4 pipeline); B $=$ a frozen behavior-spec addendum on the seat's system prompt (five behaviors, one example each, an explicit ``do not force it'' clause); SFT $=$ LoRA on 91 behavior-rich \emph{chosen} responses; ORPO $=$ LoRA reference-free preference optimization on the same 91 chosen responses paired with behavior-stripped rejections. Pairs are content-controlled (chosen/rejected are rewrites of the same base answer), length-ratio filtered ($0.8$--$1.4$) against length bias, overlap-filtered (Jaccard $\ge 0.35$ on capitalized tokens), and leakage-screened against all seven cases. Replication arms repeat the recipe with one variable changed: ORPO on dose-matched 91-pair sets for the healthcare seat (Med42, preference-aligned) and finance seat (Qwen-Open-Finance, SFT-only), a CPO arm on the identical legal pairs (only the objective differs), and an ORPO arm on the \emph{synthesizer itself} (Qwen2.5-7B Lead, 88 synthesis-level pairs built from recorded deliberations; sequence length 4{,}096 --- an amendment inherent to the locus, since syntheses integrate all seat outputs and no synthesis example fits the seat arms' 1{,}792). All protocol amendments were documented before training; predictions were pre-registered before each cell ran.
 
@@ -128,6 +128,17 @@ Prompting and SFT install real seat-level magnitude (CIs exclude baseline)---and
 \textbf{The null generalizes across lineages; the suppression does not.} Pre-registered replications trained ORPO identically on two further seats. On the healthcare seat (Med42, already preference-aligned): no magnitude ($1.40$ $[1.15,1.68]$ vs.\ $\text{A}'$ $1.30$ $[1.07,1.54]$) and no responsiveness effect to detect---the untrained baseline already emits $0.00$ on the trigger-light case (dispatched in all runs); a pre-aligned model leaves no miscalibration slack to suppress. On the finance seat (Qwen-Open-Finance, SFT-only, Qwen-3): no magnitude ($1.32$ vs.\ $1.37$, CIs overlapping) and \emph{no suppression} (gate $0.81 \rightarrow 1.21$ under the pattern metric)---the replication prediction was falsified. The suppression is therefore conditional on base-model miscalibration and not guaranteed even then.
 
 \textbf{The suppression is method-general; the selectivity is ORPO's.} A CPO arm \cite{cpoxu} on the identical legal pairs (only the objective changed) reproduces the gate suppression under both instruments ($0.37$ pattern / $0.45$ NLI-cutoff vs.\ $\text{A}'$'s $0.96$ / $1.06$)---but CPO also dampens \emph{warranted} trigger-case hedging ($0.89 \rightarrow 0.56$), where ORPO leaves it intact ($0.87$). Gate-to-trigger selectivity: $\text{A}'$ $1.08$, CPO $0.66$, ORPO $0.17$. Suppression is a property of reference-free preference optimization on these pairs; suppressing \emph{only where hedging is unwarranted} is, in our data, ORPO-specific.
+
+\textbf{The null is family-general, not a cutoff artifact.} Because the
+composite is dominated by one family, we re-tested each behavior on the seat
+that owns it (App.~\ref{app:family}). ORPO moves none of them: finance
+modeled-assumption $0.40$ $[0.31,0.49] \to 0.34$ $[0.24,0.45]$; healthcare
+hedging $0.33 \to 0.26$; legal jurisdictional $0.14 \to 0.18$---all CIs
+overlapping. Conversely, prompting and SFT install \emph{multiple} families,
+including ones the seat previously emitted at zero (SFT on the legal seat:
+modeled $0.00 \to 0.27$, hedging $0.02 \to 0.23$, alongside cutoff
+$0.68 \to 1.21$), with one notable side effect---SFT \emph{suppressed}
+jurisdictional distinguishing ($0.14 \to 0.02$) while installing the others.
 
 \textbf{The null extends to the last writer.} If the register is merely where disposition happens to live, training the synthesizer itself should move it. It does not: ORPO on the Lead (same recipe, 88 dose-matched synthesis-level pairs, seats held at their untrained production versions) leaves the pipeline-mouth band unmoved --- final density $0.89$ $[0.67,1.11]$ vs.\ the conversion control's $1.03$ $[0.79,1.28]$, against a pre-registered threshold of $|\Delta|\ge 0.25$ with disjoint CIs. The control band also reproduces this writer's \S\ref{sec:register} register ($1.03$ vs.\ $1.24$), stable across cells. The trigger-light gate was already near-floor untrained ($0.15$), so no suppression is claimed --- the same no-slack situation as the pre-aligned seat. Weight-level training now fails at \emph{every} locus tested.
 
@@ -187,11 +198,28 @@ not transmit. Points are means over 6 cases; whiskers bootstrap 95\% CIs.}
 \label{fig:gain}
 \end{figure}
 
+\textbf{Stripping is family-dependent, and the surviving families are the
+content-bearing ones.} Retention (final density $\div$ owner-seat density) at
+baseline splits sharply: training-cutoff disclosure $0.69$ and hedging $0.76$
+are stripped, whereas modeled-assumption flagging ($1.05$) and jurisdictional
+distinguishing ($1.25$) pass through intact. A modeled number (``modeled at
+\$8{,}000'') and a jurisdictional distinction carry substance the synthesizer
+needs; a cutoff disclosure is meta-commentary it can drop without losing
+content. This is a family-level analogue of the entanglement hypothesis that
+\S\ref{sec:register} falsified at the \emph{arm} level: retention does not
+split by arm or by marker position within a text, but it does split by whether
+the behavior carries content. We report this as an observation from the
+existing corpus, not a pre-registered test.
+
 Two further ablations sharpen the mechanism (Fig.~\ref{fig:gain}). First, the
 binary PRESERVE on/off contrast generalizes to a \emph{graded, monotone}
 response: retaining $k \in \{0,1,2,3\}$ preservation clauses raises
 final-output density monotonically on every Lead---instructions are a measured
-gain control, not a switch. Second, disposition is \emph{non-additive} in seat
+gain control, not a switch. This monotonicity is a property of the
+\emph{composite}: pooled per-family, no single behavior is monotone in $k$
+(cutoff $\rho=+0.40$, modeled $+0.60$, hedging $+0.40$, jurisdictional
+$-0.80$), so instructions raise aggregate disposition without controlling any
+individual behavior monotonically. Second, disposition is \emph{non-additive} in seat
 input: applying the behavior-spec override to one, two, or all three seats
 leaves the pipeline mouth flat ($\rho=-0.80$, spread $0.38$, overlapping
 CIs)---closing the remaining alternative that seat disposition partially
@@ -206,7 +234,7 @@ The council was built to test whether small domain fine-tunes beat generalists o
 
 \section{Limitations}
 \label{sec:limits}
-Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor, two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and Phi-4's anomalous $k{=}2$ cell is unresolved (reported as probable noise; a seeded replication would settle it). A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds, seven self-authored cases, and three local synthesizers $\le 20$B---frontier aggregators untested. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
+Our five behavior families reduce to four in practice: vocabulary-precision is below detection ($\le 0.02$ density) on every seat and was also the worst-calibrated family for the NLI instrument (AUC $0.738$, Youden $J=0$), so two independent instruments fail it---either our cases do not provoke it or it is not detectable as a surface feature. The composite is cutoff-dominated, and the gain-curve monotonicity holds for the composite but not for any individual family. Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor, two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and Phi-4's anomalous $k{=}2$ cell is unresolved (reported as probable noise; a seeded replication would settle it). A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds, seven self-authored cases, and three local synthesizers $\le 20$B---frontier aggregators untested. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
 
 \section{Conclusion}
 In multi-agent pipelines, epistemic disposition is not additive across stages: it is set by the last writer's register and that writer's instructions. Upstream installation by prompting or exemplar tuning produces loud but indiscriminate behavior that the aggregator strips; preference optimization installs nothing at all---across three model lineages and a $3.2\times$ data dose---because the aggregator's register, not the seat, sets the ceiling. Its one dependable effect is subtractive: removing miscalibrated hedging where the base model has it, selectively under ORPO, bluntly under CPO, and on none of our seats reliably enough to treat as a design tool. The register itself withstands direct training of the synthesizer, and seat input is non-additive at the mouth---but the synthesis instructions form a monotone, $2$--$3\times$ gain control. In a multi-agent pipeline, the accessible control surface for epistemic disposition is not anyone's weights; it is the last writer's instructions. Builders who want calibrated pipelines should tune the synthesizer's instructions and choose the final model deliberately---and evaluate disposition at the pipeline's mouth, not the seat.
@@ -218,7 +246,7 @@ In multi-agent pipelines, epistemic disposition is not additive across stages: i
 \begin{description}[leftmargin=1em,style=nextline]
 \item[Seat] one specialist model in the council, answering only its dispatched sub-question (e.g., Saul-7B $=$ the legal seat).
 \item[Synthesizer / Lead] the model that receives all seat outputs plus the original question and compresses them into the final answer---the pipeline's last writer.
-\item[Disposition] what a model chooses to emit independent of what it knows, operationalized as five behavior families: (1)~training-cutoff disclosure; (2)~modeled-assumption flagging; (3)~precise vocabulary distinctions; (4)~jurisdictional distinguishing; (5)~\textbf{hedging}---stated conditionality of a claim (``this may vary if\ldots''), \emph{not} refusal or vagueness.
+\item[Disposition] what a model chooses to emit independent of what it knows, operationalized as five behavior families: (1)~training-cutoff disclosure; (2)~modeled-assumption flagging; (3)~precise vocabulary distinctions; (4)~jurisdictional distinguishing; (5)~\textbf{hedging}---stated conditionality of a claim (``this may vary if\ldots''), \emph{not} refusal or vagueness. Family (3) proved below detection in our cases under two independent instruments; analyses report the four detectable families (App.~\ref{app:family}).
 \item[Synthesis stripping] behavior density present at a seat's output but absent from the final output after synthesis.
 \item[Synthesizer register] a Lead model's characteristic output disposition density---writer-specific and largely independent of seat input (\S6).
 \item[Responsive vs.\ habitual] responsive behaviors appear only when domain triggers warrant them (trigger-light gate, case~7); habitual behaviors fire regardless.
@@ -257,6 +285,38 @@ The square root in CDS softly penalizes narrow emission without letting one abse
 \textbf{Pairwise judges.} Two local judges (gpt-oss-20B, Qwen2.5-7B) compare blinded $\text{A}' \times$ ORPO trigger-light seat outputs (cross-product pairing), each pair in both orderings at temperature 0; verdicts must quote evidence verbatim (non-matching quotes invalidate the call) and order-inconsistent verdicts count as ties. Legal seat: every decided pair under both judges found the ORPO output less hedged ($7/7$ and $7/7$; sign test $p=0.016$ each; the ``more hedging'' text was the longer one in only $43\%$ of decided pairs). Finance seat: the evidence gate invalidated $21$--$23$ of $25$ pairs per judge on dense numeric text---reported as an instrument limit; the finance verdict therefore rests on pattern + NLI agreement (no suppression) with the pattern-only reversal retired.
 
 \textbf{Decision rule (pre-registered).} Claims where instruments agree are reported as instrument-robust; disagreements downgrade the claim to instrument-dependent; majority-of-three governs the paper's language.
+
+\section{Per-family decomposition}
+\label{app:family}
+The composite metric sums five families that are unevenly distributed across
+seats, so every headline claim was re-tested per family on the seat that owns
+it (existing corpus; no additional inference).
+
+\begin{table}[h]
+\centering
+\caption{Family ownership: untrained-baseline density (behaviors/1k chars) by
+seat, and retention through synthesis (final $\div$ owner-seat density).}
+\begin{tabular}{lcccc}
+\toprule
+Family & healthcare & legal & finance & retention \\
+\midrule
+training-cutoff & $0.85$ & $0.68$ & $0.51$ & $0.69$ \\
+modeled-assumption & $0.00$ & $0.00$ & $\mathbf{0.25}$ & $1.05$ \\
+hedging & $\mathbf{0.38}$ & $0.02$ & $0.33$ & $0.76$ \\
+jurisdictional & $0.05$ & $\mathbf{0.14}$ & $0.13$ & $1.25$ \\
+vocabulary-precision & $0.02$ & $0.00$ & $0.01$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Summary of the decomposition: (i)~the ORPO magnitude null holds for every
+family on its owner seat and for all four families in the Lead-training arm;
+(ii)~prompting and SFT install several families at once, including ones
+previously at zero, while SFT suppresses jurisdictional distinguishing;
+(iii)~stripping is family-dependent (content-bearing families survive);
+(iv)~gain-curve monotonicity is a composite property; (v)~non-additivity holds
+for the two families with sufficient signal (cutoff $\rho=-0.80$, hedging
+$\rho=-1.00$). The decomposition script is versioned with the code.
 
 \section{Key prompts (verbatim excerpts)}
 \label{app:prompts}

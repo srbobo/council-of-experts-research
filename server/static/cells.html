@@ -618,6 +618,52 @@
       </div>
     </section>
 
+    <!-- CELL 7c -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 7c</span>
+        <span class="cm-name">Per-family decomposition — is it all just one behavior?</span>
+        <span class="cm-verdict confirm">✓ Null is family-general</span>
+        <span class="cm-verdict refute">Scope corrected</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis</span>
+        <p>The composite metric sums five behavior families — but if one family dominates, every
+        headline claim might be an artifact of that one behavior rather than a fact about
+        "disposition." Do the results hold per family, measured on the seat that actually owns each?</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>No new runs. Re-decompose all 628 existing runs by family, first establishing which seat
+        owns which behavior from untrained-baseline densities, then re-testing every core verdict
+        (install, magnitude null, synthesis survival, gain curve, additivity, Lead-training null)
+        per family on its owner seat.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Family</th><th class="n">healthcare</th><th class="n">legal</th><th class="n">finance</th><th class="n">retention</th></tr></thead>
+          <tbody>
+            <tr><td>training-cutoff</td><td class="n">0.85</td><td class="n">0.68</td><td class="n">0.51</td><td class="n cm-fail">0.69 stripped</td></tr>
+            <tr><td>modeled-assumption</td><td class="n">0.00</td><td class="n">0.00</td><td class="n"><strong>0.25</strong></td><td class="n cm-pass">1.05 survives</td></tr>
+            <tr><td>hedging</td><td class="n"><strong>0.38</strong></td><td class="n">0.02</td><td class="n">0.33</td><td class="n">0.76</td></tr>
+            <tr><td>jurisdictional</td><td class="n">0.05</td><td class="n"><strong>0.14</strong></td><td class="n">0.13</td><td class="n cm-pass">1.25 survives</td></tr>
+            <tr><td>vocabulary-precision</td><td class="n">0.02</td><td class="n">0.00</td><td class="n">0.01</td><td class="n cm-fail">below detection</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Two claims got stronger.</strong> The ORPO magnitude null holds for <em>every</em>
+        family on its owner seat (finance/modeled 0.40→0.34, healthcare/hedging 0.33→0.26,
+        legal/jurisdictional 0.14→0.18 — all CIs overlapping) and for all four families in the
+        Lead-training arm: it is not a cutoff artifact. And prompting/SFT install
+        <em>several</em> families at once, including ones the seat previously emitted at zero.</p>
+        <p><strong>One new finding:</strong> synthesis stripping is <em>family-dependent</em>. The
+        behaviors that survive are the content-bearing ones — a modeled number or a jurisdictional
+        distinction carries substance the synthesizer needs, while a training-cutoff disclosure is
+        meta-commentary it can drop for free.</p>
+        <p><strong>Two claims scoped down, honestly:</strong> the gain curve's monotonicity is a
+        property of the composite (no single family is monotone in k), and vocabulary-precision is
+        below detection under <em>both</em> the pattern and NLI instruments — reported as four
+        detectable families, not five.</p>
+      </div>
+    </section>
+
     <!-- PREDICTIONS GLOSSARY -->
     <section class="cm-preds">
       <h2>All predictions — registered in advance</h2>
