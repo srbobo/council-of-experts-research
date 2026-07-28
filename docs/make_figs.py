@@ -229,3 +229,43 @@ fig.tight_layout(w_pad=2.0)
 fig.savefig(OUT / "fig_gain.pdf", bbox_inches="tight")
 plt.close(fig)
 print("wrote figs/fig_gain.pdf")
+
+# ------------------------------------------- fig 4: architecture quadrant (cell 8)
+# (trigger density, case-7 gate) per architecture; gpt-oss in every role.
+ARCH = {
+    "single-shot":   (0.14, 0.00, "#8a8a85"),
+    "flat merge":    (0.16, 0.06, "#8a8a85"),
+    "debate (2 rd)": (0.16, 0.05, "#8a8a85"),
+    "self-refine":   (0.08, 0.00, "#8a8a85"),
+    "single+spec":   (0.50, 0.15, "#c7793f"),
+    "council":       (0.57, 0.00, "#2e6d5e"),
+}
+fig, ax = plt.subplots(figsize=(5.4, 3.4))
+# desirable quadrant: high magnitude, zero gate
+ax.axvspan(0.40, 0.72, ymin=0, ymax=0.22, color="#2e6d5e", alpha=0.07, zorder=0)
+ax.annotate("substantial disposition,\nonly when warranted", xy=(0.56, 0.021),
+            fontsize=6.8, color="#2e6d5e", ha="center", zorder=1)
+for lab, (x, y, c) in ARCH.items():
+    big = lab in ("council", "single+spec")
+    ax.scatter([x], [y], s=68 if big else 40, color=c,
+               zorder=4, edgecolor="white", linewidth=0.8)
+    dx, dy, ha = (0, 0.012, "center")
+    if lab == "single+spec": dx, dy, ha = (-0.035, 0.008, "right")
+    if lab == "council":     dx, dy, ha = (0, -0.019, "center")
+    if lab == "flat merge":  dx, dy, ha = (0.02, 0.004, "left")
+    if lab == "debate (2 rd)": dx, dy, ha = (0.02, -0.012, "left")
+    if lab == "single-shot": dx, dy, ha = (-0.02, 0.004, "right")
+    if lab == "self-refine": dx, dy, ha = (-0.02, -0.014, "right")
+    ax.annotate(lab, xy=(x, y), xytext=(x + dx, y + dy), fontsize=7,
+                ha=ha, color=INK if big else "#6b6b66",
+                fontweight="bold" if big else "normal", zorder=5)
+ax.set_xlabel("disposition on trigger cases (behaviors / 1k chars)", fontsize=8)
+ax.set_ylabel("unwarranted disposition\n(trigger-light gate)", fontsize=8)
+ax.set_xlim(0.0, 0.72); ax.set_ylim(-0.03, 0.20)
+ax.axhline(0, color="#bbbbb5", lw=0.8, ls=":", zorder=1)
+ax.tick_params(labelsize=8)
+ax.set_title("Architecture comparison: only the council reaches both", fontsize=9)
+fig.tight_layout()
+fig.savefig(OUT / "fig_arch.pdf", bbox_inches="tight")
+plt.close(fig)
+print("wrote figs/fig_arch.pdf")

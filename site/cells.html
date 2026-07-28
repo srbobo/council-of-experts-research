@@ -168,8 +168,9 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Ten cells executed (including the synthesizer-locus pair 6b/6c); three remain
-    queued (none blocks a published claim). Hover a prediction chip for its definition.</p>
+    <p class="text-soft">Eleven cells executed (including the synthesizer-locus pair 6b/6c and the
+    architecture comparison); two remain queued (neither blocks a published claim). Hover a
+    prediction chip for its definition.</p>
 
     <div class="cm-board">
       <div class="cm-tile done">
@@ -238,8 +239,14 @@
         <div class="cm-tile__meta">NLI (289-pair calibration) + dual pairwise judges</div>
         <div class="cm-tile__foot"><span class="cm-status done">✓ Executed</span><span class="cm-tile__meta">no human anchor</span></div>
       </div>
-      <div class="cm-tile queued">
+      <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">8</span></div>
+        <div class="cm-name">Architecture comparison</div>
+        <div class="cm-tile__meta">210 runs · 6 designs, model held fixed</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P8.1: the council does NOT beat a prompted single model on disposition magnitude. P8.2: the council's edge is the trigger-light gate (≥2x better). P8.3: multi-agent structure without a conditional instruction buys neither. All three held.">P8</span><span class="cm-status done">✓ All confirmed</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num dose">8b</span></div>
         <div class="cm-name">Seat expansion</div>
         <div class="cm-tile__meta">OpenBioLLM + BioMistral as seats</div>
         <div class="cm-tile__foot"><span class="pchip" data-tip="Observational: OpenBioLLM-8B (DPO'd) scores high disposition; BioMistral-7B (pretrain-only) scores low. Falsified if inverted or flat.">P7</span><span class="cm-status queued">Queued</span></div>
@@ -661,6 +668,58 @@
         property of the composite (no single family is monotone in k), and vocabulary-precision is
         below detection under <em>both</em> the pattern and NLI instruments — reported as four
         detectable families, not five.</p>
+      </div>
+    </section>
+
+    <!-- CELL 8 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 8</span>
+        <span class="cm-name">Architecture comparison — where does the council actually prevail?</span>
+        <span class="cm-verdict confirm">P8.1–P8.3 ✓ all confirmed</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P8)</span>
+        <p>Result 1 originally compared the council against <em>no</em> orchestration — never against
+        other multi-agent designs. And Cell 6c made that gap urgent: stripping the PRESERVE clauses
+        collapsed the full council <em>below</em> single-shot, suggesting the "3–9× architectural lift"
+        might belong to the synthesis prompt rather than the topology. Registered: <strong>P8.1</strong>
+        magnitude is not the council's edge; <strong>P8.2</strong> its edge is the trigger-light gate;
+        <strong>P8.3</strong> multi-agent structure without a conditional instruction buys neither.
+        Registered in advance: if these hold, Result 1 must be rewritten.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>Six architectures with <strong>gpt-oss-20B in every role</strong>, so orchestration shape is
+        the only variable: single-shot · flat merge (3 specialists, naive "merge these") · debate (2
+        rounds, specialists revise after reading peers) · self-refine (draft→critique→revise) · single +
+        behavior-spec prompt (unconditional instruction, no specialists) · the council (conditional
+        PRESERVE over real specialist signal). 7 cases × 5 seeds × 6 arms = 210 runs, zero failures.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Architecture</th><th>signal / instruction</th><th class="n">trigger density</th><th class="n">gate</th></tr></thead>
+          <tbody>
+            <tr><td>single-shot</td><td>none / none</td><td class="n">0.14 [0.09,0.19]</td><td class="n">0.00</td></tr>
+            <tr><td>flat merge</td><td>3 agents / naive</td><td class="n">0.16 [0.11,0.22]</td><td class="n">0.06</td></tr>
+            <tr><td>debate (2 rd)</td><td>3 agents+revision / naive</td><td class="n">0.16 [0.12,0.20]</td><td class="n">0.05</td></tr>
+            <tr><td>self-refine</td><td>self-critique / none</td><td class="n cm-fail">0.08 [0.05,0.12]</td><td class="n">0.00</td></tr>
+            <tr><td>single + spec</td><td>none / <em>unconditional</em></td><td class="n">0.50 [0.41,0.60]</td><td class="n cm-fail">0.15 [0.08,0.22]</td></tr>
+            <tr class="hl"><td><strong>council</strong></td><td>3 agents / <strong>conditional</strong></td><td class="n"><strong>0.57 [0.45,0.71]</strong></td><td class="n cm-pass"><strong>0.00 [0.00,0.00]</strong></td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>The council does not win on magnitude.</strong> A single prompted model matches it
+        (0.50 vs 0.57, CIs overlap). <strong>Multi-agent structure alone buys nothing:</strong> flat
+        merge sits at 0.16, indistinguishable from single-shot's 0.14. <strong>The council wins on
+        calibration</strong> — it is the only architecture with substantial disposition <em>and</em> a
+        clean gate (0.00 across all five trigger-light runs, disjoint from single+spec's 0.15).</p>
+        <p>Two negative results worth having: two-round <strong>debate lands identically to a one-shot
+        naive merge</strong> (0.16/0.05 vs 0.16/0.06) — more agent interaction contributes nothing; and
+        <strong>self-refine is the weakest arm on the board</strong> (0.08, below single-shot) — self-
+        critique compresses prose and firms up claims, removing disposition rather than adding it.</p>
+        <p><strong>Mechanism:</strong> disposition that is substantial <em>and</em> appropriately gated
+        requires a conjunction — real specialist signal <em>plus</em> a conditional instruction over it
+        ("<em>if</em> a specialist flagged uncertainty, propagate it"). Signal without the conditional
+        instruction gives single-shot levels; the instruction without signal fires unconditionally.
+        This rewrote Result 1.</p>
       </div>
     </section>
 

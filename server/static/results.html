@@ -1377,6 +1377,29 @@
           behavior upstream is mostly futile.
         </p>
 
+        <h4>What orchestration actually buys (Cell 8) — Result 1, rewritten</h4>
+        <p>
+          The headline "the council lifts disposition 3–9× over single-shot" confounded two things:
+          the multi-agent <em>topology</em> and the synthesis <em>prompt</em>. A six-architecture
+          comparison with <strong>the same model in every role</strong> (210 runs) separates them.
+          <strong>Multi-agent structure alone buys nothing</strong> — three specialists merged naively
+          reach 0.16 disposition density, statistically indistinguishable from single-shot's 0.14, and
+          two full rounds of debate land in the same place (0.16). <strong>A single prompted model
+          matches the whole council on magnitude</strong> (0.50 vs 0.57, overlapping CIs). But it
+          hedges where nothing warrants it (gate 0.15 [0.08–0.22]), while the council emits
+          <strong>zero</strong> unwarranted disposition across every trigger-light run
+          (0.00 [0.00–0.00]).
+        </p>
+        <p>
+          So the council's advantage is <em>calibration, not volume</em>: it is the only architecture
+          tested that reaches substantial disposition while staying silent when nothing calls for it.
+          The mechanism is a conjunction — real specialist signal <em>plus</em> a <strong>conditional</strong>
+          preservation instruction over it ("<em>if</em> a specialist flagged uncertainty, propagate
+          it"). Signal without the conditional instruction yields single-shot levels; the instruction
+          without signal fires unconditionally. (Self-refine, notably, is the <em>weakest</em> arm at
+          0.08 — self-critique removes disposition.) Full data on the <a href="/cells">Cells</a> page.
+        </p>
+
         <h4>Replication &amp; instrument validation (Cells 3, 5, 7) — the revised verdict</h4>
         <p>
           Three follow-up cells stress-tested the installation findings.
@@ -1433,7 +1456,7 @@
         <p>
           The complete research program above is written up as an arXiv-targeted paper:
           <a href="paper.pdf"><strong>The Last Writer Wins: Installing Epistemic Disposition
-          in Multi-Agent LLM Pipelines</strong></a> (PDF, 13 pages — abstract, three results,
+          in Multi-Agent LLM Pipelines</strong></a> (PDF, 16 pages — abstract, three results,
           limitations, glossary, model-selection rationale, metric equations, pair-construction
           gates, and a fully verified 27-entry bibliography). A final prior-art audit found no
           existing work combining the content/disposition split, the three-way installation
@@ -1443,7 +1466,7 @@
           more pairs ≠ better behavior) are cited and differentiated in §2 of the paper.
         </p>
         <p>
-          <strong>Every number is traceable.</strong> All 628 imported audited runs — each
+          <strong>Every number is traceable.</strong> All 838 imported audited runs — each
           carrying per-phase inputs, outputs, backends, and scores — live in the repo as
           append-only JSON, indexed by a regenerable
           <a href="https://github.com/srbobo/council-of-experts-research/blob/main/docs/RUN_LEDGER.md">run
