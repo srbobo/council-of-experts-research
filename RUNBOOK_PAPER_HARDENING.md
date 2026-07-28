@@ -859,3 +859,53 @@ as well as the council), the architecture claim largely dissolves and the
 paper's contribution narrows to the register mechanism. Both outcomes are
 reportable; the second is the one that would cost us most, which is why it is
 registered here before the runs.
+
+## CELL 8 VERDICT — architecture comparison, 210 runs (2026-07-28)
+
+gpt-oss-20B in EVERY role, so orchestration shape is the only variable.
+7 cases x 5 seeds x 6 arms; bootstrap 95% CIs; zero failures.
+
+| architecture | specialist signal / instruction | trigger density [95% CI] | case-7 gate [95% CI] |
+|---|---|---|---|
+| single-shot | none / none | 0.14 [0.09, 0.19] | 0.00 [0.00, 0.00] |
+| flat merge | 3 agents / naive | 0.16 [0.11, 0.22] | 0.06 [0.02, 0.11] |
+| debate (2 rounds) | 3 agents + revision / naive | 0.16 [0.12, 0.20] | 0.05 [0.00, 0.10] |
+| self-refine | self-critique / none | 0.08 [0.05, 0.12] | 0.00 [0.00, 0.00] |
+| single + spec | none / UNCONDITIONAL | 0.50 [0.41, 0.60] | **0.15 [0.08, 0.22]** |
+| **COUNCIL** | 3 agents / **CONDITIONAL** | **0.57 [0.45, 0.71]** | **0.00 [0.00, 0.00]** |
+
+**P8.1 SUPPORTED — magnitude is NOT the council's edge.** Council 0.57 vs
+single+spec 0.50, CIs overlapping. A single prompted model matches the whole
+council on how much disposition it emits.
+
+**P8.2 CONFIRMED — responsiveness IS the edge.** Council gate 0.00 [0.00,0.00]
+vs single+spec 0.15 [0.08,0.22]: disjoint intervals, and the council emitted
+ZERO unwarranted disposition on all five trigger-light runs.
+
+**P8.3 SUPPORTED — multi-agent structure alone buys neither.** Flat merge
+(same three specialists, naive merge prompt) reaches 0.16 trigger density,
+statistically indistinguishable from single-shot's 0.14 and disjoint from the
+council's 0.57, while gating WORSE than the council (0.06 vs 0.00).
+
+**P8.4 (exploratory) — more agent interaction does not help.** Debate, with two
+rounds of specialists revising after seeing each other, lands at 0.16/0.05 —
+essentially identical to a one-shot naive merge (0.16/0.06). Self-refine is the
+weakest arm on magnitude (0.08), BELOW plain single-shot: self-critique
+compresses and firms up prose, removing disposition rather than adding it.
+
+**Mechanism.** Disposition that is both substantial and appropriately gated
+requires the CONJUNCTION of (a) real specialist signal and (b) a CONDITIONAL
+preservation instruction over it ("IF a specialist flagged X, propagate X").
+Signal without the conditional instruction (flat, debate) yields single-shot
+levels. The instruction without signal (single+spec) yields the magnitude but
+fires unconditionally, hedging where nothing warrants it. Only the council has
+both, and only the council occupies the high-magnitude/zero-gate quadrant.
+
+**CONSEQUENCE FOR RESULT 1 (registered in advance, now due).** The paper's
+"architecture lifts disposition 3-9x" is imprecise: multi-agent topology per se
+lifts almost nothing (flat 0.16 vs single 0.14). The lift comes from the
+conditional preservation instruction applied over specialist output, and the
+council's distinctive contribution is RESPONSIVENESS, not magnitude. Result 1
+is to be rewritten accordingly. Cell 6c's k=0 collapse (full council, PRESERVE
+stripped -> 0.16) is the same finding from the other direction and should be
+presented alongside.
