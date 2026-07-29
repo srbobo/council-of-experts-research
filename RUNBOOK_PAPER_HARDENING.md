@@ -917,3 +917,75 @@ original P1-P9 set, falsified by Cell 10) predates and is DISTINCT from Cell
 coincidence of the runbook's two numbering layers (prediction set vs. cell
 number); both labels are retained as registered, with this note and matching
 disambiguation on the website glossary.
+
+## CELL 11 PRE-REGISTRATION — pipeline-mouth calibration reward (registered 2026-07-28, before any code or runs)
+
+**Question.** Is the synthesizer's register robust to weight-level training
+*per se*, or only to the training we ran? Cell 6b's null (Lead ORPO did not
+move the register) used (a) an offline, off-policy pair corpus, (b) a
+DENSITY-shaped reward (dense beats sparse), and (c) supervision at the
+response level, never at the pipeline's mouth. The CollabLLM mechanism
+(arXiv:2502.00640) suggests exactly these three properties are what make
+behavioral installation fail: response-level rewards install locally-good,
+globally-wrong behavior. Cell 11 re-runs the 6b question with all three
+corrected and NOTHING else changed.
+
+**Design — best-of-n pipeline distillation (feasible RL surrogate).**
+- Locus: Qwen2.5-7B-Instruct as Lead (same model, trainer, LoRA config,
+  seed, and dose cap as Cell 6b, for a clean two-cell contrast).
+- On-policy sampling: run the full council on each training prompt; run
+  upstream phases ONCE, then sample n=6 syntheses at temperature 0.8. In
+  this pipeline the synthesis IS the final output, so these are on-policy
+  samples of the pipeline's mouth.
+- Calibration reward, computed per sampled final output by the frozen
+  composite instrument (regex canonical, NLI cross-check):
+    trigger-heavy prompt:  R = +CDS(final)
+    trigger-light prompt:  R = -density(final)
+  The conditionality lives across the prompt distribution: the same weights
+  are rewarded for disposition where warranted and penalized for it where
+  not. This is the reward shape Cell 8 identified as the target property.
+- Pairs: chosen = argmax R, rejected = argmin R per prompt; discard prompts
+  where the margin is below the 6b length-ratio and margin gates. Training
+  corpus: freshly generated prompts, construction-labeled trigger-heavy vs
+  trigger-light (~70/30), all seven bench cases HELD OUT.
+- Dose match: cap at 88 train pairs (6b's realized dose). ORPO, LoRA r8 /
+  scale 10 / 16 layers, lr 5e-6, seed 42, seq 4096 (6b amendment carried).
+- Bench: 7 cases x 5 seeds x 2 arms = 70 runs.
+    Arm A  cell11 Lead, production prompt (k=3)
+    Arm B  cell11 Lead, NO PRESERVE (k=0)   <- the decisive arm
+  Baselines from existing data: stock Qwen Lead at k=3 and k=0 (Cell 6c
+  gain curve) and 6b's density-rewarded Lead at k=3.
+
+**Predictions (registered before any runs).**
+- P11.1 (register movable under corrected reward): Arm B (k=0) exceeds the
+  stock Lead's k=0 trigger density, bootstrap CIs disjoint. FALSIFIED IF
+  CIs overlap — the register survives even on-policy pipeline-mouth
+  calibration training at the feasible scale.
+- P11.2 (calibration, not loudness, is what installs): Arm B's trigger-
+  light gate remains at or below the stock k=3 gate. FALSIFIED IF the gate
+  rises alongside density — the reward installed indiscriminate loudness,
+  the same failure mode the pipeline strips from seats.
+- P11.3 (reward shape was 6b's binding constraint): Arm A exceeds 6b's
+  density-rewarded Lead at k=3, CIs disjoint. FALSIFIED IF the two are
+  indistinguishable — reward shape was not the limiting factor and the
+  6b null stands on trainer/locus/dose grounds alone.
+- P11.4 (exploratory, no directional prediction): does the k=0 -> k=3 gain
+  shrink for the cell11 Lead (instructions made redundant by weights) or
+  persist multiplicatively?
+
+**Registered consequences.**
+- If P11.1 AND P11.2 hold: the equation's robustness clause is AMENDED,
+  and the amendment is the finding — the register is movable, but only by
+  rewards that are (a) calibration-shaped and (b) computed at the
+  pipeline's mouth, on-policy. The four earlier training nulls are then
+  reframed as one mechanism (wrong reward, wrong locus of measurement),
+  and the thesis becomes "instructions, or calibration-shaped on-policy
+  reward at the last writer."
+- If P11.1 is FALSIFIED: the robustness clause is STRENGTHENED — the
+  register survives the strongest feasible analogue of the CollabLLM
+  mechanism, and "the accessible control surface is the instructions"
+  hardens materially. Reported as a headline negative result either way.
+- Mandatory caveat in either case: best-of-n distillation is a surrogate
+  for full on-policy RL (no PPO/GRPO at this scale); a frontier-scale RL
+  run could still differ. This limitation is registered now so it cannot
+  be softened post hoc.
