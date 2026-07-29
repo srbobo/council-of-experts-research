@@ -909,3 +909,11 @@ council's distinctive contribution is RESPONSIVENESS, not magnitude. Result 1
 is to be rewritten accordingly. Cell 6c's k=0 collapse (full council, PRESERVE
 stripped -> 0.16) is the same finding from the other direction and should be
 presented alongside.
+
+### Numbering note (2026-07-28)
+The standalone prediction **P8** (content-entanglement, registered in the
+original P1-P9 set, falsified by Cell 10) predates and is DISTINCT from Cell
+8's **P8.1-P8.3** (architecture comparison, all held). The shared number is a
+coincidence of the runbook's two numbering layers (prediction set vs. cell
+number); both labels are retained as registered, with this note and matching
+disambiguation on the website glossary.

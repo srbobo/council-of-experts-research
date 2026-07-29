@@ -1156,11 +1156,14 @@
         </p>
         <ol>
           <li>
-            <strong>The council architecture lifts behavior density
-            3-9× over single-shot</strong> regardless of which model
-            fills the seats (ALR row 2: 2.99× for Opus pair, 3.91×
-            for gpt-oss pair, 5.14× for v1, 8.77× for v2). The
-            architecture-only contribution is real and model-agnostic.
+            <strong>Council output is 3-9× denser in disposition than
+            single-shot</strong> regardless of which model fills the
+            seats (ALR row 2: 2.99× for Opus pair, 3.91× for gpt-oss
+            pair, 5.14× for v1, 8.77× for v2). Cell 8 later decomposed
+            <em>why</em>: the lift is not the multi-agent topology
+            itself but the conditional synthesis prompt applied over
+            specialist signal — see "What orchestration actually buys"
+            below for the six-architecture comparison.
           </li>
           <li>
             <strong>Specialist alignment compounds with the

@@ -179,7 +179,8 @@
         <div class="rt-lbl"><span>Stop 03 · observational sweep</span><span class="rt-badge">Result 1</span></div>
         <div class="rt-title">Does the architecture itself shape disposition?</div>
         <div class="rt-body">Council vs. single-shot across model families, before any training.</div>
-        <span class="rt-res r-confirm">&#10003; Confirmed — architecture lifts disposition 3&ndash;9&times;, model-agnostic, amplifies under load</span>
+        <span class="rt-res r-confirm">&#10003; Observed — council output 3&ndash;9&times; denser than single-shot, model-agnostic, amplifies under load</span>
+        <div class="rt-body" style="margin-top:var(--space-1)"><span class="rt-res r-refute">&#10007; "Architecture-only" reading later overturned by Stop 08 — the lift travels with the conditional prompt, not the topology</span></div>
       </div>
 
       <div class="rt-link h2 take"></div>
@@ -333,19 +334,30 @@
         </div>
       </div>
 
+      <div class="rt-link h2 take"></div>
+
+      <div class="rt-node test">
+        <div class="rt-lbl"><span>Stop 08 · architecture comparison</span><span class="rt-badge">Result 1 rewritten · Cell 8</span></div>
+        <div class="rt-title">So where does the council actually prevail?</div>
+        <div class="rt-body">Six architectures, gpt-oss-20B in <em>every</em> role so orchestration shape is the only variable: single-shot, flat merge, 2-round debate, self-refine, single+spec, council. 210 runs.</div>
+        <span class="rt-res r-refute">&#10007; Not on magnitude — a prompted single model matches the council (0.50 vs 0.57, CIs overlap); flat merge &asymp; single-shot (0.16 vs 0.14): topology alone buys nothing</span>
+        <div class="rt-body" style="margin-top:var(--space-1)"><span class="rt-res r-confirm">&#10003; On calibration — council gate 0.00 [0,0] vs single+spec 0.15 [0.08,0.22]: only the conditional-instruction-over-specialist-signal conjunction reaches high magnitude AND a clean gate</span></div>
+        <span class="rt-cap take">&#8627; Result 1 rewritten: the council's edge is responsiveness, not volume</span>
+      </div>
+
       <div class="rt-link h3 take"></div>
 
       <div class="rt-node fin">
         <div class="rt-lbl"><span>End result · the thesis</span></div>
         <div class="rt-title">The Last Writer Wins</div>
-        <div class="rt-body">Pipeline disposition is not additive across stages — it is set by the last writer's register and that writer's instructions. Prompting and SFT install loud, indiscriminate behavior the aggregator strips; preference optimization installs quiet, responsive behavior that survives by conformity, and no amount of data raises it. <strong>Tune the synthesizer; evaluate at the pipeline's mouth, not the seat.</strong></div>
+        <div class="rt-body">Pipeline disposition is not additive across stages — it is set by the last writer's register and that writer's instructions. Prompting and SFT install loud, indiscriminate behavior the aggregator strips; preference optimization installs quiet, responsive behavior that survives by conformity, and no amount of data raises it. Orchestration per se adds nothing: what the council buys is <em>calibration</em>, from a conditional preservation instruction evaluated over real specialist signal. <strong>Tune the synthesizer's instructions, conditionally; evaluate at the pipeline's mouth, not the seat.</strong></div>
       </div>
 
     </div>
 
     <p class="text-faint" style="text-align:center; margin-top:var(--space-6); font-size:var(--size-1)">
       Full paper: <em>The Last Writer Wins: Installing Epistemic Disposition in Multi-Agent LLM Pipelines</em> &middot;
-      <a href="https://github.com/srbobo/council-of-experts-research">source &amp; 287 audited runs</a>
+      <a href="https://github.com/srbobo/council-of-experts-research">source &amp; 838 audited runs</a>
     </p>
   </main>
 
