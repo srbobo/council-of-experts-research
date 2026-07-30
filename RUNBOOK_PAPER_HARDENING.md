@@ -1120,3 +1120,98 @@ response cell's flat curve makes dose an unlikely savior.
 
 Register program status: 11 (trainable? -> no, at feasible scale) ->
 8b queued (where do registers come from) -> 12 queued (are they portable).
+
+### CELL 8B AMENDMENT — Lead role is not executable for one candidate (2026-07-30, BEFORE any bench runs)
+
+**Blocker found during pre-run template verification.** The registered design
+has each candidate play LEAD. Canary probe (system prompt: "begin your reply
+with the exact token SYSTEM_OK"), temperature 0, plus a planner-JSON probe:
+
+| model | obeys system | obeys same instruction in USER position | emits planner JSON |
+|---|---|---|---|
+| OpenBioLLM-8B (Llama-3 template CORRECTED, see below) | no | no | NO |
+| BioMistral-7B | no | no | yes |
+| Mistral-7B-Instruct-v0.3 | YES | - | yes |
+
+Separately caught and fixed before probing: the community OpenBioLLM GGUF
+ships TEMPLATE `{{ .Prompt }}` — raw passthrough, no Llama-3 structure, no
+`.System` handling at all. As Lead its entire synthesis system prompt (the
+PRESERVE block) would have been silently discarded. Rebuilt as
+`openbiollm-fixed:coe` with the native Llama-3 template; the failures above
+are measured on the CORRECTED build, so they are model properties, not
+packaging. (Same failure class as the Med42 stock-GGUF ChatML mismatch.)
+
+OpenBioLLM cannot execute the Lead role: no planner JSON, no instruction
+compliance in any message position. Running the registered design would
+score it as "low register" when the cause is instruction-following failure,
+falsifying P8b.1 for a reason unrelated to lineage.
+
+**Amended protocol (both predictions preserved).** P8b.1 and P8b.2 are
+WITHIN-cell comparisons (OpenBioLLM vs BioMistral; BioMistral vs its
+same-family instruct control), so they only require one internally
+consistent, executable measurement. We therefore measure the INTRINSIC
+REGISTER: each model answers the seven bench cases directly under a minimal
+neutral instruction delivered in the USER position (so system-blindness does
+not differentially penalize any candidate), 7 cases x 5 seeds x 3 models =
+105 runs. Qwen2.5-7B-Instruct is added under the identical protocol (+35
+runs, 140 total) as a scale anchor tying the intrinsic band to a model whose
+production-prompt Lead band is already on the ledger (1.03).
+
+This measures each model's characteristic output band with no instruction
+gain applied — arguably a PURER register measurement than the Lead protocol,
+at the cost of no longer being comparable to production-prompt Lead numbers.
+Both predictions stand as registered; no threshold or direction changed.
+
+**New finding to report regardless of P8b outcome (registered now).**
+Instruction-following is a PREREQUISITE for the control surface. A model
+whose register is high but which cannot follow a conditional preservation
+instruction is unusable as a last writer, since the thesis's only accessible
+lever operates through instructions. OpenBioLLM is a concrete instance:
+whatever its band, it cannot be steered. This is a practical selection
+constraint that follows directly from the thesis and was not previously
+tested.
+
+### CELL 8B AMENDMENT #2 — OpenBioLLM excluded (unbenchable), Med42 substituted (2026-07-30, BEFORE any retained runs)
+
+**OpenBioLLM-8B is excluded on measurement-validity grounds, not results.**
+The community GGUF produces UNSTABLE, degenerate-length output under every
+template tried. Same prompt, temperature 0.2, 3 trials each:
+
+| build | case 1 lens | case 6 lens |
+|---|---|---|
+| passthrough `{{ .Prompt }}` (as shipped) | 1661, 1745, 1648 | 1713, 147, **47** |
+| Llama-3 corrected, stop on start_header | 30, 30, 2083 | - |
+| Llama-3 corrected v2, stop on eot only | 15, 15, 1926 | 362, 185, 405 |
+
+Outputs of 15-47 chars are truncated headings ("Clinical Safety
+Considerations"). Density is markers per 1k chars, so such denominators make
+the metric meaningless, and no template produced stability. Reporting a
+register for this artifact would be reporting a packaging defect. The 35
+reg-openbio runs written during template diagnosis were DELETED, not
+analyzed. (Whether the defect is the quantization, the conversion, or the
+upstream weights is not established; the claim is scoped to this artifact.)
+
+**Substitution: Med42-8B replaces OpenBioLLM as the preference-aligned arm.**
+It preserves every property the design needs and improves two:
+  - lineage: Llama-3-8B-Instruct + clinical SFT + DPO preference alignment
+    (the preference-aligned biomedical condition P8b.1 requires)
+  - base family: Llama-3, as OpenBioLLM was, so the family contrast with
+    Mistral-based BioMistral is unchanged
+  - template: already verified and corrected in Cell 3 (the stock GGUF's
+    ChatML mismatch was fixed there); med42-repro:coe is the A' conversion
+    control, i.e. stock weights, no ORPO
+  - stability: 1977-3042 chars across 9 probes, tightest of any candidate
+
+**Stability screen (all retained arms), 3 trials x 3 cases:**
+Med42 1977-3042 | BioMistral 248-555 | Mistral-Instruct 2783-3498. All
+stable within case; OpenBioLLM alone failed.
+
+**Registered caveat — BioMistral length.** BioMistral answers are ~5-8x
+shorter than the other arms (~400 chars). Density is length-normalized, so
+this is not disqualifying, but on a ~400-char denominator a single marker
+moves density by ~2.5, making its estimates COARSE. Its CIs will be wide and
+any P8b.2 reading must respect that. Recorded before results.
+
+Final arms: reg-med42 (preference-aligned) | reg-biomistral (pretrain-only)
+| reg-mistral (generic instruct control, BioMistral's family) | reg-qwen
+(scale anchor, production Lead band 1.03). 140 runs.

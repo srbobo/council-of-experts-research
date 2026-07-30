@@ -1,0 +1,7 @@
+FROM /Users/sambobo/.ollama/models/blobs/sha256-e5b33d9482e269003a639419268881cef516097aa83bb95d478490cf62317dd6
+TEMPLATE """<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+
+{{ .Prompt }}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+"""
+PARAMETER stop <|eot_id|>
