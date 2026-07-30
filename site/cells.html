@@ -168,8 +168,8 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Eleven cells executed (including the synthesizer-locus pair 6b/6c and the
-    architecture comparison); four remain queued (none blocks a published claim). Hover a
+    <p class="text-soft">Twelve cells executed (including the synthesizer-locus pair 6b/6c, the
+    architecture comparison, and the calibration-reward register test); four remain queued (none blocks a published claim). Hover a
     prediction chip for its definition.</p>
 
     <div class="cm-board">
@@ -245,11 +245,11 @@
         <div class="cm-tile__meta">210 runs · 6 designs, model held fixed</div>
         <div class="cm-tile__foot"><span class="pchip" data-tip="P8.1: the council does NOT beat a prompted single model on disposition magnitude. P8.2: the council's edge is the trigger-light gate (≥2x better). P8.3: multi-agent structure without a conditional instruction buys neither. All three held. (Distinct from the standalone P8 entanglement prediction, Cell 10.)">P8.1–.3</span><span class="cm-status done">✓ All confirmed</span></div>
       </div>
-      <div class="cm-tile queued">
+      <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">11</span></div>
         <div class="cm-name">Calibration reward</div>
-        <div class="cm-tile__meta">On-policy, pipeline-mouth reward — the CollabLLM-style test of the register's robustness</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="P11.1: on-policy training with a calibration-shaped reward computed at the pipeline's mouth moves the Lead's register where 6b's density reward could not. P11.2: the gate stays clean (calibration installs, not loudness). P11.3: Arm A beats 6b's Lead at k=3 (reward shape was 6b's binding constraint). Registered before any code or runs.">P11.1–.3</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-tile__meta">105 runs · on-policy, pipeline-mouth reward — register unmoved</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P11.1: on-policy calibration-shaped reward at the pipeline's mouth moves the register — FALSIFIED (0.60 vs 0.56 at k=0, CIs coincide). P11.3: reward shape was 6b's binding constraint — FALSIFIED (0.95 vs 0.89 at k=3). Robustness clause STRENGTHENED, per the registered consequence.">P11.1–.3</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">✗ Falsified</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num dose">8b</span></div>
@@ -735,6 +735,56 @@
       </div>
     </section>
 
+    <!-- CELL 11 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 11</span>
+        <span class="cm-name">Calibration reward — can the right training signal move the register?</span>
+        <span class="cm-verdict refute">P11.1, P11.3 ✗ falsified — robustness clause strengthened</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P11)</span>
+        <p>Cell 6b's null used offline pairs, a density-shaped reward, and response-level scoring —
+        the three properties CollabLLM-style multiturn-aware reward training identifies as why
+        behavioral installation fails. Correct all three at once (on-policy samples, calibration-shaped
+        reward, scored at the pipeline's mouth) and the register should move where 6b's could not.
+        Registered in advance, both directions: if it moves, the robustness clause is amended; if not,
+        it is strengthened against the strongest feasible mechanism.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>108 construction-labeled prompts (76 trigger-heavy / 32 trigger-light, bench cases held
+        out) → full council per prompt with the conversion-control Lead, n=6 syntheses sampled at
+        temp 0.8 from the exact captured synthesis messages (648 on-policy samples of the pipeline's
+        mouth) → reward R = +CDS (heavy) / −density (light) → chosen/rejected pairs through margin,
+        length-ratio, and NLI directional gates (33 of 90 killed by NLI disagreement; 49 train pairs,
+        56% of the registered 88 cap — recorded before results) → ORPO identical to 6b → 105 bench
+        runs across cal-k3, cal-k0 (decisive), stock-k0 (added 35-run baseline).</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">trigger density</th><th class="n">gate</th></tr></thead>
+          <tbody>
+            <tr><td>stock Lead, k3</td><td class="n">1.03 [0.79,1.28]</td><td class="n">0.15</td></tr>
+            <tr><td>density-ORPO (6b), k3</td><td class="n">0.89 [0.67,1.12]</td><td class="n">0.11</td></tr>
+            <tr><td>calibration-ORPO, k3</td><td class="n">0.95 [0.75,1.16]</td><td class="n">0.45*</td></tr>
+            <tr><td>stock Lead, k0</td><td class="n">0.56 [0.37,0.77]</td><td class="n">0.04</td></tr>
+            <tr class="hl"><td><strong>calibration-ORPO, k0</strong></td><td class="n"><strong>0.60 [0.41,0.82]</strong></td><td class="n">0.09</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:var(--size-1)" class="text-faint">*one outlier run (per-run 0/0/0/0.25/1.99); reported, not interpreted.</p>
+        <p><strong>The register did not move — in either direction.</strong> Trained vs stock at k=0:
+        0.60 vs 0.56, CIs nearly coincide (P11.1 falsified). With instructions restored the trained
+        Lead sits inside the stock band and is indistinguishable from the density-rewarded arm
+        (0.95 vs 0.89 — P11.3 falsified: reward shape was not 6b's binding constraint). The
+        instruction gain survives training at full strength (1.58× vs stock's 1.82×): the weights
+        did not absorb the prompt's role.</p>
+        <p><strong>Registered consequence executed:</strong> the robustness clause is
+        <em>strengthened</em> — the register has now survived offline density-rewarded ORPO (6b)
+        <em>and</em> on-policy, calibration-shaped, pipeline-mouth-scored training (11) at the same
+        locus. Registered caveats stand: best-of-n distillation is an RL surrogate, and the realized
+        dose was 49 pairs. Register program: 11 done → 8b (provenance) → 12 (portability).</p>
+      </div>
+    </section>
+
     <!-- PREDICTIONS GLOSSARY -->
     <section class="cm-preds">
       <h2>All predictions — registered in advance</h2>
@@ -753,9 +803,9 @@
       <div class="cm-pred"><div class="cm-pred__id">P8.2</div><div class="cm-pred__body">Responsiveness IS the council's edge: its trigger-light gate is at least 2× lower than single+spec's. <span class="outcome confirm">✓ confirmed (Cell 8) — 0.00 [0,0] vs 0.15 [0.08,0.22], disjoint; zero unwarranted disposition on all five runs</span><span class="fals">Falsified if: gates comparable or council worse.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8.3</div><div class="cm-pred__body">Multi-agent structure without the conditional instruction buys neither magnitude nor gate: flat merge lands at single-shot levels. <span class="outcome confirm">✓ supported (Cell 8) — 0.16 vs 0.14, indistinguishable; registered consequence executed: Result 1 rewritten</span><span class="fals">Falsified if: flat merge approaches council magnitude.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P9</div><div class="cm-pred__body">Behavior-specificity: training on 3 of 5 behaviors does NOT lift the held-out 2. <span class="outcome null">— untested</span><span class="fals">Falsified if: held-out behaviors lift comparably (training installs generic hedging). No dedicated cell executed.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P11.1</div><div class="cm-pred__body">Register movable under corrected reward: the Lead trained on-policy with a calibration-shaped reward computed at the pipeline's mouth exceeds the stock Lead's k=0 trigger density. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: CIs overlap — the register survives even the feasible CollabLLM-mechanism analogue.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P11.2</div><div class="cm-pred__body">Calibration installs, not loudness: the trained Lead's trigger-light gate stays at or below the stock k=3 gate. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: the gate rises alongside density — the reward installed the same indiscriminate loudness the pipeline strips from seats.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P11.3</div><div class="cm-pred__body">Reward shape was Cell 6b's binding constraint: the calibration-trained Lead at k=3 beats 6b's density-trained Lead at k=3. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: indistinguishable — the 6b null stands on trainer/locus/dose grounds alone.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P11.1</div><div class="cm-pred__body">Register movable under corrected reward: the Lead trained on-policy with a calibration-shaped reward computed at the pipeline's mouth exceeds the stock Lead's k=0 trigger density. <span class="outcome refute">✗ falsified (Cell 11) — 0.60 vs 0.56, CIs coincide; no movement in either direction</span><span class="fals">Falsified if: CIs overlap — the register survives even the feasible CollabLLM-mechanism analogue. Exactly what happened.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P11.2</div><div class="cm-pred__body">Calibration installs, not loudness: the trained Lead's trigger-light gate stays at or below the stock k=3 gate. <span class="outcome null">— moot (Cell 11): conditioned on P11.1; nothing installed, so nothing fires (0.09 ≤ 0.15, trivially)</span><span class="fals">Falsified if: the gate rises alongside density — the reward installed the same indiscriminate loudness the pipeline strips from seats.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P11.3</div><div class="cm-pred__body">Reward shape was Cell 6b's binding constraint: the calibration-trained Lead at k=3 beats 6b's density-trained Lead at k=3. <span class="outcome refute">✗ falsified (Cell 11) — 0.95 vs 0.89, CIs overlap; both inside the stock band</span><span class="fals">Falsified if: indistinguishable — the 6b null stands on trainer/locus/dose grounds alone.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage (OpenBioLLM, DPO'd) shows a higher Lead register than the continued-pretrain lineage (BioMistral). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: CIs overlap or invert — lineage does not predict register.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P12.1</div><div class="cm-pred__body">Register portability: weight-space interpolation (SLERP) moves the Lead register monotonically toward a high-register donor's band, with no training. <span class="outcome open">◔ registered (Cell 12)</span><span class="fals">Falsified if: all merged registers sit within the stock band's CI, or non-monotone — registers resist interpolation as they resist training.</span></div></div>

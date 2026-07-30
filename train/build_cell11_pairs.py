@@ -23,7 +23,7 @@ from train.nli_instrument import NLI, nli_density, text_scores  # noqa: E402
 
 SAMPLES = Path("train/data/cell11_samples")
 OUT = Path("train/data/dpo_pairs_cell11")
-THRESHOLDS = json.loads(Path("train/data/nli_thresholds.json").read_text())
+THRESHOLDS = json.loads(Path("train/data/nli_thresholds.json").read_text())["thresholds"]
 CAP_TRAIN, N_VALID, N_TEST = 88, 4, 4
 MARGIN, RATIO_LO, RATIO_HI = 0.10, 0.8, 1.4
 

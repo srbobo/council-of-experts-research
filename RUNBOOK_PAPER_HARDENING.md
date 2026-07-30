@@ -1075,3 +1075,48 @@ recipe (merge toward a measured high-register donor), and the thesis gains
 a second accessible control surface. If falsified: the register resists
 interpolation as well as training; selection remains the only upward lever,
 and the immovability result hardens across a second mechanism class.
+
+## CELL 11 VERDICT — calibration reward cannot move the register (2026-07-30, 105 new runs, zero failures)
+
+Realized pipeline: 108 prompts (76 heavy / 32 light) -> 648 on-policy
+syntheses (n=6 @ temp 0.8, zero no-routes skips) -> gates {margin 0, ratio
+18, NLI 33} -> 57 pairs kept, 49 train / 4 valid / 4 test. DOSE AMENDMENT
+(recorded before results): 49 pairs vs the registered 88 cap — the NLI
+directional cross-check was the binding gate. Bench: cell11-cal-k3,
+cell11-cal-k0, cell11-stock-k0 (added 35-run baseline), 105 runs.
+
+| arm | trigger [95% CI] | gate [95% CI] |
+|---|---|---|
+| stock Lead k3 (6b ledger) | 1.03 [0.79,1.28] | 0.15 [0.00,0.36] |
+| density-ORPO k3 (6b ledger) | 0.89 [0.67,1.12] | 0.11 [0.00,0.32] |
+| calibration-ORPO k3 | 0.95 [0.75,1.16] | 0.45 [0.00,1.25]* |
+| stock Lead k0 | 0.56 [0.37,0.77] | 0.04 [0.00,0.11] |
+| calibration-ORPO k0 | 0.60 [0.41,0.82] | 0.09 [0.00,0.18] |
+*gate driven by one outlier run (per-run: 0, 0, 0, 0.25, 1.99); reported, not interpreted.
+
+**P11.1 FALSIFIED.** Cal k0 0.60 vs stock k0 0.56 — CIs nearly coincide.
+On-policy sampling + calibration-shaped reward + pipeline-mouth scoring
+moved the register by nothing. (The interim n=16 suggestion of suppression
+washed out at n=35: no movement in EITHER direction.)
+**P11.2 MOOT** (conditioned on P11.1): gate 0.09 [0,0.18] <= stock k3's
+0.15, but trivially — nothing was installed, so nothing fires.
+**P11.3 FALSIFIED.** Cal k3 0.95 vs density k3 0.89, CIs overlap; both
+within stock's band. Reward shape was NOT 6b's binding constraint.
+**P11.4:** instruction gain persists at full strength on the trained Lead
+(k0->k3: 1.58x vs stock 1.82x). Weights did not absorb the instruction's
+role; the prompt lever remains fully load-bearing.
+
+**REGISTERED CONSEQUENCE EXECUTED: the robustness clause is STRENGTHENED.**
+The register has now survived, at the same locus: offline density-rewarded
+ORPO (6b), and on-policy, calibration-shaped, pipeline-mouth-scored
+best-of-n distillation (11) — the feasible analogue of multiturn-aware
+reward training (CollabLLM, arXiv:2502.00640). Combined with the seat-side
+nulls, every weight-level path tried at every locus leaves final
+disposition where register x instructions puts it. Registered caveats
+stand: best-of-n is an RL surrogate (no PPO/GRPO at this scale); dose was
+49 pairs (56% of registered cap) — "insufficient dose" remains an
+alternative reading alongside "register is robust," though the dose-
+response cell's flat curve makes dose an unlikely savior.
+
+Register program status: 11 (trainable? -> no, at feasible scale) ->
+8b queued (where do registers come from) -> 12 queued (are they portable).
