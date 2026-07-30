@@ -253,9 +253,15 @@
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num dose">8b</span></div>
-        <div class="cm-name">Seat expansion</div>
-        <div class="cm-tile__meta">OpenBioLLM + BioMistral as seats</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="Observational: OpenBioLLM-8B (DPO'd) scores high disposition; BioMistral-7B (pretrain-only) scores low. Falsified if inverted or flat.">P7</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-name">Register provenance</div>
+        <div class="cm-tile__meta">Alignment lineage as Lead: OpenBioLLM (DPO'd) vs BioMistral (pretrain-only) vs Mistral-Instruct control</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P8b.1: preference-aligned lineage shows a higher Lead register than continued-pretrain lineage (CIs disjoint). P8b.2: continued domain pretraining does not raise register vs the same-family instruct control. Original P7 seat framing retired pre-data — no seat runs were executed. Registered before any runs.">P8b.1–.2</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">12</span></div>
+        <div class="cm-name">Register portability</div>
+        <div class="cm-tile__meta">SLERP weight-merge toward a high-register donor, α ∈ {0.25, 0.5, 0.75} — no training</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P12.1: the Lead register moves monotonically with merge ratio toward the donor's band. Falsified if merged registers all sit inside the stock band's CI (registers not portable by interpolation). Stage-gated: donor screen must find a band ≥1.3× stock or the merge phase does not run. Registered before any runs.">P12.1</span><span class="cm-status queued">Queued</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">9</span></div>
@@ -750,6 +756,9 @@
       <div class="cm-pred"><div class="cm-pred__id">P11.1</div><div class="cm-pred__body">Register movable under corrected reward: the Lead trained on-policy with a calibration-shaped reward computed at the pipeline's mouth exceeds the stock Lead's k=0 trigger density. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: CIs overlap — the register survives even the feasible CollabLLM-mechanism analogue.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P11.2</div><div class="cm-pred__body">Calibration installs, not loudness: the trained Lead's trigger-light gate stays at or below the stock k=3 gate. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: the gate rises alongside density — the reward installed the same indiscriminate loudness the pipeline strips from seats.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P11.3</div><div class="cm-pred__body">Reward shape was Cell 6b's binding constraint: the calibration-trained Lead at k=3 beats 6b's density-trained Lead at k=3. <span class="outcome open">◔ registered (Cell 11)</span><span class="fals">Falsified if: indistinguishable — the 6b null stands on trainer/locus/dose grounds alone.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage (OpenBioLLM, DPO'd) shows a higher Lead register than the continued-pretrain lineage (BioMistral). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: CIs overlap or invert — lineage does not predict register.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P12.1</div><div class="cm-pred__body">Register portability: weight-space interpolation (SLERP) moves the Lead register monotonically toward a high-register donor's band, with no training. <span class="outcome open">◔ registered (Cell 12)</span><span class="fals">Falsified if: all merged registers sit within the stock band's CI, or non-monotone — registers resist interpolation as they resist training.</span></div></div>
     </section>
 
     <p class="text-faint" style="margin-top:var(--space-5); font-size:var(--size-1)">

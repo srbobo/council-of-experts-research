@@ -989,3 +989,89 @@ corrected and NOTHING else changed.
   for full on-policy RL (no PPO/GRPO at this scale); a frontier-scale RL
   run could still differ. This limitation is registered now so it cannot
   be softened post hoc.
+
+## CELL 8B PRE-REGISTRATION — register provenance / alignment lineage (registered 2026-07-30, before any runs)
+
+**Question.** Where do registers come from? Model selection is the only
+intervention that has ever moved the register upward (bands span 3.3x across
+Leads). If registers are installed by the *builder-scale preference
+alignment* a model shipped with, lineage should predict register — and that
+would both explain why our 49-88-pair LoRA doses cannot compete and tell a
+practitioner what to read off a model card when selecting a Lead.
+
+**Scope amendment (pre-data).** The original P7 framed this comparison with
+the two biomedical models as SEATS. No seat runs were ever executed. Under
+the register focus the informative role is the LEAD (synthesis register is
+what the pipeline's mouth inherits), so P7's seat framing is RETIRED pre-data
+and replaced by the Lead-role predictions below. Recorded here so the trail
+shows the reframe preceded all data.
+
+**Design.** Each candidate plays Lead (planner + synthesis) over the
+production seats, production k=3 prompt, 7 cases x 5 seeds = 35 runs each:
+  - OpenBioLLM-8B   (Llama-3 base, DPO/preference-aligned lineage)
+  - BioMistral-7B   (Mistral base, continued-pretrain lineage, no pref stage)
+  - Mistral-7B-Instruct-v0.3 (generic instruct control, same family as
+    BioMistral — partially splits family from lineage)
+  - OPTIONAL: Llama-3-8B-Instruct (gated; pending HF license acceptance —
+    completes the 2x2 if unlocked, registered as optional now)
+Community Q4_K_M GGUFs; chat template verified per family before any run
+(the Med42 template lesson). 105 runs core (140 with optional).
+
+**Registered confound.** OpenBioLLM vs BioMistral differ in base family and
+size as well as lineage; the Mistral-instruct control mitigates but does not
+eliminate this. No causal claim will be made beyond what the 2x2 supports.
+
+**Predictions.**
+- P8b.1: the preference-aligned lineage (OpenBioLLM) shows a HIGHER Lead
+  register than the continued-pretrain lineage (BioMistral), bootstrap CIs
+  disjoint. FALSIFIED IF overlapping or inverted.
+- P8b.2: BioMistral does NOT exceed Mistral-7B-Instruct — continued domain
+  pretraining does not raise register (domain knowledge != disposition).
+  FALSIFIED IF BioMistral sits clearly above its instruct cousin.
+- P8b.3 (exploratory): trigger-light gates per model; no directional claim.
+
+**Consequences.** If P8b.1+P8b.2 hold: registers originate in the
+preference-alignment stage, not domain pretraining — model SELECTION guidance
+becomes concrete (prefer preference-aligned Leads), and the failure of our
+small preference doses reads as a scale gap, not a mechanism gap. If P8b.1
+is falsified: lineage does not predict register and register provenance
+remains open; reported as a negative result.
+
+## CELL 12 PRE-REGISTRATION — register portability via weight interpolation (registered 2026-07-30, before any runs)
+
+**Question.** Is a register PORTABLE — can it be transplanted into the Lead
+by weight-space interpolation with a high-register donor, with no training
+at all? This is the cheapest untested non-prompt register modification, and
+mechanistically distinct from gradient methods: instead of asking a 49-pair
+LoRA to find disposition, copy the parameters of a model that already
+expresses it.
+
+**Design (stage-gated).**
+- Stage 0 — donor screen: candidate Qwen2.5-7B-architecture fine-tunes
+  benched as Lead, screen grade (6 trigger cases x 2 seeds = 12 runs each).
+  GO/NO-GO (registered): proceed only if some donor's screen band is >=
+  1.3x the stock band (>= ~1.35 vs 1.03). If no donor qualifies, the screen
+  itself is reported and the merge phase does not run — that outcome would
+  itself say same-arch fine-tunes cluster near the base register.
+- Stage 1 — SLERP merges at alpha in {0.25, 0.5, 0.75} between stock
+  Qwen2.5-7B-Instruct and the winning donor (mergekit, CPU, disk-staged as
+  in Cell 11); convert -> Q4_K_M -> ollama.
+- Stage 2 — bench: each merged Lead + the donor at full grade (7 cases x 5
+  seeds, k=3 production prompt) = up to 140 runs.
+
+**Predictions.**
+- P12.1: the Lead register moves MONOTONICALLY with alpha from the stock
+  band toward the donor band (Spearman rho > 0 over {0, .25, .5, .75, 1}).
+  FALSIFIED IF all merged registers sit within the stock band's CI
+  (registers are not portable by interpolation) or non-monotone.
+- P12.2 (exploratory): does the trigger-light gate travel with the register
+  (calibration inseparable under interpolation) or stay at stock levels?
+- P12.3 (exploratory): synthesis quality spot-check — merges are known to
+  degrade coherence at mid alpha; any degradation is reported, not hidden.
+
+**Consequences.** If P12.1 holds: first working non-prompt, non-selection
+register modification — "bolstering the register" becomes an engineering
+recipe (merge toward a measured high-register donor), and the thesis gains
+a second accessible control surface. If falsified: the register resists
+interpolation as well as training; selection remains the only upward lever,
+and the immovability result hardens across a second mechanism class.
