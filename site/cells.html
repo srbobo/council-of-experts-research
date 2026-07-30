@@ -169,7 +169,7 @@
 
     <h2>Status board</h2>
     <p class="text-soft">Twelve cells executed (including the synthesizer-locus pair 6b/6c, the
-    architecture comparison, and the calibration-reward register test); four remain queued (none blocks a published claim). Hover a
+    architecture comparison, and the calibration-reward register test); five remain queued (none blocks a published claim). Hover a
     prediction chip for its definition.</p>
 
     <div class="cm-board">
@@ -256,6 +256,12 @@
         <div class="cm-name">Register provenance</div>
         <div class="cm-tile__meta">Alignment lineage as Lead: OpenBioLLM (DPO'd) vs BioMistral (pretrain-only) vs Mistral-Instruct control</div>
         <div class="cm-tile__foot"><span class="pchip" data-tip="P8b.1: preference-aligned lineage shows a higher Lead register than continued-pretrain lineage (CIs disjoint). P8b.2: continued domain pretraining does not raise register vs the same-family instruct control. Original P7 seat framing retired pre-data — no seat runs were executed. Registered before any runs.">P8b.1–.2</span><span class="cm-status queued">Queued</span></div>
+      </div>
+      <div class="cm-tile queued">
+        <div class="cm-tile__top"><span class="cm-num">13</span></div>
+        <div class="cm-name">Per-clause isolation</div>
+        <div class="cm-tile__meta">Which PRESERVE clause carries the gain? 6 arms, one clause each — resolves Cell 6c's count/identity confound</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P13.1: the caveats clause (C4) alone recovers ≥50% of the full block's gain. P13.2: the precise-vocabulary clause (C3) is indistinguishable from none — it names a family below detection; falsified if it lifts via some other family (off-target priming). P13.3: every arm holds the gate near zero (each clause is conditional). P13.4 exploratory: does the non-PRESERVE tension clause carry disposition alone? Registered before any runs.">P13.1–.3</span><span class="cm-status queued">Queued</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">12</span></div>
@@ -809,6 +815,9 @@
       <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage (OpenBioLLM, DPO'd) shows a higher Lead register than the continued-pretrain lineage (BioMistral). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: CIs overlap or invert — lineage does not predict register.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P12.1</div><div class="cm-pred__body">Register portability: weight-space interpolation (SLERP) moves the Lead register monotonically toward a high-register donor's band, with no training. <span class="outcome open">◔ registered (Cell 12)</span><span class="fals">Falsified if: all merged registers sit within the stock band's CI, or non-monotone — registers resist interpolation as they resist training.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.1</div><div class="cm-pred__body">One clause carries the block: the PRESERVE-caveats clause alone recovers ≥50% of the full block's gain over no-block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: C4 alone recovers &lt;50% — the effect is genuinely distributed and the block must be kept whole.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.2</div><div class="cm-pred__body">The precise-vocabulary clause is inert: it names a family below detection on both instruments, so alone it should be indistinguishable from no block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: it lifts significantly anyway — meaning these instructions work by general priming rather than targeted behavior specification, which would weaken the family-level story.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.3</div><div class="cm-pred__body">Conditionality is per-clause: every single-clause arm holds the trigger-light gate near zero, since each clause is an if-then over upstream evidence. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: any single-clause arm gates materially above the full block.</span></div></div>
     </section>
 
     <p class="text-faint" style="margin-top:var(--space-5); font-size:var(--size-1)">

@@ -1215,3 +1215,71 @@ any P8b.2 reading must respect that. Recorded before results.
 Final arms: reg-med42 (preference-aligned) | reg-biomistral (pretrain-only)
 | reg-mistral (generic instruct control, BioMistral's family) | reg-qwen
 (scale anchor, production Lead band 1.03). 140 runs.
+
+## CELL 13 PRE-REGISTRATION — per-clause isolation of the PRESERVE block (registered 2026-07-30, before any runs)
+
+**Question.** Cell 6c established that disposition rises monotonically with
+the NUMBER of PRESERVE clauses retained (k=0..3, rho +1.00/+0.80/+0.80 across
+three Leads). But clauses were removed in a FIXED documented order (drop 3,
+then 2, keeping 4), so count is confounded with IDENTITY: the curve cannot
+say whether all three clauses contribute or one carries the effect. Two facts
+make the confound urgent. (a) Clause 3 targets vocabulary-precision, which
+Cell 7c found BELOW DETECTION on both instruments — a clause whose named
+family we cannot measure. (b) The composite is cutoff-dominated, and clause 4
+is the only clause targeting cutoff-disclosure. If the block's effect is
+really one sentence, the practical claim sharpens from "write a PRESERVE
+block" to "write THIS instruction."
+
+**The block, enumerated** (LEAD_SYNTHESIS_SYSTEM, STEP 2, items 1-5; only
+2-4 carry the PRESERVE keyword — the paper's "four PRESERVE instructions"
+counts item 1, Cell 6c's k counts only the keyword clauses; Cell 13 resolves
+this by testing item 1 separately):
+  C1  acknowledge the tensions you just identified (no PRESERVE keyword)
+  C2  PRESERVE numeric framing   -> modeled-assumptions family
+  C3  PRESERVE precise vocabulary -> vocabulary-precision family (undetectable)
+  C4  PRESERVE caveats            -> cutoff-disclosure family
+  (C5 is a formatting instruction; not under test, retained in every arm.)
+
+**Design.** Six arms, ONE Lead, everything else fixed:
+  c13-none   no C1-C4 (the Cell 6c k=0 strip, byte-identical)
+  c13-c1     C1 only
+  c13-c2     C2 only
+  c13-c3     C3 only
+  c13-c4     C4 only
+  c13-all    C1-C4 (production prompt)
+7 cases x 5 seeds x 6 arms = 210 runs. Lead: gpt-oss-20B, chosen for
+SENSITIVITY — it showed the widest gain range in Cell 6c (3.3x, vs Qwen 2.1x
+and Phi-4 1.3x), so per-clause differences have the most room to resolve.
+Registered consequence of that choice: findings are scoped to the
+highest-dynamic-range Lead and may overstate per-clause separation on
+narrower-range Leads (Phi-4 production).
+Each single-clause arm is built by deleting the other clauses with the same
+regexes Cell 6c used; every arm asserts its retained clause count before
+running.
+
+**Predictions.**
+- P13.1: C4 alone (caveats) recovers a MAJORITY (>= 50%) of the full
+  c13-all minus c13-none gain. FALSIFIED IF C4 alone recovers < 50%, i.e.
+  the effect is genuinely distributed across clauses.
+- P13.2: C3 alone (precise vocabulary) is INDISTINGUISHABLE from c13-none
+  (overlapping CIs) — it names a family below detection. FALSIFIED IF C3
+  alone lifts significantly, which would mean it acts through some OTHER
+  family (an off-target effect, and a more interesting result than the
+  prediction).
+- P13.3: every arm holds the trigger-light gate near zero (each clause is
+  CONDITIONAL, per Cell 8's mechanism). FALSIFIED IF any single-clause arm
+  gates materially above c13-all.
+- P13.4 (exploratory, no directional prediction): does C1 (tension
+  acknowledgment, no PRESERVE keyword) carry disposition on its own? This
+  settles the 3-vs-4 counting convention empirically rather than by fiat.
+
+**Consequences.** If P13.1 holds: the mechanism narrows from a five-item
+block to ONE conditional sentence about propagating flagged caveats — the
+paper's practical recommendation becomes far sharper, and Cell 6c's gain
+curve is reinterpreted as dose-of-the-active-clause rather than count. If
+P13.1 is falsified: the effect is distributed, the block must be kept whole,
+and "graded gain control" stands as a property of the block rather than of
+any clause. If P13.2 is falsified: a clause lifts disposition through
+families it does not name — evidence that these instructions work by general
+priming rather than targeted behavior specification, which would weaken the
+family-level story in Cell 7c and is registered here as a live possibility.
