@@ -168,8 +168,8 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Twelve cells executed (including the synthesizer-locus pair 6b/6c, the
-    architecture comparison, and the calibration-reward register test); five remain queued (none blocks a published claim). Hover a
+    <p class="text-soft">Thirteen cells executed (including the synthesizer-locus pair 6b/6c, the
+    architecture comparison, and the calibration-reward register test); four remain queued (none blocks a published claim). Hover a
     prediction chip for its definition.</p>
 
     <div class="cm-board">
@@ -254,8 +254,8 @@
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num dose">8b</span></div>
         <div class="cm-name">Register provenance</div>
-        <div class="cm-tile__meta">Alignment lineage as Lead: OpenBioLLM (DPO'd) vs BioMistral (pretrain-only) vs Mistral-Instruct control</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="P8b.1: preference-aligned lineage shows a higher Lead register than continued-pretrain lineage (CIs disjoint). P8b.2: continued domain pretraining does not raise register vs the same-family instruct control. Original P7 seat framing retired pre-data — no seat runs were executed. Registered before any runs.">P8b.1–.2</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-tile__meta">140 runs · intrinsic band across 4 lineages — all identical</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P8b.1 FALSIFIED: preference-aligned lineage (Med42 0.15) does not exceed continued-pretrain lineage (BioMistral 0.15). The unpredicted finding is bigger: five models across four base families and four lineages all sit at 0.14–0.15, so the intrinsic band is model-invariant and 'register' is a gain coefficient on instructions, not a baseline emission level.">P8b.1–.2</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">✗ Falsified</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">13</span></div>
@@ -791,6 +791,63 @@
       </div>
     </section>
 
+    <!-- CELL 8B -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 8b</span>
+        <span class="cm-name">Register provenance — where does a register come from?</span>
+        <span class="cm-verdict refute">P8b.1 ✗ falsified — and the null is the finding</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P8b)</span>
+        <p>If model selection is the only lever that moves the register upward, what makes one
+        model's register higher than another's? Hypothesis: registers are installed by the
+        builder-scale <em>preference alignment</em> a model shipped with — so alignment lineage
+        should predict register, explaining why our 49–88-pair LoRA doses cannot compete.</p>
+        <p><strong>Two pre-run amendments, both recorded before any retained data.</strong>
+        (1) Canary probes showed the biomedical models ignore system prompts in every message
+        position and OpenBioLLM cannot emit planner JSON — the registered Lead design would have
+        scored it "low register" from an instruction-following failure, so the protocol was amended
+        to measure the <em>intrinsic</em> band under a minimal neutral instruction. (2) OpenBioLLM
+        was excluded outright as unbenchable: its GGUF returns 15–47-char truncated headings
+        unstably under three different templates. Med42-8B replaced it — same Llama-3 base, same
+        preference-aligned lineage, template already verified in Cell 3.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>Four models answer the seven bench cases directly under an identical minimal neutral
+        instruction — no council, no disposition instruction of any kind. 7 cases × 5 seeds × 4
+        models = 140 runs, zero failures.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Model</th><th>lineage</th><th class="n">intrinsic band</th><th class="n">gate</th></tr></thead>
+          <tbody>
+            <tr><td>Med42-8B</td><td>preference-aligned (SFT+DPO)</td><td class="n">0.15 [0.04,0.28]</td><td class="n">0.00</td></tr>
+            <tr><td>BioMistral-7B</td><td>continued pretrain only</td><td class="n">0.15 [0.00,0.41]</td><td class="n">0.00</td></tr>
+            <tr><td>Mistral-7B-Instruct</td><td>generic instruct control</td><td class="n">0.14 [0.04,0.26]</td><td class="n">0.00</td></tr>
+            <tr><td>Qwen2.5-7B-Instruct</td><td>generic instruct anchor</td><td class="n">0.14 [0.06,0.24]</td><td class="n">0.00</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Lineage does not predict register — and nothing else does either.</strong> All four
+        sit at 0.14–0.15 despite spanning four base families and four lineages. A fifth independent
+        measurement agrees: gpt-oss-20B single-shot under the same neutral prompt is 0.14 (Cell 8).
+        <strong>The intrinsic disposition band is model-invariant.</strong></p>
+        <p><strong>What that reframes.</strong> The 3.3× spread between Leads under identical council
+        input (Cell 6) cannot be a difference in baseline emission, because without instructions every
+        model emits the same ~0.14. It is a difference in <em>response</em> to instructions. The
+        register is better understood as a per-model <strong>gain coefficient on instructions</strong>
+        than as a characteristic emission level. For Qwen2.5 the decomposition is now measurable end
+        to end: <strong>0.14</strong> intrinsic → <strong>0.56</strong> inside the council with PRESERVE
+        stripped → <strong>1.03</strong> with the full block — about 4× from the scaffold, a further
+        1.8× from the instructions, over a floor every model shares.</p>
+        <p>This also explains the two synthesizer-training nulls (Cells 6b, 11): a LoRA-scale
+        preference run has no purchase on <em>how a model processes instructions</em>, which is far
+        deeper than a surface emission tendency. And the practical corollary sharpens: select a Lead
+        for instruction <strong>responsiveness</strong>, not for supposed intrinsic disposition —
+        OpenBioLLM is the cautionary case, unusable as a last writer whatever its band, because the
+        control surface operates through instructions it cannot follow.</p>
+      </div>
+    </section>
+
     <!-- PREDICTIONS GLOSSARY -->
     <section class="cm-preds">
       <h2>All predictions — registered in advance</h2>
@@ -812,8 +869,8 @@
       <div class="cm-pred"><div class="cm-pred__id">P11.1</div><div class="cm-pred__body">Register movable under corrected reward: the Lead trained on-policy with a calibration-shaped reward computed at the pipeline's mouth exceeds the stock Lead's k=0 trigger density. <span class="outcome refute">✗ falsified (Cell 11) — 0.60 vs 0.56, CIs coincide; no movement in either direction</span><span class="fals">Falsified if: CIs overlap — the register survives even the feasible CollabLLM-mechanism analogue. Exactly what happened.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P11.2</div><div class="cm-pred__body">Calibration installs, not loudness: the trained Lead's trigger-light gate stays at or below the stock k=3 gate. <span class="outcome null">— moot (Cell 11): conditioned on P11.1; nothing installed, so nothing fires (0.09 ≤ 0.15, trivially)</span><span class="fals">Falsified if: the gate rises alongside density — the reward installed the same indiscriminate loudness the pipeline strips from seats.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P11.3</div><div class="cm-pred__body">Reward shape was Cell 6b's binding constraint: the calibration-trained Lead at k=3 beats 6b's density-trained Lead at k=3. <span class="outcome refute">✗ falsified (Cell 11) — 0.95 vs 0.89, CIs overlap; both inside the stock band</span><span class="fals">Falsified if: indistinguishable — the 6b null stands on trainer/locus/dose grounds alone.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage (OpenBioLLM, DPO'd) shows a higher Lead register than the continued-pretrain lineage (BioMistral). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: CIs overlap or invert — lineage does not predict register.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome open">◔ registered (Cell 8b)</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage shows a higher register than the continued-pretrain lineage. <span class="outcome refute">✗ falsified (Cell 8b) — Med42 0.15 vs BioMistral 0.15, identical; lineage does not predict register</span><span class="fals">Falsified if: CIs overlap or invert. They coincided — and all four models did.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome confirm">✓ confirmed (Cell 8b) — 0.15 vs 0.14, but trivially: nothing differs anywhere</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P12.1</div><div class="cm-pred__body">Register portability: weight-space interpolation (SLERP) moves the Lead register monotonically toward a high-register donor's band, with no training. <span class="outcome open">◔ registered (Cell 12)</span><span class="fals">Falsified if: all merged registers sit within the stock band's CI, or non-monotone — registers resist interpolation as they resist training.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P13.1</div><div class="cm-pred__body">One clause carries the block: the PRESERVE-caveats clause alone recovers ≥50% of the full block's gain over no-block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: C4 alone recovers &lt;50% — the effect is genuinely distributed and the block must be kept whole.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P13.2</div><div class="cm-pred__body">The precise-vocabulary clause is inert: it names a family below detection on both instruments, so alone it should be indistinguishable from no block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: it lifts significantly anyway — meaning these instructions work by general priming rather than targeted behavior specification, which would weaken the family-level story.</span></div></div>

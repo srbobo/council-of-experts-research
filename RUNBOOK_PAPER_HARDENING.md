@@ -1283,3 +1283,66 @@ any clause. If P13.2 is falsified: a clause lifts disposition through
 families it does not name — evidence that these instructions work by general
 priming rather than targeted behavior specification, which would weaken the
 family-level story in Cell 7c and is registered here as a live possibility.
+
+## CELL 8B VERDICT — intrinsic register is MODEL-INVARIANT (2026-07-30, 140 runs, zero failures)
+
+Amended protocol (intrinsic register, minimal neutral instruction in user
+position, no council, no disposition instruction of any kind):
+
+| model | lineage | trigger density [95% CI] | gate | CDS | median len |
+|---|---|---|---|---|---|
+| Med42-8B | preference-aligned SFT+DPO | 0.15 [0.04,0.28] | 0.00 | 0.080 | 2424 |
+| BioMistral-7B | continued pretrain only | 0.15 [0.00,0.41] | 0.00 | 0.074 | 310 |
+| Mistral-7B-Instruct-v0.3 | generic instruct control | 0.14 [0.04,0.26] | 0.00 | 0.071 | 3218 |
+| Qwen2.5-7B-Instruct | generic instruct anchor | 0.14 [0.06,0.24] | 0.00 | 0.070 | 3916 |
+
+**P8b.1 FALSIFIED.** Preference-aligned lineage (Med42 0.15) does not exceed
+continued-pretrain lineage (BioMistral 0.15). Identical to two decimals.
+**P8b.2 CONFIRMED, but trivially** — BioMistral does not exceed its
+same-family instruct control (0.15 vs 0.14) because NOTHING differs.
+
+**THE ACTUAL FINDING (not predicted, more important than either prediction).**
+All four models sit at 0.14-0.15 despite spanning four base families
+(Llama-3, Mistral v0.1, Mistral v0.3, Qwen2.5) and four lineages
+(clinical SFT+DPO, biomedical continued-pretrain, generic instruct x2). A
+FIFTH independent data point agrees: gpt-oss-20B single-shot under the same
+neutral prompt measured 0.14 in Cell 8. Five models, five lineages, one band.
+
+The intrinsic disposition band is MODEL-INVARIANT at ~0.14-0.15. Therefore
+the between-Lead differences we have been calling "register" (Cell 6: 3.3x
+spread across Phi-4 / gpt-oss / Qwen under the SAME council input) cannot be
+differences in baseline emission. They must be differences in RESPONSE to
+the surrounding instructions.
+
+**Consequence for the mechanism statement (refinement, not overturning).**
+Cell 6 stands: given identical seat input, different synthesizers write at
+different densities, and over-dense input does not transmit. What Cell 8b
+adds is that this is not an additive baseline property — absent instructions
+every model emits the same ~0.14. The "register" factor is better read as a
+per-model GAIN COEFFICIENT on instructions than as a characteristic
+emission level. For Qwen2.5 the decomposition is now measurable end to end:
+  intrinsic (neutral, no council)      0.14
+  council context, PRESERVE stripped   0.56   (Cell 11 stock k=0)
+  council context, full PRESERVE       1.03   (Cell 6b ledger)
+i.e. ~4x from the council scaffold itself and a further ~1.8x from the
+PRESERVE block, over a base every model shares.
+
+This also explains Cells 6b and 11: training could not move the "register"
+because the register is not a surface emission tendency to be nudged — it is
+how the model processes instructions. A 49-88 pair LoRA has no purchase on
+that.
+
+**Registered caveats honored.** BioMistral's ~310-char median makes its CI
+the widest [0.00,0.41] exactly as pre-registered; its point estimate agrees
+with the others but should not be leaned on alone. Med42-vs-BioMistral still
+carries a base-family confound; that confound is now moot, since the null is
+across ALL families. Gates are 0.00 everywhere: with no instruction to
+over-apply, no model hedges spuriously.
+
+**Instruction-following prerequisite (registered pre-run, stands).**
+OpenBioLLM was excluded as unbenchable; separately, it and BioMistral ignore
+system prompts entirely. Since the accessible control surface operates
+THROUGH instructions, a model that cannot follow them cannot serve as a last
+writer whatever its band. With the band now known to be model-invariant,
+this becomes the dominant selection criterion: choose a Lead for instruction
+RESPONSIVENESS, not for any intrinsic disposition tendency.
