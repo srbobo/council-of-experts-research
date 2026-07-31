@@ -1346,3 +1346,24 @@ THROUGH instructions, a model that cannot follow them cannot serve as a last
 writer whatever its band. With the band now known to be model-invariant,
 this becomes the dominant selection criterion: choose a Lead for instruction
 RESPONSIVENESS, not for any intrinsic disposition tendency.
+
+### CELL 13 CORRECTION — baseline definition (2026-07-30, before any runs)
+
+The pre-registration described `c13-none` as "no C1-C4 (the Cell 6c k=0
+strip, byte-identical)". Those two descriptions are INCOMPATIBLE and the
+parenthetical is wrong: Cell 6c's k=0 substitutes only the C2-C4 block and
+RETAINS C1 (verified: the tension-acknowledgment clause is present in 6c's
+k=0 prompt, PRESERVE count 0). Since P13.4 asks whether C1 alone carries
+disposition, the Cell 13 baseline must remove C1 as well.
+
+Corrected: `c13-none` removes C1, C2, C3 and C4. It is therefore NOT
+comparable byte-for-byte to cell6c-gain-k0; that arm (C1 retained, no
+PRESERVE) remains on the ledger as a separate reference point and in fact
+gives a free cross-check on P13.4 — if C1 carries nothing, c13-c1 should sit
+at c13-none and 6c's k=0 should sit at Cell 13's C1-only level.
+
+Deletion, not renumbering: clauses are removed with the Cell 6c regexes and
+the surviving items keep their original numbers (so a single-clause arm may
+read "3. ... 5."). This preserves comparability with 6c, which did the same;
+the numbering gap is an artifact both cells share and is recorded here as a
+minor shared confound rather than silently fixed in one cell only.
