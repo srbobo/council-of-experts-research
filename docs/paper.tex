@@ -61,7 +61,7 @@ Final-output disposition (green) is nearly independent of what the seats emit
 \textbf{Contributions.} (i)~A controlled comparison of six orchestration architectures with the model held fixed, isolating what multi-agent structure does and does not buy for epistemic disposition, plus a two-axis evaluation of a heterogeneous local specialist pipeline with a composite disposition metric (CDS) (\S\ref{sec:arch}). (ii)~A controlled comparison of installation mechanisms---prompting, exemplar SFT, and reference-free preference optimization (ORPO and CPO)---under pre-registered predictions, with a trigger-free control case that separates \emph{responsive} from \emph{habitual} behavior, replicated across three seats of distinct model lineage (\S\ref{sec:install}). (iii)~Identification, ablation, and stress-testing of the \textbf{synthesizer register} as the mechanism governing which installed behaviors reach the pipeline's output: it survives direct ORPO training of the synthesizer---including an on-policy, calibration-shaped, pipeline-mouth-scored retry---seat input is non-additive, and the synthesis instructions form a measured, monotone gain control (\S\ref{sec:register}). We further show the \emph{intrinsic} band is model-invariant across five models and four alignment lineages, relocating the register from a baseline emission tendency to a per-model gain coefficient on instructions (\S\ref{sec:provenance}). (iv)~A three-instrument measurement-validation protocol (pattern matching, calibrated NLI entailment, blinded pairwise LLM judges) that both confirms the surviving claims and catches a false finding produced by the primary metric (App.~\ref{app:instruments}). (v)~A fully local, \$0, consumer-hardware protocol with append-only audit logs for all 1{,}293 runs.
 
 \section{Related work}
-\textbf{Multi-agent orchestration.} Debate and role-played collaboration improve factuality and reasoning \cite{du2023,moa2024,medagents,mdagents}, and recent work compares orchestration against the strongest single model \cite{tian2025} or trains orchestrators end-to-end \cite{masorchestra}. This literature measures content outcomes. The closest work on the \emph{aggregation} step, Parallel-Synthesis \cite{parallelsynth}, trains a synthesizer adapter and explicitly distills reasoning behavior from text-concatenation synthesis---an implicit acknowledgment that naive aggregation loses behavior, which our register mechanism explains and quantifies for epistemic behavior specifically. We measure what orchestration does to epistemic behavior and find an amplification effect independent of the model filling the seats.
+\textbf{Multi-agent orchestration.} Debate and role-played collaboration improve factuality and reasoning \cite{du2023,moa2024,medagents,mdagents}, and recent work compares orchestration against the strongest single model \cite{tian2025} or trains orchestrators end-to-end \cite{masorchestra}. A 2026 line now reports that well-prompted single agents match or beat multi-agent systems under matched token budgets \cite{singleagent}; our architecture comparison reproduces that negative result on a new axis (disposition \emph{magnitude}) and then identifies an axis where orchestration does pay---\emph{calibration}---which that literature does not measure. This literature measures content outcomes. The closest work on the \emph{aggregation} step, Parallel-Synthesis \cite{parallelsynth}, trains a synthesizer adapter and explicitly distills reasoning behavior from text-concatenation synthesis---an implicit acknowledgment that naive aggregation loses behavior, which our register mechanism explains and quantifies for epistemic behavior specifically. We measure what orchestration does to epistemic behavior and find an amplification effect independent of the model filling the seats.
 
 \textbf{Specialists vs.\ generalists.} Evidence is mixed on whether small domain fine-tunes beat larger generalists in-domain \cite{trident,medftrag}. Our content results replicate the negative side (a 20B open MoE outperforms a four-specialist council $42\% \rightarrow 25$--$31\%$ on rubric coverage) and motivate the pivot: the surviving specialist value is dispositional, not informational.
 
@@ -82,6 +82,20 @@ than merely attenuate. Their prompt-mitigation result and our gain curve
 converge from different directions on the same practical conclusion, which we
 regard as mutual corroboration. Two further 2026 lines make the pipeline
 dimension timely: ``confidence laundering'' \cite{laundering} names, as a position, the loss of decision uncertainty at agent interfaces and argues for a latent uncertainty carrier; and a quantitative line propagates \emph{numeric} confidence estimates through multi-step agent decisions \cite{uprop}. We complement both empirically and from the opposite direction: we measure \emph{emitted linguistic disposition}, show its loss is not an interface accident but a property of the last writer (the register), and show that upstream training cannot push behavior through it.
+
+\textbf{Register beyond epistemics.} Independent evidence for a register-like
+effect comes from stylistic rewriting: \cite{voicerev} finds that LLMs revising
+personal narratives shift all thirteen measured linguistic markers in the
+\emph{same direction} across three frontier models---toward a more polished,
+less situated register---regardless of user intent, and that voice-preserving
+prompts reduce the effect magnitude by $32\%$ without changing its direction.
+That is our mechanism in a different behavioral domain: a rewriter imposes its
+own band, and instructions are a partial counter-lever. Their per-model effect
+sizes also differ ($|d| = 0.60$, $1.29$, $1.45$), consistent with our finding
+that models differ in instruction \emph{gain} rather than in baseline
+emission. We differ in object (epistemic disposition, not voice), in setting
+(a multi-agent pipeline, not single-stage rewriting), and in testing whether
+the band can be moved by training at all---which they do not attempt.
 
 \textbf{Preference optimization for behavior.} DPO \cite{dpo} and ORPO \cite{orpo} are standard for style/behavior shaping; DPO's length bias is documented \cite{lengthbias}, which our pair-construction controls address. Preference-data scaling is itself contested: simply adding more samples per prompt often fails to improve and can degrade downstream behavior \cite{sweetspot,air}---consistent with our dose-invariance null, which we further attribute to a downstream aggregation ceiling rather than to the optimizer. Comparisons of system-prompt steering vs.\ preference training exist for single models; we compare them \emph{through} a pipeline.
 
@@ -594,6 +608,8 @@ might vary. State everything with plain confidence.
 \bibitem{zeroshotnli} Yin, W., Hay, J., Roth, D. Benchmarking Zero-shot Text Classification: Datasets, Evaluation and Entailment Approach. arXiv:1909.00161 (EMNLP 2019). Model: MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli.
 \bibitem{llmjudge} Zheng, L.\ et al.\ Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. arXiv:2306.05685 (NeurIPS 2023).
 \bibitem{collabllm} Wu, S.\ et al.\ CollabLLM: From Passive Responders to Active Collaborators. arXiv:2502.00640 (2025).
+\bibitem{voicerev} Voice Under Revision: Large Language Models and the Normalization of Personal Narrative. arXiv:2604.22142 (2026).
+\bibitem{singleagent} Tran, D., Kiela, D. Single-Agent LLMs Outperform Multi-Agent Systems on Multi-Hop Reasoning Under Equal Thinking Token Budgets. arXiv:2604.02460 (2026).
 \bibitem{stepback} Zheng, H.S.\ et al.\ Take a Step Back: Evoking Reasoning via Abstraction. arXiv:2310.06117 (ICLR 2024).
 \end{thebibliography}
 
