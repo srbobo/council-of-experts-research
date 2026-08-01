@@ -1588,3 +1588,43 @@ transport vs rendering), figure captions.
 
 Website updated to match: new lead section on the home page, routes tree
 final node and paper title, glossary entries.
+
+## SECOND PAPER — "Witnesses, Not Amplifiers" (docs/paper_witnesses.tex, v0.1, 2026-08-01)
+
+A separate, standalone draft built on the specialist-role lineage rather than
+the transport-vs-rendering one. 7pp. Same corpus, no new runs. It exists
+because the specialist question is answerable on its own and the answer is
+sharper stated alone than folded into the larger paper.
+
+**Argument.** Two premises justify specialist pipelines: specialists produce
+better epistemic judgement, and the aggregator's job is to preserve it. Both
+fail.
+1. Specialisation does not produce care. Med42 under a neutral prompt 0.15 vs
+   Mistral-Instruct 0.14 / Qwen 0.14 / gpt-oss 0.14. The same model as a
+   pipeline seat: 1.31 (8.8x, disjoint). The difference is the system prompt
+   ("Flags training-cutoff uncertainty EXPLICITLY...") plus the orchestrator's
+   runtime recency directive, which fired in 30/34 runs.
+2. Specialists do not supply quantity. Lone prompted model 0.50 [0.41,0.60]
+   vs full council 0.57 [0.45,0.71], overlapping.
+3. Tuning specialists UP makes the answer WORSE — the paper's central figure.
+   Legal seat: prompted 0.84->1.82 at the seat but 1.21->0.92 at the mouth;
+   SFT 1.75 at the seat, 0.92 at the mouth. Extending across seats declines
+   monotonically 1.01/1.03/0.84/0.64 (rho -0.80).
+4. What specialists DO supply: grounds for a conditional instruction. Council
+   gate 0.00 [0,0] vs lone prompted model 0.15 [0.08,0.22], disjoint. Volume
+   comes from the instruction; discrimination requires specialists AND an
+   instruction that depends on them. Neither alone.
+
+**Framing:** seats are WITNESSES, not amplifiers. Their value is being
+checkable, and training them to qualify everything destroys it — a witness who
+always says the same thing carries no information.
+
+New figure: figs/fig_witness.pdf (seat-vs-final bars + additivity decline).
+Reuses fig_arch.pdf. Appendices: the aggregator instruction verbatim, and
+instruments.
+
+**Relationship to the main paper.** Same evidence base, different cut. The
+main paper asks where disposition is decided (at the point of writing); this
+one asks what the specialists are for. They can coexist — this is the
+narrower, more immediately actionable claim, and it is the one that
+contradicts common practice most directly.

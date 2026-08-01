@@ -268,3 +268,47 @@ fig.tight_layout()
 fig.savefig(OUT / "fig_arch.pdf", bbox_inches="tight")
 plt.close(fig)
 print("wrote figs/fig_arch.pdf")
+
+# ------------------------------------------ fig 6: seats as witnesses (witness paper)
+# Left: tuning a specialist up raises the seat and lowers the final answer.
+# Right: instructing more specialists monotonically lowers the final answer.
+fig, (axL, axR) = plt.subplots(1, 2, figsize=(7.6, 3.0))
+
+arms  = ["untrained", "prompted", "exemplar\nSFT", "preference\n(ORPO)"]
+seatv = [0.84, 1.82, 1.75, 0.85]
+finav = [1.21, 0.92, 0.92, 1.03]
+x = range(len(arms)); w = 0.36
+axL.bar([i - w/2 for i in x], seatv, w, label="specialist's own text",
+        color="#c7793f", zorder=3)
+axL.bar([i + w/2 for i in x], finav, w, label="final answer",
+        color="#2e6d5e", zorder=3)
+axL.axhline(finav[0], color="#8a8a85", lw=0.9, ls=":", zorder=2)
+axL.set_xticks(list(x)); axL.set_xticklabels(arms, fontsize=7.5)
+axL.set_ylabel("behaviors / 1k chars", fontsize=8)
+axL.set_title("Tuning the specialist up", fontsize=9)
+axL.legend(fontsize=6.8, frameon=False, loc="upper right")
+axL.tick_params(labelsize=8)
+axL.annotate("seat doubles", xy=(1 - w/2, 1.82), xytext=(0.55, 2.15),
+             fontsize=6.8, color="#c7793f",
+             arrowprops=dict(arrowstyle="->", lw=0.7, color="#c7793f"))
+axL.annotate("answer gets worse", xy=(1 + w/2, 0.92), xytext=(1.9, 1.62),
+             fontsize=6.8, color="#2e6d5e",
+             arrowprops=dict(arrowstyle="->", lw=0.7, color="#2e6d5e"))
+axL.set_ylim(0, 2.45)
+
+h = [0, 1, 2, 3]; fin = [1.01, 1.03, 0.84, 0.64]
+lo = [0.54, 0.43, 0.63, 0.29]; hi = [1.57, 1.63, 1.05, 1.01]
+axR.errorbar(h, fin, yerr=[[f - l for f, l in zip(fin, lo)],
+                           [hh - f for f, hh in zip(fin, hi)]],
+             marker="o", ms=5, lw=1.6, capsize=3, color="#2e6d5e", zorder=3)
+axR.axhline(fin[0], color="#8a8a85", lw=0.9, ls=":", zorder=2)
+axR.set_xticks(h); axR.set_xlabel("specialists given the extra instruction", fontsize=8)
+axR.set_ylabel("final answer density", fontsize=8)
+axR.set_title("Instructing more specialists", fontsize=9)
+axR.tick_params(labelsize=8); axR.set_ylim(0, 1.9)
+axR.annotate(r"$\rho = -0.80$", xy=(2.55, 1.55), fontsize=8, color="#6b6b66")
+
+fig.tight_layout()
+fig.savefig(OUT / "fig_witness.pdf", bbox_inches="tight")
+plt.close(fig)
+print("wrote figs/fig_witness.pdf")
