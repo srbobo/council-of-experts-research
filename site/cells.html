@@ -201,7 +201,7 @@
         <div class="cm-tile__top"><span class="cm-num dose">6c</span></div>
         <div class="cm-name">Gain curve + additivity</div>
         <div class="cm-tile__meta">96 runs · graded PRESERVE × 3 Leads; hot-seat count</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="P6c.1: final density rises monotonically with PRESERVE clause count on every Lead (Spearman ρ ≥ 0.8). P6c.3: density is flat in hot-seat count (non-additive). Both confirmed.">P6c</span><span class="cm-status done">✓ Confirmed</span></div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P6c.1: final density rises with PRESERVE clause count on every Lead (Spearman ρ ≥ 0.8 — a monotone TREND; only gpt-oss is strictly monotone, Qwen dips at k=2 and Phi-4 at k=3). P6c.3: density is flat in hot-seat count (non-additive). Both confirmed.">P6c</span><span class="cm-status done">✓ Confirmed</span></div>
       </div>
       <div class="cm-tile done">
         <div class="cm-tile__top"><span class="cm-num">10</span></div>
@@ -629,7 +629,7 @@
             <tr><td>Phi-4-14B</td><td class="n">0.52</td><td class="n">0.58</td><td class="n cm-fail">1.53*</td><td class="n">0.68</td><td class="n cm-pass">+0.80</td><td class="n">1.3×</td></tr>
           </tbody>
         </table></div>
-        <p><strong>Instructions are a graded gain control</strong> — monotone on all three Leads, 2–3×
+        <p><strong>Instructions are a graded gain control</strong> — rising on all three Leads (ρ +1.00/+0.80/+0.80, a trend not strict monotonicity: Qwen dips at k=2, Phi-4 at k=3), 2–3×
         full-scale on two. (*Phi-4's k=2 cell is anomalous: no other Lead bumps there and its within-cell
         sd equals its between-level differences at n=6 — reported as probable noise, unresolved.)</p>
         <div class="cm-tablewrap"><table class="cm-data">
@@ -682,8 +682,8 @@
         behaviors that survive are the content-bearing ones — a modeled number or a jurisdictional
         distinction carries substance the synthesizer needs, while a training-cutoff disclosure is
         meta-commentary it can drop for free.</p>
-        <p><strong>Two claims scoped down, honestly:</strong> the gain curve's monotonicity is a
-        property of the composite (no single family is monotone in k), and vocabulary-precision is
+        <p><strong>Two claims scoped down, honestly:</strong> the gain curve's trend is a
+        property of the composite (no single family is monotone in k), and it is a rank trend rather than strict monotonicity, and vocabulary-precision is
         below detection under <em>both</em> the pattern and NLI instruments — reported as four
         detectable families, not five.</p>
       </div>
@@ -822,15 +822,23 @@
           <thead><tr><th>Model</th><th>lineage</th><th class="n">intrinsic band</th><th class="n">gate</th></tr></thead>
           <tbody>
             <tr><td>Med42-8B</td><td>preference-aligned (SFT+DPO)</td><td class="n">0.15 [0.04,0.28]</td><td class="n">0.00</td></tr>
-            <tr><td>BioMistral-7B</td><td>continued pretrain only</td><td class="n">0.15 [0.00,0.41]</td><td class="n">0.00</td></tr>
+            <tr style="opacity:.55"><td>BioMistral-7B <em>(withdrawn)</em></td><td>continued pretrain only</td><td class="n">0.15 [0.00,0.41]</td><td class="n">0.00</td></tr>
             <tr><td>Mistral-7B-Instruct</td><td>generic instruct control</td><td class="n">0.14 [0.04,0.26]</td><td class="n">0.00</td></tr>
             <tr><td>Qwen2.5-7B-Instruct</td><td>generic instruct anchor</td><td class="n">0.14 [0.06,0.24]</td><td class="n">0.00</td></tr>
           </tbody>
         </table></div>
-        <p><strong>Lineage does not predict register — and nothing else does either.</strong> All four
-        sit at 0.14–0.15 despite spanning four base families and four lineages. A fifth independent
-        measurement agrees: gpt-oss-20B single-shot under the same neutral prompt is 0.14 (Cell 8).
-        <strong>The intrinsic disposition band is model-invariant.</strong></p>
+        <p><strong>Correction (post-hoc integrity audit).</strong> The BioMistral arm is
+        <em>withdrawn</em>: 26 of its 30 trigger runs are degenerate 208–463-char fragments that stop
+        on a colon with no analysis, well under the token cap, and bimodal within case — the three-probe
+        stability screen (248–555) could not reveal it. Substantive-only (n=4) gives 0.29 [0.00,0.87],
+        too wide to locate. <strong>P8b.1 is therefore INDETERMINATE, not falsified</strong>, and the
+        lineage claim is withdrawn: the continued-pretraining contrast was never actually made.</p>
+        <p><strong>What survives — and it is the important part.</strong> Four usable models spanning
+        four architectures (Llama-3, Mistral, Qwen2.5, and a MoE) share one band to within 0.01:
+        Med42 0.15, Mistral-Instruct 0.14, Qwen2.5 0.14, and gpt-oss 0.14 measured independently in
+        Cell 8. <strong>The intrinsic disposition band is model-invariant</strong> — now across one
+        domain-SFT+DPO model and three generically instruction-tuned ones, rather than across four
+        distinct lineages.</p>
         <p><strong>What that reframes.</strong> The 3.3× spread between Leads under identical council
         input (Cell 6) cannot be a difference in baseline emission, because without instructions every
         model emits the same ~0.14. It is a difference in <em>response</em> to instructions. The
