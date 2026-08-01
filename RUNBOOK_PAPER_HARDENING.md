@@ -1758,3 +1758,73 @@ NUMBERS were right, and none checked whether the PIPELINE PATH was the one the
 claim assumed. Recomputation cannot catch a wrong causal attribution. Future
 verdicts involving the council must assert the execution path, not just the
 output value.
+
+## EXECUTION-PATH AUDIT (2026-08-01) — how far the zero-route flaw reaches
+
+Systematic sweep for the flaw class found while registering Cell 14: a claim
+attributing an outcome to a prompt manipulation that the pipeline never
+actually applied. Signature in code (council/orchestrator.py:495-510):
+`synthesis_system_override` is used ONLY inside `if routes:`. With zero routes
+the orchestrator uses LEAD_DIRECT_ANSWER_SYSTEM and silently DISCARDS the
+override. Every prompt-ablation arm was therefore checked for zero-route runs.
+
+**Result: 39 contaminated runs across 11 modes, and EVERY ONE is a case_7
+(trigger-free) run.** No trigger-case run in any prompt-ablation cell has zero
+routes.
+
+| mode | zero-route runs | where |
+|---|---|---|
+| arch-council | 5/35 | all case_7 |
+| c13-none / c1 / c2 / c3 / c4 / all | 5/35 each (30 total) | all case_7 |
+| local-council-repro / -spec | 1/35 each | case_7 |
+| local-council / -v2 | 1/7 each | case_7 |
+
+**UNAFFECTED — zero contamination, claims stand:**
+- Cell 6 register ablation (all 72 runs routed 3 seats)
+- Cell 6c gain curve, k=0..3 x 3 Leads (all 72 routed 3)
+- Cell 6c additivity, h=0..3 (all 24 routed 3 — the "h of 3" framing is exact)
+- Cell 11 training arms (all 105 routed 3)
+- Cell 8b intrinsic band (single-shot, no planner involved)
+- All trigger-case volume numbers everywhere (30/35 routed per arm)
+- Seat-level and per-family analyses
+These cells used only the 6 trigger cases, which is why they escaped.
+
+**AFFECTED — two published verdicts are wrong, not merely weak:**
+
+1. **P8.2 (council's gate advantage) — WITHDRAWN.** arch-council's 0.00
+   [0.00,0.00] is 5/5 zero-route runs: the council never consulted anyone and
+   never ran the PRESERVE prompt. Its comparison against arch-single-spec's
+   0.15 is a neutral direct-answer prompt versus a standing-instruction
+   prompt, which is not a test of conditionality. We have NO valid measurement
+   of instruction-level gating for the council.
+
+2. **P13.3 ("every clause arm holds the gate at exactly 0.00") — WITHDRAWN,
+   and it was never tested.** All six Cell 13 arms are 5/5 zero-route on
+   case_7. All six therefore ran the IDENTICAL direct-answer prompt on the
+   gate case. The six identical 0.00 values are not evidence that
+   conditionality is a per-clause property; they are six measurements of the
+   same prompt. The clause manipulation had no effect on those runs by
+   construction. The Cell 13 verdict recorded this as "CONFIRMED, maximally" —
+   that is retracted.
+
+**Second path check (differential runtime directive).** The orchestrator
+appends a recency directive to sub-questions when the planner flags a question
+time-sensitive. If it fired at different rates across compared arms it would
+confound them. It does not: Cell 13 arms 100% uniform, additivity arms 100%
+uniform, Cell 11 arms 83% uniform, legal install arms 100% uniform. Cell 6c's
+gain arms vary 83-100% (5/6 vs 6/6 on single runs at n=6) — within n=6 noise,
+recorded but not disqualifying.
+
+**Consequence.** Cell 14 is not an expansion of an existing result. It is the
+FIRST valid test of instruction-level gating, because every previous gate
+measurement on a council arm ran a prompt other than the one under test. Both
+paper drafts must drop the calibration claim until Cell 14 reports.
+
+**Root cause and fix.** A silent fallback: the override is dropped with no
+error, no warning, and no field in the audit log recording which synthesis
+prompt was actually used. Three checks should have caught it and did not
+(Cell 8 verdict, 45-number verification audit, data-integrity audit) because
+all three verified output VALUES. Fix going forward: every harness that passes
+synthesis_system_override must assert routes are non-empty, and the run record
+must persist which system prompt was used so path can be audited from the
+ledger rather than reconstructed from code reading.
