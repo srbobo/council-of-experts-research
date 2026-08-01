@@ -367,13 +367,30 @@ v0.1, biomedical continued pretraining, no preference stage),
 Mistral-7B-Instruct-v0.3 (generic instruct control in BioMistral's family),
 and Qwen2.5-7B-Instruct.
 
-They are indistinguishable: $0.15$ $[0.04,0.28]$, $0.15$ $[0.00,0.41]$,
-$0.14$ $[0.04,0.26]$, $0.14$ $[0.06,0.24]$ respectively, with
+Three of the four are indistinguishable: Med42 $0.15$ $[0.04,0.28]$,
+Mistral-Instruct $0.14$ $[0.04,0.26]$, Qwen2.5 $0.14$ $[0.06,0.24]$, with
 trigger-light gates of $0.00$ throughout. A fifth independent measurement
 agrees---gpt-oss-20B single-shot under the same neutral prompt is $0.14$
-(\S\ref{sec:arch}). Our pre-registered prediction that preference-aligned
-lineage would show a higher band than continued-pretrain lineage was
-\textbf{falsified}, and falsified in an informative direction.
+(\S\ref{sec:arch})---so four models spanning four base architectures
+(Llama-3, Mistral, Qwen2.5, and a MoE) share one band.
+
+\textbf{The fourth candidate must be set aside, which costs us the
+prediction.} BioMistral's published figure was $0.15$ $[0.00,0.41]$, but a
+post-hoc integrity audit found that $26$ of its $30$ trigger runs are
+degenerate: $208$--$463$ character fragments that terminate on a colon after
+a setup sentence, with no analysis and no line breaks, under a
+$8{,}192$-token cap the model never approached. Restricting to the four
+substantive runs gives $0.29$ $[0.00,0.87]$---an interval too wide to
+locate anything on a scale where every other model sits at $0.14$--$0.15$.
+The direction of P8b.1 is unchanged under either reading (both intervals
+overlap Med42's heavily), but the honest verdict is that the prediction is
+\textbf{indeterminate rather than falsified}: our only
+continued-pretraining-lineage arm failed to produce measurable output, so
+the lineage contrast the cell was designed to make was never actually made.
+We report the model-invariance result, which does not depend on it, and
+withdraw the lineage claim. What survives is narrower and still useful: one
+domain-SFT-plus-DPO model and three generically instruction-tuned models,
+across four architectures, share a band to within $0.01$.
 
 The between-synthesizer differences of \S\ref{sec:register} therefore
 cannot be differences in baseline emission, since absent instructions every
@@ -395,9 +412,13 @@ supposed intrinsic disposition: we found one candidate (OpenBioLLM-8B) that
 ignores instructions in every message position and cannot emit the planner's
 JSON, making it unusable as a last writer whatever its band---the control
 surface operates through instructions, so following them is a prerequisite,
-not a bonus. The caveat: BioMistral's answers are $5$--$8\times$ shorter
-than the others ($\approx310$ characters), so its length-normalized estimate
-is coarse and its interval widest; this was registered before the data.
+not a bonus. The registered caveat---that BioMistral's answers would be short and its
+estimate coarse---turned out to understate the problem: the pre-run stability
+screen sampled $248$--$555$ characters, but production runs ranged
+$208$--$2{,}016$ and were bimodal within case, which the screen's three probes
+could not reveal. A minimum-length guard on any density-style metric, and a
+screen that samples the full case battery rather than three probes, would
+have caught this before the runs.
 
 \section{Which instruction does the work}
 \label{sec:clause}
@@ -448,7 +469,7 @@ nothing is flagged.
 
 \section{Limitations}
 \label{sec:limits}
-Our five behavior families reduce to four in practice: vocabulary-precision is below detection ($\le 0.02$ density) on every seat and was also the worst-calibrated family for the NLI instrument (AUC $0.738$, Youden $J=0$), so two independent instruments fail it---either our cases do not provoke it or it is not detectable as a surface feature. The composite is cutoff-dominated \emph{for some synthesizers but not others} (Qwen2.5 $0.554$, Phi-4 $0.909$, but gpt-oss only $0.018$, where modeled-assumptions dominates instead), and the gain-curve monotonicity holds for the composite but not for any individual family. Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor---weaker on that axis than the human-validated certainty metric of \cite{certdist}---and two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91, and its on-policy calibration-reward follow-up realized 49 pairs (its NLI directional gate was the binding filter) with best-of-$n$ distillation standing in for full RL; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and two gain-curve cells depart from strict monotonicity---Phi-4's anomalous $k{=}2$ and Qwen's $k{=}2$ dip---both reported as probable noise at $n{=}6$; a seeded replication would settle them. A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds, seven self-authored cases, and three local synthesizers $\le 20$B. The architecture comparison uses one model family (gpt-oss-20B) in every role and one instantiation of each design; debate and self-refine were implemented in their simplest standard forms and stronger variants may fare better. Frontier aggregators untested. The per-clause isolation (\S\ref{sec:clause}) ran on one synthesizer whose family profile we now know to be atypical; the Lead-dependence it implies is inferred from ledger profiles rather than tested directly, and a replication on a cutoff-dominant Lead is registered but not yet run. The intrinsic-band null covers five models at $\le 20$B under one neutral prompt; a different neutral phrasing, or frontier-scale models, could separate them. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
+Our five behavior families reduce to four in practice: vocabulary-precision is below detection ($\le 0.02$ density) on every seat and was also the worst-calibrated family for the NLI instrument (AUC $0.738$, Youden $J=0$), so two independent instruments fail it---either our cases do not provoke it or it is not detectable as a surface feature. The composite is cutoff-dominated \emph{for some synthesizers but not others} (Qwen2.5 $0.554$, Phi-4 $0.909$, but gpt-oss only $0.018$, where modeled-assumptions dominates instead), and the gain-curve monotonicity holds for the composite but not for any individual family. Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor---weaker on that axis than the human-validated certainty metric of \cite{certdist}---and two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91, and its on-policy calibration-reward follow-up realized 49 pairs (its NLI directional gate was the binding filter) with best-of-$n$ distillation standing in for full RL; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and two gain-curve cells depart from strict monotonicity---Phi-4's anomalous $k{=}2$ and Qwen's $k{=}2$ dip---both reported as probable noise at $n{=}6$; a seeded replication would settle them. A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds. A corpus audit surfaced three provenance defects in the earliest (Result-2) arms, none of which changes a reported interval but all of which weaken those arms' internal consistency: in \texttt{local-council-\{repro,spec,sft,dpo\}} the five ``seeds'' per case are in fact one run from an earlier session plus four from a later one, with a directional $5$--$8\%$ length offset in three of the four arms; \texttt{local-council-dpo-v2} carries six runs on the trigger-light case against five elsewhere, slightly over-weighting it in unweighted means; and for $133$ runs the recorded model field holds a batch tag (\texttt{cell2-seed}, \texttt{dpo-experiment}) rather than a model identifier, so per-run model provenance is unrecoverable from the file for those runs. No seed field was ever written, which is what allowed the split sessions to go unnoticed; seven self-authored cases, and three local synthesizers $\le 20$B. The architecture comparison uses one model family (gpt-oss-20B) in every role and one instantiation of each design; debate and self-refine were implemented in their simplest standard forms and stronger variants may fare better. Frontier aggregators untested. The per-clause isolation (\S\ref{sec:clause}) ran on one synthesizer whose family profile we now know to be atypical; the Lead-dependence it implies is inferred from ledger profiles rather than tested directly, and a replication on a cutoff-dominant Lead is registered but not yet run. The intrinsic-band null covers four usable models at $\le 20$B under one neutral prompt (a fifth, BioMistral, produced degenerate output and was withdrawn post-hoc, taking the preference-vs-pretraining lineage contrast with it); a different neutral phrasing, or frontier-scale models, could separate them. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
 
 \section{Conclusion}
 In multi-agent pipelines, epistemic disposition is not additive across stages: it is set by the last writer's register and that writer's instructions. Orchestration per se does not produce it---three specialists merged naively, or debating for two rounds, emit no more disposition than one model answering alone---and what the council buys is not magnitude but calibration: substantial disposition that stays silent when nothing warrants it, because its preservation instruction is conditional on real specialist signal. Upstream installation by prompting or exemplar tuning produces loud but indiscriminate behavior that the aggregator strips; preference optimization installs nothing at all---across three model lineages and a $3.2\times$ data dose---because the aggregator's register, not the seat, sets the ceiling. Its one dependable effect is subtractive: removing miscalibrated hedging where the base model has it, selectively under ORPO, bluntly under CPO, and on none of our seats reliably enough to treat as a design tool. The register itself withstands direct training of the synthesizer, and seat input is non-additive at the mouth---but the synthesis instructions form a monotone, $2$--$3\times$ gain control. In a multi-agent pipeline, the accessible control surface for epistemic disposition is not anyone's weights; it is the last writer's instructions. Builders who want calibrated pipelines should tune the synthesizer's instructions and choose the final model deliberately---and evaluate disposition at the pipeline's mouth, not the seat.

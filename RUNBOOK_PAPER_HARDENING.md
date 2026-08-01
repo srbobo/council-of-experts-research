@@ -1493,3 +1493,46 @@ Future amendments must be committed before launch, not alongside it.
 
 Confirmed: zero reg-openbio runs remain in the ledger (deleted unanalyzed as
 recorded in amendment #2).
+
+## DATA-INTEGRITY AUDIT (2026-08-01) — findings and dispositions
+
+Independent adversarial audit of all 1,293 run JSONs.
+
+**CLEAN:** zero object-repr leaks anywhere (the .content/.text bug never
+entered the corpus); zero byte-identical or normalized-identical outputs
+within any (mode, case) group; zero empty or sub-50-char outputs; filename
+mode/case agrees with JSON fields on 1,293/1,293 files; all Cell 8/11/13/8b
+arms exactly 7 cases x 5 seeds.
+
+**FALSE ALARM (checked, dismissed):** the audit reported 386 dangling
+audit_log_path values. Re-checked from the repo root: 386 present, 0
+dangling. The finding was a working-directory artifact. The paper's
+append-only-audit-log claim stands.
+
+**MATERIAL — reg-biomistral is not a usable arm.** 26 of 30 trigger runs are
+degenerate: 208-463 char fragments terminating on a colon after a setup
+sentence, no analysis, no newlines, under an 8192-token cap the model never
+approached. Distribution is bimodal WITHIN case (e.g. case_3: 208, 209, 234,
+1506, 1905). The pre-run stability screen sampled 248-555 and could not
+reveal this with three probes.
+  - Sensitivity: substantive-only (n=4) gives 0.29 [0.00,0.87] vs published
+    0.15 [0.00,0.41]. P8b.1's DIRECTION is unchanged under both readings
+    (both overlap Med42 heavily), but the interval is too wide to locate.
+  - DISPOSITION: P8b.1 is reclassified from FALSIFIED to **INDETERMINATE**.
+    The continued-pretraining arm failed to produce measurable output, so the
+    lineage contrast was never made. The lineage claim is WITHDRAWN.
+  - The model-invariance finding SURVIVES on four usable models spanning four
+    architectures (Med42 0.15, Mistral-Instruct 0.14, Qwen2.5 0.14, gpt-oss
+    0.14) but is now one domain-SFT+DPO model plus three generic instruct
+    models, not four distinct lineages. Paper corrected accordingly.
+  - Process fix: density-style metrics need a minimum-length guard, and
+    stability screens must sample the full case battery, not three probes.
+
+**DISCLOSED (no interval changes):** in local-council-{repro,spec,sft,dpo}
+the five per-case "seeds" are 1 run from an earlier session + 4 from a later
+one, with a directional 5-8% length offset in three of four arms;
+local-council-dpo-v2 has 6 case-7 runs vs 5 elsewhere; 133 runs record a
+batch tag (cell2-seed, dpo-experiment) in the model field instead of a model
+identifier. No seed field was ever written to any run, which is why the split
+sessions were invisible until the model field was cross-tabulated. All three
+now in the paper's limitations.
