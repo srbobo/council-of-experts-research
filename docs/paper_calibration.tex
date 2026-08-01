@@ -63,6 +63,25 @@ at inference time, weights cannot, and isolating the instruction clause by
 clause shows each lifting exactly the behavior it names and no other.
 \end{abstract}
 
+\begin{center}
+\fbox{\begin{minipage}{0.93\linewidth}\small
+\textbf{Draft status --- the central claim is currently confounded.} After
+this draft was written we found that the trigger-free question on which the
+calibration result rests is off-topic for the specialist cabinet by
+construction, so the planner routes to no specialists and the pipeline falls
+through to a direct-answer prompt that contains no preservation clauses. The
+council's $0.00$ therefore shows that nobody was consulted, not that a
+conditional instruction filtered anything. Within a single arm on that
+question, runs where the planner declined give $0.00$ and runs where it routed
+give $0.40$. The gating we observe is real but occurs at the \emph{planner},
+which this draft attributes to the instruction. A corrected experiment---
+trigger-free questions that are on-topic, so routing occurs---is registered
+and pending; \S\ref{sec:result} and \S\ref{sec:mech} will be rewritten
+according to its outcome. The elimination results in \S\ref{sec:not} and the
+clause isolation in \S\ref{sec:clause} are unaffected.
+\end{minipage}}
+\end{center}
+
 \section{Introduction}
 This paper reports one finding. In a multi-agent pipeline, epistemic
 calibration is produced by a conditional instruction to the final model,
