@@ -1444,3 +1444,52 @@ families they serve, accepting mild crowding. Also correct: the paper's
 majority of the block's gain there, and C2 does not — the mirror image of
 this cell. Falsified if C2 carries it again regardless of Lead, which would
 mean the numeric clause is privileged for reasons other than family match.
+
+## INDEPENDENT VERIFICATION AUDIT (2026-08-01)
+
+Adversarial re-computation of every published figure from raw run JSONs by an
+independent process, using a regex set verified byte-identical to
+train/build_ledger.py. Scope: Cells 8, 11, 8b, 13, 6c gain curve, hot-seat
+additivity, and the Qwen decomposition chain.
+
+**Result: 45/45 point estimates reproduce within +/-0.006; every published
+95% CI matches to the reported 2 decimals. Zero wrong numbers.** Filenames
+agree with their JSON mode/case_id fields on all 1,293 runs (zero mismatch).
+Case coverage confirmed balanced: every Cell 8/11/13/8b arm is exactly
+7 cases x 5 seeds (30 trigger + 5 gate).
+
+**Two real defects found and FIXED (both wording, not arithmetic):**
+
+1. **"Monotonically on all three Leads" was literally false.** Spearman rho
+   (+1.00 / +0.80 / +0.80) is a RANK correlation, not monotonicity. Only
+   gpt-oss increases at every step. Qwen dips at k=2 (0.999 -> 0.954) and
+   Phi-4 at k=3 (1.528 -> 0.675). The Phi-4 exception was disclosed; **the
+   Qwen dip was disclosed nowhere.** Corrected in the abstract, the figure
+   caption, the Result-3 text, the appendix summary, and limitations, which
+   now discloses both dips. The abstract's "2-3x full-scale" also excluded
+   Phi-4's actual 1.30x and is now scoped per-Lead.
+2. **Stale run count.** Abstract said "~630" and "628 pre-registered audited
+   runs"; reproducibility paragraph said 628. True count is 1,293 (628 was
+   the pre-hardening total; cells 8/13/8b/11 added 210+210+140+105). All
+   corrected.
+
+**PRE-REGISTRATION PRECEDENCE (git-verifiable by any third party).**
+Commit introducing each pre-registration vs. earliest run file for its modes:
+
+| cell | prereg committed (UTC) | first run (UTC) | verdict |
+|---|---|---|---|
+| 8  | 07-27 23:02 | 07-27 23:04 | OK (+2 min) |
+| 11 | 07-29 12:26 | 07-30 10:49 | OK (+22.4 h) |
+| 8b | 07-30 18:35 | 07-30 21:28 | OK (+2.9 h) |
+| 13 | 07-30 21:35 | 07-31 01:20 | OK (+3.8 h) |
+
+**Audit-trail weakness, disclosed:** Cell 8b's two mid-cell AMENDMENTS were
+written to this runbook before the bench was launched, but were COMMITTED 33
+seconds AFTER the first retained run (commit 83baf63 at 21:28:42; first
+reg-med42 run 21:28:09). Git therefore does not independently establish that
+those amendments preceded the data, unlike cells 8/11/13 whose registrations
+were committed first. The Cell 13 correction has proper precedence (+6 min).
+Future amendments must be committed before launch, not alongside it.
+
+Confirmed: zero reg-openbio runs remain in the ledger (deleted unanalyzed as
+recorded in amendment #2).
