@@ -1367,3 +1367,80 @@ the surviving items keep their original numbers (so a single-clause arm may
 read "3. ... 5."). This preserves comparability with 6c, which did the same;
 the numbering gap is an artifact both cells share and is recorded here as a
 minor shared confound rather than silently fixed in one cell only.
+
+## CELL 13 VERDICT — one clause carries the block, but WHICH clause is Lead-dependent (2026-08-01, 210 runs, zero failures)
+
+Lead: gpt-oss-20B every phase. Deletion-without-renumbering, per registration.
+
+| arm | trigger [95% CI] | gate [95% CI] | lift | % of full gain |
+|---|---|---|---|---|
+| none (C1-C4 removed) | 0.20 [0.14,0.26] | 0.00 [0,0] | - | - |
+| C1 tension-ack only | 0.19 [0.11,0.27] | 0.00 [0,0] | -0.01 | -4% |
+| **C2 numeric only** | **0.64 [0.53,0.77]** | 0.00 [0,0] | **+0.44** | **126%** |
+| C3 vocabulary only | 0.18 [0.14,0.22] | 0.00 [0,0] | -0.02 | -6% |
+| C4 caveats only | 0.20 [0.14,0.26] | 0.00 [0,0] | -0.00 | -1% |
+| ALL (C1-C4) | 0.55 [0.46,0.67] | 0.00 [0,0] | +0.35 | 100% |
+
+Per-family (trigger cases) — every clause lifts ITS OWN named family:
+| arm | cutoff | modeled | precise | jurisd | hedging |
+|---|---|---|---|---|---|
+| none | 0.000 | 0.003 | 0.000 | 0.045 | 0.151 |
+| C2 numeric | 0.014 | **0.499** | 0.011 | 0.026 | 0.095 |
+| C3 vocabulary | 0.003 | 0.016 | **0.014** | 0.031 | 0.115 |
+| C4 caveats | **0.035** | 0.018 | 0.011 | 0.029 | 0.101 |
+| ALL | 0.018 | 0.339 | 0.014 | 0.035 | 0.148 |
+
+**P13.1 FALSIFIED.** C4 (caveats) recovers -1% of the block's gain, not the
+predicted >=50%. It lands exactly on the no-clause baseline.
+**P13.2 CONFIRMED.** C3 0.18 vs none 0.20, CIs overlap. The refinement: C3 is
+not ignored — it lifts precise 0.000 -> 0.014 — but the family is too rare to
+move the composite. Same for C4 (cutoff 0.000 -> 0.035).
+**P13.3 CONFIRMED, maximally.** Every arm gates at 0.00 [0.00,0.00]. Each
+clause is independently conditional; no single clause breaks calibration.
+**P13.4 ANSWERED.** C1 carries NOTHING (0.19 vs 0.20). The 3-vs-4 counting
+convention is settled: three clauses, not four. Independent cross-check as
+pre-registered: 6c's k=0 (C1 retained, no PRESERVE) = 0.16, agreeing with both
+c13-none and c13-c1.
+
+**Sub-additivity.** Sum of single-clause lifts +0.41 vs full-block +0.35
+(ratio 0.87). C2 ALONE (0.64) is numerically ABOVE the full block (0.55),
+CIs overlapping. Adding clauses that target rare families slightly crowds the
+one clause that works — the likely reason Cell 6c's gain curve is monotone
+but compressive.
+
+**CRITICAL SCOPING — the active clause is Lead-dependent, and gpt-oss was the
+wrong Lead to generalize from.** Dominant family at k=3, from existing ledger:
+| Lead | cutoff | modeled | dominant |
+|---|---|---|---|
+| gpt-oss (this cell, n=30) | 0.018 | 0.339 | modeled |
+| gpt-oss (6c k3, n=6) | 0.026 | 0.328 | modeled |
+| Phi-4 (6c k3, n=6) | 0.157 | 0.265 | modeled |
+| Qwen2.5 (6c k3, n=6) | 0.532 | 0.236 | **cutoff** |
+| Qwen2.5 (6b repro, n=30) | 0.554 | 0.132 | **cutoff** |
+| Phi-4 (council v2, n=6) | 0.909 | 0.248 | **cutoff** |
+
+gpt-oss barely emits cutoff-disclosure at all (0.018-0.026), so C4 has nothing
+to amplify on THIS Lead. On Qwen and production Phi-4, cutoff dominates and
+C4 would be expected to carry the block. Chosen for dynamic range, gpt-oss
+turned out to have the most atypical family profile — an unforeseen cost of
+that registered choice.
+
+**The general finding, stated at the right level:** the PRESERVE block's gain
+is carried by whichever single clause targets the family its synthesizer
+already produces in volume; clauses targeting families the Lead does not
+emit are inert on the composite despite working on their own family. This is
+STRONGER than the registered per-clause claim and it explains Cell 6c's
+count-curve without appealing to count at all.
+
+**Consequence.** The paper must NOT say "write the numeric clause." It should
+say: identify which behavior family your synthesizer already produces, and
+write the conditional clause for THAT family; keep the others for the
+families they serve, accepting mild crowding. Also correct: the paper's
+"composite is cutoff-dominated" is true for Qwen/Phi-4 but FALSE for gpt-oss
+(0.018) — the statement needs scoping to the synthesizer.
+
+**Follow-up registered (Cell 13b):** replicate Cell 13 on a Qwen2.5 Lead
+(cutoff-dominant, 0.554). Prediction P13b.1: C4 (caveats) carries the
+majority of the block's gain there, and C2 does not — the mirror image of
+this cell. Falsified if C2 carries it again regardless of Lead, which would
+mean the numeric clause is privileged for reasons other than family match.

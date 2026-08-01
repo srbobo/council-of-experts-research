@@ -168,7 +168,7 @@
     </div>
 
     <h2>Status board</h2>
-    <p class="text-soft">Thirteen cells executed (including the synthesizer-locus pair 6b/6c, the
+    <p class="text-soft">Fourteen cells executed (including the synthesizer-locus pair 6b/6c, the
     architecture comparison, and the calibration-reward register test); four remain queued (none blocks a published claim). Hover a
     prediction chip for its definition.</p>
 
@@ -260,8 +260,8 @@
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">13</span></div>
         <div class="cm-name">Per-clause isolation</div>
-        <div class="cm-tile__meta">Which PRESERVE clause carries the gain? 6 arms, one clause each — resolves Cell 6c's count/identity confound</div>
-        <div class="cm-tile__foot"><span class="pchip" data-tip="P13.1: the caveats clause (C4) alone recovers ≥50% of the full block's gain. P13.2: the precise-vocabulary clause (C3) is indistinguishable from none — it names a family below detection; falsified if it lifts via some other family (off-target priming). P13.3: every arm holds the gate near zero (each clause is conditional). P13.4 exploratory: does the non-PRESERVE tension clause carry disposition alone? Registered before any runs.">P13.1–.3</span><span class="cm-status queued">Queued</span></div>
+        <div class="cm-tile__meta">210 runs · one clause carries the block — but which one is Lead-dependent</div>
+        <div class="cm-tile__foot"><span class="pchip" data-tip="P13.1 FALSIFIED: the caveats clause recovers −1% of the gain, not ≥50%; the numeric clause carries 126% of it. P13.2 CONFIRMED, P13.3 CONFIRMED (every arm gates at 0.00), P13.4 answered (the tension clause carries nothing — the block is three working clauses, not four). Every clause lifts its OWN named family; only the family with headroom moves the composite, and which family that is depends on the synthesizer.">P13.1–.4</span><span class="cm-status done" style="background:color-mix(in srgb, var(--color-error) 13%, transparent); color:var(--color-error)">✗ P13.1 falsified</span></div>
       </div>
       <div class="cm-tile queued">
         <div class="cm-tile__top"><span class="cm-num">12</span></div>
@@ -848,6 +848,64 @@
       </div>
     </section>
 
+    <!-- CELL 13 -->
+    <section class="cm-cell">
+      <div class="cm-cell__head">
+        <span class="cm-cell__num">Cell 13</span>
+        <span class="cm-name">Per-clause isolation — which instruction actually does the work?</span>
+        <span class="cm-verdict refute">P13.1 ✗ falsified · P13.2, P13.3 ✓ · P13.4 answered</span>
+      </div>
+      <div class="cm-part hyp"><span class="cm-part__lbl">Hypothesis (P13)</span>
+        <p>Cell 6c varied the <em>number</em> of PRESERVE clauses but dropped them in a fixed order,
+        so count was confounded with identity — the monotone gain curve couldn't say whether all
+        clauses contribute or one carries the effect. Predicted: the caveats clause (C4) carries
+        ≥50%, since the composite was believed cutoff-dominated. A correction was recorded before
+        running: the registration wrongly called the baseline "byte-identical" to Cell 6c's k=0,
+        which in fact <em>retains</em> the tension clause — so a true no-clause baseline was built,
+        leaving 6c's k=0 as an independent cross-check.</p>
+      </div>
+      <div class="cm-part exp"><span class="cm-part__lbl">Experiment</span>
+        <p>Six arms — none / C1 tension-ack / C2 numeric / C3 vocabulary / C4 caveats / all —
+        gpt-oss-20B in every phase so orchestration is fixed and only the clause varies. Each
+        variant asserts its exact surviving clause set before any run. 7 cases × 5 seeds × 6 arms
+        = 210 runs, zero failures.</p>
+      </div>
+      <div class="cm-part res"><span class="cm-part__lbl">Results</span>
+        <div class="cm-tablewrap"><table class="cm-data">
+          <thead><tr><th>Arm</th><th class="n">trigger density</th><th class="n">gate</th><th class="n">% of full gain</th></tr></thead>
+          <tbody>
+            <tr><td>none</td><td class="n">0.20 [0.14,0.26]</td><td class="n">0.00</td><td class="n">—</td></tr>
+            <tr><td>C1 tension-ack</td><td class="n">0.19 [0.11,0.27]</td><td class="n">0.00</td><td class="n">−4%</td></tr>
+            <tr class="hl"><td><strong>C2 numeric</strong></td><td class="n"><strong>0.64 [0.53,0.77]</strong></td><td class="n">0.00</td><td class="n"><strong>126%</strong></td></tr>
+            <tr><td>C3 vocabulary</td><td class="n">0.18 [0.14,0.22]</td><td class="n">0.00</td><td class="n">−6%</td></tr>
+            <tr><td>C4 caveats</td><td class="n">0.20 [0.14,0.26]</td><td class="n">0.00</td><td class="n cm-fail">−1%</td></tr>
+            <tr><td>ALL (C1–C4)</td><td class="n">0.55 [0.46,0.67]</td><td class="n">0.00</td><td class="n">100%</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>One clause carries the block — and it isn't the predicted one.</strong> Numeric
+        framing alone delivers 126% of the full block's gain; caveats, vocabulary, and tension-ack
+        each land on the baseline. P13.4 is settled too: the tension clause carries nothing, so the
+        block is <em>three</em> working clauses, not four (Cell 6c's k=0, which retains it, agrees
+        at 0.16).</p>
+        <p><strong>Why — and it rules out priming.</strong> Every clause lifts exactly the family it
+        names: numeric moves modeled-assumptions 0.003→0.499, caveats moves cutoff 0.000→0.035,
+        vocabulary moves precision 0.000→0.014, and none disturbs the others. These are
+        <em>targeted behavior specifications</em>, not general priming. What differs is headroom —
+        only modeled-assumptions has enough mass under this synthesizer to move the aggregate.</p>
+        <p><strong>The scoping that matters.</strong> Across the ledger, cutoff-disclosure dominates
+        for Qwen2.5 (0.554) and production Phi-4 (0.909) but is nearly absent for gpt-oss (0.018) —
+        the Lead we chose precisely for its dynamic range, which turned out to have the most atypical
+        family profile. So the finding is <em>not</em> "write the numeric clause." It is: <strong>the
+        block's gain is carried by whichever clause targets the family your synthesizer already
+        produces in volume</strong>; clauses aimed at families a writer doesn't emit are inert on the
+        composite while still working on their own family. That also explains 6c's count-curve without
+        appealing to count, and the mild sub-additivity here (singles sum to +0.41 vs the block's
+        +0.35) explains why the curve is compressive.</p>
+        <p>One property is unconditional: <strong>every arm gates at exactly 0.00 [0.00,0.00]</strong>.
+        Conditionality is a per-clause property, not something that emerges from the assembled block.</p>
+      </div>
+    </section>
+
     <!-- PREDICTIONS GLOSSARY -->
     <section class="cm-preds">
       <h2>All predictions — registered in advance</h2>
@@ -872,9 +930,9 @@
       <div class="cm-pred"><div class="cm-pred__id">P8b.1</div><div class="cm-pred__body">Register provenance: the preference-aligned lineage shows a higher register than the continued-pretrain lineage. <span class="outcome refute">✗ falsified (Cell 8b) — Med42 0.15 vs BioMistral 0.15, identical; lineage does not predict register</span><span class="fals">Falsified if: CIs overlap or invert. They coincided — and all four models did.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P8b.2</div><div class="cm-pred__body">Domain pretraining ≠ disposition: BioMistral does not exceed its same-family instruct control (Mistral-7B-Instruct). <span class="outcome confirm">✓ confirmed (Cell 8b) — 0.15 vs 0.14, but trivially: nothing differs anywhere</span><span class="fals">Falsified if: BioMistral sits clearly above its instruct cousin.</span></div></div>
       <div class="cm-pred"><div class="cm-pred__id">P12.1</div><div class="cm-pred__body">Register portability: weight-space interpolation (SLERP) moves the Lead register monotonically toward a high-register donor's band, with no training. <span class="outcome open">◔ registered (Cell 12)</span><span class="fals">Falsified if: all merged registers sit within the stock band's CI, or non-monotone — registers resist interpolation as they resist training.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P13.1</div><div class="cm-pred__body">One clause carries the block: the PRESERVE-caveats clause alone recovers ≥50% of the full block's gain over no-block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: C4 alone recovers &lt;50% — the effect is genuinely distributed and the block must be kept whole.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P13.2</div><div class="cm-pred__body">The precise-vocabulary clause is inert: it names a family below detection on both instruments, so alone it should be indistinguishable from no block. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: it lifts significantly anyway — meaning these instructions work by general priming rather than targeted behavior specification, which would weaken the family-level story.</span></div></div>
-      <div class="cm-pred"><div class="cm-pred__id">P13.3</div><div class="cm-pred__body">Conditionality is per-clause: every single-clause arm holds the trigger-light gate near zero, since each clause is an if-then over upstream evidence. <span class="outcome open">◔ registered (Cell 13)</span><span class="fals">Falsified if: any single-clause arm gates materially above the full block.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.1</div><div class="cm-pred__body">One clause carries the block: the PRESERVE-caveats clause alone recovers ≥50% of the full block's gain over no-block. <span class="outcome refute">✗ falsified (Cell 13) — C4 recovers −1%; the NUMERIC clause carries 126%</span><span class="fals">Falsified if: C4 alone recovers &lt;50%. It recovered nothing — but the winner is Lead-dependent, not universally the numeric clause.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.2</div><div class="cm-pred__body">The precise-vocabulary clause is inert: it names a family below detection on both instruments, so alone it should be indistinguishable from no block. <span class="outcome confirm">✓ confirmed (Cell 13) — 0.18 vs 0.20; it does lift its own family (0.000→0.014), just too rare to move the composite</span><span class="fals">Falsified if: it lifts significantly anyway — meaning these instructions work by general priming rather than targeted behavior specification, which would weaken the family-level story.</span></div></div>
+      <div class="cm-pred"><div class="cm-pred__id">P13.3</div><div class="cm-pred__body">Conditionality is per-clause: every single-clause arm holds the trigger-light gate near zero, since each clause is an if-then over upstream evidence. <span class="outcome confirm">✓ confirmed (Cell 13) — every arm gates at exactly 0.00 [0.00,0.00]</span><span class="fals">Falsified if: any single-clause arm gates materially above the full block.</span></div></div>
     </section>
 
     <p class="text-faint" style="margin-top:var(--space-5); font-size:var(--size-1)">
