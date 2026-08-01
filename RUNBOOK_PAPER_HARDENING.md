@@ -1628,3 +1628,133 @@ main paper asks where disposition is decided (at the point of writing); this
 one asks what the specialists are for. They can coexist — this is the
 narrower, more immediately actionable claim, and it is the one that
 contradicts common practice most directly.
+
+## CELL 14 PRE-REGISTRATION — trigger-free control expansion (registered 2026-08-01, before any runs)
+
+**Why.** The calibration finding — the council's 0.00 [0.00,0.00] against a
+prompted single model's 0.15 [0.08,0.22] — is the headline of the
+paper_calibration draft and rests on ONE trigger-free question at n=5 per arm.
+It is the thinnest support in the paper and the first thing a reader will
+press on. Two failure modes are currently indistinguishable: (a) the council
+genuinely gates, or (b) case_7 happens to be a question this arrangement finds
+easy, and the zero is a property of the question rather than the mechanism.
+
+**Design.** Three NEW trigger-free questions, written to the same construction
+rule as case_7 and BEFORE any are run: every quantity the question needs is
+stated in it; the subject matter is settled (no post-2024 dependency); a
+single jurisdiction or regime applies; no modelling is required. Written to
+span the three domains (one healthcare-leaning, one legal, one finance) so the
+result is not an artifact of one subject area. Cases are fixed and committed
+before the first run.
+
+Arms — the decisive contrast plus two references, all with gpt-oss in every
+role, identical to the Cell 8 harness so the new runs pool with the old:
+  arch-council       conditional instruction over specialist signal
+  arch-single-spec   unconditional instruction, no specialists
+  arch-single        no instruction (floor reference)
+  arch-flat          specialists, no conditional instruction
+3 new cases x 5 seeds x 4 arms = 60 runs. Combined with the existing case_7
+runs this gives n=20 per arm on trigger-free questions, up from n=5.
+
+**Predictions.**
+- P14.1 (the council gates generally, not just on case_7): pooled across all
+  four trigger-free questions, arch-council's density has an upper CI bound
+  below 0.10. FALSIFIED IF the upper bound reaches 0.10 or above — the zero
+  was case-specific and the headline must be restated.
+- P14.2 (the contrast survives expansion): arch-council and arch-single-spec
+  remain DISJOINT on pooled trigger-free density. FALSIFIED IF the intervals
+  overlap at n=20, which would mean the effect was an artifact of small n.
+- P14.3 (per-question consistency, exploratory): report each of the four
+  questions separately. No directional prediction, but if the council gates on
+  three and fails on one, that question's content is diagnostic and we will
+  report it rather than pool it away.
+
+**Registered consequences.** If P14.1 and P14.2 hold, the calibration claim is
+reported at n=20 and the limitation about single-question support is removed.
+If either is falsified, the headline of paper_calibration is WRONG as stated
+and must be rewritten: the honest fallback is that conditional instructions
+reduce unwarranted qualification on some questions, with the conditions under
+which they do so unknown. That consequence is registered now so it cannot be
+softened later.
+
+**Guard against a known failure mode.** The construction rule must be applied
+BEFORE seeing any model output. A question that merely turns out to produce
+low hedging is not trigger-free; it must be trigger-free by construction, on
+the stated criteria, or it does not enter the set. Case texts are committed
+in the same commit as this registration.
+
+### CELL 14 — CONFOUND FOUND WHILE REGISTERING; DESIGN CORRECTED (2026-08-01, before any runs)
+
+**The calibration headline is confounded.** Writing the registration surfaced
+a fact in the code that invalidates the mechanism as stated in
+docs/paper_calibration.tex. case_7 is OFF-TOPIC for the cabinet by
+construction (documented in examples/test_cases.py: "the planner is expected
+to route to NO specialists"). When routes are empty the orchestrator does NOT
+use LEAD_SYNTHESIS_SYSTEM at all — it falls through to
+LEAD_DIRECT_ANSWER_SYSTEM, which contains no PRESERVE clauses.
+
+Verified across every arm with case_7 runs:
+
+| arm | routes | n | trigger-free density | path taken |
+|---|---|---|---|---|
+| arch-council | none | 5 | **0.00** | direct-answer (no PRESERVE) |
+| arch-flat | none | 5 | 0.06 | direct-answer |
+| c13-all | none | 5 | 0.00 | direct-answer |
+| local-council-repro | none | 1 | **0.00** | direct-answer |
+| local-council-repro | 2 seats | 4 | **0.40** | synthesis |
+| cell11-cal-k3 | 3 seats | 5 | 0.45 | synthesis |
+| cell6b-lead-repro | 3 seats | 5 | 0.15 | synthesis |
+| cell11-stock-k0 | 3 seats | 5 | 0.04 | synthesis |
+
+Pooled: no specialists consulted 0.02 (n=16); specialists consulted 0.25
+(n=19). The cleanest evidence is WITHIN local-council-repro, where the same
+arm on the same question gives 0.00 when the planner declines and 0.40 when
+it routes.
+
+**What this means.** arch-council's 0.00 [0.00,0.00] is NOT evidence that the
+conditional PRESERVE instruction filters unwarranted qualification. It is
+evidence that the planner declined to consult anyone, so the disposition-
+bearing prompt was never invoked. The comparison against arch-single-spec
+(0.15) is therefore between an arm running a neutral direct-answer prompt and
+an arm running a standing disposition instruction — which is not a test of
+conditionality at all. When the council DOES run its synthesis path on this
+question it hedges at 0.40-0.45, i.e. WORSE than single+spec.
+
+The gating that exists is real but happens at the PLANNER, not at the
+synthesis instruction, and the paper attributes it to the wrong component.
+
+**Corrected design.** The new trigger-free questions must be ON-TOPIC for the
+cabinet so the planner routes normally, isolating instruction-level gating
+from planner-level gating. Three new questions, construction-labelled before
+any runs: squarely within healthcare / legal / finance so routing occurs, but
+warranting no qualification (all quantities stated, settled subject matter,
+single regime, no modelling required). Routing is VERIFIED per run and any run
+with zero routes is reported separately, never pooled.
+
+Arms: arch-council, arch-single-spec, arch-flat, arch-single.
+3 cases x 5 seeds x 4 arms = 60 runs.
+
+**Revised predictions.**
+- P14.1 (instruction-level gating exists): on ON-TOPIC trigger-free questions
+  where specialists ARE consulted, arch-council's density upper CI bound is
+  below 0.10. FALSIFIED IF it reaches 0.10+, which given the 0.40-0.45
+  observed on case_7 under routing is a live possibility.
+- P14.2 (the contrast survives): arch-council remains disjoint from
+  arch-single-spec on these questions. FALSIFIED IF intervals overlap.
+- P14.3 (planner vs instruction attribution, exploratory): report the
+  zero-route rate per arm per question. If the council only gates when the
+  planner declines, the mechanism is routing and must be described as such.
+
+**Registered consequence.** If P14.1 is falsified, the calibration paper's
+central claim is WRONG and must be rewritten: conditional instructions would
+then not be shown to suppress unwarranted qualification, and the council's
+apparent advantage would be attributable to a planner that sometimes declines
+to engage. That rewrite is committed to in advance here.
+
+**Process note.** This confound survived Cell 8's verdict, the paper's Result
+1 rewrite, an independent verification audit of all 45 published numbers, and
+a full data-integrity audit — because every one of those checked whether the
+NUMBERS were right, and none checked whether the PIPELINE PATH was the one the
+claim assumed. Recomputation cannot catch a wrong causal attribution. Future
+verdicts involving the council must assert the execution path, not just the
+output value.
