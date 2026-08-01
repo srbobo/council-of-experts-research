@@ -1536,3 +1536,55 @@ batch tag (cell2-seed, dpo-experiment) in the model field instead of a model
 identifier. No seed field was ever written to any run, which is why the split
 sessions were invisible until the model field was cross-tabulated. All three
 now in the paper's limitations.
+
+## PAPER v0.7 — TRANSPORT-VS-RENDERING REFRAME (2026-08-01)
+
+**Retitled:** "The Last Writer Wins: Installing Epistemic Disposition..." ->
+**"Rendered, Not Transported: Epistemic Disposition in Multi-Agent LLM
+Pipelines."** 20pp, compiles clean, 34 refs.
+
+**Mechanism retitled.** "Synthesizer register" -> **rendering function**
+R(evidence, instructions) -> emitted disposition, with **instruction gain**
+(g) as the per-model coefficient. "Register" RETAINED as a descriptive term
+for a writer's observed band under a fixed instruction set, explicitly
+demoted from primitive to product (g x instructions), justified by Cell 8b's
+model-invariant intrinsic band. Mechanism statement is now
+disposition ~ g_writer x I(instructions, evidence).
+
+**New lead: the transport test.** The paper now opens by naming the dominant
+account (uncertainty as cargo erased at agent interfaces; remedies =
+numeric propagation, latent carriers) and reporting a direct test against it.
+The airtight comparison is WITHIN-Lead: k=0 vs k=3 run the same planner, same
+seats, same seat outputs into synthesis; only the prompt differs. Density
+moves 0.159 -> 0.525 (gpt-oss) and 0.575 -> 1.211 (Qwen). Cell 13 tightens it
+to a SINGLE clause over identical upstream text: 0.20 -> 0.64. Under a
+transport account these conditions are indistinguishable; they are not.
+Qualifications an instruction can restore were never erased in transit.
+
+**Scoping stated in the paper, not just here:** this is NOT a claim that
+interfaces never lose uncertainty. Schema-constrained tool calls plainly do
+discard epistemic state and the transport literature is right about them. The
+claim is about which failure DOMINATES when the interface is prose, the usual
+case for specialist-to-synthesizer aggregation. The two accounts are framed as
+complementary, with the distinction stated as testable and the test reported.
+
+Note on evidence choice: Cell 8's flat-merge vs council contrast (0.16 vs
+0.57) is used as CORROBORATION, not as the primary transport test, because
+those arms differ slightly upstream (the council's planner dispatches
+sub-questions; flat merge gives seats the raw query). The within-Lead k=0/k=3
+and single-clause comparisons hold upstream text genuinely fixed and carry
+the argument.
+
+**Sections revised:** title, date (v0.7), abstract (rewritten to lead with
+the reframe and to state the four rendering-function properties), intro (new
+"Transport or rendering?" opening + scoping paragraph), contributions (six,
+led by the transport-vs-rendering test), related work (new "The transport
+account, and where we disagree" block), Result 3 (retitled "the last writer's
+rendering function", new "The transport test" paragraph), provenance
+(retitled "Instruction gain: the intrinsic band is model-invariant", with the
+g x I formalism), conclusion (rewritten), glossary (four new entries:
+rendering function, instruction gain, register-as-descriptive,
+transport vs rendering), figure captions.
+
+Website updated to match: new lead section on the home page, routes tree
+final node and paper title, glossary entries.

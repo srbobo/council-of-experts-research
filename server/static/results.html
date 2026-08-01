@@ -1230,7 +1230,9 @@
             <li><strong>Hedging</strong>: stated conditionality of a claim ("this may vary if…") — not refusal, not vagueness.</li>
             <li><strong>Synthesis stripping</strong>: behaviors measurably present at a seat's output but absent from the final output after the Lead's compression.</li>
             <li><strong>Responsive vs habitual</strong>: responsive behaviors appear only when domain triggers warrant them (tested by the trigger-light case 7 gate); habitual behaviors fire regardless.</li>
-            <li><strong>Synthesizer register</strong>: a Lead model's characteristic output disposition density — writer-specific and largely independent of what the seats feed it.</li>
+            <li><strong>Rendering function</strong>: the last writer's mapping from upstream evidence and synthesis instructions to emitted disposition. Its evidence term is weak, its instruction term strong — disposition is a property of this mapping, not of what reaches the writer.</li>
+            <li><strong>Instruction gain (g)</strong>: the per-model coefficient in that mapping — how strongly a writer amplifies a disposition instruction. The only part not settable from the prompt, and the part that resisted weight training at every locus.</li>
+            <li><strong>Register</strong>: descriptive term for a writer's <em>observed</em> band under a fixed instruction set. Retained for continuity, but it is a product (g × instructions), not a primitive: intrinsic bands are model-invariant at ≈0.14.</li>
           </ul>
         </details>
         <p>
@@ -1344,7 +1346,7 @@
           raise it.
         </p>
 
-        <h4>The mechanism, located (synthesizer-register ablation — 72 runs)</h4>
+        <h4>The mechanism, located (rendering-function ablation — 72 runs)</h4>
         <p>
           Crossing two seat arms (baseline vs the high-density SFT seat) with three Leads
           (Phi-4, gpt-oss-20B, Qwen2.5-7B) and the synthesis prompt with/without its
@@ -1372,12 +1374,33 @@
           hedging reads as stylistic noise); (3) <strong>the PRESERVE instructions are a
           gain control</strong> — removing them collapses output density 2-5× on every
           Lead. (This overturned our own registered prediction that instructions would
-          not matter.) Mechanism statement: <em>final disposition ≈ f(the Lead's register
+          not matter.) Mechanism statement: <em>final disposition ≈ g<sub>writer</sub> × I(instructions, evidence) — the Lead's rendering function (historically: its register
           × its synthesis instructions), nearly independent of seat input. ORPO "survived"
           by staying inside the register; prompting and SFT "stripped" by exceeding it.</em>
           Practical implication: to control a pipeline's epistemic posture, tune the
           synthesizer's instructions and choose the last writer deliberately — installing
           behavior upstream is mostly futile.
+        </p>
+
+        <h4>Rendered, not transported — the paper's central claim</h4>
+        <p>
+          When a pipeline's answer arrives without the qualifications its specialists wrote, the
+          standard diagnosis is a <strong>transport</strong> failure: uncertainty is treated as cargo
+          that agent interfaces erase, motivating proposals to attach uncertainty-bearing latent
+          carriers alongside the text. Our measurements point elsewhere. Hold the pipeline, the
+          models, and the upstream specialist text fixed; change <em>only</em> the final writer's
+          instructions. Output disposition moves <strong>3–4×</strong> — 0.16 → 0.53 as preservation
+          clauses are restored, and 0.20 → 0.64 from a single clause. Nothing upstream differs
+          between those conditions.
+        </p>
+        <p>
+          Qualifications that an instruction can restore were never erased in transit. They were in
+          the transmitted text throughout; what varied is whether the last writer <strong>rendered</strong>
+          them. Disposition is a rendering property of the final writer, not a transport property of
+          the pipeline — and the remedy is correspondingly cheap: an instruction, at one place, to a
+          model whose internals need not be visible. (This is not a claim that interfaces never lose
+          uncertainty — schema-constrained tool calls plainly do. It is a claim about which failure
+          dominates when the interface is prose, which is the usual case for aggregation.)
         </p>
 
         <h4>What orchestration actually buys (Cell 8) — Result 1, rewritten</h4>
@@ -1425,7 +1448,7 @@
           hedging where the base model has it, ORPO selectively and CPO bluntly — and only the last
           writer decides what survives.</em> Full data on the <a href="/cells">Cells</a> page.
         </p>
-        <h4>The register stress-tested (Cells 6b + 6c) — the control surface is the instructions</h4>
+        <h4>The rendering function stress-tested (Cells 6b + 6c) — the control surface is the instructions</h4>
         <p>
           Two final synthesizer-locus experiments closed the mechanism. <strong>Training the Lead itself
           (Cell 6b):</strong> ORPO on the synthesizer, using 88 content-controlled synthesis-level pairs

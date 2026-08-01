@@ -28,9 +28,9 @@
 
 \newcommand{\xmark}{{\color{red!70!black}\ding{55}}}
 
-\title{\textbf{The Last Writer Wins:\\ Installing Epistemic Disposition in Multi-Agent LLM Pipelines}}
+\title{\textbf{Rendered, Not Transported:\\ Epistemic Disposition in Multi-Agent LLM Pipelines}}
 \author{Sam Bobo}
-\date{Draft v0.6 --- July 2026 \quad$\vert$\quad Target: arXiv cs.CL}
+\date{Draft v0.7 --- August 2026 \quad$\vert$\quad Target: arXiv cs.CL}
 
 \begin{document}
 \sloppy  % prefer inter-word stretch over overfull boxes (arXiv-safe)
@@ -38,30 +38,158 @@
 
 \begin{abstract}
 \noindent
-Multi-agent LLM pipelines route work through specialist models and aggregate their outputs through a synthesizer. We study \emph{disposition}---what a model chooses to emit independent of what it knows, operationalized as five epistemic behaviors, four of which proved detectable in our cases (training-cutoff disclosure, modeled-assumption flagging, jurisdictional distinguishing, and hedging; vocabulary-precision fell below detection under two independent instruments)---and ask where disposition in a pipeline comes from and whether it can be installed. Across ${\sim}1{,}300$ audited runs of a four-model ``Council of Experts'' on consumer hardware, we find: (1)~the lift usually credited to multi-agent orchestration is not a property of the topology: holding the model fixed and varying only the architecture across six designs (single-shot, flat merge, two-round debate, self-refine, prompted single model, and the council), multi-agent structure alone lifts disposition negligibly (flat merge $0.16$ vs.\ single-shot $0.14$) and a single prompted model matches the full council on magnitude ($0.50$ vs.\ $0.57$, overlapping CIs). What the council uniquely achieves is \emph{calibration}: it is the only architecture reaching substantial disposition with a clean trigger-free control ($0.00$ $[0.00,0.00]$ vs.\ the prompted model's $0.15$ $[0.08,0.22]$), because its preservation instruction is \emph{conditional} on real specialist signal; (2)~upstream installation fails robustly: prompting and supervised fine-tuning on behavior-rich exemplars produce large seat-level lifts ($\approx 2\times$, bootstrap CIs excluding baseline) that are indiscriminate---both hedge on a trigger-free control case---and that vanish from the pipeline's final output, while reference-free preference optimization installs no seat-level magnitude across three model lineages (Mistral, Llama-3, Qwen-3), invariant to a $3.2\times$ increase in preference data. Preference optimization's one real effect is subtractive and conditional: on the weakly-aligned legal seat it suppresses unwarranted hedging below baseline---a finding that survives triangulation across three instruments (pattern-based, NLI entailment, and unanimous dual LLM judges) and generalizes across objectives (ORPO and CPO), though only ORPO suppresses \emph{selectively}; the effect has no purchase on an already-aligned seat and did not replicate on a third lineage. Triangulation also caught one finding produced by the primary metric alone (an apparent hedging \emph{increase} on the finance seat) and retired it as instrument artifact; (3)~the mechanism is not sentence-level content entanglement (refuted, $r=-0.10$) but a \textbf{synthesizer register}: each aggregator model writes at its own characteristic disposition density, nearly independent of seat input---over-dense input can \emph{invert} output density---while the synthesis prompt's preservation instructions act as a \emph{graded} gain control: output density rises with the number of preservation clauses on all three synthesizers tested (Spearman $\rho=+1.00$, $+0.80$, $+0.80$; strictly monotone only on gpt-oss, with a dip at $k{=}2$ on Qwen and at $k{=}3$ on Phi-4), spanning $2$--$3\times$ on gpt-oss and Qwen and $1.3\times$ on Phi-4. The register also survives direct attack --- ORPO-training the synthesizer itself on synthesis-level pairs moves its band no more than seat training moved the seats, and heating one, two, or all three seats adds nothing at the pipeline's mouth (non-additive, $\rho=-0.80$). Weight-level training fails at every locus; \textbf{the accessible control surface is the last writer's instructions}. Practically: a pipeline's epistemic posture is governed by its last writer and that writer's instructions; upstream installation is mostly futile. The evidence base: 1{,}293 pre-registered, audited runs across three model lineages, six installation arms, and both pipeline loci (seats and the synthesizer itself), scored under three independent instruments with unanimous judge agreement on the surviving positive claim---all \$0-budget and fully reproducible on a single 32\,GB consumer machine.
+Multi-agent LLM pipelines route work through specialist models and aggregate
+their outputs through a final writer. When epistemic qualifications---hedges,
+labelled assumptions, cutoff caveats---fail to reach the user, the prevailing
+diagnosis is a \emph{transport} failure: uncertainty is said to be erased at
+agent interfaces, motivating proposals to attach uncertainty-bearing carriers
+alongside the text. We present evidence that this diagnosis misplaces the
+fault. Holding the pipeline, the models, and the upstream specialist text
+fixed, and changing \emph{only} the final writer's instructions, moves output
+disposition by $3$--$4\times$ ($0.16 \rightarrow 0.53$ as preservation clauses
+are restored; $0.20 \rightarrow 0.64$ from a single clause). The qualifications
+were present in the transmitted text the whole time. What varied was whether
+the last writer \emph{rendered} them. Disposition is a rendering property of
+the final writer, not a transport property of the pipeline.
+
+We characterise the last writer's \textbf{rendering function} across ${\sim}1{,}300$
+pre-registered audited runs of a four-model ``Council of Experts'' on consumer
+hardware, and report four properties. (1)~\emph{Structure is not the lever.}
+Holding the model fixed across six architectures (single-shot, flat merge,
+two-round debate, self-refine, prompted single model, council), multi-agent
+topology lifts disposition negligibly (flat merge $0.16$ vs.\ single-shot
+$0.14$; two-round debate $0.16$), and a single prompted model matches the full
+council on magnitude ($0.50$ vs.\ $0.57$, overlapping CIs). What the council
+uniquely achieves is \emph{calibration}: it is the only architecture combining
+substantial disposition with a clean trigger-free control ($0.00$
+$[0.00,0.00]$ vs.\ the prompted model's $0.15$ $[0.08,0.22]$, disjoint),
+because its instruction is \emph{conditional} on evidence that actually
+exists upstream. (2)~\emph{Upstream weights are not the lever.} Prompting and
+exemplar SFT produce large seat-level lifts ($\approx 2\times$) that are
+indiscriminate and vanish at the pipeline's mouth; reference-free preference
+optimization installs no seat-level magnitude across three lineages,
+invariant to $3.2\times$ dose. Its one real effect is subtractive and
+conditional---suppressing unwarranted hedging on a weakly-aligned seat---which
+survives triangulation across three instruments and generalizes across ORPO
+and CPO. Triangulation also caught and retired one finding produced by the
+primary metric alone. (3)~\emph{Downstream weights are not the lever either.}
+Training the final writer directly leaves its band unmoved, and so does an
+on-policy retry whose reward is calibration-shaped and computed at the
+pipeline's mouth---the strongest feasible analogue of multiturn-aware reward
+training. Weight-level training fails at every locus tested, under every
+reward design tested. (4)~\emph{Instructions are the lever, and they are
+graded and targeted.} Output density rises with the number of preservation
+clauses on all three writers (Spearman $\rho=+1.00$, $+0.80$, $+0.80$; a
+monotone trend, strictly monotone only on gpt-oss). Isolating clauses shows
+each lifts \emph{exactly} the behavior family it names and no other---these
+are targeted specifications, not general priming---while the composite gain
+is carried by whichever single clause matches the family that writer already
+produces in volume.
+
+Finally, the writers' \emph{intrinsic} bands are indistinguishable: four
+models spanning four architectures all emit $0.14$--$0.15$ under a neutral
+prompt. Models therefore do not differ in disposition; they differ in
+\textbf{instruction gain}---how strongly each amplifies a disposition
+instruction. This relocates the mechanism from a characteristic emission
+level to a per-model coefficient on instructions, and explains why weight
+training could not move it: a LoRA-scale preference run has no purchase on
+how a model processes instructions. Practically: select a final writer for
+instruction responsiveness, then write its instructions \emph{conditionally}
+over real upstream evidence. All experiments are \$0-budget and reproducible
+on a single 32\,GB consumer machine; pre-registrations, protocol amendments,
+refuted hypotheses, and a post-hoc integrity audit that withdrew one arm are
+included in the record.
 \end{abstract}
 
 \section{Introduction}
-Production LLM systems increasingly take the form of pipelines: multiple models, often specialized, whose outputs are aggregated by a final model into the answer a user sees. Evaluation practice, however, remains largely single-model: we measure whether \emph{a model} hedges appropriately, discloses its limits, or labels assumptions. This paper asks what happens to those behaviors \emph{inside a pipeline}---who originates them, whether they can be installed, and whether they survive aggregation.
+Production LLM systems increasingly take the form of pipelines: multiple
+models, often specialized, whose outputs are aggregated by a final model into
+the answer a user sees. A recognised failure of such systems is that epistemic
+qualification does not survive the trip. A specialist writes ``assuming 60\%
+adoption'' or ``this may have changed since my training data''; the user reads
+a confident synthesis with the qualification gone.
 
-We distinguish two evaluation axes that are conflated in practice. \textbf{Content} is whether the right substantive material appears (measured here by per-case expert rubrics). \textbf{Disposition} is what a model chooses to emit about its own claims. Our experiments show these axes are orthogonal---the model family that wins content loses disposition and vice versa---and that pipeline disposition is governed almost entirely by the final aggregation stage.
+\paragraph{Transport or rendering?} The dominant framing treats this as a
+\textbf{transport} problem. Uncertainty is cargo; agent interfaces transmit
+discrete commitments rather than epistemic states; the cargo is therefore
+erased in transit. The remedies follow from the diagnosis: propagate numeric
+confidence through the chain \cite{uprop}, or attach an uncertainty-bearing
+latent carrier to each handoff because text cannot hold the freight
+\cite{laundering}. On this view the fix is architectural, requires access to
+model internals, and is unavailable for black-box components.
+
+We report evidence that the fault lies elsewhere. Fix the pipeline, the
+models, and the upstream specialist text; change only the final writer's
+instructions. Output disposition moves by $3$--$4\times$---from $0.16$ to
+$0.53$ as preservation clauses are restored to the synthesis prompt
+(\S\ref{sec:rendering}), and from $0.20$ to $0.64$ from a single clause
+(\S\ref{sec:clause}). Nothing upstream differs between those conditions. The
+qualifications were in the transmitted text throughout; what varied is whether
+the last writer \emph{rendered} them into its output. We therefore argue that
+disposition is a \textbf{rendering} property of the final writer rather than a
+transport property of the pipeline---and that the accessible remedy is
+correspondingly cheaper than a new carrier: an instruction, applied at one
+place, to a model whose internals need not be visible.
+
+This is not a claim that uncertainty is never lost at interfaces; structured
+tool-call interfaces plainly do discard epistemic state, and the transport
+literature is right about them. It is a claim about which failure dominates
+when the interface is \emph{prose}, which is the common case for
+specialist-to-synthesizer aggregation---and there, our measurements say the
+information arrives and is discarded at the point of writing.
+
+\paragraph{Two axes.} We distinguish \textbf{content}---whether the right
+substantive material appears, measured by per-case expert rubrics---from
+\textbf{disposition}, what a model chooses to emit about its own claims. Our
+experiments show these are orthogonal: the model family that wins content
+loses disposition and vice versa. This paper is about the second axis, and
+about the fact that in a pipeline it is governed almost entirely by the final
+stage.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_schematic.pdf}
-\caption{The last writer wins. Specialist seats emit disposition at densities
-that vary with the installation arm (orange bars), but the synthesizer
-normalizes everything to its own characteristic \emph{register band}; the
-synthesis prompt's PRESERVE instructions act as a gain control on that band.
-Final-output disposition (green) is nearly independent of what the seats emit
-(\S\ref{sec:register}, Fig.~\ref{fig:register}).}
+\caption{Rendering, not transport. Specialist seats emit disposition at
+densities that vary widely with the installation arm (orange bars), but the
+final writer re-expresses everything through its own \emph{rendering
+function}: final-output disposition (green) is nearly independent of what the
+seats emit. The synthesis prompt's PRESERVE instructions set the gain on that
+function (\S\ref{sec:rendering}, Fig.~\ref{fig:register}).}
 \label{fig:schematic}
 \end{figure}
 
-\textbf{Contributions.} (i)~A controlled comparison of six orchestration architectures with the model held fixed, isolating what multi-agent structure does and does not buy for epistemic disposition, plus a two-axis evaluation of a heterogeneous local specialist pipeline with a composite disposition metric (CDS) (\S\ref{sec:arch}). (ii)~A controlled comparison of installation mechanisms---prompting, exemplar SFT, and reference-free preference optimization (ORPO and CPO)---under pre-registered predictions, with a trigger-free control case that separates \emph{responsive} from \emph{habitual} behavior, replicated across three seats of distinct model lineage (\S\ref{sec:install}). (iii)~Identification, ablation, and stress-testing of the \textbf{synthesizer register} as the mechanism governing which installed behaviors reach the pipeline's output: it survives direct ORPO training of the synthesizer---including an on-policy, calibration-shaped, pipeline-mouth-scored retry---seat input is non-additive, and the synthesis instructions form a measured, monotone gain control (\S\ref{sec:register}). We further show the \emph{intrinsic} band is model-invariant across five models and four alignment lineages, relocating the register from a baseline emission tendency to a per-model gain coefficient on instructions (\S\ref{sec:provenance}). (iv)~A three-instrument measurement-validation protocol (pattern matching, calibrated NLI entailment, blinded pairwise LLM judges) that both confirms the surviving claims and catches a false finding produced by the primary metric (App.~\ref{app:instruments}). (v)~A fully local, \$0, consumer-hardware protocol with append-only audit logs for all 1{,}293 runs.
+\textbf{Contributions.} (i)~A \emph{transport-vs-rendering} test for pipeline
+disposition: holding upstream text fixed and varying only the final writer's
+instructions, we show the qualification loss attributed to agent interfaces is
+reproduced---and reversed---at the writing step (\S\ref{sec:rendering},
+\S\ref{sec:clause}). (ii)~A controlled comparison of six orchestration
+architectures with the model held fixed, separating what multi-agent structure
+buys (nothing, on magnitude) from what a \emph{conditional} instruction over
+real specialist signal buys (calibration: a trigger-free gate of $0.00$
+$[0.00,0.00]$ against a prompted single model's $0.15$ $[0.08,0.22]$)
+(\S\ref{sec:arch}). (iii)~A controlled comparison of installation mechanisms
+---prompting, exemplar SFT, and reference-free preference optimization (ORPO,
+CPO)---under pre-registered predictions, with a trigger-free control that
+separates \emph{responsive} from \emph{habitual} behavior, replicated across
+three seats of distinct lineage (\S\ref{sec:install}). (iv)~Characterisation
+of the last writer's \textbf{rendering function}: it is input-independent (and
+can \emph{invert} under over-dense input); it survives direct ORPO training of
+the writer, including an on-policy, calibration-shaped, pipeline-mouth-scored
+retry; seat input is non-additive; and its instruction gain is graded
+(\S\ref{sec:rendering}) and \emph{targeted}---each clause lifts exactly the
+behavior family it names (\S\ref{sec:clause}). (v)~Evidence that the
+\emph{intrinsic} band is model-invariant across four models and four
+architectures, relocating the mechanism from a characteristic emission level
+to a per-model \textbf{instruction gain} coefficient (\S\ref{sec:provenance}).
+(vi)~A three-instrument measurement-validation protocol (pattern matching,
+calibrated NLI entailment, blinded pairwise LLM judges) that confirms the
+surviving claims and catches a false one produced by the primary metric
+(App.~\ref{app:instruments}); plus a fully local, \$0 protocol with
+append-only audit logs for all 1{,}293 runs, and a post-hoc integrity audit
+that withdrew one arm (\S\ref{sec:limits}).
 
 \section{Related work}
-\textbf{Multi-agent orchestration.} Debate and role-played collaboration improve factuality and reasoning \cite{du2023,moa2024,medagents,mdagents}, and recent work compares orchestration against the strongest single model \cite{tian2025} or trains orchestrators end-to-end \cite{masorchestra}. A 2026 line now reports that well-prompted single agents match or beat multi-agent systems under matched token budgets \cite{singleagent}; our architecture comparison reproduces that negative result on a new axis (disposition \emph{magnitude}) and then identifies an axis where orchestration does pay---\emph{calibration}---which that literature does not measure. This literature measures content outcomes. The closest work on the \emph{aggregation} step, Parallel-Synthesis \cite{parallelsynth}, trains a synthesizer adapter and explicitly distills reasoning behavior from text-concatenation synthesis---an implicit acknowledgment that naive aggregation loses behavior, which our register mechanism explains and quantifies for epistemic behavior specifically. We measure what orchestration does to epistemic behavior and find an amplification effect independent of the model filling the seats.
+\textbf{Multi-agent orchestration.} Debate and role-played collaboration improve factuality and reasoning \cite{du2023,moa2024,medagents,mdagents}, and recent work compares orchestration against the strongest single model \cite{tian2025} or trains orchestrators end-to-end \cite{masorchestra}. A 2026 line now reports that well-prompted single agents match or beat multi-agent systems under matched token budgets \cite{singleagent}; our architecture comparison reproduces that negative result on a new axis (disposition \emph{magnitude}) and then identifies an axis where orchestration does pay---\emph{calibration}---which that literature does not measure. This literature measures content outcomes. The closest work on the \emph{aggregation} step, Parallel-Synthesis \cite{parallelsynth}, trains a synthesizer adapter and explicitly distills reasoning behavior from text-concatenation synthesis---an implicit acknowledgment that naive aggregation loses behavior---which our rendering account explains and quantifies for epistemic behavior specifically, and locates in the writer's instructions rather than in the concatenation.
 
 \textbf{Specialists vs.\ generalists.} Evidence is mixed on whether small domain fine-tunes beat larger generalists in-domain \cite{trident,medftrag}. Our content results replicate the negative side (a 20B open MoE outperforms a four-specialist council $42\% \rightarrow 25$--$31\%$ on rubric coverage) and motivate the pivot: the surviving specialist value is dispositional, not informational.
 
@@ -76,21 +204,44 @@ and neither attempts to install the behavior by training. We differ on all
 three axes: our object is a multi-agent pipeline where distinct specialist
 models feed an aggregator; we test installation by prompting, SFT, ORPO and CPO
 at both loci (and find weights move nothing); and we characterize the
-aggregator's \emph{register}---a writer-specific output band nearly
-independent of input, which can \emph{invert} under over-dense input rather
-than merely attenuate. Their prompt-mitigation result and our gain curve
+aggregator's \emph{rendering function}---a writer-specific mapping from
+upstream evidence and instructions to emitted disposition, nearly independent
+of input density, which can \emph{invert} under over-dense input rather than
+merely attenuate. Their prompt-mitigation result and our gain curve
 converge from different directions on the same practical conclusion, which we
-regard as mutual corroboration. Two further 2026 lines make the pipeline
-dimension timely: ``confidence laundering'' \cite{laundering} names, as a position, the loss of decision uncertainty at agent interfaces and argues for a latent uncertainty carrier; and a quantitative line propagates \emph{numeric} confidence estimates through multi-step agent decisions \cite{uprop}. We complement both empirically and from the opposite direction: we measure \emph{emitted linguistic disposition}, show its loss is not an interface accident but a property of the last writer (the register), and show that upstream training cannot push behavior through it.
+regard as mutual corroboration. \textbf{The transport account, and where we disagree.} Two 2026 lines make the
+pipeline dimension timely and both adopt a transport framing. ``Confidence
+laundering'' \cite{laundering} argues, as a position, that standard agent
+interfaces perform a many-to-one projection from uncertain internal states to
+discrete commitments, so that uncertainty is \emph{structurally erased by the
+commitment format itself}; its remedy is a latent uncertainty carrier attached
+to each handoff, on the reasoning that text cannot preserve pre-commitment
+fragility. A quantitative line propagates \emph{numeric} confidence estimates
+through multi-step agent decisions \cite{uprop}.
 
-\textbf{Register beyond epistemics.} Independent evidence for a register-like
+We agree with the phenomenon and dispute the locus. Their argument is
+strongest where the interface is a tool call or a schema-constrained field,
+which genuinely cannot represent a distribution. It is weakest exactly where
+aggregation usually happens: prose. Our ablations hold the prose fixed and
+vary only the reader's instructions, and recover $3$--$4\times$ swings in
+emitted disposition (\S\ref{sec:rendering}, \S\ref{sec:clause}). If the
+qualifications had been erased in transit, no instruction to the final writer
+could restore them; they are restored, so they were not erased. The
+implication is practical as well as conceptual: where the transport account
+prescribes an architectural change requiring access to model internals, the
+rendering account prescribes an instruction, which works on black-box
+components and costs nothing. We regard the two as complementary rather than
+exclusive---different interfaces, different dominant failure---but the
+distinction is testable, and we report the test.
+
+\textbf{Rendering beyond epistemics.} Independent evidence for a register-like
 effect comes from stylistic rewriting: \cite{voicerev} finds that LLMs revising
 personal narratives shift all thirteen measured linguistic markers in the
 \emph{same direction} across three frontier models---toward a more polished,
 less situated register---regardless of user intent, and that voice-preserving
 prompts reduce the effect magnitude by $32\%$ without changing its direction.
-That is our mechanism in a different behavioral domain: a rewriter imposes its
-own band, and instructions are a partial counter-lever. Their per-model effect
+That is our mechanism in a different behavioral domain: a rewriter renders in
+its own band, and instructions are a partial counter-lever. Their per-model effect
 sizes also differ ($|d| = 0.60$, $1.29$, $1.45$), consistent with our finding
 that models differ in instruction \emph{gain} rather than in baseline
 emission. We differ in object (epistemic disposition, not voice), in setting
@@ -240,14 +391,14 @@ modeled $0.00 \to 0.27$, hedging $0.02 \to 0.23$, alongside cutoff
 $0.68 \to 1.21$), with one notable side effect---SFT \emph{suppressed}
 jurisdictional distinguishing ($0.14 \to 0.02$) while installing the others.
 
-\textbf{The null extends to the last writer.} If the register is merely where disposition happens to live, training the synthesizer itself should move it. It does not: ORPO on the Lead (same recipe, 88 dose-matched synthesis-level pairs, seats held at their untrained production versions) leaves the pipeline-mouth band unmoved --- final density $0.89$ $[0.67,1.11]$ vs.\ the conversion control's $1.03$ $[0.79,1.28]$, against a pre-registered threshold of $|\Delta|\ge 0.25$ with disjoint CIs. The control band also reproduces this writer's \S\ref{sec:register} register ($1.03$ vs.\ $1.24$), stable across cells. The trigger-light gate was already near-floor untrained ($0.15$), so no suppression is claimed --- the same no-slack situation as the pre-aligned seat. Weight-level training now fails at \emph{every} locus tested.
+\textbf{The null extends to the last writer.} If the register is merely where disposition happens to live, training the synthesizer itself should move it. It does not: ORPO on the Lead (same recipe, 88 dose-matched synthesis-level pairs, seats held at their untrained production versions) leaves the pipeline-mouth band unmoved --- final density $0.89$ $[0.67,1.11]$ vs.\ the conversion control's $1.03$ $[0.79,1.28]$, against a pre-registered threshold of $|\Delta|\ge 0.25$ with disjoint CIs. The control band also reproduces this writer's \S\ref{sec:rendering} register ($1.03$ vs.\ $1.24$), stable across cells. The trigger-light gate was already near-floor untrained ($0.15$), so no suppression is claimed --- the same no-slack situation as the pre-aligned seat. Weight-level training now fails at \emph{every} locus tested.
 
 \textbf{Instrument validation.} Because these verdicts rest on measurement, we validated the instrument stack (\S\ref{app:instruments}): a calibrated NLI entailment scorer (chosen-vs-rejected AUC $0.929$ on the construction-labeled pair corpus) and blinded, order-swapped, evidence-grounded pairwise LLM judges \cite{llmjudge}. The magnitude nulls and healthcare zeros are instrument-robust (pattern + NLI); the legal suppression is three-instrument robust (pattern, NLI-cutoff $1.06 \rightarrow 0.35$, and $14/14$ decided judge pairs unanimous under both judges, sign-test $p=0.016$ each, no length bias); and the apparent finance \emph{reversal} ($0.81 \rightarrow 1.21$) appeared under the pattern metric only---NLI shows no increase on any family---and is retired as instrument artifact. The finance result stands as a non-replication (no suppression), not a worsening.
 
 Two further details. First, prompting was tested at two loci: on the generalist single-shot (a $6\times$ final-output lift, $0.099 \rightarrow 0.589$, that failed the gate at $0.985$---its answer to the hybrid-work communication question opened a section ``Current State Snapshot (as of my training data)'' and closed with ``actual results may vary'': disclosure theater where nothing warranted disclosure) and on the seat (the table above). Second, content is unaffected by successful installation: rubric coverage is $12/36$ for both $\text{A}'$ and ORPO ($9/36$ for the original production seat)---no content tax. Gate cells use $n=4$--$5$ (the planner routes no specialists on the trigger-light case in some runs; routing variability is itself Ollama-runtime nondeterminism at temperature 0). Summary: \emph{prompting and exemplar training change what a model says, loudly and indiscriminately; preference training installs nothing---at best it removes miscalibrated hedging where the base model has it, ORPO selectively and CPO bluntly, and only the last writer decides what survives.}
 
-\section{Result 3: the synthesizer register}
-\label{sec:register}
+\section{Result 3: the last writer's rendering function}
+\label{sec:rendering}
 Why do installed behaviors vanish? A pre-registered entanglement hypothesis---content-woven markers survive aggregation, detached boilerplate is stripped---was \textbf{refuted}: entangled share is flat across arms (baseline 56\%, prompting 61\%, ORPO 61\%, SFT 67\%---SFT's markers are the \emph{most} content-woven yet retain worst), retention splits by arm not position (baseline $1.08$, ORPO $0.96$ vs.\ prompting $0.49$, SFT $0.49$), and entanglement does not predict retention ($r=-0.10$ over 102 runs). Notably the refuted hypothesis and the overturned PRESERVE prediction (below) were both pre-registered---we report them as part of the record.
 
 A 72-run ablation (2 input arms $\times$ 3 synthesizer models $\times$ PRESERVE instructions on/off $\times$ 6 cases) located the mechanism (Fig.~\ref{fig:register}, Table~\ref{tab:register}):
@@ -255,7 +406,7 @@ A 72-run ablation (2 input arms $\times$ 3 synthesizer models $\times$ PRESERVE 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.72\linewidth]{fig_register.pdf}
-\caption{The synthesizer register (72-run ablation). Every configuration sits
+\caption{The rendering function (72-run ablation). Every configuration sits
 far below the perfect-transmission diagonal; slopes are nearly flat (input
 density does not transmit) and Phi-4's is negative (over-dense input
 \emph{inverts} output). Solid vs.\ dotted separates PRESERVE instructions
@@ -280,12 +431,50 @@ Qwen2.5-7B & $1.24$ & $1.06$ & $0.24$ & $0.62$ \\
 \end{tabular}
 \end{table}
 
-Each synthesizer writes at its own characteristic density band regardless of input (registers are writer-specific \emph{under a fixed instruction set}---see \S\ref{sec:provenance} for the sense in which they are not); over-dense input does not transmit and can \emph{invert} output density (Phi-4: $1.17 \rightarrow 0.61$---over-correction, saturated hedging read as stylistic noise); and the PRESERVE instructions are a \textbf{gain control}, their removal collapsing output $2$--$5\times$ on every synthesizer (overturning our registered prediction that instructions would not matter). Mechanism: \emph{final disposition $\approx f(\text{register} \times \text{instructions})$, nearly independent of seat input. ORPO ``survives'' by staying inside the register; prompting and SFT ``strip'' by exceeding it.} The dose-invariance of \S\ref{sec:install} is the register's corollary: if the aggregator's band, not the seat's input, sets output disposition, then no amount of additional preference data at the seat can raise it---which is exactly what $3.2\times$ dose showed---and why the seat replications found no pipeline-level effect to transmit.
+Three properties define the mapping. Each synthesizer writes at its own
+characteristic density regardless of input---we call the observed band its
+\emph{register}, retaining the term descriptively, though
+\S\ref{sec:provenance} shows it is not a primitive. Over-dense input does not
+transmit and can \emph{invert} output density (Phi-4: $1.17 \rightarrow
+0.61$---over-correction, saturated hedging read as stylistic noise). And the
+PRESERVE instructions are a \textbf{gain control}: their removal collapses
+output $2$--$5\times$ on every synthesizer, overturning our registered
+prediction that instructions would not matter.
+
+We therefore describe the last writer not as a channel but as a
+\textbf{rendering function}: a mapping $R_{\text{writer}}(\text{evidence},
+\text{instructions}) \rightarrow \text{emitted disposition}$, in which the
+evidence term is weak and the instruction term is strong.
+
+\paragraph{The transport test.} This is the point at which the rendering
+account is separable from the transport account, so we state the comparison
+plainly. Within a single Lead, the $k{=}0$ and $k{=}3$ conditions run the
+\emph{same} planner, the \emph{same} three seats, and the \emph{same} seat
+outputs into the synthesis step; the only difference is whether the
+preservation clauses are present in the synthesis prompt. Output density moves
+$0.159 \rightarrow 0.525$ on gpt-oss and $0.575 \rightarrow 1.211$ on Qwen.
+Section~\ref{sec:clause} tightens this further: a \emph{single} clause,
+inserted into an otherwise identical prompt over identical upstream text,
+moves density $0.20 \rightarrow 0.64$. Under a transport account these
+conditions should be indistinguishable, because nothing about the interface,
+the handoff format, or the transmitted text differs between them. Under a
+rendering account they differ by construction, which is what we observe.
+Qualifications that can be recovered by instructing the reader were never
+erased in transit.
+
+Two consequences follow. First, ORPO ``survives'' aggregation by staying
+inside the writer's band while prompting and SFT ``strip'' by exceeding it---
+retention is a property of the renderer, not of the marker. Second, the
+dose-invariance of \S\ref{sec:install} is a corollary rather than a separate
+puzzle: if the writer's rendering, not the seat's input, sets output
+disposition, no amount of additional preference data at a seat can raise
+it---which is exactly what $3.2\times$ dose showed, and why the seat
+replications found no pipeline-level effect to transmit.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_gain.pdf}
-\caption{The register's two stress tests (96 runs). \emph{Left:} final-output
+\caption{The rendering function's two stress tests (96 runs). \emph{Left:} final-output
 density rises with the number of PRESERVE clauses retained in the
 synthesis prompt, on all three Leads (Spearman $\rho = +1.00 / +0.80 / +0.80$;
 spans $3.3\times$ and $2.1\times$ for gpt-oss and Qwen). Phi-4's $k{=}2$ cell
@@ -306,7 +495,7 @@ distinguishing ($1.25$) pass through intact. A modeled number (``modeled at
 \$8{,}000'') and a jurisdictional distinction carry substance the synthesizer
 needs; a cutoff disclosure is meta-commentary it can drop without losing
 content. This is a family-level analogue of the entanglement hypothesis that
-\S\ref{sec:register} falsified at the \emph{arm} level: retention does not
+\S\ref{sec:rendering} falsified at the \emph{arm} level: retention does not
 split by arm or by marker position within a text, but it does split by whether
 the behavior carries content. We report this as an observation from the
 existing corpus, not a pre-registered test.
@@ -329,9 +518,10 @@ leaves the pipeline mouth flat ($\rho=-0.80$, spread $0.38$, overlapping
 CIs)---closing the remaining alternative that seat disposition partially
 accumulates and is diluted. Combined with the Lead-training null
 (\S\ref{sec:install}), the mechanism statement finalizes as: \emph{final
-disposition $\approx f(\text{register} \times \text{instructions})$, robust
-to weight-level training at either locus; the accessible control surface is the
-last writer's instructions.}
+disposition $\approx g_{\text{writer}} \times I(\text{instructions},
+\text{evidence})$---a rendering function, robust to weight-level training at
+either locus, whose evidence term is weak, whose instruction term is strong,
+and whose per-model gain is the only part not accessible from the prompt.}
 
 We then subjected the robustness clause to its strongest feasible test. The
 Lead-training null used offline pairs with a density-shaped, response-level
@@ -342,7 +532,7 @@ pre-registered follow-up corrected all three at once: syntheses sampled
 the \emph{pipeline's mouth} with a \emph{calibration-shaped} reward
 ($+$CDS on trigger-heavy prompts, $-$density on trigger-light; 49 pairs
 surviving a two-instrument directional gate), then ORPO under the identical
-recipe. The register did not move: trained-vs-stock at $k{=}0$, $0.60$
+recipe. The gain did not move: trained-vs-stock at $k{=}0$, $0.60$
 $[0.41,0.82]$ vs.\ $0.56$ $[0.37,0.77]$; with instructions restored the
 trained Lead sits at $0.95$, inside the stock band, and indistinguishable
 from the density-rewarded arm ($0.89$)---so reward shape was not the earlier
@@ -355,11 +545,11 @@ registered in advance.)
 \section{Background: why disposition, not content}
 The council was built to test whether small domain fine-tunes beat generalists on content. They do not: a single 20B open-weights MoE (gpt-oss-20B) outperforms the full council on rubric coverage ($42\%$ vs.\ $25\%$; $31\%$ after best-available specialist upgrades), and the council exhibited classic small-model failures (confabulated trial citations, repealed regulation treated as live). What specialists retained was disposition---the highest CDS of any configuration---which motivated the installation question this paper answers. We report this as motivating context, not a contribution.
 
-\section{Where registers come from: the band is model-invariant}
+\section{Instruction gain: the intrinsic band is model-invariant}
 \label{sec:provenance}
-If model selection is the only lever that moves the register upward, what
-makes one model's register higher than another's? We measured the
-\emph{intrinsic} band: four models answering the seven cases under a minimal
+If model selection is the only lever that moves the band upward, what makes
+one writer's band higher than another's? We measured the \emph{intrinsic}
+band: four models answering the seven cases under a minimal
 neutral instruction, no council, no disposition instruction of any kind
 (140 runs). The candidates span four base families and four alignment
 lineages---Med42-8B (Llama-3, clinical SFT then DPO), BioMistral-7B (Mistral
@@ -392,23 +582,36 @@ withdraw the lineage claim. What survives is narrower and still useful: one
 domain-SFT-plus-DPO model and three generically instruction-tuned models,
 across four architectures, share a band to within $0.01$.
 
-The between-synthesizer differences of \S\ref{sec:register} therefore
-cannot be differences in baseline emission, since absent instructions every
-model emits the same $\approx 0.14$. They are differences in
-\emph{response} to the surrounding instructions. The register factor is
-better read as a per-model \textbf{gain coefficient on instructions} than
-as a characteristic emission level. For Qwen2.5 the decomposition is
+The between-writer differences of \S\ref{sec:rendering} therefore cannot be
+differences in baseline emission, since absent instructions every model emits
+the same $\approx 0.14$. They are differences in \emph{response} to the
+surrounding instructions. This is why we treat ``register'' as a description
+of an observed band rather than as the mechanism: the band is a
+\emph{product}, not a primitive. The per-model quantity that actually varies
+is \textbf{instruction gain}---how strongly a writer amplifies a disposition
+instruction---so the rendering function is better written
+\[
+  \text{disposition} \;\approx\; g_{\text{writer}} \times
+  I(\text{instructions}, \text{evidence}),
+\]
+with $g$ a model property and $I$ a conditional term supplied by the prompt
+and evaluated against what the seats actually flagged. Independent support
+comes from stylistic rewriting, where three frontier models shift the same
+markers in the same direction but at markedly different effect sizes
+($|d| = 0.60$, $1.29$, $1.45$) \cite{voicerev}---convergent behavior,
+divergent gain. For Qwen2.5 the decomposition is
 measurable end to end: $0.14$ intrinsic, $0.56$ inside the council with
 PRESERVE stripped, $1.03$ with the full block---roughly $4\times$ from the
 scaffold and a further $1.8\times$ from the instructions, over a floor every
-model shares. This also explains the two synthesizer-training nulls: a
-LoRA-scale preference run has no purchase on \emph{how a model processes
-instructions}, which is a far deeper property than a surface emission
-tendency.
+model shares. This also explains the two synthesizer-training nulls, and reframes them as
+one result rather than two failures: a LoRA-scale preference run has no
+purchase on $g$, which is a property of \emph{how a model processes
+instructions}---far deeper than a surface emission tendency, and not
+something $49$--$88$ preference pairs can reach.
 
 One practical corollary, and one caveat. Since the band is model-invariant,
-a Lead should be selected for instruction \emph{responsiveness}, not for any
-supposed intrinsic disposition: we found one candidate (OpenBioLLM-8B) that
+a Lead should be selected for instruction gain, not for any supposed
+intrinsic disposition: we found one candidate (OpenBioLLM-8B) that
 ignores instructions in every message position and cannot emit the planner's
 JSON, making it unusable as a last writer whatever its band---the control
 surface operates through instructions, so following them is a prerequisite,
@@ -422,7 +625,7 @@ have caught this before the runs.
 
 \section{Which instruction does the work}
 \label{sec:clause}
-The gain curve of \S\ref{sec:register} varied the \emph{number} of PRESERVE
+The gain curve of \S\ref{sec:rendering} varied the \emph{number} of PRESERVE
 clauses, dropping them in a fixed order, so count was confounded with
 identity. We isolated each clause against a true no-clause baseline on one
 Lead (gpt-oss-20B, chosen for the widest gain range), 210 runs.
@@ -454,7 +657,7 @@ therefore not ``write the numeric clause'' but: \emph{the block's gain is
 carried by whichever clause targets the family the synthesizer already
 produces in volume}; clauses aimed at families a given writer does not emit
 are inert on the composite while still working on their own family. This
-also explains the monotone count-curve of \S\ref{sec:register} without
+also explains the monotone count-curve of \S\ref{sec:rendering} without
 appealing to count: adding clauses adds coverage, and the aggregate rises
 whenever a newly added clause happens to match the writer's profile. The
 clauses are mildly sub-additive (singles sum to $+0.41$ against the block's
@@ -472,7 +675,45 @@ nothing is flagged.
 Our five behavior families reduce to four in practice: vocabulary-precision is below detection ($\le 0.02$ density) on every seat and was also the worst-calibrated family for the NLI instrument (AUC $0.738$, Youden $J=0$), so two independent instruments fail it---either our cases do not provoke it or it is not detectable as a surface feature. The composite is cutoff-dominated \emph{for some synthesizers but not others} (Qwen2.5 $0.554$, Phi-4 $0.909$, but gpt-oss only $0.018$, where modeled-assumptions dominates instead), and the gain-curve monotonicity holds for the composite but not for any individual family. Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor---weaker on that axis than the human-validated certainty metric of \cite{certdist}---and two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91, and its on-policy calibration-reward follow-up realized 49 pairs (its NLI directional gate was the binding filter) with best-of-$n$ distillation standing in for full RL; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and two gain-curve cells depart from strict monotonicity---Phi-4's anomalous $k{=}2$ and Qwen's $k{=}2$ dip---both reported as probable noise at $n{=}6$; a seeded replication would settle them. A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds. A corpus audit surfaced three provenance defects in the earliest (Result-2) arms, none of which changes a reported interval but all of which weaken those arms' internal consistency: in \texttt{local-council-\{repro,spec,sft,dpo\}} the five ``seeds'' per case are in fact one run from an earlier session plus four from a later one, with a directional $5$--$8\%$ length offset in three of the four arms; \texttt{local-council-dpo-v2} carries six runs on the trigger-light case against five elsewhere, slightly over-weighting it in unweighted means; and for $133$ runs the recorded model field holds a batch tag (\texttt{cell2-seed}, \texttt{dpo-experiment}) rather than a model identifier, so per-run model provenance is unrecoverable from the file for those runs. No seed field was ever written, which is what allowed the split sessions to go unnoticed; seven self-authored cases, and three local synthesizers $\le 20$B. The architecture comparison uses one model family (gpt-oss-20B) in every role and one instantiation of each design; debate and self-refine were implemented in their simplest standard forms and stronger variants may fare better. Frontier aggregators untested. The per-clause isolation (\S\ref{sec:clause}) ran on one synthesizer whose family profile we now know to be atypical; the Lead-dependence it implies is inferred from ledger profiles rather than tested directly, and a replication on a cutoff-dominant Lead is registered but not yet run. The intrinsic-band null covers four usable models at $\le 20$B under one neutral prompt (a fifth, BioMistral, produced degenerate output and was withdrawn post-hoc, taking the preference-vs-pretraining lineage contrast with it); a different neutral phrasing, or frontier-scale models, could separate them. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
 
 \section{Conclusion}
-In multi-agent pipelines, epistemic disposition is not additive across stages: it is set by the last writer's register and that writer's instructions. Orchestration per se does not produce it---three specialists merged naively, or debating for two rounds, emit no more disposition than one model answering alone---and what the council buys is not magnitude but calibration: substantial disposition that stays silent when nothing warrants it, because its preservation instruction is conditional on real specialist signal. Upstream installation by prompting or exemplar tuning produces loud but indiscriminate behavior that the aggregator strips; preference optimization installs nothing at all---across three model lineages and a $3.2\times$ data dose---because the aggregator's register, not the seat, sets the ceiling. Its one dependable effect is subtractive: removing miscalibrated hedging where the base model has it, selectively under ORPO, bluntly under CPO, and on none of our seats reliably enough to treat as a design tool. The register itself withstands direct training of the synthesizer, and seat input is non-additive at the mouth---but the synthesis instructions form a monotone, $2$--$3\times$ gain control. In a multi-agent pipeline, the accessible control surface for epistemic disposition is not anyone's weights; it is the last writer's instructions. Builders who want calibrated pipelines should tune the synthesizer's instructions and choose the final model deliberately---and evaluate disposition at the pipeline's mouth, not the seat.
+When a pipeline's answer arrives without the qualifications its specialists
+wrote, the natural reading is that something was lost on the way. Our
+measurements do not support that reading for prose interfaces. Holding the
+models, the pipeline, and the upstream text fixed and changing only the final
+writer's instructions recovers the missing disposition---$3$--$4\times$, and
+from a single clause. Information that an instruction can restore was never
+erased in transit. Disposition is rendered, not transported.
+
+What follows is a different target for engineering effort. The last writer is
+not a channel to be widened but a renderer to be instructed, and its rendering
+function has four measured properties: it is nearly indifferent to how much
+disposition arrives (and can invert it); its gain is set by instructions,
+gradedly; those instructions are targeted, each lifting exactly the behavior
+family it names; and its per-model gain coefficient resisted every weight-level
+intervention we could mount---at both loci, under a density reward and under
+an on-policy, calibration-shaped reward computed at the pipeline's mouth.
+Models did not differ in what they emit unprompted; four spanning four
+architectures shared one band. They differ in how strongly they answer an
+instruction.
+
+The orchestration result is a corollary and a caution. Multi-agent structure
+by itself bought nothing on magnitude---a flat merge of three specialists
+matched a single model answering alone, and two rounds of debate matched the
+flat merge---while a single prompted model matched the whole council. What the
+council alone achieved was \emph{calibration}: substantial disposition on
+cases that warranted it and none at all on the case that did not. That
+property came from a conditional instruction evaluated against evidence that
+genuinely existed upstream, which is the one thing a solitary model cannot
+have. Orchestration earns its cost not by producing more epistemic behavior
+but by making it answerable to something.
+
+For practitioners the recipe is short. Choose the final writer for
+instruction gain rather than for any supposed disposition of its own, and
+verify it can follow instructions at all---we found a model that could not,
+and no register would have saved it. Then write that writer's instructions
+conditionally over real upstream signal: not \emph{be careful}, but \emph{if a
+specialist flagged uncertainty, propagate it}. Spend the remaining budget on
+anything other than fine-tuning components for epistemic behavior, which at
+every locus and every reward design we tested did not reach the page.
 
 \paragraph{Reproducibility.} All code, prompts, 1{,}293 imported audited runs, pre-registrations, protocol amendments, verdicts (including refuted hypotheses), the pair datasets for all three seats, LoRA adapters, the NLI and judge instrument harnesses, and regeneration scripts: \url{https://github.com/srbobo/council-of-experts-research}.
 
@@ -483,7 +724,25 @@ In multi-agent pipelines, epistemic disposition is not additive across stages: i
 \item[Synthesizer / Lead] the model that receives all seat outputs plus the original question and compresses them into the final answer---the pipeline's last writer.
 \item[Disposition] what a model chooses to emit independent of what it knows, operationalized as five behavior families: (1)~training-cutoff disclosure; (2)~modeled-assumption flagging; (3)~precise vocabulary distinctions; (4)~jurisdictional distinguishing; (5)~\textbf{hedging}---stated conditionality of a claim (``this may vary if\ldots''), \emph{not} refusal or vagueness. Family (3) proved below detection in our cases under two independent instruments; analyses report the four detectable families (App.~\ref{app:family}).
 \item[Synthesis stripping] behavior density present at a seat's output but absent from the final output after synthesis.
-\item[Synthesizer register] a Lead model's characteristic output disposition density---writer-specific and largely independent of seat input (\S6).
+\item[Rendering function] the last writer's mapping from upstream evidence and
+synthesis instructions to emitted disposition, $R(\text{evidence},
+\text{instructions})$. Its evidence term is weak and its instruction term
+strong; disposition is a property of this mapping rather than of what reaches
+the writer (\S\ref{sec:rendering}).
+\item[Instruction gain ($g$)] the per-model coefficient in that mapping---how
+strongly a writer amplifies a disposition instruction. The only part of the
+rendering function not settable from the prompt, and the part that resisted
+weight-level training at every locus (\S\ref{sec:provenance}).
+\item[Register] descriptive term for a writer's \emph{observed} output
+disposition band under a fixed instruction set. Retained for continuity with
+earlier drafts, but it is a product ($g \times$ instructions) rather than a
+primitive: intrinsic bands are model-invariant at ${\approx}0.14$
+(\S\ref{sec:provenance}).
+\item[Transport vs.\ rendering] two accounts of why qualifications go missing
+in a pipeline. \emph{Transport}: erased at the interface between agents.
+\emph{Rendering}: present in the transmitted text but not written out by the
+final model. Distinguishable by holding upstream text fixed and varying only
+the writer's instructions (\S\ref{sec:rendering}).
 \item[Responsive vs.\ habitual] responsive behaviors appear only when domain triggers warrant them (trigger-light gate, case~7); habitual behaviors fire regardless.
 \item[Alignment] post-pretraining procedures (SFT, RLHF, DPO/ORPO/CPO) shaping disposition, as distinct from the pretraining corpus, which shapes knowledge.
 \end{description}
