@@ -38,67 +38,34 @@
 
 \begin{abstract}
 \noindent
-Multi-agent LLM pipelines route work through specialist models and aggregate
-their outputs through a final writer. When epistemic qualifications---hedges,
-labelled assumptions, cutoff caveats---fail to reach the user, the prevailing
-diagnosis is a \emph{transport} failure: uncertainty is said to be erased at
-agent interfaces, motivating proposals to attach uncertainty-bearing carriers
-alongside the text. We present evidence that this diagnosis misplaces the
-fault. Holding the pipeline, the models, and the upstream specialist text
-fixed, and changing \emph{only} the final writer's instructions, moves output
-disposition by $3$--$4\times$ ($0.16 \rightarrow 0.53$ as preservation clauses
-are restored; $0.20 \rightarrow 0.64$ from a single clause). The qualifications
-were present in the transmitted text the whole time. What varied was whether
-the last writer \emph{rendered} them. Disposition is a rendering property of
-the final writer, not a transport property of the pipeline.
+In a multi-agent LLM pipeline, several models contribute and a final model
+writes the answer the user reads. Qualifications the specialists wrote---
+labelled assumptions, hedges, notes that information may be out of date---
+often do not survive into that answer. The usual explanation is that they are
+lost when one component hands off to the next, which has motivated proposals
+to carry uncertainty in a separate channel alongside the text. That
+explanation does not fit the common case. Holding the pipeline, the models,
+and the specialists' text fixed, and changing only the instructions given to
+the final model, moves the amount of qualification in the output by three to
+four times. Nothing before that step differs between the conditions, so
+nothing was lost on the way: the qualifications were in the text, and the
+final model simply did not write them out.
 
-We characterise the last writer's \textbf{rendering function} across ${\sim}1{,}300$
-pre-registered audited runs of a four-model ``Council of Experts'' on consumer
-hardware, and report four properties. (1)~\emph{Structure is not the lever.}
-Holding the model fixed across six architectures (single-shot, flat merge,
-two-round debate, self-refine, prompted single model, council), multi-agent
-topology lifts disposition negligibly (flat merge $0.16$ vs.\ single-shot
-$0.14$; two-round debate $0.16$), and a single prompted model matches the full
-council on magnitude ($0.50$ vs.\ $0.57$, overlapping CIs). What the council
-uniquely achieves is \emph{calibration}: it is the only architecture combining
-substantial disposition with a clean trigger-free control ($0.00$
-$[0.00,0.00]$ vs.\ the prompted model's $0.15$ $[0.08,0.22]$, disjoint),
-because its instruction is \emph{conditional} on evidence that actually
-exists upstream. (2)~\emph{Upstream weights are not the lever.} Prompting and
-exemplar SFT produce large seat-level lifts ($\approx 2\times$) that are
-indiscriminate and vanish at the pipeline's mouth; reference-free preference
-optimization installs no seat-level magnitude across three lineages,
-invariant to $3.2\times$ dose. Its one real effect is subtractive and
-conditional---suppressing unwarranted hedging on a weakly-aligned seat---which
-survives triangulation across three instruments and generalizes across ORPO
-and CPO. Triangulation also caught and retired one finding produced by the
-primary metric alone. (3)~\emph{Downstream weights are not the lever either.}
-Training the final writer directly leaves its band unmoved, and so does an
-on-policy retry whose reward is calibration-shaped and computed at the
-pipeline's mouth---the strongest feasible analogue of multiturn-aware reward
-training. Weight-level training fails at every locus tested, under every
-reward design tested. (4)~\emph{Instructions are the lever, and they are
-graded and targeted.} Output density rises with the number of preservation
-clauses on all three writers (Spearman $\rho=+1.00$, $+0.80$, $+0.80$; a
-monotone trend, strictly monotone only on gpt-oss). Isolating clauses shows
-each lifts \emph{exactly} the behavior family it names and no other---these
-are targeted specifications, not general priming---while the composite gain
-is carried by whichever single clause matches the family that writer already
-produces in volume.
-
-Finally, the writers' \emph{intrinsic} bands are indistinguishable: four
-models spanning four architectures all emit $0.14$--$0.15$ under a neutral
-prompt. Models therefore do not differ in disposition; they differ in
-\textbf{instruction gain}---how strongly each amplifies a disposition
-instruction. This relocates the mechanism from a characteristic emission
-level to a per-model coefficient on instructions, and explains why weight
-training could not move it: a LoRA-scale preference run has no purchase on
-how a model processes instructions. Practically: select a final writer for
-instruction responsiveness, then write its instructions \emph{conditionally}
-over real upstream evidence. All experiments are \$0-budget and reproducible
-on a single 32\,GB consumer machine; pre-registrations, protocol amendments,
-refuted hypotheses, and a post-hoc integrity audit that withdrew one arm are
-included in the record.
+Across roughly 1,300 pre-registered runs of a four-model council on one
+consumer machine, we find that multi-agent structure by itself contributes
+almost nothing---three specialists merged without the right instruction match
+a single model working alone, and adding rounds of debate does not help---
+while a well-prompted single model matches the whole council for sheer
+quantity of qualification. What the council alone achieves is knowing
+\emph{when} to qualify, because its instruction depends on what the
+specialists actually flagged. Training this behavior into model weights failed
+everywhere we tried it: on the specialists, on the final writer, with three
+optimizers, at triple the data, and with a reward computed on the pipeline's
+own output. Instructions work instead, and work precisely---each clause lifts
+the behavior it names and no other. Given a neutral prompt, four different
+architectures produce nearly identical amounts of qualification, so what
+separates candidate models is not disposition but how strongly each responds
+to being asked.
 \end{abstract}
 
 \section{Introduction}
@@ -109,34 +76,36 @@ qualification does not survive the trip. A specialist writes ``assuming 60\%
 adoption'' or ``this may have changed since my training data''; the user reads
 a confident synthesis with the qualification gone.
 
-\paragraph{Transport or rendering?} The dominant framing treats this as a
-\textbf{transport} problem. Uncertainty is cargo; agent interfaces transmit
-discrete commitments rather than epistemic states; the cargo is therefore
-erased in transit. The remedies follow from the diagnosis: propagate numeric
-confidence through the chain \cite{uprop}, or attach an uncertainty-bearing
-latent carrier to each handoff because text cannot hold the freight
-\cite{laundering}. On this view the fix is architectural, requires access to
-model internals, and is unavailable for black-box components.
+\paragraph{Where does the qualification go?} The prevailing answer places the
+loss at the boundary between agents. On this account, the interfaces that
+connect components pass along decisions but not the uncertainty behind them,
+so a caveat that existed inside one model is gone by the time the next one
+reads its output. The proposed fixes follow: pass numeric confidence
+estimates alongside each step \cite{uprop}, or attach a separate
+uncertainty-bearing representation to every handoff, on the grounds that
+ordinary text cannot preserve it \cite{laundering}. Both remedies require
+changing the system's architecture and reading model internals, which rules
+them out for components accessed as black boxes.
 
-We report evidence that the fault lies elsewhere. Fix the pipeline, the
-models, and the upstream specialist text; change only the final writer's
-instructions. Output disposition moves by $3$--$4\times$---from $0.16$ to
-$0.53$ as preservation clauses are restored to the synthesis prompt
-(\S\ref{sec:rendering}), and from $0.20$ to $0.64$ from a single clause
-(\S\ref{sec:clause}). Nothing upstream differs between those conditions. The
-qualifications were in the transmitted text throughout; what varied is whether
-the last writer \emph{rendered} them into its output. We therefore argue that
-disposition is a \textbf{rendering} property of the final writer rather than a
-transport property of the pipeline---and that the accessible remedy is
-correspondingly cheaper than a new carrier: an instruction, applied at one
-place, to a model whose internals need not be visible.
+Our measurements point somewhere else. Keep the pipeline, the models, and the
+specialists' text fixed, and change only the instructions the final model
+receives. The amount of qualification in the output moves from $0.16$ to
+$0.53$ as preservation clauses are restored to that model's prompt
+(\S\ref{sec:rendering}), and from $0.20$ to $0.64$ when a single clause is
+added (\S\ref{sec:clause}). Nothing before the final step differs between
+those conditions. If an instruction to the last model can bring a
+qualification back, the qualification was still there to be found---so it was
+not destroyed earlier. What varies is whether the final model writes it out.
 
-This is not a claim that uncertainty is never lost at interfaces; structured
-tool-call interfaces plainly do discard epistemic state, and the transport
-literature is right about them. It is a claim about which failure dominates
-when the interface is \emph{prose}, which is the common case for
-specialist-to-synthesizer aggregation---and there, our measurements say the
-information arrives and is discarded at the point of writing.
+We take this to mean that qualification is decided at the point of writing
+rather than in the plumbing, and that the practical remedy is much cheaper
+than a new channel: an instruction, given in one place, to a model whose
+internals need not be visible. The narrower point deserves stating. Some
+interfaces really do discard uncertainty---a structured tool call with fixed
+fields has nowhere to put it, and the work cited above is right about those.
+Our claim concerns the case where one model's prose is read by another, which
+is how specialist output usually reaches an aggregator. There, the
+information arrives intact and is dropped when the answer is written.
 
 \paragraph{Two axes.} We distinguish \textbf{content}---whether the right
 substantive material appears, measured by per-case expert rubrics---from
@@ -149,44 +118,31 @@ stage.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_schematic.pdf}
-\caption{Rendering, not transport. Specialist seats emit disposition at
-densities that vary widely with the installation arm (orange bars), but the
-final writer re-expresses everything through its own \emph{rendering
-function}: final-output disposition (green) is nearly independent of what the
-seats emit. The synthesis prompt's PRESERVE instructions set the gain on that
-function (\S\ref{sec:rendering}, Fig.~\ref{fig:register}).}
+\caption{How much qualification the specialists produce varies a great deal
+with how they were trained (orange bars). How much reaches the finished answer
+(green) barely varies at all: the final model decides that, and its
+instructions decide how much it decides on
+(\S\ref{sec:rendering}, Fig.~\ref{fig:register}).}
 \label{fig:schematic}
 \end{figure}
 
-\textbf{Contributions.} (i)~A \emph{transport-vs-rendering} test for pipeline
-disposition: holding upstream text fixed and varying only the final writer's
-instructions, we show the qualification loss attributed to agent interfaces is
-reproduced---and reversed---at the writing step (\S\ref{sec:rendering},
-\S\ref{sec:clause}). (ii)~A controlled comparison of six orchestration
-architectures with the model held fixed, separating what multi-agent structure
-buys (nothing, on magnitude) from what a \emph{conditional} instruction over
-real specialist signal buys (calibration: a trigger-free gate of $0.00$
-$[0.00,0.00]$ against a prompted single model's $0.15$ $[0.08,0.22]$)
-(\S\ref{sec:arch}). (iii)~A controlled comparison of installation mechanisms
----prompting, exemplar SFT, and reference-free preference optimization (ORPO,
-CPO)---under pre-registered predictions, with a trigger-free control that
-separates \emph{responsive} from \emph{habitual} behavior, replicated across
-three seats of distinct lineage (\S\ref{sec:install}). (iv)~Characterisation
-of the last writer's \textbf{rendering function}: it is input-independent (and
-can \emph{invert} under over-dense input); it survives direct ORPO training of
-the writer, including an on-policy, calibration-shaped, pipeline-mouth-scored
-retry; seat input is non-additive; and its instruction gain is graded
-(\S\ref{sec:rendering}) and \emph{targeted}---each clause lifts exactly the
-behavior family it names (\S\ref{sec:clause}). (v)~Evidence that the
-\emph{intrinsic} band is model-invariant across four models and four
-architectures, relocating the mechanism from a characteristic emission level
-to a per-model \textbf{instruction gain} coefficient (\S\ref{sec:provenance}).
-(vi)~A three-instrument measurement-validation protocol (pattern matching,
-calibrated NLI entailment, blinded pairwise LLM judges) that confirms the
-surviving claims and catches a false one produced by the primary metric
-(App.~\ref{app:instruments}); plus a fully local, \$0 protocol with
-append-only audit logs for all 1{,}293 runs, and a post-hoc integrity audit
-that withdrew one arm (\S\ref{sec:limits}).
+\textbf{Contributions.} We report a test that separates the two explanations
+above, holding the specialists' text fixed and varying only what the final
+model is told (\S\ref{sec:rendering}, \S\ref{sec:clause}). We compare six
+pipeline designs with the model held fixed, separating what multi-agent
+structure contributes from what a conditional instruction contributes
+(\S\ref{sec:arch}). We compare three ways of training the behavior in, at both
+ends of the pipeline, under predictions registered in advance
+(\S\ref{sec:install}), and characterise the final model's behavior as a
+function of what it receives and what it is told (\S\ref{sec:rendering},
+\S\ref{sec:clause}). We show that models differ far less in what they produce
+unprompted than in how strongly they answer an instruction
+(\S\ref{sec:provenance}). Throughout, conclusions are checked against three
+independent measurement instruments, one of which caught a result the primary
+measure had produced on its own (App.~\ref{app:instruments}). Everything ran
+locally at no API cost, with full logs, pre-registrations, protocol
+amendments, refuted predictions, and an audit that withdrew one arm after
+publication of its figure.
 
 \section{Related work}
 \textbf{Multi-agent orchestration.} Debate and role-played collaboration improve factuality and reasoning \cite{du2023,moa2024,medagents,mdagents}, and recent work compares orchestration against the strongest single model \cite{tian2025} or trains orchestrators end-to-end \cite{masorchestra}. A 2026 line now reports that well-prompted single agents match or beat multi-agent systems under matched token budgets \cite{singleagent}; our architecture comparison reproduces that negative result on a new axis (disposition \emph{magnitude}) and then identifies an axis where orchestration does pay---\emph{calibration}---which that literature does not measure. This literature measures content outcomes. The closest work on the \emph{aggregation} step, Parallel-Synthesis \cite{parallelsynth}, trains a synthesizer adapter and explicitly distills reasoning behavior from text-concatenation synthesis---an implicit acknowledgment that naive aggregation loses behavior---which our rendering account explains and quantifies for epistemic behavior specifically, and locates in the writer's instructions rather than in the concatenation.
@@ -194,22 +150,21 @@ that withdrew one arm (\S\ref{sec:limits}).
 \textbf{Specialists vs.\ generalists.} Evidence is mixed on whether small domain fine-tunes beat larger generalists in-domain \cite{trident,medftrag}. Our content results replicate the negative side (a 20B open MoE outperforms a four-specialist council $42\% \rightarrow 25$--$31\%$ on rubric coverage) and motivate the pivot: the surviving specialist value is dispositional, not informational.
 
 \textbf{Uncertainty expression and abstention.} Verbalized uncertainty \cite{lin2022}, linguistic calibration \cite{mielke2022}, knowing-what-you-know \cite{kadavath2022}, abstention training \cite{rtuning} and recent confidence-aware abstention work \cite{icalm,bas} train and evaluate single models end-to-end. A parallel line asks whether epistemic markers \emph{faithfully} track a model's internal confidence---and finds systematic deficiencies \cite{markerfaith,rhetmiscal,markerrel}. Our contribution is orthogonal to faithfulness: we take marker \emph{emission} as the observable and ask where it originates and survives in a pipeline, not whether it is calibrated to hidden confidence. A seat's trained uncertainty behavior must survive an aggregator, and mostly does not. The closest single-model neighbor is certainty distortion \cite{certdist}:
-LMs rephrasing scientific and clinical text systematically fail to preserve the
-source's expressed certainty, distorting up to 75\% of outputs with a
-$1.5$--$2\times$ asymmetry toward \emph{inflating} confidence, compounding
-under repeated paraphrase, and only partly mitigated by prompt interventions.
-A clinical benchmark reports the same failure for diagnostic uncertainty under
-summarization \cite{possdef}. Both study \emph{one} model transforming text
-and neither attempts to install the behavior by training. We differ on all
-three axes: our object is a multi-agent pipeline where distinct specialist
-models feed an aggregator; we test installation by prompting, SFT, ORPO and CPO
-at both loci (and find weights move nothing); and we characterize the
-aggregator's \emph{rendering function}---a writer-specific mapping from
-upstream evidence and instructions to emitted disposition, nearly independent
-of input density, which can \emph{invert} under over-dense input rather than
-merely attenuate. Their prompt-mitigation result and our gain curve
-converge from different directions on the same practical conclusion, which we
-regard as mutual corroboration. \textbf{The transport account, and where we disagree.} Two 2026 lines make the
+language models rephrasing scientific and clinical text systematically fail to
+preserve the source's expressed certainty, distorting up to 75\% of outputs
+with a bias toward \emph{overstating} confidence, compounding under repeated
+paraphrase, and only partly fixed by prompting. A clinical benchmark reports
+the same failure for diagnostic uncertainty under summarization
+\cite{possdef}. Both study one model transforming text, and neither attempts
+to train the behavior in. We differ on three counts: our setting is a pipeline
+in which distinct specialist models feed an aggregator; we test installation
+by prompting, SFT, ORPO and CPO at both ends, and find weights move nothing;
+and we characterise the aggregator itself, which does not merely attenuate
+what it receives but can produce less when given more. Their finding that
+prompting partly helps and our finding that instructions are the whole lever
+converge from different directions, which we take as mutual corroboration.
+
+\textbf{The transport account, and where we disagree.} Two 2026 lines make the
 pipeline dimension timely and both adopt a transport framing. ``Confidence
 laundering'' \cite{laundering} argues, as a position, that standard agent
 interfaces perform a many-to-one projection from uncertain internal states to
@@ -225,8 +180,8 @@ which genuinely cannot represent a distribution. It is weakest exactly where
 aggregation usually happens: prose. Our ablations hold the prose fixed and
 vary only the reader's instructions, and recover $3$--$4\times$ swings in
 emitted disposition (\S\ref{sec:rendering}, \S\ref{sec:clause}). If the
-qualifications had been erased in transit, no instruction to the final writer
-could restore them; they are restored, so they were not erased. The
+qualifications had been destroyed before the final step, no instruction to
+that step could bring them back; they do come back, so they were still there. The
 implication is practical as well as conceptual: where the transport account
 prescribes an architectural change requiring access to model internals, the
 rendering account prescribes an instruction, which works on black-box
@@ -257,7 +212,13 @@ the band can be moved by training at all---which they do not attempt.
 
 \textbf{Scale.} 462 imported, audited runs (append-only JSON, one file per run, each carrying per-phase inputs/outputs/backends); all inference via Ollama on one fanless M5 MacBook Air, 32\,GB unified memory, 26.8\,GB Metal working set. Runs are nondeterministic across repeats even at temperature 0 (runtime batching); we treat repeats as seeds and report bootstrap intervals.
 
-\textbf{Metrics.} Behavior density $=$ pattern-matched occurrences of the five behavior families (four detectable; see below) per 1{,}000 characters. $\text{CDS} = \text{density} \times \sqrt{\text{distinct behaviors}/5}$. $\text{ALR} = \text{council density} / \text{matched single-shot density}$. Seat-level density is computed on the specialist's own turn from the audit log; final density on the synthesized output. (Definitions and regexes are versioned with the code; see \S\ref{sec:limits}.) The five families are not uniformly distributed across seats: training-cutoff disclosure is universal (density $0.51$--$0.85$ on every seat), modeled-assumption flagging lives almost entirely on the finance seat ($0.25$ vs.\ $0.00$ elsewhere), hedging on healthcare and finance, jurisdictional distinguishing is thin everywhere, and vocabulary-precision is below detection ($\le 0.02$) on all three. The composite is therefore \emph{cutoff-dominated at the seat level}, and per-family claims below are tested on the seat that owns the family (App.~\ref{app:family}). At the pipeline's mouth the dominant family is a property of the \emph{synthesizer}, not of the seats, and differs across writers (\S\ref{sec:clause}).
+\textbf{Metrics.} Behavior density $=$ pattern-matched occurrences of the five behavior families (four detectable; see below) per 1{,}000 characters. $\text{CDS} = \text{density} \times \sqrt{\text{distinct behaviors}/5}$. $\text{ALR} = \text{council density} / \text{matched single-shot density}$. Seat-level density is computed on the specialist's own turn from the audit log; final density on the synthesized output. (Definitions and regexes are versioned with the code; see \S\ref{sec:limits}.) The behaviors are not spread evenly across specialists: disclosing a training
+cutoff is near-universal, flagging modelled assumptions lives almost entirely
+with the finance specialist, and distinguishing terms of art is too rare to
+measure anywhere. Per-behavior claims are therefore tested on the specialist
+that actually produces the behavior (App.~\ref{app:family}). Which behavior
+dominates the finished answer, by contrast, turns out to be a property of the
+final model rather than of the specialists (\S\ref{sec:clause}).
 
 \textbf{Installation arms} (legal seat, single-variable design, seed 42): $\text{A}'$ $=$ conversion-control baseline (identical Saul weights through our fp16$\to$GGUF$\to$Q4 pipeline); B $=$ a frozen behavior-spec addendum on the seat's system prompt (five behaviors, one example each, an explicit ``do not force it'' clause); SFT $=$ LoRA on 91 behavior-rich \emph{chosen} responses; ORPO $=$ LoRA reference-free preference optimization on the same 91 chosen responses paired with behavior-stripped rejections. Pairs are content-controlled (chosen/rejected are rewrites of the same base answer), length-ratio filtered ($0.8$--$1.4$) against length bias, overlap-filtered (Jaccard $\ge 0.35$ on capitalized tokens), and leakage-screened against all seven cases. Replication arms repeat the recipe with one variable changed: ORPO on dose-matched 91-pair sets for the healthcare seat (Med42, preference-aligned) and finance seat (Qwen-Open-Finance, SFT-only), a CPO arm on the identical legal pairs (only the objective differs), and an ORPO arm on the \emph{synthesizer itself} (Qwen2.5-7B Lead, 88 synthesis-level pairs built from recorded deliberations; sequence length 4{,}096 --- an amendment inherent to the locus, since syntheses integrate all seat outputs and no synthesis example fits the seat arms' 1{,}792). All protocol amendments were documented before training; predictions were pre-registered before each cell ran.
 
@@ -325,29 +286,44 @@ rather than adding it.
 
 The pattern is a conjunction, not a property of any component. Disposition that
 is both substantial and appropriately gated requires (a)~real specialist signal
-and (b)~a \emph{conditional} instruction over it---``\emph{if} a specialist
-flagged uncertainty, propagate it.'' Signal without the conditional instruction
-(flat, debate) yields single-shot levels; the instruction without signal
-(single$+$spec) yields the magnitude but fires unconditionally, because there is
-nothing to condition on. Only the council has both. Under the trigger-heavy case
-the asymmetry sharpens further: council modes rise to $1.66$--$1.82\times$ their
-per-case baseline while single-shot falls to $0.68\times$---orchestration
-\emph{concentrates} disposition under simultaneous demand where a single context
-\emph{dilutes} it.
+and (b)~an instruction that depends on it---\emph{if} a specialist flagged
+uncertainty, carry it through. Specialists without such an instruction (the
+flat merge, the debate) produce no more than one model working alone. The
+instruction without specialists (the prompted single model) produces the
+quantity but applies it everywhere, since there is nothing for it to check
+against. Only the council has both, which is why only the council is both
+substantial and selective.
 
-\section{Result 2: installing disposition --- magnitude vs.\ responsiveness}
+The gap widens on the hardest case, which demands several kinds of
+qualification at once: the council arrangements rise to $1.66$--$1.82\times$
+their usual level there, while a single model falls to $0.68\times$. Asked to
+do several things at the same time, one model spreads itself thin; the
+council, with each specialist responsible for less, does not.
+
+\section{Result 2: can the behavior be trained in?}
 \label{sec:install}
-Figure~\ref{fig:triangle} and Table~\ref{tab:triangle} give the installation
-triangle at $n=5$ seeds per cell (140 runs; the CPO arm, below, is included
-in the figure for comparison):
+If instructions to the final model matter this much, the obvious next question
+is whether the behavior can instead be built into a model's weights, so that
+it no longer depends on remembering to ask. We tried, at both ends of the
+pipeline and by three different methods. The short answer is that it can be
+put into a specialist and cannot be got out again.
+
+Three measurements are needed to tell the difference between a method that
+works and one that only appears to. The first is whether the specialist itself
+changes. The second is whether that change reaches the finished answer. The
+third is whether the behavior is discriminating---we include one question that
+warrants no hedging at all, so a model that qualifies everything is visibly
+distinguishable from one that qualifies the right things. Figure~\ref{fig:triangle}
+and Table~\ref{tab:triangle} report all three across 140 runs.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_triangle.pdf}
-\caption{The installation triangle. Prompting and SFT install real seat-level
-magnitude (left) that synthesis strips (center) and that fires on the
-trigger-free control (right); preference optimization installs nothing and
-suppresses the gate. Bars: means over $n=30$ run-level observations (6 trigger
+\caption{Three measurements on the same arms. Prompting and supervised
+fine-tuning genuinely change the specialist (left), but the change does not
+reach the finished answer (centre) and it fires on the question that warrants
+no hedging (right). Preference optimization changes nothing on the first
+measure and reduces the unwarranted hedging on the third. Bars: means over $n=30$ run-level observations (6 trigger
 cases $\times$ 5 seeds); whiskers: bootstrap 95\% CIs ($10^4$ resamples); gate
 panel: $n=4$--$5$ per arm, dotted line = untrained baseline.}
 \label{fig:triangle}
@@ -391,15 +367,48 @@ modeled $0.00 \to 0.27$, hedging $0.02 \to 0.23$, alongside cutoff
 $0.68 \to 1.21$), with one notable side effect---SFT \emph{suppressed}
 jurisdictional distinguishing ($0.14 \to 0.02$) while installing the others.
 
-\textbf{The null extends to the last writer.} If the register is merely where disposition happens to live, training the synthesizer itself should move it. It does not: ORPO on the Lead (same recipe, 88 dose-matched synthesis-level pairs, seats held at their untrained production versions) leaves the pipeline-mouth band unmoved --- final density $0.89$ $[0.67,1.11]$ vs.\ the conversion control's $1.03$ $[0.79,1.28]$, against a pre-registered threshold of $|\Delta|\ge 0.25$ with disjoint CIs. The control band also reproduces this writer's \S\ref{sec:rendering} register ($1.03$ vs.\ $1.24$), stable across cells. The trigger-light gate was already near-floor untrained ($0.15$), so no suppression is claimed --- the same no-slack situation as the pre-aligned seat. Weight-level training now fails at \emph{every} locus tested.
+\textbf{The same failure at the other end.} If this behavior simply lives in
+the final model, training that model should move it. It does not. Using the
+identical recipe and a matched amount of data on the final model itself leaves
+its output where it started: $0.89$ $[0.67,1.11]$ against an untrained
+$1.03$ $[0.79,1.28]$, well inside the margin we had registered in advance as
+the threshold for a real effect. Training fails at both ends of the pipeline.
 
-\textbf{Instrument validation.} Because these verdicts rest on measurement, we validated the instrument stack (\S\ref{app:instruments}): a calibrated NLI entailment scorer (chosen-vs-rejected AUC $0.929$ on the construction-labeled pair corpus) and blinded, order-swapped, evidence-grounded pairwise LLM judges \cite{llmjudge}. The magnitude nulls and healthcare zeros are instrument-robust (pattern + NLI); the legal suppression is three-instrument robust (pattern, NLI-cutoff $1.06 \rightarrow 0.35$, and $14/14$ decided judge pairs unanimous under both judges, sign-test $p=0.016$ each, no length bias); and the apparent finance \emph{reversal} ($0.81 \rightarrow 1.21$) appeared under the pattern metric only---NLI shows no increase on any family---and is retired as instrument artifact. The finance result stands as a non-replication (no suppression), not a worsening.
+\textbf{Checking the measurements.} Because these conclusions rest on
+counting, we re-scored the key comparisons with two further instruments: an
+entailment model calibrated against our own labelled pairs, and blinded
+pairwise LLM judges shown the two texts in both orders and required to quote
+their evidence (App.~\ref{app:instruments}). The null results and the
+suppression finding held under all three---the judges agreed unanimously on
+every pair they were willing to decide. One result did not hold. An apparent
+\emph{increase} in hedging on the finance specialist appeared under pattern
+matching alone; neither other instrument saw it, and we retire it as an
+artifact of the measure. That arm is a non-replication, not a reversal.
 
-Two further details. First, prompting was tested at two loci: on the generalist single-shot (a $6\times$ final-output lift, $0.099 \rightarrow 0.589$, that failed the gate at $0.985$---its answer to the hybrid-work communication question opened a section ``Current State Snapshot (as of my training data)'' and closed with ``actual results may vary'': disclosure theater where nothing warranted disclosure) and on the seat (the table above). Second, content is unaffected by successful installation: rubric coverage is $12/36$ for both $\text{A}'$ and ORPO ($9/36$ for the original production seat)---no content tax. Gate cells use $n=4$--$5$ (the planner routes no specialists on the trigger-light case in some runs; routing variability is itself Ollama-runtime nondeterminism at temperature 0). Summary: \emph{prompting and exemplar training change what a model says, loudly and indiscriminately; preference training installs nothing---at best it removes miscalibrated hedging where the base model has it, ORPO selectively and CPO bluntly, and only the last writer decides what survives.}
+What indiscriminate hedging looks like is worth seeing. Asked a routine
+question about hybrid-work communication---nothing in it turns on recent
+events---the prompted model opened with a section headed ``Current State
+Snapshot (as of my training data)'' and closed with ``actual results may
+vary''. It had learned the form of epistemic care without any of the
+judgement, which is precisely what the control question is for. Installing the
+behavior costs nothing in substance: rubric coverage is unchanged between the
+trained and untrained specialist.
+
+In short: prompting and exemplar training change what a model says, loudly
+and everywhere; preference training installs nothing, and at best removes
+hedging the base model should not have had.
 
 \section{Result 3: the last writer's rendering function}
 \label{sec:rendering}
-Why do installed behaviors vanish? A pre-registered entanglement hypothesis---content-woven markers survive aggregation, detached boilerplate is stripped---was \textbf{refuted}: entangled share is flat across arms (baseline 56\%, prompting 61\%, ORPO 61\%, SFT 67\%---SFT's markers are the \emph{most} content-woven yet retain worst), retention splits by arm not position (baseline $1.08$, ORPO $0.96$ vs.\ prompting $0.49$, SFT $0.49$), and entanglement does not predict retention ($r=-0.10$ over 102 runs). Notably the refuted hypothesis and the overturned PRESERVE prediction (below) were both pre-registered---we report them as part of the record.
+Why does trained-in behavior disappear? Our first explanation was that it
+depends on how the qualification is written: a caveat woven into a sentence
+that carries real content should survive being rewritten, while a detached
+stock phrase should be easy to drop. We registered that prediction and it was
+\textbf{wrong}. How embedded a qualification is does not predict whether it
+survives ($r=-0.10$ across 102 runs); the method whose qualifications are
+\emph{most} woven into content is the one whose qualifications survive worst.
+What predicts survival is which method produced them---which pointed us away
+from the qualifications and toward the model reading them.
 
 A 72-run ablation (2 input arms $\times$ 3 synthesizer models $\times$ PRESERVE instructions on/off $\times$ 6 cases) located the mechanism (Fig.~\ref{fig:register}, Table~\ref{tab:register}):
 
@@ -422,7 +431,7 @@ arm (6 cases each; seat input densities in Fig.~\ref{fig:register}).}
 \label{tab:register}
 \begin{tabular}{lcccc}
 \toprule
-Synthesizer & \makecell{PRESERVE,\\base seat} & \makecell{PRESERVE,\\$2$--$3\times$ hot seat} & \makecell{no-PRESERVE,\\base} & \makecell{no-PRESERVE,\\hot} \\
+Synthesizer & \makecell{PRESERVE,\\base seat} & \makecell{PRESERVE,\\$2$--$3\times$ richer seat} & \makecell{no-PRESERVE,\\base} & \makecell{no-PRESERVE,\\richer} \\
 \midrule
 Phi-4-14B & $1.17$ & $0.61$ & $0.52$ & $0.31$ \\
 gpt-oss-20B & $0.63$ & $0.86$ & $0.20$ & $0.13$ \\
@@ -441,10 +450,13 @@ PRESERVE instructions are a \textbf{gain control}: their removal collapses
 output $2$--$5\times$ on every synthesizer, overturning our registered
 prediction that instructions would not matter.
 
-We therefore describe the last writer not as a channel but as a
-\textbf{rendering function}: a mapping $R_{\text{writer}}(\text{evidence},
-\text{instructions}) \rightarrow \text{emitted disposition}$, in which the
-evidence term is weak and the instruction term is strong.
+So the final model is better understood not as something the qualification
+passes through, but as something that decides, on each occasion, how much
+qualification to write. What it receives from the specialists barely moves
+that decision; what its instructions say moves it a great deal. We refer to
+this as the model's \textbf{rendering function}, and write it
+$R(\text{evidence}, \text{instructions})$ when we need to be precise about
+which of the two inputs is doing the work.
 
 \paragraph{The transport test.} This is the point at which the rendering
 account is separable from the transport account, so we state the comparison
@@ -459,17 +471,18 @@ moves density $0.20 \rightarrow 0.64$. Under a transport account these
 conditions should be indistinguishable, because nothing about the interface,
 the handoff format, or the transmitted text differs between them. Under a
 rendering account they differ by construction, which is what we observe.
-Qualifications that can be recovered by instructing the reader were never
-erased in transit.
+A qualification that reappears when you ask the last model for it was never
+gone.
 
-Two consequences follow. First, ORPO ``survives'' aggregation by staying
-inside the writer's band while prompting and SFT ``strip'' by exceeding it---
-retention is a property of the renderer, not of the marker. Second, the
-dose-invariance of \S\ref{sec:install} is a corollary rather than a separate
-puzzle: if the writer's rendering, not the seat's input, sets output
-disposition, no amount of additional preference data at a seat can raise
-it---which is exactly what $3.2\times$ dose showed, and why the seat
-replications found no pipeline-level effect to transmit.
+Two things now make sense that did not before. Preference optimization
+appeared to ``survive'' aggregation and the other methods to be ``stripped'';
+in fact preference optimization simply left the specialist close to what the
+final model was going to write anyway, while the louder methods pushed it past
+that point and the excess was discarded. Whether a qualification survives is a
+fact about the final model, not about the qualification. And the earlier
+finding that tripling the training data changed nothing is no longer a
+separate puzzle: if the final model's decision sets the output, more training
+at a specialist cannot raise it.
 
 \begin{figure}[t]
 \centering
@@ -480,8 +493,8 @@ synthesis prompt, on all three Leads (Spearman $\rho = +1.00 / +0.80 / +0.80$;
 spans $3.3\times$ and $2.1\times$ for gpt-oss and Qwen). Phi-4's $k{=}2$ cell
 (open marker) is anomalous---no other Lead bumps there and its within-cell
 dispersion equals its between-level differences at $n{=}6$---and is reported as
-probable noise. \emph{Right:} heating $h$ of 3 seats with the behavior-spec
-override leaves pipeline-mouth density flat-to-declining ($\rho = -0.80$; CIs
+probable noise. \emph{Right:} giving the disposition
+instruction to $h$ of the 3 specialists leaves pipeline-mouth density flat-to-declining ($\rho = -0.80$; CIs
 overlap): seat disposition is not partially additive and then diluted, it does
 not transmit. Points are means over 6 cases; whiskers bootstrap 95\% CIs.}
 \label{fig:gain}
@@ -516,12 +529,11 @@ individual behavior monotonically. Second, disposition is \emph{non-additive} in
 input: applying the behavior-spec override to one, two, or all three seats
 leaves the pipeline mouth flat ($\rho=-0.80$, spread $0.38$, overlapping
 CIs)---closing the remaining alternative that seat disposition partially
-accumulates and is diluted. Combined with the Lead-training null
-(\S\ref{sec:install}), the mechanism statement finalizes as: \emph{final
-disposition $\approx g_{\text{writer}} \times I(\text{instructions},
-\text{evidence})$---a rendering function, robust to weight-level training at
-either locus, whose evidence term is weak, whose instruction term is strong,
-and whose per-model gain is the only part not accessible from the prompt.}
+accumulates and is diluted. Taken with the failure to train the final model directly, the picture
+settles: \emph{how much qualification a pipeline produces is set by the last
+model's instructions, scaled by how strongly that model responds to them.
+What the specialists send barely matters, and neither does training the
+weights at either end.}
 
 We then subjected the robustness clause to its strongest feasible test. The
 Lead-training null used offline pairs with a density-shaped, response-level
@@ -582,32 +594,26 @@ withdraw the lineage claim. What survives is narrower and still useful: one
 domain-SFT-plus-DPO model and three generically instruction-tuned models,
 across four architectures, share a band to within $0.01$.
 
-The between-writer differences of \S\ref{sec:rendering} therefore cannot be
-differences in baseline emission, since absent instructions every model emits
-the same $\approx 0.14$. They are differences in \emph{response} to the
-surrounding instructions. This is why we treat ``register'' as a description
-of an observed band rather than as the mechanism: the band is a
-\emph{product}, not a primitive. The per-model quantity that actually varies
-is \textbf{instruction gain}---how strongly a writer amplifies a disposition
-instruction---so the rendering function is better written
-\[
-  \text{disposition} \;\approx\; g_{\text{writer}} \times
-  I(\text{instructions}, \text{evidence}),
-\]
-with $g$ a model property and $I$ a conditional term supplied by the prompt
-and evaluated against what the seats actually flagged. Independent support
-comes from stylistic rewriting, where three frontier models shift the same
-markers in the same direction but at markedly different effect sizes
-($|d| = 0.60$, $1.29$, $1.45$) \cite{voicerev}---convergent behavior,
-divergent gain. For Qwen2.5 the decomposition is
+This changes what the earlier differences between final models meant. They
+cannot be differences in how much qualification each model naturally
+produces, because with no instruction they all produce the same amount. They
+are differences in how strongly each model \emph{responds} to being asked. We
+call this a model's \textbf{instruction gain}. It is the one part of the
+picture that a prompt cannot set, and---as the training results showed---the
+one part that weights would not move either.
+
+Work on stylistic rewriting reports the same pattern in a different setting:
+three frontier models shift the same features in the same direction when
+revising personal narrative, but by markedly different amounts
+($|d| = 0.60$, $1.29$, $1.45$) \cite{voicerev}. Same behavior, different
+gain. For Qwen2.5 the decomposition is
 measurable end to end: $0.14$ intrinsic, $0.56$ inside the council with
 PRESERVE stripped, $1.03$ with the full block---roughly $4\times$ from the
 scaffold and a further $1.8\times$ from the instructions, over a floor every
-model shares. This also explains the two synthesizer-training nulls, and reframes them as
-one result rather than two failures: a LoRA-scale preference run has no
-purchase on $g$, which is a property of \emph{how a model processes
-instructions}---far deeper than a surface emission tendency, and not
-something $49$--$88$ preference pairs can reach.
+model shares. It also explains why training the final model twice produced nothing. We were
+trying to shift how a model responds to instructions, which is a deeper
+property than the habit we assumed we were adjusting, and not one that a few
+dozen preference pairs can reach.
 
 One practical corollary, and one caveat. Since the band is model-invariant,
 a Lead should be selected for instruction gain, not for any supposed
@@ -672,7 +678,62 @@ nothing is flagged.
 
 \section{Limitations}
 \label{sec:limits}
-Our five behavior families reduce to four in practice: vocabulary-precision is below detection ($\le 0.02$ density) on every seat and was also the worst-calibrated family for the NLI instrument (AUC $0.738$, Youden $J=0$), so two independent instruments fail it---either our cases do not provoke it or it is not detectable as a surface feature. The composite is cutoff-dominated \emph{for some synthesizers but not others} (Qwen2.5 $0.554$, Phi-4 $0.909$, but gpt-oss only $0.018$, where modeled-assumptions dominates instead), and the gain-curve monotonicity holds for the composite but not for any individual family. Pattern-based scoring has paraphrase blind spots and rewards concision; we mitigate with per-claim-normalized NLI scoring and pairwise LLM judges (\S\ref{app:instruments}), but the validation rests on inter-instrument convergence rather than a human-rated anchor---weaker on that axis than the human-validated certainty metric of \cite{certdist}---and two NLI hypothesis families calibrated degenerately (documented), and the judges' evidence-grounding gate rejected most pairs on dense numeric finance text. ORPO substitutes for DPO due to a memory defect in the only local DPO trainer available (documented); installation claims are scoped to reference-free preference optimization (ORPO, CPO). Suppression evidence concentrates on one weakly-aligned seat; trigger-light gate cells use $n=4$--$5$. The synthesizer-training null rests on one Lead (Qwen2.5-7B; a 14B Lead exceeded the training budget) at 88 pairs vs.\ the seat arms' 91, and its on-policy calibration-reward follow-up realized 49 pairs (its NLI directional gate was the binding filter) with best-of-$n$ distillation standing in for full RL; the gain-curve and additivity cells use $n=6$ per point without seed repeats, and two gain-curve cells depart from strict monotonicity---Phi-4's anomalous $k{=}2$ and Qwen's $k{=}2$ dip---both reported as probable noise at $n{=}6$; a seeded replication would settle them. A preference-data range of $91$--$292$ pairs (dose-invariant, but far larger scale untested), $n=5$ seeds. A corpus audit surfaced three provenance defects in the earliest (Result-2) arms, none of which changes a reported interval but all of which weaken those arms' internal consistency: in \texttt{local-council-\{repro,spec,sft,dpo\}} the five ``seeds'' per case are in fact one run from an earlier session plus four from a later one, with a directional $5$--$8\%$ length offset in three of the four arms; \texttt{local-council-dpo-v2} carries six runs on the trigger-light case against five elsewhere, slightly over-weighting it in unweighted means; and for $133$ runs the recorded model field holds a batch tag (\texttt{cell2-seed}, \texttt{dpo-experiment}) rather than a model identifier, so per-run model provenance is unrecoverable from the file for those runs. No seed field was ever written, which is what allowed the split sessions to go unnoticed; seven self-authored cases, and three local synthesizers $\le 20$B. The architecture comparison uses one model family (gpt-oss-20B) in every role and one instantiation of each design; debate and self-refine were implemented in their simplest standard forms and stronger variants may fare better. Frontier aggregators untested. The per-clause isolation (\S\ref{sec:clause}) ran on one synthesizer whose family profile we now know to be atypical; the Lead-dependence it implies is inferred from ledger profiles rather than tested directly, and a replication on a cutoff-dominant Lead is registered but not yet run. The intrinsic-band null covers four usable models at $\le 20$B under one neutral prompt (a fifth, BioMistral, produced degenerate output and was withdrawn post-hoc, taking the preference-vs-pretraining lineage contrast with it); a different neutral phrasing, or frontier-scale models, could separate them. All experiments ran on one consumer machine at \$0 API cost; we regard the reproducibility this buys as partial compensation for the scale it forgoes.
+
+\paragraph{What we could measure.} Of the five behaviors we set out to track,
+one---distinguishing near-synonymous terms of art---fell below detection on
+both of our instruments, so we report four. The composite is dominated by
+whichever behavior a given final model produces most, which differs by model,
+and the effect of instructions is clear on the composite but not on any single
+behavior taken alone. Pattern matching misses paraphrase and rewards brevity;
+we mitigate with per-claim NLI scoring and blinded pairwise judges
+(App.~\ref{app:instruments}), but the validation rests on agreement between
+instruments rather than a human-rated standard---weaker on that axis than the
+human-validated certainty measure of \cite{certdist}. Two NLI hypothesis
+families calibrated degenerately, and the judges' evidence-grounding
+requirement rejected most pairs on dense numeric text.
+
+\paragraph{What the training results do and do not cover.} ORPO substitutes
+for DPO because the only local DPO trainer available had a memory defect, so
+installation claims are scoped to reference-free preference optimization.
+The suppression evidence concentrates on a single weakly-aligned specialist,
+and the questions that test for unwarranted hedging use only four or five
+runs each. Training the final model rests on one 7B model at 88 preference
+pairs; its on-policy follow-up realized 49, and used best-of-$n$ selection
+rather than full reinforcement learning. Training data ranged from 91 to 292
+pairs---enough to establish dose-invariance in that range, not beyond it.
+
+\paragraph{Scale and coverage.} Five seeds, seven questions we wrote
+ourselves, and models at or below 20B parameters throughout. Frontier
+aggregators are untested, and it is entirely possible that a larger final
+model behaves differently. The architecture comparison uses one model family
+in every role and one implementation of each design; debate and self-refine
+were built in their simplest standard forms, and stronger variants may fare
+better. The clause-isolation experiment ran on one final model whose behavior
+profile we later found to be unusual, so the Lead-dependence it implies is
+inferred rather than directly tested. The claim that models share an intrinsic
+band covers four models under a single neutral prompt; different phrasing, or
+larger models, could separate them.
+
+\paragraph{Defects found in our own record.} A post-hoc audit of the run
+corpus surfaced problems we report rather than repair. One model
+(BioMistral-7B) produced degenerate output---26 of 30 answers were short
+fragments ending mid-sentence---which we discovered only after publishing a
+figure computed from them; that arm is withdrawn above, and with it the
+comparison between alignment lineages we had intended to make. A three-probe
+stability screen had failed to reveal the problem, and our density measure has
+no minimum-length guard, which is what let short outputs distort it. In the
+earliest arms, the five runs per question are in fact one run from an earlier
+session plus four from a later one, with a directional five-to-eight percent
+length offset in three of four arms; one arm carries six runs on a question
+where others have five; and 133 runs record a batch label where a model
+identifier belongs, so their provenance is unrecoverable from the file. No
+seed field was ever written, which is why the split sessions went unnoticed.
+None of this changes a reported interval, but all of it weakens those arms'
+internal consistency.
+
+\paragraph{Cost.} Every experiment ran on one consumer machine at no API
+cost. We regard the reproducibility this buys as partial compensation for the
+scale it forgoes.
 
 \section{Conclusion}
 When a pipeline's answer arrives without the qualifications its specialists
@@ -680,20 +741,18 @@ wrote, the natural reading is that something was lost on the way. Our
 measurements do not support that reading for prose interfaces. Holding the
 models, the pipeline, and the upstream text fixed and changing only the final
 writer's instructions recovers the missing disposition---$3$--$4\times$, and
-from a single clause. Information that an instruction can restore was never
-erased in transit. Disposition is rendered, not transported.
+from a single clause. What an instruction can restore was never destroyed.
+The qualification is decided when the answer is written, not before.
 
-What follows is a different target for engineering effort. The last writer is
-not a channel to be widened but a renderer to be instructed, and its rendering
-function has four measured properties: it is nearly indifferent to how much
-disposition arrives (and can invert it); its gain is set by instructions,
-gradedly; those instructions are targeted, each lifting exactly the behavior
-family it names; and its per-model gain coefficient resisted every weight-level
-intervention we could mount---at both loci, under a density reward and under
-an on-policy, calibration-shaped reward computed at the pipeline's mouth.
-Models did not differ in what they emit unprompted; four spanning four
-architectures shared one band. They differ in how strongly they answer an
-instruction.
+That points engineering effort somewhere different. The final model is not a
+pipe to be widened but a writer to be instructed. It is nearly indifferent to
+how much qualification reaches it, and can even produce less when given more.
+Its instructions work like a dial rather than a switch, and each one affects
+precisely the behavior it names. What no amount of training would change is
+how strongly a given model responds to those instructions---and that, rather
+than any difference in disposition, is what separates one candidate from
+another. Given a neutral prompt, four models built on four different
+architectures produced almost exactly the same amount of qualification.
 
 The orchestration result is a corollary and a caution. Multi-agent structure
 by itself bought nothing on magnitude---a flat merge of three specialists
@@ -817,7 +876,7 @@ $\rho=-1.00$). The decomposition script is versioned with the code.
 Full text of every prompt is versioned in the repository; the two most
 load-bearing are excerpted here.
 
-\textbf{Pairwise judge prompt} (Cell 7b; \texttt{\{text\_a\}}/\texttt{\{text\_b\}}
+\textbf{Pairwise judge prompt} (\texttt{\{text\_a\}}/\texttt{\{text\_b\}}
 are the blinded seat outputs):
 \begin{quote}\small\ttfamily
 You are auditing two analyst responses for UNWARRANTED epistemic hedging.

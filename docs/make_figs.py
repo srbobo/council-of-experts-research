@@ -155,9 +155,9 @@ ax.text(sx + sw/2, sy + sh - 0.24, "synthesizer (Lead)", ha="center",
 band_y, band_h = sy + 0.78, 0.55
 ax.add_patch(Rectangle((sx + 0.18, band_y), sw - 0.36, band_h,
                        fc="#e5e2dc", ec="none"))
-ax.text(sx + sw/2, band_y + band_h/2, "register band\n(writer-specific)",
+ax.text(sx + sw/2, band_y + band_h/2, "decides how much\nto write out",
         ha="center", va="center", fontsize=6.8)
-ax.annotate("PRESERVE instructions = gain control", xy=(sx + sw/2, band_y - 0.06),
+ax.annotate("instructions set the amount", xy=(sx + sw/2, band_y - 0.06),
             xytext=(sx + sw/2, sy + 0.16), fontsize=6.5, ha="center",
             color="#6b6b66", arrowprops=dict(arrowstyle="-", lw=0.6, color="#6b6b66"))
 
@@ -172,8 +172,7 @@ box(8.0, 1.25, 1.7, 0.78, "final answer")
 ax.add_patch(Rectangle((9.82, 1.35), 0.13, band_h * 0.62, fc="#2e6d5e", ec="none"))
 ax.add_patch(FancyArrowPatch((sx + sw + 0.06, sy + sh/2), (7.94, 1.64),
                              arrowstyle="-|>", mutation_scale=9, lw=0.9, color=INK))
-ax.text(8.85, 0.78, r"output $\approx f(\mathrm{register}\times\mathrm{instructions})$"
-        + "\nnearly independent of seat input",
+ax.text(8.85, 0.78, "set by the final model's\ninstructions, not by what arrives",
         fontsize=6.5, color="#6b6b66", ha="center", va="top")
 
 fig.savefig(OUT / "fig_schematic.pdf", bbox_inches="tight")
@@ -206,7 +205,7 @@ axg.annotate("anomalous cell\n(n=6, sd 0.62)", xy=(2, 1.53), xytext=(0.75, 1.42)
 axg.set_xticks(ks)
 axg.set_xlabel("PRESERVE clauses retained (k)", fontsize=8)
 axg.set_ylabel("final-output density", fontsize=8)
-axg.set_title("Instructions: graded gain control", fontsize=9)
+axg.set_title("More instruction, more qualification", fontsize=9)
 axg.legend(fontsize=6.5, frameon=False, loc="upper left")
 axg.tick_params(labelsize=8)
 
