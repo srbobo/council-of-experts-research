@@ -1957,3 +1957,58 @@ what controls the confound, but it is below the registered band and is
 recorded rather than silently accepted. Note the direction: the L=1 questions
 are slightly LONGER than the L=4 ones, so any length effect works against
 P15.1 rather than for it.
+
+## CELL 15 VERDICT — P15.1 FALSIFIED; THE COUNCIL HAS NO MEASURED ADVANTAGE ON ANY AXIS (2026-08-02)
+
+Decisive arms complete (council 40/40, single+spec 40/40; arch-single floor
+reference still running and cannot change any verdict).
+
+| load | council | single + spec | separation |
+|---|---|---|---|
+| L=1 | 0.51 [0.25,0.78] | 0.57 [0.37,0.80] | overlap |
+| L=2 | 0.99 [0.52,1.58] | 0.71 [0.43,1.00] | overlap |
+| L=3 | 0.73 [0.54,0.95] | 0.62 [0.44,0.82] | overlap |
+| L=4 | 0.60 [0.29,1.02] | 0.45 [0.33,0.55] | overlap |
+| pooled | 0.71 [0.53,0.91] | 0.59 [0.48,0.70] | overlap |
+
+**P15.1 FALSIFIED.** Council rho = +0.20, non-monotone, L=4 overlaps L=1. The
+council does not scale with load.
+**P15.2 CONFIRMED** but now uninformative: single+spec is flat (rho -0.40,
+L4 vs L1 overlapping), exactly as predicted — but with the council also flat,
+"the single model does not scale" no longer distinguishes anything.
+**P15.3: NO CROSSOVER EXISTS in L=1..4.** There is no load at which the
+council separates from a lone prompted model.
+
+**The earlier 1.82x was single-question noise.** Between-question variance at
+FIXED load exceeds anything across loads: at L=2 the two questions give 0.42
+and 1.57. Two questions per level is the only reason this is visible; one per
+level would have produced a clean-looking curve made entirely of noise.
+
+**Second observation, independently damaging to the capacity story.** The
+council engages only 1.2-1.7 of the four behavior families regardless of what
+the question demands (L=1: 1.2, L=2: 1.2, L=3: 1.7, L=4: 1.3). Asked for four
+distinct kinds of qualification it does not produce four; it re-expresses the
+same one or two at slightly varying density. It is not dividing labour across
+specialists and covering more ground.
+
+**REGISTERED CONSEQUENCE EXECUTED.** Per the Cell 15 registration: if P15.1
+falsifies, "the council architecture has NO measured advantage on any axis we
+have tested." That is now the finding. The complete scorecard:
+
+| axis | result |
+|---|---|
+| content (rubric coverage) | a single 20B model beat the council, 42% vs 25-31% |
+| disposition volume | council 0.57 vs prompted single 0.50 — overlap |
+| calibration | council 0.64 vs 0.31 — council WORSE (Cell 14) |
+| capacity under load | flat, no crossover at any L (this cell) |
+
+**This is the program's headline result, and it is negative.** A four-model
+council, on every axis we could measure, is matched or beaten by one model of
+comparable size with a good instruction — at roughly a quarter of the compute.
+
+What survives is not about the council at all: instructions move output 3-4x
+with upstream text held fixed, gradedly and targetedly; weight training fails
+at both loci under every reward tried; models share an intrinsic band and
+differ in instruction responsiveness; and tuning specialists upward degrades
+the finished answer. The positive contribution is about where in a pipeline
+epistemic behavior is decided, not about whether pipelines are worth building.
