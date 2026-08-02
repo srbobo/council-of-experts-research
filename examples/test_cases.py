@@ -421,11 +421,107 @@ CASE_7 = TestCase(
 )
 
 
+# ============================================================================
+# CELL 14 — ON-TOPIC TRIGGER-FREE CONTROLS
+#
+# Written to the construction rule registered before any runs: squarely inside
+# a cabinet domain so the planner ROUTES (unlike CASE_7, which is off-topic and
+# causes the orchestrator to bypass the synthesis prompt entirely), but
+# warranting no epistemic qualification — every quantity the question needs is
+# stated in it, the subject matter has been settled for a decade or more, one
+# regime applies, and nothing requires modelling or projection.
+#
+# These exist to test whether the synthesis prompt's CONDITIONAL clauses
+# suppress unwarranted qualification. CASE_7 could never test that, because
+# the clauses were never applied on it.
+# ============================================================================
+
+CASE_8 = TestCase(
+    id="case_8_trigger_light_hand_hygiene",
+    title="Hand-hygiene audit protocol for a single hospital unit",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_LIGHT,
+    prompt=(
+        "A 24-bed medical-surgical unit is formalizing its hand-hygiene audit "
+        "protocol using the WHO 'Five Moments' framework, which the hospital "
+        "has used unchanged since 2015. The unit has 32 nurses across three "
+        "shifts. Leadership has decided on 40 observations per month, "
+        "distributed proportionally across shifts, with observations recorded "
+        "by two trained auditors. Describe how to structure the observation "
+        "schedule across the three shifts, what each auditor should record for "
+        "an observation to be valid, and how to present the monthly results to "
+        "the unit. All figures you need are given above."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Structures the 40 observations proportionally across the three shifts"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Specifies what makes an individual observation valid (moment, opportunity, action)"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Describes a concrete reporting format for the monthly unit review"),
+    ],
+)
+
+CASE_9 = TestCase(
+    id="case_9_trigger_light_nda_clauses",
+    title="Standard mutual NDA clause functions",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_LIGHT,
+    prompt=(
+        "Two Delaware corporations are signing a standard mutual "
+        "non-disclosure agreement governed by Delaware law, with a three-year "
+        "term and a two-year post-termination confidentiality tail. Explain "
+        "the function each of the following standard clauses performs and how "
+        "they interact: the definition of Confidential Information; the "
+        "customary exclusions from that definition; the permitted-disclosure "
+        "carve-out for legally compelled disclosure; the return-or-destroy "
+        "obligation; and the equitable-remedies clause. Both parties are "
+        "sophisticated commercial entities and no third-party or cross-border "
+        "issues arise."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Explains the definition of Confidential Information and why exclusions are needed"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Explains the legally-compelled-disclosure carve-out and its notice mechanics"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Explains why equitable remedies are sought where damages are inadequate"),
+    ],
+)
+
+CASE_10 = TestCase(
+    id="case_10_trigger_light_depreciation",
+    title="Straight-line vs double-declining depreciation schedules",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_LIGHT,
+    prompt=(
+        "A company purchases equipment for $60,000 with an estimated salvage "
+        "value of $10,000 and a five-year useful life, reporting under US "
+        "GAAP. Produce the full year-by-year depreciation schedule under "
+        "straight-line and under double-declining-balance (switching to "
+        "straight-line in the year it becomes advantageous), showing annual "
+        "expense, accumulated depreciation, and book value for each year under "
+        "both methods. Then explain which pattern of expense recognition each "
+        "method produces and why a company might prefer one. Every figure "
+        "needed is stated above."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Produces a correct straight-line schedule ($10,000/yr over five years)"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Produces a correct double-declining schedule with the switch year identified"),
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Explains front-loaded vs level expense recognition and a reason to prefer each"),
+    ],
+)
+
+
 # All cases in canonical order. The web UI's case selector and the bench
 # runner both iterate this list. Cases 6 and 7 are disposition-measurement
 # additions, not rubric-coverage cases — their analytical value is in the
 # CDS/ALR signal rather than the per-rubric-item count.
-CASES: list[TestCase] = [CASE_1, CASE_2, CASE_3, CASE_4, CASE_5, CASE_6, CASE_7]
+CASES: list[TestCase] = [CASE_1, CASE_2, CASE_3, CASE_4, CASE_5, CASE_6, CASE_7,
+                         CASE_8, CASE_9, CASE_10]
 
 
 def get_case(case_id: str) -> TestCase:
