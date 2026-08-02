@@ -61,6 +61,22 @@ spent making them more careful is worse than wasted, while effort spent on
 the aggregator's instruction is the only thing that pays.
 \end{abstract}
 
+\begin{center}
+\fbox{\begin{minipage}{0.93\linewidth}\small
+\textbf{Correction (August 2026).} Claims in this draft that the council
+achieves better \emph{calibration} than a single prompted model---that it
+qualifies substantially where warranted and not at all where it is not---are
+\textbf{withdrawn}. They rested on a trigger-free question that is off-topic
+for the specialists, on which the planner routes to nobody and the pipeline
+bypasses the conditional instruction; the reported $0.00$ came from a prompt
+containing no preservation clauses. A controlled retest on trigger-free
+questions the planner does engage with gives the council $0.64$ $[0.36,0.95]$
+against a lone prompted model's $0.31$ $[0.21,0.42]$. Results concerning
+volume, the instruction mechanism, the training nulls, and the specialists'
+contribution are unaffected.
+\end{minipage}}
+\end{center}
+
 \section{Introduction}
 The case for multi-agent pipelines usually rests on division of labour: a
 medical model should reason better about medicine, a legal model about law,

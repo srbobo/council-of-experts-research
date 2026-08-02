@@ -1828,3 +1828,64 @@ all three verified output VALUES. Fix going forward: every harness that passes
 synthesis_system_override must assert routes are non-empty, and the run record
 must persist which system prompt was used so path can be audited from the
 ledger rather than reconstructed from code reading.
+
+## CELL 14 VERDICT — P14.1 AND P14.2 BOTH FALSIFIED; THE CALIBRATION CLAIM IS DEAD (2026-08-02)
+
+Decisive arms complete (15/15 each). Path audit verified on every council run:
+specialists routed (healthcare / legal / finance, 5 runs each) and PRESERVE
+APPLIED — the condition case_7 never satisfied.
+
+| arm | pooled unwarranted qualification | case_8 | case_9 | case_10 | n |
+|---|---|---|---|---|---|
+| **council** | **0.64 [0.36,0.95]** | 0.49 | 0.15 | 1.27 | 15 |
+| single + spec | 0.31 [0.21,0.42] | 0.19 | 0.27 | 0.47 | 15 |
+
+**P14.1 FALSIFIED.** Registered threshold was an upper CI bound below 0.10.
+Observed: 0.95. Not marginal — an order of magnitude past the criterion.
+
+**P14.2 FALSIFIED.** Council and single+spec overlap, and the council's point
+estimate is HIGHER (0.64 vs 0.31). The council is not better calibrated than a
+lone prompted model on these questions; if anything it is worse.
+
+**What this establishes.** The council's celebrated 0.00 [0.00,0.00] was
+entirely an artifact of the planner declining to route on an off-topic
+question, which bypassed the synthesis prompt. Given a trigger-free question
+the planner DOES engage with, the council runs its conditional PRESERVE
+clauses and hedges heavily on material warranting nothing — 1.27 on a pure
+arithmetic depreciation question where every figure was stated.
+
+The conditional form of the instruction does NOT suppress unwarranted
+qualification. The mechanism we proposed for the council's advantage does not
+exist, because the advantage does not exist.
+
+**REGISTERED CONSEQUENCE EXECUTED.** Per the Cell 14 registration: "If P14.1
+is falsified, the calibration paper's central claim is WRONG as stated and
+must be rewritten." Actions:
+- docs/paper_calibration.tex: the central claim is RETRACTED, not merely
+  qualified. The paper cannot be repaired by rewording; its thesis is refuted.
+- P8.2 (Cell 8): remains withdrawn, now with a positive disconfirmation rather
+  than merely an invalid measurement.
+- P13.3 (Cell 13): remains withdrawn (never tested).
+- Any claim that orchestration buys calibration is removed from all drafts.
+
+**WHAT SURVIVES, unchanged and unaffected by this cell:**
+- Volume results: council 0.57 vs single+spec 0.50 (overlapping) — a lone
+  prompted model matches the council on magnitude. STANDS.
+- Multi-agent topology buys nothing on magnitude (flat 0.16 ~ single 0.14).
+- The rendering/instruction-gain mechanism: instructions move output 3-4x with
+  upstream text fixed; the gain curve; the clause isolation on trigger cases;
+  sub-additivity.
+- All training nulls at both loci, including the on-policy calibration reward.
+- Intrinsic band model-invariance; specialists carry no inherent disposition.
+- Seat tuning backfires (0.84->1.82 at the seat, 1.21->0.92 at the mouth).
+None of these depend on a trigger-free measurement.
+
+**The honest summary is now simpler and more negative:** across every
+arrangement and every intervention we tested, we found no way to make a
+pipeline qualify its claims selectively. We can raise how much it qualifies
+(instructions, reliably, gradedly) and we can lower it (training, weakly). We
+never achieved discrimination. The one arrangement that appeared to have it
+was measured on a question it never actually processed.
+
+Remaining arms (arch-flat, arch-single) still running; they are reference
+points and cannot change either verdict.
