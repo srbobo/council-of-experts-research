@@ -1889,3 +1889,71 @@ was measured on a question it never actually processed.
 
 Remaining arms (arch-flat, arch-single) still running; they are reference
 points and cannot change either verdict.
+
+## CELL 15 PRE-REGISTRATION — load dose-response (registered 2026-08-02, before any cases are written or runs made)
+
+**Why.** After Cell 14, the council has no measured advantage on calibration
+and none on volume (0.57 vs single+spec 0.50, overlapping). One place remains
+where it beat a prompted single model: the trigger-heavy question, which
+demands several DIFFERENT kinds of qualification at once. There the council
+reached 0.91 [0.57,1.34] against single+spec's 0.48 [0.34,0.59] — 1.82x its
+own baseline, where single+spec was flat at 0.94x and plain single at 1.02x.
+All council runs on that case routed 3 seats; the result is uncontaminated.
+
+That suggests the council's value is CAPACITY UNDER SIMULTANEOUS DEMAND rather
+than better judgement: each specialist handles one domain and has attention to
+spare, while one model asked for four things at once divides a fixed budget.
+This cell tests that directly. It is the last hypothesis under which the
+council architecture has any advantage at all, and it is registered with a
+falsification that would close the question.
+
+**Load definition.** L = the number of DISTINCT detectable behavior families a
+question genuinely triggers, from the four we can measure: training-cutoff
+disclosure, modeled-assumption flagging, jurisdictional distinguishing,
+calibrated hedging. L is set by CONSTRUCTION when the question is written, not
+by scoring model output.
+
+**Design.** L in {1,2,3,4}, two questions per level (8 new questions), written
+to hold length (80-110 words) and surface complexity constant so that load is
+the only variable. L=0 is already measured: Cell 14's three trigger-free
+questions. Arms: arch-council, arch-single-spec, arch-single.
+8 cases x 5 seeds x 3 arms = 120 runs. Path audit persisted on every run.
+
+**Predictions.**
+- P15.1 (the council scales with load): council density rises monotonically in
+  L, and L=4 exceeds L=1 with disjoint CIs. FALSIFIED IF flat or non-monotone,
+  or if L=4 and L=1 overlap.
+- P15.2 (the single model does not): single+spec shows no rise across L —
+  L=4 and L=1 overlap. FALSIFIED IF single+spec rises comparably, which would
+  mean load helps everything and the council is not special.
+- P15.3 (a crossover exists): report the lowest L at which council exceeds
+  single+spec with disjoint CIs. If no such L exists in 1-4, there is no load
+  at which orchestration pays on this measure.
+- P15.4 (exploratory, the routing confound): load and the number of routed
+  specialists co-vary by construction, since higher-load questions span more
+  domains. We record routes per run and report the association. This cell
+  CANNOT separate "more demands" from "more specialists consulted"; a
+  follow-up using single-domain high-load questions (all four families inside
+  one domain, so L=4 with one seat) is the clean separation and is noted here
+  rather than claimed.
+
+**Registered consequences.** If P15.1 holds and P15.2 holds, the council has a
+defensible positive claim — a capacity effect with a measurable threshold —
+and this becomes the replacement result for the retracted calibration claim.
+If P15.1 is FALSIFIED, the 1.82x was single-question noise and the council
+architecture has NO measured advantage on any axis we have tested: not
+content (a single 20B model already beat it on rubric coverage), not volume,
+not calibration, not capacity. That conclusion would be reported as the
+program's headline negative result rather than buried.
+
+**Guard.** Questions are construction-labeled and committed BEFORE any run. A
+question is not reassigned to a different L after seeing output. Length is
+checked before running and reported.
+
+### CELL 15 — deviation from registration, recorded before running
+Registered question length was 80-110 words; realized is 61-79 (L1: 79/72,
+L2: 65/67, L3: 66/62, L4: 64/61). The range is tight and matched, which is
+what controls the confound, but it is below the registered band and is
+recorded rather than silently accepted. Note the direction: the L=1 questions
+are slightly LONGER than the L=4 ones, so any length effect works against
+P15.1 rather than for it.

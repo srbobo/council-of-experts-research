@@ -516,12 +516,133 @@ CASE_10 = TestCase(
 )
 
 
+# ============================================================================
+# CELL 15 — LOAD DOSE-RESPONSE
+# L = number of DISTINCT detectable behavior families the question triggers,
+# set by construction when written, never reassigned after seeing output.
+# Lengths held to 80-110 words so load is the only variable.
+# ============================================================================
+
+CASE_LOAD_L1A = TestCase(
+    id="case_l1_l1a",
+    title="Warehouse pick-rate staffing model",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A distribution centre is sizing its evening shift. Orders arrive at a steady 1,400 units per evening and the shift runs six hours. Management wants to know how many pickers to schedule and what the resulting cost per unit would be at a loaded labour rate of $28 per hour. Pick rates per worker are not recorded anywhere in the company's systems. Produce the staffing recommendation and the cost-per-unit figure, and set out the reasoning that gets you there."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=1 by construction; triggered families: modeled"),
+    ],
+)
+
+CASE_LOAD_L1B = TestCase(
+    id="case_l1_l1b",
+    title="Paid sick leave in two named states",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A 60-person company with offices in California and New York wants one written sick-leave policy covering both sites. Both states' accrual statutes have been in force and unchanged for several years. Employees work a standard 40-hour week and the company already offers 10 days of paid time off. Explain how the two states' requirements differ, and draft a single policy that satisfies both without giving away more leave than required in either."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=1 by construction; triggered families: jurisd"),
+    ],
+)
+
+CASE_LOAD_L2A = TestCase(
+    id="case_l2_l2a",
+    title="Clinic no-show intervention",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "An outpatient clinic sees 220 appointments a week and wants to reduce no-shows with a reminder programme costing $1,900 a month. The clinic has never measured its no-show rate or what a missed appointment costs it. Recommend whether to proceed and at what scale, giving the break-even point and how confident the recommendation is. Reminder programmes vary considerably in how well they work across settings."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=2 by construction; triggered families: modeled+hedging"),
+    ],
+)
+
+CASE_LOAD_L2B = TestCase(
+    id="case_l2_l2b",
+    title="Cross-border data transfer basis",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A UK company is moving employee HR records to a processor in Germany and needs to document its lawful basis for the transfer under both UK and EU regimes. The company has 340 employees and a standard processor agreement already in place. Explain what each regime requires here, where the two diverge, and what documentation to prepare. Note the enforcement position on this has been actively developing."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=2 by construction; triggered families: cutoff+jurisd"),
+    ],
+)
+
+CASE_LOAD_L3A = TestCase(
+    id="case_l3_l3a",
+    title="Employer GLP-1 formulary decision",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A self-insured employer with 4,100 covered lives is deciding whether to add GLP-1 coverage for weight management at a $1,050 monthly net cost per treated member. Uptake, persistence past year one, and downstream medical offset are all unknown to the employer. Recommend whether to cover, with what utilisation controls, and give the three-year budget impact. Clinical guidance and pricing in this area have been moving quickly."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=3 by construction; triggered families: modeled+hedging+cutoff"),
+    ],
+)
+
+CASE_LOAD_L3B = TestCase(
+    id="case_l3_l3b",
+    title="Contractor classification across two states",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A logistics startup uses 180 drivers it classifies as independent contractors across Massachusetts and Illinois, and wants to know its reclassification exposure. Average driver pay is $52,000 a year. The company has not tracked how much control its dispatch software exercises over route choice. Assess the exposure in each state and give a total figure. Both states' tests have seen recent litigation."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=3 by construction; triggered families: modeled+jurisd+cutoff"),
+    ],
+)
+
+CASE_LOAD_L4A = TestCase(
+    id="case_l4_l4a",
+    title="Digital therapeutic launch across two markets",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A digital therapeutic for insomnia is launching in the US and Germany. The company has 24 months of runway and a $6.2M budget. Reimbursement pathways, clinician adoption, and per-patient pricing at scale are all unsettled internally. Recommend a market-entry sequence and a three-year revenue projection, addressing the regulatory route in each country. Both markets' reimbursement rules have changed recently and enforcement remains in flux."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=4 by construction; triggered families: all four"),
+    ],
+)
+
+CASE_LOAD_L4B = TestCase(
+    id="case_l4_l4b",
+    title="Hospital PE conversion under two regimes",
+    failure_mode=FailureMode.DISPOSITION_TRIGGER_HEAVY,
+    prompt=(
+        "A nonprofit hospital operating in Pennsylvania and New Jersey is evaluating a private-equity recapitalisation valued at $310M. Post-transaction charity-care obligations, staffing levels, and payer-mix shift are not modelled anywhere in the board materials. Advise the board on whether to proceed and on what conditions, addressing each state's attorney-general review. Standards for these reviews have tightened materially in the last two years."
+    ),
+    expected_routes=[],
+    rubric=[
+        RubricItem(seat="synthesis", severity="should_have",
+                   description="Load L=4 by construction; triggered families: all four"),
+    ],
+)
+
+
 # All cases in canonical order. The web UI's case selector and the bench
 # runner both iterate this list. Cases 6 and 7 are disposition-measurement
 # additions, not rubric-coverage cases — their analytical value is in the
 # CDS/ALR signal rather than the per-rubric-item count.
 CASES: list[TestCase] = [CASE_1, CASE_2, CASE_3, CASE_4, CASE_5, CASE_6, CASE_7,
-                         CASE_8, CASE_9, CASE_10]
+                         CASE_8, CASE_9, CASE_10,
+                         CASE_LOAD_L1A, CASE_LOAD_L1B, CASE_LOAD_L2A, CASE_LOAD_L2B, CASE_LOAD_L3A, CASE_LOAD_L3B, CASE_LOAD_L4A, CASE_LOAD_L4B]
 
 
 def get_case(case_id: str) -> TestCase:
