@@ -2012,3 +2012,47 @@ at both loci under every reward tried; models share an intrinsic band and
 differ in instruction responsiveness; and tuning specialists upward degrades
 the finished answer. The positive contribution is about where in a pipeline
 epistemic behavior is decided, not about whether pipelines are worth building.
+
+### CORRECTION — the "model-invariant intrinsic band" is largely a FLOOR + LENGTH artifact (2026-08-02)
+
+Scrutiny of the Cell 8b claim. Density hides two things. Raw marker counts per
+run, trigger cases, neutral prompt:
+
+| model | mean markers/run | runs with ZERO markers | median output len | density |
+|---|---|---|---|---|
+| Med42-8B | 0.37 | **80%** | 2,424 | 0.15 |
+| Mistral-7B-Instruct | 0.47 | **77%** | 3,218 | 0.14 |
+| Qwen2.5-7B-Instruct | 0.57 | **70%** | 3,916 | 0.14 |
+| gpt-oss-20B | 1.23 | 33% | 8,955 | 0.14 |
+
+Two problems with "these models share a characteristic band":
+1. **Floor.** For three of four models, 70-80% of runs contain ZERO markers.
+   The distributions are mostly zeros; we are not resolving a common LEVEL, we
+   are failing to distinguish near-empty distributions.
+2. **Length normalization.** gpt-oss emits 3.3x more markers than Med42 in raw
+   terms (1.23 vs 0.37) and writes 3.7x more text, so per-1000-char density
+   coincides. "Same density" and "same amount" are different claims and we
+   have been eliding them.
+
+**Corrected claim.** Under a neutral prompt these four models produce
+*almost no* epistemic qualification — most responses contain none — and at
+that floor we cannot distinguish them. This is weaker than "models share an
+intrinsic band" and should replace it everywhere.
+
+**What still holds, and why the argument survives.** The load-bearing use of
+this result was never the invariance itself but the contrast: a
+domain-specialised model is not inherently more careful. Med42 produces zero
+markers in 80% of neutral-prompt runs and 1.31 density as an instructed
+pipeline seat. That contrast is robust to both objections — it is a
+within-model comparison, so length normalization affects both sides, and it
+spans the floor rather than sitting on it.
+
+Likewise the claim that models differ in how strongly they answer an
+instruction stands on the instructed measurements (0.5-1.2 spread), not on the
+neutral ones.
+
+**Process note.** This is the third claim in this program weakened by asking
+"what is the measurement actually doing" rather than "is the number right."
+Density with no floor guard has now produced two defects (this, and the
+BioMistral degenerate-output arm). Any future use of a per-1000-char rate
+should report the raw event count and the zero-rate alongside it.
