@@ -2056,3 +2056,105 @@ neutral ones.
 Density with no floor guard has now produced two defects (this, and the
 BioMistral degenerate-output arm). Any future use of a per-1000-char rate
 should report the raw event count and the zero-rate alongside it.
+
+## CELL 16 PRE-REGISTRATION — GRPO on the Lead (registered 2026-08-02, before any training)
+
+**Why.** The paper's central claim is that weight-level training cannot install
+epistemic behavior at the final writer. It rests on two nulls, BOTH of which
+were explicitly registered as SURROGATES for real reinforcement learning:
+Cell 6b (offline ORPO, 88 pairs) and Cell 11 (best-of-n distillation with a
+calibration reward, 49 pairs). The obvious reviewer objection — "you did not
+actually do RL" — currently has no answer. mlx-lm-lora 2.1.0 supports GRPO
+with custom programmatic rewards, and the 108 precomputed synthesis contexts
+from Cell 11 survive on disk. This closes the objection or overturns the null.
+
+**Why it is tractable.** The Lead's synthesis step is an ordinary single-turn
+generation from a fixed prompt; the pipeline only supplies that prompt. With
+upstream precomputed, GRPO operates on a normal prompt distribution with NO
+pipeline execution in the training loop. The reward is programmatic (regex),
+requires no learned reward model and no human labels, and runs in
+milliseconds. GRPO needs no value network, which is what makes a 7B policy
+feasible on 32 GB.
+
+**Design.** Policy: Qwen2.5-7B-Instruct, LoRA r8 / 16 layers / seed 42, matched
+to Cells 6b and 11 so the three results are directly comparable. Prompts: the
+108 Cell-11 contexts (76 trigger-heavy, 32 trigger-free), construction-labelled
+before any of this work. group_size and max_completion_length set by the
+timing probe below and recorded before the run. KL term retained (beta>0) to
+keep the policy near the reference.
+
+**REWARD FUNCTION (fixed here; any later change invalidates the cell).**
+For completion s with prompt label in {heavy, light}, over the FOUR detectable
+families (cutoff, modeled, jurisdictional, hedging):
+
+  guards, applied first:
+    len(s) < 1200 or len(s) > 8000            -> R = -1.0 (hard, terminal)
+    max_family_share > 0.8 and total >= 4     -> R -= 0.5
+
+  heavy:  R = breadth(s)/4 + 0.25 * min(density(s), 1.5)/1.5
+  light:  R = -breadth(s)/4 - 0.25 * min(density(s), 1.5)/1.5
+
+breadth = number of distinct families present. Chosen over density, CDS,
+retention and ALR on measured grounds:
+- density: 65% of markers in real text concentrate in ONE family, so a count
+  or density reward is maximised by repetition.
+- CDS: corr(CDS, density) = +0.97 on 648 real syntheses. The sqrt(breadth)
+  factor barely moves it; CDS inherits density's exposure.
+- retention (final density / seat density): the denominator is CONSTANT within
+  a prompt group and GRPO normalises advantage within that group, so retention
+  is mathematically IDENTICAL to density here. It is not a safeguard.
+- ALR: a ratio between configurations, not computable for a single completion.
+- breadth: immune to repetition, not length-normalised. Its own exposure is
+  corr(breadth, length) = +0.41, i.e. a LENGTHENING incentive — which is what
+  the upper length guard at 8000 chars exists to bound. Recorded, not hidden.
+
+Conditionality lives in the prompt distribution: identical weights are pushed
+up on heavy contexts and down on trigger-free ones. Training reward is regex
+(fast). Hack detection uses NLI and blinded judges, POST HOC only.
+
+**Predictions.**
+- P16.1 (the substantive test, identical in form to Cell 11's P11.1 so the
+  three attempts are comparable): the trained Lead benched at k=0 exceeds the
+  stock Lead at k=0, bootstrap CIs disjoint. FALSIFIED IF CIs overlap.
+- P16.2 (reward hacking, registered as the EXPECTED outcome): the reward rises
+  by more than half its achievable range while at least one degradation
+  indicator fires — median completion length leaving the natural band
+  (1846-4711, p5-p95 of 648 real syntheses), per-family concentration rising
+  above the observed 0.65 baseline, or blinded judges preferring stock output.
+  FALSIFIED IF the reward rises with every indicator clean, which would be the
+  strongest possible result and is not what we expect.
+- P16.3 (exploratory): does the instruction gain survive training, as it did
+  in Cell 11 (1.58x vs stock 1.82x)?
+
+**Registered consequences, all three branches.**
+1. P16.1 confirmed AND P16.2 falsified (clean gain): the paper's central claim
+   is AMENDED. Weights CAN install this given genuine policy optimisation, and
+   the prior nulls are attributed to method rather than to the register. Major
+   revision.
+2. P16.1 falsified: "weights cannot do this at feasible scale" hardens from
+   three attempts to four, one of them real policy optimisation with a
+   pipeline-mouth reward. Strongest available form of the claim.
+3. P16.1 confirmed BUT P16.2 confirmed (reward rose, text degraded): the
+   finding is about the METRIC, not the register. This would mean our density
+   and breadth measures can be inflated without the text becoming more
+   careful, which would put every quantitative claim in the paper in question.
+   Reported as such, prominently, not as a footnote.
+
+**Instrumentation, required from step 0.** Log per step: mean reward, median
+completion length, per-family concentration, distinct-family histogram, KL
+from reference. A reward curve without these is uninterpretable.
+
+### DISK CLEANUP (2026-08-02) — 23GB -> 56GB free
+Removed, with before/after verification that every benchmark model still
+serves and every trained adapter survives:
+- train/models/Qwen25-Lead-ORPO-fused (14GB) — reconstructible from base +
+  adapter; its GGUF and ollama model already existed.
+- train/gguf/*.gguf (13GB) — source files for `ollama create`; ollama holds
+  its own blobs. All three Lead models verified serving AFTER deletion.
+- 10 intermediate adapter checkpoints (0000050_*, etc.); the 8 final
+  adapters.safetensors are intact and are the non-reconstructible artifacts.
+- ollama openbiollm-fixed:coe and openbiollm-v2:coe (9.8GB) — the two failed
+  template builds for the withdrawn OpenBioLLM arm.
+NOT touched: train/models/Qwen2.5-7B-Instruct (needed for the MLX conversion
+Cell 16 requires) and train/models/Qwen-Open-Finance-R-8B (31GB, gated base —
+user's decision).
