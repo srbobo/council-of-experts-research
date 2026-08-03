@@ -2158,3 +2158,184 @@ serves and every trained adapter survives:
 NOT touched: train/models/Qwen2.5-7B-Instruct (needed for the MLX conversion
 Cell 16 requires) and train/models/Qwen-Open-Finance-R-8B (31GB, gated base —
 user's decision).
+
+### CELL 16 — REGISTERED DEVIATION (2026-08-02, before training starts)
+
+**Timing probe (measured, 8 completions on real Cell-11 synthesis contexts,
+qwen 7B Q4 via ollama):** median 86.9 s/completion at cap 1024 and 81.8 s at
+cap 2048. Throughput 9-11 tok/s. Completions self-terminate at ~800 tokens /
+~4,300 chars regardless of cap, so the completion cap is NOT a usable lever —
+an assumption I had made and the probe refuted.
+
+**Deviation.** Registered design was 108 prompts. All feasible configurations
+cost ~11 h: 108x1 epoch (~108 updates), 60x2 (~120), 40x3 (~120). Since the
+update count is near-identical, the choice is diversity vs epochs. We take
+**40 stratified prompts (28 heavy / 12 trigger-free), group_size 4, 3 epochs**,
+because GRPO is on-policy: the value of later epochs is that the policy has
+changed and generates new completions from the improved policy. A single epoch
+over 108 prompts would be one round of improvement per context and never
+revisit — structurally close to the Cell 11 best-of-n surrogate this cell
+exists to move past. group_size stays at 4; at 2 the within-group advantage
+estimate is too noisy.
+
+**Cost of the deviation, and the diagnostic it enables.** 40 contexts risks
+overfitting. The 7 bench cases were held out of the training prompt pool from
+the start, so this becomes a diagnostic rather than a confound. Reporting the
+training reward curve ALONGSIDE the held-out bench separates three outcomes
+that are otherwise indistinguishable:
+  reward flat                 -> weights cannot represent this
+  reward rises, bench flat    -> learned prompt-specific tricks / hacking
+  reward rises, bench moves   -> the null is overturned
+Only the third rewrites the paper, and only this design distinguishes it from
+the second.
+
+**Reward verified before launch** (train/cell16_reward.py, fixed at
+registration): real Cell-11 samples score mean +0.62 (min -0.09, max +1.00)
+against a ceiling of +1.25, so there is genuine headroom. Guards behave:
+empty -> -1.00, sub-1200 chars -> -1.00, and a pure single-family repetition
+of 6,800 chars -> +0.00 (breadth 0.25 + density 0.25 - concentration penalty
+0.50). Repetition is exactly unprofitable by construction.
+
+**Honest scope.** 40 prompts and ~120 updates is still small by RL standards;
+real RLHF uses thousands of prompts. This closes the "you did not do RL"
+objection considerably further than best-of-n did, but does not settle it, and
+the paper will say so.
+
+## CELL 16 — REGISTRATION REWRITTEN BEFORE ANY TRAINING (2026-08-02)
+
+The breadth-reward design above is SUPERSEDED. No training was completed under
+it (first launch aborted at step 0 on Metal OOM). Rewritten around a
+seat-derived PRESERVATION reward, which targets the paper's actual claim.
+
+**The observation that motivates it.** The discrimination signal exists
+upstream and is destroyed at the writing step:
+
+| | trigger-heavy | trigger-free | ratio |
+|---|---|---|---|
+| families the SEATS raise | 2.51 | 0.97 | **2.6x** |
+| families the LEAD emits (Cell 15) | 1.2-1.7 | 1.2-1.7 | ~1.0x |
+
+Measured preservation: 74% of raised families survive on heavy prompts, 52% on
+trigger-free ones (216 completions). The specialists already know when to
+qualify. The Lead does not. Every reward tried so far (Cells 6b, 11, and the
+superseded design) measures PRODUCTION of markers. This one measures
+FAITHFULNESS TO UPSTREAM, and is conditional by construction: a flag never
+raised cannot be preserved.
+
+This makes the experiment sharp. The PRESERVE instruction achieves conditional
+propagation in one sentence. Can reinforcement learning install the same
+behavior in weights? A null here is far stronger than "we trained on marker
+counts and nothing happened."
+
+**REWARD (fixed at registration; any change invalidates the cell).** Seat
+contributions are parsed from the synthesis prompt, which contains them
+verbatim, so no extra model calls are needed. Over the four detectable
+families:
+
+  raised   = families flagged by ANY seat in the prompt
+  kept     = raised & families present in the completion
+  spurious = families in the completion NOT raised by any seat
+
+  guards, applied first:
+    len < 1200 or len > 8000                      -> R = -1.0 (terminal)
+    8-gram overlap with seat text > 0.35          -> R = -1.0 (copy-paste)
+
+  R = kept/max(raised,1) - 0.5 * spurious/4 - 0.5 * max(0, overlap - 0.15)/0.20
+
+Preservation is the signal; spurious qualification is penalised (this is what
+makes it conditional rather than a production reward); the graded overlap term
+discourages verbatim copying below the hard cap. Prompts with raised=0 yield
+R=0 for a clean completion and negative for a hedging one, which is exactly the
+trigger-free behavior we want and have never achieved.
+
+**Registered ceiling.** The reward inherits the seats' own miscalibration:
+they raise ~0.97 families even on trigger-free prompts, so a Lead perfectly
+tracking them would still over-hedge. Achievable discrimination is capped near
+the seats' 2.6x. Recorded now, not discovered later.
+
+**Predictions.**
+- P16.1 (unchanged in form, so all four training attempts stay comparable):
+  the trained Lead benched at k=0 exceeds the stock Lead at k=0, CIs disjoint.
+  FALSIFIED IF they overlap.
+- P16.2 (the discrimination test, new and the real point): the trained Lead's
+  heavy-to-trigger-free family ratio exceeds the stock Lead's ~1.0, moving
+  toward the seats' 2.6x. FALSIFIED IF it stays flat.
+- P16.3 (hacking, expected): reward rises while overlap climbs above its 9%
+  baseline, or length leaves the 1846-4711 band, or judges prefer stock output.
+- P16.4 (exploratory): does the instruction gain survive, as in Cell 11
+  (1.58x vs stock 1.82x)?
+
+**Consequences.** If P16.2 holds, RL CAN install conditional propagation and
+the paper's central claim is amended — this would be the first success against
+four failures. If P16.1 and P16.2 both fail, "weights cannot install this"
+now rests on an attempt whose reward was aligned with the very instruction that
+does work, which is the strongest available form. If reward rises but the bench
+is flat, the finding is overfitting to 40 contexts and will be reported as such.
+
+**Carried over:** group_size 2 (forced by the measured 7.7 GB logits tensor at
+group 4; degenerates GRPO to a binary preference signal, i.e. approximately
+online DPO, while retaining on-policy iteration), 40 stratified prompts,
+3 epochs, LoRA r8/16 layers/seed 42 matched to Cells 6b and 11.
+
+### CELL 16 — reward validated before launch (2026-08-02)
+Guards, all verified on real data: empty / <1200 chars -> -1.00; verbatim copy
+of seat text -> -1.00; a degenerate "spurious hedging" completion that hits the
+right families with repeated boilerplate -> -1.00. That last hack scored +0.54
+under the first implementation and motivated a SELF-REPETITION guard
+(distinct-5gram ratio below 0.45 is terminal), because family matching alone is
+coarse: a completion can touch a family with one stock phrase without
+preserving anything specific. The guards reject 9% of REAL Cell-11 samples,
+which is the intended strictness rather than an error.
+
+**Weak separation, recorded honestly.** Heavy prompts score +0.48 and
+trigger-free +0.38 — a gap of only 0.11. This is the registered ceiling
+appearing in the data: the seats themselves raise ~0.97 families on
+trigger-free prompts, so a completion that faithfully preserves what was
+raised scores well even when little was warranted. Faithfulness to the seats
+is NOT the same as calibration, because the seats are not calibrated. P16.2
+therefore tests a signal the reward encodes only weakly, and a null on it would
+be evidence about the ceiling as much as about the Lead.
+
+## CELL 16 — NOT EXECUTABLE ON THIS HARDWARE (2026-08-03)
+
+Every configuration attempted aborts at step 0 with METAL
+"Insufficient Memory". This is a feasibility limit, recorded as a result
+rather than retried indefinitely.
+
+| attempt | group | LoRA layers | completion cap | outcome |
+|---|---|---|---|---|
+| 1 | 4 | 16 | 1024 | OOM at step 0 |
+| 2 | 2 | 16 | 1024 | OOM at step 0 |
+| 3 | 2 | 8 | 512 | OOM at step 0 |
+| 4 | online_dpo | 8 | 512 | OOM, and additionally tried to download a SECOND 7B judge model |
+
+**Root cause, measured not guessed.** Machine is 34.4 GB total with ~19 GB
+actually free (~15 GB held by desktop applications and the OS). Training
+prompts are long by construction because they contain three full specialist
+contributions: median 2154 tokens, max 2782. Qwen2.5's vocabulary is 151,665.
+GRPO materialises full-sequence logits for BOTH policy and reference:
+seq(~2666-3178) x vocab x fp32 = 3.2-3.9 GB per sequence, doubled for the
+reference, on top of a 4-bit 7B model, gradients and optimizer state. Reducing
+group size, LoRA layers and completion length together was not sufficient. The
+logits tensor scales with sequence length and vocabulary, neither of which the
+available knobs reduce.
+
+**Consequence for the paper — the wording matters.** We must NOT write "GRPO
+failed" or "RL failed". We never ran it. The supportable statement is:
+
+  Weight-level training failed under offline preference optimization (ORPO,
+  CPO) at both loci and under an on-policy best-of-n distillation with a
+  pipeline-mouth reward. Full policy-gradient RL could not be attempted: on a
+  34 GB machine, GRPO on a 7B policy with ~2.2k-token prompts and a 152k
+  vocabulary exhausts memory before the first update. The objection "you did
+  not do real RL" therefore stands, and we state it rather than obscure it.
+
+This is also a useful negative result for replication: anyone attempting
+pipeline-level RL on consumer hardware will hit the same wall, and the binding
+constraint is prompt length x vocabulary, not model size.
+
+**Options not taken (recorded for whoever picks this up):** truncating the
+specialist contributions would fit but changes the experiment; a smaller
+policy (e.g. Qwen2.5-1.5B) would shrink weights and activations but NOT the
+logits tensor, which is seq x vocab regardless of model size, and would break
+comparability with Cells 6b and 11 which both used the 7B Lead.
