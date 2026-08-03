@@ -2491,3 +2491,47 @@ COMPENSATION - the writer supplements scarce input, compensation is strongest
 at the bottom and vanishes by three to four families - not a stabilised target.
 The binary heavy/trigger-free table should be replaced by this dose-response,
 which is stronger evidence (monotone, n=358, four writers) and a weaker claim.
+
+## CELL 17 PRE-REGISTRATION — the suppression clause (registered 2026-08-03, before any runs)
+
+**Motivation.** The writing instruction specifies what to PRESERVE (clauses
+2-4, each conditional on something a specialist did) and never what NOT to
+add. Invention is the half that produces the failures, and it scales with
+scarcity: 0.53 families invented at zero supply, falling to 0.00 at full
+supply (n=358, four writers). This cell tests whether the missing half is
+addressable by stating it.
+
+**Treatment.** The production synthesis prompt plus one clause:
+
+  6. DO NOT INTRODUCE qualifications, caveats, assumptions, or jurisdictional
+     distinctions that no specialist raised. If the specialists did not flag
+     uncertainty about something, state it plainly.
+
+Everything else identical. Writer: gpt-oss-20B in every role, matching Cells
+8/13/14 so the existing production-prompt runs serve as the baseline without
+re-running them (c13-all on the six trigger cases, arch-council on the three
+on-topic trigger-free cases).
+
+**Cases.** All six trigger cases plus the three Cell-14 on-topic trigger-free
+cases, giving the full supply range in one arm. 9 cases x 5 seeds = 45 runs.
+Routing and the applied synthesis prompt are asserted per run and persisted,
+per the execution-path fix.
+
+**Predictions.**
+- P17.1 (it suppresses invention): invented families fall relative to the
+  production baseline, most on low-supply runs. FALSIFIED IF invention is
+  unchanged.
+- P17.2 (it is TARGETED, not a blunt volume reducer): preserved families do
+  NOT fall materially. FALSIFIED IF preservation drops alongside invention,
+  which would mean the clause simply makes the writer quieter and is useless
+  as a remedy. **This is the discriminating prediction; P17.1 alone is not
+  interesting, because any instruction to say less will reduce everything.**
+- P17.3 (exploratory): traceability, and whether the seats' 2.6x
+  discrimination reaches the page any better.
+
+**Consequences.** If P17.1 and P17.2 both hold, the behavior paper gains a
+TESTED intervention and the diagnosis becomes actionable: the instruction was
+half-specified, and completing it fixes the failure. If P17.1 fails, invention
+resists the obvious remedy and that is reported as such — the behavior is
+deeper than a missing instruction. If P17.1 holds but P17.2 fails, the clause
+works by suppressing everything and is reported as a non-solution.
