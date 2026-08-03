@@ -312,3 +312,51 @@ fig.tight_layout()
 fig.savefig(OUT / "fig_witness.pdf", bbox_inches="tight")
 plt.close(fig)
 print("wrote figs/fig_witness.pdf")
+
+# ------------------------------------------ fig 7: provenance decomposition
+# What the aggregation step preserves, discards, and invents (648 syntheses).
+fig, (axA, axB) = plt.subplots(1, 2, figsize=(7.8, 3.1),
+                               gridspec_kw={"width_ratios": [1.25, 1]})
+
+conds = ["trigger-heavy", "trigger-free"]
+preserved = [1.81, 0.68]
+lost      = [0.70, 0.29]
+invented  = [0.12, 0.38]
+y = [0, 1]; h = 0.42
+
+for i, yy in enumerate(y):
+    # upstream: what the seats raised, split into preserved / lost
+    axA.barh(yy + h/1.9, preserved[i], h, color="#2e6d5e", zorder=3,
+             label="preserved" if i == 0 else None)
+    axA.barh(yy + h/1.9, lost[i], h, left=preserved[i], color="#c9c4bb", zorder=3,
+             label="discarded" if i == 0 else None)
+    # downstream: what the aggregator emitted, split into traceable / invented
+    axA.barh(yy - h/1.9, preserved[i], h, color="#2e6d5e", alpha=0.55, zorder=3)
+    axA.barh(yy - h/1.9, invented[i], h, left=preserved[i], color="#c7793f", zorder=3,
+             label="invented" if i == 0 else None)
+    axA.text(-0.08, yy + h/1.9, "seats", ha="right", va="center", fontsize=6.5, color="#6b6b66")
+    axA.text(-0.08, yy - h/1.9, "output", ha="right", va="center", fontsize=6.5, color="#6b6b66")
+
+axA.set_yticks(y); axA.set_yticklabels(conds, fontsize=8)
+axA.set_xlabel("behavior families per response", fontsize=8)
+axA.set_xlim(-0.75, 2.85); axA.tick_params(labelsize=8)
+axA.legend(fontsize=6.8, frameon=False, loc="lower right", ncol=1)
+axA.set_title("What survives aggregation", fontsize=9)
+axA.annotate("invention triples\nwhen upstream is thin", xy=(0.88, 1 - h/1.9),
+             xytext=(1.35, 1.42), fontsize=6.8, color="#c7793f",
+             arrowprops=dict(arrowstyle="->", lw=0.7, color="#c7793f"))
+
+# right: the distinction the seats draw vs the one that reaches the page
+axB.bar([0, 1], [2.59, 1.82], 0.5, color=["#2e6d5e", "#8a8a85"], zorder=3)
+axB.set_xticks([0, 1]); axB.set_xticklabels(["seats", "output"], fontsize=8)
+axB.set_ylabel("heavy : trigger-free ratio", fontsize=8)
+axB.axhline(1.0, color="#bbbbb5", lw=0.9, ls=":", zorder=2)
+axB.set_ylim(0, 3.0); axB.tick_params(labelsize=8)
+axB.set_title("Discrimination is compressed", fontsize=9)
+for xx, v in ((0, 2.59), (1, 1.82)):
+    axB.text(xx, v + 0.09, f"{v:.2f}×", ha="center", fontsize=8)
+
+fig.tight_layout()
+fig.savefig(OUT / "fig_provenance.pdf", bbox_inches="tight")
+plt.close(fig)
+print("wrote figs/fig_provenance.pdf")

@@ -2339,3 +2339,52 @@ specialist contributions would fit but changes the experiment; a smaller
 policy (e.g. Qwen2.5-1.5B) would shrink weights and activations but NOT the
 logits tensor, which is seq x vocab regardless of model size, and would break
 comparability with Cells 6b and 11 which both used the 7B Lead.
+
+## FOURTH PAPER — "What Aggregation Does to Epistemic Content" (docs/paper_behavior.tex, v0.1, 2026-08-03)
+
+A behavioral characterization of the aggregation step, 7pp. Same corpus, no
+new runs. Written to the brief: scientific description of how multi-seat
+architectures BEHAVE, not an argument that we succeeded or failed.
+
+**The structural move that makes it work: negatives become INVARIANCES.**
+"Weight training did nothing" reads as failure in an outcome paper; "the step
+is invariant under weight-level training at either locus" is a constraint on
+any behavioral account, and belongs in a characterization. The paper is
+organized as: what the step does to content (provenance), what it responds to
+(instructions), what leaves it unmoved (everything else), then a compact
+description.
+
+**New centerpiece measurement and figure (figs/fig_provenance.pdf):**
+
+| question type | raised | preserved | discarded | invented | traceable |
+|---|---|---|---|---|---|
+| trigger-heavy | 2.51 | 1.81 | 0.70 | 0.12 | 94% |
+| trigger-free | 0.97 | 0.68 | 0.29 | **0.38** | **64%** |
+
+Three regularities: discard is PROPORTIONAL (28% / 30%, independent of
+supply); invention COMPENSATES (triples in absolute terms when upstream is
+thin, so over a third of trigger-free output traces to no specialist); and
+distinctions COMPRESS (the seats' 2.59x becomes 1.82x at the page).
+
+Unifying description: the step behaves as though it has a TARGET LEVEL of
+epistemic content — given more it trims, given less it fills. That single
+account retro-explains four previously separate puzzles: why seat-tuning
+backfires, why output looks input-independent, why the trigger-free failure
+occurs, and why the upstream distinction attenuates.
+
+**Two post-hoc predictions the paper states as supported rather than tested:**
+interventions raising upstream qualification should be counterproductive (they
+are), and apparent input-indifference should be strongest where input is
+thinnest (94% vs 64% traceability).
+
+**Honest content retained, compressed:** the RL infeasibility (memory limit
+stated precisely, invariance scoped to offline preference optimization and a
+best-of-n surrogate), the withdrawn degenerate arm, the zero-route
+mis-measurement and its correction, and the split-session provenance defect.
+These sit in Limitations as two short paragraphs rather than as narrative.
+
+**Relationship to the other drafts.** paper.tex asks where disposition is
+decided; paper_witnesses asks what specialists are for; paper_calibration is
+retracted; this one asks what the aggregation step does to content that passes
+through it. This is the most defensible of the four because its core claim is
+a measurement rather than an interpretation.
