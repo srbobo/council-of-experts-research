@@ -44,10 +44,12 @@ raise, it preserves about $72\%$ and discards the rest at a rate that does not
 depend on how much arrives. It also \emph{invents}: on questions where the
 specialists raise little, more than a third of what the final answer contains
 traces to no specialist at all, against a ninth on questions where they raise
-plenty. The step therefore writes toward a characteristic level, preserving
-faithfully when supplied and manufacturing content when starved, and a
-$2.6\times$ distinction the specialists draw between demanding and undemanding
-questions reaches the page as $1.8\times$. Around that behavior we map what the
+plenty. Invention is a monotone function of scarcity: pooled across four writing
+models and $358$ runs, it falls from $0.53$ families when the specialists
+raise none to zero when they raise all four, while traceability rises from
+$0\%$ to $100\%$. The step \emph{partially compensates} for thin input rather
+than conveying it, and a $2.6\times$ distinction the specialists draw between
+demanding and undemanding questions reaches the page as $1.8\times$. Around that behavior we map what the
 step responds to and what leaves it unmoved. It responds to its own
 instructions, gradedly and with per-behavior specificity: output rises with the
 number of preservation clauses, and each clause moves exactly the behavior it
@@ -176,10 +178,40 @@ models drew. The information that a question warranted little caution is
 available in the pipeline and is substantially attenuated by the time it is
 written.
 
-A convenient summary is that the writing step behaves as though it has a
-target level of epistemic content. Given more than that, it trims; given
-less, it fills. The following two sections test that description against the
-step's response to interventions.
+\textbf{The controlling variable is supply, not question type.} Pooling 358
+runs that carry specialist turns, across four different writing models and
+nine arms, the relationship is monotone in how much the specialists raised:
+
+\begin{center}\small
+\begin{tabular}{cccccc}
+\toprule
+families raised & $n$ & preserved & invented & output & traceable \\
+\midrule
+$0$ & $17$ & $0.00$ & $0.53$ & $0.53$ & $0\%$ \\
+$1$ & $34$ & $0.50$ & $0.26$ & $0.76$ & $65\%$ \\
+$2$ & $82$ & $1.06$ & $0.29$ & $1.35$ & $78\%$ \\
+$3$ & $180$ & $1.63$ & $0.07$ & $1.71$ & $96\%$ \\
+$4$ & $45$ & $1.98$ & $0.00$ & $1.98$ & $100\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Invention falls monotonically as supply rises and reaches zero when the
+specialists raise all four families; traceability rises from $0\%$ to $100\%$
+across the same range ($r = -0.33$ between raised and invented). At zero
+supply the writer still emits half a family, invented outright.
+
+We describe this as \emph{partial compensation} and deliberately not as a
+target level. Output does track supply ($r = +0.41$, rising from $0.53$ to
+$1.98$ across the range); it simply tracks it sub-proportionally, with the
+shortfall made up by invention that is largest where supply is smallest. A
+writer with a fixed target would show flat output, and it does not.
+
+This also resolves what looks like a failed replication. One writer shows
+$100\%$ traceability on undemanding questions, apparently contradicting the
+pattern---but on those runs the specialists raised $3.00$ families, an
+oversupply condition, and the writer trimmed ($3.00$ raised, $1.25$ kept)
+rather than invented. It is the same behavior observed from the other end.
 
 \section{What the step responds to}
 \label{sec:resp}

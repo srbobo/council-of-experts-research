@@ -2440,3 +2440,54 @@ settling them needs human judgement or a judge shown both contributions.
 "reversal" retired as a pattern artifact, and density's floor/length
 confound). Pattern: the disagreement between instruments has repeatedly been
 more informative than either number.
+
+## PROVENANCE REPLICATION (2026-08-03) — confirms the phenomenon, CORRECTS our framing
+
+Recomputed provenance on 358 council runs carrying seat turns, spanning four
+writers (gpt-oss-20B, Phi-4-14B, Qwen2.5-7B stock and trained) and nine arms.
+No new runs; the seat text was already in every audit log.
+
+**Per-writer, by condition:**
+
+| writer | arm | heavy traceable | trigger-free traceable | n |
+|---|---|---|---|---|
+| gpt-oss-20B | arch-council | 81% | **33%** | 70 / 15 |
+| gpt-oss-20B | c13-all | 95% | - | 30 / 0 |
+| Phi-4-14B | local-council-repro | 89% | 100% | 30 / 4 |
+| Qwen2.5-7B trained | cell11-cal-k3 | 96% | 50% | 30 / 5 |
+| Qwen2.5-7B stock (reference) | cell11 corpus | 94% | 64% | 456 / 192 |
+
+High traceability on demanding questions replicates on ALL FOUR writers
+(81-96%). The drop on trigger-free questions replicates on two of three
+testable arms.
+
+**The apparent Phi-4 exception is a confirmation, not a counterexample.** Its
+four trigger-free runs are case_7, where the seats raised 3.00 families — an
+OVERSUPPLY condition. The writer trimmed (3.00 raised -> 1.25 kept) and
+invented nothing. gpt-oss's trigger-free runs use the purpose-built Cell-14
+cases where seats raised only 0.40 — undersupply — and there invention
+dominates. The variable is SUPPLY, not question type.
+
+**Restated as a dose-response (n=358, pooled):**
+
+| seats raised | n | kept | invented | output | traceable |
+|---|---|---|---|---|---|
+| 0 | 17 | 0.00 | 0.53 | 0.53 | 0% |
+| 1 | 34 | 0.50 | 0.26 | 0.76 | 65% |
+| 2 | 82 | 1.06 | 0.29 | 1.35 | 78% |
+| 3 | 180 | 1.63 | 0.07 | 1.71 | 96% |
+| 4 | 45 | 1.98 | 0.00 | 1.98 | 100% |
+
+Invention declines monotonically with supply; traceability rises
+monotonically 0% -> 100%; corr(raised, invented) = -0.33. At zero supply the
+writer emits 0.53 families invented wholesale.
+
+**CORRECTION to our own framing.** The paper says the step "writes toward a
+target level," trimming when oversupplied and filling when starved. The
+dose-response does not support the strong version: corr(raised, output) =
++0.41 and output rises 0.53 -> 1.98 across the range, so output DOES track
+supply, just sub-proportionally. The supportable claim is PARTIAL
+COMPENSATION - the writer supplements scarce input, compensation is strongest
+at the bottom and vanishes by three to four families - not a stabilised target.
+The binary heavy/trigger-free table should be replaced by this dose-response,
+which is stronger evidence (monotone, n=358, four writers) and a weaker claim.
