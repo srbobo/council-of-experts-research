@@ -278,6 +278,79 @@ two act on different things.
 writing role changes the output under identical input, which is the one
 structural change that does move it.
 
+
+\section{The one output with no single-model analogue}
+\label{sec:tension}
+Everything measured so far concerns how much epistemic content the step emits,
+and on that axis a well-instructed single model matches the pipeline. There is
+one output where no such comparison is possible.
+
+The writing instruction asks, before the answer is drafted, for an explicit
+enumeration of tensions between the specialists---places where following one
+contribution makes another harder. This is the only part of the pipeline's
+output that a single model cannot produce by construction: identifying a
+conflict requires more than one source to conflict.
+
+\begin{table}[t]
+\centering
+\caption{Tension enumeration by arrangement. Only arrangements with a genuine
+aggregation step produce one.}
+\label{tab:tension}
+\begin{tabular}{lccc}
+\toprule
+Arrangement & runs & responses with a tensions section & tensions per response \\
+\midrule
+council (all variants) & $195$ & $86$--$100\%$ & $3.0$--$3.9$ \\
+flat merge & $50$ & $0\%$ & $0.00$ \\
+single model $+$ instruction & $90$ & $0\%$ & $0.00$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The separation is categorical rather than a matter of degree
+(Table~\ref{tab:tension}). Arrangements that pass specialist text to a writer
+without asking for tensions produce none at all; the council produces close to
+four per response, reliably.
+
+\textbf{Are they grounded?} Given the invention behavior of
+\S\ref{sec:prov}, the obvious concern is that these conflicts are
+manufactured. Many tensions cite a specific figure and attribute it to a named
+specialist, which makes them checkable: the figure either appears in that
+specialist's contribution or it does not. Across $210$ such tensions,
+$\mathbf{89\%}$ cite a figure that is genuinely present upstream (median
+$100\%$ per response); $11\%$ cite one that appears nowhere.
+
+This is a notably better rate than the step's handling of epistemic content on
+thin questions, where $36\%$ of what it emits is untraceable. The step
+invents caveats far more readily than it invents disagreements---which are
+different behaviors, and the asymmetry is the more interesting result.
+
+\textbf{An extension that failed, and why it is worth reporting.} The $89\%$
+covers only tensions citing a figure. We attempted to extend the check to the
+$139$ qualitative ones using the entailment instrument that validates our
+other measurements, and it does not transfer. On the figure-citing subset
+where both methods apply, entailment scores $16\%$ grounded against
+figure-matching's $89\%$, and the two agree on only $23\%$ of items.
+Decomposing each tension into its component claims---a tension is typically a
+compound contrastive statement, ``A recommends $x$, but B assumes
+$y$''---raises the entailment rate to $48\%$ with at least one clause
+supported, and the median best-clause entailment sits at $0.57$, just under
+our $0.60$ threshold.
+
+The diagnosis is that entailment is the wrong relation here. A tension clause
+is a \emph{paraphrased summary} of what a specialist wrote, not a restatement
+of it, and no single upstream sentence entails a claim that combines two
+contributions with a conflict framing. What the instrument measures on this
+material is paraphrase distance rather than groundedness, which is why its
+scores cluster at the decision boundary. We therefore report the figure-based
+result, which is unambiguous, and record the qualitative majority as not
+measurable by the instruments we have. Establishing it would need human
+judgement or a judge shown both contributions and asked whether the conflict
+is real.
+
+This is the third occasion in this work on which an instrument disagreed with
+another and the disagreement, rather than either number, was the finding.
+
 \section{A behavioral description}
 \label{sec:model}
 The regularities above are compactly summarized as follows. The aggregation
@@ -295,6 +368,14 @@ trimmed---which is what the seat-tuning and multiple-specialist results show.
 Second, a system's apparent indifference to input should be strongest where
 input is thinnest, because that is where invention is doing the most work---
 which is what the $94\%$ against $64\%$ traceability split shows.
+
+The description also has a boundary. It concerns epistemic content that
+passes \emph{through} the step. The tension enumeration of
+\S\ref{sec:tension} is content the step \emph{constructs}, and it behaves
+differently: it is far more faithful to upstream ($89\%$ of checkable
+tensions grounded) than the step's handling of caveats on thin input ($64\%$
+traceable). Whatever produces compensating invention does not operate on
+constructed conflicts to the same degree.
 
 One thing this description does not explain is why instructions move the step
 when weight-level training does not. Three accounts are consistent with our

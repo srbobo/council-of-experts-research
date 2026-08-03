@@ -2388,3 +2388,55 @@ decided; paper_witnesses asks what specialists are for; paper_calibration is
 retracted; this one asks what the aggregation step does to content that passes
 through it. This is the most defensible of the four because its core claim is
 a measurement rather than an interpretation.
+
+## TENSION ENUMERATION — new section in paper_behavior (2026-08-03)
+
+Of the four prompt/architecture components asked about (step-back prompting,
+the synthesizer, the register, tension enumeration), three are borrowed or
+weakened and one is novel and measurable.
+
+- step-back prompting: borrowed (cited), never ablated, no evidence either way.
+- synthesizer as a component: standard in MoA / Parallel-Synthesis.
+- register: DE-EMPHASISED. We weakened it ourselves (floor + length artifact)
+  and Voice Under Revision found the same effect independently in another
+  domain. Not ours and weaker than claimed.
+- **tension enumeration: novel, structurally unique, and now measured.**
+
+**Structural separation is categorical, not graded:**
+
+| arrangement | runs | responses with a tensions section | tensions/response |
+|---|---|---|---|
+| council (all variants) | 195 | 86-100% | 3.0-3.9 |
+| flat merge | 50 | **0%** | 0.00 |
+| single model + instruction | 90 | **0%** | 0.00 |
+
+A single model cannot produce this by construction: identifying a conflict
+requires more than one source to conflict. This is the only output in the
+whole program where the pipeline is not matched by a well-prompted single
+model.
+
+**Grounding, figure-citing tensions (unambiguous check): 89% grounded**
+(n=210, median 100% per response), 11% cite a figure appearing nowhere
+upstream. Against the step's 64% traceability for caveats on thin input, this
+says the step **invents caveats far more readily than it invents
+disagreements** — different behaviors, and the asymmetry is the finding.
+
+**The extension FAILED, and the failure is reported as the result.** NLI
+entailment does not transfer to this material. On the figure-citing subset
+where both methods apply: figure-matching 89%, NLI 16%, agreement 23%.
+Decomposing each tension into component clauses (a tension is a compound
+contrastive claim, "A recommends x but B assumes y") raises NLI to 48% with at
+least one clause supported, median best-clause entailment 0.57 — sitting just
+under our 0.60 threshold, i.e. clustered at the decision boundary.
+
+Diagnosis: a tension clause is a PARAPHRASED SUMMARY of specialist content,
+not a restatement, and no single upstream sentence entails a claim combining
+two contributions plus a conflict framing. The instrument measures paraphrase
+distance, not groundedness. We report the figure-based number and record the
+139 qualitative tensions as NOT MEASURABLE with the instruments we have;
+settling them needs human judgement or a judge shown both contributions.
+
+**Third instrument-validity finding in this program** (after the finance
+"reversal" retired as a pattern artifact, and density's floor/length
+confound). Pattern: the disagreement between instruments has repeatedly been
+more informative than either number.
