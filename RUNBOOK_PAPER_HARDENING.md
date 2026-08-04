@@ -2535,3 +2535,50 @@ half-specified, and completing it fixes the failure. If P17.1 fails, invention
 resists the obvious remedy and that is reported as such — the behavior is
 deeper than a missing instruction. If P17.1 holds but P17.2 fails, the clause
 works by suppressing everything and is reported as a non-solution.
+
+## CELL 17 VERDICT — the suppression clause does not suppress (2026-08-03, 45 runs, zero failures)
+
+| condition | arm | raised | preserved | invented | traceable | n |
+|---|---|---|---|---|---|---|
+| trigger-heavy | production | 3.13 | 1.83 | 0.10 | 95% | 30 |
+| trigger-heavy | + suppression | 2.97 | 1.77 | 0.11 | 94% | 35 |
+| trigger-free | production | 0.40 | 0.27 | **0.53** | 33% | 15 |
+| trigger-free | + suppression | 0.53 | 0.53 | **0.40** | 57% | 15 |
+
+**P17.1 FALSIFIED.** Invention did not fall on either condition. Trigger-heavy
+0.10 -> 0.11 (no change, and nothing to suppress at 95% traceability
+already). Trigger-free 0.53 -> 0.40, intervals overlapping heavily
+[0.27,0.80] vs [0.13,0.73]. The clause does not reliably suppress invention
+where invention actually happens.
+
+**P17.2 CONFIRMED but moot.** Preservation held everywhere (1.83 -> 1.77;
+0.27 -> 0.53), so the clause is not a blunt volume reducer. That was the
+discriminating prediction and it passes — but it only matters if P17.1 had
+held, and it did not.
+
+**An unregistered observation, reported as such.** On trigger-free runs
+preservation ROSE 0.27 -> 0.53 while upstream supply also rose 0.40 -> 0.53,
+and traceability went 33% -> 57%. Both arms are n=15 with different random
+seat outputs, so the supply difference is sampling, not treatment. The
+traceability gain therefore cannot be attributed to the clause: with more
+raised upstream there was more to preserve. We flag this because it is the
+kind of number that would be easy to present as a win and is not one.
+
+**REGISTERED CONSEQUENCE EXECUTED.** Per the Cell 17 registration: "If P17.1
+fails, invention resists the obvious remedy and that is reported as such —
+the behavior is deeper than a missing instruction." That is the finding.
+
+**Interpretation.** The instruction set is not simply half-specified. Telling
+the writer plainly not to introduce qualifications nobody raised does not stop
+it doing so. Combined with the dose-response (invention scales with scarcity,
+0.53 families at zero supply), the behavior looks less like a gap in the
+instructions and more like the writer filling to a floor it will not go below
+regardless of what it is told. That is a stronger and more interesting claim
+than "add the missing clause", and it is the one the data supports.
+
+**Consequence for the behavior paper.** The intended fourth section — one
+tested intervention — reports a NEGATIVE intervention. The paper's structure
+survives: characterization, the gap, what moves it and what does not, and now
+an attempted remedy that fails. Invention joins the list of properties
+invariant under instruction, which is notable because instructions move
+everything else we measured.
