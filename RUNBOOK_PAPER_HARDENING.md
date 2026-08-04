@@ -2656,3 +2656,44 @@ comparable but not exactly dose-matched, and any null must be read with that
 in mind. Pair quality is strong: chosen keep 2.18 / invent 0.03, rejected
 keep 0.78 / invent 0.33 — separated on BOTH dimensions, which is what the
 objective requires. Mix 60 heavy / 19 light.
+
+## CELL 18 — BENCHED ON THE WRONG CONDITION (2026-08-04, harness error, owned)
+
+Training and packaging completed cleanly (284 iters, val loss 0.069,
+qwen-lead-prov:coe serving). Bench 35/35, zero failures. The RESULT is
+uninterpretable and the fault is in the bench design, not the data.
+
+| arm | objective | raised | preserved | invented | traceability | n |
+|---|---|---|---|---|---|---|
+| stock (A') | none | 2.33 | 1.77 | **0.00** | **100%** | 30 |
+| calibration-trained | production | 2.70 | 1.83 | 0.07 | 96% | 30 |
+| provenance-trained | faithfulness | 2.63 | 1.73 | 0.07 | 96% | 30 |
+
+**Stock invention is 0.00 on trigger cases.** There is nothing to correct in
+the condition we benched. P18.1 is therefore not merely falsified — it was
+UNTESTABLE as run. P18.2 (preservation held, 1.77 -> 1.73) is fine but
+vacuous for the same reason.
+
+**Cause.** run_cell18_bench.py was adapted from run_cell11_bench.py, which
+uses the seven ORIGINAL cases. Invention lives on THIN-SUPPLY questions —
+the on-topic trigger-free cases 8/9/10 built for Cell 14, where invention is
+0.53 families and traceability 33%. Those were never benched here. case_7,
+the only trigger-free case in the set, is the off-topic one that routes to
+zero seats; its 5 runs were correctly quarantined by the analysis, leaving
+only the condition where the phenomenon is absent.
+
+This is exactly the failure the harness design (docs/HARNESS_DESIGN.md
+section 5) says to guard against: the probe battery specifies that
+trigger-free questions must be ON-TOPIC so routing occurs. The bench did not
+follow the design written two hours earlier.
+
+**Corrective runs registered (no change to predictions).** Bench BOTH the
+provenance-trained Lead and the stock Qwen Lead on cases 8/9/10 (on-topic,
+trigger-free, routing verified): 3 cases x 5 seeds x 2 arms = 30 runs. The
+stock arm is required because no Qwen baseline exists on these cases —
+arch-council's runs there use gpt-oss, a different writer.
+
+P18.1 and P18.2 are re-tested on that data unchanged. The 30 trigger-case
+runs above are retained and reported as showing no degradation on the
+condition where the writer was already faithful, which is a real if minor
+result: the training did not break high-supply behaviour.
