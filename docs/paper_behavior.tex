@@ -57,8 +57,13 @@ names and no other. It is close to invariant under everything upstream---the
 volume of qualification the specialists produce (raising it lowers the output,
 monotonically), the number of specialists, the pipeline topology, and
 weight-level training at either end under three optimizers and two reward
-designs. We report these as measured regularities of the aggregation step
-rather than as an argument for or against building such pipelines.
+designs. Invention is the exception to the instruction result: adding an explicit
+clause forbidding qualifications no specialist raised does not reduce it
+($0.53 \rightarrow 0.40$, overlapping intervals), though preservation is
+unaffected, so the step appears to have both an instruction-responsive
+component and one that is not. We report these as measured regularities of
+the aggregation step rather than as an argument for or against building such
+pipelines.
 \end{abstract}
 
 \section{Introduction}
@@ -383,6 +388,79 @@ is real.
 This is the third occasion in this work on which an instrument disagreed with
 another and the disagreement, rather than either number, was the finding.
 
+
+\section{An attempted remedy, and what its failure shows}
+\label{sec:remedy}
+The instruction the writing model receives is asymmetric in a way that maps
+onto \S\ref{sec:prov}. Its three preservation clauses each specify something
+to \emph{keep}, conditional on a specialist having raised it. None specifies
+anything not to \emph{add}. Given that invention rather than loss produces
+the behavior of interest, the obvious hypothesis is that the instruction set
+is simply half-written, and that completing it would suffice.
+
+We tested that. The production instruction was augmented with one clause,
+everything else held identical:
+
+\begin{quote}\small
+\textbf{6.} DO NOT INTRODUCE qualifications, caveats, assumptions, or
+jurisdictional distinctions that no specialist raised. If the specialists did
+not flag uncertainty about something, state it plainly.
+\end{quote}
+
+\begin{table}[t]
+\centering
+\caption{The suppression clause against the production instruction, same
+writer, 45 new runs against existing baselines.}
+\label{tab:remedy}
+\begin{tabular}{llccc}
+\toprule
+Condition & Instruction & preserved & invented & traceable \\
+\midrule
+demanding & production & $1.83$ & $0.10$ & $95\%$ \\
+demanding & $+$ suppression & $1.77$ & $0.11$ & $94\%$ \\
+\midrule
+undemanding & production & $0.27$ & $0.53$ & $33\%$ \\
+undemanding & $+$ suppression & $0.53$ & $0.40$ & $57\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{It does not work.} On demanding questions there was nothing to
+suppress---traceability was already $95\%$---and nothing changed. On
+undemanding questions, where invention is the dominant behavior, the
+reduction is $0.53 \rightarrow 0.40$ with intervals overlapping heavily
+($[0.27,0.80]$ against $[0.13,0.73]$). We had registered in advance that a
+reduction in invention alone would not be interesting, since any instruction
+to say less reduces everything; the discriminating test was whether
+preservation survived. It did ($1.83 \rightarrow 1.77$, $0.27 \rightarrow
+0.53$), so the clause is not a blunt volume control. That distinction simply
+does not matter, because the effect it was meant to qualify is absent.
+
+One number in Table~\ref{tab:remedy} invites over-reading and we flag it
+rather than report it as an effect. Traceability on undemanding questions
+rises from $33\%$ to $57\%$. But upstream supply also rose between the two
+arms, from $0.40$ to $0.53$ raised families, because the specialist outputs
+were independently sampled in each and both arms are $n{=}15$. More was
+raised, so more could be preserved. The gain is attributable to sampling
+rather than to the clause.
+
+\textbf{What the failure establishes.} The instruction set is not merely
+half-written. Stating the omitted half plainly, in the same imperative
+register as the clauses that do work, does not stop the behavior. Read
+alongside the dose-response of \S\ref{sec:prov}---where the writer emits half
+a behavior family when the specialists raise \emph{none}---this looks less
+like a gap in what the writer was told and more like a floor it does not go
+below regardless of instruction.
+
+That places invention in a category of its own within these results.
+Instructions move everything else we measured: aggregate output gradedly with
+clause count, individual behaviors with per-family specificity, across three
+different writing models. Invention is the one property we found that
+instructions do not move. A description of this step therefore needs two
+mechanisms rather than one: a component that responds to instruction, which
+governs how much of the available material is rendered, and a component that
+does not, which supplies content when the available material runs short.
+
 \section{A behavioral description}
 \label{sec:model}
 The regularities above are compactly summarized as follows. The aggregation
@@ -400,6 +478,13 @@ trimmed---which is what the seat-tuning and multiple-specialist results show.
 Second, a system's apparent indifference to input should be strongest where
 input is thinnest, because that is where invention is doing the most work---
 which is what the $94\%$ against $64\%$ traceability split shows.
+
+The two-component reading of \S\ref{sec:remedy} is the compact form: an
+instruction-responsive term that governs how much of the supplied material is
+rendered, and an instruction-invariant term that supplies content when supply
+runs short. Every result in \S\ref{sec:resp} concerns the first; the
+provenance asymmetry of \S\ref{sec:prov} and the failed remedy concern the
+second.
 
 The description also has a boundary. It concerns epistemic content that
 passes \emph{through} the step. The tension enumeration of
@@ -427,6 +512,12 @@ paraphrase and rewards brevity, and although two further instruments agree
 with it on the load-bearing comparisons, all three are automatic and none is
 anchored to human judgement.
 
+The failed remedy of \S\ref{sec:remedy} tests one phrasing of one clause on
+one writer. A differently worded suppression instruction, or a writer with a
+different instruction-following profile, could behave otherwise; we claim only
+that the most direct statement of the omitted half did not work here, and the
+undemanding-condition arms are $n{=}15$ each.
+
 Everything ran at or below 20B parameters on one consumer machine, with five
 seeds and seven questions we wrote ourselves plus eleven added for specific
 tests. A frontier model in the writing role could behave differently. The
@@ -450,7 +541,15 @@ four from a later one, and 133 runs record a batch label where a model
 identifier belongs.
 
 \section{Implications}
-For practitioners the description above has direct consequences. Effort spent
+For practitioners the description above has direct consequences, one of them
+negative. Instructing the writer not to invent does not stop it inventing, so
+a system that must not manufacture qualification cannot be made safe by
+telling it not to; the check has to be external, comparing what the answer
+asserts against what the specialists actually supplied. That comparison is
+cheap---the specialist text is already in the prompt---and it is the only
+intervention on invention we can currently recommend.
+
+ Effort spent
 making upstream components more epistemically careful is not merely wasted but
 counterproductive at the output. Effort spent on the writing model's
 instructions is the intervention with measured, graded effect, and should be
