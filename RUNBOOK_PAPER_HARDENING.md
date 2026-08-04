@@ -2582,3 +2582,77 @@ survives: characterization, the gap, what moves it and what does not, and now
 an attempted remedy that fails. Invention joins the list of properties
 invariant under instruction, which is notable because instructions move
 everything else we measured.
+
+## CELL 18 PRE-REGISTRATION — provenance-rewarded training (registered 2026-08-04, before any pairs are built or training run)
+
+**Why a fourth training attempt.** Cells 6b and 11 both optimised PRODUCTION
+objectives — density, then calibration (more where warranted, less where not).
+Cell 11's own registered P11.3 asked whether reward SHAPE was the binding
+constraint and answered no. This cell changes the objective CLASS, not its
+shape: from how much the writer emits to whether what it emits came from
+upstream. That is the quantity our characterisation identifies as the failure
+(invention scaling with scarcity, 0.53 families at zero supply), and no prior
+arm targeted it.
+
+**Why it may work where three attempts did not.** Preference optimisation can
+only select behaviour already present in the sampling distribution. Scoring
+the existing 648 stock-model samples by provenance shows the target behaviour
+is present: per prompt, the best sample both PRESERVES MORE and INVENTS LESS
+than the worst (heavy: kept 2.39 / invented 0.01 vs kept 1.04 / invented 0.26;
+light: kept 0.97 / invented 0.09 vs kept 0.31 / invented 0.75). Spread is
+usable on 88 of 108 prompts. Cell 11's target may never have appeared in its
+own samples, in which case there was nothing to select. This is an argument,
+not evidence, and is recorded as such.
+
+**Design.** No new generation. Score all 648 existing Cell-11 samples with
+  provenance(s) = kept/max(raised,1) - 0.5 * invented/4
+where raised/kept/invented are behavior families derived from the specialist
+text already present in each synthesis prompt. chosen = argmax, rejected =
+argmin per prompt; keep prompts whose spread >= 0.25. Cap at 88 train pairs,
+matching Cell 6b's realised dose exactly so the three training arms are
+dose-comparable. ORPO, LoRA r8 / 16 layers / lr 5e-6 / seed 42 / seq 4096 —
+the Cell 6b recipe verbatim. Gates carried from Cell 11: length ratio in
+[0.8,1.4], and the NLI directional cross-check.
+
+**Bench.** 7 cases x 5 seeds x 1 arm = 35 runs (cell18-prov-k3), against two
+existing baselines that need no re-running: cell6b-lead-repro (stock) and
+cell11-cal-k3 (calibration-trained). All three arms then share model,
+trainer, dose and recipe, differing only in objective class.
+
+**Predictions.**
+- P18.1 (the substantive test): invented families at the pipeline mouth fall
+  against the stock Lead, bootstrap CIs disjoint. FALSIFIED IF they overlap.
+- P18.2 (targeted, not a volume knob — the DISCRIMINATOR): preserved families
+  do NOT fall materially against stock. FALSIFIED IF preservation drops
+  alongside invention, which would mean the model learned to say less. Same
+  discriminator that made Cell 17 interpretable.
+- P18.3 (exploratory): does traceability rise, and does the seats' 2.6x
+  discrimination reach the page any better than the stock 1.0x?
+
+**Registered consequences.**
+1. P18.1 and P18.2 both hold: weight-level training CAN correct aggregation
+   distortion when the objective is faithfulness rather than production. This
+   would be the first positive training result in the programme and would
+   materially change the paper — the invariance-under-training claim becomes
+   invariance-under-PRODUCTION-objectives only.
+2. P18.1 falsified: weight training has now failed under THREE distinct
+   objective classes — production, calibration, faithfulness — at the same
+   locus with the same recipe and dose. That is a substantially stronger
+   statement than three failures under one objective, and is how it will be
+   reported.
+3. P18.1 holds but P18.2 fails: the model learned to say less. Reported as a
+   non-solution, exactly as Cell 17's clause would have been.
+
+**Prior.** Three prior training attempts at this locus produced nulls. We
+expect a null and are running it because the objective class is genuinely
+new and the target behaviour is demonstrably in-distribution.
+
+### CELL 18 — dose deviation recorded before training
+Registered cap was 88 train pairs (matching Cell 6b). Realised: 71. The
+binding filter was the carried-over length-ratio gate [0.8,1.4] — 79 of 108
+prompts survived spread>=0.25 AND the ratio gate, leaving 71 after the
+valid/test holdout. That is 81% of Cell 6b's dose, so the three arms are
+comparable but not exactly dose-matched, and any null must be read with that
+in mind. Pair quality is strong: chosen keep 2.18 / invent 0.03, rejected
+keep 0.78 / invent 0.33 — separated on BOTH dimensions, which is what the
+objective requires. Mix 60 heavy / 19 light.
