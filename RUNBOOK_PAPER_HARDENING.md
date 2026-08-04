@@ -2697,3 +2697,52 @@ P18.1 and P18.2 are re-tested on that data unchanged. The 30 trigger-case
 runs above are retained and reported as showing no degradation on the
 condition where the writer was already faithful, which is a real if minor
 result: the training did not break high-supply behaviour.
+
+## CELL 18 VERDICT (corrected bench) — P18.1 FALSIFIED (2026-08-04, 30 thin-supply runs)
+
+Same writer model in both arms, on-topic trigger-free cases, routing verified
+on every run, zero quarantined.
+
+| arm | raised | preserved | invented | traceable | n |
+|---|---|---|---|---|---|
+| stock Qwen | 1.07 | 0.67 | 0.07 | 91% | 15 |
+| provenance-trained | 1.40 | 0.60 | **0.27** | **69%** | 15 |
+
+Supply comparable across arms (1.07 [0.47,1.73] vs 1.40 [0.73,2.00],
+overlapping), so the comparison is not confounded by what the seats supplied.
+
+**P18.1 FALSIFIED, and in the WRONG DIRECTION.** Invention did not fall; the
+point estimate ROSE 0.07 -> 0.27 and traceability fell 91% -> 69%. Intervals
+overlap ([0.00,0.20] vs [0.07,0.53]) so we do not claim the training made
+things worse — only that it did not make them better, and there is no hint of
+the intended effect.
+
+**P18.2 held** (0.67 -> 0.60): not a volume knob. Vacuous again, since the
+effect it discriminates is absent.
+
+**REGISTERED CONSEQUENCE 2 EXECUTED.** Weight-level training at the writer
+locus has now failed under THREE DISTINCT OBJECTIVE CLASSES with the same
+model, trainer, recipe and near-identical dose:
+  - production (density) — Cell 6b, 88 pairs
+  - calibration (conditional production) — Cell 11, 49 pairs
+  - faithfulness (provenance) — Cell 18, 71 pairs
+Plus seat-locus failures across three lineages and two optimizers, and a
+dose-invariance null at 3.2x. This is a materially stronger claim than three
+failures under one objective and should be stated that way.
+
+**The sharpest detail.** Training-time val loss was 0.069 — the model learned
+to RANK provenance pairs well. It still did not BEHAVE more faithfully at the
+pipeline mouth. This exactly reproduces Cell 11's pattern, where preference
+accuracy rose 0.48 -> 0.94 with no behavioural change. Learning the preference
+and acting on it are separable, and this is now observed twice under different
+objectives.
+
+**Retained from the first (mis-targeted) bench:** on trigger cases where the
+writer was already 100% traceable, training changed nothing (preservation
+1.77 -> 1.73). The intervention does not degrade behaviour where behaviour is
+already good.
+
+**Honest scope.** 15 runs per arm; intervals are wide. 71 pairs, 81% of Cell
+6b's dose. LoRA r8/16 layers. A larger intervention could differ. What we can
+say is that the objective class was not the binding constraint, which was the
+specific hypothesis this cell registered.
