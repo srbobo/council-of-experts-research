@@ -2812,3 +2812,39 @@ If P19.1 fails: invention resists even evidence-specific runtime feedback;
 annotation is the only honest treatment, and the two-component description
 hardens further. Either way the result completes the intervention picture:
 prompt, weights, and now verification, all tested on the same phenomenon.
+
+### CELL 19 AMENDMENT — instrument upgrade, registered before any gate outcomes were examined (2026-08-04)
+
+**User-raised defect in the running design, accepted.** The gate audits with
+the regex lexicon, quotes the matched phrases in its feedback, and re-audits
+with the SAME regex. A reviser can therefore satisfy the gate by PARAPHRASE —
+dropping the quoted phrase while keeping the behavior ("modeled at" -> "we
+estimate"). Regex scores that as success; the behavior persists. The
+instrument that generates the feedback cannot be the sole judge of
+compliance. This is the same paraphrase blind spot already documented for the
+lexicon (limitations of every paper), now load-bearing because the gate
+CREATES selection pressure toward exactly that blind spot.
+
+**Why NLI is the right second instrument here (and was not for tensions).**
+The calibrated DeBERTa-v3-MNLI instrument with frozen per-family Youden
+thresholds was validated for precisely this task — detecting FAMILY PRESENCE
+in a response (chosen-vs-rejected AUC 0.929). Its documented failure was on
+compound contrastive claims (tension grounding), a different task. Family
+presence is what the gate needs.
+
+**Amendment (Cell 19 continues; no arm changes):**
+1. The running regex-gated arm completes as designed — its baselines are
+   regex-scored, so the primary comparison stays internally consistent.
+2. NEW P19.5 (the paraphrase-evasion check): all post-gate outputs are
+   re-scored with the calibrated NLI instrument. If regex reports invention
+   removed but NLI reports the family still present at threshold, the gate
+   taught EVASION, not faithfulness. P19.1 is CONFIRMED only if the fall in
+   invention holds under BOTH instruments; regex-only improvement with NLI
+   disagreement is reported as evasion, a negative result.
+3. Harness upgrade: audit becomes instrument-pluggable; the gate's verdict
+   path gains a fast-screen (regex) + validated-confirm (NLI) mode. Judges
+   remain verdict-level (pairwise, blinded), not per-retry — they are the
+   third instrument for the final comparison, not a gate component.
+
+Registered before examining any of the running cell's gate outcomes; the
+only Cell 19 output seen at amendment time is the first run-start line.

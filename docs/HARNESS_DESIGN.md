@@ -257,6 +257,13 @@ class MetricReport:
 - **Disagreement is a result:** when instruments disagree beyond tolerance,
   the harness emits a disagreement report rather than averaging (three of our
   most useful findings were instrument disagreements).
+- **The gate must not judge compliance with the instrument that generated
+  its feedback.** A regex-fed gate quotes matched phrases; a reviser can pass
+  by paraphrase, and the gate has then *taught evasion*. Verdict rule:
+  fast-screen with the lexicon inside the retry loop, but CONFIRM with the
+  calibrated NLI family detector (`harness/nli.py` — validated for family
+  presence, AUC 0.929; explicitly not for compound claims). Improvement that
+  holds under regex but not NLI is reported as evasion, not success.
 
 ---
 
@@ -327,6 +334,8 @@ Design rules:
 | Separate preserved/invented reporting | suppression clause moved neither; a single score would hide it |
 | Runtime gate (reactive, evidence-specific) | instruction failed generically (17); training failed under 3 objective classes (6b/11/18); verification is what remains |
 | Condition check in probe battery | Cell 18's first bench tested a correction where the defect does not occur |
+| Two-instrument gate verdict (screen + confirm) | regex-only gate creates selection pressure toward the lexicon's own paraphrase blind spot (Cell 19 amendment) |
+| Cell/experiment id on Trace | mode name arch-council reused by three cells; earlier table pooled 40 load-sweep runs into trigger-heavy |
 
 ---
 
