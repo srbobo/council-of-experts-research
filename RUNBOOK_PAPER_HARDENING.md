@@ -2746,3 +2746,69 @@ already good.
 6b's dose. LoRA r8/16 layers. A larger intervention could differ. What we can
 say is that the objective class was not the binding constraint, which was the
 specific hypothesis this cell registered.
+
+## HARNESS BUILT + VALIDATED (2026-08-04) — and it immediately caught a cohorting defect
+
+`harness/` package implemented per docs/HARNESS_DESIGN.md v0.2: lexicon
+(byte-identical regexes to the canonical instrument), provenance audit with
+floor guard, path assertion with quarantine, and the runtime gate (reactive,
+evidence-specific feedback; annotation on residual; only the writer re-run).
+
+**Validation against known numbers:** thin-supply arch-council runs reproduce
+EXACTLY (raised 0.40 / kept 0.27 / invented 0.53 / 33%, n=15), and the path
+assertion quarantines exactly the 5 known zero-route case_7 runs.
+
+**Discrepancy found and resolved — the harness was right.** The trigger-case
+check gave n=30/87% where the earlier replication table said n=70/81%.
+Cause: the mode name `arch-council` was REUSED by three cells (8: original
+battery; 14: thin cases; 15: load sweep), and the earlier inline analysis
+pooled the 40 load-sweep runs into "trigger-heavy". Strict battery numbers:
+raised 3.17, kept 1.60, invented 0.23, 87% traceable (n=30). Conclusions
+unaffected (the pooled dose-response conditions on supply, not battery), but
+the per-writer table's arch-council row mixed batteries. CORRECTION: 81% ->
+87% for the strict battery. Harness lesson folded into design: Trace must
+carry the experiment/cell id, because mode names get reused.
+
+## CELL 19 PRE-REGISTRATION — the runtime provenance gate (registered 2026-08-04, before any runs)
+
+**Question.** Invention resists a standing instruction (17) and preference
+training under three objective classes (6b/11/18). The gate is the remaining
+intervention class: REACTIVE, EVIDENCE-SPECIFIC feedback — audit the draft,
+name the exact invented families and phrases, demand removal or grounding,
+re-run only the writing call (upstream frozen), max 2 retries, annotate any
+residual. Cell 17's clause was prophylactic and generic; the hypothesis is
+that specificity and reactivity are the active difference. If the gate also
+fails, even targeted runtime feedback cannot stop invention and annotation is
+all that remains.
+
+**Design.** Writer gpt-oss-20B in every role (matches the arch-council
+baselines). Cases: the three thin-supply cases 8/9/10 (baseline invention
+0.53, traceability 33%, n=15) plus trigger cases 1-6 (strict baseline
+invented 0.23, kept 1.60, 87%, n=30) for the collateral check. One gated arm:
+9 cases x 5 seeds = 45 runs. Path asserted per run. The verdict uses the
+gate's POST-audit on the pre-annotation text — the annotation itself names
+families ("training-cutoff") and would otherwise contaminate the regex count;
+both texts are persisted.
+
+**Predictions.**
+- P19.1 (the gate suppresses invention where instruction could not): post-gate
+  invented families on thin cases fall vs the 0.53 baseline, CIs disjoint.
+  FALSIFIED IF overlap.
+- P19.2 (no collateral damage — the standing discriminator): preserved
+  families hold on BOTH conditions (thin 0.27 baseline, trigger 1.60).
+  FALSIFIED IF preservation falls with disjoint CIs anywhere. Deletion of
+  UNGROUNDED content is success, not damage; only loss of GROUNDED content
+  falsifies.
+- P19.3 (cost, reported not predicted): mean retries per run, fraction of
+  runs needing any retry, added wall-clock.
+- P19.4 (exploratory): residual-after-2-retries rate — how often annotation
+  is the terminal state.
+
+**Registered consequences.** If P19.1 and P19.2 hold: the harness has
+demonstrated lift — runtime verification succeeds where prompt and weights
+fail, the mechanism note (reactive+specific vs prophylactic+generic) enters
+the behavior paper, and the gate becomes the recommended deployment pattern.
+If P19.1 fails: invention resists even evidence-specific runtime feedback;
+annotation is the only honest treatment, and the two-component description
+hardens further. Either way the result completes the intervention picture:
+prompt, weights, and now verification, all tested on the same phenomenon.

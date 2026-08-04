@@ -1,6 +1,6 @@
 # PROVENANCE — a measurement harness for multi-seat LLM architectures
 
-**Status:** design v0.1, 2026-08-04. Derived from the Council-of-Experts
+**Status:** design v0.2, 2026-08-04 — revised after Cell 18; implementation begun (`harness/`). Derived from the Council-of-Experts
 program (1,500+ audited runs, 18 experiment cells, four papers, three
 retracted claims). Not an orchestrator: a measurement and audit layer that
 wraps one.
@@ -26,6 +26,52 @@ does not check them either.
 
 **Design rule:** every component below exists because a specific failure in
 our program required it. The mapping is explicit (§8). Nothing speculative.
+
+---
+
+## 1.1 Revision after Cell 18: from measurement layer to the only working intervention class
+
+Cell 18 completed the intervention picture. At the writer locus, weight-level
+preference training has now failed under **three distinct objective classes**
+— production (density, Cell 6b), calibration (conditional production, Cell
+11), and faithfulness (provenance, Cell 18) — with the same model, trainer,
+recipe, and near-identical dose. A standing instruction forbidding invention
+also failed (Cell 17). The most telling detail: in both Cells 11 and 18 the
+model *learned the preference* (preference accuracy 0.48→0.94; val loss
+0.069) and did not act on it. Learning and expression are separable.
+
+Consequence for this design: **runtime verification is not one option among
+several — it is the only intervention class left standing.** Both levers
+practitioners have (prompts, fine-tuning) reach the rendering component and
+miss the filling component. The harness therefore gains a sixth component, a
+**runtime provenance gate** (§7a): audit the output *after* writing, and act
+on what is found — annotate, or feed the specific invented content back for
+revision.
+
+The gate's mechanism is distinct from what failed. Cell 17's clause was
+*prophylactic and generic* ("do not introduce…", standing in the prompt).
+The gate is *reactive and evidence-specific*: it names the exact invented
+families and phrases in **this** draft and demands they be removed or
+grounded. Whether that specificity is the active difference is an empirical
+question — registered as Cell 19, not assumed.
+
+### The lift, quantified against this program's own history
+
+Had the harness existed from the start, on our own record it would have:
+
+| Incident | Cost incurred | With harness |
+| --- | --- | --- |
+| zero-route contamination (39 runs, 11 modes) | two published verdicts withdrawn (P8.2, P13.3); a retracted paper thesis | quarantined at run time; zero pooled |
+| BioMistral degenerate arm | figure published then withdrawn; lineage comparison lost | floor guard refuses the metric at scoring time |
+| "intrinsic band" floor artifact | abstract claim weakened post hoc | zero-fraction companion reported alongside |
+| Cell 18 mis-targeted bench | 35 runs + a day spent on an untestable condition | probe battery's condition check (trigger-free must be on-topic, routing asserted) |
+| invention itself (0.53 families at zero supply; 69–33% traceability) | unmeasured in any existing framework | per-response ProvenanceReport; gateable |
+
+The novelty claim, stated precisely: agent frameworks orchestrate but do not
+audit; the disagreement/uncertainty literature scores multi-agent outputs but
+does not check them against what agents actually said. A per-response
+provenance decomposition of epistemic content, with path assertion and a
+reactive gate, exists in neither.
 
 ---
 
@@ -231,6 +277,41 @@ Not a statistics engine — a discipline enforcer:
 
 ---
 
+## 7a. Runtime provenance gate (added in v0.2)
+
+```python
+@dataclass
+class GateRecord:
+    pre_audit: ProvenanceReport
+    retries: int                    # 0..max_retries
+    post_audit: ProvenanceReport
+    feedback_sent: list[str]        # verbatim revision demands
+    residual_invented: set[str]     # families still ungrounded at exit
+    action_on_residual: str         # "annotate" (default) — never silent
+
+def gate(trace, lexicon, max_retries=2) -> GateRecord:
+    """Audit the final output. If invented families are present, build an
+    evidence-specific revision demand — naming each invented family and the
+    matched phrases — and re-run ONLY the writing call with the draft and the
+    demand appended. Repeat up to max_retries. Residual invention is
+    annotated, never silently passed."""
+```
+
+Design rules:
+
+- Feedback names the **specific** invented phrases, not a generic warning —
+  the generic version is Cell 17's clause, which failed.
+- Only the writing call is re-run; upstream turns are frozen, so the audit's
+  reference set is stable across retries.
+- The gate can *remove* or *ground* — both count as success; the failure
+  mode to watch is collateral loss of preserved families (the Cell 17/18
+  discriminator, applied per retry).
+- Cost is a first-class output: retries and added latency are part of the
+  record, because a gate that fixes invention at 3x latency is a different
+  engineering proposition from one that fixes it at 1.1x.
+
+---
+
 ## 8. Why each component exists (incident ledger)
 
 | Component | Incident that mandated it |
@@ -244,6 +325,8 @@ Not a statistics engine — a discipline enforcer:
 | ≥2 questions per level | load-sweep variance; Phi-4 k=2 "anomaly" |
 | Registration precedence check | Cell 8b amendment timing weakness |
 | Separate preserved/invented reporting | suppression clause moved neither; a single score would hide it |
+| Runtime gate (reactive, evidence-specific) | instruction failed generically (17); training failed under 3 objective classes (6b/11/18); verification is what remains |
+| Condition check in probe battery | Cell 18's first bench tested a correction where the defect does not occur |
 
 ---
 
