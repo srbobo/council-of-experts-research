@@ -3640,3 +3640,38 @@ shrinkage() with default guards, seed 0; per-family 2x2 as in Cell 24.
   ungrammatical residue before the aggregator stage; if ablation visibly
   mangles texts, the cell STOPS and the ablation is repaired first
   (registered stop condition, not a judgment call after results).
+
+### CELL 25 — REGISTERED DEVIATION, before any aggregator runs (2026-08-05)
+
+The variants stage exposed a design shortfall the registration did not
+anticipate: the three GENERAL proposers raise almost no detectable families
+(5 family-presences pooled across all 27 proposals), so ablation-only yields
+supply levels {0:9, 1:4, 2:1} — which fails the kit's own identifiability
+guards (3 levels, one of them a single case). Proceeding as registered would
+produce a guaranteed WEAKLY-IDENTIFIED card: a null by design failure, not
+by evidence.
+
+**Amendment (no aggregator output exists; nothing is unblinded):** supply is
+extended UPWARD by injection, the symmetric operation to ablation and the
+same mechanism the framework's C1 corpus design specifies. Injection
+sentences are drawn VERBATIM from the stored council specialists'
+contributions for the SAME case (bench/runs/imported), selected
+deterministically (seed 0): each sentence must fire exactly ONE family under
+the lexicon and be 40-400 chars, appended to the end of the last proposer
+text. Variants now span each case's natural supply up to 4. Everything else
+is unchanged: predictions P25.1-P25.3 as registered (they concern the
+fitted law, not the variant mechanism), temperatures, repeats, floor,
+estimators, and the fluency stop condition — which now covers injected
+variants as well as ablated ones.
+
+Recorded honestly: this narrows what Cell 25 tests. The high-supply strata
+now measure the MoA aggregator over general proposals AUGMENTED with
+specialist sentences, not purely general-model text. The card's claim
+becomes "the writing step under the MoA prompt and mixed upstream," which
+is still a different architecture, prompt, and upstream composition from
+the council — and the zero/low strata remain purely general-model.
+
+Side observation, recorded for the paper: general instruct models produce
+near-zero lexicon-detectable qualification on this battery unprompted —
+the specialists' 2.5-4 families per case is itself an upstream property of
+domain-tuned seats, not a given of any model ensemble.
