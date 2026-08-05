@@ -2907,3 +2907,117 @@ not fail so much as *appear to succeed while making things worse* — the
 output now carries the same behavior in less detectable form. What survives
 is detection and disclosure, not correction. That is a narrower and more
 honest recommendation than the harness design assumed.
+
+## CELL 20 PRE-REGISTRATION — the decision/attribution instruction (registered 2026-08-05, before any runs)
+
+**Why.** The architecture's stated purpose is CEO-style adjudication: the
+Lead weighs specialist input and renders a cited decision. Measured baseline
+(60 council runs, first-pass proxies): tensions are enumerated (3.9/response,
+89% figure-grounded) and their material is addressed in the body (97%), but an
+EXPLICIT recommendation appears in only 13% of answers and a specialist is
+cited by name in the body in 23% (0.3 citations/answer). The deliberation
+happens; the verdict does not. The synthesis prompt asks the Lead to
+acknowledge and preserve — NOTHING in it asks it to decide or cite. This is
+the one rendering-side lever the programme never pulled, and instructions
+demonstrably move rendering (gradedly, per-behavior, across writers).
+
+**Reframe this cell operationalises.** Under the CEO frame, writer-added
+judgment is legitimate WHEN ATTRIBUTED AS SUCH; the systemic defect is
+unattributed judgment. A dropped caveat that is explicitly overruled ("legal
+flagged X; I discount it because Y") is a NEW provenance category —
+overruled-with-acknowledgment — distinct from silently dropped.
+
+**Treatment.** Production synthesis prompt plus a DECIDE clause appended to
+STEP 2:
+
+  7. RENDER A DECISION. End with an explicit recommendation. Attribute the
+     key supporting and opposing considerations to the specialists who raised
+     them, by name ("the finance contribution models...", "legal flags...").
+     Where you discount or overrule a specialist's caveat, say so explicitly
+     and give your reason. Do not present your own judgment as a
+     specialist's.
+
+Writer gpt-oss-20B in every role. Cases: trigger 1-6 + thin 8/9/10 (same as
+Cell 19), 9 x 5 = 45 runs, path asserted per run. Baselines: the existing
+arch-council/c13-all corpus (decision 13%, citations 0.3/answer, citation
+figure-accuracy 39/68 verified).
+
+**Outcomes and instruments.**
+- Decision presence (regex battery, plus blinded-judge validation on a
+  20-answer subsample since the regex is a first-pass proxy).
+- Attribution rate (citation sentences per answer).
+- Attribution ACCURACY, tiered: figure-bearing citations verified exactly
+  against the NAMED seat's text; qualitative citations scored by the judge
+  tier; the exact-match checker itself validated on a judged subsample
+  (normalization misses like "£5 million" vs "£5m" must not count as
+  confabulation).
+- Overrule-acknowledgment: of caveats absent from the answer, what fraction
+  are explicitly acknowledged-and-overruled vs silently dropped.
+- Disposition metrics reported alongside — a decisive answer may LOWER
+  density, and that is not a regression under this frame; recorded so the
+  two value systems are visible side by side.
+
+**REGISTERED GUARDS.**
+1. JOINT SCORING: attribution rate and accuracy are never reported
+   separately in the verdict. The degenerate optimum of citation-checking is
+   citing less; a rate collapse with an accuracy rise is a FAILURE.
+2. NO RUNTIME FEEDBACK: verification is verdict-time only. Cell 19
+   established that detector-visible revision requests teach evasion; here
+   the evasion channel (stop citing) is cheaper still.
+3. The citation-presence regex does not judge citation accuracy (different
+   instruments, per the Cell 19 amendment rule).
+
+**Predictions.**
+- P20.1: decision presence rises from 13% to a majority of answers (>50%),
+  judge-validated. FALSIFIED IF it stays a minority — deciding would then be
+  the FIRST rendering behavior an instruction fails to elicit, which would
+  itself be a major finding against the rendering/filling account.
+- P20.2: attribution rate rises materially (>=1.5 citations/answer) AND
+  figure-citation accuracy does not fall below the 57% baseline (39/68).
+  FALSIFIED IF rate rises but accuracy collapses (instruction elicits
+  confabulated citations) OR rate fails to rise.
+- P20.3 (exploratory): overrule-acknowledgment rate on absent caveats; any
+  drop in silent-dropping is the CEO-frame improvement.
+- P20.4 (exploratory): effect on invention — attributed judgment may absorb
+  what was previously unattributed invention ("I judge X" replacing bare X).
+
+**Consequences.** If P20.1 and P20.2 hold: the architecture's stated purpose
+is achievable by instruction, the CEO reframe enters the behavior paper with
+measured support, and Cell 21 validates the manifest against the decision-
+memo format including citation verification marks. If P20.1 falls: rendering
+has a boundary instructions cannot cross, which revises the paper's central
+dissociation. If P20.2 falls by accuracy collapse: the caution was right —
+the instruction manufactures citations — and the manifest's verification
+tier becomes the headline safeguard rather than an accessory.
+
+## CELL 21 PRE-REGISTRATION — manifest accuracy (registered 2026-08-05; design finalised after Cell 20 reports)
+
+**Question.** The epistemic manifest (harness v0.3) is deterministic,
+quotation-only: it restores dropped qualifications with attribution, flags
+writer-supplied ones, and marks citations verified/unverified. Is it
+ACCURATE enough to attach to answers?
+
+**Design (format-dependent parts finalised post-Cell-20, before any Cell 21
+runs; this registration fixes the evaluation protocol).** Manifests are
+generated for a stratified sample of existing runs (thin + trigger, gated
+and ungated, plus Cell 20's arm in whichever format wins). Blinded judges
+(both local judges, order-swapped, evidence-quoting, per the established
+protocol) score each manifest item:
+- restored item: is the quoted specialist text genuinely a qualification the
+  answer omitted? (precision) — and on a per-run basis, did the manifest
+  miss omitted qualifications? (recall, judged against the seat texts)
+- flagged item: is the flagged passage genuinely unsupported by any
+  specialist? (precision on invention flags)
+- citation marks: agreement between the manifest's verified/unverified marks
+  and judge assessment of the same citations.
+
+**Predictions.**
+- P21.1: restored-item precision >= 80% (judged).
+- P21.2: invention-flag precision >= 80% (judged).
+- P21.3 (exploratory): recall of omissions; citation-mark agreement.
+
+**Consequence.** If P21.1/P21.2 hold, the manifest ships as the harness's
+deliverable and the papers' recommendation ("detection and disclosure, not
+correction") has a validated artifact behind it. If either falls below 80%,
+the manifest is not attachable as-is and the failing tier is reported with
+its error taxonomy.
