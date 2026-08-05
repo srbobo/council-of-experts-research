@@ -3251,3 +3251,83 @@ citation marks. The honest deliverable is the harness as a MEASUREMENT and
 AUDIT layer; the reader-facing manifest needs claim-level (not
 family-level) extraction before it can clear its own bar. Recorded as the
 open engineering item.
+
+---
+
+## CELL 23 PRE-REGISTRATION — NLI recalibration on FAMILY PRESENCE
+Registered 2026-08-05, before any labelling or scoring. Frozen at commit time.
+
+### Motivation
+Sweep finding #7 (docs/ARCH_SWEEP_2026-08-05.md): across 225 runs the regex
+and NLI instruments agree on which family was invented ZERO times, and
+disagree on whether invention occurred at all in 26.2% of runs. The NLI
+thresholds in `train/data/nli_thresholds.json` were calibrated for
+chosen-vs-rejected DISCRIMINATION (Cell 7a, AUC 0.929 on that task) and have
+been used off-label for family PRESENCE ever since. This cell calibrates
+them for the task they are actually used on.
+
+### Ground truth — the binding constraint
+Labels MUST NOT be derived from the regex lexicon. Regex-derived labels would
+train NLI to be a lexicon approximator, destroying the instrument independence
+that is the entire reason for having a second instrument, and would guarantee
+a spurious agreement improvement in P23.2. Labels come from two blinded LLM
+judges scoring individual SENTENCES against the frozen family definitions
+(the Cell 7a HYPOTHESES strings, unchanged).
+
+Cell 21's first judging pass failed at absolute labelling of whole responses
+for a holistic property. This task is different in kind — one sentence, one
+crisp definition — but reliability is CHECKED (P23.3, anchors), not assumed.
+
+### Sampling — 200 sentences, documented strata
+Drawn from the 225-run adjudication set (writer outputs and upstream text):
+- S1 (50) regex fires on the sentence
+- S2 (50) some family scores NLI >= 0.5, regex silent
+- S3 (50) regex fires, all families score NLI < 0.5
+- S4 (50) uniform random from the pool
+
+Strata are selected on instrument OUTPUT, which shifts prevalence but not
+label validity. Thresholds are additionally reported on S4 alone as a
+natural-prevalence robustness arm.
+
+### Anchors
+20 hand-written items (5 per family: 3 positives including at least one
+paraphrase that deliberately avoids lexicon wording, 2 hard negatives).
+Anchors are judged blind alongside the sample.
+
+### Judging protocol
+- Judges: gpt-oss:20b and qwen2.5:7b-instruct, temperature 0
+- max_tokens 2048. Empty or unparseable replies are recorded as None and
+  EXCLUDED — never scored as a substantive label (recorded defect: gpt-oss
+  returns "" at low token budgets)
+- one call per sentence, returning which of the four families apply
+- judges see the definitions only: never the regex match, never the NLI score
+- family order randomised per call to limit position bias
+- a label is set only where both judges agree; disagreements are excluded and
+  counted
+
+### Threshold rule — FROZEN NOW
+Per family, Youden's J: maximise (sensitivity + specificity - 1) over the NLI
+entailment score. Ties resolve to the LOWER threshold. Report AUC,
+sensitivity, specificity, n_pos and n_neg per family.
+
+### Predictions
+- **P23.1** Presence-calibrated thresholds differ materially from the Cell 7a
+  values: >= 0.10 absolute change on >= 2 of 4 families.
+  *Falsified if* all four move < 0.10 — the off-label use was harmless and
+  the disagreement has another cause.
+- **P23.2** Family-level regex/NLI agreement on invention over the 225-run
+  adjudication set rises above zero.
+  *Falsified if* it remains zero — the disagreement is not a threshold
+  artefact and the two instruments measure genuinely different constructs.
+- **P23.3** Judge-judge agreement on family presence >= 0.70, and both judges
+  score >= 80% on the anchors.
+  *Falsified if* below either bar.
+
+### Consequences, fixed in advance
+- If **P23.3 fails**: NO thresholds are shipped. The cell reports a null and
+  recalibration requires human labels.
+- If **P23.2 fails**: the phrase "confirmed by two instruments" must be
+  weakened to "two independent measurements" everywhere in the paper and
+  site, and the C3 ensemble arithmetic stays unusable for this pair.
+- `train/data/nli_thresholds.json` is NOT overwritten — published Cell 7a
+  results depend on it. New file: `train/data/nli_thresholds_presence.json`.
