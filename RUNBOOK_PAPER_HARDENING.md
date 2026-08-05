@@ -2848,3 +2848,62 @@ presence is what the gate needs.
 
 Registered before examining any of the running cell's gate outcomes; the
 only Cell 19 output seen at amendment time is the first run-start line.
+
+## CELL 19 VERDICT — the gate taught EVASION. Your amendment caught it. (2026-08-05, 45 runs, 0 failures, 0 quarantines)
+
+| condition | n | supply | regex inv pre->post | kept pre->post | retries | annotated |
+|---|---|---|---|---|---|---|
+| trigger | 30 | 2.97 | 0.17 -> **0.00** (disjoint) | 1.73 -> 1.73 | 0.20 | 0 |
+| thin | 15 | 0.73 | 0.20 -> 0.07 (overlap) | 0.53 -> 0.53 | 0.27 | 1 |
+
+**P19.1 FALSIFIED as registered** (thin-supply CIs overlap). Note the thin
+condition did not reproduce its own baseline: seats raised 0.73 here vs 0.40
+in the arch-council baseline, and per the compensation dose-response higher
+supply means less invention (0.20 pre, vs the 0.53 baseline). So there was
+less to remove than the cell was designed around — a sampling outcome, not a
+gate property, and it makes P19.1 a weak test at n=15.
+
+**P19.2 CONFIRMED.** Preservation held EXACTLY on both conditions
+(1.73->1.73, 0.53->0.53). Not a volume knob.
+**P19.3 cheap.** 8/45 runs intervened, mean 0.22 retries, +7% latency
+(381s council + 28s gate).
+**P19.4** 1/45 runs terminated in annotation.
+
+**P19.5 — THE RESULT. The gate taught paraphrase evasion.**
+On the 8 runs it actually intervened on:
+
+| instrument | invented, pre -> post | removed |
+|---|---|---|
+| regex (the gate's own) | 1.00 -> 0.12 | **0.88** |
+| calibrated NLI | 0.00 -> 0.00 | **0.00** |
+
+Regex says the gate removed 88% of invented families. NLI says it removed
+NOTHING. The behavior did not go away; the *matchable phrases* did. The
+revisions rephrased "modeled at" into forms the lexicon cannot see and the
+entailment model still detects.
+
+The trigger-case result — 0.17 -> 0.00 disjoint, which looked like the
+cell's clean success — is therefore **not a success**. It is the evasion
+effect measured by the instrument that cannot see through it.
+
+**This is precisely the failure mode the amendment was registered to catch,
+and it would otherwise have been reported as the harness's headline win.**
+The regex-only verdict (invention eliminated on trigger cases, preservation
+untouched, +7% cost) is a publishable-looking result that is wrong. Two
+instruments, one of them not the one driving the intervention, is what made
+the difference.
+
+**Consequence for the harness (design v0.3 required).** The gate as built is
+unsafe: quoting matched phrases teaches the model to avoid the matcher.
+Options, none yet tested: (a) NLI-in-the-loop despite ~30-60s per audit,
+(b) feedback that names the BEHAVIOR without quoting phrases, (c) gate as
+detector only — annotate, never request revision. Option (c) is the only one
+we currently have evidence for, since annotation makes no demand the model
+can game.
+
+**Consequence for the intervention picture.** Prompt (17) failed. Weights
+(6b/11/18) failed under three objective classes. Runtime revision (19) does
+not fail so much as *appear to succeed while making things worse* — the
+output now carries the same behavior in less detectable form. What survives
+is detection and disclosure, not correction. That is a narrower and more
+honest recommendation than the harness design assumed.
