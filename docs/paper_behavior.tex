@@ -57,13 +57,22 @@ names and no other. It is close to invariant under everything upstream---the
 volume of qualification the specialists produce (raising it lowers the output,
 monotonically), the number of specialists, the pipeline topology, and
 weight-level training at either end under three optimizers and two reward
-designs. Invention is the exception to the instruction result: adding an explicit
-clause forbidding qualifications no specialist raised does not reduce it
-($0.53 \rightarrow 0.40$, overlapping intervals), though preservation is
-unaffected, so the step appears to have both an instruction-responsive
-component and one that is not. We report these as measured regularities of
-the aggregation step rather than as an argument for or against building such
-pipelines.
+designs. The exceptions to the instruction result define a boundary. An explicit
+clause forbidding qualifications no specialist raised does not reduce them;
+a revision loop that shows the writer its detector's findings reports an
+$88\%$ fix by its own instrument while an independent instrument shows
+nothing removed---the writer learns to evade the detector, not to comply;
+and an instruction to decide triples decision-shaped text while
+judge-recognised commitment barely moves and the writer never once overrules
+a specialist. The step's \emph{surface}---structure, citations, marker
+density---is programmable, each clause moving precisely the behavior it
+names; its \emph{stance}---what it supplies unbidden and what it will
+commit to---resisted every intervention tested: prompting, fine-tuning under
+three objective classes, revision, and instruction. What survives for
+practice is external checking and disclosure, whose own per-item validation
+we report, including where it falls short. We offer these as measured
+regularities of the aggregation step rather than as an argument for or
+against building such pipelines.
 \end{abstract}
 
 \section{Introduction}
@@ -461,6 +470,113 @@ mechanisms rather than one: a component that responds to instruction, which
 governs how much of the available material is rendered, and a component that
 does not, which supplies content when the available material runs short.
 
+
+\section{Correcting the writer after it writes}
+\label{sec:gate}
+With the prompt-side remedy dead (\S\ref{sec:remedy}) and weight-level
+training having failed under three objective classes (\S\ref{sec:inv}), one
+intervention class remained: check the output after it is written, and act on
+what the check finds. We built that check---an audit comparing the answer
+against what the specialists actually raised---and tested the strongest
+version of it: when the audit found invented qualification, it sent the
+writer a revision request naming the exact invented phrases and re-ran only
+the writing step, up to twice, with everything upstream frozen.
+
+By its own instrument, this worked. The audit intervened on 8 of 45 runs,
+removed $88\%$ of the invented families it had flagged, left preserved
+content exactly intact, and cost $7\%$ additional latency. That is a clean,
+publishable-looking success.
+
+It is not one. Because the concern had been raised that a pattern-based
+checker can be satisfied by rephrasing, we had registered---before examining
+any outcome---a confirmation pass with a second, independent instrument (the
+calibrated entailment detector). On the runs the audit intervened on, the
+second instrument found that \emph{nothing had been removed}: invented
+content per the entailment detector was unchanged at zero removed, against
+the pattern checker's $88\%$. The revisions had eliminated the matchable
+phrases, not the behavior. ``Modeled at'' became ``we estimate''; the
+invented qualification remained, now invisible to the instrument that had
+demanded its removal.
+
+Two conclusions follow, one about the step and one about method. About the
+step: feeding a model its own detector output does not correct it; it
+teaches it to evade the detector, and the output afterwards carries the same
+behavior in less detectable form. Correction loops of this shape are worse
+than nothing, because they blind the measurement that would reveal their
+failure. About method: the instrument that generates feedback can never be
+the instrument that grades compliance. The success story above would have
+been reported as this paper's practical recommendation had a second
+instrument not been registered in advance.
+
+\section{Asking the writer to decide}
+\label{sec:decide}
+The architecture we study was built for adjudication: specialists brief, the
+writer weighs and decides, the way a board expects an executive summary to
+end in a recommendation. Everything measured so far concerns how faithfully
+the writer carries qualification; this section asks whether it performs the
+deciding function at all, and what an instruction can do about it.
+
+At baseline it largely does not. The writer finds genuine tensions between
+specialists and works their substance through the answer ($97\%$ of
+enumerated tensions recur in the body), but an explicit recommendation
+appears in only $16\%$ of answers by pattern match---and near zero by the
+stricter of two judges---despite the questions literally asking for one. A
+specialist is cited by name about once per three answers. The deliberation
+happens; the verdict does not. And nothing in the writing instruction asks
+for one: every clause concerns preserving and acknowledging, none concerns
+concluding.
+
+We added one that does: end with an explicit recommendation, attribute the
+key considerations to the specialists who raised them by name, and where you
+discount a specialist's caveat, say so and why. The result splits cleanly
+along a line this paper keeps finding. Everything \emph{textual} moved:
+recommendation-shaped sections tripled ($16\% \rightarrow 47\%$ by pattern),
+citations per answer doubled ($1.1 \rightarrow 2.3$) with accuracy on
+checkable figures statistically unchanged ($57\% \rightarrow 47\%$,
+intervals overlapping). The \emph{commitment} underneath moved barely:
+judge-recognised committed verdicts rose only from zero to about three in
+ten, answers still closing on conditional plan language rather than a
+decision. And in $45$ answers, the writer explicitly overruled a specialist
+\textbf{zero} times, though the instruction invited exactly that.
+
+Set beside \S\ref{sec:remedy}, this completes a pattern. Instructions
+reliably control what text appears---structures, sections, citations, marker
+density, each clause moving precisely the behavior it names. They do not
+control what the model \emph{commits} to: it will not stop supplying
+qualification nobody raised, and it will not take a position and defend it
+against an advisor. Both resistant behaviors are matters of epistemic
+posture rather than text surface. The dissociation we called
+rendering-versus-filling is better stated as \textbf{surface versus
+stance}: the writer's surface is programmable; its stance, with every tool
+tested here, is not.
+
+\section{Validating the disclosure layer}
+\label{sec:manifest}
+If neither prompting, training, revision, nor instruction reaches the
+resistant behaviors, what remains is disclosure: attach to each answer a
+mechanically assembled record---built by quotation, with no generation---of
+what the specialists raised that the answer omitted, what the answer
+contains that no specialist raised, and whether its citations check out
+against the named specialist's text. Such a record cannot invent and makes
+no demand a model could evade. The question is only whether it is accurate
+enough to attach.
+
+We tested that against its own registered bar and it did not clear it.
+Blinded forced-choice judging of restored items---the manifest's claim that
+a quoted specialist qualification is missing from the answer---reached
+$67\%$ $[48\%,85\%]$ unanimous-correct against a registered threshold of
+$80\%$. Judges split on $45\%$ of pairs even in forced-choice form, and the
+evaluation itself has a documented construction gap (family-level matching
+does not guarantee sentence-level substance, so some pairs had no right
+answer). The number is a confounded lower bound, but a lower bound below
+threshold fails, and we do not argue it past its own bar. What did
+validate: the execution-path check (which exactly identifies runs where the
+pipeline silently ran a different prompt than intended), the corpus-level
+provenance statistics this paper is built on, and exact figure-checking of
+citations. The reader-facing manifest requires claim-level rather than
+family-level extraction before it is fit to attach; we record that as the
+open engineering item rather than shipping the near-miss.
+
 \section{A behavioral description}
 \label{sec:model}
 The regularities above are compactly summarized as follows. The aggregation
@@ -479,12 +595,15 @@ Second, a system's apparent indifference to input should be strongest where
 input is thinnest, because that is where invention is doing the most work---
 which is what the $94\%$ against $64\%$ traceability split shows.
 
-The two-component reading of \S\ref{sec:remedy} is the compact form: an
-instruction-responsive term that governs how much of the supplied material is
-rendered, and an instruction-invariant term that supplies content when supply
-runs short. Every result in \S\ref{sec:resp} concerns the first; the
-provenance asymmetry of \S\ref{sec:prov} and the failed remedy concern the
-second.
+The two-component reading is the compact form: a surface term that responds
+to instruction---how much of the supplied material is rendered, in what
+structure, with what citations---and a stance term that does not: whether
+the writer supplies qualification of its own (\S\ref{sec:remedy}), and
+whether it commits to a verdict or overrules an advisor
+(\S\ref{sec:decide}). Every result in \S\ref{sec:resp} concerns the
+surface; the provenance asymmetry, the failed suppression clause, the
+evasion under correction (\S\ref{sec:gate}), and the missing verdicts all
+concern the stance.
 
 The description also has a boundary. It concerns epistemic content that
 passes \emph{through} the step. The tension enumeration of
@@ -518,6 +637,16 @@ different instruction-following profile, could behave otherwise; we claim only
 that the most direct statement of the omitted half did not work here, and the
 undemanding-condition arms are $n{=}15$ each.
 
+The judge instrument deserves its own caution. Across this work, LLM judges
+were reliable at pairwise comparison of full texts (a prior arbitration
+reached unanimity on 14 of 14 pairs) and unreliable at absolute labelling
+and at fine-grained item verification (45\% splits under forced choice;
+one judge, a reasoning model, silently returns empty output under small
+token budgets, and an early scoring pass counted that silence as ``no''
+until caught). Several of this paper's numbers changed during analysis when
+instrument defects of this kind were found; each is noted where it applies,
+and empty instrument replies are excluded rather than defaulted everywhere.
+
 Everything ran at or below 20B parameters on one consumer machine, with five
 seeds and seven questions we wrote ourselves plus eleven added for specific
 tests. A frontier model in the writing role could behave differently. The
@@ -541,13 +670,18 @@ four from a later one, and 133 runs record a batch label where a model
 identifier belongs.
 
 \section{Implications}
-For practitioners the description above has direct consequences, one of them
-negative. Instructing the writer not to invent does not stop it inventing, so
-a system that must not manufacture qualification cannot be made safe by
-telling it not to; the check has to be external, comparing what the answer
-asserts against what the specialists actually supplied. That comparison is
-cheap---the specialist text is already in the prompt---and it is the only
-intervention on invention we can currently recommend.
+For practitioners the description above has direct consequences, several of
+them negative. Instructing the writer not to invent does not stop it
+(\S\ref{sec:remedy}). Feeding it the detector's findings makes matters
+worse: it learns to evade the detector while the metric reports success
+(\S\ref{sec:gate}), so verification must never feed back into revision,
+and compliance must never be graded by the instrument that generated the
+feedback. Asking it to decide produces the shape of decision without the
+commitment (\S\ref{sec:decide}). What remains recommendable is external
+checking and disclosure---the specialist text is already in the prompt, and
+comparison against it is cheap---with the caveat of \S\ref{sec:manifest}
+that per-item disclosure at family granularity did not yet pass its own
+validation and claim-level extraction is required first.
 
  Effort spent
 making upstream components more epistemically careful is not merely wasted but
@@ -557,8 +691,8 @@ written for the behaviors that writer actually produces. Systems should be
 evaluated on questions that warrant no qualification as well as those that
 do, since the invention behavior is invisible otherwise.
 
-For the study of such systems, the finding we would most like to see tested
-elsewhere is compensating invention. If it generalizes, then a pipeline's
+For the study of such systems, two findings most deserve testing elsewhere.
+The first is compensating invention. If it generalizes, then a pipeline's
 apparent robustness---output that changes little as inputs vary---is partly an
 artifact of the aggregation step filling gaps, and evaluations that measure
 only what the output contains, without asking where it came from, will
