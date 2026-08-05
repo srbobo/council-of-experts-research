@@ -3448,3 +3448,69 @@ as a limitation on the framework's parameter estimates, not a correction.
 **Path forward for a true second instrument:** the dual-judge protocol
 (validated, ~20s/sentence), or a lightweight classifier trained on the 200
 labelled sentences this cell produced. Registered before use, either way.
+
+---
+
+## CELL 24 PRE-REGISTRATION — per-family robustness re-analysis of standing verdicts (registered 2026-08-05, before any numbers are computed)
+
+### Motivation
+Cell 23 graded the primary lexicon against validated judge labels: modeled
+sens 0.915 / spec 0.966 / prec 0.915; jurisd sens 0.30; hedging sens 0.25 /
+prec 0.65; cutoff 0/3. Every composite result in the program therefore sums
+one well-measured channel with three lossy ones (and hedging contributes
+~1/3 false positives among its hits). This cell re-analyzes the standing
+verdicts on the modeled family alone — the validated channel — as a
+robustness check. Zero new model calls; pure ledger recomputation.
+
+### Frozen analysis rules
+- **Modeled is primary.** Other families reported as secondary, always with
+  their Cell 23 sens/prec attached, never as evidence on their own.
+- **Estimator for the per-family analog of shrinkage:** family presence is
+  binary per run, so the OLS refit is unidentifiable per family (2 supply
+  levels). The registered per-family quantities are:
+  T_f = P(f in output | f raised upstream), I_f = P(f in output | f not
+  raised), discrimination D_f = T_f − I_f. Wilson 95% CIs on T and I;
+  bootstrap (5,000 draws, seed 0) for the D_f CI and all arm differences.
+- Populations identical to the original analyses: shrinkage 2×2 on the full
+  1,260-run usable population; arm comparisons on the sweep's 9 shared
+  cases, n=45/arm; Cell 14 decomposition on cases 8/9/10, n=15/arm, raw
+  regex counts (single arms have no upstream, so no provenance decomposition
+  there — presence rates only, as in the original).
+- Floor guard unchanged (500 chars). No threshold, lexicon, or population
+  choices may change after numbers are seen.
+
+### Predictions
+- **P24.1 (attenuation).** On the validated channel the writer's
+  discrimination D_modeled will exceed the composite w: registered bar
+  D_modeled ≥ 0.50 with its CI excluding 0.352. *Falsified if* the CI
+  includes or sits below 0.352 — attenuation was not the explanation and
+  the composite w = 0.35 stands as the honest system parameter without the
+  underestimate caveat.
+- **P24.2 (sweep robustness).** Modeled-only invention: no arm separates
+  from arch-council (all bootstrap diff CIs include 0). *Falsified if* any
+  arm separates — the composite null masked a family-specific effect and
+  the sweep document must be amended.
+- **P24.3 (Cell 17 robustness).** On the zero-modeled-supply stratum,
+  c17-suppress does not separate from arch-council on modeled invention.
+  *Falsified if* it does — P17.1's null was dilution and Cell 17 needs an
+  amendment.
+- **P24.4 (Cell 14 robustness).** Modeled presence on trigger-free cases:
+  council does not separate BELOW single+spec (i.e., "the council is not
+  better calibrated" holds on the clean family). *Falsified if* the council
+  separates lower — P14.2 gains a family-scoped caveat.
+
+### Consequences, fixed in advance
+- P24.1 holds → framework docs amended: for narrow-lexicon instantiations,
+  per-family D on a validated channel is the primary parameter; composite w
+  reported beside it as a lower-bound-flavored summary. P24.1 falsified →
+  the attenuation caveat added in the Cell 23 verdict is WITHDRAWN as
+  overcautious.
+- P24.2–P24.4 hold → standing verdicts annotated "modeled-robust," no text
+  changes beyond the annotation. Any falsified → the named document is
+  amended within the same working session, before any new work.
+- **Scoping amendment, executed regardless of outcomes:** Cell 15's
+  absolute breadth claim ("engages only 1.2–1.7 of four families") is
+  scoped as instrument-limited — three of four families are detected at
+  25–30% recall, so true breadth is understated by an unknown amount and
+  the claim requires judge-based re-measurement before further use. The
+  comparative claims of Cell 15 are unaffected.
