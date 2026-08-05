@@ -76,8 +76,7 @@ class NLIInstrument:
         if self._mod is None:
             try:
                 import torch
-                from transformers import (AutoModelForSequenceClassification,
-                                          AutoTokenizer)
+                from transformers import AutoModelForSequenceClassification, AutoTokenizer
             except ImportError as e:                       # pragma: no cover
                 raise ImportError(
                     "NLIInstrument needs the 'nli' extra: pip install gst-kit[nli]"
