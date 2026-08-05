@@ -3179,3 +3179,42 @@ pairwise, per the established protocol:
   the item count is too thin regardless of protocol.
 Order randomized per item; unanimity protocol; evidence clause required.
 P21.1 threshold unchanged (>=80% of unanimous pairs pick the restored item).
+
+### SIXTH INSTRUMENT FINDING — empty judge replies scored as NO; Cell 20's judge tier suspect (2026-08-05)
+
+Probing the pairwise failure: gpt-oss (a reasoning model) returns an EMPTY
+final at max_tokens=100-120 — the budget is consumed by its analysis channel.
+Both judge scripts treated empty as NO (yes()/pick() defaulted on empty).
+Consequences:
+1. Cell 21 pass 1 "gpt-oss NO on all 55" was largely SILENCE, not
+   strictness. The polarization diagnosis is amended: qwen acquiescence may
+   be real; gpt-oss's contribution was empty.
+2. **Cell 20's judge tier (0/10 decisions, called decisive) is SUSPECT** for
+   the same reason and must be re-run with adequate token budget before the
+   P20.1 verdict stands. Flagged immediately; verdict marked provisional in
+   this note until re-judged.
+3. Harness rule added to the incident ledger: NEVER default an empty
+   instrument reply to a substantive label; empty = unparseable = excluded
+   and counted.
+Corrected judge protocol: max_tokens 2048, digit/label parsed from the full
+reply, empty counted as unparseable. Cell 20 subsample re-judged FIRST (its
+verdict is upstream of Cell 22's void), then Cell 21 pairwise.
+
+### CELL 20 — JUDGE TIER RE-RUN with the corrected instrument (2026-08-05)
+
+With adequate token budget (2048) gpt-oss now actually judges (0 unparseable,
+previously silent). Corrected subsample results:
+- unanimous labels 13/20 (was 17/20 with silence-as-NO)
+- judge-unanimous DECISION rate: DECIDE 3/10, baseline 0/10
+- regex agreement with unanimous judges 9/13
+
+**P20.1 verdict REVISED in degree, not direction.** The corrected judge tier
+shows the DECIDE clause DOES produce some judge-recognised committed
+decisions (3/10 vs 0/10 baseline) — the earlier "zero commitment" reading
+was an artifact of empty replies. But 3/10 remains far below the registered
+>50% majority threshold: P20.1 stays FALSIFIED. The refined statement:
+the clause elicits commitment OCCASIONALLY (~30% by either lenient judge or
+corrected strict judge), reliably changes FORM (regex 47%), and never
+produces overrule language (0/45). "Form moves, commitment lags" replaces
+"form moves, commitment does not move at all". Cell 22 remains VOID (the
+gate required P20.1 to HOLD; it did not).
