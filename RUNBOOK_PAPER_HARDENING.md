@@ -3021,3 +3021,67 @@ deliverable and the papers' recommendation ("detection and disclosure, not
 correction") has a validated artifact behind it. If either falls below 80%,
 the manifest is not attachable as-is and the failing tier is reported with
 its error taxonomy.
+
+## CELL 22 PRE-REGISTRATION — retrospective paired replay of the DECIDE clause (registered 2026-08-05, before Cell 20 has reported; execution contingent on Cell 20's outcome)
+
+**What it is.** 1,130 archived runs carry the exact synthesis input_messages
+plus the seat turns. The writing step can therefore be REPLAYED under the
+DECIDE prompt with everything upstream frozen: swap the system message in the
+stored synthesis input for the Cell-20 variant, re-call the SAME writer, one
+model call per run. No planners, no specialists.
+
+**Why paired replay beats new runs.** Seat-sampling variance has been this
+programme's dominant noise source (Cell 15's within-load spread 0.42 vs 1.57;
+Cell 18's cross-arm supply mismatch 0.73 vs 0.40). Replaying the same frozen
+seat text under both prompts yields PAIRED comparisons in which nothing but
+the prompt differs. Paired deltas with sign tests / bootstrap on differences,
+not unpaired CIs. Pairing removes seat variance, not decode variance (replay
+at the original temperature 0.2; generation noise remains within pairs).
+
+**Writer identity caveat, found while designing this cell.** Every stored
+synthesis turn records ollama_tag phi4:14b because the orchestrator hardcodes
+the LEAD member on that turn regardless of which backend served it — the
+THIRD instance of the model-identity incident class. The true writer is
+recovered from deliberation.cabinet_backends["synthesis"]; replays MUST match
+it, and any run whose backend tag is missing or ambiguous is excluded, with
+the exclusion count reported.
+
+**Execution gate.** Runs only if Cell 20's P20.1 holds (the DECIDE clause
+elicits decisions on fresh runs). If P20.1 falls, this cell is void — there
+is nothing to generalise — and this registration stands as the record of what
+would have been run.
+
+**Selection rule, fixed now (no post-hoc corpus shopping).** In priority
+order, original-writer-matched:
+1. TUNED-SEAT ARMS: local-council-spec, local-council-sft (35 each, Phi-4
+   writer) — the seat-tuning backfire under the CEO lens.
+2. LOAD SWEEP: the 40 arch-council case_l* runs (gpt-oss) — does decisiveness
+   survive simultaneous demand?
+3. THIN + BASELINE across writers: cell18-stock-thin (15, Qwen),
+   local-council-repro (35, Phi-4), c13-all (35, gpt-oss).
+Total 195 replays. Nothing else is replayed in this cell; extensions require
+a new registration.
+
+**Predictions.**
+- P22.1 (the effect generalises): decision presence rises in the replayed
+  arm vs its stored original for EACH of the three writers (paired, per-run
+  judged/regex as in Cell 20). FALSIFIED IF any writer fails to move — the
+  DECIDE effect would then be writer-specific.
+- P22.2 (the backfire reinterpretation, the cell's sharpest question): on
+  spec/sft pairs, dropped seat caveats convert from silently-dropped to
+  ACKNOWLEDGED-OVERRULED at a materially higher rate than in the stored
+  originals. FALSIFIED IF the writer still trims silently under DECIDE —
+  the backfire would then stand as originally interpreted.
+- P22.3 (load robustness, exploratory): decision presence by load level
+  L1-L4; report whether the verdict dissolves under simultaneous demand.
+- P22.4 (joint guard, carried from Cell 20): attribution rate AND accuracy
+  reported jointly per writer; a rate rise with an accuracy collapse in any
+  writer is that writer's FAILURE regardless of P22.1.
+
+**Consequences.** If P22.1 and P22.2 hold: the DECIDE result is
+writer-general, and the seat-tuning backfire is REINTERPRETED — the trimming
+was a prompt defect (no sanctioned way to disagree), not a writer property;
+the behaviour papers' invariance section gains that qualification. If P22.2
+falls with P22.1 holding: deciding generalises but open disagreement does
+not, and the backfire stands. Mixed writer results scope the claim to where
+it held.
