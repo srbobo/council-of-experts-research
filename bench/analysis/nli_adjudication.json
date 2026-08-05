@@ -1,0 +1,5772 @@
+[
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T015956Z__case_1_clinical_decision_support__arch-council",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T020748Z__case_1_clinical_decision_support__arch-council",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T021449Z__case_1_clinical_decision_support__arch-council",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T022137Z__case_1_clinical_decision_support__arch-council",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T022839Z__case_1_clinical_decision_support__arch-council",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T023632Z__case_2_cross_border_digital_therapeutic__arch-council",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T024500Z__case_2_cross_border_digital_therapeutic__arch-council",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T025346Z__case_2_cross_border_digital_therapeutic__arch-council",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T030114Z__case_2_cross_border_digital_therapeutic__arch-council",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T031016Z__case_2_cross_border_digital_therapeutic__arch-council",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T031716Z__case_3_capitated_risk_contract__arch-council",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [
+    "cutoff"
+   ],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T032401Z__case_3_capitated_risk_contract__arch-council",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T033026Z__case_3_capitated_risk_contract__arch-council",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T033715Z__case_3_capitated_risk_contract__arch-council",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T034416Z__case_3_capitated_risk_contract__arch-council",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T035218Z__case_4_glp1_employer_coverage__arch-council",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T040029Z__case_4_glp1_employer_coverage__arch-council",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T040905Z__case_4_glp1_employer_coverage__arch-council",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T041711Z__case_4_glp1_employer_coverage__arch-council",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T042601Z__case_4_glp1_employer_coverage__arch-council",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T043432Z__case_5_nonprofit_hospital_pe_conversion__arch-council",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T044256Z__case_5_nonprofit_hospital_pe_conversion__arch-council",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T045038Z__case_5_nonprofit_hospital_pe_conversion__arch-council",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T045819Z__case_5_nonprofit_hospital_pe_conversion__arch-council",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T050647Z__case_5_nonprofit_hospital_pe_conversion__arch-council",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T051343Z__case_6_trigger_heavy_biotech_ma__arch-council",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T052139Z__case_6_trigger_heavy_biotech_ma__arch-council",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T052839Z__case_6_trigger_heavy_biotech_ma__arch-council",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T053650Z__case_6_trigger_heavy_biotech_ma__arch-council",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260728T054413Z__case_6_trigger_heavy_biotech_ma__arch-council",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T114452Z__case_8_trigger_light_hand_hygiene__arch-council",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T114730Z__case_8_trigger_light_hand_hygiene__arch-council",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T115032Z__case_8_trigger_light_hand_hygiene__arch-council",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T115318Z__case_8_trigger_light_hand_hygiene__arch-council",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T115550Z__case_8_trigger_light_hand_hygiene__arch-council",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T115815Z__case_9_trigger_light_nda_clauses__arch-council",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T120114Z__case_9_trigger_light_nda_clauses__arch-council",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T120347Z__case_9_trigger_light_nda_clauses__arch-council",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T120620Z__case_9_trigger_light_nda_clauses__arch-council",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T120838Z__case_9_trigger_light_nda_clauses__arch-council",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [
+    "hedging"
+   ],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T121203Z__case_10_trigger_light_depreciation__arch-council",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T121518Z__case_10_trigger_light_depreciation__arch-council",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T121821Z__case_10_trigger_light_depreciation__arch-council",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T122223Z__case_10_trigger_light_depreciation__arch-council",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-council",
+  "run_id": "20260802T122541Z__case_10_trigger_light_depreciation__arch-council",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T055614Z__case_1_clinical_decision_support__arch-flat",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T060157Z__case_1_clinical_decision_support__arch-flat",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T060752Z__case_1_clinical_decision_support__arch-flat",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T061406Z__case_1_clinical_decision_support__arch-flat",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T061952Z__case_1_clinical_decision_support__arch-flat",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T062647Z__case_2_cross_border_digital_therapeutic__arch-flat",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T063338Z__case_2_cross_border_digital_therapeutic__arch-flat",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T064101Z__case_2_cross_border_digital_therapeutic__arch-flat",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T064755Z__case_2_cross_border_digital_therapeutic__arch-flat",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T065450Z__case_2_cross_border_digital_therapeutic__arch-flat",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T070006Z__case_3_capitated_risk_contract__arch-flat",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T070646Z__case_3_capitated_risk_contract__arch-flat",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T071549Z__case_3_capitated_risk_contract__arch-flat",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T072109Z__case_3_capitated_risk_contract__arch-flat",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T072700Z__case_3_capitated_risk_contract__arch-flat",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T073416Z__case_4_glp1_employer_coverage__arch-flat",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T074131Z__case_4_glp1_employer_coverage__arch-flat",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T074757Z__case_4_glp1_employer_coverage__arch-flat",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T075416Z__case_4_glp1_employer_coverage__arch-flat",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T080031Z__case_4_glp1_employer_coverage__arch-flat",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T080635Z__case_5_nonprofit_hospital_pe_conversion__arch-flat",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T081236Z__case_5_nonprofit_hospital_pe_conversion__arch-flat",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T081832Z__case_5_nonprofit_hospital_pe_conversion__arch-flat",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T082502Z__case_5_nonprofit_hospital_pe_conversion__arch-flat",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T083039Z__case_5_nonprofit_hospital_pe_conversion__arch-flat",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T083741Z__case_6_trigger_heavy_biotech_ma__arch-flat",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T084428Z__case_6_trigger_heavy_biotech_ma__arch-flat",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T085159Z__case_6_trigger_heavy_biotech_ma__arch-flat",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T085942Z__case_6_trigger_heavy_biotech_ma__arch-flat",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260728T090723Z__case_6_trigger_heavy_biotech_ma__arch-flat",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T124930Z__case_8_trigger_light_hand_hygiene__arch-flat",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T125347Z__case_8_trigger_light_hand_hygiene__arch-flat",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T125755Z__case_8_trigger_light_hand_hygiene__arch-flat",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T130214Z__case_8_trigger_light_hand_hygiene__arch-flat",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T131351Z__case_8_trigger_light_hand_hygiene__arch-flat",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T132311Z__case_9_trigger_light_nda_clauses__arch-flat",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T132936Z__case_9_trigger_light_nda_clauses__arch-flat",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T133207Z__case_9_trigger_light_nda_clauses__arch-flat",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T133512Z__case_9_trigger_light_nda_clauses__arch-flat",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T133753Z__case_9_trigger_light_nda_clauses__arch-flat",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T134350Z__case_10_trigger_light_depreciation__arch-flat",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T134926Z__case_10_trigger_light_depreciation__arch-flat",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T135543Z__case_10_trigger_light_depreciation__arch-flat",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T140327Z__case_10_trigger_light_depreciation__arch-flat",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "cutoff"
+   ]
+  }
+ },
+ {
+  "arm": "arch-flat",
+  "run_id": "20260802T141034Z__case_10_trigger_light_depreciation__arch-flat",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T203905Z__case_1_clinical_decision_support__c17-suppress",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T205048Z__case_1_clinical_decision_support__c17-suppress",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T210322Z__case_1_clinical_decision_support__c17-suppress",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T211406Z__case_1_clinical_decision_support__c17-suppress",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T212246Z__case_1_clinical_decision_support__c17-suppress",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T213057Z__case_2_cross_border_digital_therapeutic__c17-suppress",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T213818Z__case_2_cross_border_digital_therapeutic__c17-suppress",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T214735Z__case_2_cross_border_digital_therapeutic__c17-suppress",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T215616Z__case_2_cross_border_digital_therapeutic__c17-suppress",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T220430Z__case_2_cross_border_digital_therapeutic__c17-suppress",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T221111Z__case_3_capitated_risk_contract__c17-suppress",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T221833Z__case_3_capitated_risk_contract__c17-suppress",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T222527Z__case_3_capitated_risk_contract__c17-suppress",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T223227Z__case_3_capitated_risk_contract__c17-suppress",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [
+    "cutoff"
+   ],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T223938Z__case_3_capitated_risk_contract__c17-suppress",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T224708Z__case_4_glp1_employer_coverage__c17-suppress",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "cutoff"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T225506Z__case_4_glp1_employer_coverage__c17-suppress",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T230134Z__case_4_glp1_employer_coverage__c17-suppress",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T230821Z__case_4_glp1_employer_coverage__c17-suppress",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T231606Z__case_4_glp1_employer_coverage__c17-suppress",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T232335Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T233048Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T233859Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T234655Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260803T235455Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T000239Z__case_6_trigger_heavy_biotech_ma__c17-suppress",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T001011Z__case_6_trigger_heavy_biotech_ma__c17-suppress",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T001752Z__case_6_trigger_heavy_biotech_ma__c17-suppress",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T002508Z__case_6_trigger_heavy_biotech_ma__c17-suppress",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T003244Z__case_6_trigger_heavy_biotech_ma__c17-suppress",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T003600Z__case_8_trigger_light_hand_hygiene__c17-suppress",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T003901Z__case_8_trigger_light_hand_hygiene__c17-suppress",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T004205Z__case_8_trigger_light_hand_hygiene__c17-suppress",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T004458Z__case_8_trigger_light_hand_hygiene__c17-suppress",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T004841Z__case_8_trigger_light_hand_hygiene__c17-suppress",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T005235Z__case_9_trigger_light_nda_clauses__c17-suppress",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T005533Z__case_9_trigger_light_nda_clauses__c17-suppress",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "cutoff"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T005915Z__case_9_trigger_light_nda_clauses__c17-suppress",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T010228Z__case_9_trigger_light_nda_clauses__c17-suppress",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T010532Z__case_9_trigger_light_nda_clauses__c17-suppress",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T010952Z__case_10_trigger_light_depreciation__c17-suppress",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T011614Z__case_10_trigger_light_depreciation__c17-suppress",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T012116Z__case_10_trigger_light_depreciation__c17-suppress",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T012523Z__case_10_trigger_light_depreciation__c17-suppress",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c17-suppress",
+  "run_id": "20260804T013028Z__case_10_trigger_light_depreciation__c17-suppress",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "cutoff",
+    "hedging"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T220707Z__case_1_clinical_decision_support__c19-gated",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T221329Z__case_1_clinical_decision_support__c19-gated",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T222053Z__case_1_clinical_decision_support__c19-gated",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T222811Z__case_1_clinical_decision_support__c19-gated",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T223619Z__case_1_clinical_decision_support__c19-gated",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T224653Z__case_2_cross_border_digital_therapeutic__c19-gated",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 3,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T225609Z__case_2_cross_border_digital_therapeutic__c19-gated",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T230540Z__case_2_cross_border_digital_therapeutic__c19-gated",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T231603Z__case_2_cross_border_digital_therapeutic__c19-gated",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T232444Z__case_2_cross_border_digital_therapeutic__c19-gated",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T233233Z__case_3_capitated_risk_contract__c19-gated",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T233906Z__case_3_capitated_risk_contract__c19-gated",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T234524Z__case_3_capitated_risk_contract__c19-gated",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T235244Z__case_3_capitated_risk_contract__c19-gated",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260804T235856Z__case_3_capitated_risk_contract__c19-gated",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T000618Z__case_4_glp1_employer_coverage__c19-gated",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T001428Z__case_4_glp1_employer_coverage__c19-gated",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T002207Z__case_4_glp1_employer_coverage__c19-gated",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T003323Z__case_4_glp1_employer_coverage__c19-gated",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "hedging"
+   ],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T004037Z__case_4_glp1_employer_coverage__c19-gated",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T005011Z__case_5_nonprofit_hospital_pe_conversion__c19-gated",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T005924Z__case_5_nonprofit_hospital_pe_conversion__c19-gated",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T010919Z__case_5_nonprofit_hospital_pe_conversion__c19-gated",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T012242Z__case_5_nonprofit_hospital_pe_conversion__c19-gated",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [
+    "cutoff"
+   ],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T013144Z__case_5_nonprofit_hospital_pe_conversion__c19-gated",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T014200Z__case_6_trigger_heavy_biotech_ma__c19-gated",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T014929Z__case_6_trigger_heavy_biotech_ma__c19-gated",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T015844Z__case_6_trigger_heavy_biotech_ma__c19-gated",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T020434Z__case_6_trigger_heavy_biotech_ma__c19-gated",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T021023Z__case_6_trigger_heavy_biotech_ma__c19-gated",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T021309Z__case_8_trigger_light_hand_hygiene__c19-gated",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T021737Z__case_8_trigger_light_hand_hygiene__c19-gated",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T022050Z__case_8_trigger_light_hand_hygiene__c19-gated",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T022521Z__case_8_trigger_light_hand_hygiene__c19-gated",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "cutoff",
+    "modeled"
+   ],
+   "invented": [
+    "hedging"
+   ],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T022819Z__case_8_trigger_light_hand_hygiene__c19-gated",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T023112Z__case_9_trigger_light_nda_clauses__c19-gated",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T023336Z__case_9_trigger_light_nda_clauses__c19-gated",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T023701Z__case_9_trigger_light_nda_clauses__c19-gated",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T024000Z__case_9_trigger_light_nda_clauses__c19-gated",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T024305Z__case_9_trigger_light_nda_clauses__c19-gated",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T024636Z__case_10_trigger_light_depreciation__c19-gated",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T025129Z__case_10_trigger_light_depreciation__c19-gated",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T025542Z__case_10_trigger_light_depreciation__c19-gated",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T030031Z__case_10_trigger_light_depreciation__c19-gated",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c19-gated",
+  "run_id": "20260805T030758Z__case_10_trigger_light_depreciation__c19-gated",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "hedging"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T105024Z__case_1_clinical_decision_support__c20-decide",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T105919Z__case_1_clinical_decision_support__c20-decide",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T110753Z__case_1_clinical_decision_support__c20-decide",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T111525Z__case_1_clinical_decision_support__c20-decide",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T112302Z__case_1_clinical_decision_support__c20-decide",
+  "prompt_id": "case_1_clinical_decision_support",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T113134Z__case_2_cross_border_digital_therapeutic__c20-decide",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T113844Z__case_2_cross_border_digital_therapeutic__c20-decide",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T114553Z__case_2_cross_border_digital_therapeutic__c20-decide",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T115426Z__case_2_cross_border_digital_therapeutic__c20-decide",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T120223Z__case_2_cross_border_digital_therapeutic__c20-decide",
+  "prompt_id": "case_2_cross_border_digital_therapeutic",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T120858Z__case_3_capitated_risk_contract__c20-decide",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T121552Z__case_3_capitated_risk_contract__c20-decide",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T122244Z__case_3_capitated_risk_contract__c20-decide",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T123039Z__case_3_capitated_risk_contract__c20-decide",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T123651Z__case_3_capitated_risk_contract__c20-decide",
+  "prompt_id": "case_3_capitated_risk_contract",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T124517Z__case_4_glp1_employer_coverage__c20-decide",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T125419Z__case_4_glp1_employer_coverage__c20-decide",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T130229Z__case_4_glp1_employer_coverage__c20-decide",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T130844Z__case_4_glp1_employer_coverage__c20-decide",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T131532Z__case_4_glp1_employer_coverage__c20-decide",
+  "prompt_id": "case_4_glp1_employer_coverage",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T132238Z__case_5_nonprofit_hospital_pe_conversion__c20-decide",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "cutoff"
+   ],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T132906Z__case_5_nonprofit_hospital_pe_conversion__c20-decide",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T133734Z__case_5_nonprofit_hospital_pe_conversion__c20-decide",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T134351Z__case_5_nonprofit_hospital_pe_conversion__c20-decide",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T135143Z__case_5_nonprofit_hospital_pe_conversion__c20-decide",
+  "prompt_id": "case_5_nonprofit_hospital_pe_conversion",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T135916Z__case_6_trigger_heavy_biotech_ma__c20-decide",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T140611Z__case_6_trigger_heavy_biotech_ma__c20-decide",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 2,
+   "kept": [
+    "cutoff",
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "cutoff",
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T141426Z__case_6_trigger_heavy_biotech_ma__c20-decide",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T141930Z__case_6_trigger_heavy_biotech_ma__c20-decide",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 3,
+   "kept": [
+    "hedging",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T142627Z__case_6_trigger_heavy_biotech_ma__c20-decide",
+  "prompt_id": "case_6_trigger_heavy_biotech_ma",
+  "regex": {
+   "supply": 4,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "cutoff",
+    "hedging",
+    "jurisd",
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T142904Z__case_8_trigger_light_hand_hygiene__c20-decide",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T143139Z__case_8_trigger_light_hand_hygiene__c20-decide",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "jurisd"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T143415Z__case_8_trigger_light_hand_hygiene__c20-decide",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "hedging"
+   ],
+   "invented": [
+    "modeled"
+   ],
+   "raised": [
+    "hedging"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [
+    "jurisd"
+   ],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T143757Z__case_8_trigger_light_hand_hygiene__c20-decide",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T144058Z__case_8_trigger_light_hand_hygiene__c20-decide",
+  "prompt_id": "case_8_trigger_light_hand_hygiene",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T144418Z__case_9_trigger_light_nda_clauses__c20-decide",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T144717Z__case_9_trigger_light_nda_clauses__c20-decide",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "jurisd",
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T145037Z__case_9_trigger_light_nda_clauses__c20-decide",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T145401Z__case_9_trigger_light_nda_clauses__c20-decide",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T145706Z__case_9_trigger_light_nda_clauses__c20-decide",
+  "prompt_id": "case_9_trigger_light_nda_clauses",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 2,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "jurisd",
+    "modeled"
+   ]
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T150048Z__case_10_trigger_light_depreciation__c20-decide",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T150451Z__case_10_trigger_light_depreciation__c20-decide",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 1,
+   "kept": [
+    "modeled"
+   ],
+   "invented": [],
+   "raised": [
+    "modeled"
+   ]
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T150819Z__case_10_trigger_light_depreciation__c20-decide",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T151238Z__case_10_trigger_light_depreciation__c20-decide",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 0,
+   "kept": [],
+   "invented": [],
+   "raised": []
+  }
+ },
+ {
+  "arm": "c20-decide",
+  "run_id": "20260805T151651Z__case_10_trigger_light_depreciation__c20-decide",
+  "prompt_id": "case_10_trigger_light_depreciation",
+  "regex": {
+   "supply": 0,
+   "kept": [],
+   "invented": [
+    "modeled"
+   ],
+   "raised": []
+  },
+  "nli": {
+   "supply": 1,
+   "kept": [],
+   "invented": [],
+   "raised": [
+    "jurisd"
+   ]
+  }
+ }
+]

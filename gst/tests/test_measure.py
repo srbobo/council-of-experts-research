@@ -325,3 +325,42 @@ class TestRecordHygiene:
         card = measure_all(recs, system="synthetic")
         assert any("two-instrument" in n for n in card.notes)
         assert "synthetic" in card.render()
+
+
+class TestCompare:
+    def test_ranking_requires_an_interval(self):
+        """4 events against 7 at n=45 is not a difference."""
+        from gst.compare import compare_arm
+        a = [_rec(i, [], ["cutoff"] if i < 4 else []) for i in range(45)]
+        b = [_rec(100 + i, [], ["cutoff"] if i < 7 else []) for i in range(45)]
+        d = compare_arm(a, b)
+        assert d.lam < d.lam_baseline          # point estimate "wins"
+        assert not d.distinguishable           # interval says otherwise
+        assert "not distinguishable" in d.verdict
+
+    def test_real_difference_is_detected(self):
+        from gst.compare import compare_arm
+        a = [_rec(i, [], []) for i in range(45)]
+        b = [_rec(100 + i, [], ["cutoff"]) for i in range(45)]
+        d = compare_arm(a, b)
+        assert d.distinguishable and d.diff_ci[1] < 0
+
+    def test_instrument_relative_improvement_is_named(self):
+        """An arm that improves only under the instrument it was tuned against
+        has changed wording, not behavior."""
+        from gst.compare import compare_two_instrument
+        sees = RegexInstrument({"cutoff": [r"training cutoff"]}, name="tuned")
+        blind = RegexInstrument({"cutoff": [r"NEVER_MATCHES_ANYTHING"]}, name="indep")
+        a = [_rec(i, [], []) for i in range(45)]
+        b = [_rec(100 + i, [], ["cutoff"]) for i in range(45)]
+        r = compare_two_instrument(a, b, sees, blind)
+        assert "INSTRUMENT-RELATIVE" in r.verdict
+
+    def test_mismatched_case_batteries_are_caught(self):
+        from gst.compare import check_comparable, restrict_to_shared
+        arms = {"x": [_rec(i, [], [], prompt_id=f"c{i}") for i in range(5)],
+                "y": [_rec(50 + i, [], [], prompt_id=f"c{i}") for i in range(3)]}
+        rep = check_comparable(arms)
+        assert not rep.comparable
+        assert any("no other arm ran" in n for n in rep.notes)
+        assert all(len(v) == 3 for v in restrict_to_shared(arms).values())
