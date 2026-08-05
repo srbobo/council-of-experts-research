@@ -3146,3 +3146,36 @@ invention.
    been tested.
 3. Cell 21 (manifest accuracy) proceeds against the EXISTING output format,
    as its registration provided.
+
+### CELL 21 — FIRST JUDGING PASS VOID: instrument implementation deviated from registration (2026-08-05)
+
+92 items judged; results unusable. Judge polarization: on 55 restored items
+gpt-oss answered NO to ALL and qwen YES to ALL (0 unanimous); citation marks
+3/32 agreement. P21.2's nominal 3/3 CONFIRMED rides on 3 unanimous of 5 items.
+
+**Cause is ours.** The registration specified judges "per the established
+protocol" — PAIRWISE comparison, which produced 14/14 unanimity in the Cell
+7b arbitration. The implementation used ABSOLUTE yes/no labels with a
+compound criterion ((a) is it a qualification AND (b) is it absent), a
+different and weaker instrument. Absolute labeling with ambiguous criteria is
+exactly where acquiescence bias (qwen ~97% YES) and strictness bias (gpt-oss
+~0% YES) run free. Fifth instrument-validity finding of the programme;
+second where the defect was in OUR deployment of the instrument rather than
+the instrument itself.
+
+**Corrected instrument (registered before re-judging).** Forced-choice
+pairwise, per the established protocol:
+- RESTORED: judge sees two specialist sentences — the manifest's restored
+  quote and a DISTRACTOR from the same run whose family IS present in the
+  answer — plus the answer; picks which sentence's qualification is missing.
+  Manifest correct when judges pick the restored quote. Items with no
+  eligible distractor are skipped and counted.
+- CITATION MARKS: judge sees two cited claims from the same seat — one
+  manifest-verified, one manifest-unsupported — plus the seat's text; picks
+  which is supported. Agreement = the verified one. Pairs formed within-run
+  where possible, else within-seat across the sample; pairing basis reported.
+- FLAGGED (n=5): retained absolute (no natural pair exists for "no
+  specialist raised this"), reported descriptively, NOT as a P21.2 verdict —
+  the item count is too thin regardless of protocol.
+Order randomized per item; unanimity protocol; evidence clause required.
+P21.1 threshold unchanged (>=80% of unanimous pairs pick the restored item).
