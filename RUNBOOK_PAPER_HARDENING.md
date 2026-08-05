@@ -3218,3 +3218,36 @@ corrected strict judge), reliably changes FORM (regex 47%), and never
 produces overrule language (0/45). "Form moves, commitment lags" replaces
 "form moves, commitment does not move at all". Cell 22 remains VOID (the
 gate required P20.1 to HOLD; it did not).
+
+## CELL 21 VERDICT — P21.1 FALSIFIED; the manifest does not ship as-is (2026-08-05)
+
+Corrected pairwise protocol, 49 restored pairs + 10 citation pairs, both
+judges at adequate token budget (0 unparseable).
+
+**P21.1 restored-item precision: 18/27 unanimous-correct = 67% [48%,85%] —
+below the registered 80%. FALSIFIED as registered.** Two instrument
+limitations documented alongside, because they bound what this number means:
+1. Split rate remained high (22/49 = 45%): judge unreliability on this task
+   persists even in forced-choice form.
+2. The forced-choice premise ("exactly ONE sentence is missing") is not
+   guaranteed by construction. Distractors were selected as sentences whose
+   FAMILY is present in the answer, but family-presence does not ensure the
+   sentence's specific SUBSTANCE was conveyed. Pairs where both sentences
+   were effectively missing force arbitrary answers. 67% is therefore a
+   LOWER BOUND confounded with distractor construction — but a lower bound
+   below threshold still fails the registration.
+**P21.3 citation-mark agreement: 1/3 with 7 splits — uninformative.**
+**P21.2 remains descriptive only** (3/5 items from the void first pass;
+never a verdict).
+
+**REGISTERED CONSEQUENCE EXECUTED: the manifest is NOT attachable as-is.**
+The failing tier is family-granularity restoration: at family level,
+restored-item correctness cannot be established at >=80% with the
+instruments available. What remains validated in the harness: execution-path
+assertion (exact quarantine of known-bad runs), corpus-level provenance
+statistics (reproduced exact known values), and exact-match figure checking.
+What is NOT validated: per-item family-level restoration and qualitative
+citation marks. The honest deliverable is the harness as a MEASUREMENT and
+AUDIT layer; the reader-facing manifest needs claim-level (not
+family-level) extraction before it can clear its own bar. Recorded as the
+open engineering item.
