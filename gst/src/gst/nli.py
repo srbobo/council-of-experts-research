@@ -21,6 +21,15 @@ so importing this module costs nothing until you score something.
 
 Thresholds must be CALIBRATED on labelled data and then FROZEN before use --
 choosing them after seeing results is how an instrument becomes an opinion.
+And calibration must include an AUC gate on the task the instrument will
+actually perform: a threshold fit on labels is meaningless if the underlying
+score carries no signal for the construct. Measured cautionary case from the
+originating program (Cell 23): thresholds calibrated for chosen-vs-rejected
+discrimination (AUC 0.93) were reused for family PRESENCE, where the same
+scores turned out to carry no signal at all (per-family presence AUC
+0.12-0.55 against reliable judge labels). No threshold can rescue an AUC
+below 0.5. Gate on AUC >= 0.75 for the deployed task before shipping any
+threshold, and report the AUC beside it.
 """
 from __future__ import annotations
 

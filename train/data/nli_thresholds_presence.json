@@ -1,0 +1,56 @@
+{
+  "model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+  "calibrated_for": "family presence (Cell 23)",
+  "ground_truth": "two blinded LLM judges, agreement-filtered; NEVER regex-derived",
+  "judge_agreement": 0.86,
+  "anchor_scores": {
+    "gpt-oss:20b": 0.9,
+    "qwen2.5:7b-instruct": 0.925
+  },
+  "n_labelled": 200,
+  "per_family": {
+    "cutoff": {
+      "kept_old": true,
+      "n_pos": 3,
+      "n_neg": 186,
+      "usable": false
+    },
+    "modeled": {
+      "threshold": 0.0,
+      "auc": 0.11639549436795996,
+      "sens": 1.0,
+      "spec": 0.0,
+      "n_pos": 47,
+      "n_neg": 119,
+      "was": 0.95,
+      "usable": false
+    },
+    "jurisd": {
+      "threshold": 0.0315,
+      "auc": 0.5522522522522523,
+      "sens": 0.6666666666666666,
+      "spec": 0.4797297297297297,
+      "n_pos": 30,
+      "n_neg": 148,
+      "was": 0.95,
+      "usable": false
+    },
+    "hedging": {
+      "threshold": 0.0596,
+      "auc": 0.23607698607698607,
+      "sens": 0.022727272727272728,
+      "spec": 0.990990990990991,
+      "n_pos": 44,
+      "n_neg": 111,
+      "was": 0.95,
+      "usable": false
+    }
+  },
+  "thresholds": {
+    "cutoff": 0.75,
+    "modeled": 0.0,
+    "jurisd": 0.0315,
+    "hedging": 0.0596
+  },
+  "WARNING": "DO NOT USE for family presence. Calibration FAILED: judge labels are reliable (P23.3 pass) but the entailment scores do not track presence \u2014 AUC modeled 0.116, hedging 0.236 (both INVERSE), jurisd 0.552 (chance), cutoff unmeasurable (3 positives). The fitted thresholds are degenerate and shipped only as the registered record. No presence-valid threshold exists for this model + hypothesis set."
+}

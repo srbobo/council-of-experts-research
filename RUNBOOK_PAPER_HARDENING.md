@@ -3388,3 +3388,63 @@ as a require_upstream side effect). Corrections gated on Cell 23's verdict:
 global "two-instrument" phrasing (registered consequence of P23.2), site
 line ~1204 ("confirmed no behaviors are hiding behind paraphrase"), and the
 P19.5 presence re-score.
+
+---
+
+## CELL 23 VERDICT — presence calibration FAILS; the judges are the instrument now (2026-08-05, 220 items x 2 judges, 0 unusable replies)
+
+**P23.3 PASS, decisively.** Judge-judge agreement 0.86 (688/800 family
+decisions); anchors gpt-oss 0.90 (72/80), qwen2.5 0.925 (74/80) — including
+the paraphrase positives and the hard negatives. Zero empty/unparseable
+replies at max_tokens 2048. 200/200 sampled sentences usable. The blinded
+dual-judge protocol is a VALIDATED family-presence instrument.
+
+**P23.1 technically SUPPORTED (3/4 families move >= 0.10) — but the
+substantive result is stronger and worse: presence calibration FAILS.**
+Against the validated labels, the entailment scores carry no presence
+signal: AUC modeled 0.116 (INVERSE), hedging 0.236 (INVERSE), jurisd 0.552
+(chance), cutoff unmeasurable (3 positives in sample). Youden thresholds
+are degenerate (sens 1.00/spec 0.00 and sens 0.02/spec 0.99). No threshold
+at any value makes this model + hypothesis set detect family presence.
+`train/data/nli_thresholds_presence.json` is shipped as the registered
+record with a DO-NOT-USE warning and per-family usable:false flags.
+
+**P23.2 FALSIFIED, by the stronger route.** Agreement cannot rise via
+recalibration because no presence-valid threshold exists. Per the
+registration's own falsification interpretation: the regex/NLI disagreement
+is NOT a threshold artifact; the two instruments never measured the same
+construct. Sweep finding #7 is hereby explained, not repaired.
+
+**REGISTERED CONSEQUENCE EXECUTED.** "Confirmed by two instruments" is
+weakened to "two independent measurements": paper_behavior.tex Instruments
+paragraph rewritten; site (index+results) edited at the two affected spots
+(committed, NOT deployed — Netlify remains paused); C3 ensemble arithmetic
+permanently unusable for this pair (INTERVENTION_DESIGN, HARNESS_DESIGN
+updated; NLI retired from the gate for presence claims). P19.5's planned
+NLI re-score is CLOSED as moot: NLI cannot adjudicate that construct at any
+threshold; manual inspection remains the evidence.
+
+**Unregistered but decisive by-product, reported as such: the regex report
+card.** Grading the primary lexicon against the validated judge labels
+(agreement-filtered, stratified sample; S4 = natural prevalence):
+
+| family | n+ | n- | sens | spec | prec |
+|---|---|---|---|---|---|
+| modeled | 47 | 119 | 0.915 | 0.966 | 0.915 |
+| jurisd | 30 | 148 | 0.300 | 1.000 | 1.000 |
+| hedging | 44 | 111 | 0.250 | 0.946 | 0.647 |
+| cutoff | 3 | 186 | 0/3 | 0.995 | — |
+
+The lexicon is a HIGH-PRECISION, LOW-RECALL counter outside the modeled
+family. Consequences, stated honestly: (a) modeled — the family carrying
+the C2 clause result and most invention examples — is well-measured;
+(b) rates for jurisd/hedging/cutoff are conservative undercounts, and all
+published rates are lexicon-relative (already the paper's framing, now with
+numbers); (c) the shrinkage regression's supply variable is undercounted,
+and measurement error in the regressor attenuates slopes — the published
+w = 0.35 is plausibly an UNDERESTIMATE of the true evidence weight. Recorded
+as a limitation on the framework's parameter estimates, not a correction.
+
+**Path forward for a true second instrument:** the dual-judge protocol
+(validated, ~20s/sentence), or a lightweight classifier trained on the 200
+labelled sentences this cell produced. Registered before use, either way.

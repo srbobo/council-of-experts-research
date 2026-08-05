@@ -132,11 +132,20 @@ families were \emph{raised} upstream, which of those were \emph{preserved},
 and which appear in the output having been raised by nobody. This is the
 measurement the paper rests on and it requires no additional model calls.
 
-\textbf{Instruments.} Pattern matching is primary. Every load-bearing
-comparison is re-scored by a calibrated entailment model and by blinded
-pairwise LLM judges shown both texts in each order and required to quote their
-evidence. Where the three disagree we say so; one finding produced by pattern
-matching alone did not survive and was retired (Appendix~\ref{app:instr}).
+\textbf{Instruments.} Pattern matching is primary, and it has since been
+graded: against blinded dual-judge labels over $200$ sentences (judge--judge
+agreement $0.86$; anchor accuracy $0.90$/$0.93$), the lexicon detects the
+modeled-assumption family well (sensitivity $0.92$, precision $0.92$) and the
+remaining families conservatively (specificity $\geq 0.95$, sensitivity
+$0.25$--$0.30$): counts outside the modeled family are undercounts, and every
+rate in this paper is lexicon-relative. Load-bearing comparisons are
+re-scored by a calibrated entailment model and by blinded pairwise LLM judges
+required to quote their evidence. A presence-recalibration of the entailment
+model against the judge labels failed outright (per-family AUC
+$0.12$--$0.55$), so entailment agreement is reported throughout as a second
+independent measurement, never as confirmation. Where instruments disagree we
+say so; one finding produced by pattern matching alone did not survive and
+was retired (Appendix~\ref{app:instr}).
 
 \textbf{Scale.} Roughly 1{,}400 runs, five seeds per condition, bootstrap
 intervals throughout. Predictions were registered before the runs that test

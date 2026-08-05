@@ -4504,5 +4504,1311 @@
     "hedging": false
    }
   }
+ },
+ {
+  "sentence": "3. **Legal compulsion is a safety valve** \u2013 If forced by law, disclosure is permitted without breach; otherwise, the NDA remains in force.",
+  "nli": {
+   "cutoff": 0.0006587636889889836,
+   "modeled": 0.00807785615324974,
+   "jurisd": 0.03134256973862648,
+   "hedging": 0.009174857288599014
+  },
+  "regex": [],
+  "nli_max": 0.03134256973862648,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "4. **Cleanup Duty**: Return\u2011or\u2011destroy ensures no residual confidential material remains after the contractual relationship ends or the tail period lapses.",
+  "nli": {
+   "cutoff": 0.003377043642103672,
+   "modeled": 0.012962345033884048,
+   "jurisd": 0.024778777733445168,
+   "hedging": 0.010302988812327385
+  },
+  "regex": [],
+  "nli_max": 0.024778777733445168,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Equitable\u2011Remedies Clause** \u2013 Broad exclusions reduce the pool of information subject to confidentiality, potentially limiting the disclosing party\u2019s ability to seek injunctive relief; this trade\u2011off can weaken deterrence if too many items are excluded.\n\n## Synthesis\nBelow is a clause\u2011by\u2011clause explanation that explicitly acknowledges the tensions identified above and preserves all numeric framing, precise terminology, and caveats from the legal contribution.\n\n### 1.",
+  "nli": {
+   "cutoff": 0.002858281834051013,
+   "modeled": 0.14895692467689514,
+   "jurisd": 0.01001032069325447,
+   "hedging": 0.011312153190374374
+  },
+  "regex": [],
+  "nli_max": 0.14895692467689514,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "**Executive Summary**\n\nA 200\u2011person tech firm that has just shifted to a hybrid model is suffering from \u201cmeeting fatigue\u201d and a lack of cross\u2011functional context.",
+  "nli": {
+   "cutoff": 0.0011572563089430332,
+   "modeled": 0.009555689059197903,
+   "jurisd": 0.057972367852926254,
+   "hedging": 0.003028945764526725
+  },
+  "regex": [],
+  "nli_max": 0.057972367852926254,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Operational safeguards that must be in place\n\n1. **Population\u2011Health Dashboard** \u2013 Integrate EHR, claims, pharmacy, and social determinants data; validate against CMS HCC model to ensure accurate risk stratification.",
+  "nli": {
+   "cutoff": 0.002263145288452506,
+   "modeled": 0.23416045308113098,
+   "jurisd": 0.9872555732727051,
+   "hedging": 0.014273175038397312
+  },
+  "regex": [],
+  "nli_max": 0.9872555732727051,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Foundation** \u2013 The foundation\u2019s 5\u202f% minimum distribution requirement may force early cash outflows that are not reflected in the finance model\u2019s assumption of a passive holding structure. |\n| **Antitrust & CMS Compliance** | Review DOJ \u201cHospital Consolidation\u201d guidance; confirm no anticompetitive effect.",
+  "nli": {
+   "cutoff": 0.0012814365327358246,
+   "modeled": 0.004299056250602007,
+   "jurisd": 0.06482996791601181,
+   "hedging": 0.0023645919281989336
+  },
+  "regex": [],
+  "nli_max": 0.06482996791601181,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "By addressing these tensions proactively\u2014through robust governance, clear contractual language, and a flexible financial model\u2014the health system can launch a defensible v1 that delivers clinical benefit while managing regulatory exposure and maintaining economic viability.",
+  "nli": {
+   "cutoff": 0.003037816844880581,
+   "modeled": 0.038716159760951996,
+   "jurisd": 0.039671171456575394,
+   "hedging": 0.0054762461222708225
+  },
+  "regex": [],
+  "nli_max": 0.039671171456575394,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Assess Statistical Confidence\n- Compute the SE for your baseline rate (p) and n = 880.  \n- A 95\u202f% confidence interval is \\(p \\pm 1.96\\,SE\\).  \n- If the required improvement (\u22481.3\u202f%) falls **within one standard error**, it may be indistinguishable from random month\u2011to\u2011month noise.  \n- To claim a statistically meaningful effect at 95\u202f%, aim for an improvement larger than roughly **2\u20133\u202f%** or aggregate data over several months to reduce SE.\n\n### 4.",
+  "nli": {
+   "cutoff": 0.003434119513258338,
+   "modeled": 0.03585631027817726,
+   "jurisd": 0.0021435015369206667,
+   "hedging": 0.006333890371024609
+  },
+  "regex": [],
+  "nli_max": 0.03585631027817726,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "Training modules, quick\u2011reference guides, help desk SLA.\n- **Regulatory Watch**: Monitor FDA AI/ML guidance (e.g., 2024 draft) and state laws; update risk management plan accordingly.\n\n---\n\n### Bottom Line\n\nA defensible v1 of the sepsis\u2011risk AI CDS tool is built on:\n\n1. **Robust clinical validation** that demonstrates real\u2011world benefit without compromising safety or workflow.",
+  "nli": {
+   "cutoff": 0.003709923243150115,
+   "modeled": 0.06183314323425293,
+   "jurisd": 0.009524309076368809,
+   "hedging": 0.009397510439157486
+  },
+  "regex": [],
+  "nli_max": 0.06183314323425293,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Record month\u2011to\u2011month variance** to estimate the standard error of the rate (SE = \u221a[p(1\u2013p)/n]).\n\n### 2.",
+  "nli": {
+   "cutoff": 0.0025738533586263657,
+   "modeled": 0.03403652831912041,
+   "jurisd": 0.012360251508653164,
+   "hedging": 0.016858940944075584
+  },
+  "regex": [],
+  "nli_max": 0.03403652831912041,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "5. **Real\u2011Time Analytics** \u2013 Monitor utilization patterns and clinical outcomes; intervene early if cost thresholds are breached.\n\n### 4.",
+  "nli": {
+   "cutoff": 0.011525035835802555,
+   "modeled": 0.1653159260749817,
+   "jurisd": 0.03654717653989792,
+   "hedging": 0.021516935899853706
+  },
+  "regex": [],
+  "nli_max": 0.1653159260749817,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Use a 12\u201315\u202f% discount rate for the US side; 10\u201313\u202f% for EU/UK. |\n| 2.",
+  "nli": {
+   "cutoff": 0.0018103354377672076,
+   "modeled": 0.009693522937595844,
+   "jurisd": 0.0068073333241045475,
+   "hedging": 0.008759785443544388
+  },
+  "regex": [],
+  "nli_max": 0.009693522937595844,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "By aligning clinical evidence, legal compliance, and financial prudence in a transparent, data\u2011driven framework, the employer can responsibly expand obesity treatment coverage while safeguarding plan sustainability.",
+  "nli": {
+   "cutoff": 0.0019853906705975533,
+   "modeled": 0.49945712089538574,
+   "jurisd": 0.8921100497245789,
+   "hedging": 0.00768011249601841
+  },
+  "regex": [],
+  "nli_max": 0.8921100497245789,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "If any of these assumptions shift unfavorably\u2014especially if CMS raises the RAM weights or lowers HEDIS thresholds\u2014the contract could become unprofitable.",
+  "nli": {
+   "cutoff": 0.0035405773669481277,
+   "modeled": 0.006277698092162609,
+   "jurisd": 0.058748677372932434,
+   "hedging": 0.0030287778936326504
+  },
+  "regex": [],
+  "nli_max": 0.058748677372932434,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "Post\u2011recap equity adds $310\u202fm; if debt remains unchanged, leverage falls to 4.2\u00d7 and interest coverage improves from 12\u00d7 to ~15\u00d7.  \n- **Return**: Assuming a 10\u00d7 EBITDA exit after five years, equity proceeds \u2248$1.09\u202fbillion \u2192 IRR \u224818\u201320\u202f% (subject to debt amortization).  \n\n### 3.",
+  "nli": {
+   "cutoff": 0.0017128715990111232,
+   "modeled": 0.0033482895232737064,
+   "jurisd": 0.003563801059499383,
+   "hedging": 0.005220361985266209
+  },
+  "regex": [
+   "modeled"
+  ],
+  "nli_max": 0.005220361985266209,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "Auditors should use the unit\u2019s standard measurement tools (e.g., dispenser counters) to keep logging efficient.\n\n### 3.",
+  "nli": {
+   "cutoff": 0.003364789532497525,
+   "modeled": 0.12264074385166168,
+   "jurisd": 0.07422727346420288,
+   "hedging": 0.020754897966980934
+  },
+  "regex": [],
+  "nli_max": 0.12264074385166168,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Performance Monitoring Dashboard**: Real\u2011time tracking of sensitivity, specificity, PSI drift; automatic rollback if thresholds fall below acceptable limits (addresses tension 3).",
+  "nli": {
+   "cutoff": 0.002181419637054205,
+   "modeled": 0.3619529604911804,
+   "jurisd": 0.034060437232255936,
+   "hedging": 0.004244122188538313
+  },
+  "regex": [],
+  "nli_max": 0.3619529604911804,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Conversely, if the asset provides a stable benefit over its life, regulatory requirements favor straight\u2011line, or the company prioritizes reporting simplicity and predictability, **straight\u2011line depreciation** should be used.",
+  "nli": {
+   "cutoff": 0.005363197065889835,
+   "modeled": 0.027748355641961098,
+   "jurisd": 0.021074429154396057,
+   "hedging": 0.012184709310531616
+  },
+  "regex": [],
+  "nli_max": 0.027748355641961098,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "A current audit of these figures is advisable before finalizing any reclassification plan.",
+  "nli": {
+   "cutoff": 0.0011617208365350962,
+   "modeled": 0.8665969967842102,
+   "jurisd": 0.1641911119222641,
+   "hedging": 0.019294580444693565
+  },
+  "regex": [],
+  "nli_max": 0.8665969967842102,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": true,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": true,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "2. **Shift\u2011Level Analysis** \u2013 Bar chart or table showing compliance per shift; highlight any statistically significant differences (e.g., night shift 75\u202f%).",
+  "nli": {
+   "cutoff": 0.0017594784731045365,
+   "modeled": 0.8584017753601074,
+   "jurisd": 0.0391998291015625,
+   "hedging": 0.006368360016494989
+  },
+  "regex": [],
+  "nli_max": 0.8584017753601074,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "5. **Action plan** \u2013 One\u2011sentence recommendations:  \n   - \u201cRe\u2011train staff on hand\u2011rub technique during night shift.\u201d  \n   - \u201cEnsure adequate supply of alcohol rub in ICU bays.\u201d  \n   - \u201cSchedule a brief refresher session for nurses with >20\u202f% noncompliance.\u201d\n\n6. **Appendix (optional)** \u2013 Raw observation data, auditor signatures, audit validation notes.\n\n**Delivery** \u2013 Send the PDF/Excel dashboard to the unit manager, infection preventionist, and nursing leadership within 5 business days of month\u2011end.",
+  "nli": {
+   "cutoff": 0.003357566660270095,
+   "modeled": 0.048254307359457016,
+   "jurisd": 0.028590766713023186,
+   "hedging": 0.012949292548000813
+  },
+  "regex": [],
+  "nli_max": 0.048254307359457016,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Embed privacy\u2011by\u2011design architecture from day one to satisfy GDPR, AI Act, and BDSG requirements, and allocate a dedicated compliance team to monitor post\u2011cutoff regulatory changes.",
+  "nli": {
+   "cutoff": 0.002977514872327447,
+   "modeled": 0.06815978139638901,
+   "jurisd": 0.11019516736268997,
+   "hedging": 0.008088174276053905
+  },
+  "regex": [],
+  "nli_max": 0.11019516736268997,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": true,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Finance\u2019s 35\u202f% milestone probability should be treated as a *conditional* probability of reaching the regulatory approval **after** accelerated clearance, so the overall probability of revenue realization is `P_market \u00d7 P_regulatory = 0.595 \u00d7 0.35 \u2248 0.208` (\u2248\u202f21\u202f%). |\n| **Milestone probabilities** | Finance | Phase\u202fI: 0.90; Phase\u202fII: 0.70; Phase\u202fIII initiation: 0.55; Regulatory approval: 0.35.",
+  "nli": {
+   "cutoff": 0.0010840685572475195,
+   "modeled": 0.012911953963339329,
+   "jurisd": 0.08748771250247955,
+   "hedging": 0.0034584032837301493
+  },
+  "regex": [],
+  "nli_max": 0.08748771250247955,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "5. **Antitrust Pre\u2011Screening** \u2013 File a preliminary inquiry with DOJ/FTC if the buyer owns \u22652 rural hospitals; prepare mitigation strategies (e.g., carve\u2011outs).",
+  "nli": {
+   "cutoff": 0.0018798429518938065,
+   "modeled": 0.03501363843679428,
+   "jurisd": 0.04689329117536545,
+   "hedging": 0.004493284970521927
+  },
+  "regex": [],
+  "nli_max": 0.04689329117536545,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Caveats & Recommendations\n\n1. **Regulatory Uncertainty** \u2013 Post\u20112023 FDA guidance may alter SaMD requirements; CMS\u2019s 2024 coverage policy could tighten cost\u2011effectiveness thresholds; G\u2011BA revisions may impose stricter algorithm transparency or post\u2011market surveillance demands.",
+  "nli": {
+   "cutoff": 0.00511542335152626,
+   "modeled": 0.008838563226163387,
+   "jurisd": 0.03150421380996704,
+   "hedging": 0.001989668235182762
+  },
+  "regex": [],
+  "nli_max": 0.03150421380996704,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "2. **Interest Rate Fluctuations** \u2013 A 1\u2011point rise in debt cost increases WACC to ~9.3\u202f%, reducing net cash available for investors.",
+  "nli": {
+   "cutoff": 0.0010228639002889395,
+   "modeled": 0.005182362627238035,
+   "jurisd": 0.018547987565398216,
+   "hedging": 0.0018740257946774364
+  },
+  "regex": [],
+  "nli_max": 0.018547987565398216,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "By weaving together these clinical, legal, and financial strands\u2014while explicitly acknowledging the tensions identified above\u2014the employer can offer a robust obesity coverage program that is both compliant and financially sustainable over the long term.",
+  "nli": {
+   "cutoff": 0.0019572104793041945,
+   "modeled": 0.08292221277952194,
+   "jurisd": 0.9944661259651184,
+   "hedging": 0.005280491430312395
+  },
+  "regex": [],
+  "nli_max": 0.9944661259651184,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "The financial model\u2014adjusted for realistic utilization and value\u2011based savings\u2014shows a net cost of roughly **$3.75\u202fmillion** versus no coverage, with potential claim reductions that could offset a substantial portion of that spend.",
+  "nli": {
+   "cutoff": 0.0008470293250866234,
+   "modeled": 0.009681502357125282,
+   "jurisd": 0.011254021897912025,
+   "hedging": 0.0028583246748894453
+  },
+  "regex": [],
+  "nli_max": 0.011254021897912025,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "7. **Governance structure**: Create a joint steering committee with representatives from both parties to monitor milestones, regulatory status, and commercial performance.\n\n---\n\n### Bottom Line\n\nBy valuing the asset through a rigorous rNPV model, structuring payments around objective, probability\u2011weighted milestones, and embedding clear risk\u2011sharing mechanisms (clawbacks, earn\u2011outs, indemnification), the US biotech can secure immediate liquidity while preserving upside from a potentially blockbuster oncology drug.",
+  "nli": {
+   "cutoff": 0.0018066804623231292,
+   "modeled": 0.031154770404100418,
+   "jurisd": 0.9513850212097168,
+   "hedging": 0.005211276467889547
+  },
+  "regex": [],
+  "nli_max": 0.9513850212097168,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Verify Regulatory Updates** | Engage counsel to confirm current HVBP/HRRP thresholds (2024), state licensing changes, and IRS guidance on private foundation asset transfers. | Addresses legal\u2011clinical tension and ensures assumptions are up\u2011to\u2011date. |\n| **2.",
+  "nli": {
+   "cutoff": 0.0007817268487997353,
+   "modeled": 0.006692914757877588,
+   "jurisd": 0.0340525284409523,
+   "hedging": 0.003309354418888688
+  },
+  "regex": [],
+  "nli_max": 0.0340525284409523,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": true,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Include a written statement of intent to cease charitable activities and an asset transfer plan that satisfies \u00a7\u202f6033(b).  \n- **Sale\u2011Leaseback Structure** \u2013 Draft a sale agreement with a purchase price equal to the FMV (modeled at the most recent independent appraisal).",
+  "nli": {
+   "cutoff": 0.0012848768383264542,
+   "modeled": 0.05534694716334343,
+   "jurisd": 0.01617754064500332,
+   "hedging": 0.009556111879646778
+  },
+  "regex": [
+   "modeled"
+  ],
+  "nli_max": 0.05534694716334343,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Implementation Checklist (v1)\n\n1. **Regulatory**\n   - Submit 510(k)/De\u202fNovo.\n   - Finalize post\u2011market surveillance plan.",
+  "nli": {
+   "cutoff": 0.0016293101944029331,
+   "modeled": 0.21220071613788605,
+   "jurisd": 0.026344316080212593,
+   "hedging": 0.010964523069560528
+  },
+  "regex": [],
+  "nli_max": 0.21220071613788605,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Return\u2011or\u2011Destroy Obligation** \u2013 The requirement to comply with a subpoena can create a conflict when the recipient must simultaneously return or destroy copies that are still needed for legal defense.  \n- **Equitable\u2011Remedies Clause vs.",
+  "nli": {
+   "cutoff": 0.0012500169686973095,
+   "modeled": 0.017129095271229744,
+   "jurisd": 0.03960813209414482,
+   "hedging": 0.0014088703319430351
+  },
+  "regex": [],
+  "nli_max": 0.03960813209414482,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "2. **Clinician Onboarding** \u2013 Short video tutorials + CME credits for primary\u2011care staff to encourage prescription of the app.",
+  "nli": {
+   "cutoff": 0.001341901021078229,
+   "modeled": 0.04080622270703316,
+   "jurisd": 0.03939354047179222,
+   "hedging": 0.007897083647549152
+  },
+  "regex": [],
+  "nli_max": 0.04080622270703316,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Comply with HIPAA and privacy laws** through risk assessment, BAA, encryption, and optional differential\u2011privacy safeguards\u2014adding roughly $0.1\u202fM to annual variable costs.",
+  "nli": {
+   "cutoff": 0.0016808535438030958,
+   "modeled": 0.01628529466688633,
+   "jurisd": 0.9085860848426819,
+   "hedging": 0.00830478873103857
+  },
+  "regex": [],
+  "nli_max": 0.9085860848426819,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Post\u2011Brexit regulatory tightening** \u2013 New MHRA data\u2011exclusivity rules could delay UK launch; include a \u201cUK Regulatory Delay\u201d clause that postpones the Phase\u202fIII interim milestone payment until UK CMA status is confirmed.\n\n---\n\n### 7.",
+  "nli": {
+   "cutoff": 0.008778807707130909,
+   "modeled": 0.01235426776111126,
+   "jurisd": 0.053294871002435684,
+   "hedging": 0.0038789876271039248
+  },
+  "regex": [],
+  "nli_max": 0.053294871002435684,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "5. **Set up a joint risk\u2011management plan** that includes post\u2011marketing commitments, pricing strategies, and reimbursement pathways in both territories.",
+  "nli": {
+   "cutoff": 0.001045483397319913,
+   "modeled": 0.03218911215662956,
+   "jurisd": 0.9951651096343994,
+   "hedging": 0.007231396622955799
+  },
+  "regex": [],
+  "nli_max": 0.9951651096343994,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Tax authorities may allow continued accelerated depreciation for tax purposes, forcing reconciliation between financial and tax books.\n- **Assumed economic consumption vs actual asset performance** \u2013 The DDB calculation assumes the asset\u2019s value declines at 40\u202f% of book value each year until it becomes disadvantageous.",
+  "nli": {
+   "cutoff": 0.0006987947272136807,
+   "modeled": 0.0014760170597583055,
+   "jurisd": 0.25249385833740234,
+   "hedging": 0.004111158661544323
+  },
+  "regex": [
+   "modeled"
+  ],
+  "nli_max": 0.25249385833740234,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   }
+  }
+ },
+ {
+  "sentence": "Earnings and taxes are affected evenly each period, which can be attractive for investors or when an asset\u2019s economic benefit is expected to be uniform.\n\n- **Double\u2011declining balance (with switch)**: Depreciation starts high (40\u202f% of the then\u2011book value) and tapers off as the book value falls.",
+  "nli": {
+   "cutoff": 0.0013162303948774934,
+   "modeled": 0.013124869205057621,
+   "jurisd": 0.01745413988828659,
+   "hedging": 0.0021070833317935467
+  },
+  "regex": [],
+  "nli_max": 0.01745413988828659,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "2. **Quality & Safety Metrics**  \n   - Perform a *gap analysis* comparing current Joint Commission and CMS Hospital Compare metrics to thresholds typical for for\u2011profit hospitals (e.g., readmission rates).  \n   - Identify any lease\u2011related constraints that could impede necessary upgrades\u2014such as HVAC improvements or isolation rooms\u2014and quantify their impact on infection\u2011control KPIs.",
+  "nli": {
+   "cutoff": 0.002540172776207328,
+   "modeled": 0.2482984960079193,
+   "jurisd": 0.20420114696025848,
+   "hedging": 0.005294291768223047
+  },
+  "regex": [],
+  "nli_max": 0.2482984960079193,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "They also determine when the other clauses apply: for example, the return\u2011or\u2011destroy obligation only applies to material that remains within the defined scope after exclusions are applied. |\n| **3.",
+  "nli": {
+   "cutoff": 0.001020721741952002,
+   "modeled": 0.35738223791122437,
+   "jurisd": 0.013725174590945244,
+   "hedging": 0.0053930943831801414
+  },
+  "regex": [],
+  "nli_max": 0.35738223791122437,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "5. **Conduct DPIA** \u2013 If any HR function involves highly sensitive data (e.g., health or union membership), complete a DPIA and attach its findings to both RoPA and transfer addendum.",
+  "nli": {
+   "cutoff": 0.0012243170058354735,
+   "modeled": 0.46753570437431335,
+   "jurisd": 0.20700684189796448,
+   "hedging": 0.002958747325465083
+  },
+  "regex": [],
+  "nli_max": 0.46753570437431335,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "This satisfies UK\u2019s requirement for usual\u2011care comparison while also providing evidence of superiority over pharmacotherapy for Germany.\n- Use a *stratified randomisation* so that each arm is adequately powered for both jurisdictions.\n- Document the rationale in the clinical evaluation dossier to demonstrate compliance with both NICE and IQWiG expectations.\n\n### 2.",
+  "nli": {
+   "cutoff": 0.002886123489588499,
+   "modeled": 0.05953710898756981,
+   "jurisd": 0.29716405272483826,
+   "hedging": 0.006035995669662952
+  },
+  "regex": [],
+  "nli_max": 0.29716405272483826,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "Date & Time Stamp** | Exact clock time of the opportunity. | Enables temporal trend analysis and shift\u2011specific reporting. |\n| **2.",
+  "nli": {
+   "cutoff": 0.001978987827897072,
+   "modeled": 0.5538492798805237,
+   "jurisd": 0.04843762889504433,
+   "hedging": 0.015918154269456863
+  },
+  "regex": [],
+  "nli_max": 0.5538492798805237,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Compliance KPI:** Zero FLSA/AB\u202f5 violations; GDPR audit score 100\u202f%.",
+  "nli": {
+   "cutoff": 0.0013087160186842084,
+   "modeled": 0.031508661806583405,
+   "jurisd": 0.03533661365509033,
+   "hedging": 0.013906480744481087
+  },
+  "regex": [],
+  "nli_max": 0.03533661365509033,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": true,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "**Executive Summary**\n\n| Item | What the group needs to know |\n|------|------------------------------|\n| **Revenue** | 25\u202f000 members \u00d7 $1,180\u202fCPM = **$29.5\u202fmillion/month** \u2192 **$354\u202fmillion/yr** (before bonuses). |\n| **Typical cost per member/month (CMMP)** | Primary\u2011care\u2011only Medicare Advantage panels usually run **$600\u2013$750\u202fCMMP** once staffing, overhead, and care\u2011coordination are factored in. |\n| **Break\u2011even point** | Any CMMP above $1,180/yr \u2192 loss; below \u2192 profit.",
+  "nli": {
+   "cutoff": 0.0021932278759777546,
+   "modeled": 0.032100655138492584,
+   "jurisd": 0.011432860977947712,
+   "hedging": 0.018239019438624382
+  },
+  "regex": [],
+  "nli_max": 0.032100655138492584,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Bundled Payment Model** \u2013 Combine drug cost with monitoring (weight checks, labs) into a single payment to reduce administrative overhead and improve adherence tracking.",
+  "nli": {
+   "cutoff": 0.0007906121318228543,
+   "modeled": 0.005846905522048473,
+   "jurisd": 0.9956371188163757,
+   "hedging": 0.015348252840340137
+  },
+  "regex": [],
+  "nli_max": 0.9956371188163757,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **Actionable Insights**  \n   - List top 3 non\u2011compliance reasons (e.g., product unavailability, time pressure).  \n   - Recommend targeted interventions: restock hand rubs in night shift, refresher training on moments 2 & 4, workflow redesign for high\u2011acuity rooms.",
+  "nli": {
+   "cutoff": 0.0018249799031764269,
+   "modeled": 0.13269388675689697,
+   "jurisd": 0.008601246401667595,
+   "hedging": 0.0017398538766428828
+  },
+  "regex": [],
+  "nli_max": 0.13269388675689697,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "3. **EHR & Workflow Integration**  \n   * Build automated prompts for BMI, comorbidity flags, and prior\u2011authorization triggers.  \n   * Train clinicians on documentation requirements.",
+  "nli": {
+   "cutoff": 0.0021550932433456182,
+   "modeled": 0.23639339208602905,
+   "jurisd": 0.993472695350647,
+   "hedging": 0.0162039827555418
+  },
+  "regex": [],
+  "nli_max": 0.993472695350647,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
+ },
+ {
+  "sentence": "4. **Contractual Safeguards** \u2013 Draft a subscription agreement incorporating BAA clauses, AI safeguard provisions (pending OCR guidance), liability allocation, and pricing terms aligned with finance\u2019s $110\u202fk/seat/year target.",
+  "nli": {
+   "cutoff": 0.00158215023111552,
+   "modeled": 0.3384806513786316,
+   "jurisd": 0.013310110196471214,
+   "hedging": 0.012459315359592438
+  },
+  "regex": [],
+  "nli_max": 0.3384806513786316,
+  "stratum": "S4",
+  "judges": {
+   "gpt-oss:20b": {
+    "cutoff": true,
+    "modeled": true,
+    "jurisd": false,
+    "hedging": true
+   },
+   "qwen2.5:7b-instruct": {
+    "cutoff": false,
+    "modeled": false,
+    "jurisd": false,
+    "hedging": false
+   }
+  }
  }
 ]

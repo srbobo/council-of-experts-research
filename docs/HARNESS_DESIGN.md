@@ -267,9 +267,15 @@ class MetricReport:
   persistence nor removal — and manual inspection found the removals were a
   mixture of genuine phrase-evasion and regex false positives. Also
   corrected: the 0.929 AUC was calibrated for chosen-vs-rejected
-  discrimination, NOT family presence; presence-calibrated thresholds are
-  Cell 23. Until they ship, NLI confirmation inside the gate is suspended —
-  disagreement triggers manual inspection, not a verdict.)
+  discrimination, NOT family presence. Cell 23's verdict, same day: presence
+  calibration FAILED — against reliable judge labels the entailment scores
+  carry no presence signal (AUC 0.12–0.55 per family), so no threshold can
+  ever make this pair a consensus instrument. NLI confirmation inside the
+  gate is permanently retired for presence claims. The validated presence
+  instruments are the dual blinded judges (agreement 0.86, anchors
+  0.90/0.93) and the graded lexicon (modeled: sens/prec 0.92; other
+  families: specificity ≥0.95, sensitivity 0.25–0.30 — conservative
+  undercounts). Disagreement triggers manual inspection, not a verdict.)
 
 ---
 

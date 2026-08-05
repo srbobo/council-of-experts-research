@@ -152,9 +152,15 @@ pairwise judges.
   structural claim stands on inspection + the KL argument; the
   two-instrument corroboration story is withdrawn. The quoted ε_NLI ≈ 0.15
   (AUC 0.929) was calibrated for chosen-vs-rejected discrimination, NOT
-  family presence — presence calibration is Cell 23, and until it ships the
-  C3 ensemble arithmetic must not be quoted for this instrument pair
-  (sweep finding #7: zero family-level agreement across 225 runs).
+  family presence. Cell 23 (2026-08-05) then established that no
+  presence-valid threshold exists for this pair at all: against reliable
+  blinded-judge labels (agreement 0.86, anchors 0.90/0.93) the entailment
+  scores carry no presence signal (AUC modeled 0.116, hedging 0.236,
+  jurisd 0.552). The C3 ensemble arithmetic is permanently unusable for
+  this pair (sweep finding #7 explained: the instruments never shared a
+  construct). Validated alternatives for a genuine second instrument:
+  pairwise blinded judges, or a classifier trained on the 200
+  judge-labelled sentences Cell 23 produced.
 - **Boundary observation (candidate A4, weakest evidence):** instructions
   moved every surface behavior tested and did not move commitment
   (decisions ~3/10 judge-recognized under an explicit instruction; zero

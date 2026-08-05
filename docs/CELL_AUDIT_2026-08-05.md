@@ -70,16 +70,18 @@ recomputation wherever the check was cheap enough to run.
    inspection deciding between evasion and detector overcount," and the NLI
    confirmation step inside the gate is suspended pending Cell 23.
 
-## Corrections pending, gated on Cell 23 (in flight)
+## Cell 23 outcome (landed same day) — pendings closed
 
-- P23.2 fail ⇒ weaken "confirmed by two instruments" throughout paper and
-  site to "two independent measurements" (registered consequence).
-- P19.5 re-score under presence thresholds (two pre-gate scores, 0.636 and
-  0.903, sit near plausible boundaries).
-- site/results.html ~line 1204 "NLI cross-check confirmed no behaviors are
-  hiding behind paraphrase" — overstates the instrument's validated scope
-  regardless of Cell 23's outcome; batched with the next site update
-  (deploys remain paused).
+- P23.3 PASSED (judges 0.86 agreement, anchors 0.90/0.93). P23.2 FALSIFIED:
+  no presence-valid NLI threshold exists (AUC 0.12–0.55) — finding #7 is
+  explained, not repaired. Registered consequence EXECUTED: two-instrument
+  language weakened in paper and site; NLI retired from presence claims.
+- P19.5 re-score CLOSED as moot — NLI cannot adjudicate the construct.
+- Site line 1204 was a MANUAL spot-check claim (audit misread); scoped with
+  the new recall numbers rather than removed. Committed, not deployed.
+- New by-product: regex graded against judge labels — modeled sens/prec
+  0.92/0.92; other families high-precision undercounts (sens 0.25–0.30).
+  Published w = 0.35 flagged as plausibly attenuated by supply undercount.
 
 ## Honest scorecard
 
