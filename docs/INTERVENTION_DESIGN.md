@@ -1,7 +1,10 @@
 # GST — Grounded Synthesis Training
 ## A framework for measuring and correcting epistemic distortion in lead–council architectures
 
-**Status:** v1.1, 2026-08-05. Restructured for generality: Part A states the
+**Status:** v1.2, 2026-08-05. Parameters in Part B re-estimated over the full
+1,260-run population by the shipped kit (`gst/`), and the C5 sizing claim
+corrected downward after measuring the independence assumption it rested on.
+Restructured for generality in v1.1: Part A states the
 framework as architecture-level hypotheses with **measurable system
 parameters**; Part B reports our instantiation's measurements as *one data
 point*, not as constants of the framework; Part C gives the intervention
@@ -108,16 +111,35 @@ families (cutoff disclosure, modeled assumptions, jurisdictional
 distinction, hedging) with a regex lexicon + calibrated NLI detector +
 pairwise judges.
 
-- **A1 instantiated:** pooled 493 runs, 12 arms, 4 writers:
-  `y = 0.393·s + 0.527` (cell-mean R² ≈ 0.99). w = 0.39, c = 0.53;
-  prior-trust ratio (1−w)/w = 1.54. Invention 0.53 → 0.00 across s = 0…4;
-  upstream 2.6× discrimination exits at 1.8×. *These numbers are one
+- **A1 instantiated:** re-estimated by the shipped kit over the full usable
+  population — 1,260 runs, all arms, 4 writers:
+  `y = 0.352·s + 0.540`, w ∈ [0.310, 0.391], c ∈ [0.437, 0.651] (2,000-draw
+  bootstrap); R² 0.976 across supply strata, 0.140 across individual runs.
+  Prior-trust ratio (1−w)/w = **1.84**. Supply→emitted: 0.40, 0.81, 1.32,
+  1.62, 1.83. The earlier 493-run figure (0.393·s + 0.527) sits inside the
+  new interval; the full-population estimate supersedes it. *These are one
   writer-family, one domain battery, one lexicon; the framework predicts the
   form, not the values.*
-- **A2 instantiated:** f ≈ 0.10 median (p25 0.05, p75 0.18). Two training
-  attempts showed the dissociation exactly (preference accuracy 0.48→0.94,
-  val loss 0.069; behavior unmoved). Three objective classes (production,
-  calibration, faithfulness) all null at 49–88 whole-sequence pairs.
+  The kit's linearity probe fires here (quadratic CI −0.085…−0.020, excludes
+  zero) and labels itself: supply reaches 4 of 4 available families, so the
+  concavity is a ceiling artifact of a bounded count, not evidence against
+  A1. Widening the property class is the fix; reporting the flag is the duty.
+- **A1 on a second property class (exploratory):** re-running the same 1,260
+  runs under a source-attribution lexicon gives `y = 0.333·s + 0.701`,
+  prior-trust ratio 2.00 — the same form on a property that is not hedging.
+  Held as suggestive only: the linear fit is visibly poorer (strata R² 0.849,
+  strongly non-zero quadratic term) and the strata are badly unbalanced
+  (n=832 at s=1 against n=18 at s=3), because the battery was never designed
+  to vary attribution supply. A purpose-built design is required before this
+  counts as cross-property evidence.
+- **A2 instantiated:** f = 0.068 median (p25 0.021, p75 0.137) over 1,260
+  runs — a ~15:1 margin dilution. The mechanism is now measured directly
+  rather than inferred: the kit's pair diagnostic scores the whole-sequence
+  pair shape used in the failed training cells at **0.866 off-feature**,
+  against **0.000** for programmatically constructed minimal pairs. Two
+  training attempts showed the predicted dissociation exactly (preference
+  accuracy 0.48→0.94, val loss 0.069; behavior unmoved), and three objective
+  classes were null at 49–88 whole-sequence pairs.
 - **A3 instantiated:** feedback loop quoting detector phrases: 0.88 removed
   by the exposed instrument, 0.00 by an independent one. ε_regex ≈ 0.88
   under optimization pressure; ε_NLI ≈ 0.15 (FNR at Youden, AUC 0.929 on
@@ -189,10 +211,27 @@ not a footnote.
 ### C5. Verifier-blind best-of-n selection (targets A3-safely; universal — works on black-box writers, deployable without training)
 
 Sample n, select by ensemble consensus, never reveal selection reasons.
-`P_clean(n) = 1 − (1 − p₀)^n` with *measured* p₀; latency multiplier ≈
-1 + (n−1)·(t_sample/t_pipeline). In our instantiation p₀ = 0.66 at worst-case
-supply → 96% at n=3, +45% latency; any adopter recomputes from their p₀.
 Residuals are annotated (disclosure), never revised (A3 prediction 1).
+
+**Correction, and the reason the kit exists.** v1.0 of this document sized
+selection from the independence formula `P_clean(n) = 1 − (1 − p₀)^n` and
+claimed ~96% clean at n=3. Building the estimator forced the assumption into
+the open, and measuring it refutes it. Over real repeated runs of the same
+task under the same configuration, the empirical curve at the worst supply
+stratum is **0.562 / 0.727 / 0.827** at n = 1/2/3, against the formula's
+**0.597 / 0.838 / 0.935**. Redraws are positively correlated: a writer that
+invents on a given task tends to invent again on a redraw, so selection buys
+materially less than independence predicts. Sizing from the formula would
+have under-provisioned by roughly a full sample.
+
+The corrected statement: at the worst supply stratum n=3 delivers ≈0.83
+measured, and reaching 0.95 requires n≥4 on a basis the data cannot yet
+confirm (beyond n=3 fewer than half the cells contribute, so those points
+describe a different and easier subpopulation). Adopters must recompute from
+their own p₀ **and their own empirical curve**; the kit reports both curves
+side by side, with per-n cell counts, and refuses to size from unrepresentative
+points. Latency multiplier ≈ 1 + (n−1)·(t_sample/t_pipeline) when sampling
+serially, ≈1 when sampling concurrently.
 
 **Decision rule summary:** black-box writer → C5 (+disclosure). Training
 access, small budget → C1+C2. Residual-stream access → add C4. RL infra →
@@ -225,10 +264,26 @@ validated by instantiating on systems we did not build:
    exist on ≥2 systems. Negative intervention results are publishable under
    the framework because the failure pattern is diagnostic (see Part E).
 
-Artifacts to build for others: the harness as an installable package with
-the three adapters; the counterfactual-corpus constructor; the minimal-pair
-generator + masked-loss trainer patch; a pre-registration template
-containing the two-instrument and path-assertion rules.
+Artifacts (built — `gst/`, installable as `gst-kit`, MIT, zero dependencies
+in the core): parameter estimators with identifiability guards
+(`gst.measure`), the parameter card (`gst.card`), adapters for MoA,
+LangGraph, AutoGen, RAG, and arbitrary JSONL via a declarative field map
+(`gst.adapters`), verifier-blind selection whose signature makes a feedback
+channel a `TypeError` (`gst.select`), the counterfactual-corpus constructor
+with a decorrelation check (`gst.corpus`), the minimal-pair generator, pair
+diagnostic, and masked-loss recipe (`gst.pairs`), execution-path assertion
+(`gst.path`), a pre-registration template carrying the two-instrument and
+path-assertion rules, a `gst` CLI, and 39 tests including 8 golden tests that
+reproduce this program's parameters from its own 1,260-run ledger.
+
+The kit is deliberately adversarial toward its own author: on first run
+against our data it flagged the ceiling artifact, refused to size selection
+from unrepresentative points, and produced the best-of-n correction recorded
+in C5 above. Two defects in the estimators themselves were caught the same
+way — an empirical curve compared against a worst-stratum prediction it was
+not drawn from, and a pair diagnostic measuring bare marker spans while the
+loss mask covered whole sentences, which would have told every user their
+correct minimal pairs were 90% diluted.
 
 ---
 
