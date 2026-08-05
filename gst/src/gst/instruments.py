@@ -12,9 +12,13 @@ because they are the reason `Instrument` carries a `name`:
      tautology, not a result.
   2. The instrument that generates corrective feedback may never grade
      compliance with that feedback. In the originating program a regex-fed
-     revision loop removed 0.88 families by its own count and 0.00 by an
-     independent instrument -- the model learned to paraphrase, which is a
-     strictly cheaper move than removal.
+     revision loop removed 0.88 families by its own count while an
+     independent instrument saw no change -- and an audit then showed that
+     instrument had never detected the behavior pre-revision either, so it
+     corroborated nothing. Manual inspection settled it: the content mostly
+     survived in rewording, and one flagged case was the detector's own
+     false positive. Rule 1 exists precisely because a "second instrument"
+     is only as good as its demonstrated sensitivity to the construct.
 """
 from __future__ import annotations
 

@@ -3331,3 +3331,60 @@ sensitivity, specificity, n_pos and n_neg per family.
   site, and the C3 ensemble arithmetic stays unusable for this pair.
 - `train/data/nli_thresholds.json` is NOT overwritten — published Cell 7a
   results depend on it. New file: `train/data/nli_thresholds_presence.json`.
+
+---
+
+### CELL 19 AMENDMENT #2 — the "taught evasion" mechanism claim is corrected (2026-08-05, program audit)
+
+The P19.5 verdict recorded: "the revisions rephrased 'modeled at' into forms
+the lexicon cannot see and the entailment model still detects." The program
+audit re-scored the 8 intervened runs and that sentence is WRONG on its
+second half:
+
+- NLI presence of the flagged families (frozen 7a thresholds): **0/8 pre-gate
+  and 0/8 post-gate.** The entailment model detected NOTHING at either time.
+  Its per-family max scores are unchanged pre→post on 7/8 rows (identical to
+  3 dp) — the rewrites did not touch its top-scoring sentences. An instrument
+  that never saw the behavior corroborates neither persistence nor removal;
+  the "0.00 removed" row was insensitivity, not confirmation.
+- What DOES establish phrase-level removal is manual inspection, now on
+  record: case_3 "a *modeled assumption*" → "*assumed by the Finance
+  contribution*", "(modeled assumption)" → "*as assumed by Finance*" —
+  content intact, re-attributed, outside the lexicon's frames. case_4's
+  sensitivity block survives renamed ("Finance also considered alternative
+  scenarios").
+- One flagged invention was a REGEX FALSE POSITIVE: case_5's "cutoff" was
+  the action item "Verify current uncompensated care %" — an instruction to
+  staff, not an epistemic disclosure. The gate spent a revision cycle
+  rewording it.
+
+**Amended P19.5:** the gate's removal is instrument-relative. Manual reading
+shows a mixture of genuine phrase-evasion (content surviving in rewording)
+and the instrument correcting its own overcounts. The design rule — the
+feedback-generating instrument never grades compliance — STANDS, on
+inspection evidence plus the structural argument. The two-instrument
+corroboration story is WITHDRAWN, and this is retrospectively the first
+observation of sweep finding #7 (the instrument pair does not share a
+construct). Re-score under presence-calibrated thresholds when Cell 23
+ships: two of the eight pre-gate scores (0.636, 0.903) sit near plausible
+presence boundaries and may flip the picture for those runs.
+
+**Also corrected in the same audit:** paper_behavior.tex's gate section
+contained an ILLUSTRATIVE quote presented as observed — "'Modeled at' became
+'we estimate'" appears in no intervened run. Replaced with the actual quotes
+above. Fabricating an example, even a directionally-faithful one, is a
+defect class of its own and is now in the audit checklist.
+
+### PROGRAM AUDIT — all cells, against the full defect catalogue (2026-08-05)
+
+Trigger: user-directed audit after repeated introduced errors. Full table in
+docs/CELL_AUDIT_2026-08-05.md. Summary of standing verdicts: Cells 1-6c, 8
+(as amended), 11, 13-15, 17-18, 20-22 SOUND; Cell 19 amended above; Cell 7a
+sound on-label with presence use now formally off-label pending Cell 23;
+Cell 7b low-risk open item (empty-reply handling unaudited, num_predict 8192
+makes it unlikely). Ledger hygiene: 39 zero-route runs remain unmarked in
+their files; the GST adapter now excludes them explicitly (previously only
+as a require_upstream side effect). Corrections gated on Cell 23's verdict:
+global "two-instrument" phrasing (registered consequence of P23.2), site
+line ~1204 ("confirmed no behaviors are hiding behind paraphrase"), and the
+P19.5 presence re-score.

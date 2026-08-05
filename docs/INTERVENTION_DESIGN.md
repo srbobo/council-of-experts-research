@@ -140,12 +140,21 @@ pairwise judges.
   training attempts showed the predicted dissociation exactly (preference
   accuracy 0.48→0.94, val loss 0.069; behavior unmoved), and three objective
   classes were null at 49–88 whole-sequence pairs.
-- **A3 instantiated:** feedback loop quoting detector phrases: 0.88 removed
-  by the exposed instrument, 0.00 by an independent one. ε_regex ≈ 0.88
-  under optimization pressure; ε_NLI ≈ 0.15 (FNR at Youden, AUC 0.929 on
-  family presence — task-validated, and separately shown *invalid* for
-  compound contrastive claims, so ε is task-specific and must be calibrated
-  per property class).
+- **A3 instantiated (corrected 2026-08-05 by program audit):** feedback loop
+  quoting detector phrases: 0.88 removed by the exposed instrument, no change
+  per the independent one — but the audit established the independent
+  instrument had never detected the flagged families pre-gate (0/8), so it
+  corroborated neither persistence nor removal. Manual inspection of the
+  revisions grounds the finding now: qualification content survives in
+  rewording on most intervened runs ("a modeled assumption" → "assumed by
+  the Finance contribution"), and one flagged invention was the detector's
+  own false positive (an action item matching the cutoff lexicon). The
+  structural claim stands on inspection + the KL argument; the
+  two-instrument corroboration story is withdrawn. The quoted ε_NLI ≈ 0.15
+  (AUC 0.929) was calibrated for chosen-vs-rejected discrimination, NOT
+  family presence — presence calibration is Cell 23, and until it ships the
+  C3 ensemble arithmetic must not be quoted for this instrument pair
+  (sweep finding #7: zero family-level agreement across 225 runs).
 - **Boundary observation (candidate A4, weakest evidence):** instructions
   moved every surface behavior tested and did not move commitment
   (decisions ~3/10 judge-recognized under an explicit instruction; zero

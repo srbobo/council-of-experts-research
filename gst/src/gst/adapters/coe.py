@@ -52,6 +52,13 @@ def from_ledger(directory: str | Path, *, variant: str = PRE_INTERVENTION,
         if ep.get("quarantined"):
             continue                       # never pool a run that failed path assertion
         delib = d.get("deliberation") or {}
+        # Zero-route runs on a routed architecture measured a prompt that never
+        # executed (the zero-route incident: 39 pre-assertion runs, two
+        # withdrawn verdicts). They were previously excluded only as a side
+        # effect of require_upstream; exclude them explicitly.
+        plan_routes = (delib.get("plan") or {}).get("routes")
+        if plan_routes is not None and len(plan_routes) == 0:
+            continue
         turns = delib.get("turns") or []
         upstream = [str(t.get("output_text") or "") for t in turns]
         if require_upstream and not any(u.strip() for u in upstream):

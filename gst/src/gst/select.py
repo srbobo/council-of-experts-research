@@ -16,8 +16,13 @@ distinction between selection and feedback is the whole point.
              paraphrasing is a cheaper distributional move than removal.
 
 That measurement: a revision loop quoting matched phrases removed 0.88
-families by the instrument that generated the feedback and 0.00 by an
-independent instrument.
+families by the instrument that generated the feedback, while manual
+inspection showed the content mostly surviving in rewording. (An
+entailment detector initially credited with confirming this was later
+audited and found insensitive -- it had detected nothing before the
+revisions either. The lesson cuts both ways: feedback loops optimize the
+visible instrument, and "independent confirmation" requires demonstrated
+sensitivity, not just a second detector.)
 
 Residual failures are ANNOTATED, never revised. Annotation is disclosure to
 the reader; revision is a feedback channel wearing a different name.

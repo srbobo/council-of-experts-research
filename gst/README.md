@@ -91,9 +91,16 @@ generates corrective feedback may never grade compliance with that feedback.
 
 That rule exists because of a measured result. A revision loop that quoted a
 regex detector's matched phrases back to the model removed **0.88** families
-by that detector's own count and **0.00** by an independent instrument. The
-model had not stopped doing the thing; it had learned to paraphrase, which is
-a cheaper distributional move than removal.
+by that detector's own count while an independent instrument saw no change —
+and an audit then showed the independent instrument had never detected the
+behavior *before* the revisions either (0/8 runs), so it corroborated
+nothing in either direction. What settled it was reading the revisions:
+the qualifications mostly survived in rewording ("a modeled assumption" →
+"assumed by the Finance contribution"), and one flagged case was the
+detector's own false positive. Instrument-relative improvement, not
+behavioral change — and a caution that a second instrument only counts as
+confirmation when its sensitivity to the construct has itself been
+demonstrated (see `blindspot()`).
 
 This is why `gst.select.select` takes a **zero-argument** sampler and raises
 `TypeError` if you hand it anything that could receive feedback. Selection

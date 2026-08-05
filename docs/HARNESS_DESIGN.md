@@ -259,11 +259,17 @@ class MetricReport:
   most useful findings were instrument disagreements).
 - **The gate must not judge compliance with the instrument that generated
   its feedback.** A regex-fed gate quotes matched phrases; a reviser can pass
-  by paraphrase, and the gate has then *taught evasion*. Verdict rule:
-  fast-screen with the lexicon inside the retry loop, but CONFIRM with the
-  calibrated NLI family detector (`harness/nli.py` — validated for family
-  presence, AUC 0.929; explicitly not for compound claims). Improvement that
-  holds under regex but not NLI is reported as evasion, not success.
+  by paraphrase. Verdict rule: improvement that holds only under the
+  feedback instrument is reported as INSTRUMENT-RELATIVE, never as success.
+  (2026-08-05 correction: it must not be auto-reported as *evasion* either.
+  Cell 19's audit found the confirming NLI detector had never detected the
+  flagged families pre-gate — an insensitive instrument corroborates neither
+  persistence nor removal — and manual inspection found the removals were a
+  mixture of genuine phrase-evasion and regex false positives. Also
+  corrected: the 0.929 AUC was calibrated for chosen-vs-rejected
+  discrimination, NOT family presence; presence-calibrated thresholds are
+  Cell 23. Until they ship, NLI confirmation inside the gate is suspended —
+  disagreement triggers manual inspection, not a verdict.)
 
 ---
 

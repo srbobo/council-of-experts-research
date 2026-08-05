@@ -487,26 +487,40 @@ removed $88\%$ of the invented families it had flagged, left preserved
 content exactly intact, and cost $7\%$ additional latency. That is a clean,
 publishable-looking success.
 
-It is not one. Because the concern had been raised that a pattern-based
-checker can be satisfied by rephrasing, we had registered---before examining
-any outcome---a confirmation pass with a second, independent instrument (the
-calibrated entailment detector). On the runs the audit intervened on, the
-second instrument found that \emph{nothing had been removed}: invented
-content per the entailment detector was unchanged at zero removed, against
-the pattern checker's $88\%$. The revisions had eliminated the matchable
-phrases, not the behavior. ``Modeled at'' became ``we estimate''; the
-invented qualification remained, now invisible to the instrument that had
-demanded its removal.
+It is not one, though establishing why required correcting our own first
+account. As registered before any outcome was examined, a second instrument
+(the calibrated entailment detector) re-scored the intervened runs and
+reported no change---which we initially read as the behavior persisting in
+rephrased form. An audit showed that reading was wrong: the entailment
+detector had detected the flagged families in \emph{zero of the eight}
+intervened runs before the audit ever acted, and its per-sentence scores
+were unchanged afterward because the revisions did not touch its
+top-scoring sentences. An instrument that never saw the behavior
+corroborates neither its removal nor its persistence.
+
+What settles the question is reading the revisions themselves. On most
+intervened runs the qualification survives in rewording: ``a \emph{modeled
+assumption}'' becomes ``\emph{assumed by the Finance contribution},'' a
+parenthetical ``(modeled assumption)'' becomes ``\emph{as assumed by
+Finance}''---content intact, re-attributed, and outside every frame the
+lexicon matches. On one run the flagged ``invention'' was the checker's own
+false positive: the action item ``Verify current uncompensated care \%''
+matches the cutoff lexicon but discloses nothing about the writer's
+knowledge, and the audit spent a revision cycle rewording an instruction to
+staff. The checker's $88\%$ is a mixture of genuine phrase-evasion and the
+instrument correcting its own overcounts; none of it is behavioral change.
 
 Two conclusions follow, one about the step and one about method. About the
-step: feeding a model its own detector output does not correct it; it
-teaches it to evade the detector, and the output afterwards carries the same
-behavior in less detectable form. Correction loops of this shape are worse
-than nothing, because they blind the measurement that would reveal their
-failure. About method: the instrument that generates feedback can never be
-the instrument that grades compliance. The success story above would have
-been reported as this paper's practical recommendation had a second
-instrument not been registered in advance.
+step: feeding a model its own detector output produces revisions that
+satisfy the detector---by rephrasing what it matches, not by removing what
+it means. Correction loops of this shape are worse than nothing, because
+they blind the measurement that would reveal their failure. About method:
+the instrument that generates feedback can never be the instrument that
+grades compliance, and a second instrument helps only if it demonstrably
+detects the construct at all; ours, we later established, did not, which is
+itself a caution about two-instrument rhetoric. The success story above
+would have been reported as this paper's practical recommendation had the
+confirmation pass not been registered in advance.
 
 \section{Asking the writer to decide}
 \label{sec:decide}
