@@ -3085,3 +3085,64 @@ the behaviour papers' invariance section gains that qualification. If P22.2
 falls with P22.1 holding: deciding generalises but open disagreement does
 not, and the backfire stands. Mixed writer results scope the claim to where
 it held.
+
+## CELL 20 VERDICT — the Lead renders the FORM of a decision but will not COMMIT (2026-08-05, 45 runs, 0 failures, 0 quarantines)
+
+| outcome | baseline | DECIDE arm |
+|---|---|---|
+| decision presence (regex tier) | 16% [10,22] | 47% [33,60] |
+| decision presence (gpt-oss judge, unanimous protocol) | 0/10 | **0/10** |
+| decision presence (qwen judge) | 0/10 | 3/10 |
+| citations/answer (same instrument both arms) | 1.1 | 2.3 |
+| figure-citation accuracy | 57% [46,69] | 47% [33,61] |
+| overrule language | 0/125 | **0/45** |
+| provenance, trigger (kept / invented) | 1.83 / 0.10 | 2.07 / 0.07 |
+| provenance, thin (kept / invented) | — | 0.27 / 0.53 |
+
+**P20.1 FALSIFIED — decisively at the registered judge tier.** The regex rise
+(16% -> 47%, disjoint CIs) is real but measures recommendation-SHAPED text.
+The registered judge validation says commitment did not appear: the stricter
+judge scored 0/10 DECIDE answers as containing a committed verdict; the more
+lenient judge 3/10. Reading the endings confirms it: answers now carry
+"Adopt X with cap Y" fragments embedded in conditional plan language ("by
+embedding these safeguards ... can launch ... while remaining agile"), and
+close on synthesis-speak, not a verdict.
+
+**Fourth instrument-disagreement finding of the programme, and reported as
+such:** regex 47%, qwen 30%, gpt-oss 0%. "Decision presence" is not a
+well-defined binary — the construct has degrees (recommendation-shaped
+content vs committed verdict), and the registered threshold sat on the
+construct's fault line. Judge-instrument caveats: the strict judge is
+gpt-oss judging gpt-oss output (self-judging), and unanimity was reached on
+only 17/20 items.
+
+**P20.2 FALSIFIED on the strict registered wording** (accuracy "does not
+fall below the 57% baseline": point estimate 47%), with the honest
+qualification that the CIs overlap heavily — a 10pp dip at n≈50-70 is not a
+measured collapse, and the joint guard's catastrophic branch (rate up,
+accuracy collapsed) did NOT occur. Rate doubled under the same instrument.
+
+**P20.3: 0/45 answers contain overrule language** (first-pass regex, patterns
+untuned — but zero, coherent with the judges' zero-commitment reading).
+**P20.4: no invention interaction.** Trigger invention 0.10 -> 0.07,
+preservation 1.83 -> 2.07 (mild rise, CIs surely overlap); thin invention
+0.53 — identical to the ungated baseline. Attribution did not absorb
+invention.
+
+**REGISTERED CONSEQUENCES EXECUTED.**
+1. Per the Cell 20 registration: "If P20.1 falls: rendering has a boundary
+   instructions cannot cross, which revises the paper's central
+   dissociation." That is now the finding. The instruction moved every
+   SURFACE it touched — structure, citations doubled, recommendation-shaped
+   sections tripled — and did not move the epistemic act underneath: the
+   model neither commits to a verdict nor overrules a specialist. Combined
+   with invention (Cell 17) this gives TWO instruction-resistant behaviors,
+   and they rhyme: both are matters of epistemic POSTURE (what the model is
+   willing to assert or forgo asserting) rather than text surface.
+   Refined dissociation: instructions control what text appears; they do not
+   control what the model commits to.
+2. Per the Cell 22 registration: P20.1 fell, therefore CELL 22 IS VOID. No
+   replays run. The registration stands as the record of what would have
+   been tested.
+3. Cell 21 (manifest accuracy) proceeds against the EXISTING output format,
+   as its registration provided.
