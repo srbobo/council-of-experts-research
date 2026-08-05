@@ -3570,3 +3570,73 @@ model. Recorded as exploratory strengthening, not a new verdict.
 **Scoping amendment executed regardless of outcomes (per registration):**
 Cell 15's absolute breadth claim ("engages only 1.2-1.7 of four families")
 is scoped as instrument-limited; comparative claims unaffected.
+
+---
+
+## CELL 25 PRE-REGISTRATION — the shrinkage law on a second architecture (Mixture-of-Agents), registered 2026-08-05 before any runs
+
+### Purpose
+The framework paper's central claim (the shrinkage law y = w·s + c at the
+writing step) currently rests on one architecture. This cell measures the
+law on a Mixture-of-Agents configuration. HONEST FRAMING, fixed now: same
+lab, same case battery, same writer model — this is CORROBORATION on a
+different architecture, not independent replication. It moves the evidence
+from one parameter card to two; it does not substitute for external
+validation (framework Part D).
+
+### Architecture (frozen)
+- **Proposers (layer 1):** phi4:14b, qwen2.5:7b-instruct,
+  mistral:7b-instruct-v0.3-q4_K_M — three GENERAL instruct models, none of
+  the council's domain specialists, no routing, no specialist system
+  prompts. Temperature 0.7, max_tokens 4096, one pass per case.
+- **Aggregator:** gpt-oss:20b with the canonical MoA aggregation prompt
+  (Wang et al. 2024, verbatim in the harness) — no PRESERVE clause, no
+  conditional instruction. Temperature 0.6, max_tokens 8192.
+- Writer model matches the council arms BY DESIGN: holding the writer fixed
+  isolates architecture; a different writer would confound both.
+- MoA is route-free: path assertion is N/A and recorded as such (this is
+  the "route-free by design" category from the audit, not a missing record).
+
+### Supply variation (frozen — the design our own guards require)
+Natural MoA runs do not span supply and would fail the identifiability
+guard. Supply is manipulated by PROGRAMMATIC ABLATION of the proposer
+texts (gst.corpus.supply_variants: sentence-level removal, deterministic
+order), from full supply down to zero, per case. The aggregator runs on
+each variant. Zero-supply coverage is therefore guaranteed by construction
+(min_zero_supply >= 5 satisfied; c measured, not extrapolated).
+
+### Runs (frozen)
+9 cases (1-6, 8-10) x all supply variants (<= families present + 1) x 2
+repeats. Estimated 60-100 aggregator calls + 27 proposer calls. Records
+written as RunRecords (JSONL: bench/runs/cell25_moa.jsonl) with the ABLATED
+variant texts as upstream — the texts the aggregator actually received.
+Floor guard 500 chars. Instruments: regex composite + per-family with
+modeled primary (per Cell 24's frozen rule). Estimators: the kit's
+shrinkage() with default guards, seed 0; per-family 2x2 as in Cell 24.
+
+### Predictions
+- **P25.1 (the form).** The MoA card shows SHRINKAGE: strata means
+  monotone in s, w in (0.15, 0.85), c > 0, both CIs excluding the
+  faithful-transduction corner (w >= 0.85 with c <= 0.15) and the
+  pure-register corner (w <= 0.15). *Falsified if* either corner holds or
+  monotonicity fails — the law does not travel even within-lab, and the
+  framework paper's central claim must be scoped to council-style
+  pipelines.
+- **P25.2 (compensating invention).** Composite invention at s=0 occurs at
+  rate >= 0.10 with Wilson CI excluding 0. *Falsified if* zero-supply
+  invention is ~0 — compensation is council-specific.
+- **P25.3 (validated channel).** D_modeled > 0 with bootstrap CI excluding
+  0, and below 0.85 (discriminates, imperfectly). *Falsified if* CI
+  includes 0 (no discrimination on the clean channel) or exceeds 0.85
+  (faithful transduction).
+
+### Consequences (fixed in advance)
+- All three hold -> the framework paper proceeds with TWO parameter cards
+  side by side, corroboration framing mandatory.
+- Any falsified -> the law is scoped to the architectures where it holds,
+  the falsifying card is published in the paper with equal prominence, and
+  Part E of the framework records the boundary. A null here is a result.
+- Ablated-variant fluency check: 10 random variants manually inspected for
+  ungrammatical residue before the aggregator stage; if ablation visibly
+  mangles texts, the cell STOPS and the ablation is repaired first
+  (registered stop condition, not a judgment call after results).
