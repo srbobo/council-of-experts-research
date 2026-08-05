@@ -90,6 +90,39 @@ class TestShrinkage:
         assert "supply levels" in r.notes[0]
         assert math.isnan(r.w)
 
+    def test_extrapolated_intercept_is_flagged(self):
+        """No runs at zero supply means c is a projection, not a measurement.
+
+        Found by running the kit across 27 arms of the originating
+        architecture: 21 reported a prior fill from data whose lowest supply
+        level was 1 or 2, and several came back NEGATIVE -- impossible for a
+        count, and proof the number was extrapolated.
+        """
+        fams = ["cutoff", "modeled", "jurisd", "hedging"]
+        recs = [_rec(i * 5 + s, fams[:s], fams[:s])
+                for s in range(2, 5) for i in range(20)]      # never s=0
+        r = shrinkage(recs)
+        assert r.identifiable and r.c_extrapolated
+        assert "EXTRAPOLATED" in r.verdict
+        assert any("EXTRAPOLATED" in n for n in r.notes)
+
+    def test_measured_intercept_is_not_flagged(self):
+        fams = ["cutoff", "modeled", "jurisd", "hedging"]
+        recs = [_rec(i * 5 + s, fams[:s], fams[:s])
+                for s in range(5) for i in range(20)]
+        assert not shrinkage(recs).c_extrapolated
+
+    def test_wide_interval_refuses_ranking(self):
+        """A wide interval is not a weak result; it is an absent one."""
+        fams = ["cutoff", "modeled", "jurisd", "hedging"]
+        recs = []
+        for i, s in enumerate([0, 1, 2, 3, 4] * 3):
+            y = 4 if i % 2 else 0                    # pure noise, no relationship
+            recs.append(_rec(i, fams[:s], fams[:y]))
+        r = shrinkage(recs)
+        assert r.weakly_identified
+        assert "WEAKLY IDENTIFIED" in r.verdict
+
     def test_prior_trust_ratio(self):
         fams = ["cutoff", "modeled", "jurisd", "hedging"]
         recs = [_rec(i * 5 + s, fams[:s], fams[:int(round(0.5 * s + 1))])

@@ -44,6 +44,8 @@ class ShrinkageResult:
     quadratic_coef: float
     quadratic_ci: tuple[float, float]
     identifiable: bool
+    c_extrapolated: bool = False
+    weakly_identified: bool = False
     notes: list[str] = field(default_factory=list)
 
     @property
@@ -56,6 +58,11 @@ class ShrinkageResult:
     def verdict(self) -> str:
         if not self.identifiable:
             return "UNIDENTIFIABLE"
+        if self.weakly_identified:
+            return "WEAKLY IDENTIFIED (interval too wide to rank against anything)"
+        if self.c_extrapolated:
+            return ("c EXTRAPOLATED (zero-supply never observed; the prior fill is "
+                    "a projection, not a measurement)")
         if self.w >= 0.85 and self.c <= 0.15:
             return "FAITHFUL TRANSDUCTION (no intervention indicated)"
         if self.w <= 0.15:
@@ -73,8 +80,9 @@ class ShrinkageResult:
 
 
 def shrinkage(records: list[RunRecord], instrument: Instrument = DEFAULT, *,
-              seed: int = 0, draws: int = 2000,
-              min_supply_levels: int = 3) -> ShrinkageResult:
+              seed: int = 0, draws: int = 2000, min_supply_levels: int = 3,
+              min_zero_supply: int = 5,
+              max_w_ci_width: float = 0.35) -> ShrinkageResult:
     """Regress emitted property level on upstream supply level.
 
     The estimate is only meaningful if the runs actually vary the supply. If
@@ -132,10 +140,35 @@ def shrinkage(records: list[RunRecord], instrument: Instrument = DEFAULT, *,
     if thin:
         notes.append(f"supply levels with n<10: {thin} (estimate leans on thin strata)")
 
+    # c is the fit at s=0. If no run ever ran at zero supply, that value is an
+    # extrapolation beyond the data, and extrapolated intercepts routinely come
+    # back NEGATIVE -- a prior fill below zero is not a small anomaly, it is
+    # proof the number is a projection. Never rank systems on an extrapolated c.
+    zero_n = strata.get(0, (0.0, 0))[1]
+    c_extrap = zero_n < min_zero_supply
+    if c_extrap:
+        lo = min(strata)
+        notes.append(
+            f"c is EXTRAPOLATED: only {zero_n} runs at supply 0 (need "
+            f">= {min_zero_supply}); the lowest well-populated level is s={lo}. "
+            "Report c as a projection or withhold it, and do not compare it "
+            "against a system where zero supply was observed."
+            + (" The fitted c is negative, which is impossible for a count and "
+               "confirms the extrapolation." if fit.intercept < 0 else ""))
+
+    # A wide interval is not a weak result; it is an absent one.
+    width = (fit.slope_ci[1] - fit.slope_ci[0]) if fit.slope_ci else float("inf")
+    weak = width > max_w_ci_width
+    if weak:
+        notes.append(f"w interval spans {width:.2f} (> {max_w_ci_width}): this arm "
+                     "cannot be ranked against another. Add runs, or widen the "
+                     "supply range, before drawing a comparison from it.")
+
     return ShrinkageResult(
         w=fit.slope, c=fit.intercept, w_ci=fit.slope_ci, c_ci=fit.intercept_ci,
         r2_runs=fit.r2, r2_strata=sfit.r2, n_runs=len(xs), strata=strata,
-        quadratic_coef=qa, quadratic_ci=qci, identifiable=True, notes=notes)
+        quadratic_coef=qa, quadratic_ci=qci, identifiable=True,
+        c_extrapolated=c_extrap, weakly_identified=weak, notes=notes)
 
 
 # --------------------------------------------------------------------------
