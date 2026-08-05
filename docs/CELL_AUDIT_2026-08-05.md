@@ -81,7 +81,16 @@ recomputation wherever the check was cheap enough to run.
   the new recall numbers rather than removed. Committed, not deployed.
 - New by-product: regex graded against judge labels — modeled sens/prec
   0.92/0.92; other families high-precision undercounts (sens 0.25–0.30).
-  Published w = 0.35 flagged as plausibly attenuated by supply undercount.
+- Cell 24 (registered same day) then tested the attenuation caveat and
+  REVERSED it: on the validated channel D_modeled = 0.213 [0.155,0.271] —
+  below the composite w = 0.352, CI disjoint. The clean channel shows MORE
+  prior-dominance, not less; the caveat is withdrawn per the registered
+  consequence. Also: the sweep's NLI adjudication section voided (postscript
+  added), arch-flat's separation confirmed real-but-degenerate on the
+  validated family, Cell 17's null and Cell 14's conclusion modeled-robust
+  (Cell 14's "if anything worse" is a disjoint interval on the clean
+  family, exploratory), and Cell 15's absolute breadth claim scoped as
+  instrument-limited.
 
 ## Honest scorecard
 

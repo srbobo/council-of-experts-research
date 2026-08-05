@@ -1,0 +1,36 @@
+population: 1260 usable runs
+
+==============================================================================
+P24.1  PER-FAMILY TRANSMISSION (full population)
+==============================================================================
+family    raised n    T_f              CI    I_f              CI    D_f
+modeled        929  0.527     [0.50,0.56]  0.314     [0.27,0.37]  0.213
+         D_f CI [0.155,0.271]   (sens .92 prec .92 (validated))
+cutoff        1003  0.451     [0.42,0.48]  0.043     [0.02,0.08]  0.408
+         D_f CI [0.367,0.448]   (sens 0/3 (undercount, unmeasurable))
+jurisd         355  0.397     [0.35,0.45]  0.020     [0.01,0.03]  0.377
+         D_f CI [0.326,0.428]   (sens .30 (undercount))
+hedging       1022  0.599     [0.57,0.63]  0.071     [0.05,0.11]  0.527
+         D_f CI [0.483,0.571]   (sens .25 prec .65 (undercount + FP-prone))
+
+P24.1 (registered bar: D_modeled >= 0.50, CI excluding 0.352): FALSIFIED — REVERSED (validated channel shows LOWER discrimination than the composite; withdraw the caveat)
+  D_modeled CI [0.155,0.271] vs composite w=0.352
+
+==============================================================================
+P24.2  SWEEP ARMS, MODELED-ONLY INVENTION (9 shared cases, n=45)
+==============================================================================
+  arch-council   I_modeled = 0.722  (n=18 eligible)
+  arch-flat      I_modeled = 0.167  (n=12)  diff CI [-0.833,-0.250]  SEPARATES
+  c17-suppress   I_modeled = 0.556  (n=9)  diff CI [-0.556,+0.222]  null holds
+  c19-gated      I_modeled = 0.333  (n=9)  diff CI [-0.722,+0.000]  null holds
+  c20-decide     I_modeled = 0.692  (n=13)  diff CI [-0.350,+0.291]  null holds
+P24.2: FALSIFIED
+P24.3 (c17 vs council, modeled invention on eligible stratum): diff CI [-0.556,+0.222] -> SUPPORTED (no separation)
+
+==============================================================================
+P24.4  CELL 14 DECOMPOSITION, MODELED PRESENCE (cases 8/9/10, raw ledger)
+==============================================================================
+  arch-council       modeled presence 0.733 [0.48,0.89]  (n=15)
+  arch-single-spec   modeled presence 0.200 [0.07,0.45]  (n=15)
+  council - single diff CI [+0.200,+0.800]
+P24.4: SUPPORTED (council not better on the clean family)

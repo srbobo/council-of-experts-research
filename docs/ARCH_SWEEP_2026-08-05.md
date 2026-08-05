@@ -145,3 +145,26 @@ independent measurements agree/disagree," not as one corroborating the other.
 
 Reproduce: `gst selftest bench/runs/imported`; raw adjudication in
 `bench/analysis/nli_adjudication.json`.
+
+---
+
+## Postscript, same day — Cells 23 and 24 change two things above
+
+**Section 3 is VOID.** Cell 23's presence calibration established that the
+NLI instrument carries no family-presence signal at any threshold (AUC
+0.12–0.55 against validated judge labels). The adjudication table above and
+its conclusion — "under an independent instrument, nothing differs from
+baseline" — rested on an instrument that measures no construct, and carry
+no evidential weight. Finding #7 stands, now explained: the pair never
+shared a construct.
+
+**The corrected comparison (Cell 24, registered):** on the validated
+modeled channel (lexicon sens/prec 0.92/0.92 per judge labels),
+arch-flat's lower invention is REAL — council 0.722 vs flat 0.167 on
+eligible runs, diff CI [−0.833,−0.250] — exactly what the composite regex
+said and the void NLI table appeared to deny. The mechanism finding is
+unchanged: flat's feature-span fraction is 0.000; it invents nothing
+because it says nothing. c17-suppress, c19-gated, and c20-decide remain
+indistinguishable from baseline on the validated channel (P24.3 and the
+P24.2 rows), so §5's "stop tuning prompts" conclusion survives on better
+evidence than it was first written on.

@@ -3514,3 +3514,59 @@ robustness check. Zero new model calls; pure ledger recomputation.
   25–30% recall, so true breadth is understated by an unknown amount and
   the claim requires judge-based re-measurement before further use. The
   comparative claims of Cell 15 are unaffected.
+
+---
+
+## CELL 24 VERDICT — the validated channel shows MORE prior-dominance, not less; the attenuation caveat is withdrawn and reversed (2026-08-05, pure ledger recomputation, registered estimator)
+
+Full report: bench/analysis/cell24_report.txt. Population 1,260; per-family
+2x2 with Wilson CIs and seeded bootstrap, exactly as frozen.
+
+| family | T_f (preserve) | I_f (invent) | D_f [95% CI] | instrument validity |
+|---|---|---|---|---|
+| **modeled** | 0.527 | 0.314 | **0.213 [0.155,0.271]** | validated (.92/.92) |
+| cutoff | 0.451 | 0.043 | 0.408 [0.367,0.448] | undercount (0/3) |
+| jurisd | 0.397 | 0.020 | 0.377 [0.326,0.428] | undercount (.30) |
+| hedging | 0.599 | 0.071 | 0.527 [0.483,0.571] | undercount + FP (.25/.65) |
+
+**P24.1 FALSIFIED — in the opposite direction.** Registered bar: D_modeled
+>= 0.50 with CI excluding 0.352 from above. Observed: D_modeled = 0.213
+[0.155,0.271] — the CI excludes 0.352 from BELOW. On the one channel whose
+measurement is validated, the writer preserves a raised modeled
+qualification only 53% of the time and invents one 31% of the time when no
+seat raised it. **Registered consequence executed:** the Cell 23 attenuation
+caveat ("published w=0.35 is plausibly an underestimate") is WITHDRAWN as
+not merely overcautious but backwards — the clean channel shows LOWER
+discrimination than the composite, so if anything the lossy families
+flattered w. The shrinkage thesis (prior-heavy writer) is STRENGTHENED on
+the best-measured family. Caveat kept honest: D_f and the composite w are
+different estimands; the registered comparison bar was 0.352 and the result
+is unambiguous against it.
+
+**P24.2 FALSIFIED — by arch-flat, as the composite regex said and the (now
+void) NLI adjudication denied.** Modeled-only invention on eligible runs
+(modeled not raised upstream; n=9-18 per arm, small, stated): council 0.722,
+flat 0.167, diff CI [-0.833,-0.250] disjoint. c17/c19/c20 all remain nulls.
+**Registered consequence executed:** ARCH_SWEEP amended. Two things change
+there: (a) flat's lower invention is REAL on the validated channel — but the
+mechanism finding stands unchanged (feature-span 0.000: flat says nothing,
+and silence cannot invent), so it remains a degenerate corner, not an
+improvement; (b) independently, the sweep's NLI adjudication section is
+VOID per Cell 23 — its "nothing survives an independent instrument"
+conclusion rested on an instrument that measures no construct. The sweep's
+surviving comparisons are regex-composite and modeled-only.
+
+**P24.3 SUPPORTED.** c17-suppress vs council on the eligible stratum: diff
+CI [-0.556,+0.222], no separation. Cell 17's null is modeled-robust.
+
+**P24.4 SUPPORTED, with a strengthening reported as exploratory.** Council
+does not separate below single+spec — and in fact separates ABOVE: modeled
+presence on trigger-free cases 0.733 [0.48,0.89] vs 0.200 [0.07,0.45], diff
+CI [+0.200,+0.800] disjoint. Cell 14's hedged "if anything worse" is now,
+on the validated family and post-hoc (n=15/15), a disjoint interval: the
+council IS worse at unwarranted modeled qualification than a lone prompted
+model. Recorded as exploratory strengthening, not a new verdict.
+
+**Scoping amendment executed regardless of outcomes (per registration):**
+Cell 15's absolute breadth claim ("engages only 1.2-1.7 of four families")
+is scoped as instrument-limited; comparative claims unaffected.
