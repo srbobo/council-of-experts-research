@@ -1,0 +1,497 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\title{A Shrinkage Law for Epistemic Transport at the Writing Step of
+Language-Model Pipelines\\[4pt]
+\large with an open measurement kit and two parameter cards}
+\author{Sam Bobo\\ \small with analysis assistance from Claude (Anthropic)}
+\date{Draft v0.1 --- August 2026}
+
+\newcommand{\ww}{\ensuremath{w}}
+\newcommand{\cc}{\ensuremath{c}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+When a language model writes the final answer of a multi-component pipeline,
+the epistemic qualifications raised upstream---disclosed assumptions, staleness
+warnings, jurisdictional distinctions, conditions of validity---do not
+transport into the output. Across $1{,}340$ audited runs of two architectures
+sharing one writer model, output qualification follows a single line:
+$y = \ww s + \cc$, the form of a shrinkage estimator that weighs upstream
+supply $s$ against a prior. Under a conditional-preservation instruction the
+evidence weight is $\ww=0.35$ $[0.31,0.39]$; under the canonical
+mixture-of-agents prompt it is $\ww=0.16$ $[0.08,0.23]$, statistically
+inseparable from ignoring upstream entirely; and compensating invention at
+zero supply---qualification fabricated when no component raised any---appears
+in both architectures ($40\%$ and $28\%$ of zero-supply runs). Three further
+results sharpen the law: the parameters are set by the writing instruction,
+not the architecture; corroboration of a claim by multiple components does not
+raise its transport on our validated measurement channel; and no intervention
+we tested (four instructions, three training objectives, one correction loop)
+moved the parameters durably, while post-hoc selection with a verifier the
+generator never observes reliably does. We release a zero-dependency
+measurement kit that estimates the parameters from any pipeline's logs,
+carrying the identifiability guards that disqualified $21$ of our own $27$
+experimental arms and the instrument-validation protocol without which our own
+second instrument measured nothing. Finally we derive the \emph{optimal}
+parameters from upstream reliability, showing that perfect transport
+($\ww{=}1$, $\cc{=}0$) is optimal only for perfectly reliable components: the
+parameters are diagnostics for choosing interventions, never objectives to
+train or search against.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Multi-component language-model systems end, almost universally, in a writing
+step: one model reads what specialists, proposers, or retrieved documents
+produced and writes the answer a user sees. A large literature measures
+whether this step preserves \emph{accuracy}. This paper measures whether it
+preserves \emph{epistemic content}---the assumptions a component disclosed,
+the staleness it warned about, the conditions under which its claim holds.
+These are the parts of an answer that tell a reader how much to trust the
+rest, and they are precisely the parts a downstream reader cannot
+reconstruct if the writer drops them.
+
+Our central finding is that the writing step does not transport this content.
+It behaves as an estimator: it emits the level of qualification an answer of
+its type ought to carry, weighing the upstream evidence against a prior
+learned long before the pipeline existed. That behavior is captured by one
+measurable law, and the law by two parameters,
+\begin{equation}
+\label{eq:law}
+y \;=\; \ww\, s \;+\; \cc ,
+\end{equation}
+where $s$ is the number of qualification families the upstream components
+raised, $y$ the number in the final output, $\ww$ the \emph{evidence weight},
+and $\cc$ the \emph{prior fill}. A transducer has $\ww=1$, $\cc=0$. A writer
+that ignores its inputs has $\ww=0$. Every system we measured sits low in
+between, and the two corollaries of sitting there are the phenomena a
+deployer actually experiences: at high supply the writer discards most of
+what its components raised, and at zero supply it \emph{invents}---emitting
+qualifications with no upstream source, at rates we measure at $28\%$
+and $40\%$ of zero-supply runs in the two architectures.
+
+The contributions are:
+
+\begin{enumerate}
+\item \textbf{The law, measured} (\S\ref{sec:cards}): parameter cards for two
+architectures sharing one writer---a routed specialist council and a
+canonical mixture-of-agents (MoA) stack---with bootstrap intervals, a
+five-level supply sweep in which zero supply is measured rather than
+extrapolated, and per-family decomposition on a validated channel.
+\item \textbf{What sets the parameters} (\S\ref{sec:sets}): the writing
+instruction moves \ww{} more than the entire architectural difference
+($0.16 \to 0.35$); the compensation phenomenon travels across architectures;
+and corroboration---the one reliability signal a multi-agent system uniquely
+produces---does not modulate transport on the validated channel.
+\item \textbf{Interventions under the law} (\S\ref{sec:interventions}):
+instructions, preference training, and detector-fed correction loops all
+fail, the last by producing improvement only its own instrument can see;
+verifier-blind selection works, and its yield must be computed from the
+\emph{measured} best-of-$n$ curve, because redraws are positively correlated
+and the independence formula over-promises in both architectures.
+\item \textbf{The kit} (\S\ref{sec:kit}): a zero-dependency package that
+estimates $(\ww,\cc)$, the feature-span fraction, instrument blind spots, and
+the clean-sample rate from logs, with identifiability guards and a
+per-channel instrument-validation protocol, both of which materially changed
+our own conclusions.
+\item \textbf{The optimal parameters, derived} (\S\ref{sec:optimal}):
+$\ww^{*}$ and $\cc^{*}$ follow from measured upstream reliability and
+declared error costs; $\ww^{*}{=}1$ requires perfectly reliable components,
+and $\cc^{*}{>}0$ is optimal whenever components miss warranted caution. The
+parameters are therefore diagnostics, never training or search objectives.
+\end{enumerate}
+
+Scope, stated before anything else: both architectures were built in one lab,
+share one writer model and one authored case battery, and all rates are
+relative to a lexicon whose per-family validity we measured and report. The
+paper's claims are calibrated to that evidence, its falsification conditions
+are explicit (\S\ref{sec:falsify}), and the kit exists so that any reader can
+produce the third card.
+
+\section{Definitions and estimators}
+\label{sec:defs}
+
+\textbf{Property class.} We measure four families of epistemic
+qualification: disclosure of training-data staleness (\emph{cutoff}),
+labeling of numbers as assumptions (\emph{modeled}), separate treatment of
+jurisdictions or regimes (\emph{jurisd}), and statements of conditions under
+which a claim changes (\emph{hedging}). The framework is not specific to
+this class; the kit ships a second class (source attribution) as a plug-in.
+
+\textbf{Supply and emission.} For one run, $s$ is the number of families
+present in the text the writer actually received (verbatim capture is a
+precondition; see \S\ref{sec:kit}), and $y$ the number present in its
+output. Runs shorter than $500$ characters are excluded, never scored.
+
+\textbf{The regression.} $(\ww,\cc)$ are the OLS coefficients of
+Eq.~\ref{eq:law} over runs, with seeded bootstrap intervals. Because $y$
+counts at most four families, the fit is reported alongside its
+identifiability guards: the estimate is refused when supply spans fewer than
+three levels, flagged as \emph{extrapolated} when no runs at $s{=}0$ exist
+(an intercept fitted outside its data routinely returns the impossible
+$\cc<0$), and flagged as \emph{weakly identified} when the \ww{} interval
+exceeds $0.35$. Applied to our own ledger, these guards disqualified $21$ of
+$27$ arms with $n\geq30$---most of our own experiments were never powered
+for the comparisons their point estimates invited.
+
+\textbf{Per-family transmission.} Family presence is binary per run, so
+per family the regression is unidentifiable and the registered quantities
+are conditional: $T_f = P(f \in \text{output} \mid f\ \text{raised})$,
+$I_f = P(f \in \text{output} \mid f\ \text{not raised})$, and the
+discrimination $D_f = T_f - I_f$.
+
+\textbf{Auxiliary parameters.} The feature-span fraction $f$ (share of
+output characters in qualification-bearing sentences) quantifies why
+sequence-level preference training dilutes; the clean-sample rate $p_0$
+(probability a run contains no invented family) sizes selection
+(\S\ref{sec:interventions}).
+
+\section{Instruments, validated per channel}
+\label{sec:instruments}
+
+Every number in this paper is instrument-relative, so the instruments were
+graded before the numbers were trusted. Against blinded dual-judge labels
+over $200$ sentences (judge--judge agreement $0.86$; accuracy $0.90$/$0.93$
+on hand-written anchors that include paraphrase positives and keyword-bait
+negatives), the lexicon detects the \emph{modeled} family well (sensitivity
+$0.92$, precision $0.92$) and the remaining families conservatively
+(specificity $\geq 0.95$, sensitivity $0.25$--$0.30$). All composite rates
+are therefore undercounts outside the modeled family, and \emph{modeled} is
+the validated channel on which per-family claims rest.
+
+The cautionary result: our second instrument, a natural-language-inference
+detector with a genuine $0.93$ AUC on the discrimination task it was
+calibrated for, was re-calibrated against the same judge labels for the task
+it had actually been used on---family presence---and carried \emph{no
+signal}: per-family AUC $0.12$--$0.55$, two families inversely related to
+truth. No threshold rescues an AUC below chance. Two instruments had
+"agreed" for weeks while measuring different constructs. The protocol that
+found this ships with the kit, and the framework's rule follows from it:
+a verdict requires two instruments \emph{whose sensitivity to the construct
+has itself been demonstrated}; agreement between unvalidated instruments is
+rhetoric.
+
+\section{Two parameter cards}
+\label{sec:cards}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Council} & \textbf{Mixture-of-Agents} \\
+ & (routed specialists, & (general proposers, \\
+ & conditional instruction) & canonical prompt) \\
+\midrule
+runs & $1{,}260$ & $80$ \\
+evidence weight \ww & $0.352\ [0.310, 0.391]$ & $0.158\ [0.076, 0.234]$ \\
+prior fill \cc & $0.540\ [0.437, 0.651]$ & $0.275\ [0.104, 0.456]$ \\
+prior-trust ratio $(1{-}\ww)/\ww$ & $1.84$ & $5.35$ \\
+supply strata means ($s{=}0..4$) & $.40\,/\,.81\,/\,1.32\,/\,1.62\,/\,1.83$
+ & $.28\,/\,.44\,/\,.50\,/\,.88\,/\,.83$ \\
+strata $R^2$ / run-level $R^2$ & $0.976$ / $0.140$ & $0.890$ / $0.136$ \\
+zero-supply runs inventing & $40\%\ [29\%, 52\%]$ & $27.8\%\ [12\%, 51\%]$ \\
+feature-span fraction $f$ & $0.068$ & $0.002$ \\
+$D_{\text{modeled}}$ (validated channel) & $0.213\ [0.155, 0.271]$
+ & $-0.010\ [-0.139, 0.117]$ \\
+\bottomrule
+\end{tabular}
+\caption{Parameter cards for two architectures sharing one writer model
+(gpt-oss-20B). Both $R^2$ values are reported deliberately: the law
+describes the conditional mean tightly and individual runs loosely, and
+quoting only the strata fit would oversell it. The council card pools all
+usable ledger runs; the MoA card is an $80$-run supply sweep in which supply
+was manipulated by sentence-level ablation and injection of the upstream
+texts, so $s{=}0$ is measured, not extrapolated.}
+\label{tab:cards}
+\end{table}
+
+Table~\ref{tab:cards} is the paper's central evidence. Three readings:
+
+\textbf{The form travels.} Both architectures show monotone strata, positive
+prior fill, and an evidence weight whose interval excludes zero: writers
+respond to supply, incompletely, and fill from a prior when supply is
+absent. Compensating invention at zero supply---the deployer-facing
+symptom---appears in both ($40\%$ and $28\%$ of zero-supply runs), and on
+trigger-light cases authored to warrant \emph{no} qualification, so for
+those cases invention is miscalibration by construction, independent of any
+judgment about upstream quality.
+
+\textbf{The parameters do not travel.} The MoA card sits near the
+pure-register corner: its \ww{} interval does not exclude $0.15$, its
+prior-trust ratio is three times the council's, and on the validated channel
+its discrimination is indistinguishable from zero---the aggregator emits
+modeled qualification at the same rate whether or not any proposer raised
+it. Its composite slope is carried by families whose distinctive phrases
+the writer sometimes echoes, not by behavior on the channel we can measure
+cleanly. We registered the prediction that the MoA card would show the full
+shrinkage form with both corners excluded; it did not, and per the
+registration this boundary is reported at equal prominence with the
+successes.
+
+\textbf{The near-silent regime exists and scores deceptively well.} The MoA
+outputs carry almost no qualification content at all ($f=0.002$; the
+council's naive flat-merge arm measured $f=0.000$). A silent writer invents
+little because it says little---composite invention metrics reward it, and
+any evaluation that does not report $f$ beside the invention rate will
+mistake silence for calibration.
+
+\section{What sets the parameters}
+\label{sec:sets}
+
+\textbf{The instruction, more than the architecture.} Holding the writer
+model fixed and restricting to a shared nine-case battery: the canonical MoA
+prompt over general proposers yields $\ww=0.16\ [0.08,0.23]$; a naive merge
+prompt over domain specialists yields $\ww=0.255\ [0.13,0.39]$; the
+conditional-preservation instruction over the same specialists yields
+$\ww=0.346\ [0.22,0.47]$. The instruction change moves \ww{} by more than
+the upstream-composition change, and no instruction we found moves it past
+roughly a third of the way to transport. Clause ablation in the earlier
+program localizes the effect further: a single conditional clause carries
+essentially the entire instruction effect, and each clause lifts primarily
+the family it names. Instructions act as a gain control on transport---
+graded, targeted, and bounded well short of fidelity.
+
+\textbf{Corroboration is not used.} A multi-agent system produces one
+reliability signal a single model cannot: independent agreement among
+components. If the writer performed any reliability weighting, a family
+raised by two or more components should transport at a higher rate than a
+family raised by one. On the validated channel it does not:
+$T(k{=}1)=0.524$ ($n{=}824$) versus $T(k{\geq}2)=0.487$ ($n{=}76$),
+difference CI $[-0.153, +0.080]$. The three low-validity families show
+large monotone agreement effects (up to $+0.43$), which we report without a
+mechanism claim: genuine family-specific weighting, phrase-exposure
+artifact (more components using a distinctive phrase mechanically raises
+the chance one detectable phrasing survives), and case-mix confounding are
+all live, and separating them requires judge labels rather than a lexicon.
+On the channel we can trust, the summary of this section is one sentence:
+\emph{instructions set the gain; nothing we found sets the calibration}---
+not architecture, not training (\S\ref{sec:interventions}), and not the
+architecture's own agreement structure.
+
+\section{Interventions under the law}
+\label{sec:interventions}
+
+The law explains why the obvious interventions fail, and the failures in
+turn support the law. We summarize; the companion behavioral paper reports
+each in full.
+
+\textbf{Instructions} move surface density (the gain of
+\S\ref{sec:sets}) but leave invention intact: an explicit
+suppression clause left zero-supply invention statistically unchanged.
+Under the law this is expected---shrinkage toward a prior is loss-optimal
+on the training distribution, and no instruction changes what is
+loss-optimal.
+
+\textbf{Sequence-level preference training} (DPO/ORPO variants, three
+objective classes) produced the dissociation the feature-span fraction
+predicts: preference accuracy rose $0.48 \to 0.94$ while emitted behavior
+did not move. With $f \approx 0.07$, roughly $93\%$ of a sequence-level
+margin is satisfiable off-feature; we measured the pair construction used
+in the failed runs at $0.87$ off-feature mass, against $0.00$ for
+programmatically constructed minimal pairs.
+
+\textbf{Detector-fed correction} is worse than nothing. A runtime audit
+that quoted its detector's matched phrases back to the writer removed
+$88\%$ of flagged inventions \emph{by that detector's count}; manual
+inspection showed the qualifications surviving in rewording, and one
+flagged "invention" was the detector's own false positive. The instrument
+that generates feedback can never grade compliance---and a second
+instrument only helps if its sensitivity is demonstrated
+(\S\ref{sec:instruments}).
+
+\textbf{Verifier-blind selection} is the intervention the law permits.
+Sample $n$ outputs, keep the one whose provenance audit is cleanest, never
+reveal the verifier to the generator; annotate residual failures rather
+than revising them. Structurally, selection conditions the output
+distribution while feedback conditions the policy input; only the latter
+can be gamed, because only the latter is observable. Sizing must use the
+\emph{measured} curve: in both architectures the empirical best-of-$n$
+yield sits below the independence formula $1-(1-p_0)^n$ (council:
+$0.83$ measured vs.\ $0.94$ predicted at $n{=}3$; MoA: $0.78$ vs.\ $0.89$
+at $n{=}2$), because a writer that invents on a prompt tends to invent
+again on redraws. The kit computes both curves and reports how many
+distinct tasks support each point.
+
+\section{The measurement kit}
+\label{sec:kit}
+
+The kit (\texttt{gst-kit}, MIT, zero dependencies in the core) turns a
+pipeline's logs into a parameter card. Integration is one adapter from the
+system's log shape to a four-field record---upstream texts as the writer
+received them, output, task identifier, condition---with prebuilt adapters
+for MoA stacks, LangGraph- and AutoGen-style frameworks, retrieval
+pipelines, and generic JSONL. Three design commitments came from
+measurement failures documented in our own program:
+
+\begin{enumerate}
+\item \textbf{Guards over estimates.} Every estimator refuses or flags an
+answer its input could not identify (supply that never varies, an
+extrapolated intercept, a weakly identified slope, best-of-$n$ points
+supported by an unrepresentative subpopulation). Each guard exists because
+its absence produced a wrong number that we published internally or nearly
+published.
+\item \textbf{Execution-path assertion.} The writer prompt actually used is
+captured and asserted per run; violating runs are quarantined and counted.
+Thirty-nine of our runs silently measured a prompt that never executed, and
+two verdicts had to be withdrawn.
+\item \textbf{Structural safety over procedural care.} The selection API
+takes a zero-argument sampler; passing a callable that could receive
+feedback is a type error, not a guideline.
+\end{enumerate}
+
+\section{The optimal parameters are derived, not chosen}
+\label{sec:optimal}
+
+It is tempting to read Table~\ref{tab:cards} as a scoreboard on which
+$\ww{=}1$, $\cc{=}0$ wins. It is not, and the reason disciplines the whole
+framework. The writer faces a signal-detection problem: upstream supply is
+a noisy signal of whether qualification is \emph{warranted}. The optimal
+response to a noisy signal is exactly a shrinkage estimator, with
+\begin{equation}
+\ww^{*} \;=\; \frac{\tau^{2}}{\tau^{2}+\sigma^{2}},
+\end{equation}
+the upstream components' signal-to-noise ratio. Perfect transport is
+optimal only for perfectly reliable components. Our specialists are not:
+they raise qualification on content authored to warrant none, so
+$\ww^{*}<1$; and to the extent they \emph{miss} warranted caution,
+$\cc^{*}>0$---some invention is a writer correctly filling gaps. The
+measured pathology is therefore not shrinkage itself but
+\emph{miscalibrated} shrinkage: weights set by pretraining priors rather
+than by the measured reliability of the actual upstream, and invention
+uncorrelated with warrant (the zero-supply inventions occur on cases
+authored to warrant nothing).
+
+Two consequences. First, the honest scope of our normative claims:
+"the writer under-weights its components" presumes the components deserve
+the weight, and upstream warrant-precision is a quantity we have not
+measured; our unconditional claims are anchored on the authored zero-warrant
+cases. Second, and centrally: because $(\ww^{*},\cc^{*})$ are functions of
+measured upstream reliability and \emph{declared} error costs, legitimate
+optimization targets the derivation---never the diagnostic. Training or
+searching against $(\ww,\cc)$ directly selects for transcription and for
+instrument artifacts (a perfect score describes a parrot, not a judge), and
+at ecosystem scale a reported diagnostic becomes a target without anyone
+optimizing it deliberately. The framework's rule: measure $(\ww,\cc)$ to
+choose an intervention; estimate $(\ww^{*},\cc^{*})$ from held-out
+reliability measurements and stated costs if a target is needed; and keep
+evaluation batteries sealed from tuning.
+
+\section{Related work}
+\label{sec:related}
+
+Mixture-of-agents aggregation was introduced by Wang et
+al.~\cite{wang2024moa}; Li et al.~\cite{li2025selfmoa} showed aggregation
+quality is sensitive to proposer quality, the accuracy-domain analogue of
+our reliability argument. A 2026 literature documents uncertainty loss in
+agent pipelines: Shi et al.~\cite{shi2026laundering} name the phenomenon of
+fragile upstream states repackaged as confident artifacts, and propagation
+frameworks~\cite{up2026,runtime2026,confsignals2026} monitor confidence
+across components. Relative to this line, our contributions are (i)
+\emph{bidirectionality}---we measure invention under scarcity, not only
+loss; (ii) a \emph{quantitative law} with estimable parameters rather than
+a qualitative failure mode; (iii) an \emph{operational calibration test}
+for aggregators (fitted \ww{} against derived $\ww^{*}$); and (iv) the
+instrument-validation protocol without which, our own experience shows,
+such measurements are unreliable. Single-model neighbors measure certainty
+distortion between input and output~\cite{cd2026} and uncertainty
+preservation in clinical summarization~\cite{clinical2026}; neither
+addresses the multi-component writing step or supplies portable
+measurement. The learning--acting dissociation under sequence-level
+preference objectives connects to known credit-assignment limits of
+DPO-family losses~\cite{rafailov2023dpo,hong2024orpo}; Goodhart dynamics
+under optimization pressure are classical~\cite{goodhart1984,campbell1979}
+and we treat our detector-fed correction result as a measured instance.
+
+\section{Limitations}
+\label{sec:limits}
+
+Both cards come from one lab, one writer model, one authored nine-case
+battery, and one property class; the MoA card is corroboration, not
+independent replication. All rates are lexicon-relative; outside the
+modeled family the lexicon is a high-precision undercounter, and per-family
+claims are made only on the validated channel. Supply in the MoA sweep was
+manipulated by ablation and injection, so its high-supply strata measure
+mixed upstream. Upstream warrant-precision is unmeasured, which bounds the
+normative reading of the discard results (\S\ref{sec:optimal}); the
+invention results are anchored on authored zero-warrant cases and do not
+share that bound. $\ww$ and $D_f$ are different estimands; we compare them
+only where registered. The agreement-effect mechanism on low-validity
+families is unresolved. All experiments were pre-registered with
+consequences stated in advance; registrations, amendments, and two
+corrections issued during this program's own audit are in the public
+runbook.
+
+\section{Falsification and replication}
+\label{sec:falsify}
+
+The framework is refuted, not embarrassed, by: a writer trained on ordinary
+text showing $\ww\approx1$, $\cc\approx0$ without intervention; a supply
+response no monotone estimator reading survives; sequence-level preference
+training moving a small-$f$ behavior at modest scale; or selection showing
+improvement under its own verifier that an independent validated instrument
+denies. The cleanest single test is the selection-versus-feedback
+asymmetry: the same verifier, used post-hoc versus in-loop, is predicted to
+produce real versus instrument-relative improvement. Running any of these
+requires an afternoon: one adapter, one \texttt{gst measure} invocation,
+and a supply sweep by ablation if natural variation is insufficient. The
+third parameter card---anyone's---is the most useful thing this paper can
+cause to exist.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+One line describes what a pipeline's writing step does to epistemic
+content; two numbers describe how badly; both are measurable from logs in
+an afternoon. In every configuration we built, the writer weighed its own
+prior above its components' evidence, filled silence with invented caution
+on cases authored to warrant none, ignored the one reliability signal its
+architecture uniquely produced, and resisted every correction except being
+sampled and selected by a verifier it never saw. The instruction is the
+only dial that moves the evidence weight, and it stops a third of the way
+to fidelity. Whether these parameters are constants of current models or
+artifacts of our corner of the design space is exactly the question the
+kit exists to settle.
+
+\begin{thebibliography}{9}
+\bibitem{wang2024moa} J.~Wang et al. Mixture-of-Agents enhances large
+language model capabilities. \emph{arXiv:2406.04692}, 2024.
+\bibitem{li2025selfmoa} W.~Li et al. Rethinking Mixture-of-Agents: is
+mixing different large language models beneficial?
+\emph{arXiv:2502.00674}, 2025.
+\bibitem{shi2026laundering} K.~Shi et al. Confidence laundering in agent
+systems: why uncertainty needs a latent carrier. \emph{arXiv:2606.20662},
+2026.
+\bibitem{up2026} Uncertainty propagation in LLM-based systems.
+\emph{arXiv:2604.23505}, 2026.
+\bibitem{runtime2026} Runtime uncertainty monitoring for LLM-based
+multi-agent systems using Bayesian networks. \emph{arXiv:2607.25877}, 2026.
+\bibitem{confsignals2026} Multiagent protocols with aggregated confidence
+signals. \emph{arXiv:2606.13591}, 2026.
+\bibitem{cd2026} Certainty distortion in large language models.
+\emph{arXiv:2606.07951}, 2026.
+\bibitem{clinical2026} Do language models preserve clinical uncertainty? A
+benchmark for uncertainty-aware summarization. \emph{arXiv:2606.18471},
+2026.
+\bibitem{rafailov2023dpo} R.~Rafailov et al. Direct preference
+optimization: your language model is secretly a reward model.
+\emph{NeurIPS}, 2023.
+\bibitem{hong2024orpo} J.~Hong, N.~Lee, J.~Thorne. ORPO: monolithic
+preference optimization without reference model. \emph{arXiv:2403.07691},
+2024.
+\bibitem{goodhart1984} C.~Goodhart. Problems of monetary management: the
+UK experience. In \emph{Monetary Theory and Practice}, 1984.
+\bibitem{campbell1979} D.~Campbell. Assessing the impact of planned social
+change. \emph{Evaluation and Program Planning}, 2(1), 1979.
+\end{thebibliography}
+
+\end{document}
