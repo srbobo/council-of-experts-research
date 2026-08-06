@@ -3813,3 +3813,48 @@ council surfaces tensions but does not use them") must be narrowed to
 commitment behavior only, since weighting behavior would exist. No
 optimization, no adoption of any configuration — this is characterization
 under the diagnostics-not-objectives rule.
+
+---
+
+## CELL 26 VERDICT — no agreement weighting on the validated channel; the low-validity families show a strong k-response whose mechanism these instruments cannot adjudicate (2026-08-06, 1,165 multi-seat runs, zero model calls)
+
+Report: bench/analysis/cell26_report.txt.
+
+**P26.1 FALSIFIED.** On the validated modeled channel, corroboration buys
+nothing: T(k=1) = 0.524 (n=824) vs T(k>=2) = 0.487 (n=76), diff CI
+[−0.153, +0.080]. The sweep-population subset agrees (0.766 vs 0.571,
+CI overlapping, direction if anything negative). Per the registered
+consequence: the writer ignores the one reliability signal the multi-agent
+architecture uniquely provides. "Surfaces evidence it cannot use" is now a
+measurement, not rhetoric — and it extends Cell 20's finding from
+commitment to weighting: the council neither acts on its tensions nor
+weights by its agreements, on the channel we can trust.
+
+**The secondary pattern, reported without a mechanism claim.** All three
+low-validity families show large, monotone k-responses, disjoint from
+zero: cutoff +0.388 [0.33, 0.45] (dose 0.15/0.40/0.62), jurisd +0.434
+[0.32, 0.54] (0.28/0.65/0.85), hedging +0.201 [0.14, 0.26]
+(0.51/0.70/0.80). Composite P26.2 (+0.163 [0.13, 0.20]) is carried
+entirely by them. Three rival mechanisms, NOT adjudicable with these
+instruments:
+1. Genuine family-specific agreement weighting (behavioral);
+2. Phrase-exposure artifact: low-recall families are detected by
+   distinctive phrases, and more seats using a phrase mechanically raises
+   P(at least one detectable phrasing survives into the output) — a
+   coverage effect, not a decision. Detection on modeled is not
+   phrase-bottlenecked, which would explain why the flat truth shows only
+   there. Note: observed k-curves EXCEED the independent-echo prediction
+   1−(1−p)^k (cutoff k=3: 0.62 observed vs 0.39 predicted), so pure
+   independent exposure does not fully account for it either;
+3. Supply/case-mix confound: k correlates with trigger density and total
+   supply (the registration's stated confound; the trigger-light stratum
+   is too thin to help, n=25).
+Adjudication requires judge labels on a k-stratified sample — recorded as
+the natural follow-up, not run.
+
+**Consequence executed.** The framework paper's Layer-3 discussion gets the
+measured version: on the validated channel, agreement structure does not
+modulate transport. The unifying sentence stands as written —
+"instructions set the gain; nothing we found sets the calibration" — now
+with the strongest possible support, since even the architecture's own
+reliability signal goes unused.

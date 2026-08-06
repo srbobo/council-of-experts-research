@@ -1,0 +1,53 @@
+population: 1165 usable multi-seat runs (cell25 MoA excluded per registration)
+
+==============================================================================
+PRIMARY — all multi-seat runs  (n=1165 runs)
+==============================================================================
+family     n(k=1)   T(k=1)  n(k>=2)  T(k>=2)    diff             diff CI
+modeled       824    0.524       76    0.487  -0.037     [-0.153,+0.080]   (validated (.92/.92))
+         dose: k=1:0.52(n=824)  k=2:0.53(n=70)  k=3:0.00(n=6)   monotone=False
+cutoff        232    0.151      764    0.539  +0.388     [+0.329,+0.446]   (undercount (0/3))
+         dose: k=1:0.15(n=232)  k=2:0.40(n=289)  k=3:0.62(n=475)   monotone=True
+jurisd        268    0.284       78    0.718  +0.434     [+0.317,+0.542]   (undercount (.30))
+         dose: k=1:0.28(n=268)  k=2:0.65(n=52)  k=3:0.85(n=26)   monotone=True
+hedging       561    0.510      453    0.711  +0.201     [+0.142,+0.259]   (undercount+FP (.25/.65))
+         dose: k=1:0.51(n=561)  k=2:0.70(n=402)  k=3:0.80(n=51)   monotone=True
+
+==============================================================================
+SECONDARY (a) — 5-arm sweep population, single writer  (n=195 runs)
+==============================================================================
+family     n(k=1)   T(k=1)  n(k>=2)  T(k>=2)    diff             diff CI
+modeled       154    0.766       14    0.571  -0.195     [-0.468,+0.065]   (validated (.92/.92))
+         dose: k=1:0.77(n=154)  k=2:0.73(n=11)  k=3:0.00(n=3)   monotone=False
+cutoff         70    0.143       58    0.224  +0.081     [-0.056,+0.219]   (undercount (0/3))
+         dose: k=1:0.14(n=70)  k=2:0.18(n=49)  k=3:0.44(n=9)   monotone=True
+jurisd         57    0.316       13    0.538  +0.223     [-0.078,+0.513]   (undercount (.30))
+         dose: k=1:0.32(n=57)  k=2:0.50(n=8)  k=3:0.60(n=5)   monotone=True
+hedging        69    0.435       98    0.714  +0.280     [+0.131,+0.423]   (undercount+FP (.25/.65))
+         dose: k=1:0.43(n=69)  k=2:0.72(n=89)  k=3:0.67(n=9)   monotone=False
+
+==============================================================================
+SECONDARY (b1) — trigger-heavy cases  (n=1140 runs)
+==============================================================================
+family     n(k=1)   T(k=1)  n(k>=2)  T(k>=2)    diff             diff CI
+modeled       810    0.528       76    0.487  -0.042     [-0.160,+0.072]   (validated (.92/.92))
+         dose: k=1:0.53(n=810)  k=2:0.53(n=70)  k=3:0.00(n=6)   monotone=False
+cutoff        225    0.138      761    0.537  +0.400     [+0.342,+0.456]   (undercount (0/3))
+         dose: k=1:0.14(n=225)  k=2:0.40(n=286)  k=3:0.62(n=475)   monotone=True
+jurisd        268    0.284       78    0.718  +0.434     [+0.321,+0.547]   (undercount (.30))
+         dose: k=1:0.28(n=268)  k=2:0.65(n=52)  k=3:0.85(n=26)   monotone=True
+hedging       548    0.513      453    0.711  +0.198     [+0.140,+0.258]   (undercount+FP (.25/.65))
+         dose: k=1:0.51(n=548)  k=2:0.70(n=402)  k=3:0.80(n=51)   monotone=True
+
+==============================================================================
+SECONDARY (b2) — trigger-light cases  (n=25 runs)
+==============================================================================
+family     n(k=1)   T(k=1)  n(k>=2)  T(k>=2)    diff             diff CI
+modeled        14        —        0        —   too thin to compare   (validated (.92/.92))
+cutoff          7        —        3        —   too thin to compare   (undercount (0/3))
+jurisd          0        —        0        —   too thin to compare   (undercount (.30))
+hedging        13        —        0        —   too thin to compare   (undercount+FP (.25/.65))
+
+==============================================================================
+P26.1 FALSIFIED — no detectable agreement weighting (0.487 vs 0.524, diff CI [-0.153,+0.080] includes 0). The writer ignores the one reliability signal the architecture uniquely provides; 'surfaces evidence it cannot use' is now a measurement, not rhetoric.
+P26.2 (composite, secondary): T(k=1)=0.440 (n=1885), T(k>=2)=0.603 (n=1371), diff CI [+0.129,+0.198] — interpret only beside per-family validity.
