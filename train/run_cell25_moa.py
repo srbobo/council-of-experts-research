@@ -96,22 +96,88 @@ def stage_propose() -> None:
           (f"  MISSING: {missing}" if missing else ""))
 
 
+def _injection_bank() -> dict[str, dict[str, str]]:
+    """case -> family -> one verbatim single-family specialist sentence.
+
+    Drawn from stored council runs for the same case (registered deviation):
+    deterministic, seed-free (first qualifying sentence in sorted-file
+    order), each sentence firing exactly ONE family, 40-400 chars.
+    """
+    import re
+
+    from gst.instruments import RegexInstrument
+    rx = RegexInstrument()
+    bank: dict[str, dict[str, str]] = {c: {} for c in CASES}
+    sent_split = re.compile(r'(?<=[.!?])\s+')
+    for p in sorted((ROOT / "bench/runs/imported").glob("*.json")):
+        d = None
+        for case in CASES:
+            if f"__{case}__" in p.name:
+                try:
+                    d = json.loads(p.read_text())
+                except (OSError, json.JSONDecodeError):
+                    d = None
+                break
+        if not d:
+            continue
+        case = d.get("case_id")
+        if case not in bank or len(bank[case]) == 4:
+            continue
+        turns = (d.get("deliberation") or {}).get("turns") or []
+        for t in turns:
+            for s in sent_split.split(t.get("output_text") or ""):
+                s = s.strip()
+                if not 40 <= len(s) <= 400:
+                    continue
+                fams = rx.families(s)
+                if len(fams) == 1:
+                    f = next(iter(fams))
+                    bank[case].setdefault(f, s)
+    return bank
+
+
 def stage_variants() -> None:
     from gst.corpus import supply_variants
+    from gst.instruments import RegexInstrument
+    rx = RegexInstrument()
     props = json.loads((OUT / "proposals.json").read_text())
+    bank = _injection_bank()
     out = []
     for case in CASES:
         upstream = [props[case][m] for m in PROPOSERS if props[case].get(m)]
+        # downward: ablation sweep (original registration)
+        natural: set[str] = set()
         for vid, (supply, variant, fams) in enumerate(supply_variants(upstream)):
             out.append({"case": case, "variant_id": vid, "supply": supply,
-                        "families": sorted(fams), "upstream": variant})
+                        "families": sorted(fams), "upstream": variant,
+                        "construction": "ablation"})
+            natural |= fams
+        # upward: injection sweep (registered deviation) — append verbatim
+        # single-family specialist sentences for families not naturally present
+        missing = [f for f in ("cutoff", "modeled", "jurisd", "hedging")
+                   if f not in natural and f in bank[case]]
+        vid = 100
+        aug = list(upstream)
+        injected: list[str] = []
+        for f in missing:
+            aug = list(aug)
+            aug[-1] = aug[-1] + "\n\n" + bank[case][f]
+            injected.append(f)
+            got = rx.families("\n\n".join(aug))
+            out.append({"case": case, "variant_id": vid,
+                        "supply": len(got), "families": sorted(got),
+                        "upstream": aug, "construction": f"injection:{'+'.join(injected)}"})
+            vid += 1
     (OUT / "variants.json").write_text(json.dumps(out, ensure_ascii=False))
     by_s: dict[int, int] = {}
     for v in out:
         by_s[v["supply"]] = by_s.get(v["supply"], 0) + 1
     print(f"variants: {len(out)} across supply levels {dict(sorted(by_s.items()))}")
-    print("REGISTERED STOP CONDITION: manually inspect 10 random variants for "
-          "ungrammatical residue before running `aggregate`.")
+    n_missing_bank = sum(1 for c in CASES for f in ("cutoff", "modeled", "jurisd", "hedging")
+                         if f not in bank[c])
+    print(f"injection bank gaps (family unavailable in stored seats): {n_missing_bank}")
+    print("REGISTERED STOP CONDITION: manually inspect 10 random variants "
+          "(ablated AND injected) for ungrammatical residue before `aggregate`.")
 
 
 def stage_aggregate() -> None:
@@ -172,17 +238,33 @@ def stage_measure() -> None:
     if not (sh and sh.identifiable):
         print("P25.1: UNIDENTIFIABLE — design failed its own guard; STOP")
         return
-    corner_faithful = sh.w >= 0.85 and sh.c <= 0.15
-    corner_register = sh.w <= 0.15
     means = [m for _s, (m, _n) in sorted(sh.strata.items())]
     monotone = all(b >= a - 0.05 for a, b in zip(means, means[1:], strict=False))
-    p251 = (0.15 < sh.w < 0.85) and sh.c > 0 and monotone \
-        and not corner_faithful and not corner_register \
-        and not sh.weakly_identified and not sh.c_extrapolated
-    print(f"P25.1 (shrinkage form): w={sh.w:.3f} {sh.w_ci}, c={sh.c:.3f} {sh.c_ci}, "
-          f"monotone={monotone}, flags: weak={sh.weakly_identified} "
-          f"extrap={sh.c_extrapolated}")
-    print(f"P25.1: {'SUPPORTED' if p251 else 'FALSIFIED / check flags'}")
+    wlo, whi = sh.w_ci if sh.w_ci else (sh.w, sh.w)
+    clo, chi = sh.c_ci if sh.c_ci else (sh.c, sh.c)
+    # The registered support criterion is CI-based: BOTH corners excluded by
+    # the intervals, not merely avoided by the point estimate. (A first
+    # version of this check used the point estimate — the exact
+    # instrument-says-what-I-wanted class the program audit documented.)
+    excludes_register = wlo > 0.15
+    excludes_faithful = not (wlo >= 0.85 and chi <= 0.15) and (whi < 0.85 or clo > 0.15)
+    corner_register_holds = whi <= 0.15
+    corner_faithful_holds = wlo >= 0.85 and chi <= 0.15
+    print(f"P25.1 (shrinkage form): w={sh.w:.3f} [{wlo:.3f},{whi:.3f}], "
+          f"c={sh.c:.3f} [{clo:.3f},{chi:.3f}], monotone={monotone}, "
+          f"flags: weak={sh.weakly_identified} extrap={sh.c_extrapolated}")
+    if sh.weakly_identified or sh.c_extrapolated or not monotone \
+            or corner_register_holds or corner_faithful_holds:
+        print("P25.1: FALSIFIED (a corner holds, monotonicity fails, or a "
+              "guard fired)")
+    elif excludes_register and excludes_faithful and clo > 0:
+        print("P25.1: SUPPORTED (both corners excluded by the CIs)")
+    else:
+        print("P25.1: PARTIAL — shrinkage direction present (monotone, w CI "
+              f"excluding 0: {wlo > 0}) but the registered CI exclusion "
+              f"fails: register corner excluded={excludes_register}, "
+              f"faithful excluded={excludes_faithful}, c>0 by CI={clo > 0}. "
+              "Report as a boundary result, not support.")
 
     rx = RegexInstrument()
     zero_inv = []

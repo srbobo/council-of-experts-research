@@ -3675,3 +3675,79 @@ Side observation, recorded for the paper: general instruct models produce
 near-zero lexicon-detectable qualification on this battery unprompted —
 the specialists' 2.5-4 families per case is itself an upstream property of
 domain-tuned seats, not a given of any model ensemble.
+
+---
+
+## CELL 25 VERDICT — the phenomenon travels; the parameters do not. The MoA aggregator sits near the pure-register corner (2026-08-06, 80/80 runs, zero failures, zero guard flags)
+
+Card: bench/analysis/cell25/card.json; report: measure_report.txt. Supply
+levels {0:18, 1:18, 2:16, 3:16, 4:12} — zero-supply measured (n=18), w CI
+width 0.158, no identifiability flags. Fluency gate passed pre-aggregation
+(two context notes recorded: one injected sentence references a "Lead
+Agent"; one carries Med42's self-identification, ecologically normal under
+the MoA prompt).
+
+**Harness defect caught before recording, owned:** the measure stage's
+first P25.1 check tested the corners against the POINT estimate where the
+registration demands CI exclusion — the exact instrument-says-what-I-wanted
+class from the program audit. It printed SUPPORTED; the registered test
+does not. Fixed to the three-way CI-based check before this verdict was
+written; both report versions preserved in git history.
+
+| parameter | council (1,260 runs) | MoA (80 runs) |
+|---|---|---|
+| w (evidence weight) | 0.352 [0.310, 0.391] | 0.158 [0.076, 0.234] |
+| c (prior fill) | 0.540 [0.437, 0.651] | 0.275 [0.104, 0.456] |
+| prior-trust (1−w)/w | 1.84 | **5.35** |
+| invention at s=0 | 0.40 mean emitted | 0.278 rate [0.12, 0.51] |
+| f (feature span) | 0.068 | **0.002** |
+| D_modeled | 0.213 [0.155, 0.271] | **−0.010 [−0.139, 0.117]** |
+
+**P25.1 PARTIAL — a boundary result, not support.** The shrinkage
+DIRECTION is present: strata monotone (0.28 → 0.44 → 0.50 → 0.88 → 0.83),
+w CI excludes 0 (the aggregator does respond to supply), c CI excludes 0.
+But the registered criterion required the w CI to exclude the pure-register
+corner (w <= 0.15) and it does not: [0.076, 0.234] straddles it. Under the
+canonical MoA prompt the writer weighs its prior 5.35x over the evidence —
+three times the council's 1.84 — and discards ~79% of supplied families
+even at full supply (0.83 emitted of 4).
+
+**P25.2 SUPPORTED.** Compensating invention exists in the second
+architecture: 0.278 [0.12, 0.51] at zero supply, bar was >= 0.10 with CI
+excluding 0. The phenomenon the framework is about — invention rising as
+supply falls — is not council-specific.
+
+**P25.3 FALSIFIED.** On the validated modeled channel the MoA aggregator
+shows ZERO discrimination: D_modeled = −0.010 [−0.139, 0.117]. It emits
+modeled qualification at the same rate whether or not upstream raised it.
+The composite w = 0.158 is therefore carried by the low-recall families
+(distinctive phrases the aggregator echoes verbatim-ish: jurisdiction
+names, sensitivity language), not by behavior on the clean channel.
+
+**REGISTERED CONSEQUENCE EXECUTED.** The law is scoped: the falsifying
+card is published with equal prominence, and the framework's Part E gains
+its first boundary entry. The two-card story for the paper is sharper than
+plain corroboration would have been:
+
+1. The PHENOMENON (compensating invention; monotone supply response)
+   appears in both architectures. That part of the law travels.
+2. The PARAMETERS are not architecture constants. The council's
+   conditional-preservation instruction sits at w = 0.35; the canonical
+   MoA aggregation prompt sits at w = 0.16, statistically inseparable from
+   arch-flat's naive merge (0.255 [0.13, 0.39]) and from the pure-register
+   corner. This RECONCILES with Cell 8's oldest finding: specialist signal
+   without a conditional preservation instruction yields near-single-shot
+   transport. In framework terms: **w is set by the writing instruction at
+   least as much as by the architecture** — the gain-control result,
+   re-expressed as the framework's parameter and now measured across two
+   architectures.
+3. On the validated channel the MoA step is pure register (P25.3) — the
+   strongest per-family evidence yet that naive aggregation transports
+   nothing the writer wouldn't have said anyway.
+
+Side findings recorded for the paper: general instruct proposers raise
+near-zero detectable qualification unprompted (5 presences / 27 proposals)
+— rich supply is a property of domain-tuned seats; MoA feature-span
+f = 0.002 (the near-silent regime, like arch-flat); empirical best-of-2
+again below the independence curve (0.78 vs 0.89 — correlated redraws
+replicate in the second architecture, n=9 cells, thin).
