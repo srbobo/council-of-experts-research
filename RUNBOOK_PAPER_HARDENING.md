@@ -3751,3 +3751,65 @@ near-zero detectable qualification unprompted (5 presences / 27 proposals)
 f = 0.002 (the near-silent regime, like arch-flat); empirical best-of-2
 again below the independence curve (0.78 vs 0.89 — correlated redraws
 replicate in the second architecture, n=9 cells, thin).
+
+---
+
+## CELL 26 PRE-REGISTRATION — agreement-conditioned transport (registered 2026-08-06, before any numbers are computed)
+
+### Question
+Does the writer weight CORROBORATED upstream content differently from
+singly-raised content? A tension/agreement structure is the pipeline's only
+in-band evidence about upstream reliability (the SNR frame's Layer 3). This
+cell measures the regex-accessible slice: whether preservation probability
+rises with the number of seats independently raising a family. Zero new
+model calls; pure ledger recomputation.
+
+### Scope limitation, stated up front
+Regex can count how many seats RAISED a family; it cannot detect
+CONTESTATION (one seat raising, another disputing). This cell therefore
+tests agreement-count weighting only. The full Layer-3 question (does the
+writer down-weight contested content?) requires judge labels and is NOT
+tested here.
+
+### Population (frozen)
+- Primary: all usable ledger records (floor 500 chars, zero-route excluded
+  by the adapter) with >= 2 separately-stored seat texts. bench/runs/
+  cell25_moa.jsonl is EXCLUDED: its injection variants manufacture k=1
+  placements by construction and would contaminate the corroboration
+  variable.
+- Secondary strata: (a) the 5-arm sweep population (single writer,
+  9 shared cases); (b) trigger-heavy vs trigger-light case strata, because
+  corroboration count correlates with case trigger density and total
+  supply — the unadjusted primary is confounded by case mix, and the
+  stratified view is the robustness check.
+
+### Estimator (frozen)
+Per family f: k = number of seat texts in which f fires (seat-level
+detection on each upstream text separately). Among runs with k >= 1:
+T_f(k=1) = P(f in output | exactly one seat raised f), T_f(k>=2) =
+P(f in output | two or more seats raised f). Wilson CIs; bootstrap CI on
+the difference (5,000 draws, seed 0). Modeled is primary (Cell 24 rule);
+other families secondary with their Cell 23 validity caveats attached.
+Where n permits, T_f at k = 1, 2, 3 separately with a monotonicity check.
+
+### Predictions
+- **P26.1 (agreement weighting, modeled channel).** T(k>=2) − T(k=1) > 0
+  with the bootstrap CI excluding 0. *Supported* -> the writer performs at
+  least crude reliability weighting, Layer 3 is partially real, and the
+  unifying claim "nothing sets the calibration" must be amended to
+  "instructions set the gain; agreement structure sets a measurable but
+  untested-for-sufficiency part of the calibration."
+  *Falsified (CI includes 0 or negative)* -> the writer ignores the one
+  reliability signal the multi-agent architecture uniquely provides, and
+  the "surfaces evidence it cannot use" claim is hardened from rhetoric to
+  measurement.
+- **P26.2 (composite, secondary).** Same comparison pooled over the four
+  families, interpreted only alongside per-family validity.
+
+### Consequences (fixed in advance)
+Either outcome updates the framework paper's discussion paragraph with the
+measured version. If P26.1 is SUPPORTED, the Cell 20 conclusion ("the
+council surfaces tensions but does not use them") must be narrowed to
+commitment behavior only, since weighting behavior would exist. No
+optimization, no adoption of any configuration — this is characterization
+under the diagnostics-not-objectives rule.
