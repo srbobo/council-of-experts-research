@@ -3858,3 +3858,83 @@ modulate transport. The unifying sentence stands as written —
 "instructions set the gain; nothing we found sets the calibration" — now
 with the strongest possible support, since even the architecture's own
 reliability signal goes unused.
+
+---
+
+## CELL 27 PRE-REGISTRATION — the evidence ledger: externalizing the writer's estimator (registered 2026-08-06, before any runs)
+
+### Hypothesis under test
+Every failed intervention tried to change the writer's implicit weights
+(rules, training, feedback). This cell tests the untried mechanism class:
+serializing the estimation itself into tokens. The writer must produce a
+structured EVIDENCE LEDGER — one row per claim/qualification: who raised
+it, how many seats independently raised it (k), contested or not, and a
+verdict — before writing an answer whose qualifications must correspond to
+ledger rows. This is the first mechanism that hands the writer its own
+reliability evidence (Cell 26's unused signal) in a form it cannot skip.
+It is step-back prompting over the EVIDENCE STRUCTURE rather than the
+question; no analogue exists for single models, which is why the standard
+prompting literature has not built it.
+
+### Arms (frozen)
+- **L2 (primary, cleanest w contrast):** MoA-ledger — the writer runs the
+  ledger protocol over the SAME 40 supply variants as Cell 25, 2 repeats
+  (80 runs), gpt-oss:20b, temperature 0.6, max_tokens 8192. Direct
+  comparison against the Cell 25 naive-MoA card at fixed upstream: any
+  (w,c) difference is the mechanism.
+- **L1 (secondary, council setting):** council pipeline, gpt-oss all
+  roles, synthesis system REPLACED by the ledger protocol (no PRESERVE
+  block — the mechanism is tested alone, not stacked on the instruction).
+  9 cases x 5 seeds = 45 runs, mode c27-ledger. Path assertion requires
+  the marker "EVIDENCE LEDGER" in the writer prompt; zero-route quarantine
+  as standard.
+
+### Protocol (frozen)
+Single generation, two mandatory sections: "### EVIDENCE LEDGER" (table:
+claim | raised by | #seats | contested | verdict adopt/qualify/drop) then
+"### ANSWER". Constraint text: every qualification in ANSWER must
+correspond to a ledger row with verdict "qualify"; an empty ledger obliges
+an unqualified answer.
+
+**Measurement hygiene:** ONLY the ### ANSWER section is scored; the ledger
+is stripped before any instrument touches the text (it necessarily
+contains family phrases — the annotation-contamination class). Runs
+missing the ANSWER delimiter are protocol violations: quarantined and
+counted, never pooled. Compliance gate: the first 3 runs are checked for
+delimiter compliance only (no measurements examined); if fewer than 2/3
+comply, STOP and repair the prompt before proceeding.
+
+### Predictions
+- **P27.1 (transport).** The ledger raises the evidence weight above the
+  naive mechanism at fixed upstream: L2 w with CI disjoint above Cell 25's
+  0.158 [0.076, 0.234]. *Falsified if* overlap.
+- **P27.2 (invention discipline).** Zero-supply invention under the ledger
+  is below the matched naive rate (L2 vs Cell 25's 0.278; L1 vs
+  arch-council's 0.556 at s=0), bootstrap diff CI excluding 0 on the
+  primary L2 contrast. *Falsified if* CI includes 0.
+- **P27.3 (agreement weighting, the Layer-3 readout).** In the ledger
+  arms, T(k>=2) - T(k=1) > 0 where the SAME contrast in matched naive
+  arms is null — difference-in-differences bootstrap CI excluding 0,
+  composite across families (modeled reported but registered as too thin
+  for a solo verdict at these n; any composite signal inherits Cell 26's
+  mechanism ambiguity unless the DiD isolates it).
+- **P27.4 (coupling — the dissociation detector).** >=80% of answer
+  qualifications have a same-family ledger row with verdict "qualify",
+  AND empty-ledger runs produce zero answer qualification. *Falsified*
+  -> the Cell 20/21 pattern (form without function) extends to
+  externalized reasoning.
+
+### Program prior, stated for honesty
+The record (Cells 17, 19, 20, 21, 26) predicts nulls on P27.1-27.3 and
+partial failure on P27.4. The registered predictions are the mechanism's
+claims, not ours.
+
+### Consequences (fixed in advance)
+- All null -> externalization joins the intervention scorecard as tested
+  and failed; "instructions set the gain; nothing we found sets the
+  calibration" gains its strongest supporting null (even explicit,
+  mandated consumption of the reliability evidence does not move it).
+- Any supported -> the first mechanism to move calibration-side behavior;
+  requires a replication arm before any paper claim, and per the
+  diagnostics-not-objectives rule, NO configuration is adopted from this
+  cell regardless of outcome.
