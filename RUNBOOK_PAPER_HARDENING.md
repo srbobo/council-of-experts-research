@@ -3938,3 +3938,58 @@ claims, not ours.
   requires a replication arm before any paper claim, and per the
   diagnostics-not-objectives rule, NO configuration is adopted from this
   cell regardless of outcome.
+
+---
+
+## CELL 27 VERDICT — all four registered predictions falsified; the ledger is not a transport mechanism, it is a bottleneck that relocates the estimator and, in doing so, eliminates prior fill (2026-08-07, L2 79 runs / L1 45 runs)
+
+Reports: bench/analysis/cell27/measure_report.txt. Compliance tax: L2 9/79
+violations + 1 empty; L1 7/45 violations; all quarantined, never pooled.
+
+**Registered outcomes, exactly as frozen:**
+- **P27.1 FALSIFIED.** No transport gain anywhere. L2 w = 0.119
+  [0.010, 0.244] vs naive 0.158 [0.076, 0.234] — overlapping, and the
+  ledger card's verdict is PURE REGISTER. L1 w = 0.385 [0.291, 0.478] vs
+  arch-council 0.346 [0.22, 0.47] — unchanged.
+- **P27.2 FALSIFIED on the registered primary** (L2 diff CI
+  [−0.444, +0.033] includes 0). The registered secondary contrast is
+  DISJOINT: L1 zero-supply invention 0/12 [0.00, 0.24] vs arch-council's
+  5/9 = 0.556 [0.27, 0.81]. Reported as the registration wrote it: primary
+  falsified, secondary separated.
+- **P27.3 FALSIFIED.** No agreement weighting: DiD CI [−0.471, +0.187].
+  Externalizing k into a mandatory column did not create the weighting
+  Cell 26 showed missing. The Layer-3 null now covers implicit AND
+  explicit presentation of the reliability signal.
+- **P27.4 FALSIFIED, narrowly.** Family-level coupling 15/20 = 0.75
+  against the 0.80 bar; empty-ledger runs bare in 43/49 (88%).
+
+**The unregistered pattern, reported as such (post-hoc; requires a
+registered replication before any claim graduates):** the ledger acts as a
+QUALIFICATION SUPPRESSOR that kills the prior-fill term. Both arms produce
+the only c ≈ 0 cards ever measured in this program — L2 c = 0.083
+[−0.083, 0.262], L1 c = −0.022 [−0.138, +0.088], both centered at zero
+with zero-supply MEASURED (n=15, n=12) — and L1 pairs it with an
+unchanged w and near-monotone strata (0 / 0 / 0.75 / 1.21 / 1.44). The
+mechanism is visible in the data: shrinkage relocated INTO the ledger
+phase (49/69 L2 ledgers declared no qualification rows despite upstream
+supply in most runs), and the answer then obeys the impoverished ledger
+(88% empty→bare). Externalization does not remove the estimator — it
+moves it to whatever step summarizes — but the consistency constraint
+converts free invention into zero: nothing in the ledger, nothing
+invented. The price is overall emission: L2 collapses to the silent
+regime (f = 0.000, 52/69 runs with zero qualification — deeper than
+arch-flat); L1 pays moderately (mean emitted 0.80 families vs the
+council's ~1.5; 18/41 runs unqualified), plus the ~14% protocol-violation
+tax. Per the paper's own warning, the c → 0 numbers MUST be read beside
+f: part of "no invention" is "less said."
+
+**Consequences per registration:** externalization joins the intervention
+scorecard as tested and falsified on all four registered predictions;
+"instructions set the gain; nothing we found sets the calibration" gains
+its strongest null (the writer was HANDED the reliability signal in a
+mandatory column and still did not weight by it). NO configuration is
+adopted. The c→0 / w-preserved pattern in L1 is the single most promising
+unregistered observation this program has produced, and the registered
+path for it is a replication cell (fresh seeds, both batteries, f and
+protocol-tax reported beside c) before it appears in any paper claim
+stronger than an observation.

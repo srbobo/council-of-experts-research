@@ -1,0 +1,123 @@
+{
+  "system": "moa-ledger (cell 27 L2)",
+  "n_records_supplied": 70,
+  "n_records_used": 69,
+  "dropped": {
+    "output 424 chars < floor 500": 1
+  },
+  "instrument": "regex",
+  "shrinkage": {
+    "w": 0.11916909620991252,
+    "c": 0.08260447035957244,
+    "w_ci": [
+      0.00964043772798333,
+      0.2436066438175587
+    ],
+    "c_ci": [
+      -0.08322425828970337,
+      0.26185239491691104
+    ],
+    "r2_runs": 0.07630867061483315,
+    "r2_strata": 0.6587148903424394,
+    "n_runs": 69,
+    "strata": {
+      "0": [
+        0.06666666666666667,
+        15
+      ],
+      "1": [
+        0.2222222222222222,
+        18
+      ],
+      "2": [
+        0.42857142857142855,
+        14
+      ],
+      "3": [
+        0.21428571428571427,
+        14
+      ],
+      "4": [
+        0.75,
+        8
+      ]
+    },
+    "quadratic_coef": 0.013781857918521042,
+    "quadratic_ci": [
+      -0.08680716772215284,
+      0.1241004632487098
+    ],
+    "identifiable": true,
+    "c_extrapolated": false,
+    "weakly_identified": false,
+    "notes": [
+      "supply levels with n<10: [4] (estimate leans on thin strata)"
+    ]
+  },
+  "spans": {
+    "f_median": 0.0,
+    "f_p25": 0.0,
+    "f_p75": 0.0,
+    "f_median_tokens": 0.0,
+    "n_runs": 69,
+    "dilution_factor": Infinity,
+    "notes": [
+      "52/69 runs carry no detected property at all; f is dominated by zeros -- check the instrument fits this property class before acting on it"
+    ]
+  },
+  "blindspot": null,
+  "clean": {
+    "p0_overall": 0.9420289855072463,
+    "p0_by_supply": {
+      "0": [
+        0.9333333333333333,
+        15
+      ],
+      "1": [
+        0.8888888888888888,
+        18
+      ],
+      "2": [
+        0.9285714285714286,
+        14
+      ],
+      "3": [
+        1.0,
+        14
+      ],
+      "4": [
+        1.0,
+        8
+      ]
+    },
+    "worst_supply": 1,
+    "p0_worst": 0.8888888888888888,
+    "p0_worst_ci": [
+      0.6719975513339578,
+      0.9689811315464172
+    ],
+    "lam": 0.057971014492753624,
+    "poisson_p0": 0.9436773000056001,
+    "bon_independent": {
+      "1": 0.8888888888888888,
+      "2": 0.9876543209876543,
+      "3": 0.9986282578875172,
+      "4": 0.9998475842097241,
+      "5": 0.9999830649121916,
+      "6": 0.9999981183235769
+    },
+    "bon_empirical": {
+      "1": 0.8880555555555556,
+      "2": 1.0
+    },
+    "n_runs": 69,
+    "bon_empirical_cells": {
+      "1": 9,
+      "2": 9
+    },
+    "notes": []
+  },
+  "notes": [
+    "no blind-spot estimate: supply labelled probes and >= 2 instruments. Until then no verdict from this kit is two-instrument validated."
+  ]
+}
