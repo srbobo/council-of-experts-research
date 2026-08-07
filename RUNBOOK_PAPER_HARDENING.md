@@ -4050,3 +4050,27 @@ the L2 regime must be reported as degenerate even if P28.1-28.3 pass.
   sampling noise or unstable, and the c→0 claim dies before entering any
   paper. Either way the intervention scorecard's headline (no mechanism
   moves w) is unchanged — this cell concerns c only.
+
+---
+
+### CELL 28 PRE-ANALYSIS NOTE — composition-law predictions, registered before the measure stage runs (2026-08-07; runs in progress, no measurements examined)
+
+If the ledger factors generation into two stages (upstream s -> ledger
+supply l -> answer y), each stage a shrinkage estimator (l = w1*s + c1;
+y = w2*l + c2), then the composite law is y = (w1*w2)*s + (w2*c1 + c2).
+Registered predictions, testable on data already on disk:
+
+- **PA28.a (stage decomposition).** Fitting the two stages separately on
+  the STORED ledger sections (regress regex-measured l on s, and y on l,
+  Cell 27 L1 + Cell 28 pooled compliant runs) recovers the composite:
+  w1*w2 within the fitted w' CI and w2*c1 + c2 within the fitted c' CI.
+- **PA28.b (violation mixture, the deployment formula).** The registered
+  P28.1 is CARD-level (compliant runs only). System-level prior fill as
+  deployed is c_sys = v*c_prose + (1-v)*c_card, with v the violation rate
+  and c_prose the baseline 0.713. Prediction: Cell 28's violation runs,
+  scored on their un-delimited full text, show zero-supply invention at
+  the baseline rate (CI overlapping [0.27, 0.81]), NOT the ledger rate —
+  violations revert to the prose register.
+
+These are mechanism checks, not success criteria; P28.1-28.3 remain the
+registered verdict as frozen.
