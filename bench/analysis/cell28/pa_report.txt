@@ -1,0 +1,15 @@
+compliant runs: 71 {'c27-ledger': 36, 'c28-ledger-rep': 35}; violation runs: 16
+==========================================================================
+PA28.a  STAGE DECOMPOSITION (pooled compliant council-ledger runs)
+==========================================================================
+  stage 1 (upstream->ledger): w1=0.417 [0.321,0.523]  c1=-0.062 [-0.182,0.049]
+  stage 2 (ledger->answer):  w2=0.540 [0.352,0.810]  c2=0.280 [0.088,0.485]
+  direct composite:          w'=0.367 [0.270,0.458]  c'=-0.033 [-0.122,0.054]
+  predicted w1*w2 = 0.225 -> inside w' CI: False
+  predicted w2*c1+c2 = 0.246 -> inside c' CI: False
+  PA28.a: FALSIFIED
+==========================================================================
+PA28.b  VIOLATION MIXTURE (violation runs, full un-delimited text)
+==========================================================================
+  s=0 violation runs n=1 < 5 — NOT EVALUABLE (reported, not scored)
+  all violation runs (n=16): mean emitted 0.50 families

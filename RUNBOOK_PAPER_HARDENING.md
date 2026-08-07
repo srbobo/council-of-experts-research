@@ -4074,3 +4074,65 @@ Registered predictions, testable on data already on disk:
 
 These are mechanism checks, not success criteria; P28.1-28.3 remain the
 registered verdict as frozen.
+
+---
+
+## CELL 28 VERDICT + PA28 — the pattern replicates; the formula does not survive its own mechanism check; Cell 29 is discarded at its gate (2026-08-07, 45 runs; measure + PA reports in bench/analysis/cell28/)
+
+**P28.1 SUPPORTED.** c = −0.024 [−0.164, 0.112], disjoint below the
+baseline [0.44, 0.99]. Prior fill eliminated on fresh samples.
+
+**P28.2 FALSIFIED AS REGISTERED — with a registration defect, owned.** The
+data were the best possible: 0 inventions in 10 zero-supply runs. The
+frozen bar (Wilson upper < 0.27) is mathematically unattainable with zero
+events below n = 11 (0/10 gives [0.00, 0.28]), and the registered
+evaluability floor (n >= 8) permitted exactly that dead zone. The bar
+failed by construction, not by evidence. Recorded consequence executes AS
+WRITTEN: the c→0 finding does not enter any paper on this cell's
+authority. Post-hoc observation, clearly labelled: pooling the
+byte-identical protocols (C27-L1 0/12 + C28 0/10 = 0/22, Wilson
+[0.00, 0.15]) is disjoint below baseline — a re-registered criterion with
+an attainable bar (pooled analysis, or n >= 15) is the path back, and no
+shortcut is taken here.
+
+**P28.3 SUPPORTED.** w = 0.308 [0.181, 0.443]: excludes the register
+corner, overlaps C27-L1. Not silence.
+
+**Cost accounting (mandatory):** mean emitted 0.59 families (below
+C27-L1's 0.80 — suppression deepened); 25/41 runs zero-qualification;
+f = 0.000 median; violations 9/45 = 20% (early case-1/2 cluster, settled
+thereafter; vs C27-L1's 16% — compliance is variable across samples).
+
+**PA28.a FALSIFIED — and this is the mechanically informative result.**
+Stage fits on the stored ledgers: w1 = 0.417 [0.32, 0.52],
+c1 = −0.062 (the register-swap claim HOLDS at stage 1: ledgers do not
+invent); w2 = 0.540 [0.35, 0.81], c2 = 0.280; direct composite
+w' = 0.367 [0.27, 0.46], c' = −0.033. The Markov predictions fail on both
+axes: w1·w2 = 0.225 sits BELOW the direct CI (super-multiplicative) and
+w2·c1+c2 = 0.246 sits above c'. Diagnosis, stated as the corrected
+mechanism (unregistered until re-registered): the single-generation
+protocol is NOT a Markov chain — the answer conditions on the upstream
+text directly, not only through the ledger. Transport BYPASSES the ledger
+(which is why w matched baseline instead of paying the multiplicative
+tax), while invention still dies because emitting an unlicensed
+qualification requires evading BOTH the missing upstream source and the
+missing ledger row. The ledger is a LICENSING GATE on emission, not an
+information bottleneck. The two-path model y = a·s + b·l + c0 is the
+candidate replacement and requires its own registration before any
+further test. The chain formula's fragility claim (w' = ∏w_k) is
+withdrawn for single-generation designs.
+
+**PA28.b NOT EVALUABLE** (1 zero-supply violation run against the n >= 5
+floor).
+
+**CELL 29: DISCARDED AT ITS GATE.** The queued registration required
+P28.1 + P28.3 + PA28.a. PA28.a falsified; the corpus-wide chain test's
+premise (multiplicativity) is refuted at the within-generation level, and
+the draft leaves the queue unregistered. A future corpus test would have
+to carry the two-path form, registered fresh.
+
+**Net:** the phenomenon (c→0 with w preserved) replicated on both
+registered axes that were attainable; the theory I wrote for it was
+refuted by its own pre-registered check and replaced by a sharper one the
+same day. The discipline did exactly what it exists to do — in both
+directions at once.
