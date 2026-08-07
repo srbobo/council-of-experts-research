@@ -3993,3 +3993,60 @@ unregistered observation this program has produced, and the registered
 path for it is a replication cell (fresh seeds, both batteries, f and
 protocol-tax reported beside c) before it appears in any paper claim
 stronger than an observation.
+
+---
+
+## CELL 28 PRE-REGISTRATION — replication of the ledger's c→0 / w-preserved pattern (registered 2026-08-07, before any runs)
+
+### What graduates from observation to hypothesis
+Cell 27's registered predictions all falsified, but its council arm (L1)
+produced a post-hoc pattern no prior arm has shown: prior fill eliminated
+(c = −0.022 [−0.138, +0.088], zero-supply invention 0/12) with the evidence
+weight intact (w = 0.385 [0.291, 0.478]), at a measured cost (mean emission
+0.80 families vs ~1.5; 7/45 protocol violations). Per the Cell 27
+consequence, that pattern must replicate on fresh samples under registered
+predictions before it appears in any paper as more than an observation.
+This cell is that replication. NO adoption regardless of outcome
+(diagnostics-not-objectives rule).
+
+### Arm (frozen)
+R1: council pipeline, gpt-oss:20b all roles, ledger synthesis protocol
+BYTE-IDENTICAL to Cell 27's (same LEDGER_PROTOCOL constant, same delimiter
+rules, same path assertion on "EVIDENCE LEDGER", zero-route quarantine).
+9 cases x 5 fresh seeds = 45 runs, mode c28-ledger-rep. Measurement
+hygiene identical: only the ANSWER section is scored; violations
+quarantined and counted. Baseline for comparison: the frozen arch-council
+sweep numbers (w 0.346 [0.22, 0.47]; c 0.713 [0.44, 0.99]; s=0 invention
+5/9 = 0.556 [0.27, 0.81]). No contemporaneous baseline arm is run; the
+model and stack are unchanged since those numbers were produced, and this
+is recorded as a known limitation.
+
+### Predictions (the pattern's claims, now frozen)
+- **P28.1 (prior fill eliminated).** R1's c CI upper bound < 0.44 — 
+  disjoint below the baseline c CI. *Falsified if* not disjoint.
+- **P28.2 (invention eliminated at zero supply).** R1's s=0 invention
+  Wilson CI upper bound < 0.27 — disjoint below the baseline's
+  [0.27, 0.81]. Requires the s=0 stratum to reach n >= 8; if it does not,
+  this prediction is NOT EVALUABLE and is reported as a design shortfall,
+  never scored on thinner data.
+- **P28.3 (gain preserved).** R1's w CI lower bound > 0.15 (excludes the
+  register corner) AND the CI overlaps Cell 27 L1's [0.291, 0.478].
+  *Falsified if* either fails — c→0 via silence (the L2 degeneracy) does
+  not count as replication.
+
+### Mandatory cost accounting (reported, not predicted)
+Mean emitted families, fraction of runs with zero qualification,
+feature-span f, and the protocol-violation rate — all beside the headline
+numbers, per the paper's silence warning. A c→0 card whose f collapses to
+the L2 regime must be reported as degenerate even if P28.1-28.3 pass.
+
+### Consequences (fixed in advance)
+- All three hold -> the finding is REPLICATED and enters the framework
+  paper's intervention section and the behavior paper as: the first tested
+  mechanism that moves the calibration-side term — an auditable bottleneck
+  that eliminates invention by removing the untracked place it happens —
+  with its emission and compliance costs stated in the same sentence.
+- Any falsified or not-evaluable -> the Cell 27 pattern is recorded as
+  sampling noise or unstable, and the c→0 claim dies before entering any
+  paper. Either way the intervention scorecard's headline (no mechanism
+  moves w) is unchanged — this cell concerns c only.
