@@ -319,7 +319,8 @@ can be gamed, because only the latter is observable. Sizing must use the
 yield sits below the independence formula $1-(1-p_0)^n$ (council:
 $0.83$ measured vs.\ $0.94$ predicted at $n{=}3$; MoA: $0.78$ vs.\ $0.89$
 at $n{=}2$), because a writer that invents on a prompt tends to invent
-again on redraws. The kit computes both curves and reports how many
+again on redraws (corpus-level ICC $0.190$; \S\ref{sec:phenomena}). The
+kit computes both curves and reports how many
 distinct tasks support each point.
 
 \section{The measurement kit}
@@ -348,6 +349,61 @@ two verdicts had to be withdrawn.
 takes a zero-argument sampler; passing a callable that could receive
 feedback is a type error, not a guideline.
 \end{enumerate}
+
+\section{Measured regularities across the corpus}
+\label{sec:phenomena}
+
+Beyond the two cards, the full corpus ($1{,}300$ usable runs, $25$
+experimental arms meeting the inclusion rule) supports corpus-level
+estimates of three regularities, each pre-registered with its bar checked
+for attainability at the realized $n$. A fourth registered prediction
+falsified and is reported here at the same prominence.
+
+\textbf{The evidence weight is bounded away from transduction, with real
+between-arm spread.} A random-effects meta-analysis over all qualifying
+arms---weakly identified arms included with their wide standard errors,
+which is the point of the machinery---gives pooled
+$\mu_{\ww} = 0.364$ $[0.290, 0.438]$ with between-arm spread
+$\tau = 0.158$ and a $95\%$ prediction interval for a new arm of
+$[0.045, 0.682]$. No measured arm approaches faithful transduction (the
+highest, a trained-writer arm, reaches $0.76$ with an extrapolated
+intercept), but the honest statement is a central tendency near $0.36$
+with genuine spread---not a narrow invariant band. We report this
+correction explicitly because an earlier informal reading of the same
+data claimed a tighter band than the estimate supports.
+
+\textbf{Invention is prompt-heterogeneous, quantified.} Across $251$
+repeated (task, condition, writer) cells ($1{,}279$ runs), the intraclass
+correlation of invention counts is $0.190$ $[0.128, 0.242]$: roughly a
+fifth of invention variance lies between prompts. Within-cell counts are
+mildly under-dispersed (median variance-to-mean $0.93$), consistent with
+near-binary counts of bounded families rather than a Poisson process.
+This is the corpus-level basis for the selection-sizing correction of
+\S\ref{sec:interventions}: redraws are correlated because rates differ
+by prompt, so the independence formula over-promises.
+
+\textbf{The prior fill is a property of the output register.} Pooling
+fitted intercepts by the register the writer emits into: prose-register
+arms give $\cc = 0.407$ $[0.164, 0.651]$ (heterogeneous,
+$\tau = 0.270$); the two arms writing under an attribution-table
+protocol give $\cc = -0.023$ $[-0.110, 0.065]$ with $\tau = 0.000$---the
+two arms agree exactly---and the intervals are disjoint. A
+decision-formatted arm sits highest at $0.805$ (single arm,
+descriptive). Invention, in other words, is not set by the task but by
+the textual register the answer is written in; registers whose
+conventions demand per-item attribution show no measurable prior fill.
+The mechanism-level and intervention-level claims about
+attribution-constrained writing remain under registration and are
+deliberately not made here.
+
+\textbf{The falsified sibling.} We registered that the validated modeled
+channel carries less than its equal share of the composite slope
+(aggregation distortion); the measured share is $0.219$
+$[0.170, 0.268]$, whose interval includes the equal share $0.25$. The
+claim is withdrawn from this paper's argument. Descriptively, the
+FP-prone hedging channel carries the largest single share ($\sim 39\%$),
+so composite slopes should still be read beside per-family validity---
+but as caution, not as a demonstrated distortion.
 
 \section{The optimal parameters are derived, not chosen}
 \label{sec:optimal}
