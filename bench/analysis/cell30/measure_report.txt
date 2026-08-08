@@ -1,0 +1,3 @@
+==========================================================================
+P30.0 judge agreement = 0.622 (179/288 decisions); unusable texts 8; unverified positive quotes 123
+P30.0 FAILED — instrument invalid; all other predictions NOT EVALUABLE per registration

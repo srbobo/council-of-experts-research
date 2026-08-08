@@ -82,10 +82,24 @@ Reply with STRICT JSON and nothing else:
 Use "quote": "" when present is false. Quotes must be copied verbatim."""
 
 _WS = re.compile(r"\s+")
+# Quote verification must survive the cosmetic differences a judge reproduces
+# across: unicode spaces/dashes, markdown emphasis, and HTML line breaks.
+# The first version normalized only whitespace+case, which failed legitimate
+# quotes (123 of them in the Cell 30 run) and inflated the unverified count.
+# NOTE: this defect did NOT cause Cell 30's P30.0 failure — agreement is
+# computed on `present`, never on `verified`.
+_STRIP = re.compile(r"[*_`#>]|<br\s*/?>")
+_UNI = {"\u202f": " ", "\u00a0": " ", "\u2013": "-", "\u2014": "-",
+        "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
+        "\u2026": "..."}
 
 
 def norm(t: str) -> str:
-    return _WS.sub(" ", t or "").strip().lower()
+    t = t or ""
+    for a, b in _UNI.items():
+        t = t.replace(a, b)
+    t = _STRIP.sub("", t)
+    return _WS.sub(" ", t).strip().lower()
 
 
 # ------------------------------------------------------------------ stages

@@ -4363,3 +4363,64 @@ SECONDARY (reported, not authoritative): regex, for the divergence check.
 - P30.3 falsified → all parameter claims are scoped to one writer model,
   stated in the abstract.
 - No adoption of any configuration; characterization only.
+
+---
+
+## CELL 30 VERDICT — INSTRUMENT FAILURE at the registered gate; the audit's mandated replication is BLOCKED on instrumentation (2026-08-07, 60 runs generated, 80 texts judged)
+
+**P30.0 FAILED. Judge-judge agreement = 0.622 (179/288 family decisions),
+below the registered 0.70 bar. Per the registration, P30.1-P30.4 are NOT
+EVALUABLE.** Executed as written; no bar was moved and no substitute
+instrument was promoted to rescue the cell.
+
+**Critical clarification, checked:** the agreement statistic is computed on
+the judges' `present` flags and never touches quote verification, so the
+harness's quote-normalization defect (below) did NOT cause the gate
+failure. The instrument failure is genuine.
+
+**Diagnosis — instrument-validity finding #9: judge reliability is
+GRANULARITY-DEPENDENT.** Cell 23 validated these same two judges at 0.86
+agreement on SENTENCE-level labelling of short texts. At document level
+over ~5,000-character analyses they fail:
+
+| family | agreement | gpt-oss positives /72 | qwen positives /72 |
+|---|---|---|---|
+| jurisd | 0.833 | 54 | 48 |
+| hedging | 0.764 | **71** | 54 |
+| cutoff | 0.556 | **3** | **33** |
+| modeled | 0.333 | 26 | 50 |
+
+Two degeneracies: gpt-oss flags hedging in 71 of 72 texts (a detector that
+never says no), and the judges differ 11-fold on cutoff. This mirrors
+Cell 21's voided absolute-labelling pass and Cell 7a's finding that the
+NLI hedging hypothesis fired on nearly everything — hedging and cutoff
+now look diffuse at document scale under THREE instruments.
+
+**Harness defect, owned:** quote verification normalized only whitespace
+and case, so legitimate quotes containing unicode spaces/dashes, markdown
+emphasis, or `<br>` failed (123 unverified positives, some of which were
+genuine). One judge also quoted the DEFINITION back verbatim rather than
+the text. Normalization is now hardened in the harness for future use; the
+Cell 30 verdict is NOT re-run on it, because the gate it failed does not
+depend on it.
+
+**Consequence — the program's most important open question is now
+instrument-blocked.** Audit #2 mandated a de-scaffolded replication with a
+paraphrase-robust instrument. The de-scaffolded CORPUS now exists (60 runs,
+two writers, seat prompts verified free of family names and phrase
+dictation). The instrument does not. Sentence-level judging is validated
+but costs ~4,800 calls for this corpus. **The classifier trained on Cell
+23's 200 judge-labelled sentences is therefore promoted from optional
+future work to the BLOCKING dependency** for testing whether the shrinkage
+law survives de-scaffolding.
+
+**Post-hoc, clearly labelled, NOT an evaluation of P30.1-P30.4** (regex is
+low-recall outside the modeled channel; single instrument; reported
+because it informs whether the classifier investment is warranted): on the
+de-scaffolded corpus regex measures w = 0.196 [-0.021, 0.394] pooled
+(CI includes zero), c = 0.250 [0.058, 0.499], with zero-supply invention
+4/27 = 0.148 [0.059, 0.325] composite and 2/51 = 0.039 [0.011, 0.132] on
+the validated modeled channel. Both writers show the same qualitative
+shape. Read only as: invention does not visibly vanish without the
+scaffold, and the effect sizes are small enough that the properly
+instrumented test is worth running rather than assumed either way.
