@@ -4278,3 +4278,88 @@ Full document: docs/PROGRAM_AUDIT_2026-08-07.md. Headline results:
   disclosure, within-scaffold instruction claim); the de-scaffolded
   replication with a second writer as the highest-value future cell; kit
   docs warning on scaffold entanglement.
+
+---
+
+## CELL 30 PRE-REGISTRATION — the de-scaffolded replication (registered 2026-08-07, before any runs)
+
+### Why this cell exists
+Program audit #2 (finding #8) established that the seat prompts name the
+measured families and dictate two literal lexicon strings. Every w
+estimate in this program was therefore measured on a system whose
+instructions and whose instrument share vocabulary. This cell removes the
+shared vocabulary from BOTH sides — de-scaffolded seat prompts AND a
+paraphrase-robust instrument — and adds a second writer model. It asks the
+only question that matters after the audit: **does the shrinkage law
+survive when nothing in the system is told the words the instrument
+looks for?**
+
+This is NOT a replication of arch-council's numbers. The system is
+deliberately different (no family names anywhere). The claim under test is
+the FORM of the law and the existence of invention, not the parameter
+values.
+
+### Design (frozen)
+Direct-call pipeline (no orchestrator/planner; path assertion N/A and
+recorded as route-free by design, per the Cell 25 category):
+- **Seats:** gpt-oss:20b in three domain roles (healthcare, legal,
+  finance) under DE-SCAFFOLDED prompts, frozen verbatim in
+  train/run_cell30_descaffold.py: they request substantive domain analysis
+  and contain NO family names, NO uncertainty instruction, and NO phrase
+  dictation. Temperature 0.7.
+- **Supply variation:** sentence-level ablation of the seat outputs
+  (gst.corpus.supply_variants). Ablation is regex-driven for CONSTRUCTION
+  only; measured supply is whatever the JUDGE instrument reports on the
+  resulting text, so the construction instrument does not define the
+  measured variable. No injection (injection would reintroduce scaffolded
+  sentences).
+- **Writers:** gpt-oss:20b (primary, 2 repeats per variant) and phi4:14b
+  (secondary, 1 repeat) under a neutral synthesis prompt with no PRESERVE
+  block and no family names. Temperature 0.6.
+- **Cases:** the 9-case battery (already verified lexicon-clean in audit
+  #2, A2).
+
+### Instrument (frozen)
+PRIMARY: document-level dual-judge (gpt-oss:20b + qwen2.5:7b-instruct,
+temperature 0, max_tokens 2048) using the frozen Cell 23 family
+definitions, requiring a VERBATIM QUOTE per positive judgment. Quotes are
+substring-verified against the source (whitespace-normalized); an
+unverified quote makes that judgment ABSENT and is counted. A family is
+present only where both judges agree. Empty/unparseable replies excluded
+and counted, never defaulted.
+SECONDARY (reported, not authoritative): regex, for the divergence check.
+
+### Predictions
+- **P30.0 (instrument validity gate).** Judge-judge agreement on this
+  corpus >= 0.70. *If below, ALL other predictions are NOT EVALUABLE* and
+  the cell reports an instrument failure.
+- **P30.1 (the law survives).** Judge-measured w over the primary-writer
+  runs has bootstrap CI lower bound > 0. *Falsified if* the CI includes 0.
+  *Not evaluable if* judge-measured supply spans < 3 levels — which would
+  itself be the finding that specialist qualification is an artifact of
+  instruction, and is reported as such.
+- **P30.2 (invention survives de-scaffolding — the key test).**
+  Judge-measured zero-supply invention rate has Wilson CI lower bound > 0,
+  pooled across writers (expected n ~ 36; attainable in both directions —
+  2+ events gives a lower bound above 0, and 0 events gives [0, ~0.10]).
+  *Falsified if* the CI includes 0.
+- **P30.3 (second writer).** The phi4 card shows w CI lower > 0 AND
+  zero-supply invention CI lower > 0. *Falsified if* either fails — the
+  law would then be one model's law.
+- **P30.4 (instrument divergence).** On de-scaffolded outputs, the
+  regex-measured invention rate is BELOW the judge-measured rate (regex
+  under-counts once its scaffold phrasings are absent). *Falsified if*
+  regex >= judge.
+
+### Consequences (fixed in advance)
+- P30.1+P30.2 supported → the law and the invention phenomenon are
+  scaffold-free; the framework paper's amendments are limited to the
+  instruction-gain and cross-architecture claims (audit #2 mandate), and
+  the central law stands on this cell rather than on the entangled corpus.
+- P30.2 falsified → invention was a scaffold artifact. The framework
+  paper's central phenomenon is WITHDRAWN and the paper is rewritten
+  around measurement methodology alone. This is the outcome that would
+  end the program's headline claim, and it is registered as such.
+- P30.3 falsified → all parameter claims are scoped to one writer model,
+  stated in the abstract.
+- No adoption of any configuration; characterization only.
