@@ -4185,3 +4185,62 @@ phenomena section with these fits as their evidence. Any falsified
 prediction is reported at equal prominence and the corresponding
 phenomenon is demoted from the discussion. No adoption, characterization
 only.
+
+---
+
+## CELL 29 VERDICT — phenomena atlas: three regularities graduate to corpus-level measurements; one falsifies; my informal "band" narrative is corrected by its own test (2026-08-07, 1,300+ runs, 25 qualifying arms, zero model calls)
+
+Report: bench/analysis/cell29/atlas_report.txt.
+
+**P29.1 SUPPORTED — and the band narrative is revised by the measurement.**
+DerSimonian-Laird over 25 arms: mu_w = 0.364 [0.290, 0.438], tau = 0.158,
+new-arm 95% prediction interval [0.045, 0.682]. Both registered bars pass
+(mu CI within [0.15, 0.50]; PI excludes faithful transduction). But the
+informal claim I had been repeating — "w never leaves [0.12, 0.45]" — is
+WRONG as stated: cell6b-lead-repro sits at 0.760 +/- 0.070 (extrapolated
+intercept, but the slope is real within its observed range), and the PI
+honestly spans to 0.68. The corrected phenomenon: no measured arm
+approaches transduction, central tendency ~0.36, genuine between-arm
+spread tau ~ 0.16. The atlas exists precisely to replace eyeballed
+invariants with estimated ones.
+
+**P29.2 SUPPORTED.** ICC = 0.190 [0.128, 0.242] over 251 repeated cells
+(1,279 runs): ~19% of invention variance is between-prompt. The
+correlated-redraw phenomenon is now a single corpus-level number, and
+selection sizing must use it. Dispersion indices (descriptive, no bar as
+registered): median 0.93, range [0.57, 1.00] — mildly UNDER-dispersed,
+consistent with bounded near-binary counts; the decision not to register
+a Poisson bar was correct, and the "near-Poisson" label from the earlier
+inventory should be retired in favor of "Bernoulli-like with
+prompt-level rate heterogeneity."
+
+**P29.3 FALSIFIED.** Modeled share of composite w = 0.219 [0.170, 0.268]
+— below equal share at the point but the CI includes 0.25. The registered
+aggregation-distortion claim (validated channel carries decisively less
+than its share) does not hold corpus-wide; per the consequence it is
+DEMOTED from the framework paper's discussion. What the decomposition
+does show, reported descriptively: hedging (the FP-prone channel) carries
+the largest single share (0.151/0.383 ~ 39%). The distortion story
+survives only in that weaker, unregistered form.
+
+**P29.4 SUPPORTED.** Register-pooled intercepts: prose c = 0.407
+[0.164, 0.651] (tau = 0.270 — prose arms are heterogeneous) vs ledger
+c = -0.023 [-0.110, 0.065] (tau = 0.000 — the two ledger arms agree
+exactly). Disjoint. The register-dependent intercept is now a
+corpus-level measured phenomenon; decide-register (single arm,
+descriptive) sits highest at 0.805.
+
+**Attainability audit (registered as reported-no-prediction), performed
+by review of every numeric bar in this runbook against its realized n:**
+one by-construction dead zone found — P28.2, already owned (Wilson bar
+unattainable with zero events below n=11 while the floor permitted n=8).
+Two bars flagged as underpowered-but-attainable at their n: P17.1 and
+P19.1 (trigger-free strata at n=15 could not separate moderate true
+effects; their nulls are correspondingly weak evidence, as their verdicts
+already noted). All other registered numeric bars were attainable at
+their realized n.
+
+**Consequences executed:** P29.1, P29.2, P29.4 enter the framework
+paper's discussion as the named phenomena section with these fits as
+evidence (with the band stated in its corrected form); P29.3's claim is
+demoted; the "near-Poisson" label is retired.

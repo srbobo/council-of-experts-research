@@ -1,0 +1,64 @@
+corpus: 1491 usable runs
+
+arms qualifying for meta-analysis: 31
+  arch-council           w=+0.296±0.056  c=+0.799±0.125  n=85
+  arch-debate            w=+0.516±0.126  c=-0.588±0.368  n=35  [weak]  [extrap]
+  arch-flat              w=+0.221±0.065  c=+0.162±0.134  n=50
+  c13-all                w=+0.317±0.234  c=+0.941±0.725  n=30  [weak]  [extrap]
+  c13-c1                 w=+0.218±0.157  c=+0.071±0.474  n=30  [weak]  [extrap]
+  c13-c2                 w=+0.091±0.129  c=+1.561±0.407  n=30  [weak]  [extrap]
+  c13-c3                 w=+0.237±0.149  c=+0.225±0.439  n=30  [weak]  [extrap]
+  c13-c4                 w=-0.014±0.150  c=+1.077±0.537  n=30  [weak]  [extrap]
+  c17-suppress           w=+0.375±0.067  c=+0.732±0.203  n=45
+  c19-gated              w=+0.443±0.081  c=+0.527±0.194  n=45
+  c20-decide             w=+0.419±0.077  c=+0.805±0.148  n=45
+  c27-ledger             w=+0.385±0.048  c=-0.022±0.058  n=41
+  c28-ledger-rep         w=+0.308±0.067  c=-0.024±0.070  n=41
+  cell11-cal-k0          w=+0.599±0.172  c=-0.437±0.434  n=35  [weak]  [extrap]
+  cell11-cal-k3          w=+0.693±0.126  c=-0.016±0.315  n=35  [weak]  [extrap]
+  cell11-stock-k0        w=+0.473±0.138  c=-0.041±0.310  n=35  [weak]  [extrap]
+  cell18-prov-k3         w=+0.375±0.258  c=+0.702±0.669  n=35  [weak]  [extrap]
+  cell6b-lead-orpo       w=+0.647±0.167  c=-0.055±0.432  n=35  [weak]  [extrap]
+  cell6b-lead-repro      w=+0.760±0.070  c=-0.078±0.171  n=35  [extrap]
+  local-council-cpo      w=+0.553±0.157  c=+0.316±0.449  n=35  [weak]  [extrap]
+  local-council-dpo      w=+0.239±0.195  c=+1.009±0.578  n=35  [weak]  [extrap]
+  local-council-dpo-v2   w=+0.486±0.192  c=+0.369±0.491  n=36  [weak]  [extrap]
+  local-council-finance-orpo w=+0.538±0.287  c=+0.075±0.862  n=35  [weak]  [extrap]
+  local-council-finance-repro w=+0.500±0.262  c=+0.443±0.772  n=35  [weak]  [extrap]
+  local-council-health-orpo w=+0.546±0.173  c=+0.427±0.486  n=35  [weak]  [extrap]
+  local-council-health-repro w=+0.342±0.173  c=+0.970±0.404  n=35  [weak]  [extrap]
+  local-council-repro    w=-0.214±0.375  c=+2.571±1.058  n=34  [weak]  [extrap]
+  local-council-sft      w=+0.307±0.215  c=+0.698±0.658  n=35  [weak]  [extrap]
+  local-council-spec     w=+0.225±0.220  c=+0.871±0.635  n=34  [weak]  [extrap]
+  moa-ledger             w=+0.119±0.060  c=+0.083±0.088  n=69
+  moa-naive              w=+0.158±0.040  c=+0.275±0.090  n=80
+
+==========================================================================
+P29.1  THE w-BAND (DerSimonian-Laird random effects, all arms)
+==========================================================================
+  mu_w = 0.364 [0.290,0.438]   tau = 0.158
+  95% prediction interval for a NEW arm: [0.045,0.682]
+  P29.1: mu CI within [0.15,0.50]: True; PI upper < 0.85: True -> SUPPORTED
+
+==========================================================================
+P29.2  PROMPT HETEROGENEITY (one-way ICC over repeated cells)
+==========================================================================
+  cells with >= 2 runs: 251 (runs 1279)
+  ICC = 0.190 [0.128,0.242]
+  P29.2: CI lower > 0 -> SUPPORTED
+  dispersion indices (descriptive, no bar): n=20 cells, median 0.93, range [0.57,1.00]
+
+==========================================================================
+P29.3  SLOPE DECOMPOSITION (pooled qualifying-arm runs)
+==========================================================================
+  w_modeled=+0.084  w_cutoff=+0.082  w_jurisd=+0.066  w_hedging=+0.151   sum=0.383
+  modeled share of composite w: 0.219 [0.170,0.268] (equal share = 0.25)
+  P29.3: CI upper < 0.25 -> FALSIFIED
+
+==========================================================================
+P29.4  REGISTER-DEPENDENT INTERCEPT (RE-pooled c by output register)
+==========================================================================
+  prose  (k=6):  c = 0.407 [0.164,0.651]  tau=0.270
+  ledger (k=2): c = -0.023 [-0.110,0.065]  tau=0.000
+  decide (descriptive, single arm): c = 0.805±0.148
+  P29.4: prose/ledger CIs disjoint, prose above -> SUPPORTED
