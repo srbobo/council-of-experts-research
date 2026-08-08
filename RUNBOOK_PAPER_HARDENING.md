@@ -4244,3 +4244,37 @@ their realized n.
 paper's discussion as the named phenomena section with these fits as
 evidence (with the band stated in its corrected form); P29.3's claim is
 demoted; the "near-Poisson" label is retired.
+
+---
+
+### PROGRAM AUDIT #2 — adversarial self-audit; instrument-validity finding #8 (2026-08-07)
+
+Full document: docs/PROGRAM_AUDIT_2026-08-07.md. Headline results:
+
+- **Finding #8, instrument–scaffold entanglement (SEVERE, checked
+  empirically):** the seat prompts name the measured families and in two
+  places dictate the literal lexicon strings ("use 'modeled at',
+  'assumed'"; "assuming, under the assumption that"). Instruction-gain
+  results are downgraded to conditional phrase-compliance; cross-
+  architecture w comparisons are scaffold-confounded; supply is
+  manufactured. Survives untouched: uninstructed zero-supply invention,
+  the ledger-register contrast (treatment arm verified scaffold-free), and
+  the a-fortiori reading (transport reaches only ~1/3 even when rigged in
+  its favor).
+- **Cleared:** authored case texts are lexicon-clean (measured; zero
+  families fire in any case prompt) — the trigger design is topical, not
+  string-circular.
+- **Registration-strength stratification:** prospective cells carry force;
+  retrospective cells 24/26 retain force via author-surprising outcomes;
+  P29.4 is re-graded to descriptive measurement (registered after its
+  answer was known).
+- **Terminology audit:** "bottleneck" drove refuted math (caught by
+  PA28.a); "dose" smuggled causal language onto the observational council
+  card — paper amendment required; "Poisson" drove wrong selection math,
+  retired; "heat" was banned before it touched math; "shrinkage" is a
+  valid regression under a cognitive story that must stay labelled as
+  story.
+- **Mandates:** paper amendments (observational labeling, scaffold
+  disclosure, within-scaffold instruction claim); the de-scaffolded
+  replication with a second writer as the highest-value future cell; kit
+  docs warning on scaffold entanglement.
