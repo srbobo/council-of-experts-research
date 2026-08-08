@@ -4424,3 +4424,101 @@ the validated modeled channel. Both writers show the same qualitative
 shape. Read only as: invention does not visibly vanish without the
 scaffold, and the effect sizes are small enough that the properly
 instrumented test is worth running rather than assumed either way.
+
+---
+
+## CELL 31 PRE-REGISTRATION — the matched-baseline ledger test (registered 2026-08-07, before any runs)
+
+### The confound this repairs
+Cells 27/28 changed TWO things at once: they replaced the PRESERVE
+synthesis instruction AND added the ledger licensing constraint — then
+compared against arch-council, which still had PRESERVE. Post-hoc check on
+existing data: arch-council c = 0.799 [0.560, 1.050]; arch-flat (no
+PRESERVE, no ledger) c = 0.162 [-0.102, 0.425]; ledger arms c ~ -0.02.
+Most of the drop occurs on clause removal, and the ledger's own increment
+overlaps every available control. P28.1's "disjoint below baseline" is
+technically correct and substantively misleading.
+
+### Design (frozen) — PAIRED, one variable
+Cell 30's de-scaffolded corpus provides the matched control: identical
+seats (no family names, no phrase dictation), identical ablation variants,
+identical writers, identical neutral writer prompt. The ONLY difference is
+the ledger protocol.
+- **Arm L (new):** the Cell 27 LEDGER_PROTOCOL verbatim (imported, not
+  copied) as the writer system prompt, over the SAME Cell 30 variants;
+  gpt-oss:20b x2 repeats + phi4:14b x1 repeat, temperatures matching
+  Cell 30 (0.6). Only the ANSWER section is scored; ledger stripped;
+  delimiter violations quarantined and counted.
+- **Arm P (existing, not re-run):** Cell 30's plain-writer runs,
+  bench/runs/cell30_descaffold.jsonl, c = 0.250 [0.058, 0.499],
+  w = 0.196 [-0.021, 0.394].
+- Instrument: regex, stated as a limitation up front (the judge instrument
+  failed its Cell 30 gate). Both arms are measured identically and neither
+  arm's prompts contain lexicon strings, so the comparison is internally
+  clean even though absolute levels are undercounts.
+
+### Estimator (frozen) — and why paired
+Because the arms share variants, the contrast is estimated as the
+difference in fitted parameters under a CLUSTER bootstrap resampling
+VARIANTS (5,000 draws, seed 0), not as two independent CIs. Requiring
+disjoint independent CIs would be unattainable here (Cell 27/28's ledger c
+upper bound ~0.09 already exceeds Arm P's lower bound 0.058) — an
+attainability check performed at registration per the P28.2 lesson.
+
+### Predictions
+- **P31.1 (the isolated ledger effect).** Delta-c = c_L - c_P has cluster-
+  bootstrap CI entirely below 0. *Falsified if* the CI includes 0 — the
+  ledger contributes nothing beyond removing the PRESERVE clause, and the
+  Cell 27/28 c->0 finding is withdrawn as a clause-removal artifact.
+- **P31.2 (transport not destroyed).** Delta-w CI includes 0 or lies above
+  it. *Falsified if* entirely below 0 — the ledger buys its intercept by
+  suppressing transport, i.e. the silence route.
+- **Reported without a bar (attainability: too few zero-supply events for
+  a powered test):** zero-supply invention in both arms with Wilson CIs;
+  mean emitted families; protocol-violation rate.
+
+### Consequences (fixed in advance)
+- P31.1 supported -> the ledger is a real mechanism; Cells 27/28 stand
+  with their baseline corrected, and the finding may enter the papers with
+  the paired contrast as its evidence.
+- P31.1 falsified -> the ledger finding is WITHDRAWN from the program's
+  claims, and what replaces it is the already-measured and more useful
+  fact that the PRESERVE clause causes the invention it was written to
+  prevent.
+
+---
+
+## REGISTERED RE-ANALYSIS PD-13 — is the clause effect compliance or behavior? (registered 2026-08-07, before computation; zero model calls)
+
+### Question
+Audit #2 established that council/prompts.py dictates literal lexicon
+strings. Cells 13/6c attribute large effects to individual clauses. This
+re-analysis tests whether those effects are concentrated in the DICTATED
+phrasings (compliance) or spread across a family's other phrasings
+(behavior change).
+
+### Method (frozen)
+A lexicon pattern is classified DICTATED if it matches anywhere in the
+text of council/prompts.py, and NON-DICTATED otherwise — an objective,
+mechanical split, computed before any outcome is examined. Per family,
+each Cell 13 arm's outputs are scored separately on the dictated and
+non-dictated pattern sets (presence per run). The contrast is
+arm-vs-c13-none, difference-in-differences between the two pattern sets,
+bootstrap 5,000 draws, seed 0.
+
+### Predictions
+- **PD13.1 (compliance signature).** For the family a clause names, the
+  lift on DICTATED patterns exceeds the lift on NON-DICTATED patterns,
+  DiD CI excluding 0. *Falsified if* the CI includes 0 — the effect is
+  phrasing-general and survives as behavior change.
+- **Evaluability floor:** a family/arm channel is scored only where the
+  non-dictated pattern set produces >= 5 positive runs somewhere in the
+  contrast; otherwise NOT EVALUABLE and reported as a design limit of the
+  lexicon, not as a result.
+
+### Consequence
+PD13.1 supported -> the Cell 13/6c clause-magnitude claims are relabelled
+as instruction compliance throughout the papers, and the framework paper's
+instruction-gain contribution is withdrawn rather than merely scoped.
+PD13.1 falsified or not evaluable -> the claims stand as scoped by audit
+#2, with the ambiguity recorded.
