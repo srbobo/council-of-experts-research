@@ -4136,3 +4136,52 @@ registered axes that were attainable; the theory I wrote for it was
 refuted by its own pre-registered check and replaced by a sharper one the
 same day. The discipline did exactly what it exists to do — in both
 directions at once.
+
+---
+
+## CELL 29 PRE-REGISTRATION — phenomena atlas: corpus-wide measurement of the observed mathematical regularities (registered 2026-08-07, before any numbers are computed)
+
+NOT the discarded chain test. The gate-discarded Cell 29 draft
+(multiplicative composition) stays dead; nothing here assumes Markov
+structure. This cell measures four regularities observed across cells,
+each with a frozen estimator and — per the P28.2 lesson — bars checked
+for ATTAINABILITY at the realized n before freezing. Zero model calls.
+
+### Population (frozen)
+Imported-ledger arms with n >= 30 usable runs and >= 3 supply levels
+(kit adapter rules; ledger-register arms c27-ledger and c28-ledger-rep
+included at their usable n), plus the two jsonl cards (cell25 naive-MoA,
+cell27 L2) as arms. All fits via the kit, seed 0.
+
+### Analyses and predictions
+- **P29.1 (the w-band, random-effects meta-analysis).** DerSimonian-Laird
+  over per-arm (w, SE) with SE from the seeded bootstrap CI. Weakly
+  identified arms are INCLUDED with their wide SEs — that is the point of
+  the machinery. Predictions: pooled mu_w CI within [0.15, 0.50]; the 95%
+  prediction interval for a NEW arm's w has upper bound < 0.85 (excludes
+  faithful transduction). tau reported unconditionally.
+- **P29.2 (prompt heterogeneity).** One-way ICC of invention counts over
+  (prompt, condition, writer) cells with >= 2 runs, bootstrap over cells
+  (2,000 draws, seed 0). Prediction: ICC CI lower bound > 0. Dispersion
+  indices per (arm x supply) cell with n >= 15 are reported
+  DESCRIPTIVELY with no bar: counts bounded at 4 and typically 0/1 make
+  the Poisson-vs-Bernoulli distinction underpowered at these rates — a
+  bar there would repeat the P28.2 defect, so none is set.
+- **P29.3 (aggregation distortion, slope decomposition).** On the pooled
+  qualifying runs, w_f = cov(y_f, s)/var(s), summing to composite w.
+  Prediction: the validated modeled channel's share w_modeled/w < 0.25
+  (its equal share), bootstrap CI upper bound < 0.25. Full family table
+  reported; per-arm table for the five comparable arms.
+- **P29.4 (register-dependent intercept).** RE-pooled c by output
+  register: prose arms vs ledger arms (c20-decide reported descriptively,
+  single arm). Prediction: prose and ledger 95% CIs disjoint, prose
+  above.
+- **Reported, no prediction:** retrospective attainability audit of every
+  numeric registered bar in this runbook against its realized n.
+
+### Consequences (fixed in advance)
+Supported predictions enter the framework paper's discussion as a named
+phenomena section with these fits as their evidence. Any falsified
+prediction is reported at equal prominence and the corresponding
+phenomenon is demoted from the discussion. No adoption, characterization
+only.
