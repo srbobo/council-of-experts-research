@@ -5086,3 +5086,30 @@ moves from infeasible to an overnight job, and the held measurements
 measure is the COUNT of qualification-bearing sentences per family, not
 document-level binary presence. "Any sentence positive" compounds false
 positives across ~40 sentences; counts add error linearly.
+
+### CELL 31 — REGISTERED DEVIATION, before any measurement (2026-08-09)
+
+Cell 31 was registered with regex as its instrument ("stated as a
+limitation up front"). A standing directive issued AFTER that registration
+bars regex as an instrument, and Cell IV has since validated batched
+sentence judging at B=10. The measurement is therefore taken with the
+validated instrument instead. Recorded before any numbers are computed.
+
+**What changes:** the measured variable. Registered as family counts
+(0-4 per document); now the COUNT OF QUALIFICATION-BEARING SENTENCES,
+per the standing directive that "any sentence positive" compounds false
+positives across a document.
+
+**What that does to the frozen predictions:** the scale changes, so the
+registered bars survive only as SIGN tests, and are read that way:
+- **P31.1** Delta-c (ledger minus plain) cluster-bootstrap CI entirely
+  below 0.
+- **P31.2** Delta-w CI includes 0 or lies above it.
+The paired cluster-bootstrap estimator over shared variants is unchanged,
+as is the population and seed.
+
+**Scope:** 20 shared variant upstreams, 60 Cell 30 outputs, 51 Cell 31
+outputs (9 protocol violations excluded as registered) = 2,339 sentences,
+234 batches, 468 judge calls. Sentences are batched GLOBALLY across
+documents, which is exactly the condition Cell IV validated (200 unrelated
+sentences, judged independently).
