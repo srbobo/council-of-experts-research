@@ -4917,3 +4917,83 @@ depended on Cell 35's injected runs propagating so that auditors would
 have something to detect. With 0/27 propagation there is nothing to audit
 for, so **Cell 34 as registered is NOT RUNNABLE** and is recorded as
 blocked-by-upstream-null rather than re-scoped to fit the data.
+
+---
+
+## CELL 37 PRE-REGISTRATION — does the writer RECOMPUTE, or merely prefer an uncorrupted source? (registered 2026-08-09, before any runs)
+
+### Provenance of the hypothesis, stated plainly
+Cell 35 found 0/27 propagation of planted errors, and a POST-HOC check
+showed the final answers carrying the arithmetically CORRECT value on
+checkable cases (depreciation 3/3, hand-hygiene 3/3, equity split 3/3),
+sometimes above the control rate. The hypothesis "the writer recomputes"
+was formed AFTER seeing that data. This cell tests it on NEW runs with an
+arm that does not exist in Cell 35, so the hypothesis is post-hoc and the
+test is prospective.
+
+### The confound that dictates the design
+Cell 35 corrupted ONE seat. In several cases the correct primitives (cost,
+salvage, life; member counts; shift totals) also appear in ANOTHER seat.
+So "produces the correct value" is equally consistent with three
+mechanisms, and Cell 35 cannot separate them:
+  (a) RECOMPUTATION — the writer derives the value from primitives;
+  (b) CROSS-SEAT PREFERENCE — the writer copies from the uncorrupted seat;
+  (c) PRIOR/MEMORIZATION — the writer emits a familiar textbook figure.
+Any cell that does not separate these measures nothing.
+
+### Arms (frozen) — the separation
+Built on Cell 30's de-scaffolded corpus, gpt-oss:20b writer, temperature
+0.6, 3 repeats per item per arm.
+- **A0 clean** — no corruption (baseline rate of stating the correct value).
+- **A1 single-corrupt** — one seat's figure corrupted; an uncorrupted
+  source remains. (Reproduces Cell 35's condition.)
+- **A2 all-corrupt** — EVERY seat mention of that figure corrupted,
+  primitives intact. Copying now yields the WRONG value; only computation
+  yields the right one. **This is the decisive arm.**
+- **A3 all-corrupt, primitives removed** (exploratory) — the inputs needed
+  to compute are deleted as well. Neither copying nor computing can
+  produce the correct value; only a prior can.
+
+### Items (frozen in the harness before any runs)
+>= 8 computable arithmetic claims injected into the existing seat texts,
+constructed under a frozen rule: each states its primitives explicitly,
+has a single correct answer derivable in one or two steps, and uses NOVEL
+numbers (not standard textbook values) to reduce memorization. Items are
+committed to the repository before the runs stage executes.
+
+### Instrument — and why it is permitted under the no-regex directive
+Scored by EXACT MATCH on two known numerals: the correct value and the
+corrupted value. This is not regex used as a natural-language instrument;
+it is checking whether a specific known string appears, the same basis as
+Cell 35's probe. **Scope limited to arithmetic items for exactly this
+reason** — rule-type errors would require judged semantics and are
+excluded from this cell.
+
+### Predictions
+- **P37.1 (recomputation, primary).** In A2, the CORRECT value appears
+  with Wilson CI lower bound > 0, AND at a higher rate than the corrupted
+  value (paired CI excluding 0). *Falsified if* the corrupted value
+  dominates in A2 — the Cell 35 result was cross-seat preference, not
+  recomputation, and the hypothesis dies.
+  *Attainability at n=24 (8 items x 3): 3+ correct events put the Wilson
+  lower bound above 0; 0 events gives [0, 0.14] and falsifies cleanly.*
+- **P37.2 (not merely a prior).** A3's correct-value rate is LOWER than
+  A2's, difference CI excluding 0. *Falsified if* A3 ~ A2 — the value
+  comes from the model's prior rather than from computing on the supplied
+  primitives, which would make "recomputation" the wrong word.
+- **P37.3 (mandatory reporting, no bar).** For every arm, the THREE-WAY
+  split: correct value / corrupted value / NEITHER. Silence check: an
+  answer that omits the topic entirely produces neither value, and
+  conflating omission with correctness would manufacture the finding.
+
+### Consequences (fixed in advance)
+- P37.1 + P37.2 supported -> the writer computes over its inputs rather
+  than transporting them, which is the first POSITIVE capability this
+  program has measured and stands in direct tension with the transport
+  results: the same step that discards two-thirds of supplied
+  qualification independently derives numerical content.
+- P37.1 falsified -> Cell 35's pattern was cross-seat preference. Recorded
+  as such, and the "recomputation" language is struck from all artifacts.
+- P37.2 falsified -> the effect is prior-driven; the claim narrows to "the
+  writer prefers its prior to a corrupted input", which is notable but is
+  NOT computation.
