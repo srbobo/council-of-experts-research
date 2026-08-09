@@ -5044,3 +5044,45 @@ directive: 3 positives cannot support a rate.
 - Any epistemic bar fails at both sizes -> batching is rejected, the
   program's only affordable instrument does not exist, and the
   re-measurement is reported as BLOCKED rather than approximated.
+
+## CELL IV VERDICT — BATCHED JUDGING VALIDATES AT B=10. The program has a working instrument again (2026-08-09)
+
+Report: bench/analysis/cellIV/report.txt.
+
+| bar | B=5 | B=10 | requirement |
+|---|---|---|---|
+| consistency, modeled | 0.910 | **0.908** | >= 0.80 |
+| consistency, jurisd | 0.921 | **0.945** | >= 0.80 |
+| consistency, hedging | 0.865 | **0.835** | >= 0.80 |
+| anchors, gpt-oss | 0.925 | **0.900** | >= 0.80 |
+| anchors, qwen2.5 | 0.975 | **0.938** | >= 0.80 |
+| parse failure, gpt-oss | 0.038 | **0.000** | < 0.20 |
+| parse failure, qwen2.5 | 0.115 | **0.000** | < 0.20 |
+
+**Both sizes PASS ALL BARS. Registered consequence executed: B=10 ships**
+(largest passing size).
+
+Three observations recorded:
+1. **Batching did not degrade validity.** Anchor accuracy at B=10
+   (0.900 / 0.938) matches or exceeds the unbatched Cell 23 baseline
+   (0.900 / 0.925). The concern that motivated this gate — granularity
+   collapse, as in Cell 30's 0.86 -> 0.62 — did not materialise when the
+   judgment UNIT was held at one sentence and only the packaging changed.
+   That distinction is the transferable lesson: Cell 30 changed the unit;
+   this changed the envelope.
+2. **Parse failures fell to zero at the larger size**, including for the
+   judge that failed 38% of Cell 35's document-level calls. Small n
+   (13 batches) so not over-read, but the mechanical bar that seemed most
+   likely to fail did not.
+3. **Hedging is the weakest channel again** (0.835, lowest at both sizes),
+   consistent with hedging being diffuse under regex, NLI, and judges
+   alike — now four instruments agreeing that this construct is hard.
+
+**Cost effect:** ~10x reduction. The ~1,800-run archive re-measurement
+moves from infeasible to an overnight job, and the held measurements
+(Cells 30, 31) unblock immediately.
+
+**Measurement definition, per the standing directive:** the shipped
+measure is the COUNT of qualification-bearing sentences per family, not
+document-level binary presence. "Any sentence positive" compounds false
+positives across ~40 sentences; counts add error linearly.

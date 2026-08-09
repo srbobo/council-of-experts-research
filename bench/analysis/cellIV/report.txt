@@ -1,0 +1,33 @@
+reference: 109 fully-agreed sentences, 20 anchors
+
+  B=5   gpt-oss:20b            parse failures 1/26 (2004s)
+  B=5   qwen2.5:7b-instruct    parse failures 3/26 (2243s)
+  B=10  gpt-oss:20b            parse failures 0/13 (3665s)
+  B=10  qwen2.5:7b-instruct    parse failures 0/13 (3924s)
+
+==========================================================================
+BATCH SIZE 5
+==========================================================================
+  P-IV.3 gpt-oss:20b            parse-failure 0.038 (1/26) ok
+  P-IV.3 qwen2.5:7b-instruct    parse-failure 0.115 (3/26) ok
+  family       n   agree
+  modeled     89   0.910
+  jurisd      89   0.921
+  hedging     89   0.865
+  P-IV.2 anchors gpt-oss:20b            0.925 (74/80)
+  P-IV.2 anchors qwen2.5:7b-instruct    0.975 (78/80)
+  --> B=5: PASSES ALL BARS
+==========================================================================
+BATCH SIZE 10
+==========================================================================
+  P-IV.3 gpt-oss:20b            parse-failure 0.000 (0/13) ok
+  P-IV.3 qwen2.5:7b-instruct    parse-failure 0.000 (0/13) ok
+  family       n   agree
+  modeled    109   0.908
+  jurisd     109   0.945
+  hedging    109   0.835
+  P-IV.2 anchors gpt-oss:20b            0.900 (72/80)
+  P-IV.2 anchors qwen2.5:7b-instruct    0.938 (75/80)
+  --> B=10: PASSES ALL BARS
+
+Registered consequence: ship the largest passing batch size; if none passes, batching is rejected and re-measurement is BLOCKED.
