@@ -4794,3 +4794,68 @@ advantage over a single prompted model at any horizon this program can
 measure — intrinsic or extrinsic.** That is a publishable negative result
 and is accepted in advance as an outcome, not treated as a failure of the
 cells.
+
+---
+
+### CELL 36 AMENDMENT #1 — the routing-mechanism dimension (registered 2026-08-09, before the battery exists and before any correctness has ever been measured)
+
+**Why amend.** The original registration framed Cell 36 as "does domain
+specialization buy factual accuracy?" That under-describes what the arms
+actually contrast. `gpt-oss:20b` is itself a MIXTURE-OF-EXPERTS model
+(~21B total parameters, ~3.6B active, learned token-level gating); every
+other model in this program is dense (phi4:14b, qwen2.5:7b, mistral:7b,
+and all three domain fine-tunes). The "single prompted model" arm has
+therefore always been a learned expert router, and the council is a
+prompted expert router across model boundaries. P36.1 is really:
+**does explicit, question-granularity expert routing beat implicit,
+token-granularity expert routing?** This amendment says so, and adds the
+arms that make the question interpretable.
+
+**This is an amendment, not a re-registration:** no correctness has ever
+been measured in this program, on any arm, so nothing here is registered
+after seeing its answer.
+
+### Amended arms (frozen)
+1. **A-council** — dense domain specialists + writer (prompted routing).
+2. **A-moe-single** — gpt-oss:20b alone, prompted (learned routing).
+   This is the arm the original P36.1 called "a single prompted model".
+3. **A-dense-single** — phi4:14b alone, prompted (NEW; no expert routing
+   of either kind). Added because without it the two-way comparison cannot
+   separate "routing" from "which model".
+4. **Writer-architecture sub-contrast** — council runs with gpt-oss:20b
+   vs phi4:14b in the writing seat over identical upstream, which Cells
+   30/31 already produce.
+
+### Predictions
+- **P36.1 (amended, primary).** A-council achieves higher item accuracy
+  than A-moe-single, paired CI excluding 0. *Falsified if* the CI includes
+  0 or favours A-moe-single — prompted expert routing buys no accuracy
+  over learned expert routing, removing the last untested rationale for
+  the architecture.
+- **P36.2 (routing vs none, secondary).** A-moe-single exceeds
+  A-dense-single. *Reported with the confound stated in the same sentence*:
+  the two differ in architecture AND identity AND training data AND scale,
+  so a difference is suggestive of routing, never demonstrative of it.
+- **Reported WITHOUT a prediction (deliberate).** The writer-architecture
+  sub-contrast (#4). A bar there would imply an architecture claim the
+  design cannot support; it is descriptive only, exactly as the Cell 29
+  dispersion indices were.
+
+### Attainability check, performed now (P28.2 lesson)
+For paired binary accuracy at n=30 items, the minimum detectable paired
+difference is roughly 20 percentage points — so a real 10-15 point effect
+would be invisible and the cell would report a false null. **The battery
+target is therefore raised from >=30 to >=50 verifiable items**, and the
+minimum detectable effect will be reported beside every verdict.
+
+### Silence check (mandatory reporting)
+Accuracy alone rewards declining to answer. **Attempt rate (fraction of
+items the arm answers at all) is reported beside accuracy for every arm**,
+and an arm that answers materially fewer items has its accuracy reported
+as conditional, not compared directly.
+
+### Unchanged
+The battery prerequisite stands: >= 50 domain sub-questions with
+checkable ground-truth answers whose correctness does not depend on a
+judge's opinion. Cell 36 does not run until it exists. The lexicon is not
+used anywhere in this cell.
