@@ -4522,3 +4522,52 @@ as instruction compliance throughout the papers, and the framework paper's
 instruction-gain contribution is withdrawn rather than merely scoped.
 PD13.1 falsified or not evaluable -> the claims stand as scoped by audit
 #2, with the ambiguity recorded.
+
+---
+
+## PD-13 VERDICT — SUPPORTED, decisively. The clause effects are instruction compliance, and the framework paper's instruction-gain contribution is WITHDRAWN per the registered consequence (2026-08-09, zero model calls)
+
+Report: bench/analysis/pd13/report.txt.
+
+The mechanical split (a pattern is DICTATED iff it matches the text of
+council/prompts.py) put 2 of the 7 modeled-family patterns on the dictated
+side: `modell?ed at` and `under the assumption` — the two phrasings the
+PRESERVE clause and the finance seat prompt literally instruct the model
+to use.
+
+**c13-c2, the numeric clause, contrasted against c13-none (n=30 each):**
+
+| channel | baseline | with clause | lift |
+|---|---|---|---|
+| DICTATED phrasings | 0/30 | **28/30** | **+0.933** |
+| non-dictated phrasings | 1/30 | 4/30 | +0.100 |
+
+DiD = **+0.833 [+0.667, +1.000]**, CI excluding 0. **The clause's entire
+effect is the model typing the two phrases it was told to type.** The five
+other ways of expressing the same family barely move.
+
+c13-c4 (cutoff): dictated 0/30 -> 8/30, non-dictated 0/30 -> 0/30 —
+directionally identical but NOT EVALUABLE per the registered floor (0
+positive runs on the non-dictated channel). Recorded as a lexicon design
+limit, not a result.
+
+Whole-block (c13-all vs c13-none) per family: modeled dictated 0->28 vs
+non-dictated 1->3 (same signature); jurisd essentially flat on both
+channels; **hedging shows the OPPOSITE pattern — dictated 18->17 (flat)
+while non-dictated 1->9** — which is the genuine-behavior signature and
+is recorded as such: whatever the block does to hedging is not phrase
+compliance. This is the one channel where an instruction effect survives
+the test, and it is not the channel Cell 13's headline was about.
+
+**REGISTERED CONSEQUENCE EXECUTED.** Cell 13/6c clause-magnitude claims
+are relabelled as instruction compliance throughout, and the framework
+paper's instruction-gain contribution is WITHDRAWN rather than scoped.
+Specifically retired: "the writing instruction moves w more than the
+entire architectural difference", the 0.16 -> 0.35 gradient as evidence
+about instructions, and "C2 carries 126% of the block's gain" as a
+behavioral claim. What replaces them is narrower and better evidenced:
+**an instruction that dictates a phrase reliably produces that phrase
+(0/30 -> 28/30) and produces almost nothing else** — which, combined with
+the audit's finding that the same clause causes unwarranted qualification
+on trigger-free cases, makes the PRESERVE block a phrase generator rather
+than a disposition control.

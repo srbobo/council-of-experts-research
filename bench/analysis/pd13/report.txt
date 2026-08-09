@@ -1,0 +1,42 @@
+============================================================================
+PATTERN SPLIT — dictated iff the pattern matches council/prompts.py
+============================================================================
+  cutoff:
+    DICTATED     (3): ['training[- ]?cut[- ]?off', 'may (?:be |have )(?:stale|outdated|evolved)', 'verify (?:current|latest|recent)']
+    non-dictated (4): ['knowledge cut[- ]?off', 'post[- ]?cut[- ]?off', 'after my training', 'as of (?:my )?(?:training|knowledge|2024|2025)']
+  modeled:
+    DICTATED     (2): ['modell?ed at', 'under the assumption']
+    non-dictated (5): ['\\bassume[ds]? (?:that|the)', '\\bassuming (?:that|the|a |an |\\d)', 'this assume[ds]', '\\bwe assume\\b', '\\bhypothetical[ly]?\\b']
+  jurisd:
+    DICTATED     (4): ['\\bUK\\s?GDPR\\b', '\\bEU\\s?GDPR\\b', 'post[- ]Brexit', 'preempt(?:ion|s|ed)']
+    non-dictated (1): ['each\\s+(?:jurisdiction|country|state|regime)']
+  hedging:
+    DICTATED     (3): ['(?:false[- ]positive|false[- ]negative)', 'alert fatigue', 'sensitivity (?:analysis|range|to|of)']
+    non-dictated (4): ['real[- ]world\\s+(?:evidence|data)', 'low/?high (?:case|scenario|estimate)', '\\b±\\s?\\d', '(?:may|might|could)\\s+(?:vary|differ|change)']
+
+Cell 13 arms: {k: len(v) for k, v in ...} -> {'c13-all': 30, 'c13-c1': 30, 'c13-c2': 30, 'c13-c3': 30, 'c13-c4': 30, 'c13-none': 30}
+
+============================================================================
+PD13.1 — clause lift on DICTATED vs NON-DICTATED phrasings
+============================================================================
+c13-c1: names no detectable family — skipped by design
+
+c13-c2  (clause names 'modeled')   n_arm=30 n_base=30
+  DICTATED     : 0/30 -> 28/30   lift +0.933
+  non-dictated : 1/30 -> 4/30   lift +0.100
+  DiD (dictated lift - non-dictated lift) = +0.833 [+0.667,+1.000]
+  -> COMPLIANCE SIGNATURE (CI excludes 0)
+c13-c3: names no detectable family — skipped by design
+
+c13-c4  (clause names 'cutoff')   n_arm=30 n_base=30
+  DICTATED     : 0/30 -> 8/30   lift +0.267
+  non-dictated : 0/30 -> 0/30   lift +0.000
+  NOT EVALUABLE — non-dictated channel has 0 positive runs (< 5); a design limit of the lexicon, not a result
+
+============================================================================
+Whole block (c13-all vs c13-none), per family
+============================================================================
+  cutoff    dictated 0/30->3/30   non-dictated 0/30->1/30
+  modeled   dictated 0/30->28/30   non-dictated 1/30->3/30
+  jurisd    dictated 2/30->3/30   non-dictated 6/30->4/30
+  hedging   dictated 18/30->17/30   non-dictated 1/30->9/30
