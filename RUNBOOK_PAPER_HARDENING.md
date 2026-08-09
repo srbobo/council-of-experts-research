@@ -4619,3 +4619,178 @@ optimization against parameters; report emission alongside invention; the
 PD-13 and the regex directive) and remains undeployed with Netlify paused.
 Reconciling it is a separate pass and must not happen until the
 re-measurement settles which numbers survive.
+
+---
+
+# CELLS 32-36 PRE-REGISTRATION BLOCK — extrinsic council advantages (registered 2026-08-09, before any runs)
+
+## Framing and the burden of proof
+Every council evaluation in this program has been INTRINSIC (scoring the
+answer), and on the answer the council loses on content coverage,
+calibration, load scaling and volume at ~4x compute. CollabLLM
+(arXiv:2502.00640) reframes value as EXTRINSIC — the long-term contribution
+of a response rather than the response itself. Its RL is infeasible here
+(measured: GRPO materializes seq x vocab logits and OOMs), but the reframe
+transfers without training. These five cells test the extrinsic advantages
+a council could have. **The prior is that none exists**; the program's
+measured record is uniformly negative, and "no advantage at any horizon we
+can measure" is a registered acceptable outcome for the whole block.
+
+**Design property shared by all five (deliberate):** none uses the
+epistemic lexicon. Under the standing no-regex directive these cells
+measure error propagation, attribution, rubric coverage and audit success
+— constructs the entangled instrument never touched.
+
+## Shared instrument gate — RUBRIC-COVERAGE INSTRUMENT (blocks 32, 33, 36)
+Cells 32/33/36 need an answer-quality measure. Registered instrument: a
+per-case rubric of CLOSED checklist items ("does the answer address X?"),
+each judged independently by the two blinded judges. Closed per-item
+questions are near the sentence-level granularity that validated at 0.86
+agreement, and deliberately not the document-level holistic judgment that
+failed at 0.62 (finding #9).
+**Gate G-R:** judge-judge agreement on rubric items >= 0.75 over a >= 60-item
+validation sample. If G-R fails, Cells 32/33/36 are NOT RUNNABLE and are
+reported as blocked, not as null results.
+
+---
+
+## CELL 35 — error attribution and targeted repair (runs FIRST; no instrument gate)
+**Why first:** causal by construction, needs no correctness ground truth
+(the error is planted), needs no new battery, and needs no rubric — so it
+is unblocked by every gate above.
+
+**Design.** For each of the 9 cases, take the de-scaffolded seat outputs
+(Cell 30's corpus) and produce an injected variant in which ONE seat's text
+carries a planted, specific, checkable factual error (a wrong figure or a
+reversed rule), authored per case and frozen in the harness. Arms:
+- **A-inject:** council writer over the injected upstream, 3 repeats
+- **A-control:** same writer over clean upstream, 3 repeats
+27 + 27 runs, gpt-oss:20b, temperature 0.6.
+
+**Measures.** (i) PROPAGATION: does the final answer assert the planted
+error? Judged by both judges as a closed question naming the specific
+claim, with exact string match reported as a lower bound. (ii)
+ATTRIBUTION: given the answer and the three seat texts, can a judge
+identify WHICH seat introduced it? (iii) CONTROL FALSE-POSITIVE rate on
+A-control.
+
+**Predictions.**
+- **P35.1** Propagation rate > 0 with Wilson CI lower bound above the
+  A-control false-positive rate. (Attainable: with n=27, 5+ events give a
+  lower bound clear of a low control rate; 0 events gives [0, 0.12] and
+  falsifies cleanly.)
+- **P35.2** Attribution accuracy > 1/3 (chance among three seats), Wilson
+  CI lower bound above 0.333, computed only on runs where propagation
+  occurred. **Evaluability floor: >= 10 propagated runs**; below that,
+  NOT EVALUABLE and reported as a design shortfall.
+- **P35.3 (the comparative claim)** The same planted error injected into a
+  single-model pipeline's context is attributable at chance, since no
+  component boundary exists. Reported descriptively — this is close to
+  definitional and is NOT scored as a test.
+
+**Consequence.** P35.1+P35.2 supported -> localizability is the first
+demonstrated council advantage, and it is extrinsic exactly as CollabLLM's
+framing predicts. Either falsified -> errors propagate untraceably even
+with component boundaries, and the maintainability argument for
+multi-agent architectures loses its only empirical support here.
+
+---
+
+## CELL 34 — does provenance make auditing possible? (gated on Cell 35's injections)
+**Design.** Reuses Cell 35's injected runs. Auditors (both judges,
+independently) are asked whether the answer contains an unsupported or
+incorrect claim, under two conditions: **with** the seat texts supplied,
+and **without** (answer alone). Paired on the same runs; order randomized.
+
+**Predictions.**
+- **P34.1** Detection rate WITH sources exceeds detection WITHOUT, paired
+  bootstrap CI on the difference excluding 0.
+- **P34.2** False-positive rate on clean (A-control) runs does not rise
+  with sources, CI including 0 or below — sources must not merely make
+  auditors more suspicious.
+  *Both bars checked for attainability at n=27 paired items; a difference
+  below ~0.20 will not be detectable and that is stated now, not after.*
+
+**Consequence.** P34.1 supported and P34.2 not violated -> the council's
+advantage is that verification succeeds at all, which no single-model
+pipeline can offer by construction. P34.1 falsified -> sources do not help
+auditors, and the provenance argument is withdrawn.
+
+---
+
+## CELL 32 — heterogeneous error decorrelation (gated on G-R)
+**Design.** Per case, two arms of three complete answers each, matched
+compute: **A-hetero** (one answer each from gpt-oss:20b, phi4:14b,
+qwen2.5:7b-instruct) and **A-homo** (three temperature-0.6 resamples of
+gpt-oss:20b). 9 cases x 3 x 2 = 54 generations. Scored by the rubric
+instrument.
+
+**Predictions.**
+- **P32.1** Within-case correlation of rubric coverage is LOWER in
+  A-hetero than A-homo (ICC difference, cluster bootstrap over cases, CI
+  excluding 0).
+- **P32.2** Best-of-3 rubric coverage (max over the three) is higher in
+  A-hetero, paired CI excluding 0. This is the practical form: diversity
+  is only worth anything if the selection ceiling rises.
+
+**Consequence.** Supported -> heterogeneous ensembles buy selection
+efficiency that resampling cannot, grounding an advantage in our own
+ICC=0.190 finding. Falsified -> model diversity adds nothing beyond
+resampling and the ensemble rationale for councils is empirically empty.
+
+---
+
+## CELL 33 — inter-seat disagreement as a triage signal (gated on G-R)
+**Design.** Observational, and labelled as such (no intervention). On
+existing council runs with stored seat texts, compute pairwise inter-seat
+disagreement (judge-scored: do these two contributions conflict on any
+substantive point?) and regress rubric coverage of the final answer on it.
+
+**Predictions.**
+- **P33.1** Disagreement predicts LOWER final-answer rubric coverage,
+  slope CI excluding 0.
+- **P33.2 (the useful form)** Abstaining on the top-quartile-disagreement
+  runs raises mean coverage of the retained set, paired CI excluding 0,
+  **with retention rate reported alongside** — a rule that abstains on
+  everything trivially wins and must not be scored as success (silence
+  check).
+
+**Consequence.** Supported -> the council produces a free triage signal a
+single model cannot, and its value is in routing rather than writing.
+Falsified -> the disagreement structure Cell 26 showed the writer ignores
+is also uninformative to the system, and the tension machinery has no
+demonstrated use.
+
+---
+
+## CELL 36 — domain factual accuracy (BLOCKED: requires a new battery)
+**The gap being closed.** Across 31 cells this program measured epistemic
+MARKERS exclusively and never once measured whether domain content was
+CORRECT. The council's most obvious plausible advantage is the one our
+instrument was blind to.
+
+**Blocker, stated honestly:** our 18 authored cases are open-ended
+professional questions without verifiable answers, which is precisely why
+this was never measured. Cell 36 therefore requires constructing a battery
+of >= 30 domain sub-questions with checkable ground-truth answers
+(healthcare, legal, finance) whose correctness does not depend on any
+judge's opinion. **That battery construction is a prerequisite deliverable
+and is registered as such**; the cell does not run until it exists and its
+answer key has been externally checkable.
+
+**Prediction (frozen now).**
+- **P36.1** Council answers achieve higher factual accuracy on
+  domain-verifiable items than a single prompted model, paired CI
+  excluding 0. *Falsified if* the CI includes 0 — domain specialization
+  buys no factual accuracy either, which would remove the last untested
+  rationale for the architecture.
+
+---
+
+## Block-level consequence
+If Cells 32-35 all falsify and Cell 36 (once unblocked) falsifies, the
+registered conclusion is: **the council architecture has no demonstrated
+advantage over a single prompted model at any horizon this program can
+measure — intrinsic or extrinsic.** That is a publishable negative result
+and is accepted in advance as an outcome, not treated as a failure of the
+cells.
