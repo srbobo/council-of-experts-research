@@ -132,8 +132,19 @@ families were \emph{raised} upstream, which of those were \emph{preserved},
 and which appear in the output having been raised by nobody. This is the
 measurement the paper rests on and it requires no additional model calls.
 
-\textbf{Instruments.} Pattern matching is primary, and it has since been
-graded: against blinded dual-judge labels over $200$ sentences (judge--judge
+\textbf{Instruments --- and a standing caveat on every number below.}
+Pattern matching is primary, and we subsequently established that our
+lexicon shares vocabulary with the pipeline's own instructions: the
+writing prompt tells the model to use ``modeled at'' and ``assumed'',
+strings the lexicon matches. Decomposing the lexicon into
+prompt-appearing and prompt-absent patterns shows the instruction
+effects concentrate almost entirely in the dictated phrasings
+($0/30 \to 28/30$ against $1/30 \to 4/30$). Every rate in this paper is
+therefore \emph{provisional} pending re-measurement under a
+paraphrase-robust instrument; the results that do not depend on it are
+those measured on arms whose prompts contain no lexicon strings, and
+those established by reading the outputs directly. The lexicon has since
+been graded: against blinded dual-judge labels over $200$ sentences (judge--judge
 agreement $0.86$; anchor accuracy $0.90$/$0.93$), the lexicon detects the
 modeled-assumption family well (sensitivity $0.92$, precision $0.92$) and the
 remaining families conservatively (specificity $\geq 0.95$, sensitivity

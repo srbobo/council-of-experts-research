@@ -364,3 +364,20 @@ class TestCompare:
         assert not rep.comparable
         assert any("no other arm ran" in n for n in rep.notes)
         assert all(len(v) == 3 for v in restrict_to_shared(arms).values())
+
+
+class TestScaffoldEntanglement:
+    def test_detects_patterns_that_appear_in_prompts(self):
+        """The check that would have caught finding #8 a month earlier."""
+        from gst.instruments import audit_scaffold_overlap
+        ins = RegexInstrument({"x": [r"modeled at", r"hypothetical"]})
+        prompt = "Your synthesis MUST label it as an assumption (use 'modeled at')."
+        r = audit_scaffold_overlap(ins, prompt)
+        assert r["x"]["dictated"] == [r"modeled at"]
+        assert r["x"]["clean"] == [r"hypothetical"]
+
+    def test_clean_lexicon_reports_no_overlap(self):
+        from gst.instruments import audit_scaffold_overlap
+        ins = RegexInstrument({"x": [r"hypothetical"]})
+        r = audit_scaffold_overlap(ins, "Analyze the financial aspects.")
+        assert r["x"]["dictated"] == []

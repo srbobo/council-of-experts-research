@@ -4571,3 +4571,51 @@ behavioral claim. What replaces them is narrower and better evidenced:
 the audit's finding that the same clause causes unwarranted qualification
 on trigger-free cases, makes the PRESERVE block a phrase generator rather
 than a disposition control.
+
+---
+
+### COMPREHENSIVE CLEAN — audit consequences executed on the artifacts (2026-08-09)
+
+Audit consequences had been RECORDED in this runbook but several were never
+EXECUTED on the papers and code. That gap is itself a defect class (a
+verdict that says "consequence executed" while the artifact still carries
+the claim), and this pass closes it.
+
+**Executed:**
+1. **PD-13's consequence, actually applied.** paper_framework.tex still
+   contained "the writing instruction moves w more than the entire
+   architectural difference ($0.16 \to 0.35$)" as contribution #2 and an
+   entire section built on it. Contribution #2 is now "What does NOT set
+   the parameters"; the section is rewritten as an explicit withdrawal
+   with the DiD decomposition as its evidence, and reports the one channel
+   (hedging) whose pattern is the opposite.
+2. **Instrument-status banner** added to both active papers, marking every
+   quantitative result PROVISIONAL pending re-measurement, and stating
+   which results do NOT depend on the lexicon (scaffold-free arms;
+   inspection-based findings).
+3. **docs/STATUS.md created** — the authoritative claim ledger. LIVE /
+   PROVISIONAL / WITHDRAWN / BLOCKED for every claim the program has made,
+   plus the standing methodological directives and per-artifact status.
+   Where any artifact disagrees with STATUS.md, STATUS.md is correct.
+4. **Kit hardened.** RegexInstrument's docstring now leads with the three
+   measured reasons its output was withdrawn, and a new
+   `audit_scaffold_overlap(instrument, *prompt_sources)` reports which
+   patterns appear in the system's own prompts. Run against
+   council/prompts.py it finds dictated patterns in ALL FOUR families
+   (jurisd worst: 4 dictated, 1 clean). Two tests added; 48 pass.
+5. **Cell 31's measure stage HELD** under the no-regex directive. Its runs
+   continue (generation is instrument-independent); measurement waits for
+   a validated instrument.
+
+**Standing directives now recorded in STATUS.md §6:** no regex as an
+instrument; the cutoff family is unmeasurable with current labels (3
+positives) so the program covers three families; sentence-level counts
+rather than document-level presence (the "any sentence" rule compounds
+false positives across ~40 sentences); one factor per comparison; no
+optimization against parameters; report emission alongside invention; the
+11-item pre-recommendation checklist.
+
+**Not executed, deliberately:** the site is stale (predates audits #1/#2,
+PD-13 and the regex directive) and remains undeployed with Netlify paused.
+Reconciling it is a separate pass and must not happen until the
+re-measurement settles which numbers survive.

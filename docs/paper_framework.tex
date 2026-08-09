@@ -87,11 +87,12 @@ architectures sharing one writer---a routed specialist council and a
 canonical mixture-of-agents (MoA) stack---with bootstrap intervals, a
 five-level supply sweep in which zero supply is measured rather than
 extrapolated, and per-family decomposition on a validated channel.
-\item \textbf{What sets the parameters} (\S\ref{sec:sets}): the writing
-instruction moves \ww{} more than the entire architectural difference
-($0.16 \to 0.35$); the compensation phenomenon travels across architectures;
-and corroboration---the one reliability signal a multi-agent system uniquely
-produces---does not modulate transport on the validated channel.
+\item \textbf{What does \emph{not} set the parameters} (\S\ref{sec:sets}):
+corroboration---the one reliability signal a multi-agent system uniquely
+produces---does not modulate transport; and an instruction that names the
+behavior produces the \emph{phrasing} it names and little else, which we
+establish by decomposing our own instrument. The compensation phenomenon
+travels across architectures.
 \item \textbf{Interventions under the law} (\S\ref{sec:interventions}):
 instructions, preference training, and detector-fed correction loops all
 fail, the last by producing improvement only its own instrument can see;
@@ -157,6 +158,24 @@ sequence-level preference training dilutes; the clean-sample rate $p_0$
 
 \section{Instruments, validated per channel}
 \label{sec:instruments}
+
+\begin{quote}
+\small\textbf{Status of every number in this paper.} All quantitative
+results below were produced by a lexicon instrument that we subsequently
+established shares vocabulary with the measured system's own prompts. We
+therefore mark them \textbf{provisional}: the qualitative forms
+(monotone supply response, positive prior fill, invention at zero supply)
+are supported by arms whose prompts contain no lexicon strings, but the
+\emph{parameter values} are pending re-measurement under a
+paraphrase-robust instrument. Two candidate replacements have already
+failed their own validation gates (an entailment model carrying no signal
+on the deployed task; document-level judging at $0.62$ agreement), and the
+one validated protocol---sentence-level dual judging at $0.86$---covers
+three of our four behavior families, the fourth having only three
+positive instances in the labelled set. We report this rather than
+withhold the work, because the sequence of instrument failures is itself
+the paper's most transferable result.
+\end{quote}
 
 Every number in this paper is instrument-relative, so the instruments were
 graded before the numbers were trusted. Against blinded dual-judge labels
@@ -248,18 +267,32 @@ mistake silence for calibration.
 \section{What sets the parameters}
 \label{sec:sets}
 
-\textbf{The instruction, more than the architecture.} Holding the writer
-model fixed and restricting to a shared nine-case battery: the canonical MoA
-prompt over general proposers yields $\ww=0.16\ [0.08,0.23]$; a naive merge
-prompt over domain specialists yields $\ww=0.255\ [0.13,0.39]$; the
-conditional-preservation instruction over the same specialists yields
-$\ww=0.346\ [0.22,0.47]$. The instruction change moves \ww{} by more than
-the upstream-composition change, and no instruction we found moves it past
-roughly a third of the way to transport. Clause ablation in the earlier
-program localizes the effect further: a single conditional clause carries
-essentially the entire instruction effect, and each clause lifts primarily
-the family it names. Instructions act as a gain control on transport---
-graded, targeted, and bounded well short of fidelity.
+\textbf{An instruction produces the phrase it names, and little else}
+(claim withdrawn and replaced; see \S\ref{sec:instruments}). An earlier
+version of this work reported that the writing instruction moves \ww{} by
+more than the entire architectural difference, citing a gradient from
+$0.16$ under a naive aggregation prompt to $0.35$ under a
+conditional-preservation instruction. We withdraw that claim. Our own
+audit established that the preservation instruction \emph{dictates the
+literal strings our instrument matches}---it tells the writer to use
+``modeled at'' and ``assumed''---so the gradient conflates an instruction
+effect with measurement of compliance to a phrase order.
+
+Decomposing the instrument settles it. Partitioning the lexicon into
+patterns that appear in the system's own prompts (``dictated'') and those
+that do not, the clause credited with carrying the entire instruction
+effect moves the dictated phrasings from $0/30$ to $28/30$ runs, and the
+five other phrasings of the same behavior from $1/30$ to $4/30$: a
+difference-in-differences of $+0.83$ $[+0.67, +1.00]$. The instruction
+produces the words it specifies. It does not detectably produce the
+behavior those words denote.
+
+One channel behaves differently and we report it: for conditional hedging,
+the dictated phrasings are flat ($18/30 \to 17/30$) while the
+non-dictated rise ($1/30 \to 9/30$)---the signature of a genuine change
+rather than compliance, on the one family the instruction does not
+name explicitly. Whatever instructions do here, it is not what the
+withdrawn claim asserted.
 
 \textbf{Corroboration is not used.} A multi-agent system produces one
 reliability signal a single model cannot: independent agreement among

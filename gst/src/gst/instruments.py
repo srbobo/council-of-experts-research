@@ -76,15 +76,37 @@ SOURCE_ATTRIBUTION: dict[str, list[str]] = {
 
 
 class RegexInstrument:
-    """Lexicon-backed detection. Fast, transparent, and -- documented from the
-    originating program -- evadable by paraphrase under optimization pressure.
-    Fine as a measurement instrument; never use it alone inside a loop the
-    model can see."""
+    """Lexicon-backed detection. Fast, transparent, and NOT a natural-language
+    instrument.
+
+    READ BEFORE USE. In the originating program this class produced numbers
+    that had to be withdrawn, for three measured reasons:
+
+    1. SCAFFOLD ENTANGLEMENT. If any pattern here also appears in the
+       system's own prompts, this measures COMPLIANCE, not behavior. Ours
+       did: the pipeline instructed the writer to use "modeled at" and
+       "assumed", and the lexicon matched those strings. Decomposing the
+       lexicon into prompt-appearing and prompt-absent patterns showed the
+       clause credited with the entire instruction effect moved the
+       dictated phrasings 0/30 -> 28/30 and the other phrasings of the same
+       behavior 1/30 -> 4/30. Run `audit_scaffold_overlap` before trusting
+       any result from this class.
+    2. LOW RECALL. Graded against validated human-style labels: sensitivity
+       0.92 on one family, 0.25-0.30 on three others. Counts are
+       undercounts of unknown size outside the validated family.
+    3. EVASION. A revision loop that quotes this instrument's matches
+       teaches paraphrase, not removal.
+
+    Appropriate uses: constructing ablations (where the instrument does not
+    define the measured variable), fast screening, and instrument
+    decomposition studies. Inappropriate: any headline measurement, any
+    reward, any comparison whose arms differ in prompt vocabulary."""
 
     def __init__(self, families: dict[str, list[str]] | None = None,
                  name: str = "regex"):
         self.name = name
         self.family_names = tuple((families or EPISTEMIC_QUALIFICATION).keys())
+        self._source_patterns = dict(families or EPISTEMIC_QUALIFICATION)
         self._rx = {k: [re.compile(p, re.I) for p in ps]
                     for k, ps in (families or EPISTEMIC_QUALIFICATION).items()}
 
@@ -157,3 +179,23 @@ class ConsensusInstrument:
 
 
 DEFAULT = RegexInstrument()
+
+
+def audit_scaffold_overlap(lexicon, *prompt_sources: str) -> dict[str, dict[str, list[str]]]:
+    """Which lexicon patterns appear in the system's own prompts?
+
+    Entanglement check mandated by the originating program's audit: a
+    pattern that matches the text of a prompt driving the system under
+    measurement makes the resulting number a compliance score. Pass the
+    prompt source text (files, templates, system messages).
+
+    Returns {family: {"dictated": [...], "clean": [...]}}. Any non-empty
+    "dictated" list means results from that family must be decomposed
+    before they are reported.
+    """
+    blob = "\n".join(prompt_sources)
+    out: dict[str, dict[str, list[str]]] = {}
+    for fam, pats in getattr(lexicon, "_source_patterns", {}).items():
+        d = [p for p in pats if re.search(p, blob, re.I)]
+        out[fam] = {"dictated": d, "clean": [p for p in pats if p not in d]}
+    return out
