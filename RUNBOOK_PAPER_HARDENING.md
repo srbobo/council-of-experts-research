@@ -4859,3 +4859,61 @@ The battery prerequisite stands: >= 50 domain sub-questions with
 checkable ground-truth answers whose correctness does not depend on a
 judge's opinion. Cell 36 does not run until it exists. The lexicon is not
 used anywhere in this cell.
+
+## CELL 35 VERDICT — planted errors did NOT propagate: 0/27 by exact match and 0/17 by dual judges. The first council advantage the program has found, and it is not the one that was registered (2026-08-09, 54 runs)
+
+Reports: bench/analysis/cell35/. Integrity verified BEFORE interpretation:
+the planted text is present in the stored upstream of **27/27** injected
+runs, and outputs average ~7,000 characters, so this is not a
+plumbing null.
+
+**P35.1 FALSIFIED.** Propagation 0/17 usable inject runs [0.00, 0.18];
+control false-positive 0/15 [0.00, 0.20]; exact-match lower bound
+**0/27**, which requires no instrument at all. Registered as
+"propagation > control"; nothing propagated, so the prediction fails and
+the direction is the opposite of what a maintainability worry assumes.
+
+**P35.2 NOT EVALUABLE** at the registered floor (0 propagated runs against
+a floor of 10). Attribution cannot be measured when nothing to attribute
+occurs. Reported as designed, not scored.
+
+**Propagation by error type: ARITHMETIC 0/15, RULE 0/12.** Neither kind
+survived.
+
+**Instrument defect, owned:** qwen2.5:7b-instruct returned unparseable
+output on **20/52** runs (38%) while gpt-oss returned 0. The "both judges
+agree" rule therefore discarded 20 runs, reducing usable n from 27/27 to
+17/15. The headline does not depend on it — the exact-match lower bound is
+0/27 across every run — but the judge tier is weaker than designed and the
+per-judge failure asymmetry is recorded as a note on the dual-judge
+protocol at this task.
+
+**The finding, which is NOT the registered one and is reported as
+post-hoc.** Checking whether the writer OMITTED the planted error or
+CORRECTED it: on the arithmetic cases where the right answer is checkable,
+the final answers carry the CORRECT value while never carrying the planted
+one — depreciation 3/3 correct, hand-hygiene 3/3, the equity split 3/3,
+and notably these often EXCEED the control arm's rate of stating the
+correct figure (equity 3/3 inject vs 1/2 control; depreciation 3/3 vs
+2/3). The writer did not merely drop the corrupted sentence; on
+checkable arithmetic it appears to have recomputed. Stated with its
+limits: n=3 per case, post-hoc, no registered bar, and the
+inject-vs-control difference is far too small to test. It is a hypothesis
+for a registered cell, not a result.
+
+**What this does and does not license.** It does NOT license "councils
+resist error", because a single model given the same corrupted context was
+never run — the comparison arm does not exist, and P35.3 was explicitly
+descriptive. What it licenses is narrower and still notable: **in this
+council, a specific false claim planted in one specialist reached the
+final answer zero times out of 27**, against a program-wide backdrop in
+which the writer discards roughly two-thirds of what specialists supply.
+The most parsimonious reading is that the same aggressive discarding that
+destroys warranted qualification also destroys planted errors — the
+program's central defect operating as a filter.
+
+**Registered consequence.** Cell 34 (does provenance help auditors?)
+depended on Cell 35's injected runs propagating so that auditors would
+have something to detect. With 0/27 propagation there is nothing to audit
+for, so **Cell 34 as registered is NOT RUNNABLE** and is recorded as
+blocked-by-upstream-null rather than re-scoped to fit the data.

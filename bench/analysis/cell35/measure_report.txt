@@ -1,0 +1,11 @@
+==========================================================================
+P35.1 PROPAGATION  inject 0/17 = 0.000 [0.000,0.184]
+      control (false-positive) 0/15 = 0.000 [0.000,0.204]
+P35.1: FALSIFIED (inject CI lower vs control point rate)
+      exact-match lower bound: 0/27 = 0.000
+==========================================================================
+P35.2 NOT EVALUABLE — 0 propagated+judged runs (< 10 registered floor)
+==========================================================================
+P35.3 reported descriptively: a single-model pipeline has no component boundary, so the same planted claim is attributable at chance by construction. Not scored.
+  propagation by error type: ARITHMETIC 0/15
+  propagation by error type: RULE 0/12
