@@ -4997,3 +4997,50 @@ excluded from this cell.
 - P37.2 falsified -> the effect is prior-driven; the claim narrows to "the
   writer prefers its prior to a corrupted input", which is notable but is
   NOT computation.
+
+---
+
+## CELL IV PRE-REGISTRATION — instrument validation: does BATCHED sentence judging preserve the validated protocol? (registered 2026-08-09, before any judging)
+
+### Why this gate exists
+The no-regex directive leaves the program with exactly one validated
+instrument: dual-judge SENTENCE-level labelling (Cell 23: judge-judge
+agreement 0.86, anchors 0.90/0.925). Applied one sentence at a time it
+costs ~4,800 calls for a single 60-run corpus, which is not viable for the
+~1,800-run archive. Batching is the only route to affordability, and
+Cell 30 proved that changing the granularity of a judging protocol can
+destroy it (0.86 per sentence -> 0.62 per document). Batching must
+therefore be validated, not assumed.
+
+### Design (frozen)
+Sentences are presented ISOLATED and numbered, several per call — the
+judgment unit stays a single sentence; only the call packaging changes.
+Two batch sizes tested in the same run to give a degradation curve:
+**B=5 and B=10**. Both judges (gpt-oss:20b, qwen2.5:7b-instruct),
+temperature 0, frozen Cell 23 definitions verbatim.
+
+**Materials:** the 200 agreement-filtered Cell 23 sample sentences
+(consistency reference) and the 20 hand-written anchors with known truth
+(validity reference). Cutoff is EXCLUDED from scoring per the standing
+directive: 3 positives cannot support a rate.
+
+### Predictions — all three must pass for the protocol to ship
+- **P-IV.1 (consistency).** Batched labels agree with the frozen
+  single-sentence labels at >= 0.80 per family, on modeled / jurisd /
+  hedging.
+- **P-IV.2 (validity).** Anchor accuracy >= 0.80 for BOTH judges, against
+  the unbatched baseline of 0.90 / 0.925.
+- **P-IV.3 (usability).** Parse-failure rate < 20% per judge. Included
+  because Cell 35 measured qwen2.5 at 38% unparseable against gpt-oss's
+  0%, and batching lengthens the required output — the most likely way
+  this protocol fails is mechanical, not epistemic.
+
+### Consequences (fixed in advance)
+- All pass at B=10 -> B=10 ships as the program's measurement instrument;
+  the held measurements (Cells 30, 31, and the archive) unblock.
+- Pass at B=5 only -> B=5 ships, at double the cost.
+- P-IV.3 fails for one judge only -> that judge is replaced and the
+  protocol re-validated; a 38%-failure judge is not a second instrument.
+- Any epistemic bar fails at both sizes -> batching is rejected, the
+  program's only affordable instrument does not exist, and the
+  re-measurement is reported as BLOCKED rather than approximated.
