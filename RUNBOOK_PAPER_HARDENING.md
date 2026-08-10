@@ -5286,3 +5286,72 @@ than asserted.
 - P38.1 falsified -> true zero supply is unreachable by ablation with any
   instrument we have; the question is reported BLOCKED and requires
   synthetic upstream authored to contain no qualification.
+
+---
+
+## CELL 39 PRE-REGISTRATION — is the error filtering a COUNCIL property or a WRITER-ARCHITECTURE property? (registered 2026-08-10, before any runs)
+
+### The gap this closes
+Cell 35 found 0/27 propagation of planted errors and attributed it to the
+council's aggressive discarding. But Cell 35 used ONLY gpt-oss:20b as the
+writer, which is itself a mixture-of-experts model (~21B total, ~3.6B
+active, learned token-level gating). Every other model in this program is
+dense. The filtering may therefore be a property of that WRITER's
+architecture rather than of the council arrangement, and the program has
+no data separating the two.
+
+Framing note, recorded because it constrains what this cell can claim: an
+MoE's experts emit activations, not text, so planting an error in one, or
+attributing an output error back to one, is UNDEFINED rather than merely
+harder. This cell does not compare "council verifiability" against "MoE
+verifiability" — that comparison has no measurable quantity on one side.
+It compares WRITERS at the same task.
+
+### Design (frozen) — one factor
+Identical to Cell 35 in every respect except the writing model:
+- Same nine planted errors, frozen verbatim in run_cell35_injection.py
+  (five arithmetic, four reversed rules), same seat, same injection point.
+- Same Cell 30 de-scaffolded upstream, same neutral writer prompt, same
+  temperature 0.6, same 3 repeats per case per arm.
+- **A-inject-dense / A-control-dense:** phi4:14b (dense), 27 + 27 runs.
+- **Comparison arm:** Cell 35's existing gpt-oss (MoE) runs, NOT re-run.
+- Scored by the Cell 35 protocol: propagation as a closed dual-judge
+  question with a required verbatim quote, plus exact-match on the probe
+  string as an instrument-free lower bound. No lexicon anywhere.
+
+### The confound, stated up front
+gpt-oss and phi4 differ in architecture AND identity AND training data AND
+scale (21B/3.6B-active vs 14B dense). A difference is therefore SUGGESTIVE
+of an architectural cause and never demonstrative of one. This is recorded
+now so it cannot be quietly dropped from the verdict, and it is the same
+limitation registered for Cell 36's routing dimension.
+
+### Predictions
+- **P39.1 (the decisive one).** Dense-writer propagation exceeds the MoE
+  writer's 0/27, with the Wilson CI lower bound above the MoE arm's upper
+  bound (0.184). *Supported* -> the filtering is writer-dependent and
+  Cell 35's result must be re-attributed from "the council discards" to
+  "this writer filters"; the council interpretation is withdrawn.
+  *Falsified* -> both architectures filter, and the discarding
+  interpretation stands with a second writer behind it.
+  *Attainability at n=27: 8+ propagated runs clear 0.184; 0 events gives
+  [0, 0.12] and falsifies cleanly. A difference below ~5 events is not
+  detectable and that is stated now.*
+- **P39.2 (control).** Dense-writer false-positive rate on clean upstream
+  does not exceed the MoE arm's 0/15. Reported with its Wilson interval;
+  a dense arm that "detects" the claim on clean input invalidates its own
+  propagation numbers.
+- **P39.3 (mandatory reporting, no bar).** Mean output length and the
+  three-way split correct-value / corrupted-value / neither on the five
+  arithmetic items. Silence check: a writer that omits the topic produces
+  neither value, and conflating omission with filtering would manufacture
+  the finding — this is exactly how a false null would enter.
+
+### Consequences (fixed in advance)
+- P39.1 supported -> the first architecture-level result in the program,
+  reported with the confound in the same sentence, and Cell 35's
+  attribution corrected in STATUS.md.
+- P39.1 falsified -> Cell 35's filtering result gains a second writer and
+  strengthens; "the council discards planted errors" becomes a two-writer
+  finding rather than a one-writer one.
+- Either way, no configuration is adopted.
