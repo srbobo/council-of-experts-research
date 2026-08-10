@@ -5220,3 +5220,69 @@ supply-response exists with no lexicon anywhere in the loop. Its magnitude
 is small, it is demonstrated on one writer, and the compensating-invention
 half of the story is now unmeasured rather than measured — the design that
 was supposed to test it never created the condition it required.
+
+---
+
+## CELL 38 PRE-REGISTRATION — judge-driven ablation: does compensating invention exist at TRUE zero supply? (registered 2026-08-10, before any runs)
+
+### Why
+Finding #10: regex-driven ablation left an average of 5.4
+qualification-bearing sentences in texts labelled zero-supply, so every
+zero-supply invention rate this program has published was computed on a
+stratum that was never zero. The claim "writers invent qualification when
+none is supplied" — the program's most striking result — is currently
+UNMEASURED. This cell builds the condition properly.
+
+### Design (frozen)
+Source: Cell 30's de-scaffolded seat texts (no family names, no dictated
+phrasing anywhere).
+1. **Judge** every sentence of the full seat texts with the Cell
+   IV-validated instrument (B=10, both judges, both-agree rule).
+2. **Ablate** every sentence both judges flag for any scored family
+   (modeled / jurisd / hedging; cutoff excluded per standing directive).
+3. **RE-JUDGE the ablated upstream.** Supply is CONFIRMED, never assumed —
+   this is the step whose absence produced finding #10.
+4. **Run** the writer (gpt-oss:20b, temperature 0.6, neutral de-scaffolded
+   prompt) on two arms: **A-full** (unablated control) and **A-zero**
+   (judge-ablated), 9 cases x 3 repeats each = 54 runs.
+5. **Judge** the outputs; measure qualification-bearing sentence counts.
+
+### The circularity, and why this design is not it
+Ablation and measurement use the same instrument. That is acceptable here
+and would not be in general: it makes supply zero BY THAT INSTRUMENT'S
+LIGHTS, which is exactly the condition the claim is about ("the writer
+emits qualification the instrument cannot source upstream"). What would be
+circular is assuming the ablation worked; step 3 measures it instead.
+Residual limitation recorded now: judge false negatives leave residue, so
+A-zero is "confirmed near-zero", and the confirmed value is reported rather
+than asserted.
+
+### Predictions
+- **P38.1 (the ablation works).** Re-judged A-zero upstream carries <= 1
+  qualification-bearing sentence in >= 7 of 9 cases. *Falsified if* not —
+  which would mean judge-driven ablation ALSO fails to create the
+  condition, generalizing finding #10 to every instrument we have and
+  making true-zero-supply unreachable by ablation. Reported as such, not
+  as a null on invention.
+- **P38.2 (invention at true zero supply).** Among A-zero runs whose
+  upstream is confirmed at 0, the fraction whose output contains >= 1
+  qualification-bearing sentence has Wilson CI lower bound > 0.
+  *Falsified if* the CI includes 0 — compensating invention does not
+  survive proper measurement, and the program's most striking claim is
+  withdrawn. *Attainability at n=27: 3+ events clear zero; 0 events gives
+  [0, 0.12] and falsifies cleanly.*
+- **P38.3 (silence check, MANDATORY REPORTING, no bar).** Output character
+  length and total sentence count for both arms. If A-zero outputs are
+  materially shorter, the invention rate is reported as CONDITIONAL on
+  output length — "no invention" must not be an artifact of "no output".
+
+### Consequences (fixed in advance)
+- P38.1 + P38.2 supported -> compensating invention is real at true zero
+  supply, measured with no lexicon anywhere, and returns to the LIVE
+  claims with this cell as its evidence.
+- P38.2 falsified -> the claim is WITHDRAWN. Combined with Cell 30's
+  surviving w = 0.150, the thesis narrows to "weak transport" with no
+  invention component.
+- P38.1 falsified -> true zero supply is unreachable by ablation with any
+  instrument we have; the question is reported BLOCKED and requires
+  synthetic upstream authored to contain no qualification.
