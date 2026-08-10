@@ -5355,3 +5355,44 @@ limitation registered for Cell 36's routing dimension.
   strengthens; "the council discards planted errors" becomes a two-writer
   finding rather than a one-writer one.
 - Either way, no configuration is adopted.
+
+### CELL 36 AMENDMENT #2 — the verifiable battery is BUILT; scope narrowed and stated (2026-08-10, before any Cell 36 runs)
+
+**Delivered:** examples/verifiable_battery.py — 60 items, 20 per domain
+(healthcare / legal / finance), self-verifying. Every item carries an
+executable derivation and `verify_battery()` asserts derivation == stated
+answer for all 60. **Result: 60/60 confirmed, 0 authoring errors.**
+Difficulty spread: 36 single-step, 21 two-step, 3 three-step.
+
+**The design constraint, and it narrows the cell.** Program audit #2
+recorded a fabrication defect — an illustrative example reaching a paper
+as data. I therefore did NOT author domain FACTS from memory (statutes,
+dosing tables, market rates); every item states its premises IN THE
+QUESTION so the answer is derivable from those premises alone. Ground
+truth is checkable by any reader with no authority, no judge, and no
+trust in the author. That is the strongest form of verifiability
+available and it is why the battery clears the "correctness does not
+depend on a judge's opinion" requirement absolutely.
+
+**What the battery therefore measures — stated now, not after results:**
+domain-FRAMED REASONING (does the model apply a domain convention
+correctly: unit handling, tolling, day-count, book-value floors, ratio
+conventions). **What it does NOT measure: domain RECALL.** A recall
+battery requires externally sourced facts and must not be authored
+unaided; it is registered here as a SEPARATE prerequisite and is not
+smuggled into this one.
+
+**Consequence for P36.1's interpretation.** The prediction stands as
+registered, but its reading narrows: a council advantage on this battery
+would demonstrate better domain-convention application, NOT better domain
+knowledge. If the domain seats' value is recall — which is what their
+model cards actually claim gains on (Med42 on MedQA/MedMCQA, Saul at ~6%
+over Mistral-7B on LegalBench, both MCQA-format) — this battery will not
+detect it, and a null here must NOT be reported as "domain specialization
+buys no accuracy". It licenses only: "domain specialization buys no
+advantage in applying domain conventions to stated premises."
+
+**Attainability re-checked with the built battery:** 60 items exceeds the
+>=50 target set by amendment #1, giving margin for items dropped at
+scoring. Scoring is exact match against per-item accepted forms — a known
+value check, not regex-as-NLP, the same basis as Cell 35's probe.
