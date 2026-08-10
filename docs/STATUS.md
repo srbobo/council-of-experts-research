@@ -25,7 +25,7 @@ and its status.
 | claim | evidence | why it survives |
 |---|---|---|
 | The PRESERVE instruction causes unwarranted qualification | c = 0.799 [0.56,1.05] with clause vs 0.162 [-0.10,0.43] without, disjoint; Cell 14: conditional clause fired on trigger-free cases at 1.27 | contrast between two arms measured identically; direction does not depend on instrument recall |
-| Writers invent qualification with no upstream source | Cell 25 MoA 0.278 [0.12,0.51]; Cell 30 de-scaffolded 4/27 | present in arms whose prompts contain no lexicon strings |
+| Writers invent qualification with no upstream source | **Cell 38: 4/12 = 0.333 [0.138, 0.609]** on upstream CONFIRMED at exactly zero by the validated instrument | first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded |
 | An instruction produces the phrasing it names, not the behavior | PD-13: dictated 0/30→28/30 vs non-dictated 1/30→4/30, DiD +0.83 [+0.67,+1.00] | the decomposition is internal to one instrument and needs no cross-instrument validity |
 | Detector-fed correction loops produce rewording | Cell 19 + manual inspection of the eight intervened runs | established by reading the rewrites, not by an instrument |
 | Sequence-level preference training does not move the behavior | three objective classes; preference accuracy 0.48→0.94, behavior unchanged | the null is about the training outcome, measured on both sides identically |
@@ -79,7 +79,8 @@ and its status.
 ## 5. BLOCKED — open questions awaiting an instrument
 
 - ~~Does the supply→emission slope survive de-scaffolding?~~ **ANSWERED 2026-08-10: yes, w = 0.150 [0.058, 0.252] on gpt-oss.**
-- Does compensating invention survive? **NOW UNMEASURED** — regex-built ablations were never zero-supply under a valid instrument (finding #10); every published zero-supply rate needs re-basing
+- ~~Does compensating invention survive?~~ **ANSWERED 2026-08-10 (Cell 38): yes, 0.333 [0.138, 0.609] on confirmed-zero upstream.**
+- Can ablation reach true zero supply at all? **NO** — judge-driven ablation also leaves residue (finding #10 generalised); requires upstream authored to contain no qualification
 - Is the ledger a distinct mechanism? (Cell 31 running; measurement held)
 - Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)
 - Is qualification *warranted*? (no warrant labels exist; caps every normative claim)

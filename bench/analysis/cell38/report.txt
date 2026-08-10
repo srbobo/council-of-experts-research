@@ -1,0 +1,21 @@
+========================================================================
+P38.1 ablation: 6/9 cases at <=1 remaining qualification sentence -> FALSIFIED
+    case_10_trigger_light_depreciation         remaining=0  sentences=3
+    case_1_clinical_decision_support           remaining=0  sentences=61
+    case_2_cross_border_digital_therapeutic    remaining=1  sentences=35
+    case_3_capitated_risk_contract             remaining=3  sentences=49
+    case_4_glp1_employer_coverage              remaining=4  sentences=54
+    case_5_nonprofit_hospital_pe_conversion    remaining=4  sentences=68
+    case_6_trigger_heavy_biotech_ma            remaining=1  sentences=43
+    case_8_trigger_light_hand_hygiene          remaining=0  sentences=14
+    case_9_trigger_light_nda_clauses           remaining=0  sentences=66
+  cases at EXACTLY zero: 4
+
+========================================================================
+P38.2 invention at TRUE zero supply: 4/12 = 0.333 [0.138,0.609] -> SUPPORTED
+      mean qualification sentences emitted: 0.58
+
+========================================================================
+P38.3 silence check (mandatory reporting, no bar)
+  A-full   n=27  mean chars=7873  mean sentences=13.2  mean qualification=1.67
+  A-zero   n=12  mean chars=5273  mean sentences=9.1  mean qualification=0.58

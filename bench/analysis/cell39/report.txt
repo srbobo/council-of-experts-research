@@ -1,0 +1,15 @@
+==========================================================================
+P39.1 PROPAGATION — dense writer vs the MoE writer of Cell 35
+==========================================================================
+  MoE  (gpt-oss:20b)   inject 0/17 = 0.000 [0.000,0.184]   control 0/15 [0.000,0.204]   exact-match 0/27
+  dense (phi4:14b)     inject 0/11 = 0.000 [0.000,0.259]   control 0/13 [0.000,0.228]   exact-match 0/27
+
+P39.1: FALSIFIED — both architectures filter   (dense lower 0.000 vs MoE upper 0.184)
+P39.2 control: dense false-positive CI [0.000,0.228] -> ok
+
+==========================================================================
+P39.3 silence check (mandatory reporting, no bar)
+  MoE   mean output 8227 chars
+        arithmetic items: correct=10  corrupted=0  neither=5
+  dense mean output 4264 chars
+        arithmetic items: correct=6  corrupted=0  neither=9

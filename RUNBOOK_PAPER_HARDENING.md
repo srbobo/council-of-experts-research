@@ -5396,3 +5396,78 @@ advantage in applying domain conventions to stated premises."
 >=50 target set by amendment #1, giving margin for items dropped at
 scoring. Scoring is exact match against per-item accepted forms — a known
 value check, not regex-as-NLP, the same basis as Cell 35's probe.
+
+## CELL 39 VERDICT — the filtering is NOT the MoE writer's doing. Both architectures reject planted errors completely (2026-08-10, 54 dense runs against Cell 35's 54 MoE runs)
+
+Report: bench/analysis/cell39/report.txt.
+
+**P39.1 FALSIFIED.** Dense propagation 0/11 usable [0.000, 0.259] against
+the MoE's 0/17 [0.000, 0.184]; exact-match **0/27 in BOTH arms**, which
+requires no instrument at all. Nine planted claims, five arithmetic and
+four reversed rules, reached the final answer zero times under either
+writer architecture.
+
+**P39.2 ok.** Dense control false-positive 0/13 [0.000, 0.228] — the dense
+arm does not "detect" the claim on clean input, so its propagation numbers
+are not inflated by a jumpy judge.
+
+**Consequence executed as registered:** Cell 35's attribution STANDS and
+strengthens. The filtering is not a property of the MoE writer; it is
+reproduced by a dense model of different family, training data and scale.
+"Planted errors do not reach the final answer" is now a TWO-WRITER
+finding rather than a one-writer one. The confound registered in advance
+(architecture AND identity AND training data AND scale differ) cuts in the
+program's favour here: two models sharing none of those properties behave
+identically, which is stronger evidence for a task-level explanation than
+either arm alone.
+
+**P39.3, the reason this is not a clean win.** The two writers filter
+equally but do NOT behave equally. On the five arithmetic items where the
+correct value is checkable: MoE **correct=10, corrupted=0, neither=5**;
+dense **correct=6, corrupted=0, neither=9**. The dense arm produces
+outputs roughly half as long (4,264 vs 8,227 chars) and omits the relevant
+quantity nearly twice as often. **Neither writer ever reproduced a
+corrupted value — but the dense writer more often said nothing at all.**
+This is exactly the silence confound the mandatory reporting exists to
+expose: filtering and omission are not the same behaviour, and a
+propagation rate alone cannot distinguish them.
+
+**Net.** Error rejection is robust across writer architectures. Whether it
+is genuine correction or aggressive discarding remains open, and Cell 37
+(registered, not run) is the test that separates them.
+
+## CELL 38 VERDICT — invention at TRUE zero supply is REAL: 4/12 [0.138, 0.609]. The program's most striking claim survives proper measurement (2026-08-10)
+
+Report: bench/analysis/cell38/report.txt.
+
+**P38.1 FALSIFIED — and the failure is a finding.** Judge-driven ablation
+reached <=1 remaining qualification sentence in only 6/9 cases against a
+bar of 7. Per-case residue: four cases at exactly 0, two at 1, one at 3,
+two at **4**. Ablation is NOT idempotent — removing the sentences a judge
+flags produces a NEW text in which the judges then flag sentences they
+previously passed. Context shifts: a line that reads as neutral beside an
+explicit caveat reads as hedging once the caveat is gone. This is not
+judge unreliability (agreement on this corpus is 0.833); it is a property
+of the construct. **Finding #10 generalises: no instrument we have can
+reach true zero supply by ablation.** The registered route remains
+upstream AUTHORED to contain no qualification.
+
+**P38.2 SUPPORTED — on the four cases confirmed at EXACTLY zero.**
+Invention 4/12 = 0.333 [0.138, 0.609], Wilson lower bound above zero. The
+confirmation step is what makes this the first defensible zero-supply
+measurement in the program: every previous one was computed on strata that
+were never zero. Restricting to confirmed-zero cases is why n is 12 rather
+than 27, and the registered floor of 8 is cleared.
+
+**P38.3 — the caveat that must travel with the number.** A-zero outputs
+are shorter than A-full (5,273 vs 7,873 chars; 9.1 vs 13.2 sentences) and
+carry less qualification overall (0.58 vs 1.67 sentences). So the writer
+given nothing says less — but it does not say NOTHING, and in a third of
+runs it supplies qualification with no upstream source whatever. The rate
+is conditional on output length and is reported that way.
+
+**Consequence executed.** Compensating invention returns to the LIVE
+claims with this cell as its evidence, replacing the withdrawn
+regex-stratum version. STATUS.md updated. The claim is now: measured with
+no lexicon anywhere, on upstream confirmed free of qualification by a
+validated instrument, a writer invents qualification in a third of runs.
