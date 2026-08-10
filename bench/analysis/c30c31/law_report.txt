@@ -1,0 +1,25 @@
+==========================================================================
+P30.0 judge-judge agreement on the Cell 30 corpus: 0.833 (4746/5697 scored-family decisions)
+P30.0: PASS (bar 0.70) — the document-level protocol scored 0.622 and failed; this is the validated sentence-level protocol on the same corpus
+
+==========================================================================
+SUPPLY DISTRIBUTION under the validated instrument
+  {0: 3, 1: 9, 2: 9, 4: 3, 5: 3, 6: 9, 7: 6, 8: 3, 9: 3, 10: 9, 11: 3}
+  distinct levels: 11   n=60
+  ZERO-SUPPLY RUNS: 3  (registration expected ~36 from regex-driven ablation)
+
+==========================================================================
+P30.1 w = 0.150 [0.058,0.252]   c = 0.441 [-0.019,0.936]   n=60
+P30.1: SUPPORTED (w CI excludes 0)
+
+==========================================================================
+P30.2 NOT EVALUABLE — 3 zero-supply runs, below any usable floor. The regex-driven ablation did NOT produce zero-supply text under the validated instrument.
+
+==========================================================================
+P30.3 gpt-oss:20b        w=0.172 [0.053,0.298]  c=+0.496  n=40  zero-supply runs=2
+P30.3 phi4:14b           w=0.105 [-0.028,0.282]  c=+0.331  n=20  zero-supply runs=1
+      (P30.3 required BOTH a w CI excluding 0 and a zero-supply invention CI excluding 0; the latter is unavailable — see P30.2)
+
+==========================================================================
+P30.4 emission/invention rate: regex 0.083 vs judge 0.633  (n=60)
+P30.4: SUPPORTED (regex under-counts)   [regex reported for this comparison only, as registered]

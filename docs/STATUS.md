@@ -40,7 +40,7 @@ and its status.
 
 | claim | current value | what is pending |
 |---|---|---|
-| The shrinkage form $y = ws + c$ | council w=0.352, MoA w=0.158 | all values regex-derived; forms supported by scaffold-free arms |
+| The shrinkage form $y = ws + c$ | **LIVE for one writer:** de-scaffolded w = 0.150 [0.058, 0.252] (Cell 30, validated instrument, no lexicon in system or instrument) | scaffolded values remain regex-derived; phi4 w CI includes 0 at n=20 |
 | The parameter cards (both) | see framework paper Table 1 | re-measurement under a validated instrument |
 | The w-band meta-analysis | mu_w 0.364 [0.29,0.44], tau 0.158 | pools mostly scaffolded arms; must be relabelled as instruction-compliance pooling even after re-measurement |
 | ~~Register-dependent intercept~~ | — | **WITHDRAWN 2026-08-10.** Cell 31's matched-baseline test under the validated instrument gives Δc = +0.182 [−0.868, +1.261]: the ledger's contribution is indistinguishable from zero once the PRESERVE clause is absent from both arms. The original result compounded a two-factor baseline with an entangled instrument. |
@@ -73,11 +73,13 @@ and its status.
 6. Floor/length artifacts from degenerate outputs
 7. Illustrative example presented as observed data
 8. **Instrument–scaffold entanglement** — prompts dictate the measured strings
-9. **Granularity-dependent judge reliability** — 0.86 per sentence, 0.62 per document
+9. **Granularity-dependent judge reliability** — demonstrated on one corpus: 0.833 per sentence vs 0.622 per document, same judges, same 60 documents
+10. **Construction blind spots propagate into the design** — regex-driven ablation left 5.4 qualification-bearing sentences in texts labelled zero-supply; the manipulation never created the condition it was built for
 
 ## 5. BLOCKED — open questions awaiting an instrument
 
-- Does the supply→emission slope survive de-scaffolding? (Cell 30's corpus exists; instrument does not)
+- ~~Does the supply→emission slope survive de-scaffolding?~~ **ANSWERED 2026-08-10: yes, w = 0.150 [0.058, 0.252] on gpt-oss.**
+- Does compensating invention survive? **NOW UNMEASURED** — regex-built ablations were never zero-supply under a valid instrument (finding #10); every published zero-supply rate needs re-basing
 - Is the ledger a distinct mechanism? (Cell 31 running; measurement held)
 - Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)
 - Is qualification *warranted*? (no warrant labels exist; caps every normative claim)

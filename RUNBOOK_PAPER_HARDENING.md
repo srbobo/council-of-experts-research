@@ -5162,3 +5162,61 @@ find an effect, and that possibility is not excluded here.
 moves from PROVISIONAL to WITHDRAWN as a ledger claim); the framework
 paper's phenomena section loses its ledger evidence; Cell 37's premise is
 unaffected (it concerns recomputation, not the intercept).
+
+## CELL 30 VERDICT — the law SURVIVES de-scaffolding: w = 0.150 [0.058, 0.252], measured with no lexicon anywhere in the system or the instrument (2026-08-10)
+
+Report: bench/analysis/c30c31/law_report.txt. Same registered deviation as
+Cell 31 (instrument -> Cell IV batched sentence judging; measured variable
+-> counts of qualification-bearing sentences; frozen bars read as sign
+tests).
+
+**P30.0 PASS — the gate that failed now passes.** Judge-judge agreement on
+this exact corpus is **0.833** (4,746/5,697 scored-family decisions)
+against the 0.70 bar. The same two judges on the same 60 documents scored
+**0.622 at document level** and failed. The only change is the judgment
+unit. Finding #9 is now demonstrated on a single corpus with everything
+else held: **granularity, not judge quality, was the failure.**
+
+**P30.1 SUPPORTED — and this is the program's most important surviving
+positive claim.** With de-scaffolded seat prompts containing no family
+name and no dictated phrasing, and a paraphrase-robust instrument sharing
+no vocabulary with anything in the system: **w = 0.150 [0.058, 0.252]**,
+CI excluding zero. Supply spans 11 distinct levels over 60 runs. The
+supply-response relationship is real, not a scaffold artifact. It is also
+small: the writer carries roughly one qualification-bearing sentence for
+every seven supplied.
+
+**P30.2 NOT EVALUABLE — and the reason is a methodological finding.** Only
+**3** zero-supply runs exist against the ~36 the registration expected.
+The ablation that built the variants was regex-driven, and under the
+validated instrument those "zero-supply" texts still average 5.4
+qualification-bearing sentences. **Regex ablation does not produce
+zero-supply text; it produces text with the regex-visible phrases
+removed.** Consequences: (a) P30.2 cannot be scored and is reported as a
+design failure, not a null; (b) the same critique applies to the supply
+manipulation in Cells 25, 27, 30 and 31 — their "s=0" strata were never
+zero under a valid instrument, so every zero-supply invention rate this
+program has published is measuring something other than what it claims.
+Recorded as **instrument-validity finding #10: construction blind spots
+propagate into the design**, distinct from #8 (measurement entanglement).
+
+**P30.3 PARTIAL.** gpt-oss w = 0.172 [0.053, 0.298] excludes zero; phi4
+w = 0.105 [-0.028, 0.282] does not. The law is demonstrated on one writer
+and not demonstrated on the second — at n=20 for phi4 this is a power
+limit rather than a contradiction, but the registered conjunction fails
+and the honest statement is that **the law is established for one writer
+model**. The zero-supply half of P30.3 is unavailable per P30.2.
+
+**P30.4 SUPPORTED, dramatically.** Regex sees an invention/emission rate
+of **0.083**; the validated instrument sees **0.633** on the same 60
+documents — a 7.6x undercount once the scaffold phrasings are absent. The
+lexicon was never measuring the behavior; it was measuring the phrases the
+scaffold dictated, and with the scaffold gone it goes nearly blind. This
+is the quantitative form of finding #8 and it retrospectively bounds every
+regex rate in the program.
+
+**Net.** The central phenomenon survives the audit's worst charge: a
+supply-response exists with no lexicon anywhere in the loop. Its magnitude
+is small, it is demonstrated on one writer, and the compensating-invention
+half of the story is now unmeasured rather than measured — the design that
+was supposed to test it never created the condition it required.
