@@ -1,0 +1,1671 @@
+{
+ "P": [
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 4,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    0
+   ],
+   "s": 1.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 16,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 1
+   },
+   "nlab": 24,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 1,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 1
+   },
+   "nlab": 20,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    0
+   ],
+   "s": 8.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 14,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    0
+   ],
+   "s": 8.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 3,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    0
+   ],
+   "s": 8.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 10,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 4,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 11,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    2
+   ],
+   "s": 10.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 3,
+    "hedging": 0
+   },
+   "nlab": 11,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    2
+   ],
+   "s": 10.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 14,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    2
+   ],
+   "s": 10.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 23,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 1
+   },
+   "nlab": 7,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 9,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 3
+   },
+   "nlab": 11,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    1
+   ],
+   "s": 7.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 3
+   },
+   "nlab": 13,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    1
+   ],
+   "s": 7.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 15,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    1
+   ],
+   "s": 7.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 4,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    2
+   ],
+   "s": 5.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 2
+   },
+   "nlab": 10,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    2
+   ],
+   "s": 5.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 15,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    2
+   ],
+   "s": 5.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 2
+   },
+   "nlab": 13,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 24,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 14,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 12,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    1
+   ],
+   "s": 4.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 21,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    1
+   ],
+   "s": 4.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 1,
+    "hedging": 1
+   },
+   "nlab": 34,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    1
+   ],
+   "s": 4.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 14,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 22,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 1
+   },
+   "nlab": 29,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 8,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    0
+   ],
+   "s": 6.0,
+   "y": 4.0,
+   "per": {
+    "modeled": 2,
+    "jurisd": 0,
+    "hedging": 2
+   },
+   "nlab": 33,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 8,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 17,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 12,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 25,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    0
+   ],
+   "s": 2.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 5,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    0
+   ],
+   "s": 2.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 1,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 12,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 16,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 2,
+    "hedging": 2
+   },
+   "nlab": 16,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 6.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 4,
+    "hedging": 1
+   },
+   "nlab": 21,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 5,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 5,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 5,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 22,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 22,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 17,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 13,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 4,
+   "writer": "phi4:14b"
+  }
+ ],
+ "L": [
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    0
+   ],
+   "s": 1.0,
+   "y": 7.0,
+   "per": {
+    "modeled": 4,
+    "jurisd": 0,
+    "hedging": 4
+   },
+   "nlab": 22,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 4,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 1,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_1_clinical_decision_support",
+    1
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 10,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    0
+   ],
+   "s": 8.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    0
+   ],
+   "s": 8.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 5,
+    "hedging": 0
+   },
+   "nlab": 8,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 4.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 4,
+    "hedging": 0
+   },
+   "nlab": 12,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 1,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    1
+   ],
+   "s": 10.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 4,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    2
+   ],
+   "s": 10.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 3,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    2
+   ],
+   "s": 10.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 8,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_2_cross_border_digital_therapeutic",
+    3
+   ],
+   "s": 11.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 2,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 5,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 2
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 2,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    1
+   ],
+   "s": 7.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 7,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    2
+   ],
+   "s": 5.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_3_capitated_risk_contract",
+    2
+   ],
+   "s": 5.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 3,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 8,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 13,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 9,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    1
+   ],
+   "s": 4.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 6,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    1
+   ],
+   "s": 4.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 2,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_4_glp1_employer_coverage",
+    2
+   ],
+   "s": 2.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 2
+   },
+   "nlab": 9,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    0
+   ],
+   "s": 6.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 10,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    0
+   ],
+   "s": 6.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 1
+   },
+   "nlab": 13,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 5
+   },
+   "nlab": 22,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_5_nonprofit_hospital_pe_conversion",
+    1
+   ],
+   "s": 7.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 1
+   },
+   "nlab": 5,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    0
+   ],
+   "s": 2.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 7,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    0
+   ],
+   "s": 2.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 2,
+    "hedging": 2
+   },
+   "nlab": 12,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 2.0,
+   "per": {
+    "modeled": 1,
+    "jurisd": 0,
+    "hedging": 1
+   },
+   "nlab": 4,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 1.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    1
+   ],
+   "s": 9.0,
+   "y": 4.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 3,
+    "hedging": 1
+   },
+   "nlab": 11,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 7.0,
+   "per": {
+    "modeled": 3,
+    "jurisd": 3,
+    "hedging": 1
+   },
+   "nlab": 10,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 3.0,
+   "per": {
+    "modeled": 2,
+    "jurisd": 1,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_6_trigger_heavy_biotech_ma",
+    2
+   ],
+   "s": 10.0,
+   "y": 5.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 3,
+    "hedging": 2
+   },
+   "nlab": 17,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 18,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 11,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_8_trigger_light_hand_hygiene",
+    0
+   ],
+   "s": 0.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 7,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 4.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 1,
+    "hedging": 3
+   },
+   "nlab": 7,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 0,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_9_trigger_light_nda_clauses",
+    0
+   ],
+   "s": 2.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 6,
+   "writer": "phi4:14b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 3,
+   "writer": "gpt-oss:20b"
+  },
+  {
+   "key": [
+    "case_10_trigger_light_depreciation",
+    0
+   ],
+   "s": 1.0,
+   "y": 0.0,
+   "per": {
+    "modeled": 0,
+    "jurisd": 0,
+    "hedging": 0
+   },
+   "nlab": 7,
+   "writer": "phi4:14b"
+  }
+ ]
+}

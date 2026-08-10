@@ -1,0 +1,16 @@
+unusable sentence-labels: 440
+  arm P: 60 runs, mean supply 5.40, mean emitted 1.25
+  arm L: 51 runs, mean supply 5.37, mean emitted 1.61
+
+  arm P (plain):  w=0.150  c=+0.441
+  arm L (ledger): w=0.183  c=+0.623
+  shared variants: 20
+======================================================================
+P31.1 delta-c = +0.182 [-0.868,+1.261] -> FALSIFIED (includes 0)
+P31.2 delta-w = +0.034 [-0.151,+0.193] -> SUPPORTED
+======================================================================
+  arm P: zero-supply runs 3, mean emitted 0.00
+  arm L: zero-supply runs 3, mean emitted 0.00
+  per-family mean emitted:
+    arm P: modeled=0.18  jurisd=0.62  hedging=0.47
+    arm L: modeled=0.27  jurisd=0.78  hedging=0.57

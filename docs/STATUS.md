@@ -43,7 +43,7 @@ and its status.
 | The shrinkage form $y = ws + c$ | council w=0.352, MoA w=0.158 | all values regex-derived; forms supported by scaffold-free arms |
 | The parameter cards (both) | see framework paper Table 1 | re-measurement under a validated instrument |
 | The w-band meta-analysis | mu_w 0.364 [0.29,0.44], tau 0.158 | pools mostly scaffolded arms; must be relabelled as instruction-compliance pooling even after re-measurement |
-| Register-dependent intercept | prose 0.407 vs ledger −0.023, disjoint | treatment arm is scaffold-free, but measurement is regex; **also awaiting Cell 31's matched-baseline result** |
+| ~~Register-dependent intercept~~ | — | **WITHDRAWN 2026-08-10.** Cell 31's matched-baseline test under the validated instrument gives Δc = +0.182 [−0.868, +1.261]: the ledger's contribution is indistinguishable from zero once the PRESERVE clause is absent from both arms. The original result compounded a two-factor baseline with an entangled instrument. |
 | Feature-span fraction f | 0.068 median | definitionally regex-bound |
 | Aggregation/slope decomposition | modeled share 0.219 | falsified as registered; retained only descriptively |
 

@@ -5113,3 +5113,52 @@ outputs (9 protocol violations excluded as registered) = 2,339 sentences,
 234 batches, 468 judge calls. Sentences are batched GLOBALLY across
 documents, which is exactly the condition Cell IV validated (200 unrelated
 sentences, judged independently).
+
+## CELL 31 VERDICT — the ledger's c->0 finding is WITHDRAWN. It was clause removal, not the ledger (2026-08-10, first measurement in this program produced by an instrument that passed a registered validation gate)
+
+Report: bench/analysis/c30c31/report.txt. Instrument: Cell IV-validated
+batched sentence judging, B=10, both judges, both-agree rule. 468 calls,
+44 unparseable (9.4%), 440 sentence-labels unusable and counted rather
+than dropped silently.
+
+**P31.1 FALSIFIED.** Delta-c = +0.182 [-0.868, +1.261] — the interval
+includes zero, and the point estimate is POSITIVE (the ledger arm's
+intercept is higher, not lower). Registered consequence executes as
+written: **the Cell 27/28 c->0 finding is WITHDRAWN from the program's
+claims.** What replaces it is the already-measured and more useful fact
+that the PRESERVE clause causes the invention it was written to prevent
+(c = 0.799 with the clause vs 0.162 without, disjoint).
+
+**P31.2 SUPPORTED.** Delta-w = +0.034 [-0.151, +0.193] — the ledger does
+not buy its intercept by suppressing transport. Under the old regex
+measurement this arm looked like it might be the silence route; under the
+validated instrument it is not. The prediction that guarded against the
+degenerate explanation passes, and the degenerate explanation is not what
+happened — the effect simply is not there.
+
+**Arm-level figures.** Plain w=0.150 c=+0.441; ledger w=0.183 c=+0.623.
+Mean supply is matched by construction (5.40 vs 5.37 sentences) and the
+ledger arm emits MORE qualification-bearing sentences (1.61 vs 1.25), not
+fewer — which also retires the "ledger suppresses emission" reading that
+the regex measurement supported.
+
+**Why the earlier result inverted.** Cells 27/28 compared a ledger arm
+against arch-council, which still carried the PRESERVE clause, and scored
+both with a lexicon whose strings that clause dictates. Removing the
+clause removed the dictated phrases; the lexicon read that as c -> 0. With
+the clause absent from BOTH arms and a paraphrase-robust instrument, the
+ledger's own contribution is indistinguishable from nothing. Two defects
+compounding — a two-factor baseline and an entangled instrument — produced
+a replicated finding that was an artifact of both.
+
+**Caveat recorded honestly:** the delta-c interval is very wide
+([-0.87, +1.26] on 20 clustered variants), so this is a failure to
+demonstrate rather than a demonstration of absence. The registered
+consequence is withdrawal either way — an undemonstrated mechanism does
+not enter the papers — but a future adequately-powered test could still
+find an effect, and that possibility is not excluded here.
+
+**Consequences executed:** STATUS.md updated (register-dependent intercept
+moves from PROVISIONAL to WITHDRAWN as a ledger claim); the framework
+paper's phenomena section loses its ledger evidence; Cell 37's premise is
+unaffected (it concerns recomputation, not the intercept).
