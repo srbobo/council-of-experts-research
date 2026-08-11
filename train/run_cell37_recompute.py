@@ -241,16 +241,6 @@ def stage_measure() -> None:
     (OUT / "scored.json").write_text(json.dumps(tab, indent=1))
 
 
-if __name__ == "__main__":
-    _bad = audit_probe_collisions()
-    if _bad:
-        print("PROBE COLLISIONS — refusing to run:")
-        for b in _bad:
-            print("  " + b)
-        raise SystemExit(1)
-    stage = sys.argv[1] if len(sys.argv) > 1 else "runs"
-    {"runs": stage_runs, "measure": stage_measure}[stage]()
-
 
 def audit_probe_collisions() -> list[str]:
     """A probe that appears in the PRIMITIVES would score a mere restatement
@@ -266,3 +256,14 @@ def audit_probe_collisions() -> list[str]:
                     bad.append(f"item {i} ({it['case'][:26]}): {kind} {pr!r} "
                                f"occurs in its own primitives")
     return bad
+
+
+if __name__ == "__main__":
+    _bad = audit_probe_collisions()
+    if _bad:
+        print("PROBE COLLISIONS — refusing to run:")
+        for b in _bad:
+            print("  " + b)
+        raise SystemExit(1)
+    stage = sys.argv[1] if len(sys.argv) > 1 else "runs"
+    {"runs": stage_runs, "measure": stage_measure}[stage]()
