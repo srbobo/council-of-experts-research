@@ -5739,3 +5739,85 @@ value it states, never the premises the question itself supplies. The
 attainability check must be run on the OUTCOME (does the writer state this
 quantity at all?) before the arms are built, not after. Both are pre-run
 conditions; no re-run is registered until they are met.
+
+---
+
+## DICTATION REGISTRY + PARAPHRASE MATCHER — PRE-REGISTRATION (2026-08-11, before any scoring)
+
+Layers 1-2 of the entanglement (finding #8) resolution. Registered BEFORE the
+matcher runs, and committed before the scoring stage executes, so temporal
+blinding is provable from git rather than asserted.
+
+### What is being built and why detection alone cannot fix #8
+
+Any measured rate is `M = C + B`: compliance (the scaffold NAMED the phrase,
+the writer echoed it) plus behaviour (the construct arose unprompted). A
+phrase echoed on command is STILL an instance of the construct, so a perfect
+instrument counts it. The distinction lives in the causal path, not the text.
+The registry supplies provenance; the matcher partitions events against it.
+
+**Standing interpretation, binding on every downstream use:**
+`M_dictated` is an UPPER bound on C; `M_novel` is a LOWER bound on B.
+Behavioural claims are licensed by `M_novel` only.
+
+### The registry
+
+`docs/DICTATION_REGISTRY.json`, built by `gst/src/gst/registry.py` from 35
+declared prompt symbols (judge prompts INCLUDED — a judge is a prompted
+model). Extraction is `ast` parsing plus character-level quote scanning; the
+no-regex directive is not engaged, and the one regex touch (`family_hint`) is
+a screening flag for review, never a measurement. Frozen under a SHA-256
+digest.
+
+### V-A — discriminative validity of the matcher (GATED)
+
+Provenance is read PER RUN from the recorded `input_messages`, never assumed
+from a corpus name.
+
+- **POS**: construct-bearing spans from DICTATED-provenance runs that contain
+  a registry phrase verbatim.
+- **NEG**: construct-bearing spans from CLEAN-provenance runs (Cell 30
+  de-scaffolded; its prompts verified to contain no registry phrase) that
+  contain no registry phrase.
+
+**Gates, frozen now:**
+- **AUC >= 0.80** on this deployed task. Finding #3 is the precedent: the NLI
+  instrument scored 0.93 on its calibration task and 0.12-0.55 on the task it
+  was actually deployed on. A matcher is validated on the job it will do.
+- **Judge-judge agreement >= 0.70**, the Cell 30 precedent bar (sentence-level
+  scored 0.833 and passed; document-level scored 0.622 and failed).
+- **Attainability floor (checklist item 12): >= 15 spans in EACH of POS and
+  NEG.** Below that the comparison is NOT EVALUABLE and is reported as such
+  rather than as a failed gate.
+
+**Stated limitation, registered now so it cannot be quietly dropped:** this
+pool contrasts literal presence against literal absence and is therefore the
+EASY case. A high AUC here is necessary, not sufficient — it establishes the
+matcher can do the job at all, not that it catches every paraphrase.
+
+### V-B — the over-attribution rate (MANDATORY REPORTING, no bar)
+
+Spans from CLEAN-provenance runs that DO contain a registry phrase verbatim.
+Dictation provably did not occur, so every match here is registry FORM
+arising without dictation. This rate is the amount by which `M_dictated`
+over-counts compliance, and it is reported wherever the partition is used.
+No bar, because there is no value that would falsify anything — it is a
+correction factor, not a hypothesis.
+
+### Consequences, fixed in advance
+
+- **AUC < 0.80** -> the judge stage is not deployable. The partition falls
+  back to literal-only, and `M_dictated` is then reported as a strict
+  UNDERCOUNT of form-echo. It does not get used anyway with a caveat.
+- **Agreement < 0.70** -> NOT EVALUABLE, per finding #9.
+- **Gate G-E on the matcher's own prompt must pass before any scoring.** A
+  matcher naming the constructs it measures would be entangled with the
+  defect it exists to quantify. `MATCHER_PROMPT` names no construct
+  vocabulary and receives references as data; the harness asserts this and
+  refuses to score otherwise.
+
+### Goodhart clamp (checklist item 10)
+
+The compliance share is a DIAGNOSTIC. A prompt engineered to lower measured
+compliance is finding #8 inverted — it teaches the scaffold to evade the
+registry. No prompt may be tuned against this number.

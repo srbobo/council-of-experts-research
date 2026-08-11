@@ -1,0 +1,1148 @@
+{
+ "schema": "dictation-registry/1",
+ "digest": "bea936e3c4bc5033bce60b3ac4bc5d5a2b78f42ee260b4addda4893ad3469f1a",
+ "n_entries": 125,
+ "sources": [
+  "council/prompts.py::LEAD_PLANNER_SYSTEM",
+  "council/prompts.py::HEALTHCARE_SYSTEM",
+  "council/prompts.py::LEGAL_SYSTEM",
+  "council/prompts.py::FINANCE_SYSTEM",
+  "council/prompts.py::LEAD_SYNTHESIS_SYSTEM",
+  "council/prompts.py::BEHAVIOR_SPEC_ADDENDUM",
+  "council/prompts.py::LEAD_DIRECT_ANSWER_SYSTEM",
+  "council/orchestrator.py::suffix",
+  "train/domains.py::HEALTH_ADD",
+  "train/domains.py::HEALTH_STRIP",
+  "train/domains.py::FINANCE_ADD",
+  "train/domains.py::FINANCE_STRIP",
+  "train/gen_pairs.py::REWRITE_ADD",
+  "train/gen_pairs.py::REWRITE_STRIP",
+  "train/gen_lead_pairs.py::REWRITE_ADD",
+  "train/gen_lead_pairs.py::REWRITE_STRIP",
+  "train/gen_cell11_prompts.py::GEN_SYSTEM",
+  "train/run_cell6c.py::HOT_ADDENDUM",
+  "train/run_cell8_arch.py::FLAT_MERGE",
+  "train/run_cell14_gate.py::FLAT_MERGE",
+  "train/run_cell15_load.py::FLAT_MERGE",
+  "train/run_cell17_suppress.py::SUPPRESSION",
+  "train/run_cell20_decide.py::DECIDE",
+  "train/run_cell25_moa.py::MOA_PROMPT",
+  "train/run_cell27_ledger.py::LEDGER_PROTOCOL",
+  "train/run_cell30_descaffold.py::WRITER_PROMPT",
+  "train/run_cell35_injection.py::PROP_PROMPT",
+  "train/run_cell35_injection.py::ATTR_PROMPT",
+  "train/run_cell36_accuracy.py::ASK",
+  "train/run_cell40_seat_directive.py::DIRECTIVE",
+  "train/judge_instrument.py::PROMPT",
+  "train/cell23_presence_calib.py::JUDGE_PROMPT",
+  "train/run_cell30_descaffold.py::JUDGE_PROMPT",
+  "train/run_cellIV_batchjudge.py::PROMPT",
+  "train/run_cell30_descaffold.py::SEATS"
+ ],
+ "entries": [
+  {
+   "id": "R000",
+   "phrase": "healthcare",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R001",
+   "phrase": "legal",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R002",
+   "phrase": "finance",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R003",
+   "phrase": "requires_recency_disclosure",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R004",
+   "phrase": "recency_notes",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R005",
+   "phrase": "GLP-1 evidence post-2024 and recent EEOC/ADA guidance",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R006",
+   "phrase": "across clinical, legal, and financial dimensions",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R007",
+   "phrase": "What is the v1 clinical-safety design?",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R008",
+   "phrase": "Walk through the actuarial reserve calculation",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R009",
+   "phrase": "What does the FDA SaMD pathway look like for this device class?",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R010",
+   "phrase": "core_question",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R011",
+   "phrase": "the abstracted core decision or analysis",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R012",
+   "phrase": "rationale",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R013",
+   "phrase": "1-2 sentences on why these specialists are needed",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R014",
+   "phrase": "routes",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R015",
+   "phrase": "sub_questions",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R016",
+   "phrase": "self-contained question for the healthcare seat",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R017",
+   "phrase": "self-contained question for the legal seat",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R018",
+   "phrase": "self-contained question for the finance seat",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R019",
+   "phrase": "brief description of what may be stale (or empty string if false)",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R020",
+   "phrase": "organizing a closet), skip to the empty-routes output.",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R021",
+   "phrase": "\"GLP-1 evidence post-2024 and recent EEOC/ADA guidance\"). If the question is robustly answerable from durable, non-time-sensitive foundations, set it to false.",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_PLANNER_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R022",
+   "phrase": "approval",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R023",
+   "phrase": "clearance,",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R024",
+   "phrase": "regulation",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R025",
+   "phrase": "directive,",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R026",
+   "phrase": "holding",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R027",
+   "phrase": "dicta",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEGAL_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R028",
+   "phrase": "modeled at,",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "FINANCE_SYSTEM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R029",
+   "phrase": "assuming,",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "FINANCE_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R030",
+   "phrase": "under the assumption that...",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "FINANCE_SYSTEM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R031",
+   "phrase": "tension",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R032",
+   "phrase": "Clinical caution argues for slow rollout, but the financial model assumes 50% adoption by year 2; under slower adoption the unit economics change materially.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R033",
+   "phrase": "Legal flags FDA classification as guidance-evolving, but product timeline assumes 510(k) is a 6-month effort; this is a schedule risk.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R034",
+   "phrase": "Finance's pricing assumption ($X per seat) is set independently of clinical use; if alert fatigue suppresses use the per-encounter realized price collapses.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R035",
+   "phrase": "all three matter and must be balanced",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R036",
+   "phrase": "modeled at,",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R037",
+   "phrase": "assumed",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R038",
+   "phrase": "Healthcare / Legal / Finance",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "LEAD_SYNTHESIS_SYSTEM",
+   "family_hint": []
+  },
+  {
+   "id": "R039",
+   "phrase": "As of my training data, the FDA had not ruled on this pathway; verify current status.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R040",
+   "phrase": "modeled at $8,000/member/year under the assumption of 60% persistence.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R041",
+   "phrase": "FDA 510(k) clearance — not approval; the distinction matters for preemption.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "jurisd"
+   ]
+  },
+  {
+   "id": "R042",
+   "phrase": "Under EU GDPR this requires a DPIA; UK GDPR diverges post-Brexit and the ICO's guidance differs.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "jurisd"
+   ]
+  },
+  {
+   "id": "R043",
+   "phrase": "This holds if utilization stays under 8%; sensitivity analysis on that assumption is essential.",
+   "kind": "quoted",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R044",
+   "phrase": "\"As of my training data, the FDA had not ruled on this pathway; verify current status.\"",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R045",
+   "phrase": "\"modeled at $8,000/member/year under the assumption of 60% persistence.\"",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R046",
+   "phrase": "\"FDA 510(k) clearance — not approval; the distinction matters for preemption.\"",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "jurisd"
+   ]
+  },
+  {
+   "id": "R047",
+   "phrase": "\"Under EU GDPR this requires a DPIA; UK GDPR diverges post-Brexit and the ICO's guidance differs.\"",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "jurisd"
+   ]
+  },
+  {
+   "id": "R048",
+   "phrase": "\"This holds if utilization stays under 8%; sensitivity analysis on that assumption is essential.\"",
+   "kind": "example",
+   "source_file": "council/prompts.py",
+   "source_symbol": "BEHAVIOR_SPEC_ADDENDUM",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R049",
+   "phrase": "as of my training data...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R050",
+   "phrase": "verify current guidance",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R051",
+   "phrase": "assuming that...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R052",
+   "phrase": "modeled at...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R053",
+   "phrase": "distinguish between sensitivity and specificity",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R054",
+   "phrase": "clearance vs approval",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R055",
+   "phrase": "efficacy vs effectiveness",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R056",
+   "phrase": "this may vary if...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R057",
+   "phrase": "could differ where...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R058",
+   "phrase": "verify current guidance",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_STRIP",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R059",
+   "phrase": "assuming",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R060",
+   "phrase": "modeled at",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R061",
+   "phrase": "hypothetical",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R062",
+   "phrase": "distinguish between",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "HEALTH_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R063",
+   "phrase": "as of my training data...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R064",
+   "phrase": "verify current status",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R065",
+   "phrase": "assuming that...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R066",
+   "phrase": "modeled at...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R067",
+   "phrase": "distinguish between realized and unrealized",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R068",
+   "phrase": "mark-to-market vs mark-to-model",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R069",
+   "phrase": "this may vary if...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R070",
+   "phrase": "could differ where...",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R071",
+   "phrase": "verify current status",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_STRIP",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R072",
+   "phrase": "assuming",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R073",
+   "phrase": "modeled at",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R074",
+   "phrase": "hypothetical",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R075",
+   "phrase": "distinguish between",
+   "kind": "quoted",
+   "source_file": "train/domains.py",
+   "source_symbol": "FINANCE_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R076",
+   "phrase": "as of my training data...",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R077",
+   "phrase": "verify current status",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R078",
+   "phrase": "assuming that...",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R079",
+   "phrase": "modeled at...",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R080",
+   "phrase": "distinguish between X and Y",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": []
+  },
+  {
+   "id": "R081",
+   "phrase": "this may vary if...",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R082",
+   "phrase": "could differ where...",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_ADD",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R083",
+   "phrase": "verify current status",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_STRIP",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R084",
+   "phrase": "assuming",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R085",
+   "phrase": "modeled at",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R086",
+   "phrase": "hypothetical",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_STRIP",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R087",
+   "phrase": "distinguish between",
+   "kind": "quoted",
+   "source_file": "train/gen_pairs.py",
+   "source_symbol": "REWRITE_STRIP",
+   "family_hint": []
+  },
+  {
+   "id": "R088",
+   "phrase": "as of my training data...",
+   "kind": "quoted",
+   "source_file": "train/run_cell6c.py",
+   "source_symbol": "HOT_ADDENDUM",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R089",
+   "phrase": "modeled at",
+   "kind": "quoted",
+   "source_file": "train/run_cell6c.py",
+   "source_symbol": "HOT_ADDENDUM",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R090",
+   "phrase": "assuming",
+   "kind": "quoted",
+   "source_file": "train/run_cell6c.py",
+   "source_symbol": "HOT_ADDENDUM",
+   "family_hint": []
+  },
+  {
+   "id": "R091",
+   "phrase": "this may vary if...",
+   "kind": "quoted",
+   "source_file": "train/run_cell6c.py",
+   "source_symbol": "HOT_ADDENDUM",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R092",
+   "phrase": "the finance contribution models...",
+   "kind": "quoted",
+   "source_file": "train/run_cell20_decide.py",
+   "source_symbol": "DECIDE",
+   "family_hint": []
+  },
+  {
+   "id": "R093",
+   "phrase": "legal flags...",
+   "kind": "quoted",
+   "source_file": "train/run_cell20_decide.py",
+   "source_symbol": "DECIDE",
+   "family_hint": []
+  },
+  {
+   "id": "R094",
+   "phrase": "### EVIDENCE LEDGER",
+   "kind": "quoted",
+   "source_file": "train/run_cell27_ledger.py",
+   "source_symbol": "LEDGER_PROTOCOL",
+   "family_hint": []
+  },
+  {
+   "id": "R095",
+   "phrase": "NO QUALIFICATION ROWS",
+   "kind": "quoted",
+   "source_file": "train/run_cell27_ledger.py",
+   "source_symbol": "LEDGER_PROTOCOL",
+   "family_hint": []
+  },
+  {
+   "id": "R096",
+   "phrase": "### ANSWER",
+   "kind": "quoted",
+   "source_file": "train/run_cell27_ledger.py",
+   "source_symbol": "LEDGER_PROTOCOL",
+   "family_hint": []
+  },
+  {
+   "id": "R097",
+   "phrase": "asserts",
+   "kind": "quoted",
+   "source_file": "train/run_cell35_injection.py",
+   "source_symbol": "PROP_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R098",
+   "phrase": "quote",
+   "kind": "quoted",
+   "source_file": "train/run_cell35_injection.py",
+   "source_symbol": "PROP_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R099",
+   "phrase": "verbatim sentence from the answer, or",
+   "kind": "quoted",
+   "source_file": "train/run_cell35_injection.py",
+   "source_symbol": "PROP_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R100",
+   "phrase": "specialist",
+   "kind": "quoted",
+   "source_file": "train/run_cell35_injection.py",
+   "source_symbol": "ATTR_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R101",
+   "phrase": "as of my training data...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R102",
+   "phrase": "verify current guidance...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "cutoff"
+   ]
+  },
+  {
+   "id": "R103",
+   "phrase": "assuming that...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R104",
+   "phrase": "modeled at...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "modeled"
+   ]
+  },
+  {
+   "id": "R105",
+   "phrase": "this may vary if...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R106",
+   "phrase": "results could differ...",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R107",
+   "phrase": "actual results may vary",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": [
+    "hedging"
+   ]
+  },
+  {
+   "id": "R108",
+   "phrase": "verdict",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R109",
+   "phrase": "TIE",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R110",
+   "phrase": "evidence_a",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R111",
+   "phrase": "verbatim quote",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R112",
+   "phrase": "evidence_b",
+   "kind": "quoted",
+   "source_file": "train/judge_instrument.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R113",
+   "phrase": "labels",
+   "kind": "quoted",
+   "source_file": "train/cell23_presence_calib.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R114",
+   "phrase": "cutoff",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R115",
+   "phrase": "present",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R116",
+   "phrase": "quote",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R117",
+   "phrase": "...",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R118",
+   "phrase": "modeled",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R119",
+   "phrase": "jurisd",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R120",
+   "phrase": "hedging",
+   "kind": "quoted",
+   "source_file": "train/run_cell30_descaffold.py",
+   "source_symbol": "JUDGE_PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R121",
+   "phrase": "cutoff",
+   "kind": "quoted",
+   "source_file": "train/run_cellIV_batchjudge.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R122",
+   "phrase": "modeled",
+   "kind": "quoted",
+   "source_file": "train/run_cellIV_batchjudge.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R123",
+   "phrase": "jurisd",
+   "kind": "quoted",
+   "source_file": "train/run_cellIV_batchjudge.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  },
+  {
+   "id": "R124",
+   "phrase": "hedging",
+   "kind": "quoted",
+   "source_file": "train/run_cellIV_batchjudge.py",
+   "source_symbol": "PROMPT",
+   "family_hint": []
+  }
+ ]
+}
