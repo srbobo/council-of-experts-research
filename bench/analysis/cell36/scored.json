@@ -1,0 +1,1261 @@
+{
+ "council": [
+  {
+   "item": "fin-01",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-02",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-03",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-04",
+   "domain": "finance",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-05",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-06",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-07",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-08",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-09",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-10",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-11",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-12",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-13",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-14",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-15",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-16",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-17",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-18",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-19",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-20",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-01",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-02",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-03",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-04",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-05",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-06",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-07",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-08",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-09",
+   "domain": "healthcare",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-10",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-11",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-12",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-13",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-14",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-15",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-16",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-17",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-18",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-19",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-20",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-01",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-02",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-03",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-04",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-05",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-06",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-07",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-08",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-09",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-10",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-11",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-12",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-13",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-14",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-15",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-16",
+   "domain": "legal",
+   "correct": false,
+   "attempted": false,
+   "fallback": false
+  },
+  {
+   "item": "leg-17",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-18",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-19",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-20",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  }
+ ],
+ "moe-single": [
+  {
+   "item": "fin-01",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-02",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-03",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-04",
+   "domain": "finance",
+   "correct": false,
+   "attempted": false,
+   "fallback": false
+  },
+  {
+   "item": "fin-05",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-06",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-07",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-08",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-09",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-10",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-11",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-12",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-13",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-14",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-15",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-16",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-17",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-18",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-19",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-20",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-01",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-02",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-03",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-04",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-05",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-06",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-07",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-08",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-09",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-10",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-11",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-12",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-13",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-14",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-15",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-16",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-17",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-18",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-19",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-20",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-01",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-02",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-03",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-04",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-05",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-06",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-07",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-08",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-09",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-10",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-11",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-12",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-13",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-14",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-15",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-17",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-18",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-19",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-20",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  }
+ ],
+ "dense-single": [
+  {
+   "item": "fin-01",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-02",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-03",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-04",
+   "domain": "finance",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-05",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-06",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-07",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-08",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-09",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-10",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-11",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-12",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-13",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-14",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-15",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-16",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-17",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-18",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-19",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "fin-20",
+   "domain": "finance",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-01",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-02",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-03",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-04",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-05",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-06",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-07",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-08",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-09",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-10",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-11",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-12",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-13",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-14",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-15",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-16",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-17",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-18",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-19",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "hc-20",
+   "domain": "healthcare",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-01",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-02",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-03",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-04",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-05",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-06",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-07",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-08",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-09",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-10",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-11",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-12",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-13",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-14",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-15",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-16",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-17",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-18",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-19",
+   "domain": "legal",
+   "correct": true,
+   "attempted": true,
+   "fallback": false
+  },
+  {
+   "item": "leg-20",
+   "domain": "legal",
+   "correct": false,
+   "attempted": true,
+   "fallback": false
+  }
+ ]
+}

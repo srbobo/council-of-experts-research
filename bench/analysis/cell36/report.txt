@@ -1,0 +1,16 @@
+==========================================================================
+ACCURACY BY ARM  (attempt rate reported beside it, per amendment #1)
+==========================================================================
+  council        56/60 = 0.933 [0.841,0.974]   attempt 59/60 = 0.983   full-text fallbacks 0
+  moe-single     57/59 = 0.966 [0.885,0.991]   attempt 58/59 = 0.983   full-text fallbacks 0
+  dense-single   55/60 = 0.917 [0.819,0.964]   attempt 60/60 = 1.000   full-text fallbacks 0
+
+  council        finance=19/20  healthcare=19/20  legal=18/20
+  moe-single     finance=19/20  healthcare=20/20  legal=18/19
+  dense-single   finance=19/20  healthcare=20/20  legal=16/20
+
+==========================================================================
+P36.1 council - MoE-single: diff CI [-0.085,+0.034] (n=59 paired items) -> FALSIFIED (includes 0 or favours MoE)
+P36.2 MoE-single - dense-single: diff CI [-0.034,+0.102] (n=59) — CONFOUNDED (architecture AND identity AND training data AND scale differ); suggestive of routing, never demonstrative
+
+Reminder (amendment #2): this battery measures domain-FRAMED REASONING, not recall. A null licenses only 'no advantage applying domain conventions to stated premises'.

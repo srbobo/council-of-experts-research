@@ -5471,3 +5471,55 @@ claims with this cell as its evidence, replacing the withdrawn
 regex-stratum version. STATUS.md updated. The claim is now: measured with
 no lexicon anywhere, on upstream confirmed free of qualification by a
 validated instrument, a writer invents qualification in a third of runs.
+
+## CELL 36 VERDICT — P36.1 FALSIFIED. The council buys no accuracy, and the ceiling effect means this battery could not have shown much either way (2026-08-10, 179 runs over 60 verifiable items)
+
+Report: bench/analysis/cell36/report.txt.
+
+| arm | accuracy | attempt rate | fallbacks |
+|---|---|---|---|
+| council (correct specialist + writer) | 56/60 = 0.933 [0.841, 0.974] | 0.983 | 0 |
+| MoE-single (gpt-oss:20b) | 57/59 = 0.966 [0.885, 0.991] | 0.983 | 0 |
+| dense-single (phi4:14b) | 55/60 = 0.917 [0.819, 0.964] | 1.000 | 0 |
+
+**P36.1 FALSIFIED.** Council minus MoE-single: paired diff CI
+[-0.085, +0.034] over 59 shared items — includes zero, point estimate
+NEGATIVE. Adding a domain specialist and a synthesis step to a single
+model produced no accuracy gain, and the council arm was given the
+CORRECT specialist with no planner, which was the most favourable
+construction available to it. The registered consequence executes: the
+last untested rationale for the architecture is removed on this
+dimension.
+
+**P36.2 (confounded, as registered).** MoE minus dense: [-0.034, +0.102],
+includes zero. No routing-mechanism difference detectable, and the arms
+differ in architecture AND identity AND training data AND scale, so this
+was never going to demonstrate an architectural cause.
+
+**The limitation that bounds all of the above, stated plainly: a CEILING
+EFFECT.** All three arms score 0.92-0.97. With 60 items and accuracy that
+high, the design can only detect very large differences; the observed
+intervals are ~±0.09 wide, and no plausible council advantage of 3-5
+points could have been resolved. **This is a weak null, not a strong
+one.** The attainability check in amendment #1 sized the battery for a
+20-point difference and got one that can resolve roughly that — but it
+did not anticipate that every arm would sit near the ceiling, which
+compresses the resolvable range further. Recorded as a design shortfall
+found after the fact, in the same class as the Cell 28 bar defect.
+
+**Attempt rates are uniformly high** (0.98-1.00) and full-text fallbacks
+are zero, so the silence check finds nothing: no arm is scoring well by
+declining to answer, and every arm produced the required ANSWER line
+essentially always. That part of the design worked.
+
+**Interpretive scope, per amendment #2 and unchanged:** this battery
+measures domain-FRAMED REASONING — applying stated conventions to stated
+premises — NOT domain recall, which is what the seats' model cards claim
+gains on. The verdict licenses "domain specialization buys no advantage
+applying domain conventions to stated premises" and NOT "domain
+specialization buys no accuracy".
+
+**Consequence for the next cell:** a recall battery, or a harder
+reasoning battery that moves the arms off the ceiling, is now the
+prerequisite for any stronger claim. Registered as an open item rather
+than attempted here.

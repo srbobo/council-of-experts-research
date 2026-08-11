@@ -29,7 +29,7 @@ and its status.
 | An instruction produces the phrasing it names, not the behavior | PD-13: dictated 0/30→28/30 vs non-dictated 1/30→4/30, DiD +0.83 [+0.67,+1.00] | the decomposition is internal to one instrument and needs no cross-instrument validity |
 | Detector-fed correction loops produce rewording | Cell 19 + manual inspection of the eight intervened runs | established by reading the rewrites, not by an instrument |
 | Sequence-level preference training does not move the behavior | three objective classes; preference accuracy 0.48→0.94, behavior unchanged | the null is about the training outcome, measured on both sides identically |
-| The council has no measured advantage over one prompted model | Cells 8/14/15 across content, volume, calibration, load | both arms carry the same scaffold; comparison internally fair |
+| The council has no measured advantage over one prompted model | Cells 8/14/15 across content, volume, calibration, load; **Cell 36 adds verifiable domain-framed accuracy: 0.933 vs 0.966, diff CI [-0.085,+0.034]** | both arms carry the same scaffold; Cell 36's council arm was given the correct specialist with no planner. Cell 36 is a WEAK null — ceiling effect, all arms 0.92-0.97 |
 | Corroboration does not increase transport | Cell 26: 0.487 vs 0.524 on the validated channel, CI spanning zero | null under a conservative instrument |
 | Repeated attempts are correlated, not independent | ICC 0.190 [0.13,0.24] over 251 cells | structural property of the run design |
 | Rich qualification is a property of instructed specialists | 5 detectable qualifications across 27 uninstructed analyses; de-scaffolded seats ~half of scaffolded | direction robust to recall |
@@ -84,6 +84,8 @@ and its status.
 - Is the ledger a distinct mechanism? (Cell 31 running; measurement held)
 - Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)
 - Is qualification *warranted*? (no warrant labels exist; caps every normative claim)
+- Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery)
+- Would a harder battery separate the arms? (Cell 36 hit a ceiling at 0.92-0.97; its null is weak)
 
 ## 6. Standing methodological directives
 
