@@ -34,7 +34,7 @@ and its status.
 | Repeated attempts are correlated, not independent | ICC 0.190 [0.13,0.24] over 251 cells | structural property of the run design |
 | Rich qualification is a property of instructed specialists | 5 detectable qualifications across 27 uninstructed analyses; de-scaffolded seats ~half of scaffolded | direction robust to recall |
 | Silence scores well on invention metrics | best invention numbers belong to arms with feature-span 0.000–0.002 | definitional |
-| Nine instrument-validity findings | see §4 | these are *about* measurement, so no instrument confound applies |
+| Eleven instrument-validity findings | see §4 | these are *about* measurement, so no instrument confound applies |
 
 ## 2. PROVISIONAL — form supported, values pending re-measurement
 
@@ -51,7 +51,7 @@ and its status.
 
 | claim | withdrawn by | replacement |
 |---|---|---|
-| "The writer recomputes" / any use of the word recomputation | Cell 37 (P37.1 + P37.2 both falsified) | the writer is a SOURCE SELECTOR: prefers an uncorrupted source when one exists, propagates the error when none does |
+| "The writer recomputes" / any use of the word recomputation | Cell 37 P37.1 FALSIFIED — **re-checked 2026-08-11 against finding #11 and it holds**, because its falsification condition is a within-arm contrast (A2: 5 corrupted vs 2 correct) that base-rate depression cannot manufacture. P37.2 downgraded to NOT EVALUABLE | the writer is a SOURCE SELECTOR: prefers an uncorrupted source when one exists, propagates the error when none does. Cell 37's *rates* are not behaviour rates and its "neither" cells are not omission |
 | "The instruction moves w more than the architectural difference" | PD-13 | "an instruction produces the phrase it names" |
 | "C2 carries 126% of the block's gain" as behavioral | PD-13 | compliance with a phrase order |
 | The 0.16→0.35 gradient as evidence about instructions | PD-13 + audit #2 | — |
@@ -76,6 +76,7 @@ and its status.
 8. **Instrument–scaffold entanglement** — prompts dictate the measured strings
 9. **Granularity-dependent judge reliability** — demonstrated on one corpus: 0.833 per sentence vs 0.622 per document, same judges, same 60 documents
 10. **Construction blind spots propagate into the design** — regex-driven ablation left 5.4 qualification-bearing sentences in texts labelled zero-supply; the manipulation never created the condition it was built for
+11. **An injected premise that contradicts its host question creates a competing source rather than manipulating the intended one** — Cells 37/40 injected primitives conflicting with the case prompt; on item 0 the writer used the case's numbers in 21/21 runs across both cells and the injected numbers 0 times. The "use novel numbers to reduce memorization" rule and coherence with the host question are in direct conflict, and no registration reconciled them. Repair is not idempotent either: this defect was introduced by the fix for a probe collision
 
 ## 5. BLOCKED — open questions awaiting an instrument
 
@@ -87,6 +88,8 @@ and its status.
 - Is qualification *warranted*? (no warrant labels exist; caps every normative claim)
 - Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery)
 - Would a harder battery separate the arms? (Cell 36 hit a ceiling at 0.92-0.97; its null is weak)
+- **Can a SEAT instruct the lead?** STILL OPEN. Cell 40 ran to completion (81/81) and is **NOT EVALUABLE**: 3, 6 and 2 decisive runs against a required 6 per arm, because the injected premises contradicted the host case and the writer answered the case (finding #11). Neither prediction is falsified. A re-run is blocked on two pre-run conditions: premises drawn from the host case, and an attainability check on the outcome itself
+- Is the writer's use of a prior distinguishable from computation? (Cell 37's P37.2 downgraded to NOT EVALUABLE — both arms at floor, no attainability check was registered for it)
 
 ## 6. Standing methodological directives
 

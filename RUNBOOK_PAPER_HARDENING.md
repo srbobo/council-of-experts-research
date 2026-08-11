@@ -5658,3 +5658,84 @@ have been reported as a small positive rather than as what it is.
 weaker and more precise claim: the writer prefers uncorrupted sources over
 corrupted ones when both are present, and has no independent hold on the
 content whatsoever.
+
+---
+
+## CELL 40 VERDICT — NOT EVALUABLE (measured 2026-08-11)
+
+**All 81 runs completed. The primary is not decidable, and the reason is a
+design defect in the injection, not a property of the writer.**
+
+### The three-way table (P40.4 mandatory reporting)
+
+| arm | n | seat-1 value only | seat-2 value only | both | NEITHER |
+|---|---|---|---|---|---|
+| control | 27 | 2 | 1 | 0 | 24 |
+| defer-to-2 | 27 | 5 | 1 | 0 | 21 |
+| defer-to-1 | 27 | 2 | 0 | 0 | 25 |
+
+Decisive runs — the denominator the estimand is defined on — number 3, 6
+and 2. The registered guard requires >= 6 decisive runs in BOTH arms of a
+comparison; control has 3. **No comparison is computable, so P40.1 and
+P40.2 are NOT EVALUABLE.** Neither is falsified. Nothing in this cell
+licenses "a seat cannot instruct the lead."
+
+**The P40.4 guard is what made this readable.** Taken alone, defer-to-2's
+5-vs-1 split looks like textbook compliance. It is 6 events. Without the
+mandatory NEITHER column this cell would have been written up as a
+supported directive effect.
+
+### Why the outcome almost never fired — diagnosed, not speculated
+
+Decisive rates are uniformly low across all nine items (0/9, 1/9, 2/9,
+1/9, 2/9, 0/9, 1/9, 2/9, 2/9). Not one bad item: the whole design.
+
+Inspection of item 0 gives the mechanism. Its injected premises state a
+**$66,000 asset with $6,000 salvage**; the host case (`case_10`) states a
+**$60,000 asset with $10,000 salvage**. In **9 of 9** Cell 40 runs — and
+**12 of 12** Cell 37 runs — the writer used the CASE's numbers and the
+injected numbers **zero** times. Items 6 (12 vs 18 months) and 7 (1,200 vs
+5,000 employees) carry the same contradiction.
+
+The manipulation was outcompeted by the question itself. The seats were
+never the only sources in the room: the case prompt was a third source,
+unregistered, carrying more authority than an appended aside.
+
+### FINDING #11 — an injected premise that contradicts its host question
+### is not a manipulation of the source; it creates a competing source
+
+Generalises finding #10. The injection satisfied its own registered rule
+(each item "states its primitives explicitly" and uses "NOVEL numbers ...
+to reduce memorization") and still failed, because **the novelty rule and
+coherence with the host question are in direct conflict and no
+registration reconciled them.** Choosing numbers unlike the case's is the
+same act as choosing numbers that contradict the case's.
+
+Traceable: Cell 37's item 0 was changed from $10,000 salvage precisely to
+fix a probe collision. That fix created this defect. Ablation is not
+idempotent (finding #10) — and neither is repair.
+
+### Consequence for Cell 37 — the verdict stands, its rates do not
+
+- **P37.1 FALSIFIED — SURVIVES.** Its falsification condition is
+  "the corrupted value dominates in A2," a WITHIN-arm contrast (5 corrupted
+  vs 2 correct) that base-rate depression cannot manufacture. The monotone
+  gradient 1 → 0 → 5 → 12 is likewise within-instrument. **"Recomputation"
+  stays withdrawn; the source-selector reading stands.**
+- **P37.2 — downgraded from FALSIFIED to NOT EVALUABLE.** A3=0 and A2=2
+  correct out of 27 are both at floor. The registration carried an
+  attainability note for P37.1 and none for P37.2; it had no power to
+  distinguish "not a prior" from "nothing fired."
+- **The "neither" cells were mis-described.** The Cell 37 write-up reads
+  them as the writer omitting the quantity. On at least three of nine items
+  the writer was answering the case's real question with the case's real
+  numbers. That is engagement with a different source, not omission.
+
+### What a valid re-run requires (registered here, NOT run)
+
+Injected premises must be **drawn from the host case, not invented against
+it** — the manipulation may change which SEAT states a quantity and what
+value it states, never the premises the question itself supplies. The
+attainability check must be run on the OUTCOME (does the writer state this
+quantity at all?) before the arms are built, not after. Both are pre-run
+conditions; no re-run is registered until they are met.
