@@ -29,7 +29,7 @@ and its status.
 | An instruction produces the phrasing it names, not the behavior | PD-13: dictated 0/30→28/30 vs non-dictated 1/30→4/30, DiD +0.83 [+0.67,+1.00] | the decomposition is internal to one instrument and needs no cross-instrument validity |
 | Detector-fed correction loops produce rewording | Cell 19 + manual inspection of the eight intervened runs | established by reading the rewrites, not by an instrument |
 | Sequence-level preference training does not move the behavior | three objective classes; preference accuracy 0.48→0.94, behavior unchanged | the null is about the training outcome, measured on both sides identically |
-| The council has no measured advantage over one prompted model | Cells 8/14/15 across content, volume, calibration, load; **Cell 36 adds verifiable domain-framed accuracy: 0.933 vs 0.966, diff CI [-0.085,+0.034]** | both arms carry the same scaffold; Cell 36's council arm was given the correct specialist with no planner. Cell 36 is a WEAK null — ceiling effect, all arms 0.92-0.97 |
+| No measured council advantage — **held as absence of evidence, not evidence of absence** (attainability audit 2026-08-11) | Cells 8/14/15 across content, volume, calibration, load; Cell 36 diff CI [-0.085,+0.034] | no positive evidence of advantage exists anywhere, which keeps the row LIVE — but Cell 36's paired comparison contained **3 discordant items of 59** (ceiling 0.92-0.97; the bootstrap resampled three coin-flips) and Cells 8/14/15 are regex-era and unaudited at run level. Weight accordingly; the harder battery decides |
 | Corroboration does not increase transport | Cell 26: 0.487 vs 0.524 on the validated channel, CI spanning zero | null under a conservative instrument |
 | Repeated attempts are correlated, not independent | ICC 0.190 [0.13,0.24] over 251 cells | structural property of the run design |
 | Rich qualification is a property of instructed specialists | 5 detectable qualifications across 27 uninstructed analyses; de-scaffolded seats ~half of scaffolded | direction robust to recall |
@@ -43,7 +43,7 @@ and its status.
 | The shrinkage form $y = ws + c$ | **LIVE for one writer:** de-scaffolded w = 0.150 [0.058, 0.252] (Cell 30, validated instrument, no lexicon in system or instrument) | scaffolded values remain regex-derived; phi4 w CI includes 0 at n=20 |
 | The parameter cards (both) | see framework paper Table 1 | re-measurement under a validated instrument |
 | The w-band meta-analysis | mu_w 0.364 [0.29,0.44], tau 0.158 | pools mostly scaffolded arms; must be relabelled as instruction-compliance pooling even after re-measurement |
-| ~~Register-dependent intercept~~ | — | **WITHDRAWN 2026-08-10.** Cell 31's matched-baseline test under the validated instrument gives Δc = +0.182 [−0.868, +1.261]: the ledger's contribution is indistinguishable from zero once the PRESERVE clause is absent from both arms. The original result compounded a two-factor baseline with an entangled instrument. |
+| ~~Register-dependent intercept~~ | — | **WITHDRAWN 2026-08-10.** The original result compounded a two-factor baseline with an entangled instrument, so the claim had no support — the withdrawal is a burden-of-proof decision and stands. **Attainability audit 2026-08-11: Cell 31's null is UNINFORMATIVE** — Δc = +0.182 [−0.868, +1.261] *contains the originally claimed gap of +0.637*. Cell 31 may be cited only as failure to re-establish the claim, never as evidence the ledger does nothing. The question is OPEN, not answered-no. |
 | Feature-span fraction f | 0.068 median | definitionally regex-bound |
 | Aggregation/slope decomposition | modeled share 0.219 | falsified as registered; retained only descriptively |
 
@@ -83,7 +83,7 @@ and its status.
 - ~~Does the supply→emission slope survive de-scaffolding?~~ **ANSWERED 2026-08-10: yes, w = 0.150 [0.058, 0.252] on gpt-oss.**
 - ~~Does compensating invention survive?~~ **ANSWERED 2026-08-10 (Cell 38): yes, 0.333 [0.138, 0.609] on confirmed-zero upstream.**
 - Can ablation reach true zero supply at all? **NO** — judge-driven ablation also leaves residue (finding #10 generalised); requires upstream authored to contain no qualification
-- Is the ledger a distinct mechanism? (Cell 31 running; measurement held)
+- Is the ledger a distinct mechanism? **OPEN** — Cell 31 completed but its null is uninformative (CI contains the original effect; attainability audit 2026-08-11). A decisive cell needs the n its CI width implies (~4× Cell 31's)
 - Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)
 - Is qualification *warranted*? (no warrant labels exist; caps every normative claim)
 - Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery)
@@ -99,7 +99,9 @@ and its status.
 4. **One factor per comparison**, using the nine-factor arm space; never reuse an arm label across batteries.
 5. **Parameters are diagnostics, never optimization targets.**
 6. **Report emission alongside any invention metric** — otherwise silence wins.
-7. **The 11-item pre-recommendation checklist** runs before any proposed cell.
+7. **The 12-item pre-recommendation checklist** runs before any proposed cell.
+8. **Outcome attainability** (item 12, from the attainability audit 2026-08-11): before a cell runs, compute from existing runs the fraction in which the outcome variable can fire, and the CI width the planned n buys against the effect the cell must detect — for every registered prediction, not just the primary. Decisive-fraction is a pre-run check, NEVER a design target (finding #8).
+9. **Citation strength follows the audit classes** — a DEGENERATE or UNINFORMATIVE null moves its question to OPEN; it is never cited as evidence of absence (`docs/ATTAINABILITY_AUDIT_2026-08-11.md`).
 
 ## 7. Artifact status
 
