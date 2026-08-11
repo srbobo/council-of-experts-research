@@ -5523,3 +5523,85 @@ specialization buys no accuracy".
 reasoning battery that moves the arms off the ceiling, is now the
 prerequisite for any stronger claim. Registered as an open item rather
 than attempted here.
+
+---
+
+## CELL 40 PRE-REGISTRATION — can a SEAT instruct the lead? (registered 2026-08-10, before any runs)
+
+### The gap, verified
+Every instruction the writer has received in 39 cells came from the SYSTEM
+DESIGNER: the PRESERVE block, the suppression clause, the DECIDE clause,
+the ledger protocol. Inspection of council/prompts.py confirms the seat
+prompts ask seats to ANSWER the Lead's question and never to instruct it.
+No cell has tested whether the component that owns the knowledge can tell
+the component that writes how to use it.
+
+### Why it is worth running despite five discouraging results
+Cells 17, 20, 26, 27/28 and PD-13 all found the writer unmoved by
+instruction. But PD-13's actual finding was that an instruction reliably
+produces THE SPECIFIC THING IT NAMES (0/30 -> 28/30 on dictated
+phrasings); the failure was that generic instructions name nothing
+specific. A seat directive differs on two axes never varied here:
+SPECIFICITY (it names a particular claim, not a class) and
+AUTHORSHIP/POSITION (it arrives in the content position, written by the
+model that produced the content, only when the case warrants it). Our own
+strongest instrument finding therefore predicts the specific case might
+land where the generic case did not.
+
+It also supplies what Cell 26 showed missing: in every prior test the
+reliability signal was computed by the harness or tabulated by the writer,
+never ASSERTED by the seat that owns it.
+
+### Primary experiment — DEFERENCE (the routing-authority form)
+Two seats state CONFLICTING figures for the same quantity (nine items,
+reusing the Cell 37 claim set). Arms, 3 repeats each:
+- **A-control** — conflict present, no directive.
+- **A-defer-to-B** — seat A appends: its figure is the weaker estimate and
+  where it conflicts with seat B's, seat B's should be used.
+- **A-defer-to-A** — the mirror, issued by seat B.
+Measured by exact match on the two known numerals. Instrument-free.
+
+**The counterbalance is the internal validity check**: if the two defer
+arms shift in OPPOSITE directions, the directive is doing the work; if
+both shift the same way, it is position bias and the cell reports that
+instead.
+
+### Secondary experiment — PRESERVATION (runs only if the primary completes)
+Same nine cases. A seat states a caveat, in one arm accompanied by a
+directive to carry it into the answer. Measured by exact match on a
+distinctive caveat phrase.
+
+### Entanglement guard (finding #8, mandatory)
+Directive text must contain NO lexicon family vocabulary. Verified
+mechanically against the lexicon before any run; the harness refuses to
+run on violation. Without this, the directive and the instrument would
+share vocabulary and the cell would measure compliance with itself —
+exactly the defect that cost this program a month.
+
+### Predictions
+- **P40.1 (deference lands).** Each defer arm shifts figure choice toward
+  its named target, paired bootstrap CI on the difference from control
+  excluding 0. *Falsified if* either CI includes 0.
+  *Attainability at n=27/arm: a ~30-point shift is resolvable; smaller is
+  not, and that is stated now.*
+- **P40.2 (it is deference, not position).** The two defer arms shift in
+  OPPOSITE directions. *Falsified if* they move the same way — reported as
+  position bias, and P40.1 is void regardless of its own interval.
+- **P40.3 (preservation, secondary).** The carry-this directive raises the
+  caveat's appearance versus the same caveat undirected, CI excluding 0.
+- **P40.4 (mandatory reporting, no bar).** Output length and the rate at
+  which NEITHER figure appears — omission is not compliance, and a
+  directive that makes the writer drop the topic entirely would otherwise
+  read as success.
+
+### Consequences (fixed in advance)
+- P40.1 + P40.2 supported -> the first mechanism in this program where the
+  SOURCE rather than the DESIGNER controls synthesis. The instruction
+  question reopens with specificity and authorship as the live variables,
+  and the withdrawn instruction-gain contribution gets a successor claim
+  that is narrower and better evidenced.
+- P40.1 falsified -> the writer ignores handling instructions regardless of
+  who authors them or how specific they are. That CLOSES the instruction
+  question rather than leaving the specificity loophole open, and is the
+  stronger negative result.
+- No configuration is adopted either way.
