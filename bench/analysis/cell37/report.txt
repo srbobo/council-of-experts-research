@@ -1,0 +1,17 @@
+==========================================================================
+P37.3 THREE-WAY SPLIT (mandatory; 'neither' is how a false
+      positive would enter — omission is not computation)
+==========================================================================
+  arm              n  correct  corrupted  neither
+  clean           27        6          1       20
+  one-corrupt     27        4          0       23
+  all-corrupt     27        2          5       20
+  stripped        27        0         12       15
+
+==========================================================================
+P37.1 all-corrupt: correct 2/27 [0.021,0.234], corrupted 5/27; correct-minus-corrupted CI [-0.296,+0.074]
+P37.1: FALSIFIED — Cell 35 was cross-seat preference, and the word recomputation is struck
+
+==========================================================================
+P37.2 stripped 0.000 vs all-corrupt 0.074; diff CI [-0.185,+0.000]
+P37.2: FALSIFIED — prior-driven; the claim narrows to preferring its prior over a corrupted input, which is NOT computation

@@ -5605,3 +5605,56 @@ exactly the defect that cost this program a month.
   question rather than leaving the specificity loophole open, and is the
   stronger negative result.
 - No configuration is adopted either way.
+
+## CELL 37 VERDICT — the writer does NOT recompute. "Recomputation" is struck from every artifact, and the corrupted value wins whenever no clean source exists (2026-08-10, 108 runs, four arms)
+
+Report: bench/analysis/cell37/report.txt.
+
+| arm | n | correct | corrupted | neither |
+|---|---|---|---|---|
+| clean (all seats correct) | 27 | 6 | 1 | 20 |
+| one-corrupt (Cell 35's condition) | 27 | 4 | 0 | 23 |
+| **all-corrupt** (primitives intact) | 27 | **2** | **5** | 20 |
+| stripped (primitives deleted) | 27 | **0** | **12** | 15 |
+
+**P37.1 FALSIFIED.** In the decisive arm — every seat corrupted, primitives
+intact, so copying yields the wrong value and only computation yields the
+right one — the writer produced the correct value 2/27 and the CORRUPTED
+value 5/27. Correct-minus-corrupted CI [−0.296, +0.074]. It did not
+compute. **Registered consequence executed: the word "recomputation" is
+struck from all artifacts**, and Cell 35's pattern is re-attributed to
+CROSS-SEAT PREFERENCE — the writer took the correct figure from an
+uncorrupted seat when one existed, which is copying, not deriving.
+
+**P37.2 FALSIFIED, and it removes the fallback reading too.** With the
+primitives deleted the correct value never appears (0/27) while the
+corrupted value appears 12/27 — more than double the all-corrupt rate.
+The diff CI [−0.185, +0.000] touches zero at the boundary, so the
+prior-driven claim is not established either. The writer has no
+independent access to these answers: strip the inputs and it simply
+repeats whatever it was told.
+
+**The gradient is the finding.** Corrupted-value adoption rises
+monotonically as clean alternatives are removed: 1 → 0 → 5 → 12 across
+clean, one-corrupt, all-corrupt, stripped. The writer is a SOURCE
+SELECTOR, not a calculator. When a clean source exists it prefers it —
+which is genuinely useful and explains Cell 35's 0/27 propagation — but
+when every source is wrong it propagates the error, and when the working
+is removed it propagates it twice as often.
+
+**Cell 35's headline is therefore narrowed, not withdrawn.** "Planted
+errors do not reach the final answer" holds ONLY where an uncorrupted seat
+covers the same quantity. Cell 35 corrupted one seat of three; that is the
+protected case. Cells 35 and 39 measured redundancy, not resistance.
+
+**P37.3, the reason this is readable at all.** "Neither value present"
+runs at 15-23 of 27 in every arm — the writer omits these quantities far
+more often than it states them. Rates are conditional on that, and without
+the mandatory three-way split the 2/27 correct in the decisive arm could
+have been reported as a small positive rather than as what it is.
+
+**Net for the program.** The one apparent POSITIVE capability measured in
+39 cells does not survive its own registered test. What remains is a
+weaker and more precise claim: the writer prefers uncorrupted sources over
+corrupted ones when both are present, and has no independent hold on the
+content whatsoever.

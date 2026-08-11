@@ -51,6 +51,7 @@ and its status.
 
 | claim | withdrawn by | replacement |
 |---|---|---|
+| "The writer recomputes" / any use of the word recomputation | Cell 37 (P37.1 + P37.2 both falsified) | the writer is a SOURCE SELECTOR: prefers an uncorrupted source when one exists, propagates the error when none does |
 | "The instruction moves w more than the architectural difference" | PD-13 | "an instruction produces the phrase it names" |
 | "C2 carries 126% of the block's gain" as behavioral | PD-13 | compliance with a phrase order |
 | The 0.16→0.35 gradient as evidence about instructions | PD-13 + audit #2 | — |
