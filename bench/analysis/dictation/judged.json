@@ -1,0 +1,602 @@
+{
+ "gpt-oss:20b||pos||This tension is significant given the financial model's assumption of stable hospital revenue at $5M annually (modeled a": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||This tension is significant given the financial model's assumption of stable hospital revenue at $5M annually (modeled a": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Total revenue potential per premium seat is modeled at $1,950/year.": {
+  "grade": 1,
+  "ref": 4,
+  "ref_id": "R040"
+ },
+ "qwen2.5:7b-instruct||pos||Total revenue potential per premium seat is modeled at $1,950/year.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Financial Structure**: The conversion may affect access to healthcare services for vulnerable populations, as for-profit": {
+  "grade": 1,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||Financial Structure**: The conversion may affect access to healthcare services for vulnerable populations, as for-profit": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||While the finance specialist assumes uniform timelines (modeled at 2024), adjustments should be made to reflect potentia": {
+  "grade": 3,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||While the finance specialist assumes uniform timelines (modeled at 2024), adjustments should be made to reflect potentia": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Financial Viability\nThe finance contribution outlines the financial structure under the capitated model, with total ": {
+  "grade": 1,
+  "ref": 3,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Viability\nThe finance contribution outlines the financial structure under the capitated model, with total ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Potential healthcare savings are modeled at $2,000 per patient annually due to reduced obesity-related comorbidities.": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||Potential healthcare savings are modeled at $2,000 per patient annually due to reduced obesity-related comorbidities.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Licensing costs are modeled at $5–$10/user/month, with integration expenses assumed at 15–20% of total tool cost.": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||Licensing costs are modeled at $5–$10/user/month, with integration expenses assumed at 15–20% of total tool cost.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Base fees are modeled at $5,000–$10,000/seat/year, assuming 120 seats across the health system, generating $600,000–$1.2": {
+  "grade": 2,
+  "ref": 3,
+  "ref_id": "R040"
+ },
+ "qwen2.5:7b-instruct||pos||Base fees are modeled at $5,000–$10,000/seat/year, assuming 120 seats across the health system, generating $600,000–$1.2": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Financial Dimension\n- **Transaction Structure & Valuation**: The sale-leaseback transaction is modeled at an EBITDA ": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Dimension\n- **Transaction Structure & Valuation**: The sale-leaseback transaction is modeled at an EBITDA ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||**Market Conditions and Discount Rates**: The financial contribution assumes specific discount rates (modeled at 8–10% f": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||**Market Conditions and Discount Rates**: The financial contribution assumes specific discount rates (modeled at 8–10% f": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||**Market Volatility and Financial Assumptions**: The healthcare expert's warning about financial market risks due to the": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||**Market Volatility and Financial Assumptions**: The healthcare expert's warning about financial market risks due to the": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Financial Viability**: The healthcare contribution emphasizes the need for significant investments in technology and wor": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||Financial Viability**: The healthcare contribution emphasizes the need for significant investments in technology and wor": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||However, this comes with recurring lease obligations (~$1.8–2.4M/year) that must be carefully managed (modeled at a 6–8%": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||However, this comes with recurring lease obligations (~$1.8–2.4M/year) that must be carefully managed (modeled at a 6–8%": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||legal update requirements** – The finance model *modeled at* a 0.5–1.0 % bonus tied to fixed thresholds, yet the legal c": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||legal update requirements** – The finance model *modeled at* a 0.5–1.0 % bonus tied to fixed thresholds, yet the legal c": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Legal Considerations\n- **Regulatory Compliance:** Increased scrutiny from regulatory bodies could introduce complian": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||### Legal Considerations\n- **Regulatory Compliance:** Increased scrutiny from regulatory bodies could introduce complian": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||This tension is evident in the financial strategy's assumption of predictable cash flows (modeled at fixed-rate annuitie": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||This tension is evident in the financial strategy's assumption of predictable cash flows (modeled at fixed-rate annuitie": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||This introduces significant risk into the valuation model, particularly affecting milestone probabilities (e.g., modeled": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||This introduces significant risk into the valuation model, particularly affecting milestone probabilities (e.g., modeled": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||**Comprehensive Training Programs**: Allocate budget for training programs, modeled at $1,500 per employee, focusing on ": {
+  "grade": 2,
+  "ref": 4,
+  "ref_id": "R040"
+ },
+ "qwen2.5:7b-instruct||pos||**Comprehensive Training Programs**: Allocate budget for training programs, modeled at $1,500 per employee, focusing on ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||This approach allows for testing assumptions about adoption rates (modeled at 70–90% within six months) and managing cos": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||This approach allows for testing assumptions about adoption rates (modeled at 70–90% within six months) and managing cos": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||This validation should be modeled at aligning with current clinical standards to minimize misclassification errors.": {
+  "grade": 1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||This validation should be modeled at aligning with current clinical standards to minimize misclassification errors.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Financial Structure\n- **Pricing Model**: Adopt a per-seat annual subscription model with an initial rate of $500–$1,": {
+  "grade": 2,
+  "ref": 4,
+  "ref_id": "R040"
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Structure\n- **Pricing Model**: Adopt a per-seat annual subscription model with an initial rate of $500–$1,": {
+  "grade": 3,
+  "ref": 5,
+  "ref_id": "R045"
+ },
+ "gpt-oss:20b||pos||### Financial Structure\n- **Pricing Model**: Adopt a tiered pricing structure based on hospital size and usage, modeled ": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R034"
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Structure\n- **Pricing Model**: Adopt a tiered pricing structure based on hospital size and usage, modeled ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||- Align the app’s efficacy data with the NHS's QALY thresholds (modeled at £30,000–£50,000 per QALY gained) for UK reimb": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||- Align the app’s efficacy data with the NHS's QALY thresholds (modeled at £30,000–£50,000 per QALY gained) for UK reimb": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||A WACC of 15%, with an additional 3–5% risk premium, is modeled at but may need adjustment based on evolving regulatory ": {
+  "grade": 3,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||A WACC of 15%, with an additional 3–5% risk premium, is modeled at but may need adjustment based on evolving regulatory ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Financial Viability\nThe sale-leaseback is proposed as a means to fund the acquisition, modeled at 5–7% of property v": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R028"
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Viability\nThe sale-leaseback is proposed as a means to fund the acquisition, modeled at 5–7% of property v": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||### Financial Viability\nThe finance contribution calculates monthly revenue at $29.5 million, assuming a profit of appro": {
+  "grade": 3,
+  "ref": 6,
+  "ref_id": "R052"
+ },
+ "qwen2.5:7b-instruct||pos||### Financial Viability\nThe finance contribution calculates monthly revenue at $29.5 million, assuming a profit of appro": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||These evolving frameworks create uncertainty around compliance timelines and economic assumptions modeled at pre-cutoff ": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||These evolving frameworks create uncertainty around compliance timelines and economic assumptions modeled at pre-cutoff ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||This could conflict with the finance contribution's assumption of a $50,000 per seat annual subscription (modeled at 202": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||This could conflict with the finance contribution's assumption of a $50,000 per seat annual subscription (modeled at 202": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||**Reimbursement Strategy**: In the UK, aligning with NICE guidelines is essential for NHS reimbursement, focusing on cli": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||**Reimbursement Strategy**: In the UK, aligning with NICE guidelines is essential for NHS reimbursement, focusing on cli": {
+  "grade": 3,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||pos||Financial Structure\n\n| Item | Annualized Cost (USD) | Notes |\n|------|-----------------------|-------|\n| **Fixed** | **$": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||pos||Financial Structure\n\n| Item | Annualized Cost (USD) | Notes |\n|------|-----------------------|-------|\n| **Fixed** | **$": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Alternative pricing models—such as $2 000/seat/year with performance‑based add‑ons or a $1 200/seat/year tiered discount": {
+  "grade": 2,
+  "ref": 1,
+  "ref_id": "R034"
+ },
+ "qwen2.5:7b-instruct||neg||Alternative pricing models—such as $2 000/seat/year with performance‑based add‑ons or a $1 200/seat/year tiered discount": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||One‑time integration costs vary: they could be a flat fee covering EHR plug‑in, data mapping, and training (e.g., ~$15 k": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||One‑time integration costs vary: they could be a flat fee covering EHR plug‑in, data mapping, and training (e.g., ~$15 k": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Using an rNPV framework that discounts cash flows at 12 %—reflecting the high risk of late‑stage development—the enterpr": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Using an rNPV framework that discounts cash flows at 12 %—reflecting the high risk of late‑stage development—the enterpr": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Yes – the group can pursue a full‑risk capitated contract at $1,180 per member per month **only if** it locks in a set o": {
+  "grade": -1,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Yes – the group can pursue a full‑risk capitated contract at $1,180 per member per month **only if** it locks in a set o": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||5. **IP ownership is co‑owned but territorialized**, ensuring each partner can fully exploit the asset in the market whe": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||5. **IP ownership is co‑owned but territorialized**, ensuring each partner can fully exploit the asset in the market whe": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Intellectual property considerations include market exclusivity and patent terms: 5 years + 20-year patents (with extens": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Intellectual property considerations include market exclusivity and patent terms: 5 years + 20-year patents (with extens": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Include a “Use‑as‑Guide” statement: “The risk score is an adjunct; final clinical decision rests with the treating clini": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Include a “Use‑as‑Guide” statement: “The risk score is an adjunct; final clinical decision rests with the treating clini": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||A De Novo or 510(k) submission is prepared with an algorithm description, training data set, IEC 62304‑based risk analys": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||A De Novo or 510(k) submission is prepared with an algorithm description, training data set, IEC 62304‑based risk analys": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||2. **Cash Outflows**  \n   - Phase 3 clinical cost (biotech bears US portion; pharma covers EU portion).  \n   - Regulator": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||2. **Cash Outflows**  \n   - Phase 3 clinical cost (biotech bears US portion; pharma covers EU portion).  \n   - Regulator": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Regularly review financial and clinical data to ensure optimal value and compliance with evolving legal standards.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Regularly review financial and clinical data to ensure optimal value and compliance with evolving legal standards.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||With these conditions met, the group can convert the full‑risk capitated arrangement into a defensible, profitable oppor": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||With these conditions met, the group can convert the full‑risk capitated arrangement into a defensible, profitable oppor": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||The regulatory landscape differs between the US and EU/UK.": {
+  "grade": 1,
+  "ref": 1,
+  "ref_id": "R042"
+ },
+ "qwen2.5:7b-instruct||neg||The regulatory landscape differs between the US and EU/UK.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||B grants P a territorial license (EU/UK) with royalty obligations; B keeps exclusive rights in the US.  \n- **Orphan Desi": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||B grants P a territorial license (EU/UK) with royalty obligations; B keeps exclusive rights in the US.  \n- **Orphan Desi": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Market entry is contingent on factors like pricing and reimbursement, which can be delayed due to payer negotiations.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Market entry is contingent on factors like pricing and reimbursement, which can be delayed due to payer negotiations.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||IP ownership is territorial, protecting each party’s core assets.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||IP ownership is territorial, protecting each party’s core assets.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Absent those assurances—particularly if service lines are threatened or lease terms become onerous—the board should purs": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Absent those assurances—particularly if service lines are threatened or lease terms become onerous—the board should purs": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Delays or denials trigger acceleration clauses that adjust milestone timing or amounts to compensate the affected party.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Delays or denials trigger acceleration clauses that adjust milestone timing or amounts to compensate the affected party.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||The projected margin (~$270 million annually) is significantly higher than typical earnings, but this hinges on adequate": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||The projected margin (~$270 million annually) is significantly higher than typical earnings, but this hinges on adequate": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Biotech bears US cost; pharma covers EU execution. |\n| **Regulatory** | FDA accelerated approval ~70–80 % if surrogate e": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Biotech bears US cost; pharma covers EU execution. |\n| **Regulatory** | FDA accelerated approval ~70–80 % if surrogate e": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Regulatory responsibilities are split, with the biotech handling all FDA submissions and compliance in the US, while the": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Regulatory responsibilities are split, with the biotech handling all FDA submissions and compliance in the US, while the": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Go‑Live** | Full roll‑out; begin monthly reporting cycles. | All | 12 weeks |\n\n---\n\n## 4.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Go‑Live** | Full roll‑out; begin monthly reporting cycles. | All | 12 weeks |\n\n---\n\n## 4.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||**Bottom‑line verdict:**  \n> **Accept the contract only if the group can lock in a *loss‑cap/stop‑loss* layer, demonstra": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||**Bottom‑line verdict:**  \n> **Accept the contract only if the group can lock in a *loss‑cap/stop‑loss* layer, demonstra": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||If all criteria are satisfied, the board can proceed with a signed agreement that safeguards patient care, protects its ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||If all criteria are satisfied, the board can proceed with a signed agreement that safeguards patient care, protects its ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||**Executive Summary**  \nA U.S. digital therapeutic that has secured FDA clearance can be brought to the UK and Germany w": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||**Executive Summary**  \nA U.S. digital therapeutic that has secured FDA clearance can be brought to the UK and Germany w": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||2. **Phase 2 Completion** – €12 M (conditional on ≥ 70 % efficacy).": {
+  "grade": 2,
+  "ref": 3,
+  "ref_id": "R030"
+ },
+ "qwen2.5:7b-instruct||neg||2. **Phase 2 Completion** – €12 M (conditional on ≥ 70 % efficacy).": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Additionally, data residency should be in EU/UK-based servers or adequately safeguarded if stored outside.\n\n**Reimbursem": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Additionally, data residency should be in EU/UK-based servers or adequately safeguarded if stored outside.\n\n**Reimbursem": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||Post‑deployment monitoring tracks real‑time drift: daily AUROC trends trigger automatic threshold recalibration every 30": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||Post‑deployment monitoring tracks real‑time drift: daily AUROC trends trigger automatic threshold recalibration every 30": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||In addition, securing UK MHRA “Medical Device” approval is necessary.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||In addition, securing UK MHRA “Medical Device” approval is necessary.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||3. **IP Ownership & Protection:**  \n   * Core patents co‑owned; each party holds exclusive territorial licenses (US for ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||3. **IP Ownership & Protection:**  \n   * Core patents co‑owned; each party holds exclusive territorial licenses (US for ": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "gpt-oss:20b||neg||ADA/AACE guidelines, CMS guidance (2024), and most state statutes support coverage when criteria are met.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ },
+ "qwen2.5:7b-instruct||neg||ADA/AACE guidelines, CMS guidance (2024), and most state statutes support coverage when criteria are met.": {
+  "grade": 0,
+  "ref": 0,
+  "ref_id": null
+ }
+}

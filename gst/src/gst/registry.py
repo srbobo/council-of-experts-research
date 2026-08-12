@@ -31,15 +31,29 @@ decomposition are its listed appropriate uses).
 WHAT THE REGISTRY CANNOT DO. Membership establishes that a phrase WAS
 dictated somewhere in the system. It does not establish that any particular
 occurrence in an output was CAUSED by that dictation -- a writer may produce
-"modeled at" spontaneously. Therefore, downstream:
+"modeled at" spontaneously.
 
-    M_dictated  is an UPPER bound on compliance C
-    M_novel     is a LOWER bound on behaviour B
+BOUND DIRECTION -- CORRECTED 2026-08-11, and the correction matters.
+An earlier draft of this docstring and of the pre-registration stated
+"M_novel is a LOWER bound on B". That is backwards for any matcher whose
+misses outnumber its false alarms, which is the empirical case here. The
+direction follows from where each error type sends an event:
 
-Behavioural claims are licensed by M_novel only. The over-attribution rate
-(how often registry FORM arises where dictation provably did not occur) is
-measured separately against de-scaffolded corpora; see
-`train/run_dictation_validation.py`.
+  - matcher MISSES a paraphrase of dictated material -> that compliance
+    event lands in M_novel, inflating it
+  - matcher FALSELY flags novel material -> M_novel deflates
+
+Measured (V-A/V-B, `train/run_dictation_validation.py`): misses run ~33% on
+literal items while false alarms run ~7%, and corpus-level over-attribution
+is 0/2907 spans. Misses dominate. Therefore:
+
+    M_dictated  is a LOWER bound on compliance C
+    M_novel     is an UPPER bound on behaviour B
+
+The partition is still decisive in one direction: a SMALL M_novel is strong
+evidence that behaviour is small. A large M_novel proves nothing, because
+undetected paraphrase inflates it. Claims may be made from a small M_novel;
+never from a large one.
 """
 from __future__ import annotations
 

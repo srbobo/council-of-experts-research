@@ -6,10 +6,19 @@ span RESTATES OR CLOSELY PARAPHRASES dictated material. This is a judgment
 about FORM, not about causation: a writer may produce a registry phrase
 spontaneously. Hence, and repeated everywhere this is used --
 
-    M_dictated  UPPER bound on compliance C
-    M_novel     LOWER bound on behaviour B
+    M_dictated  LOWER bound on compliance C
+    M_novel     UPPER bound on behaviour B
 
-Behavioural claims are licensed by M_novel only.
+(Direction CORRECTED 2026-08-11; see `gst.registry` for the derivation. A
+matcher that misses paraphrase pushes compliance into M_novel and inflates
+it, and misses empirically dominate false alarms here. A SMALL M_novel is
+therefore strong evidence of small behaviour; a LARGE one proves nothing.)
+
+STATUS: NOT DEPLOYABLE as a two-judge ensemble. See the validation verdict
+in RUNBOOK_PAPER_HARDENING.md -- the registered gates passed on paper and
+the pass was an artifact of class imbalance, a constant-responding judge,
+and 40% differential attrition on the positive class. Use `literal_hits`
+alone until a re-validation lands.
 
 TWO STAGES.
   1. LITERAL. Substring containment of a registry phrase. Exact, free, and

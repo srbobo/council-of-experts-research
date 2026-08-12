@@ -5821,3 +5821,100 @@ correction factor, not a hypothesis.
 The compliance share is a DIAGNOSTIC. A prompt engineered to lower measured
 compliance is finding #8 inverted — it teaches the scaffold to evade the
 registry. No prompt may be tuned against this number.
+
+---
+
+## DICTATION REGISTRY + PARAPHRASE MATCHER — VERDICT (2026-08-11)
+
+### Deliverable 1: the registry is built and frozen
+
+`docs/DICTATION_REGISTRY.json` — **125 entries from 35 declared prompt
+symbols**, digest `bea936e3c4bc5033...`. Extraction is `ast` parsing plus
+character-level quote scanning, so the no-regex directive is not engaged;
+`family_hint` is a screening flag only, and 52 entries carry one.
+
+**Registry finding — the judge was dictated the same phrases as the writer.**
+`train/judge_instrument.py::PROMPT` (the Cell 7b pairwise judge) enumerates
+"as of my training data...", "verify current guidance...", "assuming
+that...", "modeled at...", "this may vary if...", "results could differ...",
+"actual results may vary" (registry R101-R107). Those are the SAME strings
+dictated to writers by BEHAVIOR_SPEC_ADDENDUM, HEALTH_ADD, FINANCE_ADD,
+REWRITE_ADD and HOT_ADDENDUM. Finding #8 therefore reached the INSTRUMENT
+layer, not only the scaffold: a judge told to look for "modeled at" was
+scoring a writer told to say "modeled at". This was found mechanically, on
+the registry's first run, by a lookup that took under a second — which is
+the argument for the registry.
+
+**Screen fidelity, checked:** exactly one false positive (R019, a JSON schema
+description) and at least one miss (R033, a dictated example sentence whose
+"assumes 510(k)" the lexicon's `assume[ds]? (that|the)` cannot reach). The
+registry holds all 125 regardless; only the convenience subset is screened.
+Consequence for deployment: `shortlist` must draw from ALL entries, since
+screening at 0.25-0.30 recall would otherwise bound what the matcher can
+ever match against.
+
+### Deliverable 2: the matcher is NOT deployable
+
+**The registered gates passed. The pass is an artifact, and it is recorded
+as a failure.** AUC 0.904 (gate 0.80) and pooled judge-judge agreement 0.723
+(gate 0.70) are both technically over the bar. Three defects void them:
+
+| defect | evidence |
+|---|---|
+| agreement is base-rate inflation | decomposed: **POS 0.389, NEG 0.931**. The pooled figure is carried by 29 NEG items where both judges say NONE. On the class that matters the judges agree on 7 of 18 |
+| one judge is a constant responder | `qwen2.5:7b-instruct` **AUC 0.533** — chance. Sensitivity 0.067, specificity 1.000: it answers NONE to almost everything, contributing no discrimination while inflating agreement |
+| differential attrition correlated with the outcome | **40% of POS quarantined (12/30) vs 3.3% of NEG (1/30)**, all from `gpt-oss:20b`. Every surviving number is computed on a biased subsample, and the likely mechanism — longer, denser POS spans exhausting the reasoning budget — means the DROPPED items are the hard ones |
+
+Ensemble sensitivity at the deployed threshold is **1/18 = 0.056**. A matcher
+that fires on one in eighteen literal matches is not an instrument.
+
+**Registered consequence executed:** the partition falls back to
+literal-only, and `M_dictated` is reported as a strict undercount of
+form-echo. `gst.dictation` carries a NOT DEPLOYABLE banner.
+
+**Post-hoc, labelled as such (checklist item 6):** `gpt-oss:20b` ALONE
+scores AUC 0.902, sensitivity 0.667, specificity 0.931 — genuine
+discrimination. It is not adopted, because those numbers come from the 60%
+of POS items that same judge managed to answer, and the attrition is its
+own. A single-judge matcher needs its own registration with the token budget
+fixed and attrition reported before it may be used.
+
+### Deliverable 3: the over-attribution rate is ZERO — the strongest result here
+
+V-B found **no clean-provenance span carrying a registry phrase: 0 of 2907
+spans, 0 of 60 de-scaffolded runs, across 438,797 characters.** Direct probes
+confirm it: "modeled at" 0/60, "hypothetical" 0/60, "assuming that" 0/60,
+"verify current" 0/60, "as of my training" 0/60, "may vary if" 0/60.
+
+Registry form essentially never arises without dictation. Run-level Wilson
+upper bound 0.060 (0/60; span-level is tighter but ICC 0.190 makes the run
+the honest unit). The scaffold's phrases are **diagnostic of the scaffold**,
+which is what makes the literal stage trustworthy even with the judge stage
+withdrawn — and it independently corroborates PD-13 from a different corpus
+and a different direction.
+
+### A registration error of mine, corrected in the record
+
+The pre-registration and `gst.registry` both stated "**M_novel is a LOWER
+bound on B**". That is backwards. Misses push compliance INTO M_novel and
+inflate it; only false alarms deflate it. Measured here, misses (~33% on
+literal items) dominate false alarms (~7%, and 0 at corpus level). Correct
+directions:
+
+    M_dictated  LOWER bound on compliance C
+    M_novel     UPPER bound on behaviour B
+
+This matters for what the partition can license. A **small** M_novel is
+strong evidence behaviour is small. A **large** M_novel proves nothing,
+because undetected paraphrase inflates it. My earlier proposal message had
+this right ("an imperfect ceiling on B") and the registration flipped it;
+the flip is corrected in `registry.py`, `dictation.py` and here.
+
+### Where this leaves finding #8
+
+Layer 1 (structural prevention) is DONE and already caught an instrument-level
+entanglement nobody had looked for. Layer 2 is HALF done: the literal stage is
+validated and its false-alarm rate is measured at zero, but the paraphrase
+stage is withdrawn. Layer 3 (the phrase-swap cell) is unaffected — it never
+depended on the matcher, and its attainability computation now has real
+numbers to use.
