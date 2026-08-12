@@ -5918,3 +5918,86 @@ validated and its false-alarm rate is measured at zero, but the paraphrase
 stage is withdrawn. Layer 3 (the phrase-swap cell) is unaffected — it never
 depended on the matcher, and its attainability computation now has real
 numbers to use.
+
+---
+
+## LAYER 3 ATTAINABILITY + FORM FREEZE (2026-08-11, before the cell is registered)
+
+Checklist item 12 applied to my own proposal. Computed from the archive; no
+generation except a 16-call elicitability probe.
+
+### The number that changed the design
+
+My proposal reasoned from PD-13's non-dictated channel, **1/30 -> 4/30**, and
+warned that an invariance test on a ~13% outcome would need an equivalence
+margin and a large n. That base rate was a **regex artifact**. Under the
+validated sentence-level judge on the de-scaffolded corpus (Cell 30 arm P,
+n=60), the same construct sits at:
+
+| outcome | control rate |
+|---|---|
+| `modeled` family presence | **0.167** (vs 0.033 regex-era — 5x) |
+| any construct family | **0.633** |
+| mean qualification sentences/run | 1.250 (sd 1.349) |
+
+The outcome is roughly five times more attainable than the proposal assumed.
+
+### Form freeze — `docs/PHRASE_SWAP_FORMS.json`
+
+**Form X = "modeled at"** (the dictated form). 11 registry entries across 9
+prompt symbols. Measured on 2M characters:
+
+| corpus | rate |
+|---|---|
+| clean-provenance (249 runs: Cell 30 + Cells 37/40) | **0/249** [0.000, 0.015] |
+| scaffolded (396 archived council runs) | **172/396 = 0.434** |
+
+This is PD-13's compliance signature reproduced on 13x the runs, from a
+different corpus, by a different method. The phrase never appears
+spontaneously and appears in 43% of scaffolded runs.
+
+**Form Y = "taken to be"** (the swapped synonym). 0 registry entries, 0
+lexicon patterns, **0/249 clean and 0/396 scaffolded** — matching form X's
+exact zero, which is the symmetry the swap requires.
+
+Chosen from seven zero-rate candidates because it alone is a drop-in
+substitution in the same syntactic slot ("persistence is modeled at 60%" ->
+"persistence is taken to be 60%"), so neither arm's instruction is harder to
+comply with than the other's; it marks an assumption rather than setting a
+value; and it was elicited at form X's own rate.
+
+Rejected and why: "estimated at" (2/249 clean AND 14/396 scaffolded — non-zero
+on both), "projected at" (3/249, highest of any candidate), "pegged at"
+(elicited 0/4; connotes fixing, may not express the construct), "carried at"
+(accounting term of art, not a synonym). **"a working figure of" passes every
+empirical screen and is HELD as the fallback**, rejected only for being a noun
+phrase rather than a drop-in.
+
+The elicitability probe is reported with its limit: n=4 per form on a
+deliberately short task, which depressed every rate including form X's (1/4
+against its 0.434 in real runs). It establishes a non-zero floor. It cannot
+rank candidates and was not designed to.
+
+### Attainability verdict
+
+Design effect x1.38 (3 repeats at the recorded ICC 0.190); throughput 154
+s/run measured from Cell 40.
+
+- **P.1 (compliance is form-tracking): n = 15 per arm.** Trivially attainable
+  — the archive already shows the effect at 0.002 vs 0.434.
+- **P.2 (form-independent channel):** MDD at n=60/arm is **+0.263** (180 runs,
+  7.7 h). PD-13's lift rescaled to the validated base predicts p2 ~ 0.50,
+  needing **n = 39 per arm (117 runs, 5.0 h)**.
+
+**Layer 3 is ATTAINABLE at n = 60 per arm — 180 runs, roughly 8 hours.** That
+buys P.1 with enormous margin and detects any form-independent lift at or
+above +0.26 on the `modeled` family.
+
+**Registered honestly:** at n=60 a form-independent effect SMALLER than +0.26
+would not be detected, and the correct verdict in that case is NOT EVALUABLE
+for P.2 rather than "no behavioural effect". If the design is to license a
+null, it needs n=120+/arm (15.4 h) or the any-construct outcome. That choice
+belongs in the cell's registration, not here.
+
+**Not yet registered and not yet run.** This freeze fixes the forms and the
+attainability inputs only.

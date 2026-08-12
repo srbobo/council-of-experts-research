@@ -1,0 +1,43 @@
+{
+ "schema": "phrase-swap-forms/1",
+ "frozen": "2026-08-11",
+ "registry_digest": "bea936e3c4bc5033",
+ "note": "Frozen BEFORE the Layer 3 cell is registered or run. Editing this file after a run invalidates the comparison, exactly as BEHAVIOR_SPEC_ADDENDUM is frozen once benched.",
+ "form_X": {
+  "phrase": "modeled at",
+  "role": "the DICTATED form — what the scaffold already puts in the writer's mouth",
+  "registry_entries": 11,
+  "registry_symbols": ["FINANCE_SYSTEM", "LEAD_SYNTHESIS_SYSTEM", "BEHAVIOR_SPEC_ADDENDUM", "HEALTH_ADD", "HEALTH_STRIP", "FINANCE_ADD", "FINANCE_STRIP", "REWRITE_ADD", "REWRITE_STRIP", "HOT_ADDENDUM", "judge_instrument.PROMPT"],
+  "spontaneous_rate": {"k": 0, "n": 249, "ci": [0.000, 0.015]},
+  "scaffolded_rate": {"k": 172, "n": 396, "rate": 0.434}
+ },
+ "form_Y": {
+  "phrase": "taken to be",
+  "role": "the SWAPPED synonym — same construct, never dictated anywhere",
+  "registry_entries": 0,
+  "lexicon_patterns_matched": 0,
+  "spontaneous_rate": {"k": 0, "n": 249, "ci": [0.000, 0.015]},
+  "scaffolded_rate": {"k": 0, "n": 396, "rate": 0.000},
+  "elicitable": true,
+  "elicitation_probe": {"hits": 1, "n": 4, "same_as_form_X": true,
+   "caveat": "n=4 on a deliberately short task; establishes a non-zero floor only, cannot rank candidates"}
+ },
+ "rejected": [
+  {"phrase": "pegged at", "reason": "elicited 0/4; connotes fixing rather than estimating, so it may not express the construct at all"},
+  {"phrase": "estimated at", "reason": "spontaneous 2/249 and scaffolded 14/396 — non-zero on both, breaking symmetry with form X's exact zero"},
+  {"phrase": "projected at", "reason": "spontaneous 3/249, the highest of any candidate"},
+  {"phrase": "carried at", "reason": "accounting term of art (carrying value); semantically different, not a synonym"},
+  {"phrase": "a working figure of", "reason": "passes every empirical screen; rejected only on grammar — a noun phrase, not a drop-in for the verb-adjunct slot 'modeled at X'. HELD as the fallback if form Y proves unelicitable at scale"}
+ ],
+ "why_Y_was_chosen": "Of seven candidates matching form X's exact zero spontaneous rate, 'taken to be' is the only one that is simultaneously (a) a drop-in substitution in the same syntactic slot ('persistence is modeled at 60%' -> 'persistence is taken to be 60%'), so neither arm's instruction is harder to follow than the other's; (b) unambiguously an assumption-marker rather than a value-setter; and (c) elicitable at form X's own rate in the probe.",
+ "attainability": {
+  "control_base_rate_modeled_family": 0.167,
+  "control_base_rate_any_family": 0.633,
+  "source": "Cell 30 arm P, de-scaffolded, validated sentence-level judge (agreement 0.833)",
+  "design_effect": 1.38,
+  "icc": 0.190,
+  "p1_n_per_arm_required": 15,
+  "p2_mdd_at_n60": 0.263,
+  "p2_n_per_arm_for_pd13_rescaled_effect": 39
+ }
+}
