@@ -6001,3 +6001,93 @@ belongs in the cell's registration, not here.
 
 **Not yet registered and not yet run.** This freeze fixes the forms and the
 attainability inputs only.
+
+---
+
+## CELL 41 PRE-REGISTRATION — the phrase-swap cell (registered 2026-08-11, before any run)
+
+Layer 3 of the finding-#8 resolution, and the only piece that IDENTIFIES the
+behavioural component rather than bounding it. Forms were frozen in
+`docs/PHRASE_SWAP_FORMS.json` before this registration was written.
+
+### Why the earlier n was wrong, and what changed
+
+I told Sam that "licensing a null needs 120+/arm" on an MDD of +0.182. That
+figure applied a design effect of 1.38 (three repeats) at every n. But 120
+runs/arm across Cell 30's **nine** cases is ~13 repeats per case, so the true
+design effect is 3.28. Recomputed against the case count:
+
+| cases | runs/arm | n_eff | MDD |
+|---|---|---|---|
+| 9 | 126 | 36.3 | +0.289 |
+| 9 | **infinite** | **47.4** | **+0.252 — a hard ceiling** |
+| 18 | 126 | 58.9 | **+0.224** |
+
+**The cell is cluster-limited, not run-limited.** With nine cases no amount
+of running reaches the +0.182 I quoted. The fix is more CASES, not more runs.
+Nine further cases already exist in `examples/test_cases.py` and lacked only
+de-scaffolded seat text, which stage `seats` generates using Cell 30's exact
+clean prompts.
+
+### Arms — one factor (writer instruction / named surface form)
+
+- **A-control** — Cell 30's clean `WRITER_PROMPT`, no clause
+- **A-form-X** — + clause naming `"modeled at"` (dictated in 11 registry
+  entries across 9 prompt symbols)
+- **A-form-Y** — + clause naming `"taken to be"` (0 registry entries)
+
+The clause is byte-identical across treated arms but for the form; the
+harness asserts this and refuses to run otherwise. **18 cases x 7 repeats x 3
+arms = 378 runs, 126/arm.**
+
+### Gate G-E, inverted
+
+G-E normally refuses any prompt containing a registry phrase. Here dictation
+IS the treatment, so the check becomes: each arm contains **exactly** its own
+named form and no other registry phrase. `audit_clause_dictation()` aborts on
+any other match. Verified PASS before launch.
+
+### Instruments — both already validated
+
+- **construct presence:** batched sentence judge at B=10 (Cell IV validated),
+  two judges. Its definitions name no phrase and instruct "do not reward
+  particular wording"; it passes gate G-E. Agreement bar **0.70** (Cell 30's
+  P30.0 protocol), reported on the `modeled` family.
+- **form attribution:** literal containment of the frozen forms, validated at
+  **0/2907 over-attribution** (V-B).
+
+Analysis bootstraps over **cases**, not runs — the cluster is the resampling
+unit, so ICC 0.190 is handled in the analysis rather than approximated.
+
+### Predictions
+
+- **P41.1 (compliance is form-tracking).** BOTH treated arms must raise their
+  own named form above control, cluster-bootstrap CI excluding 0. *Attainable
+  at n=15/arm;* the archive already shows 0/249 vs 172/396 for form X.
+  *Falsified if* either arm fails to move its own form.
+- **P41.2 (form-independent effect) — THE ESTIMAND.** For each treated arm,
+  the rate of runs carrying a judge-labelled `modeled` sentence that does NOT
+  contain that arm's own form. SUPPORTED iff BOTH exceed control with CI
+  excluding 0. *Falsified if* neither does. One-only is reported as
+  form-dependent and counts as falsified as registered.
+- **P41.3 (cross-form leakage, validity guard).** Each treated arm's rate of
+  the OTHER arm's form, reported against control. Non-trivial leakage
+  contaminates form attribution and voids P41.2's partition.
+- **P41.4 (silence check, mandatory).** Emission reported beside every rate —
+  mean sentences and characters per arm. No arm may score well by going quiet.
+
+### What a falsification of P41.2 licenses, fixed now
+
+At n_eff 58.9 the MDD is **+0.224**. A falsification therefore licenses only
+**"no form-independent effect >= +0.22"** — which does exclude the
+PD-13-rescaled prediction of +0.33, and is a genuine result. It does **NOT**
+license "the instruction has zero behavioural effect". Any smaller true
+effect is undetected, and the honest verdict for that region is NOT
+EVALUABLE. This sentence is registered so it cannot be quietly dropped when
+the numbers arrive.
+
+### Goodhart clamp
+
+Neither form may be tuned to improve any number here. The forms are frozen in
+a committed file with their measured base rates; a form swapped after seeing
+results is a different experiment and must be registered as one.
