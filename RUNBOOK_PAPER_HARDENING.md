@@ -6091,3 +6091,83 @@ the numbers arrive.
 Neither form may be tuned to improve any number here. The forms are frozen in
 a committed file with their measured base rates; a form swapped after seeing
 results is a different experiment and must be registered as one.
+
+---
+
+## SEAT-APPROACH PILOT (2026-08-11) — descriptive, zero model calls
+
+Sam's hypothesis: purpose-trained seats are not epistemically more capable
+than generalists, but have a distinct APPROACH — different framing, different
+reasoning path — even where outcomes match. Cell 36's null does not refute
+this: equal accuracy says nothing about path.
+
+Run as a pre-check under checklist item 12, on archived data only. No
+generation; Cell 41's judging was untouched.
+
+### Finding 1 — producer attribution is trivially confounded by surface form
+
+Two GENERALIST models, identical prompt, same items:
+
+| corpus | feature | gpt-oss | phi4 | AUC |
+|---|---|---|---|---|
+| Cell 36 (ASK) | chars | 112 | 432 | **0.024** |
+| Cell 36 | ttr | 0.875 | 0.594 | 0.920 |
+| Cell 30 (long-form) | chars | 8690 | 4559 | **0.945** |
+| Cell 30 | list_frac | 0.090 | 0.504 | **0.003** |
+| Cell 30 | ttr | 0.432 | 0.515 | 0.121 |
+
+**Any "can a judge tell the producers apart" instrument would score near
+ceiling on formatting alone, between two models neither of which is
+domain-trained.** Distinguishability is therefore NOT evidence of distinct
+approach, and an attribution-based design would have produced a strong,
+meaningless positive.
+
+### Finding 2 — length-matching is not attainable on existing corpora
+
+Cell 30's length-overlap band (3790-6184 chars) leaves 7 gpt-oss vs 16 phi4
+runs — below any usable floor. The confound cannot be controlled after the
+fact on this archive.
+
+### Finding 3 — every existing corpus is confounded for this question
+
+| corpus | confound |
+|---|---|
+| Cell 36 `seat_text` (60/60 stored) | seat analyses and single-model answers use different prompts and differ ~4x in length |
+| Cells 30/41 seats | one generalist under role prompts — no domain training present at all |
+| 396 archived runs | each seat answers a DIFFERENT routed sub-question, so domain loading is topic-driven by construction |
+
+A frozen framework inventory (a known-value check, not regex-as-NLP) does
+have resolution — real specialists load on their own domain, legal 0.80 and
+finance 2.36 against off-domain rates — but on these corpora that reflects
+routing, not disposition. Per-kchar the generalist actually out-names Med42
+on clinical frameworks (0.136 vs 0.101), which is suggestive and NOT
+interpretable here.
+
+### Verdict
+
+**The hypothesis is not answerable from the archive.** It is also not
+refuted. What the pilot bought is the specification of the cell that could
+answer it, and the prevention of a confounded positive.
+
+### What the cell must control
+
+1. **Identical prompt to every producer** — no role differentiation, no
+   sub-question routing (kills the topic confound).
+2. **Same items across producers**, outcome held constant where possible
+   (restrict to items all producers answer correctly).
+3. **Format-invariant instrument** — framework inventory plus judged
+   decomposition; length reported beside every rate and never left free.
+4. **Crossed domain x base-family** — the decisive control. A single
+   specialist-vs-generalist comparison moves architecture, identity, training
+   data and scale at once (audit #3's P36.2 warning). If domain training
+   induces an approach, medical fine-tunes on DIFFERENT bases should resemble
+   each other more than each resembles ITS OWN base.
+
+Pairs already local: `Meditron3-Qwen2.5-7B` <-> `qwen2.5:7b-instruct` (exact
+family); `BioMistral-7B` and `Saul-Instruct-v1` <-> `mistral:7b-instruct`
+(near, v0.1 vs v0.3 lineage — flag it). Pulling `Llama-3.1-8B-Instruct`
+(~5GB) would complete `Med42` (medical) AND `Hawkish-8B` (finance) on one
+shared base — two domains, one base, which is the strongest single addition.
+
+NOT registered and NOT run. This is a specification, and it needs the machine
+free of Cell 41 first.

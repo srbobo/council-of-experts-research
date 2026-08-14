@@ -135,8 +135,42 @@ def stage_seats() -> None:
     print(f"seats: {have}/{len(cases())*len(SEATS)} across {len(cases())} cases")
 
 
+def preflight() -> None:
+    """Refuse to start against an unreachable backend.
+
+    Added after the first launch: ollama died during seat generation and the
+    run stage churned through all 378 cells writing nothing, then printed
+    "runs complete". A stage that no-ops silently and reports success is the
+    checkpdf.sh defect again -- fail loud instead.
+    """
+    # 256, not 16: WRITER is a reasoning model and spends a small budget
+    # entirely on reasoning, returning empty. The first version of this guard
+    # carried that exact defect and false-alarmed on a healthy backend --
+    # measured 16 -> '' , 128 -> 'OK'. A preflight that cries wolf is worse
+    # than none.
+    t = chat(WRITER, "Reply with the single word OK.", "ping",
+             temperature=0.0, max_tokens=256)
+    if not t or not t.strip():
+        raise SystemExit(f"PREFLIGHT FAILED — {WRITER} returned nothing. "
+                         f"Is ollama running? Refusing to start.")
+    print(f"preflight: {WRITER} responds")
+
+
+def stage_seats_complete() -> bool:
+    seats = json.loads(SEATS_PATH.read_text()) if SEATS_PATH.exists() else {}
+    missing = [(c, r) for c in cases() for r in SEATS
+               if not seats.get(c, {}).get(r)]
+    if missing:
+        print(f"SEATS INCOMPLETE — {len(missing)} missing: {missing[:6]}")
+    return not missing
+
+
 def stage_runs() -> None:
     from examples.test_cases import get_case
+    preflight()
+    if not stage_seats_complete():
+        raise SystemExit("Refusing to run on an incomplete seat corpus — "
+                         "arms would differ in which cases they cover.")
     bad = audit_clause_dictation()
     if bad:
         print("CLAUSE AUDIT FAILED — refusing to run:")
@@ -156,16 +190,30 @@ def stage_runs() -> None:
             if f"{c}__{arm}__r{r}" not in done]
     print(f"cell41: {len(todo)} runs to go ({len(done)} cached)", flush=True)
     t0 = time.time()
+    consecutive_fail = 0
     with RUNS.open("a") as fh:
         for k, (case, arm, rep) in enumerate(todo):
             up = [seats[case][r] for r in SEATS if seats.get(case, {}).get(r)]
             body = "\n\n".join(f"--- SPECIALIST CONTRIBUTION ---\n{t}" for t in up)
-            txt = chat(WRITER, arm_prompt(arm),
-                       f"{body}\n\nQuestion:\n{get_case(case).prompt}",
-                       temperature=0.6, max_tokens=8192)
+            user = f"{body}\n\nQuestion:\n{get_case(case).prompt}"
+            txt = None
+            for attempt in range(3):          # transient backend errors
+                txt = chat(WRITER, arm_prompt(arm), user,
+                           temperature=0.6, max_tokens=8192)
+                if txt and txt.strip():
+                    break
+                time.sleep(5 * (attempt + 1))
             if not txt or not txt.strip():
-                print(f"  EMPTY {case}/{arm}/r{rep}", flush=True)
+                consecutive_fail += 1
+                print(f"  EMPTY {case}/{arm}/r{rep} "
+                      f"(consecutive {consecutive_fail})", flush=True)
+                if consecutive_fail >= 5:
+                    raise SystemExit(
+                        f"ABORTING — {consecutive_fail} consecutive failures. "
+                        f"The backend is down; {len(done)} runs are on disk and "
+                        f"the stage is resumable. Not churning the matrix.")
                 continue
+            consecutive_fail = 0
             fh.write(json.dumps({"run_id": f"{case}__{arm}__r{rep}", "case": case,
                                  "arm": arm, "repeat": rep, "output": txt},
                                 ensure_ascii=False) + "\n")
