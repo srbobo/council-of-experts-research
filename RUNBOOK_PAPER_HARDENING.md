@@ -6321,3 +6321,98 @@ this is a reason to run the cell, not a finding from it.
 
 NOT registered. The probe says the cell is worth running and says what it
 must fix first.
+
+---
+
+## CELL 42 PRE-REGISTRATION — do domain fine-tunes reason differently? (registered 2026-08-11, before any run)
+
+Sam's hypothesis: purpose-trained models are not epistemically more capable
+than generalists, but have a distinct APPROACH. Cell 36's null does not
+refute it — equal accuracy says nothing about path.
+
+Producers frozen in `docs/CELL42_PRODUCERS.json` before this registration.
+
+### The confound this design exists to defeat
+
+"Specialist vs generalist" moves architecture, identity, training data and
+scale at once (audit #3, P36.2). The only contrast identity cannot explain is
+**replication across base families**: if domain training induces an approach,
+the tuned-minus-its-own-base delta should point the same way on lineages that
+share no ancestry.
+
+| lineage | base | domain fine-tune(s) |
+|---|---|---|
+| qwen2.5 | `qwen2.5:7b-instruct` | Meditron3 |
+| llama3 | `llama3:8b-instruct-q4_K_M` (pulled for this cell) | Med42, OpenBioLLM |
+
+Two independent lineages, plus a **within-lineage replicate** (Med42 and
+OpenBioLLM share the llama3 base), which separates "this fine-tune is quirky"
+from "medical fine-tuning does this".
+
+### Degeneracy screen — applied at SELECTION
+
+The probe discovered BioMistral's degeneracy at measurement, after it had
+already poisoned a lineage. Here the gate runs first: every candidate must
+produce >= 800 chars on every screen item. Measured — llama3 3159, Med42
+3611, OpenBioLLM 1514, all PASS. **BioMistral is excluded by name and
+reason.** Hawkish is excluded: Llama-3.1 lineage whose base is not pulled,
+and disk is at 92%.
+
+### Arms — one factor (producer), everything else identical
+
+Identical prompt to every producer: no role text, no domain framing, no
+format dictation. Same items. **5 producers x 12 items x 6 repeats = 360
+runs**, 72 per producer, comfortably over the n=30 the probe's d=0.82
+implies.
+
+Items: 6 in-domain (healthcare) and 6 off-domain. A real domain signature
+must be DOMAIN-SPECIFIC; a global style difference shows up on both and is
+reported as style, not signature.
+
+### Instrument
+
+Frozen framework inventory, counts normalised per 1k characters so verbosity
+cannot buy signal — a containment check against a fixed list, the same basis
+as Cell 37's numeral check, not regex-as-NLP. Surface features (chars,
+list_frac, ttr) reported beside every content number, because the
+seat-approach pilot showed two GENERALISTS separate at AUC 0.945 on length
+alone. Probe surface AUCs on the clean pair were 0.194/0.372/0.368 — far
+milder, which is why the instrument is usable at all.
+
+### Predictions
+
+- **P42.1 (domain signature replicates across lineages).** The
+  tuned-minus-own-base delta in in-domain framework density is POSITIVE and
+  its CI excludes 0 in BOTH lineages. *Falsified if* either lineage fails, or
+  if the two lineages disagree in sign.
+- **P42.2 (the signature is domain-specific).** The in-domain delta exceeds
+  the off-domain delta, CI on the difference excluding 0. *Falsified if* they
+  are equal — that is a global style difference, reported as style.
+- **P42.3 (within-lineage replication).** Med42 and OpenBioLLM, sharing the
+  llama3 base, agree in sign. *Falsified if* they disagree — which would mean
+  the effect is per-model, not per-domain-training.
+- **P42.4 (surface control, mandatory reporting).** Per-producer chars,
+  list_frac, ttr reported beside every content number, and every content rate
+  is per-kchar. If a producer's content delta tracks its length delta, the
+  finding is verbosity and is reported as such.
+- **P42.5 (degeneracy, mandatory).** Any producer whose run falls under 800
+  chars is counted and reported; a producer degenerate in >50% of runs is
+  dropped and its lineage declared NOT EVALUABLE.
+
+### Direction stated in advance
+
+The probe's single usable lineage pointed the WRONG way for the hypothesis:
+Meditron3 named FEWER healthcare frameworks per kchar than its base (0.391 ->
+0.122, delta -0.269). **P42.1 as written predicts POSITIVE deltas, so the
+probe's direction would falsify it.** That is registered here so the
+prediction cannot be quietly reversed after the fact — a negative replicated
+delta is a real and interesting result (the specialist is LESS
+domain-framed), but it falsifies the hypothesis as stated.
+
+### Verdict logic guard
+
+The probe's first measure pass reported "consistent with a domain signature"
+on a test that checked only whether two deltas shared a sign, never whether
+that sign matched the prediction. The harness now checks direction against
+the registered prediction and drops degenerate arms before deciding. That
+guard is a precondition of this cell.

@@ -1,0 +1,26 @@
+{
+ "schema": "domain-signature-producers/1",
+ "frozen": "2026-08-11",
+ "note": "Producers frozen BEFORE Cell 42 runs. The degeneracy screen was applied at SELECTION, not discovered at measurement — the probe's lesson. Editing this file after a run invalidates the comparison.",
+ "degeneracy_gate": {"min_chars": 800, "screen_items": 2, "rule": "every screen run >= 800 chars"},
+ "lineages": [
+  {"family": "qwen2.5", "base": {"label": "qwen2.5", "tag": "qwen2.5:7b-instruct", "screen_mean_chars": 4191},
+   "tuned": [{"label": "meditron3", "domain": "healthcare",
+              "tag": "huggingface.co/mradermacher/Meditron3-Qwen2.5-7B-GGUF:Q4_K_M", "screen_mean_chars": 3151}]},
+  {"family": "llama3", "base": {"label": "llama3", "tag": "llama3:8b-instruct-q4_K_M", "screen_mean_chars": 3159},
+   "tuned": [{"label": "med42", "domain": "healthcare",
+              "tag": "huggingface.co/mradermacher/Llama3-Med42-8B-GGUF:Q4_K_M", "screen_mean_chars": 3611},
+             {"label": "openbiollm", "domain": "healthcare",
+              "tag": "hf.co/mradermacher/OpenBioLLM-Llama3-8B-GGUF:Q4_K_M", "screen_mean_chars": 1514}]}
+ ],
+ "excluded": [
+  {"label": "biomistral", "tag": "hf.co/MaziyarPanahi/BioMistral-7B-GGUF:Q4_K_M",
+   "reason": "degenerate: 12/12 probe runs under 800 chars, longest 620. Its 0.000 content rates reflect absent text, not absent frameworks (finding #6)."},
+  {"label": "hawkish", "tag": "huggingface.co/bartowski/Llama-3.1-Hawkish-8B-GGUF:Q4_K_M",
+   "reason": "Llama-3.1 lineage; its base is not pulled and disk is at 92%. Finance domain is out of scope for this cell, which tests the healthcare signature only."}
+ ],
+ "attainability": {"cohen_d_observed": 0.82, "source": "meditron3 vs qwen2.5, probe 2026-08-11",
+                   "n_per_producer": 30, "runs_total": 360,
+                   "surface_auc_probe": {"chars": 0.194, "list_frac": 0.372, "ttr": 0.368},
+                   "generalist_baseline_auc_chars": 0.945}
+}
