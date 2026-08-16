@@ -6171,3 +6171,84 @@ shared base — two domains, one base, which is the strongest single addition.
 
 NOT registered and NOT run. This is a specification, and it needs the machine
 free of Cell 41 first.
+
+---
+
+## CELL 41 VERDICT (2026-08-11) — the instruction is its phrase
+
+378 runs, 18 cases, 3 arms. Judge agreement on `modeled` **0.910
+(14088/15485)**, well over the 0.70 bar — the highest agreement recorded in
+this program. Attrition permutation-tested BEFORE any verdict was read:
+unparsed rates 0.036/0.048/0.038 by arm, spread p = 0.327, **not arm-linked**.
+
+| arm | n | has X | has Y | modeled presence | sentences | chars |
+|---|---|---|---|---|---|---|
+| control | 126 | 0.000 | 0.000 | 0.341 | 46.6 | 7758 |
+| form-X | 126 | **0.667** | 0.000 | 0.571 | 43.7 | 7309 |
+| form-Y | 126 | 0.000 | **0.698** | 0.429 | 43.9 | 7485 |
+
+### P41.1 SUPPORTED — compliance is form-tracking
+
+form-X 0.000 -> 0.667, CI [+0.468, +0.857]. form-Y 0.000 -> 0.698, CI
+[+0.524, +0.865]. Each arm produced its own named phrase and nothing else.
+
+**The house phrase has no privilege.** "modeled at" appears in 11 registry
+entries across 9 prompt symbols and has been drilled through every version of
+this system; "taken to be" was chosen the day before the run and appears in
+2M characters of archive exactly zero times. They performed
+indistinguishably (0.667 vs 0.698). Whatever the instruction engages, it is
+not a learned disposition toward the words the program has been feeding it.
+
+### P41.2 FALSIFIED — nothing survives the swap
+
+With each arm's own named phrase subtracted:
+
+- form-X 0.341 -> 0.365, CI **[-0.079, +0.111]**
+- form-Y 0.341 -> 0.317, CI **[-0.103, +0.087]**
+
+Both intervals straddle zero, and they straddle it in OPPOSITE directions —
+form-X nominally up, form-Y nominally down. There is no consistent
+form-independent residue.
+
+The entire measurable effect of the instruction is the phrase it names. Once
+the named words are removed, an instructed writer is indistinguishable from
+an uninstructed one.
+
+### P41.3 — the validity guard is exactly zero
+
+Neither treated arm ever emitted the other's form: 0.000 and 0.000 against a
+control of 0.000, over 252 treated runs. Form attribution is uncontaminated,
+so P41.2's partition is clean rather than noisy. The writer never improvised
+an equivalent of its own.
+
+### P41.4 silence check — the null is not bought with silence
+
+Emission is flat: 43.7-46.6 sentences and 7309-7758 chars across arms. No arm
+went quiet. Note the raw `modeled` presence DOES rise (0.341 -> 0.571 in
+form-X) — that rise is real and is entirely the named phrase.
+
+### What this licenses, and what it does not
+
+**Licensed:** no form-independent effect at or above **+0.22**. That excludes
+the PD-13-rescaled prediction of +0.33, so the compliance-only reading is not
+merely unrefuted, it is the one the data support.
+
+**NOT licensed:** "the instruction has zero behavioural effect." The MDD is
++0.224 at n_eff 58.9; any true effect smaller than that is invisible here.
+This sentence was registered before launch precisely so it could not be
+dropped now.
+
+### Consequence for the program
+
+Finding #8 is no longer a suspicion about the instrument — it is a measured
+property of the intervention. Every instruction-derived "epistemic caution"
+number this program produced is compliance with a phrase order, at the
+resolution this cell can see. PD-13 established that for one dictated
+phrasing by decomposition within one instrument; Cell 41 establishes it
+causally, on two counterbalanced forms, with a validated judge that never saw
+either phrase.
+
+The three-layer entanglement resolution is complete: Layer 1 prevention (the
+registry, which caught finding #12), Layer 2 partition (literal stage
+validated at zero over-attribution; paraphrase stage withdrawn), Layer 3
+identification (this cell).
