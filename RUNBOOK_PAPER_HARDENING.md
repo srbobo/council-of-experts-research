@@ -6416,3 +6416,96 @@ on a test that checked only whether two deltas shared a sign, never whether
 that sign matched the prediction. The harness now checks direction against
 the registered prediction and drops degenerate arms before deciding. That
 guard is a precondition of this cell.
+
+---
+
+## CELL 42 VERDICT (2026-08-11) — the signature is per-model, not per-domain-training
+
+360 runs, 5 producers x 12 items x 6 repeats, 72 per producer, zero failures.
+Identical prompt to every producer; all content rates per 1k characters;
+cluster bootstrap over items.
+
+### P42.5 degeneracy — the selection-time screen worked
+
+| producer | runs < 800 chars |
+|---|---|
+| qwen2.5, meditron3, llama3, med42 | 0/72 |
+| openbiollm | 13/72 (18%) |
+
+No producer crossed the 50% drop threshold. Contrast BioMistral's 12/12 in
+the probe: screening at SELECTION rather than discovering at measurement is
+what kept every lineage alive.
+
+### P42.4 surface control
+
+| producer | kind | chars | list | ttr | hc/k(in) | hc/k(off) |
+|---|---|---|---|---|---|---|
+| qwen2.5 | base | 4313 | 0.442 | 0.427 | 0.284 | 0.049 |
+| meditron3 | tuned | 2957 | 0.381 | 0.436 | 0.243 | 0.013 |
+| llama3 | base | 3161 | 0.165 | 0.429 | 0.185 | 0.007 |
+| med42 | tuned | 2619 | 0.069 | 0.509 | **0.417** | 0.036 |
+| openbiollm | tuned | 1216 | 0.000 | 0.602 | 0.294 | 0.040 |
+
+Every tuned model is SHORTER than its base, so per-kchar normalisation is
+doing real work: Med42's positive result survives despite writing 17% less
+than llama3, and cannot be verbosity.
+
+### P42.1 FALSIFIED — no replication across ancestries
+
+| pair | delta (in-domain) | CI | |
+|---|---|---|---|
+| meditron3 vs qwen2.5 | -0.041 | [-0.099, +0.025] | spans 0 |
+| **med42 vs llama3** | **+0.232** | **[+0.072, +0.412]** | **POSITIVE** |
+| openbiollm vs llama3 | +0.109 | [-0.056, +0.300] | spans 0 |
+
+The registered prediction required a positive delta with CI excluding 0 in
+BOTH lineages. One fine-tune of three delivers one. The qwen2.5 lineage shows
+nothing, so replication across base families — the only contrast identity
+cannot explain — is not demonstrated.
+
+### P42.3 FALSIFIED — and this is the informative one
+
+Med42 (+0.232, CI excludes 0) and OpenBioLLM (+0.109, spans 0) share the
+SAME llama3 base, the same prompt, the same items. They disagree. **Two
+medical fine-tunes of one base model do not produce the same signature**, so
+what Med42 shows is a property of Med42, not of medical fine-tuning.
+
+### P42.2 — Med42's effect IS domain-specific
+
+Med42 in-domain +0.232 against off-domain +0.029, an 8x ratio: it is not
+globally more clinical-sounding, it is more clinical-sounding ON CLINICAL
+ITEMS. OpenBioLLM shows the same shape at lower magnitude (+0.109 vs +0.033).
+Meditron3 is flat on both (-0.041, -0.035) and is reported as global style.
+
+So where the effect exists it has the right SHAPE — it just does not
+generalise across models.
+
+### What this licenses
+
+**Sam's hypothesis is falsified as registered.** Purpose-trained models do
+not reliably reason differently from their own base models. Domain
+fine-tuning is not sufficient to induce a distinct approach.
+
+**But it is not empty.** Med42 shows a real, domain-specific, verbosity-proof
+shift of +0.232 in clinical framework density over the model it was built
+from. The capability is achievable; it just is not a property of
+"purpose-trained" as a category. It is a property of particular training runs.
+
+The probe's alarming signal did NOT survive: Meditron3's -0.269 at n=6 became
+-0.041 spanning zero at n=72. A textbook small-n artifact, and the reason the
+probe was labelled a sizing exercise rather than a result.
+
+### Second verdict-logic bug of the day, recorded
+
+The first measure pass printed "both lineages replicate in the spans 0
+direction ... the effect is real and replicable". `agree` computed
+`len({...for v in lin_dirs.values() if len(v)==1})==1`, which was satisfied
+by ONE lineage carrying a single label — and "spans 0" was treated as a
+direction rather than the absence of one. It asserted replication for a null.
+
+Same failure family as the probe's sign-only test hours earlier: **a verdict
+line that can fire without the evidence it names.** Fixed — a lineage now has
+a direction only if all its tuned models agree on a non-null one. Both bugs
+were in verdict-printing code, not in estimation; every number was correct
+both times. The lesson is that verdict logic needs the same adversarial
+reading as the statistics.
