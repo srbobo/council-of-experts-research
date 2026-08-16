@@ -6252,3 +6252,72 @@ The three-layer entanglement resolution is complete: Layer 1 prevention (the
 registry, which caught finding #12), Layer 2 partition (literal stage
 validated at zero over-attribution; paraphrase stage withdrawn), Layer 3
 identification (this cell).
+
+---
+
+## DOMAIN-SIGNATURE ATTAINABILITY PROBE (2026-08-11) — instrument viable, design needs a third lineage
+
+Checklist item 12 before registering the seat-approach cell. 48 runs, 4
+producers, 6 items, identical prompt to every producer. **A probe, not a
+cell — it licenses no claim about approach.**
+
+### Result 1 — the instrument has resolution, at feasible n
+
+| producer | kind | n | chars | fw_hc/k | fw_lg/k |
+|---|---|---|---|---|---|
+| meditron3 | tuned | 12 | 3151 | 0.061 | 0.048 |
+| qwen2.5 | base | 12 | 4191 | 0.212 | 0.039 |
+| biomistral | tuned | 12 | **424** | 0.000 | 0.000 |
+| mistral | base | 12 | 3311 | 0.151 | 0.084 |
+
+Meditron3 vs its own base: **Cohen d = 0.82, n ~ 24 per producer** for 80%
+power. That is cheap. And the surface confound is far milder than the pilot
+feared — chars AUC 0.194, list 0.372, ttr 0.368, against the 0.945 that
+separated two generalists. **Framework-per-kchar is a usable instrument.**
+
+### Result 2 — BioMistral is degenerate and its lineage drops out
+
+**12 of 12 runs under 800 characters** (longest 620). It writes an opening
+paragraph and stops. Its 0.000 content rates mean absent text, not absent
+frameworks — finding #6 exactly. A degeneracy guard now runs in the measure
+stage and drops such arms automatically.
+
+With one lineage dead, **the crossed test is NOT EVALUABLE.** Replication
+across base families is the only contrast identity cannot explain, so a
+single surviving lineage licenses nothing about domain training.
+
+### Result 3 — a harness bug of mine, caught and fixed
+
+The first measure pass printed "**consistent with a domain signature**". It
+tested only whether the two deltas shared a SIGN — never whether that sign
+matched the hypothesis. Both deltas were NEGATIVE, i.e. the fine-tunes named
+FEWER domain frameworks than their bases, and the harness reported that as
+support. It would also have counted a degenerate arm as a replication.
+
+That is the "instrument says what I wanted" class the audits keep finding.
+Fixed: the crossed test now checks direction against the registered
+prediction (tuned > base) and drops degenerate arms before deciding.
+
+### The early signal, stated as a signal and not a result
+
+On the one usable lineage, the medical fine-tune names **fewer** healthcare
+frameworks per 1k chars than its own base: 0.391 -> 0.122, delta -0.269 on
+in-domain items, with off-domain items near zero for both. Direction
+CONTRADICTS the hypothesis. n=6 per cell, single lineage, no replication —
+this is a reason to run the cell, not a finding from it.
+
+### What the real cell needs
+
+1. **A third lineage to replace BioMistral.** `Llama-3.1-8B-Instruct` (~5GB)
+   would put `Med42` (medical) AND `Hawkish-8B` (finance) on one shared base
+   — two domains, one base, and it repairs the crossed design in a single
+   pull. `OpenBioLLM-Llama3` is a further medical option.
+2. **A degeneracy screen BEFORE the arms are fixed** — any candidate producing
+   <800 chars on a pilot item is excluded at selection, not discovered at
+   measurement.
+3. **n ~ 24-30 per producer**, from the measured d = 0.82.
+4. Framework inventory frozen (already is), surface features reported beside
+   every content number (already are).
+
+NOT registered. The probe says the cell is worth running and says what it
+must fix first.
