@@ -6509,3 +6509,75 @@ a direction only if all its tuned models agree on a non-null one. Both bugs
 were in verdict-printing code, not in estimation; every number was correct
 both times. The lesson is that verdict logic needs the same adversarial
 reading as the statistics.
+
+---
+
+## CELL 43 PRE-REGISTRATION — the preference-lift decomposition (registered 2026-08-11, before any run or judgment)
+
+The missing measurement for the MoA-audit paper: this program has never
+observed a PREFERENCE score. Cell 43 measures whether an LLM preference
+judge shows a MoA-style lift on this pipeline, and decomposes what any lift
+is made of. The judge is the OBJECT of study, not an instrument — it needs
+no ground-truth validation, and it may never double as an outcome
+instrument (finding #8's rule).
+
+### Deviation from the proposal, forced by the checklist
+
+Proposed as archival-only. Item 1 (one factor) kills that: no direct
+gpt-oss answers to these cases exist — every archived gpt-oss run received
+seat contributions. A Cell 42-producer baseline would move writer identity
+and aggregation together. So ONE arm is generated: **A-direct**, gpt-oss:20b
+answering the 18 Cell 41 cases with the writer prompt minus only the
+contributions sentence. 18 x 7 = 126 runs, matching the Cell 41 control arm
+in model, temperature, tokens, cases and repeats.
+
+### Comparisons (pairs on same case, repeat i vs repeat i, 126 pairs each)
+
+| pair | tests |
+|---|---|
+| C1: Cell 41 control (2-layer MoA) vs A-direct | **the lift** — does aggregation win preference? |
+| C2: Cell 41 form-X vs control | compliance-preference: arms differ ONLY in a dictated phrase (Cell 41 proved no behavioural residue), so any preference gap IS phrase/register preference |
+| C3: Cell 41 form-Y vs control | the counterbalanced replicate of C2 |
+
+All outputs in every pair are gpt-oss text, so self-preference bias is
+symmetric by construction and cannot create an arm difference.
+
+### Judging protocol
+
+Pairwise, BOTH orderings, temperature 0; a pair is decisive only if the
+same side wins in both orderings (Cell 7b precedent), else TIE. Judge
+prompt is generic better-answer wording, gate G-E-checked against the
+registry before any call. **Primary judge gpt-oss:20b on all 378 pairs;
+replication judge qwen2.5:7b-instruct on a frozen 40-pair-per-comparison
+subsample** (seeded), reported beside the primary, never pooled.
+
+### Predictions
+
+- **P43.1 (the lift).** C1 preference share for the MoA side differs from
+  0.5, cluster bootstrap over the 18 cases, CI excluding 0.5. Either
+  direction is informative; a null bounds where collaborativeness lives at
+  this scale. *Attainability: at 126 pairs and an expected 60-80% decisive
+  rate, the MDD is a preference share of ~0.64 — the cell can see a
+  MoA-sized effect and cannot see a subtle one; a null licenses only "no
+  preference shift >= ~0.14 from even".*
+- **P43.2 (compliance-preference).** C2 and C3 shares exceed 0.5 with CIs
+  excluding it, SAME direction in both forms. One-form-only is reported as
+  form-specific, not as register preference. A null here is informative
+  against the thesis and will be reported as such.
+- **P43.3 (decomposition — the estimand).** Among decisive pairs: fraction
+  where the winner is the LONGER response (CI vs 0.5); for C1, alignment
+  with per-kchar framework density; for C2/C3, alignment with validated
+  qualification counts (labels exist for all Cell 41 arms). Report the
+  preference rate within near-length-matched pairs (|Δchars| < 15%) beside
+  the raw rate. Prediction: length alignment > 0.5.
+- **P43.4 (mandatory reporting).** Decisive/tie/disagreement rates per
+  judge and per comparison; mean chars per arm; position-consistency. An
+  arm must not win by silence or lose by it unexamined.
+
+### Guards
+
+Preflight (256-token budget), consecutive-failure abort, resumable stages,
+judgments cached and quarantined-not-defaulted on unparseable replies
+(finding #2). Verdict lines may fire only on the registered conditions —
+after two same-day verdict-logic bugs, the measure stage prints the raw
+table above every verdict.
