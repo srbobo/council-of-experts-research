@@ -6581,3 +6581,78 @@ judgments cached and quarantined-not-defaulted on unparseable replies
 (finding #2). Verdict lines may fire only on the registered conditions —
 after two same-day verdict-logic bugs, the measure stage prints the raw
 table above every verdict.
+
+---
+
+## CELL 43 VERDICT (2026-08-12) — the lift is real; the compliance phrases COST preference
+
+498 pairs, both orderings, primary judge gpt-oss:20b; 1 quarantine total
+after the budget fix. Arm mean lengths nearly identical (control 7757 vs
+direct 7649 chars, +1.4%), so the headline comparison is not arm-level
+length. Display note: the raw table's "quarantined 86" rows for the
+replication judge are pairs never assigned to its frozen 40-pair subsample,
+mislabelled by the printer; true qwen quarantines within subsample = 0.
+
+### P43.1 SUPPORTED — a MoA-style preference lift exists at 20B scale
+
+MoA side share of decisive pairs **0.818 [0.718, 0.919], n=44**. It
+survives the length control: among the 27 near-length-matched pairs the MoA
+share is **0.815**. It does not track framework density (winner has more
+fw/k in only 0.409 of decisive pairs). Scope: ONE judge (gpt-oss), which is
+also the writer of every output on both sides — self-preference symmetric
+by construction. The replication judge is NOT EVALUABLE (2 decisive of 40;
+95% ties).
+
+### P43.2 FALSIFIED — REVERSED, and replicated: the judge PENALIZES the phrase arms
+
+Registered prediction: both phrase arms exceed 0.5 (judges reward the
+compliance register). Result:
+
+| comparison | phrase-arm share | CI |
+|---|---|---|
+| C2 form-X vs control | **0.261** | [0.140, 0.388] |
+| C3 form-Y vs control | **0.317** | [0.152, 0.480] |
+
+Both CIs sit entirely BELOW 0.5, same direction, both forms. Cell 41
+established these arms differ from control only in the dictated phrase; so
+this is a causal, counterbalanced measurement that **epistemic-labelling
+phrases cost preference points**. It also survives length matching (matched
+shares 0.267 and 0.346) and the winner has MORE validated qualification in
+only 0.414/0.353 of decisive pairs.
+
+### P43.3 — the decomposition, honestly summarised
+
+Winner-is-longer runs 0.73-0.80 within pairs across all comparisons, so
+length aligns with winning generally — but both headline effects survive
+length matching, so neither is length. The C1 lift is not framework
+density. The C2/C3 penalty is the phrase (the only manipulated variable).
+**What the C1 lift is made of remains unidentified** — the measured surface
+features do not explain it, and the honest statement is that aggregation
+adds something this feature set does not capture.
+
+### P43.4 — the instrument, measured
+
+Raw position bias 85% first-position (A 736 / B 145 final). Order-debiasing
+converts it to ties: decisive rate 0.35 for the primary judge; the second
+local judge is 95% ties — near-total position dependence. **Recorded as
+instrument-validity finding #14**: local pairwise preference judging is
+majority reading-order; order-debiased protocols keep it honest but pay
+~2/3 of the sample for it.
+
+### What this does to the paper thesis
+
+The strong form — "preference lifts are made of compliance surface" — is
+WRONG, by this cell's own registered test, and the correction is a better
+paper:
+
+1. The aggregation lift replicates locally, under a position-noisy judge,
+   and is not length, framework density, or hedge-register.
+2. Dictated qualification phrases actively LOSE preference — so a pipeline
+   optimised against a preference judge will shed exactly the epistemic
+   marking the instruction paradigm tries to install. Preference pressure
+   and epistemic disposition are in measured tension: PD-13/Cell 41 showed
+   instructions buy only the phrase; Cell 43 shows the phrase then costs
+   preference. The two-cell chain is causal at both links.
+3. The instrument the MoA literature rests on is, at this scale, two-thirds
+   reading-order — and the one earlier program result it could have
+   confounded is bounded by finding #14's protocol.

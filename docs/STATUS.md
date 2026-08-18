@@ -33,8 +33,10 @@ and its status.
 | Corroboration does not increase transport | Cell 26: 0.487 vs 0.524 on the validated channel, CI spanning zero | null under a conservative instrument |
 | Repeated attempts are correlated, not independent | ICC 0.190 [0.13,0.24] over 251 cells | structural property of the run design |
 | Rich qualification is a property of instructed specialists | 5 detectable qualifications across 27 uninstructed analyses; de-scaffolded seats ~half of scaffolded | direction robust to recall |
+| Aggregation wins preference at 20B scale (ONE judge) | Cell 43: MoA share 0.818 [0.718,0.919], n=44 decisive; survives length-matching (0.815 on 27 matched pairs); arm lengths within 1.4% | single-judge scope stated; self-preference symmetric (all outputs same writer); NOT explained by length or framework density — composition unidentified |
+| Dictated qualification phrases COST preference | Cell 43: phrase-arm share 0.261 [0.140,0.388] and 0.317 [0.152,0.480], both forms, CIs below 0.5; arms differ only in the phrase (Cell 41) | causal and counterbalanced; preference pressure is in measured tension with epistemic marking — optimising against a preference judge sheds the phrases instructions install |
 | Silence scores well on invention metrics | best invention numbers belong to arms with feature-span 0.000–0.002 | definitional |
-| Thirteen instrument-validity findings | see §4 | these are *about* measurement, so no instrument confound applies |
+| Fourteen instrument-validity findings | see §4 | these are *about* measurement, so no instrument confound applies |
 
 ## 2. PROVISIONAL — form supported, values pending re-measurement
 
@@ -79,6 +81,7 @@ and its status.
 11. **An injected premise that contradicts its host question creates a competing source rather than manipulating the intended one** — Cells 37/40 injected primitives conflicting with the case prompt; on item 0 the writer used the case's numbers in 21/21 runs across both cells and the injected numbers 0 times. The "use novel numbers to reduce memorization" rule and coherence with the host question are in direct conflict, and no registration reconciled them. Repair is not idempotent either: this defect was introduced by the fix for a probe collision
 12. **Entanglement reached the INSTRUMENT layer, not only the scaffold** — `train/judge_instrument.py::PROMPT` (Cell 7b's pairwise judge) enumerates the same seven phrases dictated to writers by the ADD/addendum prompts (registry R101-R107). A judge told to look for "modeled at" was scoring a writer told to say "modeled at". Found mechanically by the dictation registry on its first run (`docs/DICTATION_REGISTRY.json`)
 13. **Registry form essentially never arises without dictation** — 0 of 2907 spans and 0 of 60 de-scaffolded runs (438,797 chars) contain any registry phrase; run-level Wilson upper bound 0.060. The scaffold's phrases are diagnostic OF the scaffold, which is what makes literal-stage partitioning trustworthy, and it corroborates PD-13 from an independent corpus
+14. **Local pairwise preference judging is majority reading-order** — raw first-position preference 0.85; order-debiasing converts it to ties (decisive rate 0.35); a second local judge produced 95% ties. Preference verdicts require both-orderings protocols and pay ~2/3 of the sample for honesty (Cell 43)
 
 ## 5. BLOCKED — open questions awaiting an instrument
 
