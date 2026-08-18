@@ -1,0 +1,1 @@
+{"selected": "qwen3-vl:30b-a3b-instruct", "pilot": {"phi4:14b": {"parse": 1.0, "decisive": 0.15, "sec_per_pair": 116.15057550668716}, "deepseek-r1:7b": {"parse": 0.8, "decisive": 0.45, "sec_per_pair": 161.14298055171966}, "qwen3-vl:30b-a3b-instruct": {"parse": 1.0, "decisive": 0.4, "sec_per_pair": 33.35237619876862}}}

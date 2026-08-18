@@ -6698,3 +6698,38 @@ generic gate-G-E-checked JUDGE_PROMPT, same quarantine rules.
 
 Magnitude is NOT the estimand — decisive rates differ by judge, so shares
 are not comparable across judges; only direction is.
+
+---
+
+## CELL 43-R VERDICT (2026-08-12) — PARTIAL replication: the lift and one phrase penalty cross judge families; the other spans at this power
+
+Judge selected blind to direction per registration: qwen3-vl:30b-a3b
+(parse 1.00, decisive 0.40 in pilot; phi4 failed the decisive gate at 0.15;
+deepseek-r1 failed the parse gate at 0.80 despite decisive 0.45). Full run:
+378 pairs, both orderings, ZERO quarantines. Raw position split A 663 / B 93
+(0.88) — within a point of gpt-oss's 0.85, across vendor, architecture and
+generation.
+
+| comparison | replication share | primary share | verdict |
+|---|---|---|---|
+| C1 MoA vs direct | 0.788 [0.645, 0.917] (n=33) | 0.818 [0.718, 0.917] | **AGREES** |
+| C2 form-X vs control | 0.276 [0.097, 0.520] (n=29) | 0.261 [0.146, 0.391] | NOT REPLICATED AT THIS POWER |
+| C3 form-Y vs control | 0.217 [0.125, 0.333] (n=23) | 0.317 [0.150, 0.481] | **AGREES** |
+
+**P43R.1: PARTIAL, as registered.** C2's point estimate (0.276) sits almost
+exactly on the primary's (0.261); its CI reaches 0.520 only because 29
+pairs were decisive. Nothing contradicts. But the registered standard is CI
+placement, not point agreement, and softening a standard after seeing the
+data is how verdicts rot — so C2 is reported in the registered category:
+not replicated at this power, distinct from contradiction.
+
+### Scope changes
+
+- **The aggregation lift is TWO-FAMILY** (0.818 / 0.788). The paper's
+  single-judge limitation on P43.1 is discharged.
+- **The phrase penalty**: three of four judge-x-form cells exclude 0.5; the
+  fourth agrees in point estimate. Limitation narrowed, stated as such.
+- **Finding #14 hardened into a task-format property**: raw first-position
+  preference 0.85–0.88 across four judges from four families; decisive
+  rates 0.05–0.40. The bias magnitude is invariant; only the escape rate
+  varies.
