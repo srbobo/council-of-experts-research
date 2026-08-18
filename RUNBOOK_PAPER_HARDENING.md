@@ -6656,3 +6656,45 @@ paper:
 3. The instrument the MoA literature rests on is, at this scale, two-thirds
    reading-order — and the one earlier program result it could have
    confounded is bounded by finding #14's protocol.
+
+---
+
+## CELL 43-R PRE-REGISTRATION — disjoint-family judge replication (registered 2026-08-12, before any pilot or run)
+
+Cell 43's findings rest on one judge (gpt-oss:20b), which is also the writer
+of every output judged. Self-preference is symmetric within pairs, but the
+scope is one judge family. This cell replicates the three comparisons under
+a judge from a DIFFERENT model family, on the identical pairs and protocol.
+
+### Candidates and the selection rule, fixed in advance
+
+Candidates (all local, none wrote any output under judgment):
+`phi4:14b` (Microsoft, dense), `deepseek-r1:7b` (DeepSeek, reasoning),
+`qwen3-vl:30b-a3b-instruct` (Qwen3 MoE). The prior replication judge
+(qwen2.5:7b) collapsed to 95% ties and is excluded by that measurement.
+
+**Selection is by attainability ONLY, blind to direction.** A 20-pair
+seeded pilot per candidate (C1 pairs, both orderings) measures parse rate
+and decisive rate. The pilot script reports ONLY those two numbers — it
+does not compute or print which side wins, so judge choice cannot be
+direction-shopping (checklist items 10 and 12). Selection: highest decisive
+rate among candidates with parse rate >= 0.90; gate: decisive rate >= 0.20,
+else the candidate is dropped; if all fail, the replication is NOT
+EVALUABLE and Cell 43 remains single-judge, reported as such.
+
+### Full run and predictions
+
+Selected judge runs all 378 pairs, both orderings, temperature 0, same
+generic gate-G-E-checked JUDGE_PROMPT, same quarantine rules.
+
+- **P43R.1 (direction replication).** For each of C1/C2/C3, the selected
+  judge's decisive-share CI (cluster bootstrap over cases) lies on the SAME
+  side of 0.5 as the primary judge's. Supported only if all three agree.
+  *Falsified if* any comparison lands with a CI entirely on the opposite
+  side. A CI spanning 0.5 where the primary was decisive is reported as
+  NOT REPLICATED AT THIS POWER, distinct from contradiction.
+- **P43R.2 (mandatory).** Position split, decisive/tie/quarantine per
+  comparison, and the same length-decomposition columns as Cell 43.
+
+Magnitude is NOT the estimand — decisive rates differ by judge, so shares
+are not comparable across judges; only direction is.
