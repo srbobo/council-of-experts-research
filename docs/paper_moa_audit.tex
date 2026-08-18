@@ -34,20 +34,23 @@ estimates with phrase $X$'') produces \emph{only} its named phrase: the
 dictated form appears in two thirds of outputs regardless of which
 synonym is named, while the construct rate outside the named phrase is
 statistically unchanged (CIs $\ci{-0.079}{+0.111}$,
-$\ci{-0.103}{+0.087}$). (2)~A preference judge, order-debiased, shows a
+$\ci{-0.103}{+0.087}$). (2)~Order-debiased preference judging shows a
 real aggregation lift --- the aggregated pipeline beats the same writer
 answering directly in $0.818$ \ci{0.718}{0.919} of decisive pairs,
-surviving length matching --- yet \emph{penalizes} the instructed arms:
-the phrase-bearing arms lose to their own control in both
-counterbalanced forms ($0.261$ \ci{0.140}{0.388}; $0.317$
-\ci{0.152}{0.480}). Because the arms differ only in the phrase, the
-penalty is causally attributable to it. Together these results identify
+surviving length matching and replicating under a second judge from a
+disjoint model family ($0.788$ \ci{0.645}{0.917}) --- yet the same
+judges \emph{penalize} the instructed arms: the phrase-bearing arms lose
+to their own control ($0.261$ \ci{0.140}{0.388}; $0.317$
+\ci{0.152}{0.480}; the penalty holds in three of four judge$\times$form
+cells, with the fourth agreeing in point estimate at lower power).
+Because the arms differ only in the phrase, the penalty is causally
+attributable to it. Together these results identify
 a measured tension: instruction tuning of epistemic disposition installs
 surface forms, and preference optimization removes exactly those forms.
 (3)~The preference instrument itself is majority reading-order at this
-scale: raw first-position preference is $0.85$, order-debiasing converts
-two thirds of pairs to ties, and a second local judge produced $95\%$
-ties. We further report mechanism results that bound the MoA narrative
+scale, as a property of the task format: raw first-position preference is
+$0.85$--$0.88$ across four judges from four model families, and
+order-debiasing converts 60--95\% of pairs to ties. We further report mechanism results that bound the MoA narrative
 --- the aggregator selects sources rather than recomputing, ignores
 cross-proposer corroboration, and transports roughly $15\%$ of upstream
 epistemic qualification --- and release the measurement kit, the
@@ -198,11 +201,15 @@ the registry gate, and agreement on the deployed corpus is $0.910$
 scored $0.622$ and was rejected (finding 9).
 
 \textbf{Preference judging is majority reading-order (finding 14).}
-In the preference cell (\S\ref{sec:pref}), the 20B judge's raw
-first-position preference was $0.85$; judging every pair in both orders
-and requiring agreement converted $65\%$ of pairs to ties; a 7B second
-judge produced $95\%$ ties. Order-debiased protocols keep preference
-verdicts honest at the cost of roughly two thirds of the sample.
+Across the preference cells (\S\ref{sec:pref}), four judges from four
+model families --- a 20B MoE, a 30B MoE, a 14B dense model, and a 7B dense
+model --- showed raw first-position preference of $0.85$--$0.88$ wherever
+they parsed at all; judging every pair in both orders and requiring
+agreement converted 60--95\% of pairs to ties, with only the escape rate
+varying by judge (decisive rates $0.05$--$0.40$). The bias magnitude is
+invariant across vendor, architecture, and generation: it is a property
+of the pairwise task format, not of a model. Order-debiased protocols
+keep preference verdicts honest at the cost of most of the sample.
 
 \section{The phrase-swap cell: instructions buy the phrase}
 \label{sec:phrase}
@@ -342,6 +349,19 @@ register); the result is a falsification-by-reversal, and is stronger
 than the prediction: \textbf{dictated epistemic marking costs preference
 points}.
 
+\textbf{Cross-family replication.} A second judge from a disjoint model
+family (a 30B Qwen3 MoE), selected from three candidates \emph{blind to
+direction} --- the pilot measured only parse and decisive rates, and the
+selection script never computed which side won --- re-judged all 378
+pairs. The lift replicates: $0.788$ \ci{0.645}{0.917} ($n{=}33$
+decisive). The form-Y penalty replicates: $0.217$ \ci{0.125}{0.333}
+($n{=}23$). The form-X penalty agrees in point estimate ($0.276$ vs.\
+$0.261$) but its interval spans $0.5$ at $n{=}29$ decisive and is
+reported, per the registration, as not replicated at this power ---
+a category distinct from contradiction; no comparison lands on the
+opposite side. The lift is therefore a two-family result; the phrase
+penalty holds in three of four judge$\times$form cells.
+
 \textbf{The tension, stated.} Chaining \S\ref{sec:phrase} and
 \S\ref{sec:pref}, both links causal: an epistemic instruction installs
 only a surface form; a preference judge penalizes that form. A pipeline
@@ -454,16 +474,19 @@ are usable but must budget for a ${\sim}0.35$ decisive rate.
 
 \section{Limitations}
 
-One preference judge (which is also the writer; symmetric but
-family-specific), one aggregator family, 7--20B scale --- the tension
-should be retested with larger judges and disjoint writer/judge
-families. The case battery is advisory-domain and English-only. The
-phrase-swap cell's null licenses only effects ${\ge}0.22$; the
-preference cell's decisive $n$ (44) gives a minimum detectable share of
-${\sim}0.67$, which the observed $0.818$ clears but subtler lifts would
-not. Several early program values remain PROVISIONAL pending
-re-measurement and are not used here. Claims marked single-judge or
-single-writer should not be generalized past their scope.
+The primary preference judge is also the writer (symmetric within
+pairs, but family-specific); the cross-family replication discharges
+this for the lift and for the form-Y penalty, while the form-X penalty
+rests on one family's interval plus a point-estimate agreement at lower
+power. One aggregator family and 7--20B scale throughout --- the tension
+should be retested with larger judges. The case battery is
+advisory-domain and English-only. The phrase-swap cell's null licenses
+only effects ${\ge}0.22$; the preference cells' decisive counts (44 and
+33) give minimum detectable shares of ${\sim}0.67$--$0.70$, which the
+observed lifts clear but subtler ones would not. Several early program
+values remain PROVISIONAL pending re-measurement and are not used here.
+Claims are stated with their judge-family scope and should not be
+generalized past it.
 
 \section{Reproducibility}
 
