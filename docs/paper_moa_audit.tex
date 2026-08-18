@@ -71,9 +71,12 @@ falsification-first research program that ran forty-three pre-registered
 experiment cells on a MoA-architecture pipeline small enough to audit
 completely: 7--20B open models on consumer hardware, with every
 registration, deviation, and verdict recorded in a public ledger before
-and after each run. The aggregator prompt we study is the MoA
-Aggregate-and-Synthesize prompt \emph{verbatim}; the architecture is a
-two-layer MoA with three proposers and one aggregator.
+and after each run. The architecture is a two-layer MoA with three
+proposers and one aggregator. Earlier program cells ran the MoA
+Aggregate-and-Synthesize prompt \emph{verbatim}; the causal cells of
+\S\ref{sec:phrase}--\S\ref{sec:pref} deliberately use a minimal
+aggregator prompt instead, so that instruction content is the manipulated
+variable rather than a background condition.
 
 Three questions organize the audit:
 
@@ -409,8 +412,11 @@ the \emph{same} base model do not share a domain signature: one shifts
 in-domain framework density $+0.232$ \ci{+0.072}{+0.412} over the base,
 the other $+0.109$ \ci{-0.056}{+0.300}, and a second lineage shows
 $-0.041$ \ci{-0.099}{+0.025} --- per-model, not per-domain-training.
-Same-domain seats can be less diverse than resampling one seat, which is
-the local-scale face of the Self-MoA result \cite{li2025selfmoa}.
+A post-hoc descriptive check (not a registered result) further found two
+same-domain seats no more distant from each other than one seat is from
+itself across samples; registered or not, the published Self-MoA result
+\cite{li2025selfmoa} independently reaches the same conclusion at
+benchmark scale.
 
 \textbf{Accuracy.} On a 60-item self-verifying battery the aggregated
 pipeline and the bare writer are statistically indistinguishable, but
