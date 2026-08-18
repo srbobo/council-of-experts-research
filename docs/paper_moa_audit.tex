@@ -5,6 +5,11 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\definecolor{accent}{RGB}{42,101,175}
+\definecolor{corrupt}{RGB}{201,109,44}
+\definecolor{inkmut}{RGB}{110,118,126}
 
 \title{Instructions Buy the Phrase; the Phrase Costs Preference:\\
 an Epistemic Audit of LLM Aggregation Pipelines at Auditable Scale}
@@ -199,6 +204,45 @@ verdicts honest at the cost of roughly two thirds of the sample.
 \section{The phrase-swap cell: instructions buy the phrase}
 \label{sec:phrase}
 
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.48\textwidth,height=5.2cm,ybar,bar width=13pt,
+  ymin=0,ymax=1.0,ylabel={rate of runs},title={\small named-phrase rate},
+  symbolic x coords={control,form X,form Y},xtick=data,
+  axis line style={inkmut},tick label style={font=\small},
+  ylabel style={font=\small},ymajorgrids,grid style={inkmut!22},
+  error bars/y dir=both,error bars/y explicit]
+\addplot+[fill=accent!85,draw=accent] coordinates {
+  (control,0.000) +- (0,0)
+  (form X,0.667) +- (0.207,0.182)
+  (form Y,0.698) +- (0.174,0.167)};
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=0.48\textwidth,height=5.2cm,ybar,bar width=13pt,
+  ymin=0,ymax=1.0,title={\small construct outside the named phrase},
+  symbolic x coords={control,form X,form Y},xtick=data,
+  axis line style={inkmut},tick label style={font=\small},
+  ymajorgrids,grid style={inkmut!22},
+  error bars/y dir=both,error bars/y explicit]
+\addplot+[fill=accent!35,draw=accent] coordinates {
+  (control,0.341) +- (0.119,0.127)
+  (form X,0.365) +- (0.111,0.111)
+  (form Y,0.317) +- (0.119,0.127)};
+\end{axis}
+\end{tikzpicture}
+\caption{The phrase-swap cell (378 runs, cluster-bootstrap 95\% CIs over 18
+cases). \textbf{Left}: each instructed arm produces its own named phrase in
+about two thirds of runs; control never produces either, and cross-form
+leakage is $0/252$. \textbf{Right}: the validated-judge construct rate
+\emph{outside} the named phrase is statistically indistinguishable across
+all three arms. The instruction's entire measurable effect is the phrase it
+names.}
+\label{fig:swap}
+\end{figure}
+
+
 \textbf{Design.} Three arms, 18 cases, 7 repeats (378 runs). The control
 arm is the minimal writer prompt. The two treated arms append a
 byte-identical clause differing in exactly three words: \emph{``When you
@@ -215,7 +259,7 @@ exactly its own form and no other registry phrase.
 privilege.} Form X appears in $0.667$ of its arm's outputs (bootstrap CI
 vs.\ control \ci{+0.468}{+0.857}); form Y in $0.698$
 (\ci{+0.524}{+0.865}); cross-form leakage is $0/252$ --- no treated run
-ever produced the other arm's form, and no control run produced either.
+ever produced the other arm's form, and no control run produced either (Figure~\ref{fig:swap}, left).
 A phrase drilled through months of system prompts and a
 day-old synonym perform identically: whatever the instruction engages,
 it is not a learned disposition toward the trained-on words.
@@ -224,7 +268,7 @@ it is not a learned disposition toward the trained-on words.
 subtracted, the validated-judge construct rate is statistically
 unchanged: form X $0.341 \to 0.365$ (\ci{-0.079}{+0.111}); form Y
 $0.341 \to 0.317$ (\ci{-0.103}{+0.087}) --- opposite nominal directions,
-both spanning zero. Emission is flat across arms (43.7--46.6 sentences),
+both spanning zero (Figure~\ref{fig:swap}, right). Emission is flat across arms (43.7--46.6 sentences),
 so the null is not bought with silence. The registered minimum
 detectable effect is $+0.224$ at the realized cluster count; the result
 licenses ``no form-independent effect $\ge 0.22$,'' not ``zero.''
@@ -234,6 +278,37 @@ The instruction's entire measurable effect is the phrase it names.
 \section{The preference cell: the lift is real, and the phrase costs
 preference}
 \label{sec:pref}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.86\textwidth,height=4.6cm,xmin=0,xmax=1,
+  ytick={1,2,3},yticklabels={form Y vs.\ control\, (n=41),
+  form X vs.\ control\, (n=46), MoA vs.\ direct\, (n=44)},
+  ymin=0.4,ymax=3.6,xlabel={share of decisive pairs won (95\% CI)},
+  tick label style={font=\small},xlabel style={font=\small},
+  axis line style={inkmut},xmajorgrids,grid style={inkmut!22}]
+\addplot+[only marks,mark=*,mark size=2.6pt,color=accent,
+  error bars/.cd,x dir=both,x explicit,error bar style={line width=1pt}]
+  coordinates {
+  (0.818,3) +- (0.100,0.101)
+  (0.261,2) +- (0.121,0.127)
+  (0.317,1) +- (0.165,0.163)};
+\addplot[dashed,inkmut] coordinates {(0.5,0.4) (0.5,3.6)};
+\node[font=\scriptsize,anchor=south] at (axis cs:0.818,3.12) {0.818};
+\node[font=\scriptsize,anchor=south] at (axis cs:0.261,2.12) {0.261};
+\node[font=\scriptsize,anchor=south] at (axis cs:0.317,1.12) {0.317};
+\end{axis}
+\end{tikzpicture}
+\caption{The preference cell (order-debiased; a pair is decisive only when
+the same side wins both orderings; cluster-bootstrap CIs over cases). The
+aggregated pipeline beats the matched-length direct baseline decisively;
+both phrase-instructed arms \emph{lose} to their own control, in
+counterbalanced forms whose only difference from control is the phrase.
+The dashed line is indifference.}
+\label{fig:pref}
+\end{figure}
+
 
 \textbf{Design.} Three pairwise comparisons on the same 18 cases
 (126 pairs each; both orderings; decisive only when the same side wins
@@ -249,7 +324,7 @@ the phrase, any preference gap is causally the phrase's.
 \textbf{The lift replicates at 20B scale.} The aggregated side wins
 $0.818$ \ci{0.718}{0.919} of 44 decisive pairs. Arm mean lengths differ
 by $1.4\%$ (7{,}757 vs.\ 7{,}649 chars), and the share among
-near-length-matched pairs is $0.815$, so the lift is not length. It also
+near-length-matched pairs is $0.815$, so the lift is not length (Figure~\ref{fig:pref}). It also
 does not track domain-framework density (the winner has more frameworks
 per kilocharacter in only $0.409$ of decisive pairs). Its composition is
 \emph{unidentified} by our feature set --- reported as such.
@@ -277,12 +352,39 @@ scale they are measurably opposed at the surface where instructions act.
 \section{Mechanisms the MoA narrative assumes}
 \label{sec:mech}
 
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.8\textwidth,height=5.4cm,ybar,bar width=11pt,
+  ymin=0,ymax=15,ylabel={runs (of 27)},
+  symbolic x coords={clean,one corrupt,all corrupt,stripped},xtick=data,
+  axis line style={inkmut},tick label style={font=\small},
+  ylabel style={font=\small},ymajorgrids,grid style={inkmut!22},
+  legend style={font=\small,draw=none,at={(0.03,0.97)},anchor=north west},
+  nodes near coords,nodes near coords style={font=\scriptsize,text=black}]
+\addplot+[fill=accent!85,draw=accent] coordinates {
+  (clean,6) (one corrupt,4) (all corrupt,2) (stripped,0)};
+\addplot+[fill=corrupt!85,draw=corrupt] coordinates {
+  (clean,1) (one corrupt,0) (all corrupt,5) (stripped,12)};
+\legend{correct value in answer,planted corrupted value in answer}
+\end{axis}
+\end{tikzpicture}
+\caption{The source-selector gradient (planted arithmetic errors; exact
+match on known values). As clean sources are removed --- one proposer
+corrupted, all corrupted, working stripped --- adoption of the planted
+wrong value rises monotonically $1\to0\to5\to12$ while correct values
+vanish. The aggregator prefers uncorrupted sources when they exist and has
+no independent hold on the content when they do not.}
+\label{fig:grad}
+\end{figure}
+
+
 \textbf{The aggregator selects sources; it does not recompute.} With
 arithmetic claims planted in proposer texts: when one proposer is
 corrupted and a clean one remains, the corrupted value reaches the
 answer $0/27$ times; when every proposer is corrupted, $5/27$; when the
 working is also stripped, $12/27$. The monotone gradient
-$1\to0\to5\to12$ across arms identifies preference for uncorrupted
+$1\to0\to5\to12$ across arms (Figure~\ref{fig:grad}) identifies preference for uncorrupted
 sources with no independent recomputation. MoA's own evidence that the
 aggregator's output overlaps most with the best proposals
 \cite{wang2024moa} is the same phenomenon viewed from the benign side;
