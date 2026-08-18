@@ -112,6 +112,7 @@ and its status.
 
 | artifact | status |
 |---|---|
+| `docs/paper_moa_audit.tex` | **active draft v0.1 (2026-08-12)** — the MoA-audit paper; thesis: instructions buy the phrase, the phrase costs preference. Every number verified against this ledger at composition; single-judge and 20B-scale scopes stated in-text |
 | `docs/paper_framework.tex` | active draft; instruction-gain contribution withdrawn; carries provisional banner |
 | `docs/paper_behavior.tex` | active draft; needs the same provisional banner |
 | `docs/paper.tex` | superseded by the framework paper; retain for history, do not submit |
