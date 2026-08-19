@@ -6807,3 +6807,82 @@ machinery, host-coherent per finding #11). Outcome attainability for that
 design is now computed: the fiat-vs-informed question applies to up to 80%
 of tensions, not the 20% the naive headroom suggested. NOT registered; no
 cell is triggered by this audit.
+
+---
+
+## CELL 44 PRE-REGISTRATION — orchestrator-routed re-consultation, design (c) (registered 2026-08-13, before items or runs)
+
+Decision context: the tension-fate audit found the lead takes a position on
+~80% of self-named tensions with no way to distinguish informed resolution
+from fiat, and Cell 37 says the lead has no independent hold on content.
+Design (c): the ORCHESTRATOR — never the lead's disposition — parses the
+lead's own mandated tension list and mechanically dispatches a follow-up to
+the implicated seat. This cell tests the LEAD-SIDE of the loop with
+controlled clarifications; realistic seat-side answering is design (b)'s
+follow-on, run only as needed.
+
+### Two-stage lead, three arms, one factor
+
+The lead is split into two stages in ALL arms (identical stage-1):
+S1 reads contributions, writes ONLY the tension list; S2 writes the final
+synthesis. Arms differ solely in what is appended between stages:
+
+- **A-control** — nothing.
+- **A-filler** — a dispatched "clarification" from the implicated seat that
+  is responsive in style but contains NO deciding fact (restates round-1
+  substance). Isolates the RITUAL of consultation.
+- **A-informed** — the same-styled clarification CONTAINING the deciding
+  fact F. Isolates the INFORMATION.
+
+Filler and informed clarifications are length-matched within 15% and both
+styled as the same seat. Trigger detection (did S1 name the planted
+tension?) uses per-item frozen keyword containment — a known-value check —
+identical in all arms; analysis conditions on trigger-named runs in all
+arms (stage-1 is identical across arms, so conditioning is pre-treatment).
+
+### Items — construction rules (frozen before authoring)
+
+>= 6 items on existing cases. Each: seat A's contribution is appended with
+position P_A; the implicated seat B's with conflicting position P_B;
+NEITHER contains the deciding fact F. F settles the tension toward a known
+resolution R (vs anti-R). **Host-coherence (finding #11): every appended
+premise and F must be consistent with the case text — drawn from it where
+numbers exist, never contradicting it.** Both resolutions must be natural,
+distinguishable positions. A probe-collision guard refuses to run if any
+resolution's keywords occur in the item's own appended premises.
+
+### Instrument
+
+Primary outcome per run: which position the final synthesis adopts —
+R / anti-R / NEITHER — classified by the two proven judges (gpt-oss,
+qwen3-vl), both required, agreement-filtered, quarantine-not-default;
+agreement bar 0.70. Literal keyword adoption reported as a secondary lower
+bound. Emission reported per arm (silence check).
+
+### Gated pilot BEFORE the full run (checklist item 12)
+
+Control-arm-only, 6 items x 2 repeats: gates (a) planted tension NAMED in
+S1 >= 0.5 of runs; (b) synthesis adopts SOME side (R or anti-R) >= 0.4.
+Either gate failing -> items redesigned before any arm runs; both failing
+twice -> cell NOT RUN, reported.
+
+### Predictions
+
+- **P44.1 (information use — the estimand).** A-informed adopts R above
+  A-control, cluster-bootstrap CI over items excluding 0. *Falsified if*
+  not — meaning the lead cannot use even a directly-responsive
+  clarification it asked for, and loop (c) dies at the lead.
+- **P44.2 (ritual vs information).** A-informed adopts R above A-filler,
+  CI excluding 0. *Falsified if* filler matches informed — consultation
+  works as ritual, not information.
+- **P44.3 (consultation-as-license, mandatory).** Decisive-adoption rate
+  (either side) filler vs control, with CI: does mere consultation
+  increase commitment without added warrant? No bar; reported.
+- **P44.4 (mandatory).** Trigger-naming rate, routable rate, full 3-way
+  outcome table per arm, judge agreement, quarantines.
+
+### Full run
+
+6 items x 3 arms x 6 repeats = 108 runs (216 lead calls + judging).
+Goodhart clamp: dispatch-count and trigger rate are diagnostics, never
+targets; no item or prompt may be tuned to raise them after the pilot.
