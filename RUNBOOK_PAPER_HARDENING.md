@@ -6733,3 +6733,30 @@ not replicated at this power, distinct from contradiction.
   preference 0.85–0.88 across four judges from four families; decisive
   rates 0.05–0.40. The bias magnitude is invariant; only the escape rate
   varies.
+
+---
+
+## TENSION-FATE AUDIT — registered scope (2026-08-13, before any judging)
+
+**An AUDIT, descriptive and post-hoc; licenses no claim.** It measures the
+headroom that would justify a lead-to-seat re-consultation cell: of the
+tensions the lead itself names (391/396 archived runs carry a mandated
+"## Tensions" section; zero runs ever consulted a seat twice), what
+fraction are RESOLVED in the synthesis (a position taken, a number
+adjusted, a recommendation sequenced because of it) versus ACKNOWLEDGED
+(mentioned, unresolved) versus DROPPED (never addressed again)?
+
+Protocol: seeded sample of 50 archived runs, every named tension in each;
+two judges (gpt-oss:20b, qwen3-vl:30b-a3b — the two that parse reliably),
+three-way label per tension against the full synthesis; gate G-E on the
+judge prompt; unparseable replies quarantined, never defaulted. Headline
+numbers come from BOTH-JUDGES-AGREE labels only; disagreement and
+per-judge marginals reported.
+
+**Scaffold caveat, stated in advance (finding #8-adjacent):** the synthesis
+prompt ORDERS acknowledgment ("Acknowledge the tensions... at the points
+where they bite"). High ACKNOWLEDGED rates are therefore partially
+compliance with that order. RESOLVED is the number the scaffold does not
+dictate, and headroom = 1 - RESOLVED is the audit's deliverable. The judge
+task is unvalidated (no labeled tension-fate data exists); agreement is
+reported and the numbers are bounds, not verdicts.
