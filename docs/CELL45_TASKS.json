@@ -1,0 +1,19 @@
+{
+ "schema": "cell45-tasks/1",
+ "frozen": "2026-08-13",
+ "note": "One decision-focused sub-question per Cell 44 item, asked verbatim to seat A (OUT condition) and seat B (IN condition). Authoring guard: no domain word (healthcare/legal/finance/clinical/medical) may appear in the sub-question. seat_A/seat_B and the deciding consideration's home domain come from CELL44_ITEMS.json.",
+ "tasks": [
+  {"item": 0,
+   "subq": "Should the employer begin GLP-1 obesity coverage right away, or start it at a later defined point? Recommend one timing and justify it."},
+  {"item": 1,
+   "subq": "Should the company launch in the UK and Germany at the same time, or stagger the two market entries? Recommend one sequencing and justify it."},
+  {"item": 2,
+   "subq": "Should the sale-leaseback be executed at closing as proposed, or made conditional on completing another step first? Recommend one course and justify it."},
+  {"item": 3,
+   "subq": "Should the company book one combined reserve treating Massachusetts and Illinois alike, or structure the reserve differently between the two states? Recommend one approach and justify it."},
+  {"item": 4,
+   "subq": "Should the sepsis alerts be switched on for all providers at the start of deployment, or only after an additional preparatory step? Recommend one timing and justify it."},
+  {"item": 5,
+   "subq": "Should the company migrate the HR records under the processor agreement already in place, or put additional documentation in place first? Recommend one course and justify it."}
+ ]
+}
