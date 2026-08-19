@@ -6760,3 +6760,50 @@ compliance with that order. RESOLVED is the number the scaffold does not
 dictate, and headroom = 1 - RESOLVED is the audit's deliverable. The judge
 task is unvalidated (no labeled tension-fate data exists); agreement is
 reported and the numbers are bounds, not verdicts.
+
+---
+
+## TENSION-FATE AUDIT — RESULT (2026-08-13; descriptive, as registered)
+
+160 tensions from all 45 cleanly-parseable archived runs; two judges; zero
+quarantines; judge-judge agreement 0.719 (bar 0.70, marginal pass).
+
+| fate (both-judges-agree, n=115) | share | 95% CI |
+|---|---|---|
+| RESOLVED | 0.800 | [0.718, 0.863] |
+| ACKNOWLEDGED | 0.200 | [0.137, 0.282] |
+| DROPPED | 0.000 | [0.000, 0.032] |
+
+**Headroom (not resolved) = 0.200 [0.137, 0.282] on agreed labels.** The
+disagreement is directional: qwen3-vl calls RESOLVED at 0.80, gpt-oss at
+0.62 — so the honest range for headroom is **0.20 (agreement-filtered,
+lower bound) to 0.38 (stricter judge)**. Uniform across list position;
+nothing is ever dropped outright — the mandated tension list keeps every
+tension alive at least as prose.
+
+### What the audit can and cannot say
+
+It CAN say: the lead takes a position on most of the tensions it names.
+The re-consultation loop's opportunity among *visibly unresolved* tensions
+is roughly one in five, at most one in three.
+
+It CANNOT say whether those positions are WARRANTED. "Resolved" here means
+a side was chosen, a number conditioned, a plan sequenced — and Cell 37
+established the lead has no independent computational hold on content, so
+a resolution can be fiat: picking a side without the information the
+tension actually turns on. The audit has no warrant labels (the program's
+standing gap), so the 0.80 RESOLVED rate is an upper bound on genuine
+resolution, not a measurement of it.
+
+### Consequence for the prospective re-consultation cell
+
+The design lesson is sharper than the headroom number. A cell on NATURAL
+tensions would spend 80% of its sample on tensions the lead already
+"resolves," with no ground truth for whether the resolution was right. The
+registrable design is PLANTED tensions with known correct resolutions —
+where the deciding fact exists only in a seat, so fiat-resolution and
+informed resolution are distinguishable by exact match (Cell 37's
+machinery, host-coherent per finding #11). Outcome attainability for that
+design is now computed: the fiat-vs-informed question applies to up to 80%
+of tensions, not the 20% the naive headroom suggested. NOT registered; no
+cell is triggered by this audit.
