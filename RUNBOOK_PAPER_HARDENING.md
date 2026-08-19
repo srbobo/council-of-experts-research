@@ -6886,3 +6886,24 @@ twice -> cell NOT RUN, reported.
 6 items x 3 arms x 6 repeats = 108 runs (216 lead calls + judging).
 Goodhart clamp: dispatch-count and trigger rate are diagnostics, never
 targets; no item or prompt may be tuned to raise them after the pilot.
+
+---
+
+## CELL 44 PILOT GATES (2026-08-13) — PASS; full run launched
+
+Naming gate: 6/12 = 0.50 (>= 0.50) PASS, exactly at the bar — trigger
+conditioning will cost roughly half the sample, as anticipated. Adoption
+gate: the pilot's literal-keyword proxy read 0.33, below the 0.40 bar; the
+registered instrument for adoption is the two-judge classification, which
+reads **8/12 = 0.67** (5 R, 3 ANTI, 0 agreed-NEITHER, 4 disagreements, 0
+quarantines). Gate evaluated on the registered instrument: PASS. The
+proxy's shortfall is recorded rather than hidden; literal probes remain
+the secondary lower bound they were registered as.
+
+Two pilot observations carried forward: judge agreement on the 3-way
+adoption label was 8/12 = 0.67 at pilot n — below the 0.70 bar; the full
+measure computes it at n=108 and the bar applies there. And the control
+arm leans R without the deciding fact (5 R vs 3 ANTI), so P44.1's
+detectable headroom starts from an elevated baseline; the cluster
+bootstrap handles this, and it is noted so a large control baseline is not
+misread as information use.
