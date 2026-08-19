@@ -6964,3 +6964,61 @@ filler 5/15. Emission flat (8.6-10.1k chars).
 Lead-side only, controlled clarifications, n=7 in the decisive cell, one
 writer, six items. Design (b) — seat-initiated deferral with real seat
 answers — is the registered follow-on and is NOT triggered automatically.
+
+---
+
+## CELL 45 PRE-REGISTRATION — design (b) stage one: seat-side deferral discrimination (registered 2026-08-13, before items or runs)
+
+Design (b) is seat-initiated deferral: seats know the roster and may point
+the lead at another seat. Cell 44 established the lead-side (a routed
+clarification is used, 7/7). The remaining uncertainty is the SEAT side,
+and its C41-shaped failure mode is registered up front: told they may
+defer, seats will produce the deferral FORM; the question is whether the
+flag DISCRIMINATES. Rate is not the estimand; the in/out gap is.
+
+### Design — same question, different recipient
+
+Reuses Cell 44's six frozen items, each with a deciding consideration
+whose home domain is known (seat B). Per item, ONE decision-focused
+sub-question, asked verbatim to two recipients:
+
+- **OUT condition**: seat A (not the home domain) receives it. Correct
+  behavior: flag `CONSULT: <domain>` naming seat B's domain.
+- **IN condition**: seat B (the home domain) receives it. Correct
+  behavior: answer without the flag.
+
+Both recipients get the identical case text, identical sub-question, and
+an identical roster-aware system prompt (roster ONLY — never sibling
+outputs, per the v2 lane-bleed lesson recorded in council/prompts.py).
+The deferral affordance is a structured token parsed literally; the ACT
+is the outcome, so no judge is needed for the primary. 6 items x 2
+conditions x 6 repeats = 72 seat calls.
+
+**Authoring guard (frozen):** the sub-question must not contain any
+domain word (healthcare/legal/finance/clinical/medical) — the seat must
+infer where the deciding consideration lives, not read it off the prompt.
+
+### Predictions
+
+- **P45.1 (discrimination — the estimand).** Flag rate OUT > flag rate
+  IN, cluster-bootstrap CI over the 6 items excluding 0. *Falsified if*
+  not. Floor-floor = no deferral behavior; ceiling-ceiling = performative
+  compliance (the C41 outcome); either falsifies. Any pattern is
+  informative, so the design is self-attaining.
+- **P45.2 (routing accuracy).** Among OUT-condition flags, the named
+  domain is the deciding consideration's home domain above the 0.5
+  two-alternative chance rate, CI excluding it. *Falsified if* seats flag
+  but misroute.
+- **P45.3 (mandatory).** Flag rates in both conditions; format-parse
+  rate; answer emission alongside flags (a seat must not go silent when
+  deferring — silence check); per-item breakdown.
+
+### Consequence
+
+End-to-end (b) — real seat follow-up answers replacing Cell 44's
+controlled clarifications — is registered as the follow-on IFF P45.1 and
+P45.2 both hold. If either falsifies, (b) dies at the seat, design (c)
+stands as the working loop, and that is the recommendation.
+
+Goodhart clamp: flag rate is never a target; no prompt may be tuned to
+raise or lower it after this registration.
