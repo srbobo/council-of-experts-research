@@ -1,0 +1,1082 @@
+[
+ {
+  "run_id": "i0__control__r0",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__control__r1",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__control__r0",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__control__r1",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i2__control__r0",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__control__r1",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i3__control__r0",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__control__r1",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i4__control__r0",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__control__r1",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__control__r0",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__control__r1",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i0__control__r2",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__control__r3",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__control__r4",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__control__r5",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__filler__r0",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__filler__r1",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__filler__r2",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__filler__r3",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__filler__r4",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__filler__r5",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__informed__r0",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__informed__r1",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__informed__r2",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i0__informed__r3",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i0__informed__r4",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i0__informed__r5",
+  "item": 0,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i1__control__r2",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__control__r3",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__control__r4",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__control__r5",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i1__filler__r0",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__filler__r1",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i1__filler__r2",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__filler__r3",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i1__filler__r4",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__filler__r5",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__informed__r0",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i1__informed__r1",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i1__informed__r2",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__informed__r3",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i1__informed__r4",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i1__informed__r5",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__control__r2",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__control__r3",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__control__r4",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__control__r5",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__filler__r0",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__filler__r1",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__filler__r2",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__filler__r3",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__filler__r4",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__filler__r5",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i2__informed__r0",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__informed__r1",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i2__informed__r2",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__informed__r3",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i2__informed__r4",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i2__informed__r5",
+  "item": 2,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__control__r2",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__control__r3",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__control__r4",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__control__r5",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r0",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r1",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r2",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r3",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r4",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__filler__r5",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__informed__r0",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i3__informed__r1",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__informed__r2",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__informed__r3",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__informed__r4",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i3__informed__r5",
+  "item": 3,
+  "case": "case_l3_l3b",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i4__control__r2",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__control__r3",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i4__control__r4",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__control__r5",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i4__filler__r0",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__filler__r1",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__filler__r2",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__filler__r3",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i4__filler__r4",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__filler__r5",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i4__informed__r0",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "ANTI"
+ },
+ {
+  "run_id": "i4__informed__r1",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__informed__r2",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__informed__r3",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__informed__r4",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i4__informed__r5",
+  "item": 4,
+  "case": "case_1_clinical_decision_support",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__control__r2",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i5__control__r3",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 3,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__control__r4",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 4,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__control__r5",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "control",
+  "repeat": 5,
+  "tension_named": true,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__filler__r0",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 0,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i5__filler__r1",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i5__filler__r2",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__filler__r3",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__filler__r4",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 4,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i5__filler__r5",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "filler",
+  "repeat": 5,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__informed__r0",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 0,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__informed__r1",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 1,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__informed__r2",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 2,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "DISAGREE"
+ },
+ {
+  "run_id": "i5__informed__r3",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 3,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__informed__r4",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 4,
+  "tension_named": true,
+  "dispatched": true,
+  "adopt": "R"
+ },
+ {
+  "run_id": "i5__informed__r5",
+  "item": 5,
+  "case": "case_l2_l2b",
+  "arm": "informed",
+  "repeat": 5,
+  "tension_named": false,
+  "dispatched": false,
+  "adopt": "R"
+ }
+]

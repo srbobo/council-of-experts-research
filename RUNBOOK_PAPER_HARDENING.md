@@ -6907,3 +6907,60 @@ arm leans R without the deciding fact (5 R vs 3 ANTI), so P44.1's
 detectable headroom starts from an elevated baseline; the cluster
 bootstrap handles this, and it is noted so a large control baseline is not
 misread as information use.
+
+---
+
+## CELL 44 VERDICT (2026-08-13) — the loop works at the lead: P44.1 and P44.2 SUPPORTED
+
+108 runs, arms balanced 36/36/36, zero failures, dispatch 22/22.
+Trigger-named 37/108 = 0.34 (below the pilot's 0.50); by arm 15/15/7 —
+stage-1 is identical across arms, so the informed arm's 7 is sampling
+noise, and it left the estimand riding on unanimity. Unanimity arrived.
+
+| arm (named runs) | R | ANTI | NEITHER | agreed/n |
+|---|---|---|---|---|
+| control | 5 | 3 | 0 | 8/15 |
+| filler | 3 | 8 | 0 | 11/15 |
+| informed | **7** | 0 | 0 | **7/7** |
+
+- **P44.1 SUPPORTED** — informed 7/7 = 1.000 vs control 0.333, diff CI
+  [+0.200, +1.000]. The lead USES a routed clarification it asked for.
+- **P44.2 SUPPORTED** — informed 1.000 vs filler 0.200, diff CI
+  [+0.545, +0.947]. It is the information, not the ritual.
+- **P44.3** — filler decisiveness 0.733 vs control 0.533, CI
+  [-0.167, +0.602]: suggestive of consultation-as-license, not established.
+
+### The agreement-bar incident, recorded before the celebration
+
+The measure stage printed SUPPORTED without enforcing the registered 0.70
+agreement bar — the THIRD verdict-fires-without-its-precondition instance
+(after the probe's sign test and C42's replication NOTE). Checked by hand:
+agreement on the ANALYSIS population (named runs) is 26/37 = 0.703 —
+marginal PASS; overall agreement is 0.583 — FAIL, driven entirely by
+unnamed runs outside the analysis. Both numbers are recorded; the
+population ambiguity in the registration is noted rather than resolved in
+whichever direction flatters.
+
+**The verdicts do not depend on the filter.** The informed arm has ZERO
+judge disagreements (7/7 unanimous both judges). Resolving every
+disagreement in the other arms adversarially AGAINST the predictions
+still leaves control at 0.60 and filler at 0.47 vs informed 1.00. The
+registered literal secondary agrees: informed 7/7 literal-R, control 7/15,
+filler 5/15. Emission flat (8.6-10.1k chars).
+
+### Two observations carried forward
+
+1. **Filler shifted adoption toward ANTI** (8/15 vs control 3/15 agreed):
+   contentless consultation did not merely fail to help — it nominally
+   moved commitments. Unregistered observation; candidate hypothesis for
+   any (b)-stage cell.
+2. **The scarce resource is the trigger, not the effect.** Naming ran 0.34
+   at full n against the pilot's 0.50. Any follow-on must raise
+   tension-salience by REGISTERED redesign, never by tuning against this
+   verdict (Goodhart clamp stands).
+
+### Scope
+
+Lead-side only, controlled clarifications, n=7 in the decisive cell, one
+writer, six items. Design (b) — seat-initiated deferral with real seat
+answers — is the registered follow-on and is NOT triggered automatically.
