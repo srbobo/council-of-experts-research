@@ -1,0 +1,171 @@
+{
+ "schema": "cell44-items/1",
+ "frozen": "2026-08-13",
+ "note": "Authored under the CELL 44 registration's frozen rules, BEFORE any run. pos_A/pos_B are appended to round-1 seat contributions and contain NO deciding fact. fact_F appears ONLY in the informed clarification. filler is length-matched to informed and contains no deciding fact. Host-coherence: nothing here contradicts its case text.",
+ "items": [
+  {
+   "id": 0,
+   "case": "case_4_glp1_employer_coverage",
+   "seat_A": "healthcare",
+   "seat_B": "finance",
+   "pos_A": "On the coverage question itself: the clinical evidence supports covering GLP-1s for obesity now, and I recommend the employer begin coverage without waiting.",
+   "pos_B": "On the coverage question itself: I advise against beginning obesity coverage now; the cost exposure profile of this class argues for holding off.",
+   "fact_F": "To answer the lead's follow-up: the deciding constraint is the employer's stop-loss policy. It excludes any specialty-drug class added mid-plan-year from reimbursement, so a mid-year start leaves the employer bearing the full drug spend unprotected. Coverage that begins at the plan-year renewal is inside the stop-loss protection from day one.",
+   "filler": "To answer the lead's follow-up: the cost question deserves care. Specialty-drug classes like this one carry meaningful spend, utilization is hard to project in the first year, and employers reasonably differ on timing. Both starting now and starting later have been defended; the decision turns on the employer's overall risk posture and budgeting cycle.",
+   "trigger_keys": [
+    "glp-1",
+    "coverage"
+   ],
+   "route_domain": "finance",
+   "R_desc": "Begin GLP-1 obesity coverage at the next plan-year renewal (not mid-year), so it sits inside stop-loss protection",
+   "antiR_desc": "Begin GLP-1 obesity coverage immediately, mid-plan-year",
+   "r_keys": [
+    "renewal",
+    "plan year",
+    "plan-year"
+   ],
+   "anti_keys": [
+    "immediately",
+    "mid-year",
+    "midyear"
+   ]
+  },
+  {
+   "id": 1,
+   "case": "case_2_cross_border_digital_therapeutic",
+   "seat_A": "healthcare",
+   "seat_B": "legal",
+   "pos_A": "On launch sequencing: the clinical evidence package is ready for both markets, and I recommend launching in the UK and Germany at the same time to maximize uptake within the window.",
+   "pos_B": "On launch sequencing: I advise against a same-time dual launch; the two regulatory tracks are not symmetric and treating them as twins is risky.",
+   "fact_F": "To answer the lead's follow-up: the asymmetry is concrete. Germany's DiGA fast-track listing requires a completed German data-security audit of the deployed product before provisional listing, and that audit queue currently runs about nine months from application. The UK pathway has no equivalent gating audit. A UK-first sequence uses the waiting time; a simultaneous launch idles the German track anyway.",
+   "filler": "To answer the lead's follow-up: the two tracks do differ in texture. Each regime has its own documentation style, reviewer expectations, and timing rhythms, and companies routinely find one market moves faster than the other for reasons that are hard to predict in advance. Sequencing preferences differ across launch teams, and reasonable plans exist on both sides.",
+   "trigger_keys": [
+    "launch",
+    "simultan"
+   ],
+   "route_domain": "legal",
+   "R_desc": "Sequence the launches: UK first, Germany second (the German audit gate makes simultaneity pointless)",
+   "antiR_desc": "Launch the UK and Germany simultaneously",
+   "r_keys": [
+    "uk first",
+    "sequence",
+    "sequenced",
+    "then germany"
+   ],
+   "anti_keys": [
+    "simultaneous",
+    "both markets at once",
+    "parallel launch"
+   ]
+  },
+  {
+   "id": 2,
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "seat_A": "finance",
+   "seat_B": "legal",
+   "pos_A": "On the sale-leaseback: it is the cleanest funding source for this transaction and I recommend executing it at closing as the sponsor proposes.",
+   "pos_B": "On the sale-leaseback: I advise against executing it at closing on the proposed schedule; the charitable-asset dimension needs to come first.",
+   "fact_F": "To answer the lead's follow-up: the sequencing constraint is hard. The state attorney general's charitable-trust review must approve any transaction that encumbers charitable assets BEFORE it closes, and a sale-leaseback executed ahead of that approval is voidable at the AG's option. Conditioning the sale-leaseback on prior AG approval preserves it; executing at closing puts the entire funding structure at risk of unwind.",
+   "filler": "To answer the lead's follow-up: charitable conversions of this kind draw scrutiny, and boards are well advised to document their process carefully. Different states take different postures, timelines vary with agency workload, and sponsors and boards often negotiate over sequencing. Both closing schedules have precedent, and much depends on relationships with the reviewing office.",
+   "trigger_keys": [
+    "sale-leaseback",
+    "leaseback"
+   ],
+   "route_domain": "legal",
+   "R_desc": "Condition the sale-leaseback on prior attorney-general (charitable-trust) approval before closing",
+   "antiR_desc": "Execute the sale-leaseback at closing as proposed",
+   "r_keys": [
+    "attorney general",
+    "prior approval",
+    "before closing",
+    "ag approval"
+   ],
+   "anti_keys": [
+    "at closing as proposed",
+    "proceed with the sale-leaseback at closing"
+   ]
+  },
+  {
+   "id": 3,
+   "case": "case_l3_l3b",
+   "seat_A": "finance",
+   "seat_B": "legal",
+   "pos_A": "On reserving: the exposure looks broadly similar in the two states and I recommend one combined reserve treating Massachusetts and Illinois alike.",
+   "pos_B": "On reserving: I advise against treating the two states alike; the tests are structurally different and the reserve should reflect that.",
+   "fact_F": "To answer the lead's follow-up: the structural difference is decisive. Massachusetts applies an ABC test whose prong B makes delivery drivers presumptively employees for a logistics company regardless of what the dispatch software does, while Illinois applies a control-based test where the untracked dispatch data is exactly what the outcome turns on. Massachusetts exposure is therefore near-certain while Illinois is genuinely open, and the reserve should be weighted to Massachusetts now.",
+   "filler": "To answer the lead's follow-up: state classification law is famously untidy. Tests evolve through litigation, enforcement appetite shifts with administrations, and companies running multi-state fleets see a wide range of outcomes even on similar facts. Reasonable practitioners structure reserves quite differently, advisers weight recent cases differently, and the active litigation in both states means any figure the company books will carry real uncertainty either way.",
+   "trigger_keys": [
+    "reserve",
+    "classif"
+   ],
+   "route_domain": "legal",
+   "R_desc": "Weight the reserve to Massachusetts now (presumptive-employee test makes MA exposure near-certain; Illinois is open)",
+   "antiR_desc": "Hold a single blended reserve treating Massachusetts and Illinois as comparable",
+   "r_keys": [
+    "weight",
+    "massachusetts first",
+    "prioritize massachusetts",
+    "ma exposure"
+   ],
+   "anti_keys": [
+    "blended",
+    "comparable",
+    "single reserve"
+   ]
+  },
+  {
+   "id": 4,
+   "case": "case_1_clinical_decision_support",
+   "seat_A": "finance",
+   "seat_B": "healthcare",
+   "pos_A": "On activation timing: the subscription economics favor switching the sepsis alerts on for all providers from the start of deployment, and I recommend doing so systemwide.",
+   "pos_B": "On activation timing: I advise against switching alerts on at launch; the validation posture is not ready for live alerting yet.",
+   "fact_F": "To answer the lead's follow-up: the specific problem is threshold drift. The vendor's sepsis model was validated against a different EHR version than the one this system now runs, and alert thresholds are known to drift across EHR versions' data mappings. A silent-mode prospective validation period on the current EHR — scoring without alerting — detects that drift before providers see alerts; activating at rollout means discovering it in live clinical use.",
+   "filler": "To answer the lead's follow-up: go-live decisions for clinical tools always balance momentum against caution. Clinical teams differ on how much pre-live observation they want, vendors publish validation summaries of varying depth and recency, and health systems have gone both ways on early activation without a clear consensus emerging. Much depends on local governance appetite, the provider training plan, and how the committee weighs workflow disruption against speed.",
+   "trigger_keys": [
+    "activat",
+    "alert"
+   ],
+   "route_domain": "healthcare",
+   "R_desc": "Run a silent-mode prospective validation period on the current EHR before activating alerts",
+   "antiR_desc": "Activate sepsis alerts for all providers at rollout",
+   "r_keys": [
+    "silent-mode",
+    "silent mode",
+    "before activating"
+   ],
+   "anti_keys": [
+    "at rollout",
+    "day one",
+    "go live immediately"
+   ]
+  },
+  {
+   "id": 5,
+   "case": "case_l2_l2b",
+   "seat_A": "finance",
+   "seat_B": "legal",
+   "pos_A": "On the transfer mechanics: the processor agreement already in place covers this move, and I recommend going ahead with the migration on that basis.",
+   "pos_B": "On the transfer mechanics: I advise against migrating on the current paperwork as it stands; the two regimes do not treat it identically.",
+   "fact_F": "To answer the lead's follow-up: the gap is specific. The existing processor agreement carries EU standard contractual clauses, which satisfy the EU side — but the UK regime requires its own approved transfer mechanism, either the UK IDTA or the UK addendum to the EU clauses, executed before the transfer. Migrating on the existing agreement alone leaves the UK-law basis undocumented; executing the UK addendum first closes it.",
+   "filler": "To answer the lead's follow-up: post-divergence data-protection practice is still settling. Advisers vary in how much duplication they recommend between the regimes, enforcement posture has been developing, and many transfers proceed on documentation packages of quite different thickness. The company's risk appetite and the processor's cooperation will shape what is practical here.",
+   "trigger_keys": [
+    "transfer",
+    "processor agreement"
+   ],
+   "route_domain": "legal",
+   "R_desc": "Execute the UK transfer addendum (or IDTA) before migrating; the existing agreement covers only the EU side",
+   "antiR_desc": "Proceed with the migration under the existing processor agreement alone",
+   "r_keys": [
+    "addendum",
+    "idta",
+    "before migrating"
+   ],
+   "anti_keys": [
+    "existing agreement alone",
+    "without further paperwork",
+    "proceed under the existing"
+   ]
+  }
+ ]
+}
