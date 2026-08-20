@@ -7203,3 +7203,57 @@ second cell; and transport is real within every family, while the aggregate
 number is volume-weighted toward jurisdictional content and should be
 described that way. **The name is retired regardless: transport
 coefficient, not shrinkage** (metaphor audit, decided before results).
+
+---
+
+## CELL 46 PRE-REGISTRATION — second-writer replication of the transport law (registered 2026-08-20, before any run)
+
+The ledger row reads **LIVE for one writer**: gpt-oss w = 0.172
+[0.052, 0.297] at n=40, phi4 w = 0.105 [-0.031, 0.273] at n=20 with an
+interval including zero. This cell settles whether the transport law is a
+property of the writing STEP or of one writer.
+
+### Attainability, computed BEFORE registering (checklist item 12)
+
+From phi4's existing runs: sd(s) = 3.59, residual sd = 1.18, SE = 0.0735,
+t = 1.43. At its observed slope, **n_eff ~ 47 is required** for the CI to
+exclude zero. Cell 30's NINE cases have a hard cluster ceiling of
+9 / 0.190 = **47.4** — the requirement sits exactly at the ceiling, so more
+repeats on that corpus could never reliably resolve it. This is the Cell 41
+lesson: **cluster-limited, not run-limited.**
+
+**The corpus is therefore doubled**, not the repeat count. Nine further
+cases already carry de-scaffolded seat text (built for Cell 41 with Cell
+30's exact clean prompts) and yield **21 new supply variants**. At 18 cases
+the ceiling rises to 94.7, and n = 80 gives n_eff = 48.4 — clear of the
+requirement.
+
+### Design — one factor: the writer
+
+Both writers run the new variants; the corpus stays MATCHED across writers
+so the two fits are comparable, and gpt-oss gains precision as a
+by-product. 21 variants x 2 writers x 2 repeats = **84 new runs**, giving
+phi4 n = 62 and gpt-oss n = 82 over 18 cases.
+
+Construction and instrument are Cell 30's exactly — `supply_variants`
+builds regex-construction levels while **measured supply comes from the
+judges** (Cell 30's own registered wording; finding #10 applies to the
+construction, not to the measurement). Validated B=10 two-judge sentence
+protocol; agreement bar 0.70; quarantine-not-default. Cluster bootstrap
+over the 18 cases.
+
+### Predictions
+
+- **P46.1 (the estimand).** phi4's slope CI excludes 0 on the combined
+  corpus. *Falsified if* it spans zero at n_eff >= 47 — which would mean
+  the law is writer-specific, and the ledger row stays LIVE-for-one-writer
+  permanently rather than pending.
+- **P46.2 (agreement, not equality).** The two writers' slope CIs overlap.
+  *Falsified if* disjoint — the law would hold for both writers at
+  materially different rates, which is a finding, not a failure.
+- **P46.3 (mandatory).** Per-writer n, n_eff, supply spread, judge
+  agreement, quarantines, emission (silence check), and the intercept per
+  writer with its bootstrap-seed sensitivity noted.
+
+Goodhart clamp: w is a diagnostic, never a target. No variant may be added
+or dropped after this registration to move a slope.
