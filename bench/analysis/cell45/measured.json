@@ -1,0 +1,722 @@
+[
+ {
+  "run_id": "i0__out__r0",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 0,
+  "flag": null,
+  "chars": 3309
+ },
+ {
+  "run_id": "i0__out__r1",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3605
+ },
+ {
+  "run_id": "i0__out__r2",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 2,
+  "flag": null,
+  "chars": 3032
+ },
+ {
+  "run_id": "i0__out__r3",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 3,
+  "flag": null,
+  "chars": 2924
+ },
+ {
+  "run_id": "i0__out__r4",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 4,
+  "flag": "finance",
+  "chars": 3570
+ },
+ {
+  "run_id": "i0__out__r5",
+  "item": 0,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "finance",
+  "repeat": 5,
+  "flag": null,
+  "chars": 2259
+ },
+ {
+  "run_id": "i0__in__r0",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 0,
+  "flag": null,
+  "chars": 4460
+ },
+ {
+  "run_id": "i0__in__r1",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3364
+ },
+ {
+  "run_id": "i0__in__r2",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 2,
+  "flag": null,
+  "chars": 3085
+ },
+ {
+  "run_id": "i0__in__r3",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 3,
+  "flag": null,
+  "chars": 4436
+ },
+ {
+  "run_id": "i0__in__r4",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 4,
+  "flag": null,
+  "chars": 3882
+ },
+ {
+  "run_id": "i0__in__r5",
+  "item": 0,
+  "cond": "in",
+  "role": "finance",
+  "home": "finance",
+  "repeat": 5,
+  "flag": null,
+  "chars": 3327
+ },
+ {
+  "run_id": "i1__out__r0",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 4466
+ },
+ {
+  "run_id": "i1__out__r1",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3830
+ },
+ {
+  "run_id": "i1__out__r2",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 4145
+ },
+ {
+  "run_id": "i1__out__r3",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 3001
+ },
+ {
+  "run_id": "i1__out__r4",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 3516
+ },
+ {
+  "run_id": "i1__out__r5",
+  "item": 1,
+  "cond": "out",
+  "role": "healthcare",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 4646
+ },
+ {
+  "run_id": "i1__in__r0",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 0,
+  "flag": "finance",
+  "chars": 3738
+ },
+ {
+  "run_id": "i1__in__r1",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3774
+ },
+ {
+  "run_id": "i1__in__r2",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 2,
+  "flag": "finance",
+  "chars": 4478
+ },
+ {
+  "run_id": "i1__in__r3",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 3399
+ },
+ {
+  "run_id": "i1__in__r4",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 4563
+ },
+ {
+  "run_id": "i1__in__r5",
+  "item": 1,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 4361
+ },
+ {
+  "run_id": "i2__out__r0",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 4232
+ },
+ {
+  "run_id": "i2__out__r1",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 4056
+ },
+ {
+  "run_id": "i2__out__r2",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 3121
+ },
+ {
+  "run_id": "i2__out__r3",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 4440
+ },
+ {
+  "run_id": "i2__out__r4",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 4,
+  "flag": "legal",
+  "chars": 4432
+ },
+ {
+  "run_id": "i2__out__r5",
+  "item": 2,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 3995
+ },
+ {
+  "run_id": "i2__in__r0",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 4406
+ },
+ {
+  "run_id": "i2__in__r1",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 5637
+ },
+ {
+  "run_id": "i2__in__r2",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 6290
+ },
+ {
+  "run_id": "i2__in__r3",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 4003
+ },
+ {
+  "run_id": "i2__in__r4",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 4009
+ },
+ {
+  "run_id": "i2__in__r5",
+  "item": 2,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 3332
+ },
+ {
+  "run_id": "i3__out__r0",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 3315
+ },
+ {
+  "run_id": "i3__out__r1",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3858
+ },
+ {
+  "run_id": "i3__out__r2",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 3003
+ },
+ {
+  "run_id": "i3__out__r3",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 3,
+  "flag": "legal",
+  "chars": 3036
+ },
+ {
+  "run_id": "i3__out__r4",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 3760
+ },
+ {
+  "run_id": "i3__out__r5",
+  "item": 3,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 2651
+ },
+ {
+  "run_id": "i3__in__r0",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 3028
+ },
+ {
+  "run_id": "i3__in__r1",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 1,
+  "flag": "finance",
+  "chars": 3961
+ },
+ {
+  "run_id": "i3__in__r2",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 3908
+ },
+ {
+  "run_id": "i3__in__r3",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 3343
+ },
+ {
+  "run_id": "i3__in__r4",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 3950
+ },
+ {
+  "run_id": "i3__in__r5",
+  "item": 3,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 4830
+ },
+ {
+  "run_id": "i4__out__r0",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 0,
+  "flag": "healthcare",
+  "chars": 3026
+ },
+ {
+  "run_id": "i4__out__r1",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3575
+ },
+ {
+  "run_id": "i4__out__r2",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 2,
+  "flag": null,
+  "chars": 2835
+ },
+ {
+  "run_id": "i4__out__r3",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 3,
+  "flag": null,
+  "chars": 4814
+ },
+ {
+  "run_id": "i4__out__r4",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 4,
+  "flag": "legal",
+  "chars": 3959
+ },
+ {
+  "run_id": "i4__out__r5",
+  "item": 4,
+  "cond": "out",
+  "role": "finance",
+  "home": "healthcare",
+  "repeat": 5,
+  "flag": "healthcare",
+  "chars": 4105
+ },
+ {
+  "run_id": "i4__in__r0",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 0,
+  "flag": null,
+  "chars": 3433
+ },
+ {
+  "run_id": "i4__in__r1",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 1,
+  "flag": null,
+  "chars": 3555
+ },
+ {
+  "run_id": "i4__in__r2",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 2,
+  "flag": null,
+  "chars": 4262
+ },
+ {
+  "run_id": "i4__in__r3",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 3,
+  "flag": null,
+  "chars": 4151
+ },
+ {
+  "run_id": "i4__in__r4",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 4,
+  "flag": null,
+  "chars": 3954
+ },
+ {
+  "run_id": "i4__in__r5",
+  "item": 4,
+  "cond": "in",
+  "role": "healthcare",
+  "home": "healthcare",
+  "repeat": 5,
+  "flag": null,
+  "chars": 3243
+ },
+ {
+  "run_id": "i5__out__r0",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 0,
+  "flag": "legal",
+  "chars": 4831
+ },
+ {
+  "run_id": "i5__out__r1",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 1,
+  "flag": "legal",
+  "chars": 5724
+ },
+ {
+  "run_id": "i5__out__r2",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 2,
+  "flag": "legal",
+  "chars": 3782
+ },
+ {
+  "run_id": "i5__out__r3",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 3,
+  "flag": "legal",
+  "chars": 5189
+ },
+ {
+  "run_id": "i5__out__r4",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 4,
+  "flag": "legal",
+  "chars": 4075
+ },
+ {
+  "run_id": "i5__out__r5",
+  "item": 5,
+  "cond": "out",
+  "role": "finance",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 5069
+ },
+ {
+  "run_id": "i5__in__r0",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 0,
+  "flag": null,
+  "chars": 4801
+ },
+ {
+  "run_id": "i5__in__r1",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 1,
+  "flag": null,
+  "chars": 6583
+ },
+ {
+  "run_id": "i5__in__r2",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 2,
+  "flag": null,
+  "chars": 4668
+ },
+ {
+  "run_id": "i5__in__r3",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 3,
+  "flag": null,
+  "chars": 7884
+ },
+ {
+  "run_id": "i5__in__r4",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 4,
+  "flag": null,
+  "chars": 4937
+ },
+ {
+  "run_id": "i5__in__r5",
+  "item": 5,
+  "cond": "in",
+  "role": "legal",
+  "home": "legal",
+  "repeat": 5,
+  "flag": null,
+  "chars": 4598
+ }
+]

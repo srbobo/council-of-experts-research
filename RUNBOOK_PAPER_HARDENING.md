@@ -7022,3 +7022,63 @@ stands as the working loop, and that is the recommendation.
 
 Goodhart clamp: flag rate is never a target; no prompt may be tuned to
 raise or lower it after this registration.
+
+---
+
+## CELL 45 VERDICT (2026-08-20) — P45.1 FALSIFIED, P45.2 SUPPORTED: seats route well but rarely recognize the need. Design (b) does NOT proceed.
+
+72 seat calls, 6 items x 2 conditions x 6 repeats, zero failures.
+
+| condition | flagged | mean chars |
+|---|---|---|
+| OUT (deciding consideration outside the seat's domain) | 11/36 = 0.306 | 3810 |
+| IN (inside its domain) | 3/36 = 0.083 | 4267 |
+
+**P45.1 FALSIFIED.** Cluster-bootstrap gap CI over the 6 items
+[-0.056, +0.528] spans zero. The direction is right and the ratio is ~3.7x,
+but the registered standard is interval placement, and item heterogeneity
+is severe:
+
+| item | OUT | IN | gap |
+|---|---|---|---|
+| 0 | 0.17 | 0.00 | +0.17 |
+| 1 | 0.00 | **0.33** | **-0.33** |
+| 2 | 0.17 | 0.00 | +0.17 |
+| 3 | 0.17 | 0.17 | 0.00 |
+| 4 | 0.50 | 0.00 | +0.50 |
+| 5 | 0.83 | 0.00 | +0.83 |
+
+Only items 4 and 5 carry the effect. Item 1 runs BACKWARD: the legal seat,
+which owns the deciding consideration, deferred to finance twice — and all
+three IN-condition flags across the cell are the legal seat mis-deferring
+to finance, i.e. failing to recognize its own domain rather than randomly
+flagging.
+
+Reported as context, NOT as a competing verdict: an unclustered run-level
+interval is [+0.056, +0.389]. It is anti-conservative given ICC 0.190 and
+does not overturn the registered clustered test. Cell 43-R's precedent
+governs — softening a standard after seeing the data is how verdicts rot.
+
+**P45.2 SUPPORTED.** Among OUT flags the named domain is the home domain
+10/11 = 0.909 [0.623, 0.984], excluding the 0.5 two-alternative chance
+rate. **When a seat recognizes it is out of its depth, it routes
+correctly.** Emission is flat (3.8-4.3k chars); no seat went silent to
+defer.
+
+### Registered consequence, executed
+
+P45.1 falsified -> **design (b) does not proceed to end-to-end.** Design
+(c), validated at the lead by Cell 44, stands as the working
+re-consultation architecture, and that is the recommendation.
+
+### The cross-cell parallel — the program's sharpest structural finding
+
+Cell 44: the lead USES a routed clarification 7/7, but names the planted
+tension only 0.34 of the time. Cell 45: a seat ROUTES correctly 0.909, but
+recognizes the need only 0.306 of the time. **In both halves of the loop
+the mechanism works and the trigger is scarce.** Re-consultation in this
+architecture is recognition-limited, not capability-limited — which is why
+(c) wins: it takes the trigger from a mandated artifact (the tension list
+the lead already writes in 391/396 runs) rather than from a model's
+self-assessment of its own competence, the one thing this program has
+never found a model able to do.
