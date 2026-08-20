@@ -7118,3 +7118,88 @@ estimates a warranted level and shrinks toward a prior — which Cell 37
 falsified (the lead selects sources; it does not compute). The equation is
 untouched; the NAME is retired. `w` is a **transport coefficient**
 hereafter. Precedent: "bottleneck" produced a refuted Markov law.
+
+## TRANSPORT-COEFFICIENT BATTERY — RESULT (2026-08-20; descriptive)
+
+Baseline reproduced: w = 0.150 [0.057, 0.247], c = 0.441 [0.007, 0.931],
+n=60. Silence check: mean y = 1.250, y=0 in 22/60 runs.
+
+**Bootstrap-seed sensitivity on c, recorded because it cuts against us:**
+the ledger records c's CI as [-0.019, 0.936]; this run's draw gives
+[0.007, 0.931]. c sits ON the boundary of excluding zero and its sign is
+NOT robust across bootstrap draws. c must continue to be reported as
+consistent-with-zero.
+
+### T1 FUNCTIONAL FORM — PASSES; the headline survives the test that could have demoted it
+
+Quadratic term **-0.0143, CI [-0.0446, +0.0204]**, spanning zero across 11
+supply levels. No curvature detected: the linear form is adequate over the
+observed range, and w is a slope rather than a local tangent.
+
+### T2 ATTENUATION — w = 0.150 is a LOWER bound; the band is 0.150-0.217
+
+Reconstructing each judge's INDEPENDENT supply count on the 20 upstream
+units gives inter-judge **r = 0.528**, so the 2-rater composite reliability
+(Spearman-Brown) is **0.691** and the disattenuated slope is
+**0.150 / 0.691 = 0.217**.
+
+Two things follow. The program has been UNDER-reporting transport, and the
+honest statement is a band whose lower end is what we published. And
+r = 0.528 is itself a finding: the supply measure is noisy even under the
+validated protocol, which bounds how sharp any transport estimate on this
+corpus can be. Caveat: the correction assumes `s` is the 2-rater composite;
+if `s` is agreement-filtered the reliability differs and 0.217 is
+approximate.
+
+### T3 CONVERGENT VALIDITY OF c — two cells, one parameter, agreement
+
+Cell 38's independent zero-supply invention rate **0.333 [0.138, 0.609]**
+falls INSIDE Cell 30's intercept interval, and the intervals overlap. Two
+different cells with different constructions estimate the same quantity
+compatibly. Convergent, not confirmatory — c's own CI spans zero, so this
+corroborates the magnitude without establishing the parameter.
+
+### T4 PER-FAMILY — BOTH versions reported, because they answer different questions
+
+**Registered version** (per-family emission vs TOTAL supply; decomposes the
+aggregate, sums to it):
+
+| family | slope | CI |
+|---|---|---|
+| modeled | 0.017 | [-0.006, +0.043] |
+| **jurisd** | **0.106** | **[+0.038, +0.175]** |
+| hedging | 0.028 | [-0.010, +0.069] |
+
+Sum 0.151 ~ the aggregate 0.150. **Jurisd carries ~70% of the aggregate
+slope**; the other two span zero. As registered, this is the
+aggregate-artifact signal.
+
+**Additional, UNREGISTERED diagonal** (each family's OWN supply -> its own
+emission; answers "does the law hold within a family", which the registered
+wording did not ask):
+
+| family | w_f | CI | mean supply |
+|---|---|---|---|
+| modeled | 0.121 | [+0.008, +0.209] | 0.95 |
+| jurisd | 0.150 | [+0.067, +0.243] | 2.90 |
+| hedging | **0.234** | [+0.103, +0.367] | 1.60 |
+
+**All three exclude zero.** The law is NOT a jurisd-only phenomenon.
+
+Reconciliation, and the reason both must be printed: jurisd dominates the
+AGGREGATE because it is the most-supplied family (2.90 vs 0.95 and 1.60),
+not because it transports best — **hedging has the highest per-unit
+transport at 0.234**. The registered off-diagonal test answers "what
+composes the published number" (jurisd, by volume); the diagonal answers
+"does transport happen in every family" (yes, all three). The diagonal is
+labelled unregistered and does not replace the registered result.
+
+### Net effect on the claim
+
+Strengthened on three of four axes and qualified on the fourth. The
+functional form holds; the published w is a lower bound with a
+disattenuated band; the intercept gains independent corroboration from a
+second cell; and transport is real within every family, while the aggregate
+number is volume-weighted toward jurisdictional content and should be
+described that way. **The name is retired regardless: transport
+coefficient, not shrinkage** (metaphor audit, decided before results).
