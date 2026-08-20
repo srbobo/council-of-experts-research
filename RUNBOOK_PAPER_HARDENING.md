@@ -7082,3 +7082,39 @@ architecture is recognition-limited, not capability-limited — which is why
 the lead already writes in 391/396 runs) rather than from a model's
 self-assessment of its own competence, the one thing this program has
 never found a model able to do.
+
+---
+
+## TRANSPORT-COEFFICIENT ARCHIVAL BATTERY — registered scope (2026-08-20, before any computation)
+
+**Descriptive and post-hoc on Cell 30's existing 60 runs. Licenses no new
+claim.** It can only bound, correct, qualify, or corroborate the existing
+w = 0.150 [0.058, 0.252]. Four tests, all on data already on disk:
+
+- **T1 functional form.** Quadratic fit with bootstrap CI on the quadratic
+  term. *If the term's CI excludes 0, the linear law is inadequate and w
+  is a local slope, not a law* — this test can DEMOTE the headline, and is
+  registered first for that reason.
+- **T2 attenuation.** `s` is judge-MEASURED, not assigned, so classical
+  errors-in-variables attenuates the slope. Reliability estimated by
+  reconstructing each judge's independent supply count per run and
+  correlating them; disattenuated w reported as a BAND. Expected direction:
+  upward — i.e. the program has been under-reporting transport. If the
+  reconstruction is infeasible, the agreement rate is used as a labelled
+  approximation, never silently.
+- **T3 convergent validity of c.** Cell 30's intercept c = 0.441
+  [-0.019, 0.936] against Cell 38's independent zero-supply invention rate
+  0.333 [0.138, 0.609]. Two cells, different constructions, same parameter.
+  Reported as agreement or disagreement; neither is a new claim.
+- **T4 per-family w.** Slope per family (modeled / jurisd / hedging). *If
+  one family carries the aggregate, the law is an aggregate artifact.*
+
+Silence check: emission reported beside every slope. Goodhart clamp: w is a
+diagnostic, never a target.
+
+**Metaphor-audit consequence (checklist item 7), decided independently of
+the results:** "shrinkage" imports an estimator story — that the lead
+estimates a warranted level and shrinks toward a prior — which Cell 37
+falsified (the lead selects sources; it does not compute). The equation is
+untouched; the NAME is retired. `w` is a **transport coefficient**
+hereafter. Precedent: "bottleneck" produced a refuted Markov law.
