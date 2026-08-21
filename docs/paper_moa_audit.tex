@@ -52,9 +52,11 @@ scale, as a property of the task format: raw first-position preference is
 $0.85$--$0.88$ across four judges from four model families, and
 order-debiasing converts 60--95\% of pairs to ties. We further report mechanism results that bound the MoA narrative
 --- the aggregator selects sources rather than recomputing, ignores
-cross-proposer corroboration, and transports roughly $15\%$ of upstream
-epistemic qualification --- and release the measurement kit, the
-dictation registry, and all pre-registrations.
+cross-proposer corroboration, and transports only a small fraction of the
+epistemic qualification it is given, with within-corpus slopes of
+$0.11$--$0.33$ replicated across two writers and two corpora --- and
+release the measurement kit, the dictation registry, and all
+pre-registrations.
 \end{abstract}
 
 \section{Introduction}
@@ -421,11 +423,73 @@ single-proposer claims ($0.487$ vs.\ $0.524$; difference CI
 \ci{-0.153}{+0.080}, excluding gains above $+0.08$) --- the one
 reliability signal the architecture uniquely provides is unused.
 
-\textbf{Transport is weak; invention is real.} On de-scaffolded arms
-under the validated instrument, the writer transports upstream epistemic
-qualification with slope $w = 0.150$ \ci{0.058}{0.252} (one writer;
-second writer's CI includes zero at $n{=}20$), and invents qualification
-at a $0.333$ \ci{0.138}{0.609} rate on inputs confirmed to contain none.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.49\textwidth,height=5.6cm,
+  xmin=-1,xmax=12,ymin=-0.8,ymax=7,
+  xlabel={upstream qualification supplied $s$},ylabel={emitted $y$},
+  title={\small Cell 30 corpus (9 cases)},
+  axis line style={inkmut},tick label style={font=\small},
+  xlabel style={font=\small},ylabel style={font=\small},
+  ymajorgrids,xmajorgrids,grid style={inkmut!20},legend style={font=\scriptsize,draw=none,at={(0.03,0.97)},anchor=north west,fill=none},]
+\addplot[only marks,mark=*,mark size=1.5pt,color=accent,opacity=0.55]
+  coordinates {(1.0,0.0) (1.0,0.0) (1.0,3.0) (1.0,0.0) (8.0,1.0) (8.0,3.0) (10.0,1.0) (10.0,0.0) (10.0,3.0) (10.0,2.0) (11.0,3.0) (11.0,0.0) (6.0,3.0) (6.0,1.0) (7.0,3.0) (7.0,1.0) (5.0,2.0) (5.0,2.0) (6.0,2.0) (6.0,0.0) (4.0,1.0) (4.0,3.0) (2.0,1.0) (2.0,2.0) (6.0,0.0) (6.0,4.0) (7.0,1.0) (7.0,1.0) (2.0,1.0) (2.0,1.0) (9.0,1.0) (9.0,3.0) (10.0,6.0) (10.0,2.0) (0.0,0.0) (0.0,0.0) (2.0,0.0) (2.0,0.0) (1.0,0.0) (1.0,0.0)};
+\addplot[only marks,mark=triangle*,mark size=2pt,color=corrupt,opacity=0.55]
+  coordinates {(1.0,1.0) (1.0,2.0) (8.0,0.0) (10.0,1.0) (10.0,2.0) (11.0,1.0) (6.0,0.0) (7.0,1.0) (5.0,2.0) (6.0,1.0) (4.0,1.0) (2.0,0.0) (6.0,0.0) (7.0,1.0) (2.0,0.0) (9.0,5.0) (10.0,0.0) (0.0,0.0) (2.0,0.0) (1.0,0.0)};
+\addplot[accent,line width=1.4pt] coordinates {(0.0,0.50) (11.0,2.39)};
+\addplot[corrupt,line width=1.4pt,dashed] coordinates {(0.0,0.33) (11.0,1.49)};
+\legend{gpt-oss:20b,phi4:14b}
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=0.49\textwidth,height=5.6cm,
+  xmin=-1,xmax=56,ymin=-0.8,ymax=24,
+  xlabel={upstream qualification supplied $s$},
+  title={\small extension corpus (9 new cases)},
+  axis line style={inkmut},tick label style={font=\small},
+  xlabel style={font=\small},ylabel style={font=\small},
+  ymajorgrids,xmajorgrids,grid style={inkmut!20},]
+\addplot[only marks,mark=*,mark size=1.5pt,color=accent,opacity=0.55]
+  coordinates {(5,1) (5,2) (12,4) (12,4) (12,1) (12,1) (18,9) (18,8) (18,16) (18,3) (19,7) (19,4) (23,3) (23,7) (44,22) (44,20) (53,20) (53,23) (16,8) (16,9) (16,6) (16,1) (14,4) (14,7) (24,0) (24,5) (19,3) (19,5) (17,2) (17,3) (25,11) (25,7) (37,17) (37,0) (50,11) (50,12) (30,11) (30,8) (35,11) (35,13) (45,5) (45,13)};
+\addplot[only marks,mark=triangle*,mark size=2pt,color=corrupt,opacity=0.55]
+  coordinates {(5,0) (5,0) (12,3) (12,0) (12,1) (12,1) (18,11) (18,8) (18,9) (18,4) (19,3) (19,6) (23,4) (23,3) (44,11) (44,9) (53,15) (53,15) (16,0) (16,2) (16,1) (16,4) (14,0) (14,2) (24,1) (24,3) (19,2) (19,3) (17,8) (17,2) (25,5) (25,4) (37,4) (37,4) (50,2) (50,1) (30,9) (30,9) (35,4) (35,10) (45,5) (45,8)};
+\addplot[accent,line width=1.4pt] coordinates {(5,1.16) (53,16.80)};
+\addplot[corrupt,line width=1.4pt,dashed] coordinates {(5,1.20) (53,9.38)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{The transport coefficient $y = ws + c$, 144 runs over 18 cases and
+two writers. Each point is one run: upstream epistemic qualification
+supplied by the seats against qualification emitted by the writer, both
+counted by the validated two-judge sentence protocol. Lines are
+within-panel least-squares fits. \textbf{The panels are separated because
+the two corpora occupy different supply regimes} (mean $s$ 5.4 against
+25.3); pooling them produces a slope that is essentially the line between
+the two clusters, so no pooled fit is drawn. Within-panel slopes:
+\mbox{gpt-oss} $0.172$ \ci{+0.052}{+0.297} and $0.326$ \ci{+0.207}{+0.434};
+phi4 $0.105$ \ci{-0.031}{+0.273} and $0.170$ \ci{+0.067}{+0.265}. Three of
+the four exclude zero, and phi4's right-hand fit is an independent
+replication on nine cases the original corpus never contained. The writer
+emits a small fraction of what it is given, and the fraction is a property
+of the writing step rather than of one model.}
+\label{fig:transport}
+\end{figure}
+
+\textbf{Transport is weak; invention is real.} On de-scaffolded arms under the validated
+instrument the writer transports only a small fraction of the epistemic
+qualification it is given, and the relation is linear over the observed
+range (Figure~\ref{fig:transport}). Within-corpus slopes run $0.105$--$0.326$
+across two writers and two corpora, three of four excluding zero, with
+phi4's extension-corpus fit $0.170$ \ci{+0.067}{+0.266} replicating on nine
+cases the original corpus never contained. The observed slope is an
+attenuated \emph{lower} bound: supply is judge-measured with inter-judge
+$r = 0.528$, so correcting for that attenuation on the original corpus
+moves $0.150$ to $0.217$. Pooling the two corpora is declined --- their
+supply regimes differ by a factor of five and the pooled slope reduces to
+the line between the two clusters. The writer also invents qualification at
+a $0.333$ \ci{0.138}{0.609} rate on inputs confirmed to contain none, an
+independent estimate that falls inside the intercept's interval.
 
 \textbf{Mixing is not automatically diverse.} Two medical fine-tunes of
 the \emph{same} base model do not share a domain signature: one shifts

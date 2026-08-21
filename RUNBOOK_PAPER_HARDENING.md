@@ -7313,6 +7313,16 @@ zero on their own, and critically **phi4 on the new corpus alone gives
 nothing to pooling. phi4-old remains the one cell spanning zero, exactly
 as Cell 30 recorded it.
 
+### Figure record
+
+The paper's Figure 4 plots all **144 runs** (Cell 30's 60 + Cell 46's 84)
+over 18 cases and two writers, in TWO panels because the corpora occupy
+different supply regimes; no pooled fit is drawn, and the caption quotes
+the within-corpus CIs recorded above verbatim. A number audit caught the
+figure's first draft quoting bootstrap bounds computed at draws=3000
+against this record's draws=5000 — third-decimal drift, corrected to the
+ledger's values, since the ledger is authoritative.
+
 ### Net effect on the ledger
 
 The transport law is now demonstrated for **two writers**, and for phi4 it
