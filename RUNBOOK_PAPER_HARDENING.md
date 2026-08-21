@@ -7342,3 +7342,74 @@ NUMBER, not the count**: the numbering has gaps (no 2, 4, 9, 12, 32, 33,
 cells", which is verifiable from the runbook by counting blocks. Recorded
 because a count in a paper's opening paragraph is exactly the sort of
 number that gets quoted back.
+
+---
+
+## CELL 47 (L2) PRE-REGISTRATION — the redundancy-planner lift (registered 2026-08-21, before items or runs)
+
+The harness architecture's §3 claims error immunity is a DESIGN variable:
+the orchestrator assigns load-bearing quantities to overlapping seats.
+Cells 35/37 observed the protection when overlap happened to exist
+(0/27 propagation with a clean co-source vs 5/27 and 12/27 without); no
+cell has ever isolated the ASSIGNMENT as a one-factor intervention. L2
+does.
+
+### Arms — one factor: the planner's overlap assignment
+
+Both arms: identical case, identical de-scaffolded seat corpus (Cell 41's
+18-case seats), identical minimal writer prompt, identical question.
+Seat A's contribution carries a load-bearing auxiliary quantity at a
+CORRUPTED value in BOTH arms.
+
+- **A-bare** — no other seat covers the quantity. The corrupted statement
+  is the only source.
+- **A-planned** — the orchestrator has assigned the same quantity to seat
+  B, whose contribution carries the CLEAN value.
+
+"Correct" means the designated clean-source value; as in Cell 40, the two
+values are merely distinguishable and ground truth is which SOURCE, since
+the estimand is protection, not real-world accuracy.
+
+### Construction rules (frozen; the Cells 37/40 lessons applied)
+
+1. **Host-coherence (finding #11):** every quantity is ADDED — absent from
+   the case text and consistent with it — never contradicting it. The case
+   must not be a third source for the quantity in either arm.
+2. **Outcome attainability engineered up front (Cell 40's lesson):** the
+   question carries an identical-in-both-arms ask-line requesting the
+   specific figure, so the outcome variable can fire. The ask-line names
+   the quantity, never a value, and cannot favor either arm.
+3. **Probe-collision guard:** neither value's probe strings may occur in
+   the case prompt or in either seat's base contribution text; guard
+   refuses to run otherwise.
+4. 8 items across 8 DISTINCT cases (cluster count, per Cells 41/46's
+   ceiling lessons); seat_A/seat_B roles varied across items.
+
+### Instrument
+
+Exact match on the two known values (three-way: correct / corrupted /
+neither) — a known-value check, no judge in the primary. Emission reported.
+
+### Gated pilot (item 12)
+
+Bare-arm only, 8 items x 2 repeats: decisive rate (either value stated)
+>= 0.5, else items are redesigned before any arm runs. Attainability
+arithmetic from Cell 37's observed rates: at corrupted-adoption 0.5 vs
+0.05 the raw requirement is ~12/arm; with 8 items x 5 repeats the design
+effect is 1.76, so 40/arm is comfortable. **8 items x 2 arms x 5 repeats
+= 80 runs.**
+
+### Predictions
+
+- **L2.1 (the lift).** Corrupted-value adoption is LOWER in A-planned than
+  A-bare, cluster-bootstrap CI over the 8 items excluding 0. *Falsified
+  if* not — the planner buys nothing and harness §3 is struck.
+- **L2.2 (the mechanism).** Correct-value adoption is HIGHER in A-planned,
+  CI excluding 0 — the co-source is USED, not merely diluting. *Falsified
+  if* corrupted adoption falls without correct adoption rising (that would
+  be suppression, not selection, and would be reported as such).
+- **L2.3 (mandatory).** Full three-way table per arm including NEITHER;
+  decisive rates; per-item breakdown; mean output length (silence check).
+
+Goodhart clamp: propagation rates are diagnostics; no item, ask-line, or
+assignment may be tuned after this registration.
