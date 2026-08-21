@@ -1,0 +1,1010 @@
+[
+ {
+  "case": "case_7_trigger_light_baseline",
+  "writer": "gpt-oss:20b",
+  "s": 5,
+  "y": 1,
+  "chars": 8254
+ },
+ {
+  "case": "case_7_trigger_light_baseline",
+  "writer": "gpt-oss:20b",
+  "s": 5,
+  "y": 2,
+  "chars": 8916
+ },
+ {
+  "case": "case_7_trigger_light_baseline",
+  "writer": "phi4:14b",
+  "s": 5,
+  "y": 0,
+  "chars": 5007
+ },
+ {
+  "case": "case_7_trigger_light_baseline",
+  "writer": "phi4:14b",
+  "s": 5,
+  "y": 0,
+  "chars": 4299
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "gpt-oss:20b",
+  "s": 12,
+  "y": 4,
+  "chars": 4622
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "gpt-oss:20b",
+  "s": 12,
+  "y": 4,
+  "chars": 2802
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "phi4:14b",
+  "s": 12,
+  "y": 3,
+  "chars": 2873
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "phi4:14b",
+  "s": 12,
+  "y": 0,
+  "chars": 2721
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "gpt-oss:20b",
+  "s": 12,
+  "y": 1,
+  "chars": 2748
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "gpt-oss:20b",
+  "s": 12,
+  "y": 1,
+  "chars": 2762
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "phi4:14b",
+  "s": 12,
+  "y": 1,
+  "chars": 2676
+ },
+ {
+  "case": "case_l1_l1a",
+  "writer": "phi4:14b",
+  "s": 12,
+  "y": 1,
+  "chars": 2826
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "gpt-oss:20b",
+  "s": 18,
+  "y": 9,
+  "chars": 9198
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "gpt-oss:20b",
+  "s": 18,
+  "y": 8,
+  "chars": 7985
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "phi4:14b",
+  "s": 18,
+  "y": 11,
+  "chars": 4368
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "phi4:14b",
+  "s": 18,
+  "y": 8,
+  "chars": 4520
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "gpt-oss:20b",
+  "s": 18,
+  "y": 16,
+  "chars": 9186
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "gpt-oss:20b",
+  "s": 18,
+  "y": 3,
+  "chars": 7835
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "phi4:14b",
+  "s": 18,
+  "y": 9,
+  "chars": 4591
+ },
+ {
+  "case": "case_l1_l1b",
+  "writer": "phi4:14b",
+  "s": 18,
+  "y": 4,
+  "chars": 4281
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "gpt-oss:20b",
+  "s": 19,
+  "y": 7,
+  "chars": 5773
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "gpt-oss:20b",
+  "s": 19,
+  "y": 4,
+  "chars": 5881
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "phi4:14b",
+  "s": 19,
+  "y": 3,
+  "chars": 3075
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "phi4:14b",
+  "s": 19,
+  "y": 6,
+  "chars": 2572
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "gpt-oss:20b",
+  "s": 23,
+  "y": 3,
+  "chars": 5162
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "gpt-oss:20b",
+  "s": 23,
+  "y": 7,
+  "chars": 5464
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "phi4:14b",
+  "s": 23,
+  "y": 4,
+  "chars": 2509
+ },
+ {
+  "case": "case_l2_l2a",
+  "writer": "phi4:14b",
+  "s": 23,
+  "y": 3,
+  "chars": 3281
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "gpt-oss:20b",
+  "s": 44,
+  "y": 22,
+  "chars": 12394
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "gpt-oss:20b",
+  "s": 44,
+  "y": 20,
+  "chars": 10740
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "phi4:14b",
+  "s": 44,
+  "y": 11,
+  "chars": 3964
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "phi4:14b",
+  "s": 44,
+  "y": 9,
+  "chars": 4136
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "gpt-oss:20b",
+  "s": 53,
+  "y": 20,
+  "chars": 10882
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "gpt-oss:20b",
+  "s": 53,
+  "y": 23,
+  "chars": 10294
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "phi4:14b",
+  "s": 53,
+  "y": 15,
+  "chars": 4017
+ },
+ {
+  "case": "case_l2_l2b",
+  "writer": "phi4:14b",
+  "s": 53,
+  "y": 15,
+  "chars": 4963
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 16,
+  "y": 8,
+  "chars": 8643
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 16,
+  "y": 9,
+  "chars": 7644
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 16,
+  "y": 0,
+  "chars": 3881
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 16,
+  "y": 2,
+  "chars": 4482
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 16,
+  "y": 6,
+  "chars": 6583
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 16,
+  "y": 1,
+  "chars": 7230
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 16,
+  "y": 1,
+  "chars": 3517
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 16,
+  "y": 4,
+  "chars": 4249
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 14,
+  "y": 4,
+  "chars": 4769
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "gpt-oss:20b",
+  "s": 14,
+  "y": 7,
+  "chars": 9714
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 14,
+  "y": 0,
+  "chars": 3423
+ },
+ {
+  "case": "case_l3_l3a",
+  "writer": "phi4:14b",
+  "s": 14,
+  "y": 2,
+  "chars": 3700
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 24,
+  "y": 0,
+  "chars": 4954
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 24,
+  "y": 5,
+  "chars": 5402
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 24,
+  "y": 1,
+  "chars": 3270
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 24,
+  "y": 3,
+  "chars": 3014
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 19,
+  "y": 3,
+  "chars": 3555
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 19,
+  "y": 5,
+  "chars": 5127
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 19,
+  "y": 2,
+  "chars": 3151
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 19,
+  "y": 3,
+  "chars": 2973
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 17,
+  "y": 2,
+  "chars": 3703
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "gpt-oss:20b",
+  "s": 17,
+  "y": 3,
+  "chars": 4131
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 17,
+  "y": 8,
+  "chars": 3583
+ },
+ {
+  "case": "case_l3_l3b",
+  "writer": "phi4:14b",
+  "s": 17,
+  "y": 2,
+  "chars": 3041
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 25,
+  "y": 11,
+  "chars": 8219
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 25,
+  "y": 7,
+  "chars": 8836
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 25,
+  "y": 5,
+  "chars": 4130
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 25,
+  "y": 4,
+  "chars": 3567
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 37,
+  "y": 17,
+  "chars": 10737
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 37,
+  "y": 0,
+  "chars": 8407
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 37,
+  "y": 4,
+  "chars": 3327
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 37,
+  "y": 4,
+  "chars": 4259
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 50,
+  "y": 11,
+  "chars": 9615
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "gpt-oss:20b",
+  "s": 50,
+  "y": 12,
+  "chars": 8488
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 50,
+  "y": 2,
+  "chars": 3772
+ },
+ {
+  "case": "case_l4_l4a",
+  "writer": "phi4:14b",
+  "s": 50,
+  "y": 1,
+  "chars": 3669
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 30,
+  "y": 11,
+  "chars": 8581
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 30,
+  "y": 8,
+  "chars": 10782
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 30,
+  "y": 9,
+  "chars": 3787
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 30,
+  "y": 9,
+  "chars": 4065
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 35,
+  "y": 11,
+  "chars": 10080
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 35,
+  "y": 13,
+  "chars": 8687
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 35,
+  "y": 4,
+  "chars": 3648
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 35,
+  "y": 10,
+  "chars": 4153
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 45,
+  "y": 5,
+  "chars": 6827
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "gpt-oss:20b",
+  "s": 45,
+  "y": 13,
+  "chars": 8744
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 45,
+  "y": 5,
+  "chars": 3957
+ },
+ {
+  "case": "case_l4_l4b",
+  "writer": "phi4:14b",
+  "s": 45,
+  "y": 8,
+  "chars": 3932
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "phi4:14b",
+  "s": 1.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_1_clinical_decision_support",
+  "writer": "phi4:14b",
+  "s": 1.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 8.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 8.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "phi4:14b",
+  "s": 8.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "phi4:14b",
+  "s": 10.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "phi4:14b",
+  "s": 10.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 11.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "gpt-oss:20b",
+  "s": 11.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_2_cross_border_digital_therapeutic",
+  "writer": "phi4:14b",
+  "s": 11.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "phi4:14b",
+  "s": 6.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 7.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 7.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "phi4:14b",
+  "s": 7.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 5.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "gpt-oss:20b",
+  "s": 5.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_3_capitated_risk_contract",
+  "writer": "phi4:14b",
+  "s": 5.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "phi4:14b",
+  "s": 6.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 4.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 4.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "phi4:14b",
+  "s": 4.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_4_glp1_employer_coverage",
+  "writer": "phi4:14b",
+  "s": 2.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "gpt-oss:20b",
+  "s": 6.0,
+  "y": 4.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "phi4:14b",
+  "s": 6.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "gpt-oss:20b",
+  "s": 7.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "gpt-oss:20b",
+  "s": 7.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "writer": "phi4:14b",
+  "s": 7.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "phi4:14b",
+  "s": 2.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 9.0,
+  "y": 1.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 9.0,
+  "y": 3.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "phi4:14b",
+  "s": 9.0,
+  "y": 5.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 6.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "gpt-oss:20b",
+  "s": 10.0,
+  "y": 2.0,
+  "chars": null
+ },
+ {
+  "case": "case_6_trigger_heavy_biotech_ma",
+  "writer": "phi4:14b",
+  "s": 10.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_8_trigger_light_hand_hygiene",
+  "writer": "gpt-oss:20b",
+  "s": 0.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_8_trigger_light_hand_hygiene",
+  "writer": "gpt-oss:20b",
+  "s": 0.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_8_trigger_light_hand_hygiene",
+  "writer": "phi4:14b",
+  "s": 0.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_9_trigger_light_nda_clauses",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_9_trigger_light_nda_clauses",
+  "writer": "gpt-oss:20b",
+  "s": 2.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_9_trigger_light_nda_clauses",
+  "writer": "phi4:14b",
+  "s": 2.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_10_trigger_light_depreciation",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_10_trigger_light_depreciation",
+  "writer": "gpt-oss:20b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ },
+ {
+  "case": "case_10_trigger_light_depreciation",
+  "writer": "phi4:14b",
+  "s": 1.0,
+  "y": 0.0,
+  "chars": null
+ }
+]

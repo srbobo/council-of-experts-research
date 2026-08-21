@@ -7257,3 +7257,66 @@ over the 18 cases.
 
 Goodhart clamp: w is a diagnostic, never a target. No variant may be added
 or dropped after this registration to move a slope.
+
+## CELL 46 VERDICT (2026-08-21) — P46.1 and P46.2 SUPPORTED: the transport law holds for a SECOND writer
+
+84 new runs, zero failures; combined with Cell 30's 60. New judge agreement
+**0.877** (19728/22492 family-decisions), well over the 0.70 bar.
+
+| writer | n | cases | n_eff | w | cluster CI | mean y |
+|---|---|---|---|---|---|---|
+| gpt-oss:20b | 82 | 18 | 48.9 | 0.318 | [+0.221, +0.431] | 4.68 |
+| **phi4:14b** | 62 | 18 | 42.3 | **0.177** | **[+0.058, +0.275]** | 3.45 |
+
+**P46.1 SUPPORTED** — phi4's interval excludes zero. **P46.2 SUPPORTED** —
+the two writers' intervals overlap. Intercepts are bootstrap-seed sensitive
+in both writers and remain consistent-with-zero, as registered.
+
+### Registration arithmetic error of mine, recorded
+
+The registration stated the requirement as n_eff ~ 47 and asserted "n = 80
+gives n_eff = 48.4 — clear of the requirement", then specified a matrix
+(21 variants x 2 writers x 2 repeats) delivering phi4 **n = 62, n_eff =
+42.3**. The matrix did not meet its own stated target. This did not change
+the verdict — P46.1's falsification branch was conditioned on *spanning
+zero at n_eff >= 47*, and the interval excluded zero, which is the
+supported branch at any power. But had it spanned, the correct verdict
+would have been NOT EVALUABLE, not falsified. Recorded because the
+counterfactual matters and the error is mine.
+
+Consequence for the estimate: a positive found at below-planned power
+carries Type-M (magnitude) inflation risk. The point estimates should be
+read as upper-leaning.
+
+### CORPUS HETEROGENEITY — the caveat that must travel with the pooled number
+
+The nine new cases sit in a **different supply regime**: mean s = 25.33
+against 5.40 on Cell 30's corpus, with mean y 7.79 against 1.43.
+
+| writer | corpus | n | w | CI |
+|---|---|---|---|---|
+| gpt-oss | old | 40 | 0.172 | [+0.052, +0.297] |
+| gpt-oss | new | 42 | 0.326 | [+0.207, +0.434] |
+| phi4 | old | 20 | 0.105 | [-0.031, +0.273] |
+| **phi4** | **new** | **42** | **0.170** | **[+0.067, +0.265]** |
+
+**The pooled slope is essentially the between-corpus line.** The two-point
+between-cluster slope is (7.79-1.43)/(25.33-5.40) = 0.319 for gpt-oss
+against a pooled 0.318, and 0.189 for phi4 against a pooled 0.177. So the
+combined fit is dominated by the regime difference rather than by
+within-corpus dose-response, and the pooled figures must not be quoted as
+a within-corpus transport rate.
+
+**What rescues the claim is the within-corpus fits.** Three of four exclude
+zero on their own, and critically **phi4 on the new corpus alone gives
+0.170 [+0.067, +0.265] at n=42** — an independent replication that owes
+nothing to pooling. phi4-old remains the one cell spanning zero, exactly
+as Cell 30 recorded it.
+
+### Net effect on the ledger
+
+The transport law is now demonstrated for **two writers**, and for phi4 it
+holds both pooled and on a corpus Cell 30 never touched. The row moves from
+LIVE-for-one-writer to LIVE, with the scope stated as: two writers, 18
+cases, w in the 0.11-0.33 range depending on writer and supply regime, and
+the pooled cross-regime figures explicitly not a within-corpus rate.
