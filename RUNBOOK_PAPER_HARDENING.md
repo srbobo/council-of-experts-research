@@ -7330,3 +7330,15 @@ holds both pooled and on a corpus Cell 30 never touched. The row moves from
 LIVE-for-one-writer to LIVE, with the scope stated as: two writers, 18
 cases, w in the 0.11-0.33 range depending on writer and supply regime, and
 the pooled cross-regime figures explicitly not a within-corpus rate.
+
+### Cell-count correction (2026-08-21)
+
+The paper claimed "forty-three" and I updated it to "forty-six" while
+folding in \S8 — both wrong in the same way. **46 is the highest cell
+NUMBER, not the count**: the numbering has gaps (no 2, 4, 9, 12, 32, 33,
+39 in the union of runbook and ledger references), and this runbook holds
+**41 registration blocks**, some of which are variants of one cell (43 and
+43-R). The paper now says "more than forty pre-registered experiment
+cells", which is verifiable from the runbook by counting blocks. Recorded
+because a count in a paper's opening paragraph is exactly the sort of
+number that gets quoted back.

@@ -72,8 +72,8 @@ outcome, tests error propagation, validates its judge on the deployed
 task, or separates behavioral change from surface compliance.
 
 This paper supplies that audit. It is the product of a
-falsification-first research program that ran forty-three pre-registered
-experiment cells on a MoA-architecture pipeline small enough to audit
+falsification-first research program that ran more than forty
+pre-registered experiment cells on a MoA-architecture pipeline small enough to audit
 completely: 7--20B open models on consumer hardware, with every
 registration, deviation, and verdict recorded in a public ledger before
 and after each run. The architecture is a two-layer MoA with three
@@ -117,7 +117,9 @@ an order-debiased protocol, with a decomposition showing it is not
 length, domain-framework density, or hedging register. (3)~A measured
 characterization of local pairwise preference judging as majority
 reading-order. (4)~Mechanism results bounding the collaborativeness
-narrative. (5)~An open measurement kit (\texttt{gst}), a dictation
+narrative, and one positive: orchestrator-routed re-consultation, with
+evidence that both halves of the loop are recognition-limited rather than
+capability-limited. (5)~An open measurement kit (\texttt{gst}), a dictation
 registry with a zero measured over-attribution rate, and the complete
 pre-registration ledger.
 
@@ -191,9 +193,11 @@ pairwise judge prompt in our own program enumerated the same seven
 phrases the training-pair generators dictated to writers --- instrument
 entanglement at the instrument layer (finding 12). Measured
 over-attribution is zero: across 2{,}907 clean-provenance spans (438{,}797
-characters), no registry phrase appears without dictation upstream
-(finding 13). Registry surface is therefore diagnostic of the scaffold,
-which is what licenses literal-match partitioning.
+characters) and 60 de-scaffolded runs, no registry phrase appears without
+dictation upstream --- direct probes confirm $0/60$ for every signature
+phrase (finding 13). Registry surface is therefore \emph{diagnostic of the
+scaffold}, which is what licenses literal-match partitioning even where a
+judged paraphrase stage is withdrawn.
 
 \textbf{The validated judge.} Construct presence is scored by a
 two-judge, batched sentence-level protocol whose definitions name no
@@ -508,6 +512,80 @@ the comparison sits at a $0.92$--$0.97$ ceiling with three discordant
 items; per our audit discipline this is held as absence of evidence, not
 evidence of absence.
 
+\section{What does work: routed re-consultation}
+\label{sec:reconsult}
+
+Everything above bounds or removes. This section reports the one
+intervention in the whole program that survived its own registered test, and
+the structural reason it is not yet worth much.
+
+\textbf{The design.} The aggregator writes its tension list first (our
+synthesis scaffold mandates one, and 391 of 396 archived runs contain it),
+and an \emph{orchestrator} --- not the aggregator's disposition --- parses
+that list and dispatches a follow-up to the implicated proposer. Three
+arms over six planted tensions whose deciding fact is withheld from round
+one: no clarification; a length-matched clarification that is responsive
+in style but contains \emph{no} deciding fact; and the same clarification
+containing it. The middle arm exists because \S\ref{sec:phrase} makes the
+alternative live --- consultation could shift behaviour as ceremony rather
+than content.
+
+\textbf{The result.} On runs where the tension was named, the aggregator
+adopted the fact-implied resolution in $7/7$ informed runs against
+$0.333$ in control (cluster-bootstrap difference CI \ci{+0.200}{+1.000})
+and $0.200$ under the contentless clarification (\ci{+0.545}{+0.947}).
+\textbf{The information does the work, not the ritual.} The informed arm
+was unanimous across both judges; resolving every judge disagreement in
+the other arms adversarially against the prediction still leaves gaps of
+$+0.40$ and $+0.53$; emission is flat across arms.
+
+This is coherent with every failure above rather than an exception to
+them. Instructions install phrases (\S\ref{sec:phrase}); corroboration is
+ignored (\S\ref{sec:mech}); the aggregator cannot verify
+(\S\ref{sec:mech}). Routed re-consultation is the only intervention we
+tested that operates \emph{through} the one capability the aggregator
+demonstrably has --- preference among overlapping sources --- by
+manufacturing an uncorrupted source exactly at the contested quantity.
+
+\textbf{Why it is not yet worth much: the trigger is scarce.} A companion
+cell asked whether proposers can initiate the loop themselves, giving each
+a roster and a structured deferral token, then putting the identical
+sub-question to the proposer whose domain holds the deciding
+consideration and to one whose domain does not. Routing, when it fires, is
+accurate: the named domain is the correct one in $10/11$ cases,
+$0.909$ \ci{0.623}{0.984} against a two-alternative chance rate of $0.5$.
+But discrimination fails: flag rates are $0.306$ out-of-domain against
+$0.083$ in-domain, a gap whose cluster-bootstrap CI \ci{-0.056}{+0.528}
+spans zero, and the in-domain flags are a proposer failing to recognise
+its \emph{own} competence.
+
+The two cells share one shape:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & mechanism, when triggered & trigger rate \\
+\midrule
+aggregator uses a clarification & $7/7$ & $0.34$ names the tension \\
+proposer routes a deferral & $0.909$ correct & $0.306$ recognises the need \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Re-consultation here is recognition-limited, not
+capability-limited.} That is why the orchestrator-routed design is the one
+we recommend and the proposer-initiated design is not: it draws its
+trigger from a mandated artefact the aggregator already produces, rather
+than from a model's assessment of its own competence --- the one faculty
+the program never found evidence for.
+
+\textbf{Scope.} Six items, one writer, controlled clarifications rather
+than live proposer answers, and a conditioned $n$ of seven in the decisive
+cell, where unanimity was the only way to clear an interval. The judge
+agreement bar was met on the analysis population ($0.703$) and not overall
+($0.583$); both are reported. This is an existence result about a
+mechanism, not an effect size for deployment.
+
 \section{Discussion}
 
 \textbf{What the lift is, and is not.} The audit does not debunk MoA's
@@ -520,6 +598,10 @@ from domain-framework density; and the aggregator beneath it selects
 rather than verifies. The residual --- plausibly organization,
 coverage, or specificity harvested from proposers --- is the right
 target for the next instrument, and we decline to name it without one.
+What the audit does supply constructively is \S\ref{sec:reconsult}: the
+gain available from an aggregation pipeline is not in instructing the
+aggregator to be careful, but in routing a specific question back to a
+specific proposer at the moment a specific claim is contested.
 
 \textbf{Implication for preference-trained pipelines.} The measured
 tension predicts that preference optimization silently strips epistemic
