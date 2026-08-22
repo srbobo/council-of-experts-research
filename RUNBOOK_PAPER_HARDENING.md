@@ -7577,3 +7577,38 @@ contains ZERO both-judge caveat sentences — a genuinely caveat-free seat
 stack, consistent with its trigger-light construction — so no appendix can
 exist for it. It is EXCLUDED (17 cases, 119 pairs), not backfilled; the
 cluster bootstrap runs over the 17. Recorded before any judgment was made.
+
+## CELL 48 (L4) VERDICT (2026-08-22) — carriage established; the preference estimand NOT EVALUABLE at this power
+
+Zero generation; 159 pairs judged, both orderings; 51 decisive / 65 ties /
+3 quarantines on the primary judge.
+
+**P48.1 PASS, decisively** — appendix carriage 2079/2079 = 1.000; bare-prose
+carriage **361/2079 = 0.174**. The bare figure is a bonus result: a fresh,
+literal, sentence-level measurement of caveat survival through the writer,
+landing inside the transport band (0.11–0.33) by a method independent of
+the regression — the third convergent estimate of transport loss.
+
+**P48.2 NOT EVALUABLE, as registered** — freight-vs-bare share 0.510, CI
+[0.267, 0.754] at n=51 decisive over 17 case clusters. The interval
+straddles both registered bands. Directional context, carrying no verdict:
+the point estimate sits at indifference, far above the in-prose penalty
+band (0.20–0.32), and 65 of 116 complete pairs were ties — the judge is
+mostly indifferent to the appendix. Nothing here looks like the in-prose
+penalty, and nothing here is licensed to say so at this power.
+
+**Replication judge: zero decisive** — qwen3-vl answered "A" in ALL 80
+calls, pure reading-order on this pair type (finding #14 datapoint: its
+decisive rate is task-dependent, 0.40 on C43R pairs, 0.00 here).
+
+**Fourth verdict-printing bug recorded**: the measure's early return on
+empty decisives reported ties=0 for a 40/40 all-tie replication. Fixed;
+ties now counted before any return. Estimation was untouched, as in all
+three prior instances.
+
+**Consequence for harness §6**: the carriage half of the design bet is
+established mechanically (1.000 vs 0.174); the preference-survival half
+remains OPEN at this program's power — the honest label is "no evidence of
+an appendix penalty; not evaluable against the registered bands." Power
+here binds on decisive rate x 17 clusters, not repeats; a decisive test
+needs either more cases or a judge less tie-prone on near-identical pairs.

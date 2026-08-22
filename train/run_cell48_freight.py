@@ -209,8 +209,13 @@ def stage_measure() -> None:
                 by.setdefault(case, []).append(d == "S1")
         pool = sorted(by)
         dec = [x for c in pool for x in by[c]]
+        # ties counted BEFORE any early return — the first version returned
+        # ties=0 when decisives were empty, hiding a 40/40 all-tie replication
+        # (verdict-printing bug family, instance four).
+        ties = sum(1 for case, rep in pairs
+                   if _decide(cache, judge, case, rep) == "TIE")
         if not dec:
-            return float("nan"), (float("nan"),) * 2, 0, 0
+            return float("nan"), (float("nan"),) * 2, 0, ties
         ds = []
         for _ in range(5000):
             s = [pool[rng.randrange(len(pool))] for _ in pool]
@@ -218,8 +223,6 @@ def stage_measure() -> None:
             if w:
                 ds.append(sum(w) / len(w))
         ds.sort()
-        ties = sum(1 for case, rep in pairs
-                   if _decide(cache, judge, case, rep) == "TIE")
         return (sum(dec) / len(dec),
                 (ds[int(.025 * len(ds))], ds[int(.975 * len(ds))]),
                 len(dec), ties)

@@ -119,7 +119,12 @@ Three findings converge on one design decision:
   deployment strips it.
 
 Therefore: **caveats, assumptions, and confidence never route through the
-writer.** Seats emit them as structured fields; the harness carries them
+writer.** (Cell 48 tested this: the appendix carries 100% of caveats vs
+17.4% surviving prose transport — the carriage half is established. The
+preference-survival half came back NOT EVALUABLE at available power:
+share 0.510 [0.267, 0.754], point at indifference and far above the
+in-prose penalty band, 65/116 pairs tied — no evidence of an appendix
+penalty, and no license yet to claim its absence.) Seats emit them as structured fields; the harness carries them
 directly to the final artifact (appendix, metadata, UI panel). The writer
 writes prose; the harness carries epistemics. No disposition instructions
 are sent to the writer at all — the evidence says they buy nothing and
