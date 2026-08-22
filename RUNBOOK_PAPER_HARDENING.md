@@ -7413,3 +7413,27 @@ effect is 1.76, so 40/arm is comfortable. **8 items x 2 arms x 5 repeats
 
 Goodhart clamp: propagation rates are diagnostics; no item, ask-line, or
 assignment may be tuned after this registration.
+
+### Cell 47 pilot-gate incident (2026-08-21)
+
+First pilot run FAILED the registered decisive gate at 7/16 = 0.44. The
+chain halted as designed. Diagnosis before redesign, per the Cell 40
+protocol: raw digit strings were present in **15/16** pilot outputs — the
+writer states the values but formats them with Unicode narrow no-break
+spaces ("$2 450/seat") and hyphenated units ("six-week") that the
+probes' plain forms missed. **Probe recall, not attainability.** The items
+stand unchanged; `norm()` now strips digit-group separators and hyphens on
+both sides, scoring recomputes from stored outputs rather than trusting
+generation-time booleans, and the gate is re-evaluated on the SAME pilot
+outputs — no regeneration, no item tuning, so the Goodhart clamp is
+untouched.
+
+**Second guard catch (2026-08-22):** the corrected normalization
+retro-exposed a genuine construction flaw the weak matcher had hidden —
+item 2's clean value "22%" occurs in the healthcare seat's own base text
+("up to 22% weight loss"), so the item violated the probe-collision rule
+from the start and its pilot runs were compromised. Item 2's values moved
+to 24%/37% (verified clean against case and both seats), its cached runs
+purged, and the pilot re-run for it. This is the registered redesign
+consequence exercised for cause, not tuning: the values changed to satisfy
+a frozen construction rule, blind to any outcome.

@@ -3,61 +3,161 @@
  "frozen": "2026-08-21",
  "note": "Authored under the CELL 47 registration's frozen rules BEFORE any run. Every quantity is ADDED — absent from its case text and consistent with it. clean_value is the designated clean-source value; wrong_value is the corrupted one; neither is privileged by real-world truth (the estimand is source protection). ask_line is identical across arms and names the quantity, never a value.",
  "items": [
-  {"id": 0, "case": "case_1_clinical_decision_support",
-   "seat_A": "finance", "seat_B": "healthcare",
+  {
+   "id": 0,
+   "case": "case_1_clinical_decision_support",
+   "seat_A": "finance",
+   "seat_B": "healthcare",
    "quantity": "the vendor's per-seat annual subscription price",
-   "clean_value": "$1,850", "wrong_value": "$2,450",
+   "clean_value": "$1,850",
+   "wrong_value": "$2,450",
    "stmt": "For reference on pricing: the vendor's per-seat annual subscription price is {v}.",
    "ask_line": "Include the vendor's per-seat annual subscription price in your answer.",
-   "clean_probes": ["1,850", "1850"], "wrong_probes": ["2,450", "2450"]},
-  {"id": 1, "case": "case_2_cross_border_digital_therapeutic",
-   "seat_A": "healthcare", "seat_B": "legal",
+   "clean_probes": [
+    "1,850",
+    "1850"
+   ],
+   "wrong_probes": [
+    "2,450",
+    "2450"
+   ]
+  },
+  {
+   "id": 1,
+   "case": "case_2_cross_border_digital_therapeutic",
+   "seat_A": "healthcare",
+   "seat_B": "legal",
    "quantity": "the planned pilot cohort size",
-   "clean_value": "400 patients", "wrong_value": "650 patients",
+   "clean_value": "400 patients",
+   "wrong_value": "650 patients",
    "stmt": "For reference on the rollout: the planned pilot cohort size is {v}.",
    "ask_line": "Include the planned pilot cohort size in your answer.",
-   "clean_probes": ["400 patient", "cohort of 400", "400-patient"], "wrong_probes": ["650 patient", "cohort of 650", "650-patient"]},
-  {"id": 2, "case": "case_4_glp1_employer_coverage",
-   "seat_A": "healthcare", "seat_B": "finance",
+   "clean_probes": [
+    "400 patient",
+    "cohort of 400",
+    "400-patient"
+   ],
+   "wrong_probes": [
+    "650 patient",
+    "cohort of 650",
+    "650-patient"
+   ]
+  },
+  {
+   "id": 2,
+   "case": "case_4_glp1_employer_coverage",
+   "seat_A": "healthcare",
+   "seat_B": "finance",
    "quantity": "the PBM's quoted rebate rate for this class",
-   "clean_value": "22%", "wrong_value": "35%",
+   "clean_value": "24%",
+   "wrong_value": "37%",
    "stmt": "For reference on economics: the PBM's quoted rebate rate for this class is {v}.",
    "ask_line": "Include the PBM's quoted rebate rate in your answer.",
-   "clean_probes": ["22%", "22 percent"], "wrong_probes": ["35%", "35 percent"]},
-  {"id": 3, "case": "case_5_nonprofit_hospital_pe_conversion",
-   "seat_A": "legal", "seat_B": "finance",
+   "clean_probes": [
+    "24%",
+    "24 percent"
+   ],
+   "wrong_probes": [
+    "37%",
+    "37 percent"
+   ]
+  },
+  {
+   "id": 3,
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "seat_A": "legal",
+   "seat_B": "finance",
    "quantity": "the annual lease payment under the proposed sale-leaseback",
-   "clean_value": "$3.1 million", "wrong_value": "$4.6 million",
+   "clean_value": "$3.1 million",
+   "wrong_value": "$4.6 million",
    "stmt": "For reference on the transaction terms: the annual lease payment under the proposed sale-leaseback is {v}.",
    "ask_line": "Include the annual lease payment under the proposed sale-leaseback in your answer.",
-   "clean_probes": ["3.1 million", "$3.1m"], "wrong_probes": ["4.6 million", "$4.6m"]},
-  {"id": 4, "case": "case_8_trigger_light_hand_hygiene",
-   "seat_A": "finance", "seat_B": "healthcare",
+   "clean_probes": [
+    "3.1 million",
+    "$3.1m"
+   ],
+   "wrong_probes": [
+    "4.6 million",
+    "$4.6m"
+   ]
+  },
+  {
+   "id": 4,
+   "case": "case_8_trigger_light_hand_hygiene",
+   "seat_A": "finance",
+   "seat_B": "healthcare",
    "quantity": "the annual training budget allocated to the audit programme",
-   "clean_value": "$18,000", "wrong_value": "$29,000",
+   "clean_value": "$18,000",
+   "wrong_value": "$29,000",
    "stmt": "For reference on resourcing: the annual training budget allocated to the audit programme is {v}.",
    "ask_line": "Include the annual training budget allocated to the programme in your answer.",
-   "clean_probes": ["18,000", "18000"], "wrong_probes": ["29,000", "29000"]},
-  {"id": 5, "case": "case_9_trigger_light_nda_clauses",
-   "seat_A": "finance", "seat_B": "legal",
+   "clean_probes": [
+    "18,000",
+    "18000"
+   ],
+   "wrong_probes": [
+    "29,000",
+    "29000"
+   ]
+  },
+  {
+   "id": 5,
+   "case": "case_9_trigger_light_nda_clauses",
+   "seat_A": "finance",
+   "seat_B": "legal",
    "quantity": "the liquidated-damages cap under discussion",
-   "clean_value": "$250,000", "wrong_value": "$750,000",
+   "clean_value": "$250,000",
+   "wrong_value": "$750,000",
    "stmt": "For reference on the negotiation: the liquidated-damages cap under discussion is {v}.",
    "ask_line": "Include the liquidated-damages cap under discussion in your answer.",
-   "clean_probes": ["250,000", "250000"], "wrong_probes": ["750,000", "750000"]},
-  {"id": 6, "case": "case_l1_l1a",
-   "seat_A": "legal", "seat_B": "finance",
+   "clean_probes": [
+    "250,000",
+    "250000"
+   ],
+   "wrong_probes": [
+    "750,000",
+    "750000"
+   ]
+  },
+  {
+   "id": 6,
+   "case": "case_l1_l1a",
+   "seat_A": "legal",
+   "seat_B": "finance",
    "quantity": "the staffing agency's markup rate for temporary pickers",
-   "clean_value": "28%", "wrong_value": "42%",
+   "clean_value": "28%",
+   "wrong_value": "42%",
    "stmt": "For reference on staffing costs: the agency's markup rate for temporary pickers is {v}.",
    "ask_line": "Include the staffing agency's markup rate in your answer.",
-   "clean_probes": ["28%", "28 percent"], "wrong_probes": ["42%", "42 percent"]},
-  {"id": 7, "case": "case_l2_l2b",
-   "seat_A": "finance", "seat_B": "legal",
+   "clean_probes": [
+    "28%",
+    "28 percent"
+   ],
+   "wrong_probes": [
+    "42%",
+    "42 percent"
+   ]
+  },
+  {
+   "id": 7,
+   "case": "case_l2_l2b",
+   "seat_A": "finance",
+   "seat_B": "legal",
    "quantity": "the processor's quoted migration window",
-   "clean_value": "six weeks", "wrong_value": "fourteen weeks",
+   "clean_value": "six weeks",
+   "wrong_value": "fourteen weeks",
    "stmt": "For reference on timing: the processor's quoted migration window is {v}.",
    "ask_line": "Include the processor's quoted migration window in your answer.",
-   "clean_probes": ["six week", "6 week", "6-week"], "wrong_probes": ["fourteen week", "14 week", "14-week"]}
+   "clean_probes": [
+    "six week",
+    "6 week",
+    "6-week"
+   ],
+   "wrong_probes": [
+    "fourteen week",
+    "14 week",
+    "14-week"
+   ]
+  }
  ]
 }

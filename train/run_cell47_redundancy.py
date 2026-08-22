@@ -42,7 +42,16 @@ _WS = re.compile(r"\s+")
 
 
 def norm(t: str) -> str:
-    return _WS.sub(" ", (t or "").replace("$", "").replace("*", "")).lower()
+    """Match normalization. The pilot gate first failed at 0.44 because the
+    writer formats digits with Unicode narrow spaces ("$2\u202f450/seat")
+    and hyphenated units ("six-week") that plain probes missed — raw digit
+    strings were present in 15/16 pilot outputs. Group separators and
+    hyphens are normalized away on BOTH sides before matching."""
+    t = (t or "").replace("$", "").replace("*", "")
+    for sep in ("\u202f", "\u00a0", "\u2009", ","):
+        t = t.replace(sep, "")
+    t = t.replace("-", " ")
+    return _WS.sub(" ", t).lower()
 
 
 def guard_items() -> None:
@@ -145,9 +154,21 @@ def _generate(arms, repeats, label) -> None:
     print(f"cell47 {label} complete")
 
 
+def rescore(rows):
+    """Recompute clean/wrong from stored outputs under the CURRENT norm —
+    stored booleans reflect whatever norm was live at generation time."""
+    by_id = {it["id"]: it for it in ITEMS}
+    for r in rows:
+        it = by_id[r["item"]]
+        low = norm(r["output"])
+        r["clean"] = any(norm(p) in low for p in it["clean_probes"])
+        r["wrong"] = any(norm(p) in low for p in it["wrong_probes"])
+    return rows
+
+
 def stage_pilot() -> None:
     _generate(("bare",), PILOT_REPEATS, "pilot")
-    rows = [json.loads(l) for l in RUNS.read_text().splitlines() if l.strip()]
+    rows = rescore([json.loads(l) for l in RUNS.read_text().splitlines() if l.strip()])
     pilot = [r for r in rows if r["arm"] == "bare" and r["repeat"] < PILOT_REPEATS]
     dec = sum(1 for r in pilot if r["clean"] or r["wrong"])
     rate = dec / len(pilot)
@@ -165,7 +186,7 @@ def stage_runs() -> None:
 def stage_measure() -> None:
     import random
     rng = random.Random(0)
-    rows = [json.loads(l) for l in RUNS.read_text().splitlines() if l.strip()]
+    rows = rescore([json.loads(l) for l in RUNS.read_text().splitlines() if l.strip()])
     items_ = sorted({r["item"] for r in rows})
     by = {}
     for r in rows:
