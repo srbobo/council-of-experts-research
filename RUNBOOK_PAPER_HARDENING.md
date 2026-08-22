@@ -7477,3 +7477,95 @@ which is itself the tension-list behavior Cell 44 exploits.
 **Consequence for the harness doc:** §3 (redundancy is engineered) is now
 PROSPECTIVELY TESTED — registered before the run, supported by it — and
 the doc gains the bimodality caveat.
+
+---
+
+## CELL 47 BIMODALITY READ (2026-08-22; descriptive, 10 runs read)
+
+The two fully-unprotected items fail in DIFFERENT ways:
+
+**Item 0 (per-seat price; corrupt in finance, clean in healthcare): the
+clean value was never surfaced — 0/5 runs mention it.** The writer sourced
+the price exclusively from the domain-congruent seat (pricing -> finance)
+and ignored the healthcare seat's price statement entirely. Selection here
+ran on DOMAIN AUTHORITY, not cleanliness.
+
+**Item 6 (agency markup; corrupt in legal, clean in finance): BOTH values
+surfaced in 5/5 runs — and the writer adopted the corrupt one as primary,
+labelling it "typical (industry-average)".** That label appears in no seat
+text; it is the writer's own prior speaking. 42% is the prior-plausible
+agency markup; the writer arbitrated the conflict toward its prior and
+dressed the choice in authority language it invented.
+
+Refined OPEN hypothesis (descriptive; 10 runs): **source selection under
+conflict is arbitrated by domain-congruence and prior-plausibility, not by
+source reliability.** Protection held where the clean value sat in the
+domain-congruent seat AND was prior-compatible; it failed where the
+corrupt value had either advantage. Coheres with the transport picture
+(prior-dominated renderer, c > 0) and with Cell 37 (no independent hold).
+Construction caveat recorded: item 6's clean "28%" is numerically ambient
+in its case (the $28/hr loaded rate), which may have diluted its salience;
+any follow-up item set should avoid case-ambient numerals even across
+units.
+
+---
+
+## CELL 48 (L4) PRE-REGISTRATION — out-of-band epistemic freight (registered 2026-08-22, before any judging)
+
+The harness architecture's §6 is its central untested design move: caveats
+never route through the writer; the harness carries them. Three LIVE
+findings motivate it (transport loses 67-89%; instructions buy only their
+phrase; in-prose marking costs preference). L4 tests the bet.
+
+### Design — one factor, ZERO generation
+
+Both arms share the SAME writer outputs (Cell 41 control arm, 126 runs
+over 18 cases). The single factor is final-artifact assembly:
+
+- **A-bare** — the writer's prose alone (the status quo).
+- **A-freight** — the identical prose plus a mechanically-assembled
+  "Assumptions & Caveats" appendix: the seat sentences BOTH judges labeled
+  construct-bearing, drawn from the EXISTING validated labels (c30c31
+  upstream for the nine old cases; Cell 46 upstream for the nine new —
+  verified 18/18 coverage). No model writes the appendix; the harness
+  extracts it.
+
+Because the prose is byte-identical across arms, every preference pair is
+perfectly length-and-content-matched except for the appendix.
+
+### Instruments and protocol
+
+Preference: the Cell 43 protocol unchanged — pairwise, both orderings,
+decisive only on agreement, primary judge gpt-oss:20b, replication judge
+qwen3-vl on a frozen seeded subsample, quarantine-not-default, judge
+prompt gate-G-E-checked. Carriage: literal containment of the labeled
+caveat sentences in the final artifact (a known-value check).
+
+### Predictions
+
+- **P48.1 (manipulation check).** Caveat carriage: A-freight >= 0.95,
+  A-bare <= 0.35 (the transport band's upper edge). Trivially attainable
+  by construction; registered so the estimand's premise is verified, not
+  assumed.
+- **P48.2 (the estimand).** The appendix does not pay the in-prose
+  penalty. A-freight's preference share vs A-bare, cluster-bootstrapped
+  over cases: **SUPPORTED if the CI's lower bound > 0.32** (above the
+  entire measured in-prose penalty band, 0.20-0.32 from Cells 43/43-R);
+  **FALSIFIED if the CI lies entirely below 0.40** (the appendix is
+  penalized like in-prose hedging, and harness §6 fails for
+  preference-surviving deployment); anything between is NOT EVALUABLE at
+  this power and says so. Attainability: C43's realized machinery — 126
+  pairs, expected decisive ~0.35, MDD ~0.67 share; the registered bands
+  are distinguishable at that resolution.
+- **P48.3 (mandatory).** Decisive/tie/quarantine rates per judge; raw
+  position split; appendix length distribution; per-case breakdown. The
+  appendix adds length, so the known verbosity direction (winner-is-longer
+  ~0.73-0.80 in C43) is reported alongside — if A-freight wins, the
+  length-confound reading must be addressed with the length-matched-pair
+  subset before any SUPPORTED verdict on preference GAIN is claimed;
+  P48.2's bands concern penalty-avoidance, which length inflation cannot
+  fake downward.
+
+Goodhart clamp: appendix content comes only from validated labels; no
+selection, rewording, or ranking of caveats may be tuned; preference
+shares are reported, never optimized.
