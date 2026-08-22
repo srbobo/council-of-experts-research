@@ -7612,3 +7612,63 @@ remains OPEN at this program's power — the honest label is "no evidence of
 an appendix penalty; not evaluable against the registered bands." Power
 here binds on decisive rate x 17 clusters, not repeats; a decisive test
 needs either more cases or a judge less tie-prone on near-identical pairs.
+
+---
+
+## CELL 49 PRE-REGISTRATION — the arbitration mechanism (registered 2026-08-22, before any run)
+
+Cell 47's bimodality read produced two candidate mechanisms for how the
+writer arbitrates between conflicting stated values: PRIOR-PLAUSIBILITY
+(item 6: adopted the prior-typical value and labelled it
+"industry-average" — language no seat wrote) and DOMAIN-CONGRUENCE
+(item 0: sourced the price exclusively from the finance seat). This cell
+measures both, counterbalanced, in one design.
+
+### Prior is MEASURED, not asserted
+
+Stage `prior`: the writer alone (no seats) is asked each item's quantity
+5 times ("What would be a typical figure for X in this situation?").
+**Frozen value rule, fixed now:** the PLAUSIBLE value = the median
+elicited figure (rounded to the elicitation's own precision); the
+IMPLAUSIBLE value = 2x the median (or half, whichever direction avoids
+ambient-numeral collisions with the case and seat text — the C47 item-6
+lesson, now a guard). Values are frozen by this rule before any arm runs;
+no tuning permitted after.
+
+### Arms — one factor: WHERE the plausible value sits
+
+Both arms are conflict conditions (both seats state values; identical
+ask-line names the quantity, never a value):
+
+- **A-congruent** — plausible value in the item's DOMAIN-CONGRUENT seat
+  (frozen per item in the items file, with rationale), implausible in the
+  other.
+- **A-incongruent** — swapped.
+
+8 items (Cell 47's quantities, new values) x 2 arms x 5 repeats = 80 runs,
+plus 40 short prior-elicitation calls. Exact match; no judge in the
+primary. Guards: C47's probe-collision guard EXTENDED with the ambient-
+numeral check (probe digit-strings absent from case text entirely, not
+just as formatted probes).
+
+### Predictions
+
+- **P49.1 (prior arbitration).** Pooled across arms, the PLAUSIBLE value
+  is adopted above the 0.5 two-value chance rate, cluster CI over 8 items
+  excluding 0.5. *Attainability registered honestly: n_eff ~ 29.5 at the
+  design's clustering gives MDD ~ 0.68 — this detects STRONG arbitration
+  only; a spanning CI at that power is NOT EVALUABLE, not falsified,
+  unless the point estimate is itself at or below 0.5.*
+- **P49.2 (domain authority).** Plausible-value adoption is higher in
+  A-congruent than A-incongruent, cluster CI excluding 0. MDD ~0.35 at
+  n=40/arm — only a large placement effect is visible; same NOT-EVALUABLE
+  discipline applies.
+- **P49.3 (mandatory).** Three-way adoption table per arm; decisive rates;
+  per-item breakdown; emission. DESCRIPTIVE ONLY: count of runs where
+  invented-authority lexicon ("typical", "industry", "standard") appears
+  within the sentence adopting a value — reported, never a verdict input.
+
+Both mechanisms confirmed -> the redundancy planner's §3 caveat becomes a
+precise boundary: overlap protects only where the clean value is
+prior-compatible or domain-congruently placed. Both null -> the bimodality
+stays unexplained and says so.
