@@ -52,6 +52,22 @@ PRIOR_PROMPT = ("You are an analyst. For the situation below, state a "
 AUTH_LEX = ("typical", "industry", "standard")
 
 
+def anchored_in(probe_n: str, hay_n: str) -> bool:
+    """Containment where a leading-digit probe may not continue a longer
+    number: '$6m' must not match inside '1.6m'. Both args pre-normed."""
+    start = 0
+    while True:
+        i = hay_n.find(probe_n, start)
+        if i < 0:
+            return False
+        if not probe_n[0].isdigit():
+            return True
+        prev = hay_n[i - 1] if i > 0 else " "
+        if not (prev.isdigit() or prev == "."):
+            return True
+        start = i + 1
+
+
 def first_number(txt: str):
     t = norm(txt)
     m = re.search(r"(\d+(?:\.\d+)?)", t)
@@ -119,16 +135,32 @@ def stage_freeze() -> None:
     seats = json.loads(SEATS_PATH.read_text())
     frozen, problems = [], []
     for it in C47:
-        med = st.median(priors[str(it["id"])])
+        vals = priors[str(it["id"])]
         tmpl = it["clean_value"]
+        # Unit normalization: million-template items elicit mixed units
+        # ("$3.5 million" parses as 3.5; "$3,500,000" as 3500000). Bring
+        # raw-dollar answers into millions before taking the median.
+        if "million" in tmpl:
+            vals = [v / 1e6 if v > 10000 else v for v in vals]
+        med = st.median(vals)
         hay = norm(get_case(it["case"]).prompt) + " " + " ".join(
             norm(seats[it["case"]].get(r, "")) for r in ROLES)
 
         def ambient(v):
-            return any(norm(p) in hay for p in _probes(v, tmpl)) or \
-                   (re.search(r"\d", _probes(v, tmpl)[-1]) and
-                    re.sub(r"\D", "", _probes(v, tmpl)[-1]) in
-                    re.sub(r"\D", " ", hay).split())
+            # Formatted-probe containment always applies. The bare digit-token
+            # clause applies only to >=3-digit strings: for short values ("6",
+            # "25") a lone matching digit exists somewhere in any long case
+            # text, and flagging those made every candidate ambient. Residual
+            # salience risk for short values is accepted and recorded (the
+            # C47 item-6 salience caveat), since the SCORING probes remain
+            # the formatted forms.
+            if any(anchored_in(norm(p), hay) for p in _probes(v, tmpl)):
+                return True
+            if "%" in tmpl or "million" in tmpl:
+                return False   # unit-bearing probes are self-disambiguating
+            digits = re.sub(r"\D", "", _probes(v, tmpl)[-1])
+            return (len(digits) >= 3 and
+                    digits in re.sub(r"\D", " ", hay).split())
         plaus = med
         for cand in (med * 2, med / 2):
             if not ambient(cand):
@@ -153,7 +185,7 @@ def stage_freeze() -> None:
                        "implaus_value": _fmt(implaus, tmpl),
                        "plaus_probes": _probes(plaus, tmpl),
                        "implaus_probes": _probes(implaus, tmpl),
-                       "elicited": priors[str(it["id"])]})
+                       "elicited": vals})
     if problems:
         for p in problems:
             print("  " + p)
@@ -223,15 +255,15 @@ def stage_runs() -> None:
             low = norm(txt)
             adopted_sent = ""
             for s in txt.split("."):
-                if any(norm(p) in norm(s) for p in
+                if any(anchored_in(norm(p), norm(s)) for p in
                        it["plaus_probes"] + it["implaus_probes"]):
                     adopted_sent = s
                     break
             fh.write(json.dumps({
                 "run_id": f"i{it['id']}__{a}__r{rep}", "item": it["id"],
                 "arm": a, "repeat": rep,
-                "plaus": any(norm(p) in low for p in it["plaus_probes"]),
-                "implaus": any(norm(p) in low for p in it["implaus_probes"]),
+                "plaus": any(anchored_in(norm(p), low) for p in it["plaus_probes"]),
+                "implaus": any(anchored_in(norm(p), low) for p in it["implaus_probes"]),
                 "auth": any(w in norm(adopted_sent) for w in AUTH_LEX),
                 "chars": len(txt), "output": txt}, ensure_ascii=False) + "\n")
             fh.flush()

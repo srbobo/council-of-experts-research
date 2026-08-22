@@ -7672,3 +7672,17 @@ Both mechanisms confirmed -> the redundancy planner's §3 caveat becomes a
 precise boundary: overlap protects only where the clean value is
 prior-compatible or domain-congruently placed. Both null -> the bimodality
 stays unexplained and says so.
+
+**Cell 49 freeze record + deviation (2026-08-22, recorded while runs are in
+flight, before any result exists):** values frozen 8/8 under the registered
+rule after two guard iterations (a genuinely-ambient 50% caught in seat
+text; probe under-anchoring fixed so "$6m" cannot match inside "1.6m" —
+anchored containment now used in guard AND scoring). **Deviation flagged on
+item 7:** the prior elicitation did not constrain units; the writer's
+answers (60/30/30/90/90) are almost certainly DAYS for a migration window,
+and the frozen "60 weeks vs 120 weeks" therefore places BOTH values far
+from any sane prior, with the plausible one merely closer. The arms remain
+symmetric so no bias enters the comparison, but item 7's per-item row is
+interpretively weak; **P49.1 will be reported with and without item 7**
+(sensitivity registered now, blind to outcomes). Item 1's 262 and item 3's
+$3.15M are rule-driven nudges off ambient numerals, not judgment calls.

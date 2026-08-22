@@ -1,0 +1,218 @@
+[
+ {
+  "id": 0,
+  "case": "case_1_clinical_decision_support",
+  "seat_A": "finance",
+  "seat_B": "healthcare",
+  "quantity": "the vendor's per-seat annual subscription price",
+  "stmt": "For reference on pricing: the vendor's per-seat annual subscription price is {v}.",
+  "ask_line": "Include the vendor's per-seat annual subscription price in your answer.",
+  "congruent_seat": "finance",
+  "plaus_value": "$7,500",
+  "implaus_value": "$15,000",
+  "plaus_probes": [
+   "7,500",
+   "7500"
+  ],
+  "implaus_probes": [
+   "15,000",
+   "15000"
+  ],
+  "elicited": [
+   7500.0,
+   1500.0,
+   7500.0,
+   6000.0,
+   8000.0
+  ]
+ },
+ {
+  "id": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "seat_A": "healthcare",
+  "seat_B": "legal",
+  "quantity": "the planned pilot cohort size",
+  "stmt": "For reference on the rollout: the planned pilot cohort size is {v}.",
+  "ask_line": "Include the planned pilot cohort size in your answer.",
+  "congruent_seat": "healthcare",
+  "plaus_value": "262 patients",
+  "implaus_value": "125 patients",
+  "plaus_probes": [
+   "262 patient",
+   "cohort of 262"
+  ],
+  "implaus_probes": [
+   "125 patient",
+   "cohort of 125"
+  ],
+  "elicited": [
+   250.0,
+   400.0,
+   250.0,
+   500.0,
+   250.0
+  ]
+ },
+ {
+  "id": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "seat_A": "healthcare",
+  "seat_B": "finance",
+  "quantity": "the PBM's quoted rebate rate for this class",
+  "stmt": "For reference on economics: the PBM's quoted rebate rate for this class is {v}.",
+  "ask_line": "Include the PBM's quoted rebate rate in your answer.",
+  "congruent_seat": "finance",
+  "plaus_value": "25%",
+  "implaus_value": "12.5%",
+  "plaus_probes": [
+   "25%",
+   "25 percent"
+  ],
+  "implaus_probes": [
+   "12.5%",
+   "12.5 percent"
+  ],
+  "elicited": [
+   25.0,
+   25.0,
+   20.0,
+   20.0,
+   25.0
+  ]
+ },
+ {
+  "id": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "seat_A": "legal",
+  "seat_B": "finance",
+  "quantity": "the annual lease payment under the proposed sale-leaseback",
+  "stmt": "For reference on the transaction terms: the annual lease payment under the proposed sale-leaseback is {v}.",
+  "ask_line": "Include the annual lease payment under the proposed sale-leaseback in your answer.",
+  "congruent_seat": "finance",
+  "plaus_value": "$3.15 million",
+  "implaus_value": "$6 million",
+  "plaus_probes": [
+   "3.15 million",
+   "$3.15m"
+  ],
+  "implaus_probes": [
+   "6 million",
+   "$6m"
+  ],
+  "elicited": [
+   3.5,
+   3.5,
+   2.3,
+   3.0,
+   1.8
+  ]
+ },
+ {
+  "id": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "seat_A": "finance",
+  "seat_B": "healthcare",
+  "quantity": "the annual training budget allocated to the audit programme",
+  "stmt": "For reference on resourcing: the annual training budget allocated to the audit programme is {v}.",
+  "ask_line": "Include the annual training budget allocated to the programme in your answer.",
+  "congruent_seat": "finance",
+  "plaus_value": "$12,000",
+  "implaus_value": "$24,000",
+  "plaus_probes": [
+   "12,000",
+   "12000"
+  ],
+  "implaus_probes": [
+   "24,000",
+   "24000"
+  ],
+  "elicited": [
+   12000.0,
+   8.0,
+   7.0,
+   12000.0,
+   12000.0
+  ]
+ },
+ {
+  "id": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "seat_A": "finance",
+  "seat_B": "legal",
+  "quantity": "the liquidated-damages cap under discussion",
+  "stmt": "For reference on the negotiation: the liquidated-damages cap under discussion is {v}.",
+  "ask_line": "Include the liquidated-damages cap under discussion in your answer.",
+  "congruent_seat": "legal",
+  "plaus_value": "$500,000",
+  "implaus_value": "$1,000,000",
+  "plaus_probes": [
+   "500,000",
+   "500000"
+  ],
+  "implaus_probes": [
+   "1,000,000",
+   "1000000"
+  ],
+  "elicited": [
+   10.0,
+   500000.0,
+   500000.0,
+   1000000.0,
+   250000.0
+  ]
+ },
+ {
+  "id": 6,
+  "case": "case_l1_l1a",
+  "seat_A": "legal",
+  "seat_B": "finance",
+  "quantity": "the staffing agency's markup rate for temporary pickers",
+  "stmt": "For reference on staffing costs: the agency's markup rate for temporary pickers is {v}.",
+  "ask_line": "Include the staffing agency's markup rate in your answer.",
+  "congruent_seat": "finance",
+  "plaus_value": "25%",
+  "implaus_value": "50%",
+  "plaus_probes": [
+   "25%",
+   "25 percent"
+  ],
+  "implaus_probes": [
+   "50%",
+   "50 percent"
+  ],
+  "elicited": [
+   3.0,
+   25.0,
+   30.0,
+   30.0,
+   25.0
+  ]
+ },
+ {
+  "id": 7,
+  "case": "case_l2_l2b",
+  "seat_A": "finance",
+  "seat_B": "legal",
+  "quantity": "the processor's quoted migration window",
+  "stmt": "For reference on timing: the processor's quoted migration window is {v}.",
+  "ask_line": "Include the processor's quoted migration window in your answer.",
+  "congruent_seat": "legal",
+  "plaus_value": "60 weeks",
+  "implaus_value": "120 weeks",
+  "plaus_probes": [
+   "60 week",
+   "60 week"
+  ],
+  "implaus_probes": [
+   "120 week",
+   "120 week"
+  ],
+  "elicited": [
+   60.0,
+   30.0,
+   30.0,
+   90.0,
+   90.0
+  ]
+ }
+]
