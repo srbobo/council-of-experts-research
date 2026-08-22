@@ -1,0 +1,802 @@
+[
+ {
+  "run_id": "i0__bare__r0",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 6210
+ },
+ {
+  "run_id": "i0__bare__r1",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 7148
+ },
+ {
+  "run_id": "i1__bare__r0",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 5784
+ },
+ {
+  "run_id": "i1__bare__r1",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 8019
+ },
+ {
+  "run_id": "i3__bare__r0",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 10532
+ },
+ {
+  "run_id": "i3__bare__r1",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 9828
+ },
+ {
+  "run_id": "i4__bare__r0",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 4721
+ },
+ {
+  "run_id": "i4__bare__r1",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 5322
+ },
+ {
+  "run_id": "i5__bare__r0",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 5886
+ },
+ {
+  "run_id": "i5__bare__r1",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 5075
+ },
+ {
+  "run_id": "i6__bare__r0",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 3915
+ },
+ {
+  "run_id": "i6__bare__r1",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 4228
+ },
+ {
+  "run_id": "i7__bare__r0",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": false,
+  "chars": 10892
+ },
+ {
+  "run_id": "i7__bare__r1",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 12654
+ },
+ {
+  "run_id": "i2__bare__r0",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "bare",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 4774
+ },
+ {
+  "run_id": "i2__bare__r1",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "bare",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 6548
+ },
+ {
+  "run_id": "i0__bare__r2",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 6065
+ },
+ {
+  "run_id": "i0__bare__r3",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 7241
+ },
+ {
+  "run_id": "i0__bare__r4",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 8154
+ },
+ {
+  "run_id": "i0__planned__r0",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 7649
+ },
+ {
+  "run_id": "i0__planned__r1",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 8488
+ },
+ {
+  "run_id": "i0__planned__r2",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 8663
+ },
+ {
+  "run_id": "i0__planned__r3",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 6844
+ },
+ {
+  "run_id": "i0__planned__r4",
+  "item": 0,
+  "case": "case_1_clinical_decision_support",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 5663
+ },
+ {
+  "run_id": "i1__bare__r2",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 7984
+ },
+ {
+  "run_id": "i1__bare__r3",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 7370
+ },
+ {
+  "run_id": "i1__bare__r4",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 8017
+ },
+ {
+  "run_id": "i1__planned__r0",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 7316
+ },
+ {
+  "run_id": "i1__planned__r1",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 9639
+ },
+ {
+  "run_id": "i1__planned__r2",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": false,
+  "wrong": false,
+  "chars": 9070
+ },
+ {
+  "run_id": "i1__planned__r3",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 9015
+ },
+ {
+  "run_id": "i1__planned__r4",
+  "item": 1,
+  "case": "case_2_cross_border_digital_therapeutic",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 7058
+ },
+ {
+  "run_id": "i2__bare__r2",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 7186
+ },
+ {
+  "run_id": "i2__bare__r3",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 8473
+ },
+ {
+  "run_id": "i2__bare__r4",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 9712
+ },
+ {
+  "run_id": "i2__planned__r0",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": true,
+  "wrong": false,
+  "chars": 7599
+ },
+ {
+  "run_id": "i2__planned__r1",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": true,
+  "wrong": false,
+  "chars": 11206
+ },
+ {
+  "run_id": "i2__planned__r2",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": true,
+  "wrong": false,
+  "chars": 7869
+ },
+ {
+  "run_id": "i2__planned__r3",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": true,
+  "wrong": false,
+  "chars": 8401
+ },
+ {
+  "run_id": "i2__planned__r4",
+  "item": 2,
+  "case": "case_4_glp1_employer_coverage",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": true,
+  "wrong": false,
+  "chars": 8917
+ },
+ {
+  "run_id": "i3__bare__r2",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 9288
+ },
+ {
+  "run_id": "i3__bare__r3",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 8179
+ },
+ {
+  "run_id": "i3__bare__r4",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 9887
+ },
+ {
+  "run_id": "i3__planned__r0",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": true,
+  "wrong": false,
+  "chars": 8425
+ },
+ {
+  "run_id": "i3__planned__r1",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": true,
+  "wrong": false,
+  "chars": 10836
+ },
+ {
+  "run_id": "i3__planned__r2",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": true,
+  "wrong": false,
+  "chars": 9625
+ },
+ {
+  "run_id": "i3__planned__r3",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": true,
+  "wrong": false,
+  "chars": 11298
+ },
+ {
+  "run_id": "i3__planned__r4",
+  "item": 3,
+  "case": "case_5_nonprofit_hospital_pe_conversion",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": true,
+  "wrong": false,
+  "chars": 11885
+ },
+ {
+  "run_id": "i4__bare__r2",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 6022
+ },
+ {
+  "run_id": "i4__bare__r3",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 5381
+ },
+ {
+  "run_id": "i4__bare__r4",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 7066
+ },
+ {
+  "run_id": "i4__planned__r0",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 5215
+ },
+ {
+  "run_id": "i4__planned__r1",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": true,
+  "wrong": false,
+  "chars": 6732
+ },
+ {
+  "run_id": "i4__planned__r2",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": true,
+  "wrong": false,
+  "chars": 5670
+ },
+ {
+  "run_id": "i4__planned__r3",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": true,
+  "wrong": false,
+  "chars": 5984
+ },
+ {
+  "run_id": "i4__planned__r4",
+  "item": 4,
+  "case": "case_8_trigger_light_hand_hygiene",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": true,
+  "wrong": false,
+  "chars": 6205
+ },
+ {
+  "run_id": "i5__bare__r2",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 6048
+ },
+ {
+  "run_id": "i5__bare__r3",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 5031
+ },
+ {
+  "run_id": "i5__bare__r4",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 5819
+ },
+ {
+  "run_id": "i5__planned__r0",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": false,
+  "wrong": true,
+  "chars": 9067
+ },
+ {
+  "run_id": "i5__planned__r1",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": false,
+  "wrong": true,
+  "chars": 6696
+ },
+ {
+  "run_id": "i5__planned__r2",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 8949
+ },
+ {
+  "run_id": "i5__planned__r3",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": false,
+  "wrong": false,
+  "chars": 5138
+ },
+ {
+  "run_id": "i5__planned__r4",
+  "item": 5,
+  "case": "case_9_trigger_light_nda_clauses",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": true,
+  "wrong": false,
+  "chars": 5790
+ },
+ {
+  "run_id": "i6__bare__r2",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": true,
+  "chars": 3930
+ },
+ {
+  "run_id": "i6__bare__r3",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": true,
+  "chars": 4145
+ },
+ {
+  "run_id": "i6__bare__r4",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": true,
+  "chars": 3989
+ },
+ {
+  "run_id": "i6__planned__r0",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": true,
+  "wrong": true,
+  "chars": 3834
+ },
+ {
+  "run_id": "i6__planned__r1",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": true,
+  "wrong": true,
+  "chars": 4249
+ },
+ {
+  "run_id": "i6__planned__r2",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": true,
+  "wrong": true,
+  "chars": 3529
+ },
+ {
+  "run_id": "i6__planned__r3",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": true,
+  "wrong": true,
+  "chars": 3937
+ },
+ {
+  "run_id": "i6__planned__r4",
+  "item": 6,
+  "case": "case_l1_l1a",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": true,
+  "wrong": true,
+  "chars": 3479
+ },
+ {
+  "run_id": "i7__bare__r2",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "bare",
+  "repeat": 2,
+  "clean": false,
+  "wrong": false,
+  "chars": 9328
+ },
+ {
+  "run_id": "i7__bare__r3",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "bare",
+  "repeat": 3,
+  "clean": false,
+  "wrong": false,
+  "chars": 11934
+ },
+ {
+  "run_id": "i7__bare__r4",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "bare",
+  "repeat": 4,
+  "clean": false,
+  "wrong": false,
+  "chars": 10898
+ },
+ {
+  "run_id": "i7__planned__r0",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "planned",
+  "repeat": 0,
+  "clean": false,
+  "wrong": false,
+  "chars": 8707
+ },
+ {
+  "run_id": "i7__planned__r1",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "planned",
+  "repeat": 1,
+  "clean": false,
+  "wrong": false,
+  "chars": 8441
+ },
+ {
+  "run_id": "i7__planned__r2",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "planned",
+  "repeat": 2,
+  "clean": false,
+  "wrong": false,
+  "chars": 11965
+ },
+ {
+  "run_id": "i7__planned__r3",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "planned",
+  "repeat": 3,
+  "clean": false,
+  "wrong": false,
+  "chars": 10961
+ },
+ {
+  "run_id": "i7__planned__r4",
+  "item": 7,
+  "case": "case_l2_l2b",
+  "arm": "planned",
+  "repeat": 4,
+  "clean": false,
+  "wrong": false,
+  "chars": 11193
+ }
+]

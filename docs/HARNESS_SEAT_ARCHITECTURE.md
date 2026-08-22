@@ -58,7 +58,13 @@ plus the roster line. Nothing else.
 Cells 35/37: the writer is a source selector. It prefers an uncorrupted
 source when one covers the contested quantity (0/27 propagation) and
 propagates the error when none does (5/27 all-corrupt, 12/27 stripped).
-Protection = overlap, and overlap is a design variable.
+Protection = overlap, and overlap is a design variable — **prospectively
+tested as Cell 47**: assigning the quantity to a second seat halved
+corrupted-value adoption (0.900 -> 0.450, CI [+0.200, +0.725]) with the
+clean value actually adopted (0.000 -> 0.500), not merely suppressed.
+Caveat from the same cell: protection was bimodal across items (three
+fully protected, two not at all), so the planner reduces expected
+corruption; it does not guarantee per-quantity immunity.
 
 **The redundancy planner**: the orchestrator identifies load-bearing
 quantities in the decomposition (numbers, gating rules, deadlines) and

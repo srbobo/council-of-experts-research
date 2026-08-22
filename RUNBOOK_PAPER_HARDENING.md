@@ -7437,3 +7437,43 @@ to 24%/37% (verified clean against case and both seats), its cached runs
 purged, and the pilot re-run for it. This is the registered redesign
 consequence exercised for cause, not tuning: the values changed to satisfy
 a frozen construction rule, blind to any outcome.
+
+## CELL 47 (L2) VERDICT (2026-08-22) — the redundancy planner is causal: L2.1 and L2.2 SUPPORTED
+
+80 runs, zero failures, exact-match instrument, decisive rate 0.94.
+
+| arm | n | clean | wrong | both | NEITHER | chars |
+|---|---|---|---|---|---|---|
+| bare | 40 | 0 | 36 | 0 | 4 | 7217 |
+| planned | 40 | 15 | 13 | 5 | 7 | 7780 |
+
+- **L2.1 SUPPORTED** — corrupted-value adoption 0.900 bare vs 0.450
+  planned, cluster CI [+0.200, +0.725]. Assigning the quantity to a second
+  seat HALVES corruption adoption.
+- **L2.2 SUPPORTED** — clean-value adoption 0.000 vs 0.500, CI
+  [+0.175, +0.825]. The co-source is USED: selection, not suppression.
+  (Bare-arm clean = 0/40 also validates construction: the clean value
+  existed nowhere in that arm and was never hallucinated.)
+
+Two readings that must travel with the headline:
+
+**The bare arm is the sharper scare number.** With the ask-line forcing
+the quantity and the corrupted statement as the only source, the writer
+repeated the corruption in **0.900 of runs** — the strongest single
+measurement of the no-verification finding in the program (Cell 37's
+stripped arm was 12/27 without an ask-line). A council WITHOUT engineered
+overlap is, on contested quantities, a corruption amplifier with an
+authoritative tone.
+
+**Protection is bimodal across items, not uniform.** Per-item corrupted
+adoption bare->planned: three items fully protected (5/5 -> 0-1/5), two
+completely unprotected (5/5 -> 5/5), three partial. No seat-order or
+role pattern explains the split at n=5/item; recorded as OPEN — "which
+quantities the selector protects" is item-dependent, and the mean halving
+should not be quoted as if uniform. The planned arm's 5 both-values runs
+show the writer sometimes surfaces the conflict rather than resolving it,
+which is itself the tension-list behavior Cell 44 exploits.
+
+**Consequence for the harness doc:** §3 (redundancy is engineered) is now
+PROSPECTIVELY TESTED — registered before the run, supported by it — and
+the doc gains the bimodality caveat.
