@@ -7569,3 +7569,11 @@ caveat sentences in the final artifact (a known-value check).
 Goodhart clamp: appendix content comes only from validated labels; no
 selection, rewording, or ranking of caveats may be tuned; preference
 shares are reported, never optimized.
+
+**Cell 48 deviation (2026-08-22, before any judging):** the registration's
+"18/18 coverage verified" checked labeled-upstream presence per case, not
+agreed-caveat presence. `case_8_trigger_light_hand_hygiene`'s upstream
+contains ZERO both-judge caveat sentences — a genuinely caveat-free seat
+stack, consistent with its trigger-light construction — so no appendix can
+exist for it. It is EXCLUDED (17 cases, 119 pairs), not backfilled; the
+cluster bootstrap runs over the 17. Recorded before any judgment was made.
