@@ -7742,3 +7742,58 @@ this cell used for plausibility.
 - The elicited-prior machinery (measure the writer's own state, freeze
   values by rule) worked and is reusable; its unit-elicitation gap (item
   7) is the recorded fix for next use.
+
+---
+
+## CELL 50 PRE-REGISTRATION — the ownership law (registered 2026-08-22, before any elicitation or run)
+
+Cell 49's descriptive finding: conflict arbitration tracks a fixed
+per-item seat at 0.895 while tracking the plausible value at only 0.544 —
+but the modal seat was identified from the runs it explains. Cell 50
+breaks the circularity: the ownership map is elicited from the writer
+INDEPENDENTLY, frozen as a prediction, then tested on FRESH quantities.
+
+### Stages, in registered order
+
+1. **`own`** — for each fresh quantity, ask the writer (no seats, no
+   values): "which ONE analyst — healthcare, legal, or finance — would you
+   rely on as the source for this figure?" 5 elicitations at temperature
+   0.8. **Frozen stability rule:** predicted owner = modal answer; an item
+   is STABLE iff the mode has >= 4/5. Primary analysis runs on stable
+   items; an all-items sensitivity is reported. Rule fixed now, blind.
+2. **`prior`** — value elicitation with the C49 machinery, UNIT-CONSTRAINED
+   in the prompt (the item-7 fix: the elicitation names the unit).
+3. **`freeze`** — V1 = median (nudged off ambient numerals), V2 = 2x or
+   half (ambient-avoiding), anchored-containment guards on probes vs case
+   and all seat text. Foil seat = the next role after the predicted owner
+   in the (healthcare, legal, finance) cycle — deterministic, no judgment.
+4. **`runs`** — owner and foil seats state conflicting values; two
+   placements (V1-with-owner / V2-with-owner) x 8 items x 5 repeats = 80
+   runs; identical ask-line names the quantity, never a value. Exact
+   match, anchored probes, no judge.
+
+### Items
+
+8 FRESH quantities on 8 cases largely unused by Cells 47/49 (burned
+quantities excluded). All added host-coherently; frozen in
+docs/CELL50_ITEMS.json before elicitation.
+
+### Predictions
+
+- **P50.1 (the ownership law).** Pooled over stable items, adoption of the
+  PREDICTED-owner seat's value — whichever value it carries — exceeds the
+  0.5 two-value chance rate, cluster CI over items excluding 0.5.
+  Counterbalanced placement cancels any value effect. *Attainability: C49's
+  observed seat-consistency was 0.895 against an MDD of ~0.68 at this
+  clustering — the expected effect is far above the floor; a spanning CI
+  with point <= 0.5 falsifies, a spanning CI with point above is NOT
+  EVALUABLE.* Supported -> harness §3 upgrades to an operating rule: place
+  the clean co-source in the pre-measured owner seat.
+- **P50.2 (map stability, mandatory).** Per-item elicitation agreement
+  k/5; count of stable items. If < 4 items are stable, P50.1 is NOT
+  EVALUABLE by construction and says so.
+- **P50.3 (mandatory).** Three-way adoption table per placement, per-item
+  breakdown, decisive rates, emission.
+
+Goodhart clamp: the ownership map is a measurement, never a target; no
+item, prompt, or foil assignment may be tuned after this registration.
