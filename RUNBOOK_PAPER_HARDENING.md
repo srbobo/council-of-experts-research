@@ -7686,3 +7686,59 @@ symmetric so no bias enters the comparison, but item 7's per-item row is
 interpretively weak; **P49.1 will be reported with and without item 7**
 (sensitivity registered now, blind to outcomes). Item 1's 262 and item 3's
 $3.15M are rule-driven nudges off ambient numerals, not judgment calls.
+
+## CELL 49 VERDICT (2026-08-22) — both registered predictions NOT EVALUABLE; the table exposes a third mechanism neither predicted
+
+80 runs, zero failures; decisive 57/80 = 0.71.
+
+- **P49.1 (prior arbitration): NOT EVALUABLE.** Pooled plausible share
+  0.544 [0.455, 0.652] — point near chance, interval inside the 0.68 MDD.
+  Registered sensitivity without item 7: 0.519 [0.429, 0.619] — unchanged.
+  The writer shows essentially NO preference for its own elicited-prior
+  value.
+- **P49.2 (domain authority as I labelled it): NOT EVALUABLE.** Congruent
+  0.577 vs incongruent 0.516, diff CI [-0.617, +0.582].
+
+### The descriptive finding (post-hoc, unregistered, and stark)
+
+Per-item adoption is near-deterministic — but it tracks a fixed SEAT per
+item, not a value:
+
+| consistency metric | share |
+|---|---|
+| adoption of the per-item modal SEAT's value | **51/57 = 0.895** |
+| adoption of the prior-plausible VALUE | 31/57 = 0.544 |
+
+Items 3, 5, 7 are 10/10, 6/6, 5/5 seat-deterministic ACROSS
+counterbalanced arms — the same seat's value wins whichever value it
+carries. Both registered mechanisms pooled to nulls because each was the
+wrong cut of a stronger regularity: **the writer binds each quantity to an
+owner seat and takes that seat's number value-blind.** My frozen
+congruence labels matched the writer's ownership map on only 4/8 items —
+the ownership map is real, near-total, and NOT the analyst's intuitive
+domain assignment (a clinical program's budget belonged to healthcare;
+the damages cap and migration window belonged to finance).
+
+Circularity caveat, stated: the modal seat is identified from the same 57
+decisive runs it explains, so 0.895 is descriptive. It is however
+consistency ACROSS counterbalanced arms, which mere noise cannot produce,
+and it retroactively explains Cell 47's bimodality exactly: planner
+overlap protects when the clean value sits in the OWNER seat and fails
+when the corrupted seat owns the quantity. A registered confirmation is
+cheap: elicit the ownership map independently (ask the writer which seat
+it would source each quantity from, before seeing values), freeze
+predictions, then test on fresh items — the same measured-prior pattern
+this cell used for plausibility.
+
+### Consequences
+
+- Harness §3's caveat sharpens from "bimodal, cause open" to a candidate
+  law: redundancy protects iff the clean co-source is the OWNER seat.
+  Descriptive until the confirmation cell runs.
+- The C47 read's "prior-plausibility" hypothesis is effectively dead as
+  the primary mechanism (0.544 at n=57); item 6's "industry-average"
+  labeling was ownership-arbitration wearing prior language, not prior
+  arbitration.
+- The elicited-prior machinery (measure the writer's own state, freeze
+  values by rule) worked and is reusable; its unit-elicitation gap (item
+  7) is the recorded fix for next use.
