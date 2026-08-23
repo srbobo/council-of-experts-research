@@ -1,0 +1,702 @@
+[
+ {
+  "run_id": "i0__v1-owner__r0",
+  "item": 0,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 5326
+ },
+ {
+  "run_id": "i0__v1-owner__r1",
+  "item": 0,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 5604
+ },
+ {
+  "run_id": "i0__v1-owner__r2",
+  "item": 0,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 5695
+ },
+ {
+  "run_id": "i0__v1-owner__r3",
+  "item": 0,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 8224
+ },
+ {
+  "run_id": "i0__v1-owner__r4",
+  "item": 0,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 5770
+ },
+ {
+  "run_id": "i0__v2-owner__r0",
+  "item": 0,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 8081
+ },
+ {
+  "run_id": "i0__v2-owner__r1",
+  "item": 0,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5709
+ },
+ {
+  "run_id": "i0__v2-owner__r2",
+  "item": 0,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 10117
+ },
+ {
+  "run_id": "i0__v2-owner__r3",
+  "item": 0,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7435
+ },
+ {
+  "run_id": "i0__v2-owner__r4",
+  "item": 0,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8607
+ },
+ {
+  "run_id": "i2__v1-owner__r0",
+  "item": 2,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 4513
+ },
+ {
+  "run_id": "i2__v1-owner__r1",
+  "item": 2,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 4887
+ },
+ {
+  "run_id": "i2__v1-owner__r2",
+  "item": 2,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 4675
+ },
+ {
+  "run_id": "i2__v1-owner__r3",
+  "item": 2,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 4889
+ },
+ {
+  "run_id": "i2__v1-owner__r4",
+  "item": 2,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 4601
+ },
+ {
+  "run_id": "i2__v2-owner__r0",
+  "item": 2,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 4568
+ },
+ {
+  "run_id": "i2__v2-owner__r1",
+  "item": 2,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 4067
+ },
+ {
+  "run_id": "i2__v2-owner__r2",
+  "item": 2,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 4120
+ },
+ {
+  "run_id": "i2__v2-owner__r3",
+  "item": 2,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 4939
+ },
+ {
+  "run_id": "i2__v2-owner__r4",
+  "item": 2,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 3926
+ },
+ {
+  "run_id": "i3__v1-owner__r0",
+  "item": 3,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6779
+ },
+ {
+  "run_id": "i3__v1-owner__r1",
+  "item": 3,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8091
+ },
+ {
+  "run_id": "i3__v1-owner__r2",
+  "item": 3,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8437
+ },
+ {
+  "run_id": "i3__v1-owner__r3",
+  "item": 3,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8033
+ },
+ {
+  "run_id": "i3__v1-owner__r4",
+  "item": 3,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7839
+ },
+ {
+  "run_id": "i3__v2-owner__r0",
+  "item": 3,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6953
+ },
+ {
+  "run_id": "i3__v2-owner__r1",
+  "item": 3,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8248
+ },
+ {
+  "run_id": "i3__v2-owner__r2",
+  "item": 3,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6294
+ },
+ {
+  "run_id": "i3__v2-owner__r3",
+  "item": 3,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 6889
+ },
+ {
+  "run_id": "i3__v2-owner__r4",
+  "item": 3,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7582
+ },
+ {
+  "run_id": "i4__v1-owner__r0",
+  "item": 4,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6171
+ },
+ {
+  "run_id": "i4__v1-owner__r1",
+  "item": 4,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6077
+ },
+ {
+  "run_id": "i4__v1-owner__r2",
+  "item": 4,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6888
+ },
+ {
+  "run_id": "i4__v1-owner__r3",
+  "item": 4,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8294
+ },
+ {
+  "run_id": "i4__v1-owner__r4",
+  "item": 4,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7684
+ },
+ {
+  "run_id": "i4__v2-owner__r0",
+  "item": 4,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6868
+ },
+ {
+  "run_id": "i4__v2-owner__r1",
+  "item": 4,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6777
+ },
+ {
+  "run_id": "i4__v2-owner__r2",
+  "item": 4,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7004
+ },
+ {
+  "run_id": "i4__v2-owner__r3",
+  "item": 4,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 8112
+ },
+ {
+  "run_id": "i4__v2-owner__r4",
+  "item": 4,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5950
+ },
+ {
+  "run_id": "i5__v1-owner__r0",
+  "item": 5,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5499
+ },
+ {
+  "run_id": "i5__v1-owner__r1",
+  "item": 5,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5689
+ },
+ {
+  "run_id": "i5__v1-owner__r2",
+  "item": 5,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 4118
+ },
+ {
+  "run_id": "i5__v1-owner__r3",
+  "item": 5,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 6651
+ },
+ {
+  "run_id": "i5__v1-owner__r4",
+  "item": 5,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5733
+ },
+ {
+  "run_id": "i5__v2-owner__r0",
+  "item": 5,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6163
+ },
+ {
+  "run_id": "i5__v2-owner__r1",
+  "item": 5,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6428
+ },
+ {
+  "run_id": "i5__v2-owner__r2",
+  "item": 5,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 5652
+ },
+ {
+  "run_id": "i5__v2-owner__r3",
+  "item": 5,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 7501
+ },
+ {
+  "run_id": "i5__v2-owner__r4",
+  "item": 5,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 6082
+ },
+ {
+  "run_id": "i6__v1-owner__r0",
+  "item": 6,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 6997
+ },
+ {
+  "run_id": "i6__v1-owner__r1",
+  "item": 6,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 6798
+ },
+ {
+  "run_id": "i6__v1-owner__r2",
+  "item": 6,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 6138
+ },
+ {
+  "run_id": "i6__v1-owner__r3",
+  "item": 6,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 6500
+ },
+ {
+  "run_id": "i6__v1-owner__r4",
+  "item": 6,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 8416
+ },
+ {
+  "run_id": "i6__v2-owner__r0",
+  "item": 6,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7318
+ },
+ {
+  "run_id": "i6__v2-owner__r1",
+  "item": 6,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 7059
+ },
+ {
+  "run_id": "i6__v2-owner__r2",
+  "item": 6,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 7275
+ },
+ {
+  "run_id": "i6__v2-owner__r3",
+  "item": 6,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7001
+ },
+ {
+  "run_id": "i6__v2-owner__r4",
+  "item": 6,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 7302
+ },
+ {
+  "run_id": "i7__v1-owner__r0",
+  "item": 7,
+  "place": "v1-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 8087
+ },
+ {
+  "run_id": "i7__v1-owner__r1",
+  "item": 7,
+  "place": "v1-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": false,
+  "chars": 7965
+ },
+ {
+  "run_id": "i7__v1-owner__r2",
+  "item": 7,
+  "place": "v1-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 8861
+ },
+ {
+  "run_id": "i7__v1-owner__r3",
+  "item": 7,
+  "place": "v1-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 7734
+ },
+ {
+  "run_id": "i7__v1-owner__r4",
+  "item": 7,
+  "place": "v1-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": false,
+  "chars": 9471
+ },
+ {
+  "run_id": "i7__v2-owner__r0",
+  "item": 7,
+  "place": "v2-owner",
+  "repeat": 0,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 5837
+ },
+ {
+  "run_id": "i7__v2-owner__r1",
+  "item": 7,
+  "place": "v2-owner",
+  "repeat": 1,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 9834
+ },
+ {
+  "run_id": "i7__v2-owner__r2",
+  "item": 7,
+  "place": "v2-owner",
+  "repeat": 2,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 8171
+ },
+ {
+  "run_id": "i7__v2-owner__r3",
+  "item": 7,
+  "place": "v2-owner",
+  "repeat": 3,
+  "stable": true,
+  "owner_val": true,
+  "foil_val": true,
+  "chars": 9412
+ },
+ {
+  "run_id": "i7__v2-owner__r4",
+  "item": 7,
+  "place": "v2-owner",
+  "repeat": 4,
+  "stable": true,
+  "owner_val": false,
+  "foil_val": true,
+  "chars": 7245
+ }
+]

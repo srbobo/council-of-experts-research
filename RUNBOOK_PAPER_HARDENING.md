@@ -7806,3 +7806,49 @@ proceed, all ownership-stable, so P50.1's >= 4-stable-items requirement
 holds. The elicited ownership map for the record: five finance, one legal
 (sick-leave accrual cap, unanimous), two healthcare (prior-auth
 turnaround, pilot site count) — non-trivial and near-unanimous.
+
+## CELL 50 VERDICT (2026-08-23) — P50.1 FALSIFIED: the elicited ownership map does not predict arbitration. The confirmation cell did its job by killing the law.
+
+70 runs over 7 stable items, zero failures.
+
+**P50.1 FALSIFIED at the cleanest possible number:** predicted-owner-seat
+value adoption **0.500 [0.323, 0.739]**, n=28 decisive — exact chance,
+against Cell 49's descriptive 0.895 and an MDD of ~0.68. The map itself
+was near-unanimous (P50.2: 7/7 stable, mostly 5/5 votes, non-trivially
+distributed across all three seats) — the writer HAS a reproducible
+ownership opinion; that opinion simply does not govern its arbitration.
+
+**Cell 49's 0.895 is therefore judged what P50 was built to test: a
+post-hoc artifact.** Per-item seat-consistency identified from the runs it
+explained did not survive prospective prediction on fresh items. The
+candidate ownership law is dead before calcifying, which is the
+confirmation design working exactly as intended.
+
+### Two observations recorded, both descriptive
+
+1. **Regime shift:** decisive rate collapsed to 0.40 (C49: 0.71) with
+   NEITHER at 35/70 — these fully-invented auxiliary quantities are
+   ignored half the time even under an ask-line. Arbitration behavior may
+   not be stable across quantity types, which alone would explain why
+   per-item patterns fail to transfer.
+2. **Post-hoc value-tracking, opposite to C49:** the elicited-median value
+   (V1) was adopted in 20/28 = 0.714 decisive runs (~[0.55, 0.88],
+   unclustered) — prior-tracking APPEARING here after C49 measured it at
+   0.544. Two cells, two post-hoc patterns, each contradicting the other's:
+   the honest conclusion is that **conflict arbitration on planted
+   auxiliary quantities is item-idiosyncratic**, with no mechanism yet
+   surviving prospective test — not prior (C49), not my domain labels
+   (C49), not elicited ownership (C50).
+
+### Consequences
+
+- Harness §3's caveat stays exactly where Cell 47 left it: protection is
+  real on average, bimodal across items, **cause OPEN** — and now with two
+  candidate mechanisms tested and killed rather than zero.
+- The measure-the-model's-own-state machinery keeps its record split:
+  elicited priors and elicited ownership are both STABLE self-reports that
+  both FAIL to predict behavior — itself a finding echoing Cell 45
+  (models' self-knowledge does not govern their action).
+- No follow-up is registered from this verdict. The mechanism hunt has
+  spent three cheap cells; the next attempt should wait for a design that
+  predicts rather than classifies post-hoc.
