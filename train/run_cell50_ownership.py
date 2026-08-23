@@ -180,9 +180,12 @@ def stage_freeze() -> None:
                        "v1_probes": _probes(v1, it["vtype"]),
                        "v2_probes": _probes(v2, it["vtype"])})
     if problems:
+        # C48 precedent: items whose rule-values collide with ambient text
+        # are EXCLUDED under the frozen rule, never re-valued by judgment.
         for p in problems:
-            print("  " + p)
-        raise SystemExit("FREEZE GUARDS FAILED")
+            print("  EXCLUDED — " + p)
+    if len(frozen) < 6:
+        raise SystemExit("FREEZE GUARDS FAILED — fewer than 6 items survive")
     (OUT / "frozen.json").write_text(json.dumps(frozen, indent=1))
     for f in frozen:
         print(f"  item {f['id']}: owner={f['owner']}"

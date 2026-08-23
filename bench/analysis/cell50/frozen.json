@@ -1,0 +1,174 @@
+[
+ {
+  "id": 0,
+  "case": "case_3_capitated_risk_contract",
+  "quantity": "the proposed stop-loss attachment point per member per year",
+  "unit": "dollars per member per year",
+  "vtype": "dollars",
+  "stmt": "For reference on risk terms: the proposed stop-loss attachment point is {v} per member per year.",
+  "ask_line": "Include the proposed stop-loss attachment point in your answer.",
+  "owner": "finance",
+  "foil": "healthcare",
+  "stable": true,
+  "own_votes": {
+   "finance": 5
+  },
+  "v1": "$30,000",
+  "v2": "$60,000",
+  "v1_probes": [
+   "30,000",
+   "30000"
+  ],
+  "v2_probes": [
+   "60,000",
+   "60000"
+  ]
+ },
+ {
+  "id": 2,
+  "case": "case_10_trigger_light_depreciation",
+  "quantity": "the equipment's expected annual maintenance cost",
+  "unit": "dollars per year",
+  "vtype": "dollars",
+  "stmt": "For reference on operating costs: the equipment's expected annual maintenance cost is {v}.",
+  "ask_line": "Include the equipment's expected annual maintenance cost in your answer.",
+  "owner": "finance",
+  "foil": "healthcare",
+  "stable": true,
+  "own_votes": {
+   "finance": 5
+  },
+  "v1": "$3,150",
+  "v2": "$1,500",
+  "v1_probes": [
+   "3,150",
+   "3150"
+  ],
+  "v2_probes": [
+   "1,500",
+   "1500"
+  ]
+ },
+ {
+  "id": 3,
+  "case": "case_7_trigger_light_baseline",
+  "quantity": "the annual budget for the internal communications platform",
+  "unit": "dollars per year",
+  "vtype": "dollars",
+  "stmt": "For reference on resourcing: the annual budget for the internal communications platform is {v}.",
+  "ask_line": "Include the annual budget for the internal communications platform in your answer.",
+  "owner": "finance",
+  "foil": "healthcare",
+  "stable": true,
+  "own_votes": {
+   "finance": 5
+  },
+  "v1": "$35,000",
+  "v2": "$70,000",
+  "v1_probes": [
+   "35,000",
+   "35000"
+  ],
+  "v2_probes": [
+   "70,000",
+   "70000"
+  ]
+ },
+ {
+  "id": 4,
+  "case": "case_l1_l1b",
+  "quantity": "the annual sick-leave accrual cap under the proposed policy",
+  "unit": "hours per year",
+  "vtype": "hours",
+  "stmt": "For reference on the policy terms: the annual accrual cap under the proposed policy is {v}.",
+  "ask_line": "Include the annual accrual cap under the proposed policy in your answer.",
+  "owner": "legal",
+  "foil": "finance",
+  "stable": true,
+  "own_votes": {
+   "legal": 5
+  },
+  "v1": "50 hours",
+  "v2": "96 hours",
+  "v1_probes": [
+   "50 hour"
+  ],
+  "v2_probes": [
+   "96 hour"
+  ]
+ },
+ {
+  "id": 5,
+  "case": "case_l2_l2a",
+  "quantity": "the reminder vendor's monthly subscription fee",
+  "unit": "dollars per month",
+  "vtype": "dollars",
+  "stmt": "For reference on vendor terms: the reminder vendor's monthly subscription fee is {v}.",
+  "ask_line": "Include the reminder vendor's monthly subscription fee in your answer.",
+  "owner": "finance",
+  "foil": "healthcare",
+  "stable": true,
+  "own_votes": {
+   "finance": 5
+  },
+  "v1": "$1,995",
+  "v2": "$3,800",
+  "v1_probes": [
+   "1,995",
+   "1995"
+  ],
+  "v2_probes": [
+   "3,800",
+   "3800"
+  ]
+ },
+ {
+  "id": 6,
+  "case": "case_l3_l3a",
+  "quantity": "the PBM's prior-authorization turnaround for these drugs",
+  "unit": "days",
+  "vtype": "days",
+  "stmt": "For reference on administration: the PBM's prior-authorization turnaround for these drugs is {v}.",
+  "ask_line": "Include the PBM's prior-authorization turnaround in your answer.",
+  "owner": "healthcare",
+  "foil": "legal",
+  "stable": true,
+  "own_votes": {
+   "healthcare": 4,
+   "finance": 1
+  },
+  "v1": "3 days",
+  "v2": "6 days",
+  "v1_probes": [
+   "3 day"
+  ],
+  "v2_probes": [
+   "6 day"
+  ]
+ },
+ {
+  "id": 7,
+  "case": "case_l4_l4a",
+  "quantity": "the planned number of pilot clinical sites",
+  "unit": "sites",
+  "vtype": "sites",
+  "stmt": "For reference on the rollout plan: the planned number of pilot clinical sites is {v}.",
+  "ask_line": "Include the planned number of pilot clinical sites in your answer.",
+  "owner": "healthcare",
+  "foil": "legal",
+  "stable": true,
+  "own_votes": {
+   "healthcare": 5
+  },
+  "v1": "12 sites",
+  "v2": "24 sites",
+  "v1_probes": [
+   "12 site",
+   "12 pilot"
+  ],
+  "v2_probes": [
+   "24 site",
+   "24 pilot"
+  ]
+ }
+]

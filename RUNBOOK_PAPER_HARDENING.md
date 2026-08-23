@@ -7797,3 +7797,12 @@ docs/CELL50_ITEMS.json before elicitation.
 
 Goodhart clamp: the ownership map is a measurement, never a target; no
 item, prompt, or foil assignment may be tuned after this registration.
+
+**Cell 50 freeze deviation (2026-08-22, before any run):** item 1's rule
+values (2x and half of the $70M elicited median) both collide with ambient
+numerals in case_6's seat text. Per the Cell 48 precedent the item is
+EXCLUDED under the frozen rule rather than re-valued by judgment; 7 items
+proceed, all ownership-stable, so P50.1's >= 4-stable-items requirement
+holds. The elicited ownership map for the record: five finance, one legal
+(sick-leave accrual cap, unanimous), two healthcare (prior-auth
+turnaround, pilot site count) — non-trivial and near-unanimous.
