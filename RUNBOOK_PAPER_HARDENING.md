@@ -8025,3 +8025,61 @@ OPEN and is now observed in a third design.
 - Scope: one artifact corpus (C41 control), one primary reader family,
   planted caveats; verdict population is the 11 G1-gated items (deviation
   recorded above; no all-18 sensitivity exists).
+
+## CELL 52 PRE-REGISTRATION (2026-08-24) — isolation made causal: does seeing sibling outputs bleed a seat out of its lane?
+
+Registered before any run.
+
+**Question.** Harness §2 (seats receive their task plus a one-line roster,
+never sibling outputs) is the only component still resting on history —
+the v2→v3 lane-bleed lesson — rather than a one-factor cell. This cell
+isolates the sibling-visibility factor.
+
+**Design — one factor, sibling context byte-fixed.** Production seat
+setup throughout: the frozen Cell 30 role prompts (SEATS), gpt-oss:20b,
+temperature 0.7, max_tokens 4096, full case prompt (as the archived
+corpus was generated — the sub-question decomposition clause of §2 is NOT
+under test here, and the scope is stated as the sibling-output clause).
+- **Arm A (roster-only)**: role system prompt; user = case prompt + one
+  roster line naming the two other specialists as separately consulted.
+- **Arm B (sibling-visible)**: identical, plus the two sibling seats'
+  ARCHIVED contributions (bench/analysis/cell41/seats.json) appended
+  under a context header. Sibling text is byte-identical across reps and
+  arms-of-comparison, so the single varying factor is its presence.
+
+**Outcome (frozen instrument).** Off-domain framework density per kchar
+from the domain-signature probe's FROZEN lexicon and profile(): for a
+seat in role r, the sum of fw_d over the two other domains. Known-term
+containment; no regex-as-NLP.
+
+**Grid.** 18 cases × 3 roles × 2 arms × 3 reps = 324 generations.
+Cluster = case (18). Degeneracy screen: outputs < 800 chars are excluded
+and counted (seat-gate standard); preflight; consecutive-failure abort
+at 5.
+
+**Attainability (computed from archive before registration).** Baseline
+off-domain density in the 54 archived seat texts: mean 0.198/kchar, sd
+0.184, 15/54 at zero. Registered simulation (paired case-cluster
+bootstrap, 18 clusters, unit sd 0.8×archive): power 0.74 at +0.05/kchar,
+~1.00 at +0.10/kchar. MDD ≈ +0.05–0.08/kchar — roughly a third of
+baseline, far below what visible sibling text dense in off-domain terms
+should produce if bleed is real.
+
+**Predictions.**
+- **P52.1 — bleed is causal (confirmatory).** Mean off-domain density is
+  higher with siblings visible: per-unit (case × role) diff of rep-means,
+  B − A, cluster bootstrap by case (5000 draws), 95% CI > 0. FALSIFIED →
+  §2's sibling prohibition loses its causal warrant and is downgraded to
+  a historical-lesson note.
+- **P52.2 — echo-excluded bleed (registered estimation).** Same contrast
+  counting only lexicon terms NOT present (normed containment) in the
+  case's sibling texts — the exclusion set is defined per case × role
+  from the sibling texts and applied identically in BOTH arms. Frozen
+  interpretation: P52.1 supported with P52.2 spanning 0 → the bleed is
+  echo/quotation of visible sibling material; both CIs exclude 0 → the
+  bleed extends beyond echo into independent out-of-lane analysis.
+- **Descriptive, no verdicts**: per-role table, in-domain density per
+  arm, output length per arm, degenerate-output count.
+
+**Goodhart note.** Framework density remains a diagnostic; nothing in any
+pipeline receives it as feedback, and no prompt is tuned toward it.
