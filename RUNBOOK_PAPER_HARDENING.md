@@ -7852,3 +7852,98 @@ confirmation design working exactly as intended.
 - No follow-up is registered from this verdict. The mechanism hunt has
   spent three cheap cells; the next attempt should wait for a design that
   predicts rather than classifies post-hoc.
+
+## CELL 51 PRE-REGISTRATION (2026-08-24) — freight uptake: is appendix-carried content ever USED?
+
+Registered before any item authoring, pilot, or run.
+
+**Question.** Cell 48 established carriage (appendix 1.000 vs prose 0.174)
+and bounded the preference cost (NE at power). The half that decides
+whether §6 is engineering or exhibit remains untested: does a downstream
+decision-maker reading the final artifact actually USE what the appendix
+carries? If appendix-only caveats never move decisions, out-of-band
+freight is a compliance exhibit, not a channel.
+
+**Design — four arms, byte-controlled, zero writer generation.**
+Corpus: the Cell 41 control artifacts, repeat 0 per case (verified: 18/18
+cases present). Per item, a planted decision-relevant caveat and a
+decision question with a registered default answer. Arms differ ONLY in
+appended bytes:
+1. **bare** — artifact unmodified (floor);
+2. **appendix-irrelevant** — C48-format appendix block containing an
+   authored decision-IRRELEVANT caveat of matched approximate length
+   (controls for "an appendix primes caution");
+3. **appendix-relevant** — same block containing the planted caveat;
+4. **prose-relevant** — the identical caveat sentence appended as a plain
+   final paragraph, no header (position and content held constant; the
+   single factor vs arm 3 is the framing).
+
+A reader model receives the artifact then the decision question and must
+reply with exactly one word from a two-token set (PROCEED / HOLD).
+Parse = normalized containment of exactly one registered token; both or
+neither → resample (max 6) then invalid. Scoring is exact-match against
+the item's registered answers: `default` (correct absent the caveat) and
+`flipped` (correct given the caveat). Flip = reply equals `flipped`.
+
+**Readers.** Primary: gpt-oss:20b (verdict). Replication: qwen2.5:7b-
+instruct, full grid (runs are short reads; both reported). temperature
+0.8, max_tokens 2048 (verdict-token budget lesson), preflight before
+launch.
+
+**Items.** Up to 18 authored against the artifacts (not the case prompts
+alone — the caveat must contradict/condition what the artifact actually
+says). Authoring guards, all mechanical checks frozen:
+- **Direction balance**: caveat direction counterbalanced — blocking
+  items (default PROCEED → flipped HOLD) and enabling items (default
+  HOLD → flipped PROCEED); ≥ 5 of each among frozen items, so a
+  "caveat content ⇒ caution" heuristic cannot masquerade as uptake.
+- **Ambient guard**: each item carries key probe strings for the caveat's
+  decision-critical condition; none may appear (normed, anchored) in the
+  artifact or the case prompt.
+- **Question guard** (C44 lesson): the decision question must not contain
+  the caveat's key probes — the question poses the situation, the caveat
+  supplies the rule.
+- ≥ 12 items must survive all guards or the cell does not proceed.
+
+**Pilot gates (frozen).** Pilot = all frozen items × 2 reps, arms 1 and 4
+only, primary reader.
+- **G1 floor (attainability, per-item)**: an item whose bare-arm pilot
+  answers are not majority-`default` is EXCLUDED (its default is not
+  actually the default); pooled bare flip must be ≤ 0.2 or the cell
+  halts for redesign.
+- **G2 potency (pooled only)**: prose-relevant pooled pilot flip ≥ 0.6 or
+  the cell halts. Deliberately NOT per-item: an impotent caveat dilutes
+  arms 3-vs-2 equally, which is conservative for P51.1, so no selection
+  on the treatment arm is permitted.
+- ≥ 10 items must survive G1 or the cell does not proceed.
+
+**Main grid.** Surviving items × 4 arms × 5 reps × 2 readers. Pilot runs
+in arms 1/4 count toward the grid (same protocol, same reader).
+
+**Predictions.**
+- **P51.1 — uptake (primary, confirmatory).** Appendix-relevant flip
+  share minus appendix-irrelevant flip share > 0, 95% cluster bootstrap
+  over items (5000 draws) excluding 0, primary reader. Attainability
+  (registered simulation, bimodal worst case where per-item uptake is
+  all-or-nothing): with k=15–18 and floor ≤ 0.2, detectable when
+  ~0.35–0.45 of items work; C48 carriage (1.000) and C44 use-when-given
+  (7/7) make this attainable if the channel is read at all. FALSIFIED →
+  §6 is rewritten: the harness carries caveats that influence nothing,
+  and the uptake burden moves to the artifact consumer's tooling.
+- **P51.2 — channel comparison (registered estimation, no directional
+  prediction).** Prose-relevant minus appendix-relevant flip share, CI
+  reported. Frozen interpretation: CI entirely above +0.25 → the appendix
+  channel is materially weaker than in-prose placement and §6 must say
+  so; CI excluding a deficit larger than 0.25 with point near 0 →
+  parity at power; otherwise not evaluable at power.
+- **Descriptive only, no verdicts**: bare floor rate; caution-priming
+  delta (appendix-irrelevant minus bare); replication-reader table.
+
+**Costs.** ≤ 18 items × 4 arms × 5 reps × 2 readers = ≤ 720 short reads;
+no seat or writer generation. Cluster ceiling: k ≤ 18 clusters binds
+inference exactly as simulated above.
+
+**Goodhart note.** Flip rate is a diagnostic of the CHANNEL measured on
+planted content with registered answers — it is not a target for tuning
+reader, writer, or caveat wording; nothing in the pipeline receives it as
+feedback.
