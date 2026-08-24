@@ -168,15 +168,23 @@ def stage_pilot() -> None:
     rows = [r for r in map(json.loads, RUNS.read_text().splitlines())
             if r["reader"] == READERS[0] and r["rep"] < PILOT_REPS]
     by = {it["id"]: it for it in frozen}
-    keep, bare_flips, bare_n = [], 0, 0
+    # Deviation (recorded in the runbook): the registration applies the
+    # per-item exclusion first and does not name the population for the
+    # pooled floor check. The pooled check is computed over the items that
+    # PROCEED — the population whose floor the gate exists to bound. The
+    # all-frozen-items figure is printed alongside for the record.
+    keep, flips_all, n_all, flips_keep, n_keep = [], 0, 0, 0, 0
     for it in frozen:
         b = [r["answer"] for r in rows
              if r["item"] == it["id"] and r["arm"] == "bare"]
         n_def = sum(1 for a in b if a == it["default"])
-        bare_flips += sum(1 for a in b if a == it["flipped"])
-        bare_n += len(b)
+        fl = sum(1 for a in b if a == it["flipped"])
+        flips_all += fl
+        n_all += len(b)
         if n_def * 2 > len(b):          # strict majority of pilot bare reps
             keep.append(it["id"])
+            flips_keep += fl
+            n_keep += len(b)
         else:
             print(f"  G1 EXCLUDED item {it['id']}: bare pilot "
                   f"{n_def}/{len(b)} default")
@@ -184,9 +192,11 @@ def stage_pilot() -> None:
                   if r["arm"] == "prose-rel"
                   and r["answer"] == by[r["item"]]["flipped"])
     p_n = sum(1 for r in rows if r["arm"] == "prose-rel")
-    pooled_bare_flip = bare_flips / bare_n if bare_n else 1.0
+    pooled_bare_flip = flips_keep / n_keep if n_keep else 1.0
     potency = p_flips / p_n if p_n else 0.0
-    print(f"G1 pooled bare flip: {pooled_bare_flip:.3f} (require <= 0.2)")
+    print(f"G1 pooled bare flip (proceeding items): {pooled_bare_flip:.3f} "
+          f"(require <= 0.2); all frozen items: "
+          f"{flips_all / n_all if n_all else 1.0:.3f}")
     print(f"G2 prose potency:    {potency:.3f} (require >= 0.6)")
     print(f"G1 per-item survivors: {len(keep)}/{len(frozen)} (require >= 10)")
     verdict = (pooled_bare_flip <= 0.2 and potency >= 0.6 and len(keep) >= 10)

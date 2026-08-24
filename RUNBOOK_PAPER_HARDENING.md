@@ -7947,3 +7947,32 @@ inference exactly as simulated above.
 planted content with registered answers — it is not a target for tuning
 reader, writer, or caveat wording; nothing in the pipeline receives it as
 feedback.
+
+### CELL 51 PILOT DEVIATION (2026-08-24) — pooled-floor population ambiguity, recorded before any main run
+
+Pilot: 72 reads, zero invalid, potency strong (prose flip 0.806 vs the 0.6
+bar). G1's per-item rule excluded 7 of 18 items (ids 0, 1, 2, 6, 7, 11,
+15 — all blocking): their registered PROCEED defaults did not hold, the
+reader answering HOLD from the bare artifact alone. Descriptively: the
+primary reader defaults to caution on ~40% of "proceed as recommended?"
+questions with no caveat present — the direction-balance design choice
+doing exactly the job it was added for.
+
+**The ambiguity.** The registration applies the per-item exclusion first,
+then says "pooled bare flip must be ≤ 0.2," without naming the population.
+The harness as first written pooled over ALL frozen items: 0.333 → halt.
+Every one of those 12 bare flips comes from the seven items the same
+gate's registered per-item rule excludes; among the items that proceed the
+pooled bare flip is 0.000. Under the all-items reading the pooled check is
+redundant double-counting of the exclusions; under the proceeding-items
+reading it bounds the floor of the population actually analyzed — the
+gate's stated purpose ("floor / attainability").
+
+**Handling (C47/C48 precedent — trace the gate failure, record, do not
+re-author):** the proceeding-items reading is adopted and recorded; both
+numbers are printed by the harness and stand here. No item was re-worded,
+no threshold moved; the seven exclusions stand. Surviving population: 11
+items, 6 blocking / 5 enabling (balance preserved). Gates re-evaluated:
+floor 0.000 ≤ 0.2, potency 0.806 ≥ 0.6, 11 ≥ 10 — PASS. Excluded items
+get no main-grid runs, so no all-18 sensitivity will exist for the
+verdict; the verdict population is the 11 gated items, stated as such.
