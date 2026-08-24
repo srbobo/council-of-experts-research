@@ -7976,3 +7976,52 @@ items, 6 blocking / 5 enabling (balance preserved). Gates re-evaluated:
 floor 0.000 ≤ 0.2, potency 0.806 ≥ 0.6, 11 ≥ 10 — PASS. Excluded items
 get no main-grid runs, so no all-18 sensitivity will exist for the
 verdict; the verdict population is the 11 gated items, stated as such.
+
+## CELL 51 VERDICT (2026-08-24) — P51.1 SUPPORTED: appendix-carried content moves decisions. P51.2: channel parity at power. §6 is now tested on all three halves.
+
+440 main-grid runs (11 items × 4 arms × 5 reps × 2 readers), zero invalid
+reads.
+
+**Raw means, primary reader (gpt-oss:20b), flip share per arm:**
+bare 0.000 · appendix-irrelevant 0.036 · appendix-relevant 0.727 ·
+prose-relevant 0.818.
+
+**P51.1 SUPPORTED.** Appendix-relevant minus appendix-irrelevant:
+**+0.691 [+0.455, +0.891]**, k=11 items, cluster bootstrap 5000 draws.
+The appendix is read and its content is used: the identical appendix
+block with a decision-irrelevant caveat moves the decision 0.036 — the
+effect is content-specific, not appendix-presence. Enabling items flip
+toward PROCEED (0.40–1.00), so caution cannot masquerade as uptake.
+
+**P51.2: PARITY AT POWER** under the frozen thresholds. Prose-relevant
+minus appendix-relevant: +0.091 [−0.036, +0.218] — the CI excludes any
+deficit larger than 0.25 and the point sits under 0.125. Nothing
+measurable is lost by carrying the caveat out-of-band instead of in
+prose.
+
+**Replication reader (qwen2.5:7b-instruct), descriptive:** same
+structure at lower capability — uptake +0.455 (0.545 vs 0.091), floor
+0.091 (item 3's default did not hold for this reader), and its per-item
+failures (items 4, 9, 10, 12, 16 at 0.00) are shared by the PROSE arm on
+the same items: where this reader fails, it fails in both channels —
+reader-limited, not channel-limited.
+
+**Per-item shape:** bimodal again (mostly 0.00 or 1.00 in the relevant
+arms; items 4 and 12 fail both channels for both readers at 0.00–0.40) —
+consistent with C47/C48's per-item all-or-nothing pattern; cause remains
+OPEN and is now observed in a third design.
+
+### Consequences
+
+- §6 stands on all three tested halves: carriage 1.000 (C48), preference
+  cost bounded-not-evaluable (C48), uptake causal and content-specific
+  with channel parity (C51). The out-of-band freight channel is
+  engineering, not exhibit.
+- Combined with the C43 phrase-penalty and C30/46 transport laws, the
+  full §6 argument is now empirical end-to-end: prose loses 67–89% of
+  epistemic content, marking it in prose costs preference, the appendix
+  carries 100%, and what the appendix carries changes downstream
+  decisions as effectively as prose placement.
+- Scope: one artifact corpus (C41 control), one primary reader family,
+  planted caveats; verdict population is the 11 G1-gated items (deviation
+  recorded above; no all-18 sensitivity exists).

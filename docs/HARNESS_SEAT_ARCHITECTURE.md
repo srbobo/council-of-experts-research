@@ -129,7 +129,14 @@ writer.** (Cell 48 tested this: the appendix carries 100% of caveats vs
 preference-survival half came back NOT EVALUABLE at available power:
 share 0.510 [0.267, 0.754], point at indifference and far above the
 in-prose penalty band, 65/116 pairs tied — no evidence of an appendix
-penalty, and no license yet to claim its absence.) Seats emit them as structured fields; the harness carries them
+penalty, and no license yet to claim its absence. **Cell 51 then tested
+uptake**: a decision-relevant caveat delivered appendix-only flips a
+reader's registered decision at +0.691 [+0.455, +0.891] over a matched
+irrelevant-appendix control, with a 0.000 bare floor, a 0.036
+caution-priming delta, and channel parity with in-prose placement
+(+0.091 [−0.036, +0.218]) — the appendix is read, its content is used,
+and nothing is lost relative to prose placement.) Seats emit them as
+structured fields; the harness carries them
 directly to the final artifact (appendix, metadata, UI panel). The writer
 writes prose; the harness carries epistemics. No disposition instructions
 are sent to the writer at all — the evidence says they buy nothing and
