@@ -8128,3 +8128,90 @@ arm runs ~14% longer (9,310 vs 8,158 chars); per-role diffs all small
   now includes: confidence routing (C26/40/45), the ownership law (C50),
   and §2's bleed warrant (C52). The harness document is the instrument
   the falsifications keep honest.
+
+## CELL 53 PRE-REGISTRATION (2026-08-25) — live-seat follow-ups: does the routed loop work end-to-end when a real seat writes the reply?
+
+Registered before authoring the new item fields and before any run.
+
+**Question.** Cell 44 proved the lead USES a routed clarification when
+the orchestrator supplies a controlled, informative one (1.000 vs 0.333
+control vs 0.200 filler). The untested half of §5 is production: dispatch
+the follow-up to a LIVE seat and let it write the reply. A live seat
+cannot produce a fact that exists nowhere in its context, so the C44
+items are modified: each item's deciding fact is planted as a declarative
+sentence in seat_B's OWN round-1 contribution (fact_R1, seat-voiced),
+inserted at the midpoint of the seat's base text by a frozen rule,
+byte-identical in ALL arms. The cell therefore tests §5's production
+claim in its real form: **routed re-consultation recovers load-bearing
+content that round-1 reading missed** — the fact is in the pile in every
+arm; the loop is what varies.
+
+**Arms (single factor: what happens between S1 and S2).**
+1. **control** — no follow-up (floor: does the lead find the buried fact
+   unaided?);
+2. **live** — when S1 names the tension, the orchestrator dispatches the
+   item's FROZEN follow-up question to the live seat (gpt-oss:20b under
+   the frozen role prompt; context = case prompt + its own round-1
+   contribution including fact_R1 + the question; temperature 0.7,
+   max_tokens 2048); the reply is appended in Cell 44's clarification
+   format;
+3. **scripted** — Cell 44's informed arm verbatim (fact_F appended),
+   the known ceiling, for a within-cell comparison.
+
+Everything else is Cell 44 unchanged: two-stage lead, S1/S2 prompts,
+trigger = tension_named, judge protocol (two judges, counterbalanced
+positions by repeat parity, agreement-filtered), R-adoption among
+tension-named runs, REPEATS 6, gate G-E on all prompts.
+
+**New item fields, mechanical guards (exclusion before freeze):**
+fact_R1 (seat-voiced deciding fact), followup_q (frozen dispatch text),
+fact_keys (probes for the fact being surfaced). Guards: every fact_key
+absent (normed containment) from the case prompt, every base seat text,
+pos_A/pos_B, and followup_q; followup_q contains no r_key, anti_key, or
+fact_key. fact_R1 MAY contain resolution vocabulary (as Cell 44's fact_F
+did) — it is byte-identical across arms, so any echo inflates all arms
+equally; the judged outcome is the instrument.
+
+**Pilot gates (frozen).**
+- **GP1 production attainability**: one live dispatch per item (6
+  replies); ≥ 4/6 replies contain a fact_key, else HALT (a seat that
+  cannot surface its own planted fact cannot test the loop).
+- **GP2 headroom**: control arm, 2 reps × 6 items; literal-proxy
+  R-adoption ≤ 0.6 pooled, else HALT (fact_R1 in round-1 may raise the
+  floor; without headroom the contrast cannot move).
+- **GP3 trigger**: tension named ≥ 0.5 in pilot control S1 (Cell 44's
+  gate, unchanged). Pilot runs count toward the main grid.
+
+**Predictions.**
+- **P53.1 — end-to-end (confirmatory).** Live R-adoption exceeds control
+  among tension-named runs: cluster bootstrap by item (5000 draws), 95%
+  CI > 0. Attainability: Cell 44's scripted effect was +0.667 (CI low
+  +0.200) at the same n and conditioning; with 6 clusters this design
+  detects live effects of roughly ≥ 0.4 — a live loop at ≥ 60% of the
+  scripted ceiling. Smaller true effects may return NOT EVALUABLE, and
+  that outcome is accepted in advance. FALSIFIED → §5's loop is
+  demonstrated-with-controlled-inputs only, and the harness doc must say
+  the production half failed its first live test.
+- **P53.2 — live vs scripted (registered estimation).** Difference and
+  CI reported. Frozen interpretation: CI excludes a live deficit larger
+  than 0.3 → the live loop is comparable to the scripted ceiling;
+  otherwise the gap (or non-evaluability) is reported as measured.
+- **P53.3 — production mediator (registered descriptive, no verdict).**
+  Share of dispatched live runs whose reply contains a fact_key;
+  R-adoption split by reply-contains-fact (unclustered, descriptive).
+
+**Costs.** 6 items × 3 arms × 6 reps = 108 pipeline runs (+1 seat
+generation inside each live run), 216 judgments. Cluster ceiling: 6
+items binds inference exactly as stated; this is a C44-scale cell and
+inherits its power honestly.
+
+**Scope notes.** Control here is NOT Cell 44's control: fact_R1 sits in
+round-1, so the floor measures unaided discovery of in-pile content, and
+no number from this cell restates Cell 44's 0.333. The live seat is the
+generalist-under-role-prompt seat the corpus was built with; specialist
+fine-tunes are out of scope.
+
+**Goodhart note.** Production rate and adoption are diagnostics of the
+loop; nothing tunes toward them, and the content gate (§5) is not
+simulated here — live replies are delivered as produced, so the cell
+measures the loop WITHOUT the gate's protection.
