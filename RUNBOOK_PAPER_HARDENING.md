@@ -8083,3 +8083,48 @@ should produce if bleed is real.
 
 **Goodhart note.** Framework density remains a diagnostic; nothing in any
 pipeline receives it as feedback, and no prompt is tuned toward it.
+
+## CELL 52 VERDICT (2026-08-25) — P52.1 FALSIFIED: sibling visibility does not cause lane bleed. §2's prohibition loses its causal warrant per the registered consequence.
+
+Coverage 323/324 (one empty generation never re-attempted — the retry
+loop continues past empties; recorded), 1 degenerate output excluded,
+322 analyzed.
+
+**P52.1 FALSIFIED, and the null is INFORMATIVE.** Off-domain framework
+density, sibling minus roster: **−0.009 [−0.048, +0.028]**, 18 clusters.
+Arm means 0.235 vs 0.226 on a baseline of ~0.23/kchar. The CI's upper
+bound (+0.028) lies BELOW the registered MDD band (+0.05–0.08): the
+design could have detected a bleed one-third of baseline and detected
+nothing. Per the registered consequence, harness §2's sibling
+prohibition is downgraded from causally-warranted to historical-lesson
+note.
+
+**P52.2 (registered estimation): −0.033 [−0.053, −0.013].** Echo-excluded
+off-domain density is slightly LOWER with siblings visible — the CI
+excludes zero on the negative side. The frozen interpretations covered
+only the P52.1-supported branch, so this direction carries no verdict.
+Descriptive, post-hoc reading recorded as such (C49/C50 discipline — a
+candidate mechanism, not a finding): a seat that can SEE the off-domain
+angles covered may free-ride on that coverage and stay more narrowly in
+its own lane, the opposite of the bleed story. Available for prospective
+test; not claimed.
+
+**Descriptives:** in-domain density unchanged (0.143 vs 0.141); sibling
+arm runs ~14% longer (9,310 vs 8,158 chars); per-role diffs all small
+(finance −0.040, healthcare +0.029, legal −0.015).
+
+### Consequences
+
+- **§2 is rewritten.** The v2→v3 lane-bleed lesson does not replicate as
+  a causal effect of sibling-output visibility under production prompts.
+  Scope kept honest: the historical incident involved cross-domain
+  FRAMING in seat instructions; this cell tested sibling OUTPUTS with
+  clean role prompts — the two are not the same manipulation, and the
+  framing variant remains untested. Roster-only remains the default on
+  cost grounds alone (sibling contexts add ~10k chars of input per seat
+  and 14% longer outputs, buying no measured change in lane discipline
+  in either direction).
+- The program's record of killing its own architecture's justifications
+  now includes: confidence routing (C26/40/45), the ownership law (C50),
+  and §2's bleed warrant (C52). The harness document is the instrument
+  the falsifications keep honest.

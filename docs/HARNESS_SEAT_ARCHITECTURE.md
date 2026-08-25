@@ -46,12 +46,19 @@ legitimate seat if it passes; Cells 30/41 ran on exactly that.
 
 ## 2. Isolation: sub-questions in, roster only
 
-The v2→v3 lesson recorded in `council/prompts.py`: cross-domain framing in
-seat inputs bleeds seats out of their lanes. Cell 45's design rule: seats
-know the ROSTER (who else is consulted, one line), never sibling outputs.
-
 The planner decomposes; each seat receives a self-contained sub-question
-plus the roster line. Nothing else.
+plus a one-line roster (who else is consulted — Cell 45's finding that
+seats route correctly when they know the roster). Sibling outputs are not
+forwarded — but the justification is COST, not contamination: **Cell 52
+falsified the lane-bleed warrant.** With byte-fixed sibling contributions
+made visible under production prompts, off-domain framework density moved
+−0.009 [−0.048, +0.028] against a registered MDD of +0.05–0.08 — an
+informative null — with in-domain density unchanged. The historical
+v2→v3 bleed incident involved cross-domain framing in seat INSTRUCTIONS,
+which is a different manipulation and remains untested. Roster-only
+stands because sibling contexts add ~10k input chars and 14% longer
+outputs per seat while buying no measured change in lane discipline in
+either direction.
 
 ## 3. Redundancy is engineered, not hoped for
 
