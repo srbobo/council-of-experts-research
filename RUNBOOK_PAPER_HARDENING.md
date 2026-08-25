@@ -8295,3 +8295,76 @@ targets).
 is the diagnosis: after Cells 44, 45, and this pilot, the scarce
 resource in re-consultation is unambiguously the TRIGGER — never the
 routing, the reply, or the use of the reply.
+
+## CELL 54 PRE-REGISTRATION (2026-08-25) — the private briefing: a live seat conveys a decisive fact it holds but never wrote
+
+Registered before any run. This is the redesign recorded at Cell 53's
+halt, path (i).
+
+**Question.** Cell 53 established that the seat side of the loop works
+(6/6 fact-surfacing when dispatched) and that burying the fact in
+round-1 starves the trigger. This cell restores Cell 44's exact
+round-1 economics and moves the fact to where deployment actually has
+it: the seat's PRIVATE context — knowledge held but not written into
+the round-1 contribution. The production claim in its realistic form:
+**when the orchestrator dispatches a follow-up, a live seat conveys a
+decisive fact it holds privately, and the lead uses the live reply.**
+
+**Design.**
+- **Round-1 contributions: byte-identical to Cell 44** (base seat texts
+  + pos_A/pos_B, NO fact anywhere in the pile). S1, S2, judge protocol,
+  items, REPEATS 6 — all Cell 44 unchanged.
+- **Arm live-briefed (fresh):** when S1 names the tension, the item's
+  frozen followup_q (Cell 53's, unchanged) is dispatched to the live
+  seat. The seat's reply context = case prompt + its own round-1
+  contribution + "Your private working notes (not shared with the
+  panel):" + the item's fact note (Cell 53's fact_R1 text, unchanged) +
+  the question. The reply is appended in the Cell 44 clarification
+  format. Replies persisted; fact-surfacing measured with the Cell 53
+  CORRECTED instrument (NFKC + unicode-hyphen folding).
+- **Comparators: Cell 44's ARCHIVED control and informed arms, runs and
+  judgments reused as-is.** Warrant: the generating pipeline is
+  byte-identical (same model tag, prompts, seats, temperatures); the
+  known values are control 0.333 / informed 1.000 R-adoption among
+  named runs, trigger 0.34 over 108 runs. Reuse follows the C48
+  zero-generation precedent. The confound this buys — arm vs
+  generation-batch — is guarded below.
+- **Batch check (fresh mini-control): 2 reps × 6 items** run now,
+  judged now, NEVER pooled into any comparator. Frozen sanity bands:
+  tension-named ≥ 0.15 (archive predicts 0.34; P(<2/12) ≈ 0.05 under
+  it) and literal R-proxy ≤ 0.6. Out-of-band → HALT: the batch differs
+  and archived comparators are not usable.
+
+**Pilot gates (frozen).**
+- **GP1 production:** one briefed dispatch per item, replies persisted;
+  ≥ 4/6 surface the fact (corrected instrument), else HALT.
+- **GP2 batch check** as above, else HALT.
+Trigger attainability needs no new gate: round-1 is byte-identical to
+an archive of 108 runs at 0.34 — this IS the item-12 computation.
+
+**Predictions.**
+- **P54.1 — end-to-end (confirmatory).** Live-briefed R-adoption
+  exceeds archived control among tension-named runs; cluster bootstrap
+  by item (5000 draws), 95% CI > 0. Attainability: the scripted ceiling
+  at identical structure was +0.667 (CI low +0.200); with briefed
+  production expected near 1.0, MDD ≈ 0.4 as in Cell 53's registration;
+  smaller true effects may return NOT EVALUABLE, accepted in advance.
+  FALSIFIED → the live loop fails not at production but at conveyance
+  or use of live prose, and §5 must record that the loop is
+  demonstrated-with-controlled-inputs only.
+- **P54.2 — live vs scripted ceiling (registered estimation).**
+  Live-briefed minus archived informed, CI reported; frozen: CI
+  excludes a live deficit larger than 0.3 → comparable to ceiling.
+- **P54.3 — production mediator (registered descriptive).** Fact in
+  reply share; R-adoption split by fact-presence (unclustered);
+  qualitative note on any invented authority in replies (the Cell 53
+  hallucination watch).
+
+**Costs.** 36 live pipeline runs + 12 mini-control + ~96 judgments.
+Cluster ceiling 6 items, stated. Scope: the briefing note is the
+experimenter's channel for installing held-knowledge; deployment
+realism is the seat KNOWING things it did not write, which this models
+— it does not model seats retrieving from long private histories.
+
+**Goodhart note.** Unchanged from Cell 53; the content gate is again
+NOT simulated — live replies are delivered as produced.
