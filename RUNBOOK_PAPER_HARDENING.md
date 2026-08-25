@@ -8215,3 +8215,43 @@ fine-tunes are out of scope.
 loop; nothing tunes toward them, and the content gate (§5) is not
 simulated here — live replies are delivered as produced, so the cell
 measures the loop WITHOUT the gate's protection.
+
+### CELL 53 PILOT: FAIL RECORDED, TWO DEVIATIONS REGISTERED BEFORE ANY FURTHER DATA (2026-08-25)
+
+Frozen-pilot results: GP1 production 2/6 (FAIL), GP2 headroom 0.33
+(PASS), GP3 tension-named 2/12 = 0.17 (FAIL vs the 0.5 bar). Per the
+registration the cell halted; the two failures were then diagnosed
+separately before anything else ran.
+
+**Deviation 1 — GP1 was substantially an instrument artifact (the C47
+Unicode incident in a new codepoint).** The writer emits U+2011
+non-breaking hyphens in table headers ("Stop‑Loss", "data‑security
+audit"), which norm() does not fold, so fact-surfacing probes missed
+facts that were present. Two further defects recorded: the frozen pilot
+did not persist GP1 replies (diagnosis required fresh draws), and item 3's
+diagnostic reply surfaced INVENTED case law ("Rosenbaum v. Uber") in
+place of its planted fact — a live-reply hallucination risk noted for
+§5's content gate. Fix: NFKC + unicode-hyphen folding, local to this
+cell's has_fact (shared norm() untouched — other cells' instruments stay
+frozen); replies now persisted. GP1 re-run with the corrected
+instrument, fresh draws, persisted: **6/6 PASS** (diagnostic draws also
+showed 4/6 with two true misses, so production is stochastic, roughly
+0.7–0.9 — the mediator P53.3 measures it properly in the grid).
+
+**Deviation 2 — GP3's bar was mis-registered above the archive-known
+base rate (a checklist item-12 error, recorded against myself).** The
+0.5 bar was copied from Cell 44's pilot gate, but Cell 44's own
+full-grid tension-naming rate was 0.34 — the registered bar exceeded
+the best archive estimate of the quantity it gates. The observed 2/12 is
+below even 0.34 but compatible with it at n=12 (binomial p ≈ 0.12), so
+"burying the fact suppresses tension-naming" is a plausible mechanism
+but NOT established at pilot n. **Corrected bar, frozen now before the
+extension runs: tension-named ≥ 0.25 over an extended pilot of 24
+control runs (2 further reps × 6 items added to the existing 12).**
+Rationale: 0.25 × 6 reps × 6 items ≈ 9 dispatched runs per loop arm,
+the minimum the conditioned contrast needs; a rate below 0.25 leaves
+the cell unpowered regardless of mechanism, and the halt then stands
+with the trigger collapse recorded as the finding.
+
+No other threshold, item, prompt, or analysis changes. The extension
+runs next; the gate decision follows it mechanically.

@@ -79,9 +79,21 @@ def build_contribs(it) -> str:
     return "\n\n".join(parts)
 
 
+def _deep(t: str) -> str:
+    """Instrument correction recorded in the runbook (2026-08-25): the
+    writer emits Unicode hyphens (U+2011 et al.) in table headers, which
+    norm() does not fold — the C47 narrow-space incident in a new
+    codepoint. NFKC plus unicode-hyphen folding, local to this cell."""
+    import unicodedata
+    t = unicodedata.normalize("NFKC", t or "")
+    for ch in "‐‑‒–—―−":
+        t = t.replace(ch, "-")
+    return norm(t)
+
+
 def has_fact(reply: str, it) -> bool:
-    lo = norm(reply or "")
-    return any(norm(k) in lo for k in it["fact_keys"])
+    lo = _deep(reply)
+    return any(_deep(k) in lo for k in it["fact_keys"])
 
 
 def live_reply(it) -> str | None:
@@ -206,14 +218,18 @@ def stage_pilot() -> None:
     if not t or not t.strip():
         raise SystemExit("PREFLIGHT FAILED")
     print("preflight ok", flush=True)
-    # GP1: one live dispatch per item
-    prod = 0
+    # GP1: one live dispatch per item — replies PERSISTED (the first pilot
+    # discarded them, recorded as an instrument deficiency)
+    prod, saved = 0, {}
     for it in ITEMS:
         rep = live_reply(it)
+        saved[str(it["id"])] = rep
         got = bool(rep) and has_fact(rep, it)
         prod += got
         print(f"  GP1 item {it['id']}: reply {len(rep or '')} chars, "
               f"fact surfaced: {got}", flush=True)
+    (OUT / "gp1_replies.json").write_text(json.dumps(saved,
+                                                     ensure_ascii=False))
     print(f"GP1 production: {prod}/{len(ITEMS)} (require >= {PROD_GATE})")
     # GP2/GP3: control pilot
     _generate(("control",), PILOT_REPEATS, "pilot")
