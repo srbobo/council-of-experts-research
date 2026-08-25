@@ -100,7 +100,13 @@ clarification 7/7 but names the tension 0.34; a seat routes correctly
 mandated artifacts the model already produces reliably, never from any
 model's assessment of its own competence (the one faculty the program
 never found evidence for — including a legal seat deferring legal
-questions to finance, 3/3 of its false flags).
+questions to finance, 3/3 of its false flags). A third, pilot-grade
+observation (Cell 53, halted at its registered gate): with the deciding
+fact visibly present in the pile, the lead named the planted tension only
+0.208 [~0.09, 0.40] — while the live seat, when dispatched, surfaced its
+own fact 6/6. Across every measurement the program has made, the scarce
+resource in this loop is the trigger, never the routing, the reply, or
+the use of the reply.
 
 ## 5. Orchestrator-routed re-consultation
 

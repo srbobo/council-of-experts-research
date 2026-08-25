@@ -8255,3 +8255,43 @@ with the trigger collapse recorded as the finding.
 
 No other threshold, item, prompt, or analysis changes. The extension
 runs next; the gate decision follows it mechanically.
+
+### CELL 53 DOES NOT PROCEED (2026-08-25) — the registered halt stands: the trigger, not the seat, is the bottleneck
+
+Extended pilot: tension named **5/24 = 0.208** against the corrected,
+pre-frozen bar of 0.25. The cell halts per its registration; no main
+grid, no verdict on P53.1–P53.3.
+
+**What the pilot established (pilot-grade, descriptive only):**
+- **Production is attainable.** With the corrected instrument the live
+  seat surfaced its own buried deciding fact 6/6 when dispatched the
+  follow-up (stochastic across draws, ~0.7–0.9). The seat side of the
+  loop is not the problem.
+- **The trigger is scarce — third observation of the same pattern.**
+  Lead names the planted tension 0.208 [Wilson ~0.09, 0.40] here, vs
+  0.34 in Cell 44's grid and 0.306 seat-side recognition in Cell 45.
+  The burial-suppresses-naming mechanism (the deciding fact visible in
+  the pile makes the disagreement read as resolved, so no tension is
+  flagged) is plausible and would be architecturally important — the
+  trigger degrading exactly when recovery is possible — but the CI
+  includes Cell 44's 0.34, so suppression is NOT established.
+- **Live replies can hallucinate authority.** One diagnostic reply
+  backfilled invented case law in place of the planted fact it failed
+  to retrieve — on record as the concrete failure mode §5's content
+  gate exists to catch.
+
+**Paths a future registration could take (recorded, not chosen):**
+(i) the private-briefing redesign — round-1 contributions identical to
+Cell 44 (restoring its trigger economics), the fact supplied to the
+live seat as private working notes at reply time; tests conveyance of
+held-but-unwritten knowledge, which is the deployment-realistic shape;
+(ii) accept trigger scarcity as the binding constraint and fold it into
+the ledger — the loop's value per Cell 44 stands, its coverage is
+bounded by a ~0.2–0.35 trigger rate, and raising that rate is
+Goodhart-constrained by design (§8: trigger rates are never optimization
+targets).
+
+§5's production half remains honestly untested end-to-end. What changed
+is the diagnosis: after Cells 44, 45, and this pilot, the scarce
+resource in re-consultation is unambiguously the TRIGGER — never the
+routing, the reply, or the use of the reply.
