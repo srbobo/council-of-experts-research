@@ -1,0 +1,92 @@
+{
+ "qwen2.5": {
+  "screen_runs": 12,
+  "screen_min": 3666,
+  "screen_max": 5039,
+  "screen_mean": 4385,
+  "gate_pass": true,
+  "format_ok": 3,
+  "format_n": 4
+ },
+ "llama3": {
+  "screen_runs": 12,
+  "screen_min": 2081,
+  "screen_max": 4043,
+  "screen_mean": 3049,
+  "gate_pass": true,
+  "format_ok": 4,
+  "format_n": 4
+ },
+ "mistral": {
+  "screen_runs": 12,
+  "screen_min": 2199,
+  "screen_max": 4697,
+  "screen_mean": 3508,
+  "gate_pass": true,
+  "format_ok": 3,
+  "format_n": 4
+ },
+ "deepseek": {
+  "screen_runs": 12,
+  "screen_min": 1529,
+  "screen_max": 5736,
+  "screen_mean": 2527,
+  "gate_pass": true,
+  "format_ok": 3,
+  "format_n": 4
+ },
+ "phi4": {
+  "screen_runs": 12,
+  "screen_min": 3494,
+  "screen_max": 5031,
+  "screen_mean": 4122,
+  "gate_pass": true,
+  "format_ok": 3,
+  "format_n": 4
+ },
+ "meditron3": {
+  "screen_runs": 12,
+  "screen_min": 2128,
+  "screen_max": 3597,
+  "screen_mean": 2795,
+  "gate_pass": true,
+  "format_ok": 4,
+  "format_n": 4
+ },
+ "med42": {
+  "screen_runs": 12,
+  "screen_min": 1415,
+  "screen_max": 2811,
+  "screen_mean": 1988,
+  "gate_pass": true,
+  "format_ok": 1,
+  "format_n": 4
+ },
+ "openbiollm": {
+  "screen_runs": 12,
+  "screen_min": 78,
+  "screen_max": 1623,
+  "screen_mean": 973,
+  "gate_pass": false,
+  "format_ok": 2,
+  "format_n": 4
+ },
+ "biomistral": {
+  "screen_runs": 12,
+  "screen_min": 13,
+  "screen_max": 2955,
+  "screen_mean": 706,
+  "gate_pass": false,
+  "format_ok": 0,
+  "format_n": 4
+ },
+ "saul": {
+  "screen_runs": 12,
+  "screen_min": 1613,
+  "screen_max": 5469,
+  "screen_mean": 3424,
+  "gate_pass": true,
+  "format_ok": 0,
+  "format_n": 4
+ }
+}
