@@ -54,7 +54,17 @@ order-debiasing converts 60--95\% of pairs to ties. We further report mechanism 
 --- the aggregator selects sources rather than recomputing, ignores
 cross-proposer corroboration, and transports only a small fraction of the
 epistemic qualification it is given, with within-corpus slopes of
-$0.11$--$0.33$ replicated across two writers and two corpora --- and
+$0.11$--$0.33$ replicated across two writers and two corpora. The
+audit's design consequences were then engineered and prospectively
+re-tested as their own registered cells: assigning a contested quantity
+to a second proposer halves corrupted-value adoption ($0.90\to0.45$);
+carrying epistemic qualification out-of-band, in a mechanically
+assembled appendix the writer never sees, preserves all of it against
+the $17\%$ that survives prose, measurably changes downstream decisions
+($+0.69$ over a matched irrelevant-appendix control, at parity with
+in-prose placement), and shows no detected preference cost; and the
+re-consultation loop closes end-to-end with a \emph{live} proposer
+(adoption $0.905$ vs.\ $0.333$, within noise of a scripted ceiling). We
 release the measurement kit, the dictation registry, and all
 pre-registrations.
 \end{abstract}
@@ -72,7 +82,7 @@ outcome, tests error propagation, validates its judge on the deployed
 task, or separates behavioral change from surface compliance.
 
 This paper supplies that audit. It is the product of a
-falsification-first research program that ran more than forty
+falsification-first research program that ran more than fifty
 pre-registered experiment cells on a MoA-architecture pipeline small enough to audit
 completely: 7--20B open models on consumer hardware, with every
 registration, deviation, and verdict recorded in a public ledger before
@@ -117,11 +127,16 @@ an order-debiased protocol, with a decomposition showing it is not
 length, domain-framework density, or hedging register. (3)~A measured
 characterization of local pairwise preference judging as majority
 reading-order. (4)~Mechanism results bounding the collaborativeness
-narrative, and one positive: orchestrator-routed re-consultation, with
-evidence that both halves of the loop are recognition-limited rather than
-capability-limited. (5)~An open measurement kit (\texttt{gst}), a dictation
-registry with a zero measured over-attribution rate, and the complete
-pre-registration ledger.
+narrative, and one positive: orchestrator-routed re-consultation, now
+closed end-to-end with a live proposer, with evidence that both halves
+of the loop are recognition-limited rather than capability-limited.
+(5)~A prospectively re-tested architecture distilled from the audit ---
+engineered redundancy, out-of-band epistemic freight, evidence-bound
+seating --- in which every component carries its own registered verdict,
+including two informative nulls that demoted our own design rationales
+(\S\ref{sec:harness}). (6)~An open measurement kit (\texttt{gst}), a
+dictation registry with a zero measured over-attribution rate, and the
+complete pre-registration ledger.
 
 \section{Related work}
 
@@ -512,6 +527,114 @@ the comparison sits at a $0.92$--$0.97$ ceiling with three discordant
 items; per our audit discipline this is held as absence of evidence, not
 evidence of absence.
 
+\section{The audit's consequences, engineered and re-tested}
+\label{sec:harness}
+
+A falsification program earns a second obligation: if the findings are
+real, the design rules they imply should survive prospective tests of
+their own. We distilled the audit into a runtime architecture (an
+evidence-bound harness, released with the ledger) and then registered a
+cell against each load-bearing component. Three results follow; each is
+a single-factor causal design, and two of the five verdicts in this arc
+went \emph{against} our own design rationale.
+
+\textbf{Engineered redundancy is causal.} The source-selector finding
+(\S\ref{sec:mech}) implies protection is coverage, and coverage is a
+design variable. A registered cell assigned a load-bearing quantity to a
+second proposer as one factor: corrupted-value adoption fell from
+$0.900$ (sole-sourced, corrupted --- the sharpest no-verification number
+in the program) to $0.450$ (\ci{+0.200}{+0.725}), and the \emph{clean}
+value was adopted ($0.000\to0.500$, \ci{+0.175}{+0.825}) --- selection,
+not dilution. Protection is bimodal across items; two candidate
+mechanisms for the boundary were then registered and killed in turn
+(prior-plausibility at $0.544$; a stable, near-unanimous elicited
+ownership map whose prospective prediction landed at exactly $0.500$
+against a descriptive $0.895$ --- the confirmation cell doing precisely
+the anti-calcification work it exists for). The boundary stays open, and
+the planner's guarantee is stated as expected-value only.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.44\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\textwidth,height=4.6cm,ybar,bar width=16pt,
+  ymin=0,ymax=1.12,xtick={1,2},xticklabels={prose,appendix},
+  ylabel={caveats carried},xmin=0.4,xmax=2.6,
+  tick label style={font=\small},ylabel style={font=\small},
+  axis line style={inkmut},ymajorgrids,grid style={inkmut!22}]
+\addplot+[fill=accent!70,draw=accent] coordinates {(1,0.174) (2,1.000)};
+\node[font=\scriptsize,anchor=south] at (axis cs:1,0.19) {0.174};
+\node[font=\scriptsize,anchor=south] at (axis cs:2,1.005) {1.000};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}{0.53\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\textwidth,height=4.6cm,ybar,bar width=13pt,
+  ymin=0,ymax=1.0,xtick={1,2,3,4},
+  xticklabels={bare,{irrelevant\\appendix},{relevant\\appendix},
+  {relevant\\prose}},xticklabel style={font=\scriptsize,align=center},
+  ylabel={decisions flipped},xmin=0.4,xmax=4.6,
+  tick label style={font=\small},ylabel style={font=\small},
+  axis line style={inkmut},ymajorgrids,grid style={inkmut!22}]
+\addplot+[fill=accent!70,draw=accent] coordinates
+  {(1,0.000) (2,0.036) (3,0.727) (4,0.818)};
+\node[font=\scriptsize,anchor=south] at (axis cs:2,0.045) {0.036};
+\node[font=\scriptsize,anchor=south] at (axis cs:3,0.732) {0.727};
+\node[font=\scriptsize,anchor=south] at (axis cs:4,0.823) {0.818};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{The out-of-band freight channel, both halves. \emph{Left}:
+share of both-judge caveat sentences reaching the final artifact through
+writer prose vs.\ a mechanically assembled appendix (zero-generation
+design; byte-identical prose in both arms). \emph{Right}: share of
+registered two-token reader decisions flipped by a planted
+decision-relevant caveat, by delivery arm (11 items, 440 reads; the
+irrelevant-appendix arm carries a matched caveat that does not bear on
+the decision). Uptake is content-specific ($+0.691$
+\ci{+0.455}{+0.891} over the irrelevant control) and at parity with
+in-prose placement ($+0.091$ \ci{-0.036}{+0.218}).}
+\label{fig:freight}
+\end{figure}
+
+\textbf{Out-of-band freight carries, and is used.} The transport and
+penalty results (\S\ref{sec:mech}, \S\ref{sec:pref}) imply epistemic
+qualification should never route through the writer. The harness
+therefore carries proposer caveats in a mechanically assembled appendix
+the writer never sees. Two registered cells tested the channel's halves
+(Figure~\ref{fig:freight}). Carriage: the appendix delivers $1.000$ of
+both-judge caveat sentences against the $0.174$ that survives prose
+transport, with the preference cost not evaluable at power ($0.510$
+\ci{0.267}{0.754}, $65/116$ ties --- no evidence of a penalty, no
+license yet to claim its absence). Uptake: a decision-relevant caveat
+delivered appendix-only flips a reader model's registered two-token
+decision in $0.727$ of reads against $0.036$ for the identical appendix
+block carrying an irrelevant caveat --- content-specific, not
+caution-priming, with direction-balanced items (blocking \emph{and}
+enabling caveats) so that generic caution cannot masquerade as uptake
+--- and at parity with weaving the same sentence into prose. The
+channel that preference pressure cannot see is not an exhibit: what it
+carries changes decisions at no measured transport or preference cost.
+
+\textbf{An informative null demoted our own isolation rule.} The
+harness isolated proposers (task plus a one-line roster, never sibling
+outputs) on the strength of a lane-bleed incident from an earlier
+pipeline version. The registered one-factor test --- byte-fixed sibling
+contributions made visible, production prompts otherwise unchanged ---
+found nothing: off-domain framework density moved $-0.009$
+\ci{-0.048}{+0.028} against a pre-registered minimum detectable effect
+of $+0.05$--$0.08$ computed from the archive, with in-domain density
+unchanged. The isolation rule survives on cost grounds alone
+(${\sim}10$k input characters and $14\%$ longer outputs per proposer,
+buying no measured change in lane discipline), and its contamination
+rationale is withdrawn. We report this with the same prominence as the
+positive results: the architecture documents what its evidence
+\emph{failed} to support, which is what distinguishes an evidence-bound
+harness from a prompt stack.
+
 \section{What does work: routed re-consultation}
 \label{sec:reconsult}
 
@@ -568,6 +691,8 @@ The two cells share one shape:
 \midrule
 aggregator uses a clarification & $7/7$ & $0.34$ names the tension \\
 proposer routes a deferral & $0.909$ correct & $0.306$ recognises the need \\
+briefed proposer conveys, live & $21/21$ conveyed, $0.905$ adopted &
+  $0.208$--$0.583$ by batch \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -579,12 +704,36 @@ trigger from a mandated artefact the aggregator already produces, rather
 than from a model's assessment of its own competence --- the one faculty
 the program never found evidence for.
 
-\textbf{Scope.} Six items, one writer, controlled clarifications rather
-than live proposer answers, and a conditioned $n$ of seven in the decisive
-cell, where unanimity was the only way to clear an interval. The judge
-agreement bar was met on the analysis population ($0.703$) and not overall
-($0.583$); both are reported. This is an existence result about a
-mechanism, not an effect size for deployment.
+\textbf{The loop closes end-to-end with a live proposer.} The results
+above used controlled clarification texts; two further registered cells
+replaced them with a real proposer. The first buried the deciding fact
+in the proposer's own round-one contribution and \emph{halted at its
+registered pilot gate}: with the fact visible in the pile the tension
+was named in only $0.208$ of runs --- recorded as the halt, with the
+suppression mechanism left unproven. The second restored the original
+round-one bytes and supplied the fact only as the proposer's private
+working notes at reply time --- knowledge held but never written. The
+live proposer conveyed the fact in $21/21$ dispatched replies, and the
+aggregator adopted the fact-implied resolution in $0.905$ of
+tension-named runs against the archived control's $0.333$
+($+0.571$ \ci{+0.139}{+0.912}), within $-0.095$ \ci{-0.227}{0.000} of
+the scripted ceiling. Production, conveyance, and use all work with no
+controlled inputs; what varies across batches is only the trigger
+($0.208$--$0.583$ across the three cells that measured it --- no single
+rate should be quoted). One risk rode along: $4/21$ live replies
+embellished the correctly conveyed fact with \emph{fabricated} legal
+authority (invented case law, invented regulatory rulings), and the
+aggregator adopted anyway. A content gate screens absent content, not
+invented content; the fabrication rate is observed but unbounded.
+
+\textbf{Scope.} Six items throughout, one writer family, and a
+conditioned $n$ of seven in the original decisive cell, where unanimity
+was the only way to clear an interval; the live cell's comparators are
+the original cell's archived arms under a registered, never-pooled
+fresh-batch check. The judge agreement bar was met on the analysis
+population ($0.703$) and not overall ($0.583$); both are reported. These
+are existence results about a mechanism, not effect sizes for
+deployment.
 
 \section{Discussion}
 
@@ -612,6 +761,9 @@ away from the specific surface forms by which pipelines currently
 signal uncertainty. Systems that must retain calibrated marking under
 preference pressure will need it carried somewhere preference cannot
 see --- structured fields, tool outputs --- rather than in-band prose.
+We no longer offer that as advice: the out-of-band channel is tested
+(\S\ref{sec:harness}), carries everything prose loses, changes
+downstream decisions, and shows no detected preference cost.
 
 \textbf{Implication for evaluation.} At auditable scale, five sixths of
 a raw preference verdict is reading order. Single-ordering LLM-judge
@@ -631,8 +783,18 @@ only effects ${\ge}0.22$; the preference cells' decisive counts (44 and
 33) give minimum detectable shares of ${\sim}0.67$--$0.70$, which the
 observed lifts clear but subtler ones would not. Several early program
 values remain PROVISIONAL pending re-measurement and are not used here.
-Claims are stated with their judge-family scope and should not be
-generalized past it.
+The engineered-consequence cells (\S\ref{sec:harness},
+\S\ref{sec:reconsult}) carry their own bounds: cluster ceilings of
+6--18 items; the uptake verdict rests on 11 of 18 authored items after
+a registered floor gate; the live-loop cell compares against archived
+arms under a fresh-batch check rather than concurrent regeneration; the
+redundancy boundary is bimodal with its mechanism open after two
+registered attempts; the isolation null covers sibling \emph{outputs},
+not cross-domain instruction framing; and the live-reply fabrication
+rate ($4/21$) is observed, not bounded. Trigger rates vary by batch
+($0.208$--$0.583$) and are never optimization targets under the
+program's Goodhart charter. Claims are stated with their judge-family
+scope and should not be generalized past it.
 
 \section{Reproducibility}
 
