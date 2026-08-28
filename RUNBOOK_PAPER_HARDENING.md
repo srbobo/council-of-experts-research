@@ -8410,3 +8410,71 @@ conditioned contrast is unaffected, but no single trigger number should
 be quoted as THE rate (range on record: 0.208–0.583 across C44/C53/C54
 batches). Cluster ceiling 6 items; comparators archived under the
 registered batch guard.
+
+## CELL 55 PRE-REGISTRATION (2026-08-26) — seating-gate predictive validity: does S1's verdict at selection predict defects at pipeline time?
+
+Registered before any run.
+
+**Question.** Harness §1 seats a model only if it passes gate S1. The
+components are individually grounded (the BioMistral incident, the
+budget-exhaustion incidents, Cell 42), but the gate's PREDICTIVE claim —
+a screen verdict on probe items forecasts behavior on pipeline cases —
+has never been a cell. This cell computes gate verdicts fresh on the
+frozen screen protocol, then seats every candidate in the real pipeline
+and measures whether the gate called it.
+
+**Scope.** The defect-screening components only: the degeneracy screen
+(frozen C42 rule: 2 screen items × 6 reps, every run ≥ 800 chars) is the
+GATE for the prediction; the format-compliance smoke test (a frozen
+one-line-verdict task × 4 reps at pipeline budgets) is run and recorded
+DESCRIPTIVELY per candidate. The signature probe's validity is Cell 42's
+own settled question and is out of scope. No model is pulled (disk 92%);
+the pool is what is local.
+
+**Candidates (9, frozen now, no additions after any run):**
+qwen2.5:7b-instruct, llama3:8b-instruct-q4_K_M,
+mistral:7b-instruct-v0.3-q4_K_M, deepseek-r1:7b, phi4:14b (generalists);
+Meditron3-Qwen2.5-7B, Llama3-Med42-8B, OpenBioLLM-Llama3-8B,
+BioMistral-7B (fine-tunes; BioMistral is the archive's known degenerate
+and this cell RE-GATES it fresh rather than importing the verdict).
+Saul-Instruct-v1 is added as the legal fine-tune → 10 candidates total.
+
+**Pipeline stage.** Each candidate seated with the frozen Cell 30 role
+prompt (healthcare role for all; Saul under the legal role, recorded) on
+the six Cell 44 cases × 3 reps = 18 contributions per candidate,
+temperature 0.7, max_tokens 4096, seat-side protocol identical to Cell
+52's arm A (roster line, no siblings). **Pipeline defect** (frozen):
+contribution empty after 3 attempts OR < 800 chars.
+
+**Order discipline.** The gate stage runs first and its verdicts are
+WRITTEN AND COMMITTED before the pipeline stage starts. No candidate is
+added, removed, or re-gated afterward.
+
+**Predictions.**
+- **P55.1 — rank separation (confirmatory).** Every gate-FAIL
+  candidate's pipeline defect rate is strictly greater than every
+  gate-PASS candidate's. FALSIFIED by any inversion or tie at the
+  boundary. If fewer than 2 candidates fail the gate, the prediction is
+  evaluated as stated on however many exist (the pool is the pool;
+  failures cannot be manufactured without rigging the test), and the
+  resulting evidence class is recorded honestly.
+- **P55.2 — pooled contrast (registered estimation).** Defect-rate
+  difference, gate-fail pool minus gate-pass pool, bootstrap over the 6
+  cases (5000 draws), CI reported.
+- **Descriptive:** per-candidate table (screen chars, gate verdict,
+  format smoke, pipeline defect rate, pipeline mean chars); the
+  format-smoke-vs-pipeline pattern for the reasoning model.
+
+**Attainability (archive).** BioMistral's screen record is 12/12 runs
+under 800 chars (longest 620); passing candidates' screen means run
+1,514–4,191. If screen behavior transfers at all, per-candidate defect
+rates separate by ≥ 0.5; at 18 contributions per candidate a defect-rate
+difference of 0.3 is resolvable per pair. The known risk is the
+opposite: screen degeneracy may NOT transfer to case prompts (different
+item style), which is exactly what the cell exists to find out.
+
+**Costs.** Gate: 10 × (12 + 4) = 160 short runs. Pipeline: 10 × 18 =
+180 contributions. All local models, no pulls.
+
+**Goodhart note.** Gate verdicts and defect rates are diagnostics; no
+prompt, model, or threshold is tuned toward them.
