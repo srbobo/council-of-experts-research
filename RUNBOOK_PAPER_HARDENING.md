@@ -8368,3 +8368,45 @@ realism is the seat KNOWING things it did not write, which this models
 
 **Goodhart note.** Unchanged from Cell 53; the content gate is again
 NOT simulated — live replies are delivered as produced.
+
+## CELL 54 VERDICT (2026-08-25) — P54.1 SUPPORTED: the live loop works end-to-end. §5's production half is established, with one new risk on record.
+
+36 live pipeline runs (trigger 21/36 = 0.583 this batch), 12 fresh
+mini-control, archived Cell 44 comparators under the passed batch check.
+
+**Raw (R-adoption among tension-named runs):** live-briefed 19/21 =
+0.905 (2 judge-disagreements, 0 ANTI, 0 NEITHER) · archived control
+5/15 = 0.333 · archived informed ceiling 7/7 = 1.000 · fresh
+mini-control 2/6 (batch-consistent with the archive).
+
+**P54.1 SUPPORTED.** Live minus archived control: **+0.571 [+0.139,
++0.912]**. A real seat, dispatched the orchestrator's follow-up and
+holding the fact only in private working notes, conveys it and the lead
+uses it — the full loop, no controlled inputs anywhere.
+
+**P54.2: live comparable to the scripted ceiling.** Live minus
+informed: **−0.095 [−0.227, +0.000]** — the CI excludes a deficit
+larger than 0.3 (frozen threshold). Live prose costs at most a small
+fraction of the perfect script's effect.
+
+**P54.3 production: 21/21 = 1.000.** Every dispatched briefed reply
+surfaced the fact (corrected instrument, replies persisted).
+
+**Hallucination watch (registered qualitative note):** 4 of 21 live
+replies embellish the correctly-conveyed fact with FABRICATED legal
+authority — item 3 cites invented case law ("Rosenbaum v. Uber, 2023",
+"Klein v. Lyft") in three of its runs, the same fabrications as Cell
+53's diagnostic; item 5 invents ICO rulings ("Wright v. ICO"). The
+lead adopted R in these runs anyway. Consequence recorded for §5: the
+content gate screens for content ABSENCE and cannot catch content
+INVENTION — live replies carry a fabrication risk the scripted arm
+structurally cannot, and it rides along even when conveyance succeeds.
+Bounding it is a future cell (fabrication rate here: 4/21 replies, 2/6
+items, legal domain both times).
+
+**Batch notes:** live-arm trigger 0.583 vs the archive's 0.34 — the
+trigger rate itself is batch-variable (mini-control: 0.50); the
+conditioned contrast is unaffected, but no single trigger number should
+be quoted as THE rate (range on record: 0.208–0.583 across C44/C53/C54
+batches). Cluster ceiling 6 items; comparators archived under the
+registered batch guard.

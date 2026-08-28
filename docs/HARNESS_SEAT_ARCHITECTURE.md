@@ -21,7 +21,7 @@ measured gains and nothing else:
 |---|---|
 | preference lift from aggregation (0.79–0.82, two judge families, not length) | Cells 43/43-R |
 | error immunity where coverage overlaps (0/27 propagation with a clean co-source) | Cells 35/37 |
-| routed re-consultation resolving contested quantities (7/7 when informed) | Cell 44 |
+| routed re-consultation resolving contested quantities (7/7 when informed; live end-to-end 0.905 vs 0.333, Cell 54) | Cells 44/54 |
 
 ## 1. Seat selection is empirical, never categorical
 
@@ -115,6 +115,18 @@ The one intervention that survived its registered test (Cell 44: informed
 work, not the ceremony). The orchestrator — never the lead's disposition —
 parses the stage-1 tension list, dispatches a follow-up to the implicated
 seat, and appends the reply before stage 2.
+
+**The loop is now tested end-to-end with a live seat (Cell 54):** a
+seat holding the deciding fact only in private working notes conveyed it
+21/21 when dispatched, and the lead adopted the resolution 0.905 vs
+0.333 archived control (+0.571 [+0.139, +0.912]), within −0.095
+[−0.227, 0.000] of the scripted ceiling. Production, conveyance, and
+use all work with no controlled inputs. One new risk from the same
+cell: 4/21 live replies embellished the true fact with FABRICATED
+authority (invented case law, invented regulatory rulings) and the lead
+adopted anyway — the content gate below screens for absence, not
+invention, so fabrication in live replies is an open, unbounded risk
+(observed 4/21, legal domain, both affected items).
 
 **Content gate on the reply**: the unregistered but three-cut-consistent
 ritual observation (d ≈ 0.22, below this program's power to confirm) is
