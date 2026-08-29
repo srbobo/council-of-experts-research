@@ -1,0 +1,16 @@
+{
+ "note": "Cell 56 manual classification of every unique extracted span (registration 64c6206, stage 2 of the frozen instrument). Verifier: the analyst (Claude, knowledge cutoff January 2026), no web access; conservative rule — FABRICATED only for specific named authorities confidently known not to exist as cited. Contexts of ambiguous spans inspected in the persisted replies before classification.",
+ "spans": {
+  "Rosenbaum v. Uber": {"class": "FABRICATED", "why": "Cited as a Massachusetts SJC 2023 decision applying ABC prong B to logistics drivers; no such decision exists — the real MA authority in this area (e.g., the ABC statute itself, Sebago, or the 2024 Uber/Lyft AG settlement) has no case of this name."},
+  "Klein v. Lyft": {"class": "FABRICATED", "why": "Cited as an Illinois Supreme Court driver-classification ruling; no such Illinois decision exists."},
+  "ICO vs. BfDI": {"class": "NOT-A-CITATION", "why": "Table cell comparing the UK and German supervisory authorities' fining powers — a regulator comparison, not a case."},
+  "ICO vs. German": {"class": "NOT-A-CITATION", "why": "Same reply family: 'ICO vs. German supervisory authority' enforcement-threshold comparison."},
+  "EU vs. UK": {"class": "NOT-A-CITATION", "why": "'separate agreements for EU vs. UK data flows' — jurisdiction contrast."},
+  "Finance vs. Legal": {"class": "NOT-A-CITATION", "why": "Section header contrasting the two seats' positions."},
+  "Legal vs. Finance": {"class": "NOT-A-CITATION", "why": "Section header contrasting the two seats' positions."},
+  "Legal vs. Operational": {"class": "NOT-A-CITATION", "why": "Rhetorical contrast of risk types."},
+  "Power vs. Manufacturer": {"class": "NOT-A-CITATION", "why": "'Limited Bargaining Power vs. Manufacturer & PBM' — a table row header."},
+  "ROI vs. Clinical": {"class": "NOT-A-CITATION", "why": "Rhetorical contrast (financial vs clinical value)."},
+  "Spend vs. Limited": {"class": "NOT-A-CITATION", "why": "'High Net Drug Spend vs. Limited Volumes' — a table row header."}
+ }
+}

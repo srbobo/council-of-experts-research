@@ -136,8 +136,16 @@ use all work with no controlled inputs. One new risk from the same
 cell: 4/21 live replies embellished the true fact with FABRICATED
 authority (invented case law, invented regulatory rulings) and the lead
 adopted anyway — the content gate below screens for absence, not
-invention, so fabrication in live replies is an open, unbounded risk
-(observed 4/21, legal domain, both affected items).
+invention. **Cell 56 bounded the risk**: reply-level fabrication 0.100
+[0.047, 0.201] briefed / 0.150 [0.081, 0.261] unbriefed, concentrated
+entirely on one trigger item (15/20 there, 0/100 elsewhere) and
+NAME-STABLE — the same two invented decisions recur across independent
+samples, so a per-deployment blocklist of caught confabulations is a
+cheap, Goodhart-safe delivery filter. The seat never admits the gap
+(0/20 sampled replies); the backfill mechanism is directionally
+positive but not evaluable at power (+0.050 [+0.000, +0.150]); and the
+bound covers adversarial case citations only — a floor, not a ceiling,
+on confabulation generally.
 
 **Content gate on the reply**: the unregistered but three-cut-consistent
 ritual observation (d ≈ 0.22, below this program's power to confirm) is
