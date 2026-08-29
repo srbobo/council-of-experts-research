@@ -8645,3 +8645,82 @@ the direction on record.
 - The admission-zero finding extends the C44/45/53 self-knowledge
   record to a fourth setting: the seat that lacks the fact does not
   know — or does not say — that it lacks it.
+
+## CELL 57 PRE-REGISTRATION (2026-08-29) — planner competence: can the orchestrator find the load-bearing quantities?
+
+Registered before label authoring and before any run.
+
+**Question.** §3's redundancy planner is the harness's only component
+never exercised by any cell: every redundancy result used HUMAN-planted
+quantity assignments. Before the planner can be built, its core
+competence claim needs a number: given a case, can the orchestrator
+model identify the load-bearing quantities at all?
+
+**Ground-truth decision (attainability audit, recorded before
+registration).** The archived C47/C50 quantity labels were examined and
+REJECTED as ground truth: C50's quantities were deliberately authored
+as auxiliary inventions (peripheral by design — that cell needed
+non-ambient values), and C47's mix genuinely central quantities with
+side-planted ones. Scoring recall against deliberately-peripheral
+labels would mismeasure competence. Ground truth is instead authored
+fresh, from the case prompts themselves, under a frozen rule.
+
+**Labels (docs/CELL57_LABELS.json, authored after this registration,
+frozen after guards, before any elicitation).** For each of the 12
+frozen C42 probe cases: 3–6 load-bearing quantities, each classified
+**stated** (a figure given in the prompt) or **unknown** (a quantity
+the prompt explicitly leaves open — e.g., the unrecorded pick rate, the
+unmeasured no-show rate), under the frozen rule: *a quantity is
+load-bearing iff plausible alternative values of it change the core
+recommendation.* Each label carries 1–3 distinctive probe strings.
+Guards (mechanical, exclusion before freeze): every label's probe
+vocabulary must be present (normed) in its case prompt — labels must be
+case-inherent, not analyst inventions; no probe may appear in the
+planner prompt.
+
+**Elicitation (two arms).**
+- **pre-seat** (deployment planning input): planner prompt + case
+  prompt only.
+- **post-seat** (redundancy-assignment input): + the three archived
+  round-1 seat contributions.
+Planner = gpt-oss:20b under a frozen orchestrator prompt asking for a
+numbered list of the 3–6 load-bearing quantities — stated or missing —
+on which the recommendation turns. 5 reps per case per arm,
+temperature 0.7. Gate G-E on the prompt; preflight; outputs persisted.
+
+**Instrument (two stages, C56 pattern).** Mechanical probe prefilter: a
+label is candidate-recalled in a rep if any single output line contains
+any of its probes (normed containment). Every matched (line, label)
+pair then goes to a COMMITTED manual confirmation table
+(correspondence YES/NO with one-line justification); final recall uses
+confirmed matches only. **Specificity control**: the same probes are
+cross-scored against the lists generated for OTHER cases
+(no new generation); high cross-recall would convict the probes, not
+credit the planner.
+
+**Predictions.**
+- **P57.1 — specificity (confirmatory).** Matched recall exceeds
+  mismatched cross-recall: cluster bootstrap by case (5000 draws), 95%
+  CI > 0. This is the validity floor; failing it means the instrument
+  cannot see planner competence and the cell is NOT EVALUABLE for
+  P57.2.
+- **P57.2 — the competence bound (registered estimation, the
+  deliverable).** Absolute confirmed recall per arm with cluster CIs.
+  Frozen interpretation bands: ≥ 0.7 strong (the planner component is
+  buildable as specified); 0.4–0.7 partial (§3 must state that
+  redundancy protection is bounded by planner coverage); < 0.4 weak
+  (the component underdelivers §3 and the harness doc says so).
+- **P57.3 — recognition vs anticipation (registered estimation).**
+  Post-seat minus pre-seat recall, CI reported.
+- **Descriptive:** stated-class vs unknown-class recall (can the
+  planner name the MISSING quantities — the redundancy planner's
+  hardest and most valuable case); list lengths; per-case table.
+
+**Costs.** 12 cases × 2 arms × 5 reps = 120 short generations;
+cross-scoring is free; manual confirmation table committed with the
+verdict.
+
+**Goodhart note.** Recall is a diagnostic of the component's
+feasibility. The planner prompt is frozen here and must not be tuned
+against these labels — a planner variant that wants a different prompt
+registers a new cell.
