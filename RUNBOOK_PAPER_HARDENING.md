@@ -8478,3 +8478,40 @@ item style), which is exactly what the cell exists to find out.
 
 **Goodhart note.** Gate verdicts and defect rates are diagnostics; no
 prompt, model, or threshold is tuned toward them.
+
+## CELL 55 VERDICT (2026-08-29) — P55.1 SUPPORTED: the seating gate's verdict at selection predicts defects at pipeline time. The last untested harness component is tested.
+
+Gate verdicts frozen and committed before any pipeline run; 180
+pipeline contributions over ten candidates and six cases.
+
+**Raw (decoded from the mandatory table):** all eight gate-PASS
+candidates ran defect-free or nearly so in the pipeline — seven at
+0/18, med42 at 1/18 = 0.056 — while both gate-FAIL candidates
+defected: openbiollm 6/18 = 0.333, biomistral 17/18 = 0.944 (pipeline
+mean 422 visible chars). Screen means track pipeline means
+monotonically across the pool (4,385→4,264 at the top; 706→422 at the
+bottom).
+
+**P55.1 SUPPORTED — strict rank separation holds:** minimum fail-rate
+0.333 > maximum pass-rate 0.056, no inversion, no boundary tie.
+**P55.2: +0.632 [+0.549, +0.722]** pooled defect contrast, case
+bootstrap.
+
+**Two findings beyond the headline:**
+1. **The re-gate caught a degradation the archive would have missed.**
+   openbiollm PASSED the C42-era screen (mean 1,514) and FAILS fresh
+   (min 78); its pipeline defect rate (0.333) confirms the fresh
+   verdict, not the archived one. Gate verdicts age; seating should
+   re-gate, not import.
+2. **Format compliance is a separate axis, and it does NOT predict
+   seat defects.** saul: format smoke 0/4 yet pipeline 0/18 defect-free
+   with healthy contributions (2,663 chars). The format component's
+   proper target is verdict-emitting roles (judges, leads), not seats
+   — recorded as a scoping refinement to §1, not a failure of the
+   component.
+
+**Consequence:** every runtime component of the harness now carries a
+prospective verdict: §1 predictive (C55), §2 informative null (C52),
+§3 causal (C47, boundary open), §4/§5 end-to-end live (C44/53/54), §6
+complete on carriage, cost, and uptake (C48/51). The harness re-test
+arc closes at six verdicts: four survived, one demoted, one killed.

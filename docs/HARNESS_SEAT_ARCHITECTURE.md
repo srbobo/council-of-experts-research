@@ -44,6 +44,17 @@ measurement, before any pipeline run:
 A seat that fails S1 is not seated. A generalist under a role prompt is a
 legitimate seat if it passes; Cells 30/41 ran on exactly that.
 
+**The gate's predictive validity is tested (Cell 55):** verdicts frozen
+before any pipeline run, ten candidates, strict rank separation
+SUPPORTED — both gate-fail candidates defected in the pipeline (0.333,
+0.944) while every gate-pass candidate ran at 0.000–0.056; pooled
+contrast +0.632 [+0.549, +0.722]. Two refinements from the same cell:
+verdicts AGE (a model that passed the archive-era screen failed the
+fresh re-gate and then defected in-pipeline at 0.333 — always re-gate,
+never import), and the format smoke is a separate axis whose proper
+target is verdict-emitting roles, not seats (the legal fine-tune failed
+it 0/4 yet seated defect-free).
+
 ## 2. Isolation: sub-questions in, roster only
 
 The planner decomposes; each seat receives a self-contained sub-question
