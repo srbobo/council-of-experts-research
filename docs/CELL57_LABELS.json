@@ -1,0 +1,59 @@
+{
+ "note": "Cell 57 load-bearing quantity labels, authored AFTER registration e690dd9 from the twelve frozen C42 case prompts under the frozen rule: a quantity is load-bearing iff plausible alternative values of it change the core recommendation. class: stated (figure given in the prompt) or unknown (explicitly at issue but not given). probes: distinctive strings for the mechanical prefilter, normed/anchored matching; every probe's vocabulary must appear in the case prompt (guard). DEVIATION recorded: case_9 supports only TWO case-inherent labels (it is an explainer case with no open quantities beyond its two stated terms); authoring a third would violate the frozen rule, so the 3-6 range yields to the rule and the exception is recorded here.",
+ "labels": [
+  {"case": "case_1_clinical_decision_support", "quantities": [
+   {"id": "c1_hospitals", "desc": "the number of hospitals in the system", "class": "stated", "probes": ["12 hospital", "twelve hospital"]},
+   {"id": "c1_price", "desc": "the per-seat annual subscription price", "class": "unknown", "probes": ["per seat", "subscription"]},
+   {"id": "c1_seats", "desc": "the number of provider seats covered", "class": "unknown", "probes": ["providers", "seat count"]}]},
+  {"case": "case_2_cross_border_digital_therapeutic", "quantities": [
+   {"id": "c2_window", "desc": "the 18-month launch window", "class": "stated", "probes": ["18 month"]},
+   {"id": "c2_reimb", "desc": "the reimbursement price or rate per market", "class": "unknown", "probes": ["reimbursement"]},
+   {"id": "c2_markets", "desc": "the number of simultaneous target markets", "class": "stated", "probes": ["germany", "simultan"]}]},
+  {"case": "case_4_glp1_employer_coverage", "quantities": [
+   {"id": "c4_employees", "desc": "the number of covered employees", "class": "stated", "probes": ["5000", "5 000"]},
+   {"id": "c4_criteria", "desc": "the utilization-management eligibility thresholds", "class": "unknown", "probes": ["utilization", "criteria"]},
+   {"id": "c4_cost", "desc": "the per-member GLP-1 drug cost", "class": "unknown", "probes": ["glp 1", "semaglutide", "tirzepatide"]}]},
+  {"case": "case_8_trigger_light_hand_hygiene", "quantities": [
+   {"id": "c8_obs", "desc": "the 40 monthly observations", "class": "stated", "probes": ["40 observation", "observations"]},
+   {"id": "c8_nurses", "desc": "the 32-nurse staffing count", "class": "stated", "probes": ["32", "nurses"]},
+   {"id": "c8_shifts", "desc": "the three shifts", "class": "stated", "probes": ["shifts"]},
+   {"id": "c8_auditors", "desc": "the two trained auditors", "class": "stated", "probes": ["auditor"]}]},
+  {"case": "case_l2_l2a", "quantities": [
+   {"id": "l2a_volume", "desc": "the 220 weekly appointments", "class": "stated", "probes": ["220"]},
+   {"id": "l2a_fee", "desc": "the $1,900 monthly programme cost", "class": "stated", "probes": ["1900", "1 900"]},
+   {"id": "l2a_noshow", "desc": "the unmeasured baseline no-show rate", "class": "unknown", "probes": ["no show"]},
+   {"id": "l2a_missedcost", "desc": "the unmeasured cost of a missed appointment", "class": "unknown", "probes": ["missed"]},
+   {"id": "l2a_effect", "desc": "the reminder programme's effectiveness in this setting", "class": "unknown", "probes": ["reminder"]}]},
+  {"case": "case_l3_l3a", "quantities": [
+   {"id": "l3a_lives", "desc": "the 4,100 covered lives", "class": "stated", "probes": ["4100", "4 100"]},
+   {"id": "l3a_cost", "desc": "the $1,050 monthly net cost per treated member", "class": "stated", "probes": ["1050", "1 050"]},
+   {"id": "l3a_uptake", "desc": "the unknown uptake rate", "class": "unknown", "probes": ["uptake"]},
+   {"id": "l3a_persist", "desc": "the unknown persistence past year one", "class": "unknown", "probes": ["persistence", "persist"]},
+   {"id": "l3a_offset", "desc": "the unknown downstream medical offset", "class": "unknown", "probes": ["offset"]}]},
+  {"case": "case_7_trigger_light_baseline", "quantities": [
+   {"id": "c7_headcount", "desc": "the 200-person headcount", "class": "stated", "probes": ["200"]},
+   {"id": "c7_allhands", "desc": "the weekly all-hands cadence", "class": "stated", "probes": ["all hands", "weekly"]},
+   {"id": "c7_meetload", "desc": "the meeting time burden behind the fatigue", "class": "unknown", "probes": ["meeting", "fatigue"]}]},
+  {"case": "case_9_trigger_light_nda_clauses", "quantities": [
+   {"id": "c9_term", "desc": "the three-year term", "class": "stated", "probes": ["three year", "3 year"]},
+   {"id": "c9_tail", "desc": "the two-year post-termination tail", "class": "stated", "probes": ["two year", "tail"]}]},
+  {"case": "case_10_trigger_light_depreciation", "quantities": [
+   {"id": "c10_cost", "desc": "the $60,000 equipment cost", "class": "stated", "probes": ["60000", "60 000"]},
+   {"id": "c10_salvage", "desc": "the $10,000 salvage value", "class": "stated", "probes": ["salvage", "10000"]},
+   {"id": "c10_life", "desc": "the five-year useful life", "class": "stated", "probes": ["five year", "5 year"]}]},
+  {"case": "case_l1_l1a", "quantities": [
+   {"id": "l1a_units", "desc": "the 1,400 units per evening", "class": "stated", "probes": ["1400", "1 400"]},
+   {"id": "l1a_hours", "desc": "the six-hour shift length", "class": "stated", "probes": ["six hour", "6 hour"]},
+   {"id": "l1a_rate", "desc": "the $28 loaded labour rate", "class": "stated", "probes": ["28"]},
+   {"id": "l1a_pick", "desc": "the unrecorded pick rate per worker", "class": "unknown", "probes": ["pick rate", "pick rates"]}]},
+  {"case": "case_l1_l1b", "quantities": [
+   {"id": "l1b_headcount", "desc": "the 60-person headcount", "class": "stated", "probes": ["60 person", "60 employee"]},
+   {"id": "l1b_pto", "desc": "the existing 10 days of PTO", "class": "stated", "probes": ["10 days"]},
+   {"id": "l1b_week", "desc": "the standard 40-hour week", "class": "stated", "probes": ["40 hour"]},
+   {"id": "l1b_accrual", "desc": "each state's required accrual rate and cap", "class": "unknown", "probes": ["accrual"]}]},
+  {"case": "case_l3_l3b", "quantities": [
+   {"id": "l3b_drivers", "desc": "the 180 drivers", "class": "stated", "probes": ["180"]},
+   {"id": "l3b_pay", "desc": "the $52,000 average driver pay", "class": "stated", "probes": ["52000", "52 000"]},
+   {"id": "l3b_control", "desc": "the untracked degree of dispatch-software control", "class": "unknown", "probes": ["dispatch software", "route choice"]}]}
+ ]
+}
