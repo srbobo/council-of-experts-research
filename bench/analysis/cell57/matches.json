@@ -1,0 +1,2517 @@
+[
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r0",
+  "label": "c1_hospitals",
+  "line": "1. **Number of provider seats** – total users across the 12 hospitals."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r0",
+  "label": "c1_price",
+  "line": "2. **Annual subscription price per seat** – cost billed to the health system for each active user."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r1",
+  "label": "c1_hospitals",
+  "line": "4. Per‑seat annual subscription price (e.g., $1,200 per provider seat) and projected first‑year adoption target of ≥ 300 seats across the 12 hospitals."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r1",
+  "label": "c1_price",
+  "line": "4. Per‑seat annual subscription price (e.g., $1,200 per provider seat) and projected first‑year adoption target of ≥ 300 seats across the 12 hospitals."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r2",
+  "label": "c1_price",
+  "line": "1. Annual subscription price per provider seat"
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r3",
+  "label": "c1_price",
+  "line": "1. Annual subscription cost per seat (USD)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__pre-seat__r4",
+  "label": "c1_price",
+  "line": "1. **Annual subscription fee per seat** – the dollar amount charged to each provider for use of the AI CDS tool over a 12‑month period."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r0",
+  "label": "c1_price",
+  "line": "3. Per‑seat annual subscription price (e.g., $1,200/yr) and volume discount thresholds (≥ 300 seats → 10 % off)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r1",
+  "label": "c1_price",
+  "line": "1. Annual subscription fee per seat (e.g., $1,200 / seat)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r1",
+  "label": "c1_hospitals",
+  "line": "2. Total number of seats across the 12‑hospital system (≈ 120–2,400 seats depending on pricing tier)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r2",
+  "label": "c1_price",
+  "line": "3. Per‑seat annual subscription price (e.g., $1,200–$1,500/seat/year)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r3",
+  "label": "c1_hospitals",
+  "line": "1. AUROC ≥ 0.85 for the sepsis‑risk model in all 12 hospitals."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r3",
+  "label": "c1_price",
+  "line": "3. Per‑seat annual subscription fee: $5,000 baseline; volume discount to $4,500 when ≥ 80 seats are subscribed."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r4",
+  "label": "c1_price",
+  "line": "2. Per‑seat annual subscription price of $5,000 (baseline)."
+ },
+ {
+  "run_id": "case_1_clinical_decision_support__post-seat__r4",
+  "label": "c1_hospitals",
+  "line": "3. Total seats deployed: 120 across the 12 hospitals."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r0",
+  "label": "c2_window",
+  "line": "1. 18‑month launch deadline from today."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r0",
+  "label": "c2_reimb",
+  "line": "5. NICE QALY threshold £20,000–£30,000 per QALY; German reimbursement €90/month for 12 months under BfArM/KBV."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r0",
+  "label": "c2_markets",
+  "line": "6. Target 5 % market share of UK and Germany smokers within the first year post‑launch (~700k users)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r1",
+  "label": "c2_window",
+  "line": "1. **Launch window:** 18 months from today (target launch date in UK/Germany)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r1",
+  "label": "c2_markets",
+  "line": "1. **Launch window:** 18 months from today (target launch date in UK/Germany)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r1",
+  "label": "c2_reimb",
+  "line": "5. **Reimbursement targets:** Achieve NICE cost‑effectiveness below £25,000 per QALY; secure an EBM code in Germany with a reimbursement rate ≥ €200 per patient treated annually."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r1",
+  "label": "c2_markets",
+  "line": "5. **Reimbursement targets:** Achieve NICE cost‑effectiveness below £25,000 per QALY; secure an EBM code in Germany with a reimbursement rate ≥ €200 per patient treated annually."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r2",
+  "label": "c2_markets",
+  "line": "2. Germany smoking prevalence eligible for digital therapy: ~7.5 million adults (~13% of adult population)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r2",
+  "label": "c2_markets",
+  "line": "4. Regulatory approval timeline: UK MHRA clearance within 9–12 months; Germany MDR/CE marking within 6–9 months."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r2",
+  "label": "c2_reimb",
+  "line": "5. Expected reimbursement per patient episode: NHS tariff ≈£80; German statutory health insurer claim ≈€140."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r2",
+  "label": "c2_window",
+  "line": "6. Total compliance cost estimate (regulatory filings, translation, data‑protection certification): €250k–€350k over 18 months."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r3",
+  "label": "c2_markets",
+  "line": "3. GDPR compliance threshold: All patient data must reside on EU servers with local residency in the UK or Germany, audited biannually."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r3",
+  "label": "c2_reimb",
+  "line": "4. Reimbursement economics: Set per‑episode price at £300 (UK) and €350 (Germany) to meet NHS tariff and GKV cost‑effectiveness thresholds."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r3",
+  "label": "c2_markets",
+  "line": "4. Reimbursement economics: Set per‑episode price at £300 (UK) and €350 (Germany) to meet NHS tariff and GKV cost‑effectiveness thresholds."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r4",
+  "label": "c2_markets",
+  "line": "2. Regulatory approval timeline – target <12 months from submission to CE Mark plus national approvals, with a 6‑month contingency for UK and Germany."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r4",
+  "label": "c2_markets",
+  "line": "3. Data‑protection compliance threshold – minimum of four DPAs (EU, US, UK, Germany) and implementation of EU‑UK data transfer mechanisms by launch date."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r4",
+  "label": "c2_reimb",
+  "line": "4. Reimbursement tariff benchmarks – NHS Digital target £70/patient/year; German EBM reimbursement €120/patient/quarter."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__pre-seat__r4",
+  "label": "c2_markets",
+  "line": "5. Market penetration goal – reach 2 % of the smoking population within two years (≈200k users in UK, ≈150k users in Germany)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r0",
+  "label": "c2_markets",
+  "line": "1. **Absolute quit‑rate improvement required for HTA acceptance:** ≥ 15 % at 6–12 months vs. standard care in both UK and Germany."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r0",
+  "label": "c2_window",
+  "line": "3. **Launch deadline:** Simultaneous market entry in the UK and Germany within 18 months from today."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r0",
+  "label": "c2_markets",
+  "line": "3. **Launch deadline:** Simultaneous market entry in the UK and Germany within 18 months from today."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r0",
+  "label": "c2_markets",
+  "line": "4. **Target user base for Year‑1 revenue calculations:** 15 000 active users/month in the UK; 12 000 in Germany."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r0",
+  "label": "c2_markets",
+  "line": "5. **Per‑course pricing (baseline):** £200 per prescription course in the UK, €220 in Germany."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r1",
+  "label": "c2_window",
+  "line": "4. Simultaneous UK & Germany launch scheduled within an 18‑month horizon from project start."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r1",
+  "label": "c2_markets",
+  "line": "4. Simultaneous UK & Germany launch scheduled within an 18‑month horizon from project start."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r2",
+  "label": "c2_window",
+  "line": "2. CE mark and UK MHRA registration completed within the **18‑month launch window** from project start."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r3",
+  "label": "c2_markets",
+  "line": "1. **Clinical efficacy benchmark** – ≥ 15% absolute quit‑rate improvement at 6–12 months (UK NICE) or ≥ 10% (Germany G‑BA)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r3",
+  "label": "c2_markets",
+  "line": "2. **Cost‑effectiveness threshold** – ICER ≤ £20k–30k per QALY in the UK and ≤ €10k–25k per QALY in Germany."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r3",
+  "label": "c2_window",
+  "line": "3. **Launch cadence** – FDA‑cleared app to receive CE mark, UK MHRA registration, NICE STA submission, and G‑BA “added value” dossier within an 18‑month window (key sub‑milestones at months 6, 12, 15)."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r3",
+  "label": "c2_reimb",
+  "line": "5. **Capital allocation** – ~$2.3 M total first‑year spend (clinical evidence, regulatory/compliance, reimbursement) balanced against a five‑year revenue trajectory of £30 M UK + €28 M Germany and cumulative gross margin ≈ 63%."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r3",
+  "label": "c2_markets",
+  "line": "5. **Capital allocation** – ~$2.3 M total first‑year spend (clinical evidence, regulatory/compliance, reimbursement) balanced against a five‑year revenue trajectory of £30 M UK + €28 M Germany and cumulative gross margin ≈ 63%."
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_window",
+  "line": "1. 18‑month simultaneous launch window for the UK and Germany"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_markets",
+  "line": "1. 18‑month simultaneous launch window for the UK and Germany"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_markets",
+  "line": "2. Minimum absolute quit‑rate improvement: ≥ 15% at 6–12 months (UK NICE), ≥ 10% (Germany G‑BA)"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_markets",
+  "line": "3. Cost‑effectiveness thresholds: £20k–£30k per QALY (UK), €10k–€25k per QALY (Germany)"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_markets",
+  "line": "5. Target uptake: 15,000 users/month in the UK; 12,000 users/month in Germany"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_window",
+  "line": "6. Expected break‑even point: ~18 months (UK), ~20 months (Germany)"
+ },
+ {
+  "run_id": "case_2_cross_border_digital_therapeutic__post-seat__r4",
+  "label": "c2_markets",
+  "line": "6. Expected break‑even point: ~18 months (UK), ~20 months (Germany)"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r0",
+  "label": "c4_employees",
+  "line": "2. Average annual cost per GLP‑1 prescription under the current contract ($5,000–$7,000 depending on drug)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r0",
+  "label": "c4_cost",
+  "line": "2. Average annual cost per GLP‑1 prescription under the current contract ($5,000–$7,000 depending on drug)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r0",
+  "label": "c4_criteria",
+  "line": "4. Utilization‑management threshold to trigger coverage (BMI ≥ 35 with ≥6 months of documented diet/exercise failure)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r0",
+  "label": "c4_criteria",
+  "line": "5. Estimated administrative cost of implementing the utilization‑management program ($15,000–$25,000 annually)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r1",
+  "label": "c4_employees",
+  "line": "1. Total eligible employee population: **5,000**"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r1",
+  "label": "c4_cost",
+  "line": "2. Estimated annual drug cost per covered member (semaglutide or tirzepatide): **$1,200–$1,500**"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r1",
+  "label": "c4_criteria",
+  "line": "3. Anticipated utilization rate among eligible employees: **≈ 2%** (≈ 100 individuals)"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r2",
+  "label": "c4_employees",
+  "line": "1. Estimated obesity prevalence among the 5,000-employee workforce (e.g., % of employees with BMI ≥ 30)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r2",
+  "label": "c4_cost",
+  "line": "2. Average annual wholesale acquisition cost per patient for semaglutide and tirzepatide (e.g., $10–$12 k/year)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r2",
+  "label": "c4_criteria",
+  "line": "5. Utilization‑management threshold criteria (e.g., BMI > 35, prior weight‑loss attempts, or documented T2D diagnosis)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r3",
+  "label": "c4_cost",
+  "line": "1. Average annual per‑employee cost of GLP‑1 therapy (incl. drug + administration)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r3",
+  "label": "c4_criteria",
+  "line": "2. Estimated utilization rate among eligible employees (% who meet obesity criteria and would enroll)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r4",
+  "label": "c4_employees",
+  "line": "1. Obesity prevalence among the 5,000‑employee workforce (~35 %)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__pre-seat__r4",
+  "label": "c4_cost",
+  "line": "2. Annual per‑member cost to cover GLP‑1 therapy for obesity ($≈ $4,200 vs $≈ $3,400 when limited to T2D)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r0",
+  "label": "c4_employees",
+  "line": "4. **Target uptake rate among eligible employees** – 10 % of the 5,000‑employee workforce (~500 members)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r0",
+  "label": "c4_criteria",
+  "line": "5. **Utilization‑management cycle** – Quarterly weight monitoring with reauthorization at 12 weeks if < 5 % weight loss."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r1",
+  "label": "c4_employees",
+  "line": "1. **Eligible workforce** – 10 % of 5,000 employees ≈ 500 members"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r2",
+  "label": "c4_employees",
+  "line": "1. Total employee population – **5,000**"
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r3",
+  "label": "c4_employees",
+  "line": "2. Estimated eligible employee proportion – **≈ 10 % of the 5,000‑person workforce (≈ 500 members)**."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r3",
+  "label": "c4_cost",
+  "line": "3. Net annual drug cost per treated member after rebates/discounts – **≈ $8,400/month for semaglutide (Wegovy) and ≈ $7,800/month for tirzepatide**."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r4",
+  "label": "c4_employees",
+  "line": "1. Eligible workforce: ~10 % of 5,000 employees (≈ 500 members)."
+ },
+ {
+  "run_id": "case_4_glp1_employer_coverage__post-seat__r4",
+  "label": "c4_cost",
+  "line": "2. Monthly drug cost: $1,200–$1,400 per member for semaglutide/tirzepatide."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "1. **Total monthly hand‑hygiene observations:** 40"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "2. **Number of auditors:** 2 (each responsible for 20 observations)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "2. **Number of auditors:** 2 (each responsible for 20 observations)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_nurses",
+  "line": "3. **Shift nurse distribution (approximate):** Day ≈ 11 nurses, Evening ≈ 10 nurses, Night ≈ 11 nurses"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "4. **Proportional observation allocation per shift** based on nurse count: Day ≈ 15, Evening ≈ 13, Night ≈ 12 observations"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "5. **Observation validity checklist:** moment category, compliance (yes/no), product used, date/time, auditor ID"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_shifts",
+  "line": "## 1. Observation Schedule Across the Three Shifts"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "| Shift | Approximate Nurses | Proportion of 40 Observations | Observations per Auditor |"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_nurses",
+  "line": "| Shift | Approximate Nurses | Proportion of 40 Observations | Observations per Auditor |"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "| Shift | Approximate Nurses | Proportion of 40 Observations | Observations per Auditor |"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_nurses",
+  "line": "| Evening| ~10               | 13 (32.5 %)                    | 6 (Evening‑A), 7 (Evening‑B) |"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "1. **Plan at month start:** Each auditor receives a calendar with the exact dates and times for their observations, ensuring coverage of all three shifts."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_shifts",
+  "line": "1. **Plan at month start:** Each auditor receives a calendar with the exact dates and times for their observations, ensuring coverage of all three shifts."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "1. **Plan at month start:** Each auditor receives a calendar with the exact dates and times for their observations, ensuring coverage of all three shifts."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "- Assign the observation to a specific time window (e.g., 10 min blocks) to avoid overlap and ensure the auditor can record all five moments."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_shifts",
+  "line": "3. **Balance workload:** Each auditor handles roughly half of each shift’s quota, allowing them to rotate between shifts over the month."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "3. **Balance workload:** Each auditor handles roughly half of each shift’s quota, allowing them to rotate between shifts over the month."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "## 2. What Each Auditor Must Record for a Valid Observation"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "| **Auditor ID** | Auditor’s unique identifier | Ensures accountability and allows cross‑auditor comparison |"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "- **Long‑term:** Incorporate audit findings into ongoing education modules; consider rotating auditor pairs to foster peer learning."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "### Quick Checklist for Auditors"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_obs",
+  "line": "- ☐ Schedule 20 observations per month; confirm shift allocation."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_nurses",
+  "line": "- ☐ Randomly select nurses within each shift."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r0",
+  "label": "c8_auditors",
+  "line": "- ☐ Verify timestamps and auditor"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_obs",
+  "line": "1. Total monthly hand‑hygiene observations to be performed: **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_obs",
+  "line": "2. Observations assigned to each shift, proportional to the number of nurses scheduled for that shift (e.g., if Shift A has 12 nurses, Shift B 10, Shift C 10 – then 15, 13, 12 observations respectively)."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_nurses",
+  "line": "2. Observations assigned to each shift, proportional to the number of nurses scheduled for that shift (e.g., if Shift A has 12 nurses, Shift B 10, Shift C 10 – then 15, 13, 12 observations respectively)."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_obs",
+  "line": "3. Number of observations each auditor must complete: **20** per month (so two auditors share the 40‑observation quota)."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_auditors",
+  "line": "3. Number of observations each auditor must complete: **20** per month (so two auditors share the 40‑observation quota)."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r1",
+  "label": "c8_obs",
+  "line": "5. Monthly result presentation format: overall compliance percentage plus a shift‑by‑shift breakdown (e.g., bar chart or table) with total observations per shift and compliance rates."
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r2",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations required each month: **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r2",
+  "label": "c8_shifts",
+  "line": "2. Number of distinct shifts operated by the unit: **3** (morning, afternoon, night)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r2",
+  "label": "c8_obs",
+  "line": "4. Total auditors assigned to record observations: **2**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r2",
+  "label": "c8_auditors",
+  "line": "4. Total auditors assigned to record observations: **2**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_obs",
+  "line": "1. Total observations per month – **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_nurses",
+  "line": "2. Nurse distribution across shifts – ~**11** nurses in Shifts A & B, **10** nurses in Shift C"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_shifts",
+  "line": "2. Nurse distribution across shifts – ~**11** nurses in Shifts A & B, **10** nurses in Shift C"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_shifts",
+  "line": "3. Shift‐proportional observation targets – ≈**14** obs. for Shifts A & B; **12** for Shift C"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_obs",
+  "line": "4. Auditor workload – each of the **2** auditors records ~**20** observations/month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r3",
+  "label": "c8_auditors",
+  "line": "4. Auditor workload – each of the **2** auditors records ~**20** observations/month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r4",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations per month: **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r4",
+  "label": "c8_nurses",
+  "line": "2. Shift‑based allocation = (nurses in shift ÷ 32) × 40 → e.g., Day = 15, Evening = 13, Night = 12"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r4",
+  "label": "c8_obs",
+  "line": "3. Observations per auditor per month: **20** (half of the total)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__pre-seat__r4",
+  "label": "c8_auditors",
+  "line": "3. Observations per auditor per month: **20** (half of the total)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r0",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations per month – **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r0",
+  "label": "c8_shifts",
+  "line": "2. Proportional observation allocation across shifts (Day ≈41 %, Evening ≈31 %, Night ≈28 %)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r0",
+  "label": "c8_obs",
+  "line": "3. Auditor count and load – **2 auditors**, ~20 observations each per month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r0",
+  "label": "c8_auditors",
+  "line": "3. Auditor count and load – **2 auditors**, ~20 observations each per month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r0",
+  "label": "c8_nurses",
+  "line": "4. Shift nurse staffing percentages used for allocation – Day 13/32, Evening 10/32, Night 9/32"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r1",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations per month: **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r1",
+  "label": "c8_auditors",
+  "line": "3. Auditor workload and cost: 2 auditors × ≈20 obs/month each, ≈20 hrs total audit time at $30/hr → **$1,200** per month in auditor salaries"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r2",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations to be made per month – **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r2",
+  "label": "c8_nurses",
+  "line": "2. Total nursing staff across the unit – **32** (used for proportional shift allocation)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r2",
+  "label": "c8_obs",
+  "line": "4. Observations allocated to each shift: Day ≈ 16, Evening ≈ 13, Night ≈ 11 (rounded to whole numbers)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r2",
+  "label": "c8_obs",
+  "line": "5. Number of auditors and observations per auditor – **2 auditors**, ~20 observations each per month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r2",
+  "label": "c8_auditors",
+  "line": "5. Number of auditors and observations per auditor – **2 auditors**, ~20 observations each per month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r3",
+  "label": "c8_obs",
+  "line": "1. **Total hand‑hygiene observations to be made per month** – 40"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r3",
+  "label": "c8_obs",
+  "line": "2. **Proportional distribution of those observations by shift** – ≈16 for Day (07–15), ≈13 for Evening (15–23), ≈11 for Night (23–07)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r3",
+  "label": "c8_obs",
+  "line": "3. **Number of observations each auditor must complete** – 20 per month (two auditors total)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r3",
+  "label": "c8_auditors",
+  "line": "3. **Number of observations each auditor must complete** – 20 per month (two auditors total)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r3",
+  "label": "c8_nurses",
+  "line": "5. **Shift staffing proportions used to calculate the distribution** – Day ≈41 % of 32 nurses, Evening ≈31 %, Night ≈28 % (≈13, 10, 9 nurses respectively)"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r4",
+  "label": "c8_obs",
+  "line": "1. Total hand‑hygiene observations mandated per month: **40**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r4",
+  "label": "c8_nurses",
+  "line": "2. Number of nurses on the unit (used for shift weighting): **32**"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r4",
+  "label": "c8_obs",
+  "line": "4. Proportional observation allocation per shift: Day ≈ 16, Evening ≈ 13, Night ≈ 11 observations"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r4",
+  "label": "c8_obs",
+  "line": "5. Auditor distribution: **2** trained auditors, each responsible for roughly **20** observations per month"
+ },
+ {
+  "run_id": "case_8_trigger_light_hand_hygiene__post-seat__r4",
+  "label": "c8_auditors",
+  "line": "5. Auditor distribution: **2** trained auditors, each responsible for roughly **20** observations per month"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_volume",
+  "line": "1. Current no‑show rate (percentage of 220 weekly appointments)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_noshow",
+  "line": "1. Current no‑show rate (percentage of 220 weekly appointments)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_missedcost",
+  "line": "2. Average revenue or cost lost per missed appointment."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_noshow",
+  "line": "3. Expected reduction in no‑shows from the reminder program (efficacy percentage)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_effect",
+  "line": "3. Expected reduction in no‑shows from the reminder program (efficacy percentage)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_fee",
+  "line": "4. Monthly operating cost of the reminder program ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_effect",
+  "line": "4. Monthly operating cost of the reminder program ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r0",
+  "label": "l2a_noshow",
+  "line": "5. Break‑even threshold: number (or value) of avoided no‑shows needed to offset the monthly cost."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_noshow",
+  "line": "1. Current no‑show rate (percentage of scheduled visits that do not occur)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_missedcost",
+  "line": "2. Direct and indirect cost per missed appointment (average financial loss to the clinic)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_noshow",
+  "line": "3. Expected reduction in no‑show rate attributable to the reminder programme (in percentage points)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_effect",
+  "line": "3. Expected reduction in no‑show rate attributable to the reminder programme (in percentage points)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_fee",
+  "line": "4. Monthly cost of the reminder programme ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_effect",
+  "line": "4. Monthly cost of the reminder programme ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r1",
+  "label": "l2a_fee",
+  "line": "6. Break‑even time horizon (weeks/months required for savings to cover the $1,900 monthly expense)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_volume",
+  "line": "1. Current weekly no‑show rate (% of the 220 scheduled visits)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_noshow",
+  "line": "1. Current weekly no‑show rate (% of the 220 scheduled visits)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_missedcost",
+  "line": "2. Average revenue or cost lost per missed appointment ($/appointment)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_noshow",
+  "line": "3. Expected reduction in no‑shows attributable to the reminder program (percentage decrease)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_effect",
+  "line": "3. Expected reduction in no‑shows attributable to the reminder program (percentage decrease)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_fee",
+  "line": "4. Monthly cost of the reminder programme ($1,900)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_effect",
+  "line": "4. Monthly cost of the reminder programme ($1,900)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r2",
+  "label": "l2a_noshow",
+  "line": "5. Break‑even period (months) when cumulative savings from fewer no‑shows equal the monthly programme cost"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_noshow",
+  "line": "1. Current weekly no‑show rate (%)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_missedcost",
+  "line": "2. Cost per missed appointment (in lost revenue or overhead)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_noshow",
+  "line": "3. Expected reduction in no‑shows from the reminder program (%)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_effect",
+  "line": "3. Expected reduction in no‑shows from the reminder program (%)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_fee",
+  "line": "4. Monthly cost of the reminder program ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_effect",
+  "line": "4. Monthly cost of the reminder program ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r3",
+  "label": "l2a_fee",
+  "line": "5. Break‑even point: number/percentage of appointments that must be retained to offset $1,900/month."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_volume",
+  "line": "1. Current no‑show rate (percentage of the 220 weekly appointments that are missed)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_noshow",
+  "line": "1. Current no‑show rate (percentage of the 220 weekly appointments that are missed)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "1. Current no‑show rate (percentage of the 220 weekly appointments that are missed)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "2. Average financial loss per missed appointment (direct revenue + indirect costs)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_noshow",
+  "line": "3. Expected reduction in no‑show rate from the reminder programme (percentage points or % drop)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_effect",
+  "line": "3. Expected reduction in no‑show rate from the reminder programme (percentage points or % drop)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_volume",
+  "line": "4. Monthly appointment volume (~920 visits, derived from 220 /week × 4.18 weeks/month)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_fee",
+  "line": "5. Monthly cost of the reminder programme ($1,900)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_effect",
+  "line": "5. Monthly cost of the reminder programme ($1,900)"
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_fee",
+  "line": "6. Break‑even savings threshold: total monthly savings from fewer no‑shows must equal or exceed $1,900 (i.e., required reduction = $1,900 ÷ average loss per missed appointment)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_noshow",
+  "line": "6. Break‑even savings threshold: total monthly savings from fewer no‑shows must equal or exceed $1,900 (i.e., required reduction = $1,900 ÷ average loss per missed appointment)."
+ },
+ {
+  "run_id": "case_l2_l2a__pre-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "6. Break‑even savings threshold: total monthly savings from fewer no‑shows must equal or exceed $1,900 (i.e., required reduction = $1,900 ÷ average loss per missed appointment)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_noshow",
+  "line": "1. Baseline no‑show rate – the percentage of scheduled appointments that are actually missed."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_missedcost",
+  "line": "1. Baseline no‑show rate – the percentage of scheduled appointments that are actually missed."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_missedcost",
+  "line": "2. Cost per missed appointment – dollar amount lost from revenue, staff time, and opportunity costs."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_volume",
+  "line": "3. Monthly volume of appointments – roughly 880 scheduled visits (220 per week × 4 weeks)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_fee",
+  "line": "4. Reminder program cost – $1,900 paid monthly for the reminder service."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_effect",
+  "line": "4. Reminder program cost – $1,900 paid monthly for the reminder service."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_fee",
+  "line": "5. Break‑even reduction in no‑shows – absolute percentage or number of missed visits that must be avoided each month to cover the $1,900 fee."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_noshow",
+  "line": "5. Break‑even reduction in no‑shows – absolute percentage or number of missed visits that must be avoided each month to cover the $1,900 fee."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_missedcost",
+  "line": "5. Break‑even reduction in no‑shows – absolute percentage or number of missed visits that must be avoided each month to cover the $1,900 fee."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_noshow",
+  "line": "6. Expected effectiveness of reminders – typical absolute % drop in no‑show rate reported in comparable outpatient settings (e.g., 5–15 %)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r0",
+  "label": "l2a_effect",
+  "line": "6. Expected effectiveness of reminders – typical absolute % drop in no‑show rate reported in comparable outpatient settings (e.g., 5–15 %)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_noshow",
+  "line": "1. Baseline no‑show rate – the percentage of scheduled appointments that actually don’t occur."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_missedcost",
+  "line": "2. Cost per missed appointment – total lost revenue plus staff time and downstream opportunity cost (≈ $200–$400)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_volume",
+  "line": "3. Monthly appointment volume – number of visits scheduled each month (220 × 4 weeks ≈ 880–1,100)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_fee",
+  "line": "4. Minimum reduction in no‑shows to break even – absolute drop needed so that avoided‑missed appointments × cost per miss ≥ $1,900/month (≈ 7–10 fewer missed visits/month)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_noshow",
+  "line": "4. Minimum reduction in no‑shows to break even – absolute drop needed so that avoided‑missed appointments × cost per miss ≥ $1,900/month (≈ 7–10 fewer missed visits/month)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_missedcost",
+  "line": "4. Minimum reduction in no‑shows to break even – absolute drop needed so that avoided‑missed appointments × cost per miss ≥ $1,900/month (≈ 7–10 fewer missed visits/month)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_fee",
+  "line": "5. Break‑even point expressed as savings required – the dollar amount of monthly loss that must be offset by the reminder program to cover its $1,900/month fee."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r1",
+  "label": "l2a_effect",
+  "line": "5. Break‑even point expressed as savings required – the dollar amount of monthly loss that must be offset by the reminder program to cover its $1,900/month fee."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r2",
+  "label": "l2a_noshow",
+  "line": "1. Baseline no‑show rate of the clinic (percentage)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r2",
+  "label": "l2a_missedcost",
+  "line": "2. Monetary cost per missed appointment (USD)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r2",
+  "label": "l2a_fee",
+  "line": "3. Monthly fee for the reminder programme ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r2",
+  "label": "l2a_effect",
+  "line": "3. Monthly fee for the reminder programme ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r2",
+  "label": "l2a_noshow",
+  "line": "5. Required reduction in no‑shows to break even (number or percentage)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_noshow",
+  "line": "1. Baseline no‑show rate (percentage of scheduled appointments that are missed)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_missedcost",
+  "line": "1. Baseline no‑show rate (percentage of scheduled appointments that are missed)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_missedcost",
+  "line": "2. Cost per missed appointment (lost revenue + staff time + opportunity costs)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_fee",
+  "line": "3. Monthly reminder program cost ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_effect",
+  "line": "3. Monthly reminder program cost ($1,900)."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_fee",
+  "line": "5. Break‑even reduction in no‑shows needed to cover the $1,900/month expense."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r3",
+  "label": "l2a_noshow",
+  "line": "5. Break‑even reduction in no‑shows needed to cover the $1,900/month expense."
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_noshow",
+  "line": "2. Baseline no‑show rate – the current percentage of missed appointments (needs measurement)"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "2. Baseline no‑show rate – the current percentage of missed appointments (needs measurement)"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "3. Cost per missed visit – lost revenue plus staff time, ≈ $200 – $400 each"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_fee",
+  "line": "4. Reminder programme cost – $1,900 per month (fixed)"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_effect",
+  "line": "4. Reminder programme cost – $1,900 per month (fixed)"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_noshow",
+  "line": "5. Break‑even reduction in no‑shows – about a 3 % absolute drop (≈ 30 fewer missed visits per month)"
+ },
+ {
+  "run_id": "case_l2_l2a__post-seat__r4",
+  "label": "l2a_missedcost",
+  "line": "5. Break‑even reduction in no‑shows – about a 3 % absolute drop (≈ 30 fewer missed visits per month)"
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_lives",
+  "line": "1. Annual prevalence of GLP‑1 therapy (percentage of the 4,100 covered lives who would initiate treatment)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_persist",
+  "line": "2. Persistence rate at 12 months (average months on therapy or % still treated after one year)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_offset",
+  "line": "3. Downstream medical cost offset per treated member (expected annual savings in MBS/PBP expenditures)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_cost",
+  "line": "4. Net incremental budget impact over a 3‑year horizon (total dollars = prevalence × persistence × $1,050/month × 36 months – offsets)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_persist",
+  "line": "4. Net incremental budget impact over a 3‑year horizon (total dollars = prevalence × persistence × $1,050/month × 36 months – offsets)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r0",
+  "label": "l3a_offset",
+  "line": "4. Net incremental budget impact over a 3‑year horizon (total dollars = prevalence × persistence × $1,050/month × 36 months – offsets)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_lives",
+  "line": "1. Uptake rate among the 4,100 covered lives that would initiate GLP‑1 therapy."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_uptake",
+  "line": "1. Uptake rate among the 4,100 covered lives that would initiate GLP‑1 therapy."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_persist",
+  "line": "2. Persistence rate beyond year one for members who start treatment."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_offset",
+  "line": "3. Annual medical offset (savings) per treated member from reduced chronic disease costs."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_cost",
+  "line": "5. Three‑year budget impact: total cost (monthly net $1,050 × treated members × 36 months) minus cumulative offsets."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r1",
+  "label": "l3a_offset",
+  "line": "5. Three‑year budget impact: total cost (monthly net $1,050 × treated members × 36 months) minus cumulative offsets."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r2",
+  "label": "l3a_uptake",
+  "line": "1. Uptake rate (% of eligible members who initiate GLP‑1 therapy)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r2",
+  "label": "l3a_persist",
+  "line": "2. Persistence beyond year 1 (percentage of initiators still on treatment at 12 months)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r2",
+  "label": "l3a_offset",
+  "line": "3. Downstream medical offset ($/member‑year saved by reduced comorbidities)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r2",
+  "label": "l3a_cost",
+  "line": "4. Net cost per treated member per year ($1,050 × 12 = $12,600)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r2",
+  "label": "l3a_offset",
+  "line": "6. Three‑year budget impact (total spend minus cumulative offsets across the 3‑year horizon)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_lives",
+  "line": "1. Total number of eligible covered lives (currently 4,100)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_uptake",
+  "line": "2. Annual uptake rate (% of eligible members who start GLP‑1 therapy)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_persist",
+  "line": "3. Persistence rate beyond year 1 (average duration of continuous treatment)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_cost",
+  "line": "4. Net incremental cost per treated member ($1,050/month)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_offset",
+  "line": "5. Estimated downstream medical offset per treated member (savings from reduced comorbidities)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r3",
+  "label": "l3a_offset",
+  "line": "6. Three‑year budget impact (total incremental spend minus offsets)."
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r4",
+  "label": "l3a_uptake",
+  "line": "1. Annual uptake rate (% of eligible members who will initiate GLP‑1 therapy)"
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r4",
+  "label": "l3a_persist",
+  "line": "2. Persistence rate at year 1 and beyond (percentage continuing treatment after 12 months)"
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r4",
+  "label": "l3a_offset",
+  "line": "3. Average annual medical cost offset per treated member (reduction in claims due to weight loss/diabetes improvement)"
+ },
+ {
+  "run_id": "case_l3_l3a__pre-seat__r4",
+  "label": "l3a_offset",
+  "line": "4. Net incremental cost per treated member over a year (monthly cost minus offset)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_lives",
+  "line": "1. Total covered lives: **4,100**"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_uptake",
+  "line": "2. Uptake rate of GLP‑1 therapy in the first calendar year (eligible members): **5 %–10 %**"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_persist",
+  "line": "3. Persistence at 12 months after initiation: **≈60 %**"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_cost",
+  "line": "4. Net monthly cost per treated member: **$1,050** (≈$12,600 annually)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_persist",
+  "line": "5. Estimated medical offset per persistent member per year: **$500 – $4,000**"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r0",
+  "label": "l3a_offset",
+  "line": "5. Estimated medical offset per persistent member per year: **$500 – $4,000**"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r1",
+  "label": "l3a_cost",
+  "line": "1. Net monthly cost per treated member: $1,050"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r1",
+  "label": "l3a_uptake",
+  "line": "2. Expected annual uptake rate among eligible covered lives (e.g., % initiating therapy)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r1",
+  "label": "l3a_persist",
+  "line": "3. Persistence percentage at 12 months (e.g., % remaining on therapy after one year)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r1",
+  "label": "l3a_persist",
+  "line": "4. Estimated medical offset per persistent member‑year (in dollars)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r1",
+  "label": "l3a_offset",
+  "line": "4. Estimated medical offset per persistent member‑year (in dollars)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_cost",
+  "line": "1. Net monthly cost per treated member ($1,050)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_lives",
+  "line": "2. Total number of covered lives (4 100)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_uptake",
+  "line": "3. Expected uptake rate of GLP‑1 therapy in the plan population"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_persist",
+  "line": "4. Persistence/continuation rate at 12 months (and beyond)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_persist",
+  "line": "5. Estimated medical offset per persistent member‑year"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_offset",
+  "line": "5. Estimated medical offset per persistent member‑year"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r2",
+  "label": "l3a_offset",
+  "line": "6. Three‑year net budget impact (including drug spend minus offsets)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_cost",
+  "line": "1. Monthly net drug cost per treated member – $1,050"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_lives",
+  "line": "2. Total covered lives eligible for the benefit – 4,100"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_uptake",
+  "line": "3. Expected year‑1 uptake rate (percentage of covered members initiating therapy)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_persist",
+  "line": "4. Persistence rates at 12 months and beyond (percentage remaining on therapy)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_persist",
+  "line": "5. Estimated medical offset per persistent member per year (in dollars)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r3",
+  "label": "l3a_offset",
+  "line": "5. Estimated medical offset per persistent member per year (in dollars)"
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_cost",
+  "line": "1. Net monthly cost per treated member ($1,050)."
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_uptake",
+  "line": "2. Uptake rate – percentage of covered lives that will initiate therapy each calendar year."
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_persist",
+  "line": "3. Persistence rate at 12 months – proportion of initiators who remain on treatment after one year."
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_persist",
+  "line": "4. Downstream medical offset per persistent member (annual savings from reduced comorbidities)."
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_offset",
+  "line": "4. Downstream medical offset per persistent member (annual savings from reduced comorbidities)."
+ },
+ {
+  "run_id": "case_l3_l3a__post-seat__r4",
+  "label": "l3a_lives",
+  "line": "5. Total number of covered lives eligible for the program (4,100)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r0",
+  "label": "c7_headcount",
+  "line": "1. 200 employees in the organization"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r0",
+  "label": "c7_allhands",
+  "line": "2. Current all‑hands frequency: once per week (7 days)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r0",
+  "label": "c7_allhands",
+  "line": "3. Target all‑hands cadence: bi‑weekly, ≤30 min each session"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r1",
+  "label": "c7_allhands",
+  "line": "2. Weekly all‑hands meeting duration (current length vs. proposed new cadence/length)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r1",
+  "label": "c7_meetload",
+  "line": "2. Weekly all‑hands meeting duration (current length vs. proposed new cadence/length)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r2",
+  "label": "c7_allhands",
+  "line": "2. Desired reduction in weekly all‑hands duration (minutes)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r3",
+  "label": "c7_headcount",
+  "line": "1. Total employee count: 200"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r3",
+  "label": "c7_allhands",
+  "line": "2. Current weekly synchronous Slack usage per employee (hours) – estimate needed"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r3",
+  "label": "c7_allhands",
+  "line": "3. Target reduction in all‑hands meeting fatigue (e.g., 50 % fewer meetings or hours)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r3",
+  "label": "c7_meetload",
+  "line": "3. Target reduction in all‑hands meeting fatigue (e.g., 50 % fewer meetings or hours)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r3",
+  "label": "c7_allhands",
+  "line": "4. Desired frequency of cross‑functional updates (e.g., bi‑weekly digest)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r4",
+  "label": "c7_allhands",
+  "line": "3. Shorten all‑hands meetings to **biweekly 30‑minute briefings**, supplemented by a 10‑minute “pulse” recap posted in a shared channel."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__pre-seat__r4",
+  "label": "c7_meetload",
+  "line": "3. Shorten all‑hands meetings to **biweekly 30‑minute briefings**, supplemented by a 10‑minute “pulse” recap posted in a shared channel."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r0",
+  "label": "c7_allhands",
+  "line": "1. Current weekly synchronous meeting load per employee (~4 hrs)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r0",
+  "label": "c7_meetload",
+  "line": "1. Current weekly synchronous meeting load per employee (~4 hrs)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r0",
+  "label": "c7_meetload",
+  "line": "2. Target meeting reduction: 30 % by month 6."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r0",
+  "label": "c7_meetload",
+  "line": "3. Annual lost productivity cost from meetings: ~$2 M."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r1",
+  "label": "c7_allhands",
+  "line": "1. Weekly meeting hours per employee currently ≈ 4 hrs (baseline)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r1",
+  "label": "c7_meetload",
+  "line": "1. Weekly meeting hours per employee currently ≈ 4 hrs (baseline)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r1",
+  "label": "c7_meetload",
+  "line": "2. Target synchronous meetings after redesign ≈ 1.2 hrs/employee/week (30% of baseline)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r2",
+  "label": "c7_headcount",
+  "line": "1. Company size: **200 employees**"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r2",
+  "label": "c7_meetload",
+  "line": "2. Current synchronous meeting load: **≈4 hrs per employee per week (∼10 % of the workweek)**"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r3",
+  "label": "c7_headcount",
+  "line": "1. Total employee count: **200**"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r3",
+  "label": "c7_allhands",
+  "line": "2. Current average weekly meeting hours per employee (needs to be measured)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r3",
+  "label": "c7_meetload",
+  "line": "2. Current average weekly meeting hours per employee (needs to be measured)"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r3",
+  "label": "c7_meetload",
+  "line": "3. Target reduction in synchronous meeting time: **≥ 30 % decrease** from baseline"
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r4",
+  "label": "c7_allhands",
+  "line": "1. Current average weekly synchronous meeting time per employee (e.g., 4 hrs)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r4",
+  "label": "c7_meetload",
+  "line": "1. Current average weekly synchronous meeting time per employee (e.g., 4 hrs)."
+ },
+ {
+  "run_id": "case_7_trigger_light_baseline__post-seat__r4",
+  "label": "c7_meetload",
+  "line": "2. Target reduction in meeting fatigue (percentage, e.g., 30‑40 %)."
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r0",
+  "label": "c9_term",
+  "line": "1. Term of the agreement – 3 years"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r0",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail period – 2 years"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r1",
+  "label": "c9_term",
+  "line": "1. Three‑year effective term of confidentiality obligations"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r1",
+  "label": "c9_tail",
+  "line": "2. Two‑year post‑termination “tail” period during which confidentiality continues"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r2",
+  "label": "c9_term",
+  "line": "1. Term of confidentiality – 3 years"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r2",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail – 2 years"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r3",
+  "label": "c9_term",
+  "line": "1. Term of confidentiality obligations – 3 years"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r3",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail – 2 years after termination"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r4",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail – 24 months"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r4",
+  "label": "c9_tail",
+  "line": "3. Return‑or‑destroy obligation period – term + tail (total 60 months)"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r4",
+  "label": "c9_tail",
+  "line": "- **Purpose**: Mandates that upon termination of the agreement or after the post‑termination tail, the receiving party must either return all confidential materials to the discloser or destroy them (including electronic copies) and certify such destruction."
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r4",
+  "label": "c9_tail",
+  "line": "- **Interaction with Term & Tail**: The obligation extends for the entire period defined in items 1–3 (i.e., during the 36‑month term plus the subsequent 24‑month tail). Thus, even after business relations end, confidential data must be secured for two years."
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__pre-seat__r4",
+  "label": "c9_tail",
+  "line": "- **Typical Deadline**: Although not specified here, standard practice is to require return/destroy within 30 days of termination or the end of the tail period—this aligns with the “typical return/destroy deadline” listed"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r0",
+  "label": "c9_term",
+  "line": "1. Agreement term – **3 years**"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r0",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail – **2 years**"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r1",
+  "label": "c9_term",
+  "line": "1. Three‑year NDA term"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r1",
+  "label": "c9_tail",
+  "line": "2. Two‑year post‑termination confidentiality tail"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r2",
+  "label": "c9_term",
+  "line": "1. Three‑year term of the NDA"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r2",
+  "label": "c9_tail",
+  "line": "2. Two‑year post‑termination confidentiality tail period"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r3",
+  "label": "c9_term",
+  "line": "1. Three‑year contractual term"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r3",
+  "label": "c9_tail",
+  "line": "2. Two‑year post‑termination confidentiality tail"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r4",
+  "label": "c9_term",
+  "line": "1. Term length – **3 years**"
+ },
+ {
+  "run_id": "case_9_trigger_light_nda_clauses__post-seat__r4",
+  "label": "c9_tail",
+  "line": "2. Post‑termination confidentiality tail – **2 years**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r0",
+  "label": "c10_cost",
+  "line": "1. Equipment cost: $60 000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r0",
+  "label": "c10_salvage",
+  "line": "2. Salvage value: $10 000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r0",
+  "label": "c10_life",
+  "line": "3. Useful life: 5 years"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r0",
+  "label": "c10_cost",
+  "line": "4. Straight‑line annual depreciation expense: $10 000 per year ([$60 000 – $10 000] ÷ 5)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_cost",
+  "line": "1. Purchase cost: $60,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "2. Salvage value: $10,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_life",
+  "line": "3. Useful life: 5 years"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "4. Straight‑line annual depreciation expense: $10,000 per year"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 1    | $10,000 | $10,000 | $50,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 2    | $10,000 | $20,000 | $40,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 3    | $10,000 | $30,000 | $30,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 4    | $10,000 | $40,000 | $20,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 5    | $10,000 | $50,000 | $10,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "Switch occurs in Year 4 when DDB would otherwise drop the book value below salvage."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 5    | $1,480  | $50,000 | $10,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r1",
+  "label": "c10_salvage",
+  "line": "Straight‑line expense = ($12,960 – $10,000) ÷ 2 = **$1,480**."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r2",
+  "label": "c10_cost",
+  "line": "1. Purchase cost of equipment: **$60 000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r2",
+  "label": "c10_salvage",
+  "line": "2. Estimated salvage value: **$10 000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_cost",
+  "line": "1. Initial equipment cost: $60,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "2. Estimated salvage value: $10,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_life",
+  "line": "3. Useful life: 5 years"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "4. Straight‑line annual depreciation expense (cost – salvage ÷ life)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| 1 | $10,000 | $10,000 | $50,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| 2 | $10,000 | $20,000 | $40,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| 3 | $10,000 | $30,000 | $30,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| 4 | $10,000 | $40,000 | $20,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| 5 | $10,000 | $50,000 | $10,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_cost",
+  "line": "| 4 | $10,080 (SL) | $60,000 | $0 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "The straight‑line expense for years 3–5 would be ($16,800 - $10,000)/3 = $2,266.67 per year."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "In year 4 the book value after year 3 is $10,080. The straight‑line expense for years 4–5 would be ($10,080 - $10,000)/2 = $40."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "Double‑declining balance on $10,080 gives $20,160 – far exceeding the remaining salvage. Therefore we switch to straight‑line in year 4 and depreciate the remaining $10,080 over 1 year."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| Straight‑Line | Constant annual expense ($50,000 ÷ 5 = $10,000). |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__pre-seat__r4",
+  "label": "c10_salvage",
+  "line": "| Double‑Declining Balance (with SL switch) | High initial expenses that decline sharply each year; accelerates depreciation in early years and slows as the asset approaches salvage. |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r0",
+  "label": "c10_cost",
+  "line": "1. Initial equipment cost: **$60,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r0",
+  "label": "c10_salvage",
+  "line": "2. Salvage value at end of useful life: **$10,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r0",
+  "label": "c10_life",
+  "line": "3. Useful life (period over which depreciation is taken): **5 years**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r0",
+  "label": "c10_salvage",
+  "line": "4. Straight‑line annual depreciation expense: **$10,000 per year** (total depreciable amount $50,000 ÷ 5)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r0",
+  "label": "c10_salvage",
+  "line": "5. Double‑declining‑balance rate of **40 %** of beginning book value, with a **switch to straight‑line** when the DDB expense would fall below the remaining depreciable base divided by the remaining life (ensuring book value never drops below salvage)."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_cost",
+  "line": "1. Equipment cost: $60,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "2. Salvage value: $10,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_life",
+  "line": "3. Useful life: 5 years"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 1    | $10,000      | $10,000            | $50,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 2    | $10,000      | $20,000            | $40,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 3    | $10,000      | $30,000            | $30,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 4    | $10,000      | $40,000            | $20,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 5    | $10,000      | $50,000            | $10,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_cost",
+  "line": "- Depreciable base = Cost – Salvage = $60,000 – $10,000 = $50,000."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "- Depreciable base = Cost – Salvage = $60,000 – $10,000 = $50,000."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "- Annual expense = $50,000 ÷ 5 years = **$10,000** per year."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_life",
+  "line": "- Annual expense = $50,000 ÷ 5 years = **$10,000** per year."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "2. Beginning book value – salvage value (the maximum allowable to avoid going below salvage)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_cost",
+  "line": "| 1    | $60,000      | $24,000         | $50,000                | **$24,000**   | $24,000          | $36,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| 5    | $11,480      | –               | –                      | **$1,480** (SL) | $50,000 | $10,000 |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "*The switch occurs in year 4 because the DDB amount ($5,184) would exceed the straight‑line expense needed to bring the book value down to salvage over the remaining two years ($2,960 ÷ 2 = $1,480).*"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r1",
+  "label": "c10_salvage",
+  "line": "| **Double‑Declining Balance (with switch)** | **Front‑loaded**: large expense early, tapering sharply as the asset’s book value approaches salvage; after the switch the expense is flat and small. |"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r2",
+  "label": "c10_cost",
+  "line": "1. Equipment cost: **$60,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r2",
+  "label": "c10_salvage",
+  "line": "2. Estimated salvage value: **$10,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r2",
+  "label": "c10_salvage",
+  "line": "4. Straight‑line annual depreciation expense: **$10,000** per year"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r2",
+  "label": "c10_salvage",
+  "line": "6. Switch threshold: the point at which 0.4 × beginning book value exceeds (book value – salvage)/(remaining years) – i.e., when DDB would produce a larger expense than straight‑line for the remaining life."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_cost",
+  "line": "1. Purchase cost: **$60,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_salvage",
+  "line": "2. Salvage value: **$10,000**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_life",
+  "line": "3. Useful life: **5 years**"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_cost",
+  "line": "4. Straight‑line annual depreciation expense: **$10,000 per year** (calculated from $(60,000-10,000)/5$)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_salvage",
+  "line": "4. Straight‑line annual depreciation expense: **$10,000 per year** (calculated from $(60,000-10,000)/5$)"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r3",
+  "label": "c10_salvage",
+  "line": "6. Switch to straight‑line occurs when DDB expense would be less than the remaining straight‑line amount needed to reach salvage value."
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r4",
+  "label": "c10_cost",
+  "line": "1. Equipment cost: $60,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r4",
+  "label": "c10_salvage",
+  "line": "2. Salvage value: $10,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r4",
+  "label": "c10_life",
+  "line": "3. Useful life: 5 years"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r4",
+  "label": "c10_salvage",
+  "line": "4. Depreciable amount (cost – salvage): $50,000"
+ },
+ {
+  "run_id": "case_10_trigger_light_depreciation__post-seat__r4",
+  "label": "c10_salvage",
+  "line": "6. Switch point: when the DDB expense would exceed the straight‑line remaining depreciation per year (i.e., when applying 40 % would drive the book value below salvage or produce a lower charge than straight‑line)."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r0",
+  "label": "l1a_units",
+  "line": "1. Units processed per evening: 1,400"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r0",
+  "label": "l1a_hours",
+  "line": "2. Shift length: 6 hours"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r0",
+  "label": "l1a_rate",
+  "line": "3. Loaded labour cost per hour: $28"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r0",
+  "label": "l1a_pick",
+  "line": "4. Assumed picker throughput (pick rate): ~200 items per hour"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_units",
+  "line": "1. **Total orders to be picked each evening** – 1,400 units"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_hours",
+  "line": "2. **Shift length** – 6 hours (evening shift)"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_rate",
+  "line": "3. **Loaded labour rate** – $28 per hour per picker"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_pick",
+  "line": "4. **Pick rate per picker** – assumed 120 units per hour (typical for small‑to‑medium SKU pickers in a distribution centre; adjust if actual data differ)"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_units",
+  "line": "5. **Number of pickers required** – ceil(1,400 / 120) = 2 pickers"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_units",
+  "line": "6. **Cost per unit** – [(2 pickers × $28/h × 6 h) ÷ 1,400 units] ≈ $0.24 per unit"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r1",
+  "label": "l1a_rate",
+  "line": "6. **Cost per unit** – [(2 pickers × $28/h × 6 h) ÷ 1,400 units] ≈ $0.24 per unit"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "1. 1400 units to be picked each evening (order volume)."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "3. Required throughput = 1400 / 6 ≈ **233.33 units per hour**."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_pick",
+  "line": "4. Assumed pick rate per picker = **150 units per hour** (industry average for a single‑station picker in an e‑commerce warehouse)."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "6. Labor cost per unit = (2 pickers × $28 / hour × 6 hours) / 1400 units ≈ **$0.24 per unit**."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_hours",
+  "line": "6. Labor cost per unit = (2 pickers × $28 / hour × 6 hours) / 1400 units ≈ **$0.24 per unit**."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_rate",
+  "line": "6. Labor cost per unit = (2 pickers × $28 / hour × 6 hours) / 1400 units ≈ **$0.24 per unit**."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "| Order volume | 1,400 units |"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_pick",
+  "line": "| Pick rate (assumed) | 150 units/h per picker |"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_rate",
+  "line": "| Total labor cost per shift | 2 × $28 / hr × 6 hr = $336 |"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "| Cost per unit | $336 / 1,400 units ≈ **$0.24/unit** |"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "1. **Throughput requirement** – The evening shift must deliver 1,400 units in 6 h, so the average pick rate across all pickers is 233 units per hour."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_pick",
+  "line": "1. **Throughput requirement** – The evening shift must deliver 1,400 units in 6 h, so the average pick rate across all pickers is 233 units per hour."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_rate",
+  "line": "Two pickers can collectively handle 300 units/h, giving a safety margin of ~28% over the required throughput."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_rate",
+  "line": "Total labor cost for the shift: \\(2\\,\\text{pickers} \\times \\$28/\\text{hr} \\times 6\\,\\text{hrs}= \\$336.\\)"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "Divide by the number of units processed: \\(336 / 1,400 = \\$0.24\\) per unit."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_pick",
+  "line": "| Assumed pick rate | Pickers needed | Cost per unit |"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_pick",
+  "line": "If the actual pick rate is lower than estimated (e.g., due to product complexity or high‑volume orders), add an extra picker to maintain throughput; otherwise, fewer pickers could be scheduled for cost savings."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_units",
+  "line": "**Bottom line:** Schedule **two pickers** for the evening shift. With a loaded labour rate of $28/hr, this yields a labor cost of approximately **$0.24 per unit** while comfortably meeting the 1,400‑unit demand in six hours."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_hours",
+  "line": "**Bottom line:** Schedule **two pickers** for the evening shift. With a loaded labour rate of $28/hr, this yields a labor cost of approximately **$0.24 per unit** while comfortably meeting the 1,400‑unit demand in six hours."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r2",
+  "label": "l1a_rate",
+  "line": "**Bottom line:** Schedule **two pickers** for the evening shift. With a loaded labour rate of $28/hr, this yields a labor cost of approximately **$0.24 per unit** while comfortably meeting the 1,400‑unit demand in six hours."
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r3",
+  "label": "l1a_units",
+  "line": "1. **Orders per evening:** 1,400 units"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r3",
+  "label": "l1a_hours",
+  "line": "2. **Shift length:** 6 hours"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r3",
+  "label": "l1a_rate",
+  "line": "3. **Labor cost rate:** $28 / hour"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r3",
+  "label": "l1a_units",
+  "line": "4. **Required picking throughput:** ≈ 233 units per hour (1,400 ÷ 6)"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r3",
+  "label": "l1a_pick",
+  "line": "5. **Estimated pick rate per picker:** ~2,400 units per hour (≈ 40 items min⁻¹) – chosen from typical warehouse pick‑speed benchmarks"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r4",
+  "label": "l1a_units",
+  "line": "1. Orders per evening shift: **1,400 units**"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r4",
+  "label": "l1a_hours",
+  "line": "2. Shift duration: **6 hours**"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r4",
+  "label": "l1a_rate",
+  "line": "3. Labor rate: **$28 per hour**"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r4",
+  "label": "l1a_units",
+  "line": "4. Required pick throughput: ≈ 233 units/hour (1400 ÷ 6)"
+ },
+ {
+  "run_id": "case_l1_l1a__pre-seat__r4",
+  "label": "l1a_pick",
+  "line": "5. Estimated pick rate per picker (assumed): **≈200 units/hour**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r0",
+  "label": "l1a_units",
+  "line": "1. Total orders per evening: **1 400 units**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r0",
+  "label": "l1a_hours",
+  "line": "2. Shift duration: **6 hours**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r0",
+  "label": "l1a_rate",
+  "line": "3. Loaded labor cost per hour: **$28/hour**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r0",
+  "label": "l1a_pick",
+  "line": "4. Pick‑rate per picker (units/hour): **unknown – to be estimated or measured**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r1",
+  "label": "l1a_units",
+  "line": "1. Orders arriving each evening: **1 400 units**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r1",
+  "label": "l1a_hours",
+  "line": "2. Length of the evening shift: **6 hours**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r1",
+  "label": "l1a_rate",
+  "line": "3. Loaded labour rate per picker: **$28 / hour**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r1",
+  "label": "l1a_pick",
+  "line": "4. Pick rate per picker (units/hour) – must be estimated or measured"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r2",
+  "label": "l1a_pick",
+  "line": "3. Pick‑rate per picker (units per hour) – not recorded."
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r3",
+  "label": "l1a_units",
+  "line": "1. Order volume: 1,400 units per evening"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r3",
+  "label": "l1a_hours",
+  "line": "2. Shift duration: 6 hours"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r3",
+  "label": "l1a_rate",
+  "line": "3. Loaded labour rate: $28 / hour"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r3",
+  "label": "l1a_units",
+  "line": "4. Required throughput: ~233 units per hour (1,400 ÷ 6)"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r3",
+  "label": "l1a_pick",
+  "line": "5. Pick‑rate per picker (to be estimated; drives staffing level)"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r4",
+  "label": "l1a_units",
+  "line": "1. Orders received each evening: **1 400 units**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r4",
+  "label": "l1a_hours",
+  "line": "2. Shift length: **6 hours**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r4",
+  "label": "l1a_rate",
+  "line": "3. Loaded labour rate: **$28 per hour**"
+ },
+ {
+  "run_id": "case_l1_l1a__post-seat__r4",
+  "label": "l1a_pick",
+  "line": "4. Pick rate per picker (to be estimated from industry benchmarks; e.g., 200–300 picks/hour)"
+ },
+ {
+  "run_id": "case_l1_l1b__pre-seat__r0",
+  "label": "l1b_week",
+  "line": "2. New York minimum annual sick‑leave entitlement for employers with >50 employees: 40 hours (≈5 days)."
+ },
+ {
+  "run_id": "case_l1_l1b__pre-seat__r0",
+  "label": "l1b_accrual",
+  "line": "3. Accrual rate in both states: 1 hour earned per 30 worked hours."
+ },
+ {
+  "run_id": "case_l1_l1b__pre-seat__r0",
+  "label": "l1b_accrual",
+  "line": "4. California accrual cap: maximum of 48 hours accrued at any time."
+ },
+ {
+  "run_id": "case_l1_l1b__pre-seat__r4",
+  "label": "l1b_accrual",
+  "line": "1. Accrual rate: 1 hour paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l1_l1b__pre-seat__r4",
+  "label": "l1b_accrual",
+  "line": "2. Maximum annual accrual cap: 48 hours (6 days)."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r0",
+  "label": "l1b_accrual",
+  "line": "1. Accrual rate: 1 hour paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r1",
+  "label": "l1b_accrual",
+  "line": "1. Accrual rate – 1 hour paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r2",
+  "label": "l1b_accrual",
+  "line": "1. Accrual rate – 1 hour paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r2",
+  "label": "l1b_accrual",
+  "line": "2. Statutory maximum accrual cap – CA limits to 48 hrs (6 days); NY allows up to 56 hrs (7 days)."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r2",
+  "label": "l1b_accrual",
+  "line": "4. Use‑in‑12‑month rule – California requires leave to be used within 12 months of accrual unless the employer extends that period; NY has no such deadline."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r3",
+  "label": "l1b_accrual",
+  "line": "1. Accrual rate: 1 hour paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r3",
+  "label": "l1b_accrual",
+  "line": "2. Statutory maximum accrual caps: California 48 hrs (6 days); New York 56 hrs (7 days)."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r3",
+  "label": "l1b_accrual",
+  "line": "4. Minimum annual required accruals: California 24 hrs; New York 40 hrs."
+ },
+ {
+  "run_id": "case_l1_l1b__post-seat__r4",
+  "label": "l1b_accrual",
+  "line": "1. **Accrual rate:** 1 hour of paid sick leave earned for every 30 hours worked."
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r0",
+  "label": "l3b_drivers",
+  "line": "1. 180 drivers classified as independent contractors"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r0",
+  "label": "l3b_pay",
+  "line": "2. Average annual pay per driver: **$52,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r0",
+  "label": "l3b_control",
+  "line": "3. Percentage of routes dictated by dispatch software – *unknown* (threshold for control > 50% is considered controlling)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r1",
+  "label": "l3b_drivers",
+  "line": "1. Total number of drivers classified as independent contractors: **180**"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r1",
+  "label": "l3b_pay",
+  "line": "2. Average annual pay per driver: **$52,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r1",
+  "label": "l3b_drivers",
+  "line": "3. Distribution of those 180 drivers between **Massachusetts and Illinois** (currently unknown)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r1",
+  "label": "l3b_control",
+  "line": "4. Degree of control exercised by dispatch software over route choice (not tracked; missing data)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r2",
+  "label": "l3b_drivers",
+  "line": "1. Total number of drivers: **180**"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r2",
+  "label": "l3b_pay",
+  "line": "2. Average annual pay per driver: **$52,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r2",
+  "label": "l3b_drivers",
+  "line": "3. Aggregate payroll cost across both states: **$9.36 million** (180 × $52k)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r2",
+  "label": "l3b_drivers",
+  "line": "4. Estimated exposure if all 180 drivers are reclassified as employees: **up to $9.36 million** in back‑wages/benefits/liability"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r2",
+  "label": "l3b_control",
+  "line": "5. Massachusetts economic‑reality test threshold for control over work: **≈ 50 % of job‑related decisions** (e.g., route choice, schedule)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r3",
+  "label": "l3b_pay",
+  "line": "3. Average annual compensation per driver ($52,000)"
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r4",
+  "label": "l3b_drivers",
+  "line": "1. Distribution of the 180 drivers between Massachusetts and Illinois."
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r4",
+  "label": "l3b_pay",
+  "line": "2. Average annual compensation per driver ($52,000)."
+ },
+ {
+  "run_id": "case_l3_l3b__pre-seat__r4",
+  "label": "l3b_control",
+  "line": "4. Degree of dispatch software control over route choice/scheduling (unknown)."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r0",
+  "label": "l3b_drivers",
+  "line": "1. **Number of drivers per state** – 90 drivers in Massachusetts, 90 in Illinois (total 180)."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r0",
+  "label": "l3b_pay",
+  "line": "2. **Average annual driver pay** – $52 000 per driver."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r0",
+  "label": "l3b_drivers",
+  "line": "6. **Combined total exposure** – ≈ $12.636 million if all 180 drivers are reclassified as employees in both states."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r1",
+  "label": "l3b_drivers",
+  "line": "1. Total drivers in the company (180)."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r1",
+  "label": "l3b_pay",
+  "line": "2. Average annual driver wage ($52 000)."
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r2",
+  "label": "l3b_drivers",
+  "line": "1. Total drivers in the company: **180**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r2",
+  "label": "l3b_pay",
+  "line": "2. Average annual pay per driver: **$52,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r3",
+  "label": "l3b_drivers",
+  "line": "1. Total drivers in the company: **180**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r3",
+  "label": "l3b_pay",
+  "line": "2. Average annual pay per driver: **$52,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r3",
+  "label": "l3b_drivers",
+  "line": "5. Projected annual liability if all 180 drivers are reclassified in Massachusetts: **$6,318,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r3",
+  "label": "l3b_drivers",
+  "line": "6. Projected annual liability if all 180 drivers are reclassified in Illinois: **$6,318,000**"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r4",
+  "label": "l3b_drivers",
+  "line": "1. Total number of drivers – 180"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r4",
+  "label": "l3b_pay",
+  "line": "2. Average annual driver pay – $52,000 per driver"
+ },
+ {
+  "run_id": "case_l3_l3b__post-seat__r4",
+  "label": "l3b_control",
+  "line": "3. Proportion of routes that are controlled by dispatch software (unknown)"
+ }
+]

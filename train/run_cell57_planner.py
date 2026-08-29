@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT / "gst" / "src"))
 
 from train.run_cell25_moa import chat                          # noqa: E402
 from train.run_cell47_redundancy import norm                   # noqa: E402
+from train.run_cell53_live_followup import _deep                # noqa: E402  (Unicode-hyphen correction, third occurrence of the C47/C53 incident; deviation recorded)
 from train.run_cell49_arbitration import anchored_in           # noqa: E402
 
 OUT = ROOT / "bench" / "analysis" / "cell57"
@@ -62,9 +63,9 @@ def stage_guards() -> None:
     problems = []
     pn = norm(PLANNER_PROMPT)
     for entry in LABELS:
-        cp = norm(get_case(entry["case"]).prompt)
+        cp = _deep(get_case(entry["case"]).prompt)
         for q in entry["quantities"]:
-            hit = any(anchored_in(norm(p), cp) for p in q["probes"])
+            hit = any(anchored_in(_deep(p), cp) for p in q["probes"])
             if not hit:
                 problems.append(f"{q['id']}: no probe vocabulary in its "
                                 f"case prompt")
@@ -133,9 +134,9 @@ def stage_score() -> None:
     for r in rows:
         entry = next(e for e in LABELS if e["case"] == r["case"])
         for line in lines_of(r["list"]):
-            ln = norm(line)
+            ln = _deep(line)
             for q in entry["quantities"]:
-                if any(anchored_in(norm(p), ln) for p in q["probes"]):
+                if any(anchored_in(_deep(p), ln) for p in q["probes"]):
                     matches.append({"run_id": r["run_id"], "label": q["id"],
                                     "line": line})
     (OUT / "matches.json").write_text(json.dumps(matches, indent=1,
@@ -197,7 +198,7 @@ def stage_measure() -> None:
                     if r["arm"] != a or r["case"] == e["case"]:
                         continue
                     n += 1
-                    if any(any(anchored_in(norm(p), norm(l))
+                    if any(any(anchored_in(_deep(p), _deep(l))
                                for p in q["probes"])
                            for l in lines_of(r["list"])):
                         hits += 1

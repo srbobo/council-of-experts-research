@@ -8724,3 +8724,66 @@ verdict.
 feasibility. The planner prompt is frozen here and must not be tuned
 against these labels — a planner variant that wants a different prompt
 registers a new cell.
+
+### CELL 57 DEVIATION (2026-08-29) — the Unicode-hyphen incident, third occurrence, caught at the prefilter stage before any confirmation or measure
+
+The first score pass missed obvious matches ("no‑show", "18‑month",
+"per‑seat" written with U+2011) because the prefilter used norm() rather
+than the C53 _deep correction. Several labels showed zero matches
+despite plainly corresponding planner lines visible under OTHER labels'
+tables. Fix: _deep (NFKC + Unicode-hyphen folding) applied to the
+prefilter, the cross-recall control, and the guards; no label, probe,
+or threshold changed; caught before any confirmation was written, so no
+result is affected. This class of bug has now fired in Cells 47, 53,
+and 57 — the correction belongs in any future shared instrument by
+default.
+
+## CELL 57 VERDICT (2026-08-29) — the planner finds about six in ten load-bearing quantities, and it is BEST at naming what is missing
+
+120 elicitations, 493 confirmed-or-rejected match pairs (committed in
+docs/CELL57_CONFIRM.json under the recorded correspondence rule), the
+Unicode-hyphen deviation recorded and corrected before any confirmation.
+
+**P57.1 SUPPORTED, both arms.** Matched confirmed recall 0.633 / 0.616
+against mismatched cross-recall 0.019 / 0.020 — a thirty-fold
+separation; the instrument sees planner competence, not probe
+generality.
+
+**P57.2 — the competence bound: PARTIAL, both arms.**
+- pre-seat  0.633 [0.506, 0.758]
+- post-seat 0.616 [0.469, 0.766]
+Per the frozen band: §3 must state that redundancy protection is
+bounded by planner coverage — the planner-built harness protects the
+~60% of load-bearing quantities the orchestrator lists, not all of
+them. Floor caveat: probe under-recall was observed (c1_seats' "provider
+seats" line missed by both frozen probes; three l1b context labels at
+zero are a mix of genuine planner misses and probe floors), so measured
+recall is a LOWER bound.
+
+**P57.3 — seats add nothing to recall: −0.017 [−0.100, +0.064].**
+Anticipation equals recognition: the planner finds what it finds from
+the case prompt alone. Reading 20k characters of specialist
+contributions does not raise coverage — though it CHURNS the list
+(composition swings per label: c2_reimb 1.00→0.00, c7_meetload
+0.00→1.00, l2a_effect 1.00→0.20), recorded descriptively.
+
+**The best number in the cell (descriptive): unknown-class recall 0.813
+pre-seat vs stated-class 0.531.** The planner names the MISSING
+quantities — the unrecorded pick rate, the unmeasured no-show rate, the
+untracked dispatch control — more reliably than the figures printed in
+front of it. For a redundancy planner, that is the right failure
+profile: the quantities that most need a second source are the ones it
+is best at flagging. (Echoes the S1 tension-list finding: mandated
+enumeration of gaps is a capability; self-assessment is not.)
+
+### Consequences
+- §3 gains its coverage bound: the planner component is buildable, and
+  the harness's error-immunity claim becomes "engineered redundancy
+  halves corruption ON THE ~60% OF QUANTITIES THE PLANNER LISTS."
+- Sub-question writing (the planner's other half) remains untested; a
+  future cell would test whether planner-authored assignments preserve
+  C47's protection end-to-end.
+- The pre-seat arm's equality means the planner can run at
+  decomposition time as §2 specifies, with no coverage penalty vs
+  waiting for round-1 — an architectural simplification supported by
+  measurement.

@@ -94,7 +94,15 @@ quantities in the decomposition (numbers, gating rules, deadlines) and
 assigns each to ≥ 2 seats' sub-questions. This is where the council's
 error immunity lives — it does not exist by default (Cell 42 + the
 diversity precondition: same-domain seats can be LESS diverse than
-resampling one seat).
+resampling one seat). **Planner competence is measured (Cell 57):**
+confirmed recall of load-bearing quantities 0.633 [0.506, 0.758] from
+the case prompt alone, unchanged by seeing round-1 contributions
+(−0.017 [−0.100, +0.064]) — so the planner runs at decomposition time
+with no coverage penalty, and the error-immunity claim is BOUNDED BY
+COVERAGE: redundancy halves corruption on the ~60% of quantities the
+planner lists. Its best class is the right one: MISSING quantities
+(unmeasured rates, untracked inputs) are recalled at 0.813 vs 0.531 for
+stated figures. Sub-question writing remains untested.
 
 ## 4. Two-stage lead with mandated artifacts
 
