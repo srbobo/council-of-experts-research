@@ -8515,3 +8515,81 @@ prospective verdict: §1 predictive (C55), §2 informative null (C52),
 §3 causal (C47, boundary open), §4/§5 end-to-end live (C44/53/54), §6
 complete on carriage, cost, and uptake (C48/51). The harness re-test
 arc closes at six verdicts: four survived, one demoted, one killed.
+
+## CELL 56 PRE-REGISTRATION (2026-08-29) — bounding live-reply fabrication, and testing whether it is backfill
+
+Registered before any run.
+
+**Question.** Cell 54 observed 4/21 live replies embellishing a
+correctly conveyed fact with fabricated authority (invented case law,
+invented regulatory rulings), concentrated in the legal domain. The
+rate is observed, not bounded, and its mechanism is untested. This
+cell bounds it and tests one candidate mechanism: **fabrication as
+backfill** — the seat invents authority when it lacks something real
+to say (Cell 53's diagnostic showed invented case law appearing
+exactly when the planted fact was NOT retrieved).
+
+**Design — one factor over the Cell 53/54 machinery.** The six frozen
+items, the frozen followup_q dispatches, the frozen role prompts,
+round-1 contributions as in Cell 54. Generation is REPLIES ONLY (no
+S2, no judging — the outcome lives on the reply text):
+- **Arm briefed**: the seat's reply context includes the private
+  working notes with the deciding fact (Cell 54's setup verbatim) —
+  the seat has something real to say.
+- **Arm unbriefed**: identical context minus the notes — the pointed
+  dispatch must be answered from round-1 knowledge alone, the
+  hypothesized pressure condition for backfill.
+
+**Grid.** 6 items × 2 arms × 10 reps = 120 replies, persisted.
+Cluster = item (6, honestly stated).
+
+**Instrument (two stages, frozen).**
+1. **Mechanical prefilter** (validated on the Cell 54 archive before
+   this registration): adversarial-citation span extraction — " v. ",
+   " vs. ", " v " with capitalized alphabetic neighbors, string ops
+   only. Validation recorded: recall 4/4 on the known fabrication
+   replies; 2/17 clean replies flagged (section headers), which stage
+   2 exists to discard.
+2. **Recorded manual classification**: every extracted span is
+   classified by the analyst in a committed table as REAL (a decision
+   that exists), FABRICATED (a specific invented case/ruling),
+   UNVERIFIABLE, or NOT-A-CITATION (headers, rhetorical "X vs Y"),
+   each with a one-line justification. Verifier limits recorded: no
+   web access; classification rests on the analyst's knowledge
+   (cutoff January 2026) and is conservative — only specific named
+   authorities confidently known not to exist are FABRICATED.
+   Precedent: Cell 19's manual-inspection instrument, recorded as
+   such in STATUS.
+
+**Outcome.** Reply-level: a reply is FABRICATING if it contains ≥1
+FABRICATED span. Primary count excludes UNVERIFIABLE; sensitivity
+includes it.
+
+**Predictions.**
+- **P56.1 — the bound (registered estimation, the cell's purpose).**
+  Fabrication rate per arm with Wilson CIs, plus per-item and
+  per-domain tables. No verdict attaches; the numbers ARE the
+  deliverable. Archive anchor: briefed 4/21 ≈ 0.19.
+- **P56.2 — backfill (confirmatory).** Unbriefed fabrication exceeds
+  briefed: per-item paired diff, cluster bootstrap (5000), 95% CI > 0.
+  Attainability: with 6 clusters and fabrication concentrated in 2–3
+  items, only a large effect (roughly a doubling that is not confined
+  to a single item) is detectable; NOT EVALUABLE is accepted in
+  advance and stated now. SUPPORTED → the content channel is itself a
+  fabrication control, and un-answerable dispatches are the risk
+  surface (§5 gains a design rule: never dispatch without a content
+  path). FALSIFIED with direction reversed → fabrication is a style of
+  ANSWERING, not of gap-filling, and the content gate cannot help.
+- **Descriptive:** admission behavior (does the unbriefed seat say it
+  lacks specifics — counted by frozen phrase-free manual read of a
+  10-reply sample per arm); span counts per fabricating reply; domain
+  table.
+
+**Costs.** 120 short generations (~3h), no judging. The manual
+classification table is committed with the verdict.
+
+**Goodhart note.** Fabrication rate is a diagnostic. It must never
+become an optimization target (a detector-fed loop would produce
+Cell 19's rewording, not honesty); the design consequence if P56.2
+supports is architectural (content paths for dispatches), not a
+trained objective.
