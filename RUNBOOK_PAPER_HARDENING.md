@@ -8906,3 +8906,20 @@ whose sub-questions actually address the named quantity in ≥2 lines
 (prefilter + committed confirmation). Cell 58's pilot runs are NOT
 reused (different planner input); its plans and runs are retired to
 the archive.
+
+### CELL 59 PILOT DEVIATION (2026-08-30) — fourth value-format instrument incident; gate re-evaluated on rescored SAME outputs
+
+First-pass GP1 read 5/8 and 4/8. Diagnosis on the persisted seat texts:
+five of the seven misses are format misses — the writer emits spaced
+percent ("37 %", "24 %", "28 %") and spaced magnitude abbreviations
+("4.6 m", "3.1 m", "250 k" for $250,000) that the frozen C47 probe
+forms do not cover. One miss (item 6's 42%) is genuine. Correction,
+frozen and applied identically to both arms, conveyance and writer
+scoring alike: vdeep (spaced-percent collapse over _deep) and vprobes
+(C47 probes plus derived "X m"/"X k" forms). Pilot outputs RESCORED,
+not regenerated (C47 precedent). For the planted-vs-live estimation the
+C47 archive will be rescored under the SAME expanded matcher at measure
+time so the comparison is like-for-like. The format-incident ledger now
+reads: narrow spaces (C47), Unicode hyphens (C53, C57), spaced
+percent/magnitude (C59) — value probes in any future cell start from
+this full set.

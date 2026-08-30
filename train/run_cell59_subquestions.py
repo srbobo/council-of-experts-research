@@ -91,6 +91,33 @@ def get_plan(it, rep: int, cache: dict) -> dict | None:
     return None
 
 
+def vdeep(t: str) -> str:
+    """Value matching surface: _deep plus spaced-percent collapse.
+    Instrument correction recorded in the runbook (2026-08-30, fourth
+    value-format incident): the writer emits "37 %", "4.6 m", "250 k"."""
+    return _deep(t).replace(" %", "%")
+
+
+def vprobes(it, kind: str) -> list[str]:
+    """Frozen expanded probe set: C47 probes plus spaced-magnitude
+    abbreviation forms ("4.6 m", "250 k") derived from the value."""
+    base = list(it[f"{kind}_probes"])
+    val = it[f"{'wrong' if kind == 'wrong' else 'clean'}_value"]
+    digits = "".join(c for c in val if c.isdigit() or c == ".")
+    if "million" in val:
+        base += [f"{digits} m", f"{digits}m"]
+    elif val.startswith("$") and "," in val:
+        n = float(digits)
+        if n >= 1000:
+            base += [f"{n/1000:g} k", f"{n/1000:g}k"]
+    return base
+
+
+def vmatch(text: str, it, kind: str) -> bool:
+    lo = vdeep(text)
+    return any(vdeep(p) in lo for p in vprobes(it, kind))
+
+
 def seat_answer(it, role: str, subq: str, note_value: str | None):
     from examples.test_cases import get_case
     a, b = tuple(r for r in ROLES if r != role)
@@ -122,11 +149,9 @@ def one_run(it, arm: str, rep: int, plans: dict) -> dict | None:
         if ans is None:
             return None
         if role == it["seat_A"]:
-            conv["wrong_in_A"] = any(_deep(p) in _deep(ans)
-                                     for p in it["wrong_probes"])
+            conv["wrong_in_A"] = vmatch(ans, it, "wrong")
         if role == it["seat_B"]:
-            conv["clean_in_B"] = any(_deep(p) in _deep(ans)
-                                     for p in it["clean_probes"])
+            conv["clean_in_B"] = vmatch(ans, it, "clean")
             conv["seat_B_text"] = ans
         if role == it["seat_A"]:
             conv["seat_A_text"] = ans
@@ -141,11 +166,10 @@ def one_run(it, arm: str, rep: int, plans: dict) -> dict | None:
             break
     if not txt or not txt.strip():
         return None
-    low = _deep(txt)
     return {"run_id": f"i{it['id']}__{arm}__r{rep}", "item": it["id"],
             "case": it["case"], "arm": arm, "repeat": rep, **conv,
-            "clean": any(_deep(p) in low for p in it["clean_probes"]),
-            "wrong": any(_deep(p) in low for p in it["wrong_probes"]),
+            "clean": vmatch(txt, it, "clean"),
+            "wrong": vmatch(txt, it, "wrong"),
             "plan": plan, "output": txt}
 
 
