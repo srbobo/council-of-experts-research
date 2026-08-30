@@ -124,6 +124,9 @@ def one_run(it, arm: str, rep: int, plans: dict) -> dict | None:
         if role == it["seat_B"]:
             conv["clean_in_B"] = any(_deep(p) in _deep(ans)
                                      for p in it["clean_probes"])
+            conv["seat_B_text"] = ans
+        if role == it["seat_A"]:
+            conv["seat_A_text"] = ans
         contribs.append("--- SPECIALIST CONTRIBUTION ---\n" + ans)
     q = f"{get_case(it['case']).prompt}\n\n{it['ask_line']}"
     txt = None

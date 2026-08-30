@@ -8862,3 +8862,47 @@ writer generations) ≈ 360 generations; overnight scale. Cluster ceiling
 
 **Goodhart note.** Assignment and conveyance rates are diagnostics; the
 planner prompt is frozen here and not tunable against these outcomes.
+
+### CELL 58 PILOT: HALT RECORDED, WITH THE FINDING THAT CAUSED IT (2026-08-30)
+
+GP1 failed on one side: corrupted-in-A conveyance 6/8, clean-in-B 2/8
+(parse 8/8). The registered halt stands. Diagnosis (seat answers now
+persisted — the C53 persistence deficiency recurred and is fixed;
+labeled fresh diagnostic draws committed to analysis):
+
+**Briefing conveyance is TASK-RELEVANCE-GATED.** The live planner,
+given only the case, writes sub-questions about the case's own central
+quantities — and the Cell 47 target quantities are partly peripheral
+(exactly the Cell 57 attainability finding, biting here in a new
+place). A seat whose sub-question does not touch the noted quantity
+IGNORES its private note: the finance seat asked for a budget-impact
+analysis built one without using its briefed rebate rate; the
+healthcare seat asked about validation protocols dropped its
+subscription-price note. Contrast Cell 54: 21/21 conveyance when the
+dispatch pointed AT the noted fact. Pilot-grade numbers: aligned-ish
+dispatches convey ~6/8; orthogonal ones 2/8. Recorded as a channel
+semantic for §5: **notes ride only on tasks that ask for them.**
+
+**Design error identified:** Cell 58's planner was never told WHICH
+quantity the orchestrator wanted covered, so the cell tested
+irrelevant-note conveyance, not the registered question. §3's actual
+operation is "identify load-bearing quantities and assign EACH to ≥2
+sub-questions" — identification was already tested separately (Cell
+57); the assignment step takes the identified quantity as input.
+
+## CELL 59 PRE-REGISTRATION (2026-08-30) — sub-question writing, corrected: the planner assigns a NAMED quantity
+
+Registered before any run. Identical to Cell 58 (7998f7e) in every
+respect except one: **the planner's input includes the target quantity
+as the orchestrator's identified load-bearing quantity**, with the
+instruction that at least two of the three sub-questions must address
+it. This tests the assignment-writing step as §3 defines it, on top of
+Cell 57's separately-measured identification step. All other machinery,
+arms, briefing structure, probes, scoring, mediators, predictions
+(P59.1 = P58.1, P59.2 = P58.2, the planted-vs-live estimation), pilot
+gates (GP1 conveyance ≥ 6/8 each side, GP2 parse ≥ 6/8), costs, and
+Goodhart constraints carry over verbatim. New mediator: share of plans
+whose sub-questions actually address the named quantity in ≥2 lines
+(prefilter + committed confirmation). Cell 58's pilot runs are NOT
+reused (different planner input); its plans and runs are retired to
+the archive.

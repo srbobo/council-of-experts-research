@@ -1,0 +1,42 @@
+{
+ "i0__r0": {
+  "healthcare": "What clinical safety metrics, validation protocols, and EHR integration steps are required to deploy an AI sepsis‑risk scoring tool across 12 hospitals on a per‑seat basis?",
+  "legal": "How should the per‑seat annual subscription license, data governance, and documentation be structured to meet FDA regulatory requirements and HIPAA privacy rules for a multi‑hospital AI decision support system that surfaces sepsis scores in the EHR?",
+  "finance": "What financial model—including per‑seat pricing, cost allocation across 12 hospitals, projected ROI, and risk mitigation—supports a defensible v1 of an AI clinical decision support tool while accounting for regulatory compliance costs?"
+ },
+ "i1__r0": {
+  "healthcare": "What clinical evidence strategy—study design, endpoints, population size, and real‑world data collection—must be executed within the 18‑month window to satisfy both UK NICE/EMA requirements and support reimbursement submissions for a US FDA‑cleared prescription smoking‑cessation app delivered via a Software‑as‑a‑Medical‑Device pathway?",
+  "legal": "How should the US‑based company navigate UK GDPR, Germany’s BDSG+ data‑protection framework, and EMA/UK MHRA regulatory pathways—leveraging its existing FDA clearance—to obtain marketing authorisation for a digital therapeutics smoking‑cessation app within 18 months while ensuring cross‑border interoperability of patient data?",
+  "finance": "What reimbursement strategy—including early dialogue with NHS England, German G-BA, and private insurers, cost‑effectiveness modelling, pricing tiers, and payment‑by‑performance contracts—needs to be designed and negotiated during the 18‑month launch window to achieve sustainable uptake in both the UK and Germany for a prescription digital therapeutic?"
+ },
+ "i2__r0": {
+  "healthcare": "For a self‑insured employer with 5,000 employees, how would clinical guidelines for GLP‑1 agents (semaglutide and tirzepatide) support expanding coverage from type 2 diabetes to obesity—considering BMI thresholds, prior weight‑loss attempts, and expected efficacy/safety profiles—to inform utilization‑management criteria that balance benefit maximization with appropriate patient selection?",
+  "legal": "Under ERISA and ACA provisions governing a 5,000‑employee self‑insured plan, what legal risks or compliance requirements arise from extending coverage of semaglutide/tirzepatide to obesity (as opposed to only type 2 diabetes), and how should utilization‑management criteria be structured to avoid discrimination or adverse‑impact claims while meeting parity standards?",
+  "finance": "For a 5,000‑employee self‑insured plan, what projected budget impact—including per‑dose cost of semaglutide/tirzepatide, estimated obesity prevalence versus type 2 diabetes prevalence in the workforce, and potential downstream savings from weight loss—would result from covering these agents for obesity under different tier placements or utilization thresholds?"
+ },
+ "i3__r0": {
+  "healthcare": "How will converting the 90‑bed rural nonprofit community hospital to a for‑profit entity affect clinical staffing, patient care quality, and operational continuity during and after the sale‑leaseback of its real estate?",
+  "legal": "In transitioning from nonprofit to for‑profit status, what legal steps are required to preserve or relinquish tax‑exempt credentials, secure regulatory approvals, and structure both the sale‑leaseback transaction and the charitable foundation that will hold proceeds while safeguarding fiduciary duties and donor intent?",
+  "finance": "What is the projected valuation of the 90‑bed hospital under a private‑equity acquisition, how will the sale‑leaseback financing impact debt capacity, cash flow, and return on investment for the sponsor, and what are the tax consequences for both the newly for‑profit entity and the charitable foundation holding proceeds?"
+ },
+ "i4__r0": {
+  "healthcare": "How should the 40 hand‑hygiene observations per month be scheduled across the three shifts—given 32 nurses and a 24‑bed medical‑surgical unit—to ensure each shift receives a proportionate share while aligning with the WHO 'Five Moments' framework?",
+  "legal": "What specific documentation must each of the two trained auditors record for an observation to meet legal and regulatory standards under the unchanged WHO 'Five Moments' protocol in place since 2015, ensuring compliance and validity?",
+  "finance": "In what format should the unit present the monthly results from the 40 observations—captured by two auditors—to demonstrate cost‑effectiveness, accountability, and alignment with staffing across the three shifts in a 24‑bed unit?"
+ },
+ "i5__r0": {
+  "healthcare": "How does Delaware law shape the definition and exclusions of Confidential Information, especially regarding patient data, within a standard mutual NDA that has a 3‑year term and a 2‑year post‑termination confidentiality tail?",
+  "legal": "Under Delaware law, how do the definition of Confidential Information, customary exclusions, permitted‑disclosure carve‑out, return‑or‑destroy obligation, and equitable‑remedies clause interrelate over the contract’s 3‑year term and its 2‑year post‑termination confidentiality period?",
+  "finance": "Given a standard mutual NDA governed by Delaware law with a 3‑year term followed by a 2‑year tail, how might the return‑or‑destroy obligation and equitable‑remedies clause influence financial risk assessment, valuation of confidential assets, and potential liability exposure for both corporations?"
+ },
+ "i6__r0": {
+  "healthcare": "Given a steady intake of 1,400 units each evening and a six‑hour shift at a loaded labor rate of $28/hr, what minimum number of pickers would be needed to keep workers’ hourly workload within ergonomic safety limits when pick rates per worker are unrecorded, and how would this staffing level affect overall labor costs?",
+  "legal": "With pick rates per worker not recorded, what legal or regulatory considerations arise when determining the appropriate number of staff for a six‑hour evening shift handling 1,400 units at $28/hr, especially regarding labor standards, overtime thresholds, and safety compliance?",
+  "finance": "Assuming a steady flow of 1,400 units per evening over a six‑hour shift and a loaded labor cost of $28 per hour, how many pickers should be scheduled to minimize the cost per unit when pick rates are unknown, and what will the resulting cost-per-unit figure be?"
+ },
+ "i7__r0": {
+  "healthcare": "For a UK company with 340 employees whose HR records are being transferred to a processor in Germany, how should the organization classify and safeguard any health‑related personal data under the UK's Data Protection Act and EU GDPR, considering category distinctions that may affect lawful basis choices?",
+  "legal": "In light of a UK firm moving HR records for its 340 employees to a German processor, what specific lawful bases under UK GDPR/UK DPA and EU GDPR must be documented, how do the two regimes diverge regarding transfer mechanisms (e.g., adequacy decisions vs. standard contractual clauses), and what documentation—including processor agreements and data protection impact assessments—must be prepared given the evolving enforcement landscape?",
+  "finance": "Considering a UK company with 340 employees transferring HR records to a German processor, what are the potential financial implications of non‑compliance under UK GDPR/UK DPA versus EU GDPR, including fines based on turnover thresholds, and how should the organization budget for compliance costs such as data protection impact assessments, audit fees, and potential penalties in light of recent enforcement trends?"
+ }
+}
