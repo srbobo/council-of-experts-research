@@ -8787,3 +8787,78 @@ enumeration of gaps is a capability; self-assessment is not.)
   decomposition time as §2 specifies, with no coverage penalty vs
   waiting for round-1 — an architectural simplification supported by
   measurement.
+
+## CELL 58 PRE-REGISTRATION (2026-08-30) — sub-question writing: does a live planner-authored assignment preserve the redundancy protection end-to-end?
+
+Registered before any run.
+
+**Question.** Cell 47 proved planted overlap halves corruption; Cell 57
+bounded the planner's quantity-finding at ~0.6. The untested half of §3
+is the chain in between: the planner WRITES the sub-questions, live
+seats ANSWER them, and the writer synthesizes — does the protection
+survive when every link is live?
+
+**Design — Cell 47's factor, everything else live.** Corpus: the eight
+frozen Cell 47 items (quantities, corrupted/clean values, probes,
+ask-lines — validated machinery, reused byte-identical). Corruption
+enters through the VALIDATED briefing channel (C54: private working
+notes, conveyance 21/21), never by text-planting:
+1. **Planner stage (live, shared within pair):** for each item × rep,
+   ONE planner elicitation (gpt-oss:20b, frozen orchestrator prompt):
+   decompose into three self-contained sub-questions, one per role,
+   under §3's instruction that every load-bearing quantity be covered
+   by at least two specialists' sub-questions. Role-tagged line format,
+   known-format parse, ≤3 retries. The SAME sub-question set serves
+   both arms of its pair, so the single varying factor is the briefing
+   structure below.
+2. **Seat stage (live):** each seat answers its sub-question (role
+   prompt, roster line, temperature 0.7, max_tokens 4096).
+   - **arm bare:** seat_A briefed with private notes carrying the
+     item's stmt at the CORRUPTED value; other seats unbriefed.
+   - **arm planned:** additionally seat_B briefed with the stmt at the
+     CLEAN value.
+3. **Writer stage:** Cell 47's writer protocol verbatim (WRITER_PROMPT,
+   labeled contributions, case question + ask_line, temperature 0.6).
+
+**Scoring.** Cell 47's frozen value probes under _deep folding (the
+Unicode correction is now the default per the Cell 57 deviation note;
+these probes are %-and-digit forms where the difference is expected
+nil). Outcomes: corrupted-value and clean-value adoption in the writer
+output.
+
+**Mediators (registered descriptive, C56/57 two-stage pattern where
+judgment is needed):** planner assignment rate (the item's quantity
+covered by ≥2 sub-questions — frozen quantity-key prefilter + committed
+manual confirmation); corrupted conveyance in seat_A prose; clean
+conveyance in seat_B prose; adoption conditional on conveyance.
+
+**Pilot gates (frozen; planned arm, 1 rep × 8 items, runs count toward
+the grid):**
+- **GP1 conveyance:** corrupted value present in seat_A prose ≥ 6/8 AND
+  clean value present in seat_B prose ≥ 6/8, else HALT (the briefing
+  channel must work under sub-question inputs as it did under
+  follow-up inputs).
+- **GP2 planner parse:** all three role-tagged sub-questions parsed in
+  ≥ 6/8 items within retries, else HALT.
+The bare-arm floor is NOT gated: Cell 47's 0.900 floor came from
+planted values in full seat texts, the live floor is unknown, and a low
+floor collapsing P58.1 to NOT EVALUABLE is accepted in advance.
+
+**Predictions (Cell 47's registered pair, live).**
+- **P58.1 — corrupted adoption, planned − bare < 0** (cluster bootstrap
+  by item, 5000 draws, 95% CI < 0).
+- **P58.2 — clean adoption, planned − bare > 0** (CI > 0; selection,
+  not dilution).
+Attainability: the identical design and n cleared both bars in Cell 47
+(−0.450 [−0.725, −0.200]; +0.500 [+0.175, +0.825]); live prose can only
+weaken links, and NOT EVALUABLE outcomes are accepted and will be
+reported with the mediator table so the failing link is identifiable.
+- **Registered estimation:** live-vs-planted deltas against Cell 47's
+  effects, descriptive.
+
+**Costs.** 40 planner elicitations + 80 pipeline runs × (3 seat + 1
+writer generations) ≈ 360 generations; overnight scale. Cluster ceiling
+8 items, stated.
+
+**Goodhart note.** Assignment and conveyance rates are diagnostics; the
+planner prompt is frozen here and not tunable against these outcomes.
