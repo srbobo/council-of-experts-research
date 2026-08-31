@@ -54,11 +54,13 @@ _THINK = re.compile(r"<think>.*?</think>", re.DOTALL)
 
 
 def gen(system, user, temp=0.7, toks=4096, model=MODEL):
-    for _ in range(3):
+    for attempt in range(6):
+        if attempt:
+            time.sleep(10 * attempt)
         t = chat(model, system, user, temperature=temp, max_tokens=toks)
         if t and t.strip():
             return _THINK.sub("", t).strip()
-    raise SystemExit("generation failed 3x")
+    raise SystemExit("generation failed 6x")
 
 
 def seat_gate(tel):
@@ -191,6 +193,7 @@ def run_case(case, tel):
     ct["artifact_chars"] = len(artifact)
     ct["seconds"] = round(time.time() - t0)
     (OUT / f"{case}.artifact.md").write_text(artifact)
+    (OUT / f"telemetry_{case}.json").write_text(json.dumps(ct, indent=1))
     tel["cases"].append(ct)
     print(f"  {case}: done in {ct['seconds']}s — artifact "
           f"{ct['artifact_chars']} chars, {len(all_cavs)} caveats, "
@@ -203,6 +206,11 @@ def main():
     print("integration demo: seating gate", flush=True)
     seat_gate(tel)
     for case in CASES:
+        done = OUT / f"telemetry_{case}.json"
+        if done.exists():
+            tel["cases"].append(json.loads(done.read_text()))
+            print(f"integration demo: {case} (cached)", flush=True)
+            continue
         print(f"integration demo: {case}", flush=True)
         run_case(case, tel)
     (OUT / "telemetry.json").write_text(json.dumps(tel, indent=1))
