@@ -176,11 +176,11 @@
     38,
     30,
     56,
-    21,
+    24,
     13
    ],
-   "prompt": "An employee works 38 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours. After exactly 21 weeks of work the employee has used 13 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
-   "answer": 13
+   "prompt": "An employee works 38 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours. After exactly 24 weeks of work the employee has used 13 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 17
   },
   {
    "id": "t4_v1",
