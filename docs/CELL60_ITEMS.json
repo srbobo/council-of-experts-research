@@ -1,0 +1,468 @@
+{
+ "note": "Cell 60 items (registration 6d32991). Answers computed by train/gen_cell60_items.py; regenerate to verify. Tolerance: relative 0.5% (min absolute 0.01).",
+ "items": [
+  {
+   "id": "t1_v0",
+   "template": "t1",
+   "params": [
+    67000,
+    9000,
+    5,
+    7
+   ],
+   "prompt": "A company buys equipment for $67,000 with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 7 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 20547
+  },
+  {
+   "id": "t1_v1",
+   "template": "t1",
+   "params": [
+    84000,
+    12000,
+    7,
+    4
+   ],
+   "prompt": "A company buys equipment for $84,000 with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/7 of beginning book value; the first year's expense is prorated by the 4 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 21714
+  },
+  {
+   "id": "t1_v2",
+   "template": "t1",
+   "params": [
+    53000,
+    6500,
+    5,
+    10
+   ],
+   "prompt": "A company buys equipment for $53,000 with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 10 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 14133
+  },
+  {
+   "id": "t1_v3",
+   "template": "t1",
+   "params": [
+    128000,
+    15000,
+    8,
+    5
+   ],
+   "prompt": "A company buys equipment for $128,000 with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/8 of beginning book value; the first year's expense is prorated by the 5 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 28667
+  },
+  {
+   "id": "t1_v4",
+   "template": "t1",
+   "params": [
+    46000,
+    5000,
+    4,
+    8
+   ],
+   "prompt": "A company buys equipment for $46,000 with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/4 of beginning book value; the first year's expense is prorated by the 8 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 15333
+  },
+  {
+   "id": "t2_v0",
+   "template": "t2",
+   "params": [
+    1700,
+    6,
+    29,
+    130,
+    30
+   ],
+   "prompt": "A distribution centre must pick 1,700 units in one 6-hour evening shift. Each picker sustains 130 units per hour while working, but the shift includes a paid 30-minute meal break during which no picking occurs. The loaded labour rate is $29 per hour, paid for the full 6 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 0.31
+  },
+  {
+   "id": "t2_v1",
+   "template": "t2",
+   "params": [
+    2300,
+    8,
+    31,
+    115,
+    45
+   ],
+   "prompt": "A distribution centre must pick 2,300 units in one 8-hour evening shift. Each picker sustains 115 units per hour while working, but the shift includes a paid 45-minute meal break during which no picking occurs. The loaded labour rate is $31 per hour, paid for the full 8 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 0.32
+  },
+  {
+   "id": "t2_v2",
+   "template": "t2",
+   "params": [
+    1150,
+    5,
+    27,
+    95,
+    20
+   ],
+   "prompt": "A distribution centre must pick 1,150 units in one 5-hour evening shift. Each picker sustains 95 units per hour while working, but the shift includes a paid 20-minute meal break during which no picking occurs. The loaded labour rate is $27 per hour, paid for the full 5 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 0.35
+  },
+  {
+   "id": "t2_v3",
+   "template": "t2",
+   "params": [
+    3400,
+    7,
+    33,
+    145,
+    40
+   ],
+   "prompt": "A distribution centre must pick 3,400 units in one 7-hour evening shift. Each picker sustains 145 units per hour while working, but the shift includes a paid 40-minute meal break during which no picking occurs. The loaded labour rate is $33 per hour, paid for the full 7 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 0.27
+  },
+  {
+   "id": "t3_v0",
+   "template": "t3",
+   "params": [
+    1900,
+    52000,
+    220,
+    0.17,
+    0.32,
+    210
+   ],
+   "prompt": "A clinic schedules 220 appointments per week and has a measured no-show rate of 17%. A reminder service costs $1,900 per month plus a one-time setup fee of $52,000, and prevents 32% of would-be no-shows. Each prevented no-show is worth $210 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 6
+  },
+  {
+   "id": "t3_v1",
+   "template": "t3",
+   "params": [
+    2400,
+    98000,
+    310,
+    0.21,
+    0.28,
+    185
+   ],
+   "prompt": "A clinic schedules 310 appointments per week and has a measured no-show rate of 21%. A reminder service costs $2,400 per month plus a one-time setup fee of $98,000, and prevents 28% of would-be no-shows. Each prevented no-show is worth $185 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 9
+  },
+  {
+   "id": "t3_v2",
+   "template": "t3",
+   "params": [
+    1500,
+    41000,
+    180,
+    0.14,
+    0.41,
+    240
+   ],
+   "prompt": "A clinic schedules 180 appointments per week and has a measured no-show rate of 14%. A reminder service costs $1,500 per month plus a one-time setup fee of $41,000, and prevents 41% of would-be no-shows. Each prevented no-show is worth $240 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 5
+  },
+  {
+   "id": "t3_v3",
+   "template": "t3",
+   "params": [
+    3100,
+    125000,
+    420,
+    0.19,
+    0.35,
+    165
+   ],
+   "prompt": "A clinic schedules 420 appointments per week and has a measured no-show rate of 19%. A reminder service costs $3,100 per month plus a one-time setup fee of $125,000, and prevents 35% of would-be no-shows. Each prevented no-show is worth $165 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 8
+  },
+  {
+   "id": "t4_v0",
+   "template": "t4",
+   "params": [
+    38,
+    30,
+    56,
+    21,
+    13
+   ],
+   "prompt": "An employee works 38 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours. After exactly 21 weeks of work the employee has used 13 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 13
+  },
+  {
+   "id": "t4_v1",
+   "template": "t4",
+   "params": [
+    42,
+    35,
+    64,
+    26,
+    24
+   ],
+   "prompt": "An employee works 42 hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours. After exactly 26 weeks of work the employee has used 24 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 7
+  },
+  {
+   "id": "t4_v2",
+   "template": "t4",
+   "params": [
+    36,
+    28,
+    48,
+    15,
+    9
+   ],
+   "prompt": "An employee works 36 hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours. After exactly 15 weeks of work the employee has used 9 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 10
+  },
+  {
+   "id": "t4_v3",
+   "template": "t4",
+   "params": [
+    40,
+    32,
+    72,
+    33,
+    29
+   ],
+   "prompt": "An employee works 40 hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours. After exactly 33 weeks of work the employee has used 29 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 12
+  },
+  {
+   "id": "t4_v4",
+   "template": "t4",
+   "params": [
+    44,
+    30,
+    80,
+    19,
+    12
+   ],
+   "prompt": "An employee works 44 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours. After exactly 19 weeks of work the employee has used 12 hours of sick leave. What is the remaining sick-leave balance, in hours?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 15
+  },
+  {
+   "id": "t5_v0",
+   "template": "t5",
+   "params": [
+    1180,
+    2400,
+    1085,
+    96,
+    30000,
+    14,
+    52000
+   ],
+   "prompt": "A medical group holds a capitated contract at $1,180 per member per month for 2,400 members. Expected medical cost averages $1,085 per member per month across the panel. The group buys stop-loss insurance for $96 per member per year; the policy reimburses annual spend above $30,000 per member. Exactly 14 members are projected to cost $52,000 each for the year (their cost is already included in the $1,085 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2813600
+  },
+  {
+   "id": "t5_v1",
+   "template": "t5",
+   "params": [
+    990,
+    5100,
+    940,
+    84,
+    25000,
+    22,
+    41000
+   ],
+   "prompt": "A medical group holds a capitated contract at $990 per member per month for 5,100 members. Expected medical cost averages $940 per member per month across the panel. The group buys stop-loss insurance for $84 per member per year; the policy reimburses annual spend above $25,000 per member. Exactly 22 members are projected to cost $41,000 each for the year (their cost is already included in the $940 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2983600
+  },
+  {
+   "id": "t5_v2",
+   "template": "t5",
+   "params": [
+    1320,
+    1800,
+    1210,
+    110,
+    35000,
+    9,
+    68000
+   ],
+   "prompt": "A medical group holds a capitated contract at $1,320 per member per month for 1,800 members. Expected medical cost averages $1,210 per member per month across the panel. The group buys stop-loss insurance for $110 per member per year; the policy reimburses annual spend above $35,000 per member. Exactly 9 members are projected to cost $68,000 each for the year (their cost is already included in the $1,210 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2475000
+  },
+  {
+   "id": "t5_v3",
+   "template": "t5",
+   "params": [
+    1075,
+    3600,
+    1010,
+    92,
+    28000,
+    19,
+    47500
+   ],
+   "prompt": "A medical group holds a capitated contract at $1,075 per member per month for 3,600 members. Expected medical cost averages $1,010 per member per month across the panel. The group buys stop-loss insurance for $92 per member per year; the policy reimburses annual spend above $28,000 per member. Exactly 19 members are projected to cost $47,500 each for the year (their cost is already included in the $1,010 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2847300
+  },
+  {
+   "id": "t6_v0",
+   "template": "t6",
+   "params": [
+    180,
+    52000,
+    0.24,
+    0.35
+   ],
+   "prompt": "A company must reserve for reclassifying 180 contractor drivers earning $52,000 each per year. Employer-cost uplift (taxes and benefits) adds 24% on top of wages. 35% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 19730880
+  },
+  {
+   "id": "t6_v1",
+   "template": "t6",
+   "params": [
+    240,
+    47500,
+    0.21,
+    0.45
+   ],
+   "prompt": "A company must reserve for reclassifying 240 contractor drivers earning $47,500 each per year. Employer-cost uplift (taxes and benefits) adds 21% on top of wages. 45% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 26208600
+  },
+  {
+   "id": "t6_v2",
+   "template": "t6",
+   "params": [
+    95,
+    61000,
+    0.27,
+    0.3
+   ],
+   "prompt": "A company must reserve for reclassifying 95 contractor drivers earning $61,000 each per year. Employer-cost uplift (taxes and benefits) adds 27% on top of wages. 30% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 11775440
+  },
+  {
+   "id": "t6_v3",
+   "template": "t6",
+   "params": [
+    320,
+    43800,
+    0.22,
+    0.4
+   ],
+   "prompt": "A company must reserve for reclassifying 320 contractor drivers earning $43,800 each per year. Employer-cost uplift (taxes and benefits) adds 22% on top of wages. 40% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 30779136
+  },
+  {
+   "id": "t7_v0",
+   "template": "t7",
+   "params": [
+    4100,
+    0.22,
+    0.18,
+    1050,
+    0.6,
+    2200
+   ],
+   "prompt": "A plan with 4,100 covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,050 per member per month. 60% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,200 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1418300
+  },
+  {
+   "id": "t7_v1",
+   "template": "t7",
+   "params": [
+    6800,
+    0.17,
+    0.23,
+    985,
+    0.55,
+    1800
+   ],
+   "prompt": "A plan with 6,800 covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $985 per member per month. 55% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $1,800 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2172120
+  },
+  {
+   "id": "t7_v2",
+   "template": "t7",
+   "params": [
+    2900,
+    0.26,
+    0.15,
+    1140,
+    0.65,
+    2600
+   ],
+   "prompt": "A plan with 2,900 covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,140 per member per month. 65% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,600 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1082440
+  },
+  {
+   "id": "t7_v3",
+   "template": "t7",
+   "params": [
+    5200,
+    0.2,
+    0.21,
+    1015,
+    0.58,
+    2050
+   ],
+   "prompt": "A plan with 5,200 covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,015 per member per month. 57% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,050 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1836660
+  },
+  {
+   "id": "t8_v0",
+   "template": "t8",
+   "params": [
+    3100000,
+    0.025,
+    12
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $3,100,000, escalating 2.5% per year (compounding) starting in year 2, for a 12-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 42766214
+  },
+  {
+   "id": "t8_v1",
+   "template": "t8",
+   "params": [
+    2400000,
+    0.03,
+    15
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $2,400,000, escalating 3% per year (compounding) starting in year 2, for a 15-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 44637393
+  },
+  {
+   "id": "t8_v2",
+   "template": "t8",
+   "params": [
+    4150000,
+    0.02,
+    10
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $4,150,000, escalating 2% per year (compounding) starting in year 2, for a 10-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 45441342
+  },
+  {
+   "id": "t8_v3",
+   "template": "t8",
+   "params": [
+    1850000,
+    0.035,
+    20
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $1,850,000, escalating 3.5% per year (compounding) starting in year 2, for a 20-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 52317411
+  },
+  {
+   "id": "t8_v4",
+   "template": "t8",
+   "params": [
+    2750000,
+    0.028,
+    14
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $2,750,000, escalating 2.8% per year (compounding) starting in year 2, for a 14-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 46355743
+  },
+  {
+   "id": "t8_v5",
+   "template": "t8",
+   "params": [
+    3600000,
+    0.022,
+    18
+   ],
+   "prompt": "A sale-leaseback sets the first year's rent at $3,600,000, escalating 2.2% per year (compounding) starting in year 2, for a 18-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?\n\nEvery figure needed is stated above. Work step by step, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 78464280
+  }
+ ]
+}
