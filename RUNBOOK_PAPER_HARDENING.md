@@ -9127,3 +9127,76 @@ inquiry wall-clock on the M5 Air. One resilience deficiency found and
 fixed en route (end-of-run-only telemetry persistence). Artifacts and
 telemetry committed under bench/analysis/integration/. No number here
 enters any LIVE claim.
+
+## CELL 60 PRE-REGISTRATION (2026-08-31) — the harder accuracy battery: is the council an accuracy device or not?
+
+Registered before item generation and before any run. This cell exists
+to decide the program's weakest LIVE row: "no measured council
+advantage — held as absence of evidence," resting on regex-era cells
+and Cell 36's ceiling-trapped comparison (0.92–0.97 accuracy, 3
+discordant items of 59). Whatever this battery returns is recorded —
+advantage, harm, or an informative null with its MDD.
+
+**Outcome class.** Externally verified exact-match — the Goodhart
+charter's one legitimate optimization class, used here purely as
+measurement. Items are multi-step computable decision quantities in the
+corpus's own advisory style ("every figure needed is stated"), each
+with a ground-truth answer COMPUTED BY A COMMITTED SCRIPT, never by
+judgment: depreciation-with-conventions, staffing cost, break-even,
+accrual caps, capitation margin, reserve exposure, program budgets.
+36 items generated from ~8 templates × parameter variants; rounding
+convention and unit stated in every prompt; frozen scoring = final
+"ANSWER:" line (mandated identically in both arms), numeric parse under
+the cumulative format folding, relative tolerance 0.5%.
+
+**Arms.**
+- **direct**: the writer (gpt-oss:20b) answers the item alone, same
+  format mandate, temperature 0.6 — the §0 evidenced baseline.
+- **council**: the assembled harness core, live end-to-end — planner
+  (identify + assign), three role seats, two-stage lead with
+  orchestrator-routed follow-up and the blocklist gate — omitting only
+  caveat extraction/appendix (assembly cannot alter the answer value
+  and its judge calls are pure cost here; recorded as the
+  configuration). Same format mandate on the final synthesis.
+Confound stated: council-vs-direct is the DEPLOYMENT question §0 asks;
+it does not separate aggregation from harness machinery. A plain-MoA
+third arm is registered as an optional follow-up, not run here.
+
+**Item guards (mechanical, before freeze).** The generator recomputes
+every answer from its parameters; prompts must state every input
+figure; no two items share an answer value within tolerance; the
+answer must not appear verbatim in the prompt.
+
+**Difficulty screen (pilot gate, registered).** Direct arm only, 6
+reps × 36 items. An item survives iff direct accuracy is in [1/6, 5/6]
+— outside that band there is no headroom for a difference in either
+direction (the Cell 36 lesson). Screening conditions on the BASELINE
+arm only, blind to council performance. ≥ 20 items must survive or the
+cell halts for re-authoring at harder parameters. Pilot reps count
+toward the direct grid.
+
+**Main grid.** Surviving items × {direct: 6 reps (pilot included),
+council: 3 reps}. Council runs are full pipelines (~10–15 min each);
+at 24 surviving items this is ~72 pipeline runs ≈ two overnights,
+accepted.
+
+**Prediction (two-sided, the row-deciding estimation).**
+- **P60.1**: council minus direct accuracy, item-clustered bootstrap
+  (5000 draws), rep-weighted per item. Frozen interpretations:
+  CI > 0 → the no-advantage row is REWRITTEN (the council is an
+  accuracy device on this class); CI < 0 → the council HURTS accuracy
+  and §0 gains a sharper warning; CI spanning 0 → the null is graded
+  against the registered MDD (simulation at freeze time with the
+  realized item count; expected ~0.12–0.15) — informative if the CI
+  half-width is at or under the MDD band, otherwise NOT EVALUABLE.
+- **Descriptive**: per-template table; council error taxonomy on a
+  10-run sample (read, recorded); discordant-item count (the Cell 36
+  diagnostic); wall-clock per correct answer in each arm (the
+  deployment economics §0 turns on).
+
+**Costs.** ~216 direct generations + ~72 council pipelines. Cluster
+ceiling = surviving items (~20–30), stated.
+
+**Goodhart note.** Accuracy here is measurement of a registered
+question, not a tuning target; no prompt in either arm changes after
+this registration.
