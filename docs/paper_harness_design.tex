@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta,positioning}
 \definecolor{accent}{RGB}{42,101,175}
 \definecolor{corrupt}{RGB}{201,109,44}
 \definecolor{inkmut}{RGB}{110,118,126}
@@ -226,7 +227,84 @@ information does the work, not the ritual.
 
 Each component below is derived from a specific verdict in
 \S\ref{sec:premises}, cites it, and does only what that verdict
-licenses. The full architecture document ships with the ledger.
+licenses. Figure~\ref{fig:arch} shows the assembled pipeline with every
+edge labeled by its measured number. The full architecture document
+ships with the ledger.
+
+\begin{figure}[p]
+\centering
+\begin{tikzpicture}[x=1pt,y=1pt,font=\footnotesize,
+  box/.style={draw,rounded corners=1.5pt,align=center,inner sep=4pt,minimum height=22pt},
+  gate/.style={box,densely dashed,draw=inkmut},
+  frt/.style={box,draw=accent,fill=accent!8},
+  ed/.style={-{Stealth[length=5pt]},thick},
+  edf/.style={-{Stealth[length=5pt]},thick,accent,densely dashed},
+  edl/.style={-{Stealth[length=5pt]},thick,corrupt},
+  n/.style={font=\scriptsize\ttfamily,text=accent},
+  ng/.style={font=\scriptsize\ttfamily,text=black!30!green!60!black},
+  nr/.style={font=\scriptsize\ttfamily,text=corrupt},
+  s/.style={font=\scriptsize,text=inkmut}]
+\node[box] (q) at (170,395) {\textbf{INQUIRY}};
+\node[gate,text width=118pt] (sg) at (30,390)
+  {\textbf{Seating gate}\\[-1pt]{\scriptsize re-gate, never import}\\[-1pt]
+   {\scriptsize\ttfamily predicts defects +0.63 [C55]}};
+\node[box,text width=170pt] (pl) at (170,340)
+  {\textbf{Orchestrator --- planner}\\[-1pt]
+   {\scriptsize identify quantities \ttfamily 0.63; missing 0.81 [C57]}\\[-1pt]
+   {\scriptsize assign each to $\ge2$ seats \ttfamily 40/40 [C59]}};
+\node[box,text width=62pt] (s1) at (55,275) {\textbf{Seat}\\{\scriptsize roster only}};
+\node[box,text width=62pt] (s2) at (170,275) {\textbf{Seat}\\{\scriptsize roster only}};
+\node[box,text width=62pt] (s3) at (285,275) {\textbf{Seat}\\{\scriptsize roster only}};
+\node[frt,text width=100pt] (cv) at (300,205)
+  {\textbf{Caveat extraction}\\{\scriptsize two judges, agreed only}};
+\node[box,text width=132pt] (l1) at (140,195)
+  {\textbf{Lead --- stage 1}\\{\scriptsize mandated tension list \ttfamily 391/396}};
+\node[box,text width=118pt] (rt) at (38,140)
+  {\textbf{Orchestrator --- router}\\{\scriptsize never self-assessment [C45]}};
+\node[box,text width=118pt] (gt) at (38,85)
+  {\textbf{Delivery gates}\\[-1pt]
+   {\scriptsize\ttfamily blocklist 21/0/0}\\[-1pt]
+   {\scriptsize content gate open $\to$ flagged}};
+\node[box,text width=134pt] (l2) at (176,120)
+  {\textbf{Lead --- stage 2}\\{\scriptsize no disposition instructions [C41/43]}};
+\node[frt,text width=120pt] (asm) at (170,70)
+  {\textbf{Mechanical assembly}\\{\scriptsize prose + appendix}};
+\node[box,text width=140pt] (fin) at (170,22)
+  {\textbf{Final artifact}\\[-1pt]{\scriptsize recommendation}\\[-1pt]
+   {\color{accent}\scriptsize ASSUMPTIONS \& CAVEATS}};
+\node[gate,text width=104pt] (rd) at (312,40)
+  {\textbf{Reader}\\[-1pt]{\scriptsize\ttfamily uptake +0.69 [C51]}\\[-1pt]
+   {\scriptsize parity with prose}};
+\draw[ed] (q) -- (pl);
+\draw[ed,densely dashed] (sg.south) to[out=-90,in=170] node[s,left,pos=.6]{if PASS} (s1.west);
+\draw[ed] (pl) -- (s1); \draw[ed] (pl) -- (s2); \draw[ed] (pl) -- (s3);
+\draw[ed] (s1) -- (l1); \draw[ed] (s2) -- (l1);
+\draw[ed] (s3.south) to[out=-90,in=30] (l1.north east);
+\draw[edf] (s3.east) to[out=-40,in=90] (cv.north);
+\draw[edf] (cv.south) to[out=-90,in=20]
+  node[n,right,pos=.45,align=left]{carriage 1.000\\vs 0.174 prose [C48]} (asm.east);
+\draw[edl] (l1.west) to[out=180,in=90]
+  node[nr,left,pos=.7,align=right]{trigger\\0.21--0.58} (rt.north);
+\draw[edl] (rt.west) to[out=180,in=180,looseness=1.4]
+  node[nr,left,pos=.5,align=right]{follow-up} (s1.west);
+\draw[ed] (rt) -- node[s,left=2pt]{reply \ttfamily 21/21 [C54]} (gt);
+\draw[ed] (gt.east) to[out=0,in=180] (l2.west);
+\node[ng] at (44,52) {adoption 0.905 vs 0.333 [C54]};
+\draw[ed] (l1) -- (l2);
+\draw[ed] (l2) -- node[s,right]{prose \ttfamily w=0.11--0.33} (asm);
+\draw[ed] (asm) -- (fin);
+\draw[ed] (fin.east) -- (rd.west);
+\end{tikzpicture}
+\caption{The assembled harness on one inquiry, every edge labeled by its
+registered-cell measurement. Dashed blue: the out-of-band freight lane the
+writer never sees. Orange: the orchestrator-routed re-consultation loop,
+bounded by its measured trigger rate. Seats are interchangeable by
+industry --- chairs are earned by the gate, never by category label ---
+and engineered overlap between them is where the error immunity lives:
+corrupted-value adoption $0.90\to0.45$ [C47], the clean co-source used
+end-to-end at $+0.43$ [C59].}
+\label{fig:arch}
+\end{figure}
 
 \textbf{Seating is empirical, never categorical.} Because signatures
 are per-model, no seat is chaired for its category label. A candidate
