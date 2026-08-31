@@ -9112,3 +9112,18 @@ Deliverables committed: per-case final artifacts, full telemetry JSON
 lengths and degeneracy flags, caveat counts, tension count, dispatch
 route, gate results, appendix carriage), and this entry. No number from
 this run enters any LIVE claim.
+
+### INTEGRATION RUN TELEMETRY (2026-08-31, demonstration df957e6 — descriptive only)
+
+Three complete end-to-end executions, zero degenerate contributions,
+every stage fired on every case. Seating gate PASS live (min 6,286
+chars). Per case: quantities identified 4–5 with coverage self-check
+3/4–5/5; seat contributions 2,372–9,460 chars; tension lists 5–24
+lines; a follow-up dispatched on all three cases (finance, healthcare,
+healthcare) with zero blocklist hits and the reply delivered flagged
+per the content-gate posture; 4–5 both-judge caveats assembled into
+each appendix; final artifacts 3,699–9,576 chars; 14–18 minutes per
+inquiry wall-clock on the M5 Air. One resilience deficiency found and
+fixed en route (end-of-run-only telemetry persistence). Artifacts and
+telemetry committed under bench/analysis/integration/. No number here
+enters any LIVE claim.

@@ -1,0 +1,140 @@
+{
+ "registered": "df957e6",
+ "model": "gpt-oss:20b",
+ "cases": [
+  {
+   "case": "case_3_capitated_risk_contract",
+   "quantities": [
+    "1. $1,180 per-member\u2011per\u2011month capitation rate",
+    "2. Total monthly revenue from a 25,000\u2011member panel ($\u2248$29.5\u202fmillion)",
+    "3. Baseline average cost of care per member per month (expected operating expense)",
+    "4. HEDIS quality bonus thresholds and maximum potential bonus payout per member",
+    "5. Risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population"
+   ],
+   "plan": {
+    "healthcare": "Given a $1,180 per\u2011member\u2011per\u2011month capitation rate for 25,000 members, baseline average cost of care per member per month (expected operating expense), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population, what clinical staffing, utilization management, and quality improvement strategies should the group implement to stay under budget while maximizing bonuses and serving higher\u2011risk patients?",
+    "legal": "Considering the $1,180 per\u2011member\u2011per\u2011month capitation rate, total monthly revenue from a 25,000\u2011member panel (~$29.5\u202fmillion), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population, what contractual clauses (e.g., quality benchmarks, penalty structures, audit rights) must be negotiated to protect the group from legal exposure related to quality compliance, financial liability, and regulatory reporting?",
+    "finance": "With a $1,180 per\u2011member\u2011per\u2011month capitation rate and a projected total monthly revenue of roughly $29.5\u202fmillion for 25,000 members, baseline average cost of care per member per month (expected operating expense), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score, how should the group structure its financial model to assess profitability, break\u2011even points, and sensitivity to quality bonuses or risk adjustments?"
+   },
+   "coverage_selfcheck": "5/5",
+   "seat_chars": {
+    "healthcare": 9298,
+    "legal": 9424,
+    "finance": 7310
+   },
+   "degenerate": [],
+   "caveat_counts": {
+    "healthcare": 1,
+    "legal": 1,
+    "finance": 2
+   },
+   "n_tensions": 24,
+   "dispatch": {
+    "route": "finance",
+    "tension": "*Finance* uses a 1.15 risk multiplier to arrive at an effective cap rate of ~$1,357\u202fPMPM.",
+    "reply_chars": 4863,
+    "blocklist_hits": [],
+    "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+    "delivered": true
+   },
+   "appendix_caveats": 4,
+   "artifact_chars": 8751,
+   "seconds": 1092
+  },
+  {
+   "case": "case_l1_l1a",
+   "quantities": [
+    "1. Estimated pick rate per picker (units\u202fper\u202fhour).",
+    "2. Required number of pickers to process 1,400 units in a six\u2011hour shift.",
+    "3. Total hourly labour cost per picker ($28 loaded rate).",
+    "4. Resulting cost per unit."
+   ],
+   "plan": {
+    "healthcare": "What estimated pick rate per picker is appropriate for safe ergonomics, how many pickers are required to process 1,400 units in a six\u2011hour shift, and what would be the cost per unit at a $28 loaded labour rate?",
+    "legal": "What estimated pick rate per picker meets labor regulations, how many pickers are needed to handle 1,400 units in a six\u2011hour shift, and does the $28 hourly rate comply with wage laws for that staffing level?",
+    "finance": "Given an estimated pick rate per picker, how many pickers are required to process 1,400 units in a six\u2011hour shift, what is the total hourly labour cost per picker ($28), and what is the resulting cost per unit?"
+   },
+   "coverage_selfcheck": "3/4",
+   "seat_chars": {
+    "healthcare": 2372,
+    "legal": 4934,
+    "finance": 4012
+   },
+   "degenerate": [],
+   "caveat_counts": {
+    "healthcare": 2,
+    "legal": 3,
+    "finance": 0
+   },
+   "n_tensions": 5,
+   "dispatch": {
+    "route": "healthcare",
+    "tension": "1. **Pick\u2011rate assumption conflict** \u2013 The healthcare specialist assumes a high ergonomic pick rate (~240\u202funits/h), the finance specialist uses an intermediate range (120\u2013200\u202funits/h), while the legal specialist adopts a very conservative rate (70\u202funits/h) to satisfy safety concerns.",
+    "reply_chars": 3928,
+    "blocklist_hits": [],
+    "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+    "delivered": true
+   },
+   "appendix_caveats": 5,
+   "artifact_chars": 3699,
+   "seconds": 820
+  },
+  {
+   "case": "case_l4_l4b",
+   "quantities": [
+    "1. Estimated annual increase in charity\u2011care obligations post\u2011recapitalisation (in dollars).",
+    "2. Projected change in staffing costs as a percentage of revenue.",
+    "3. Expected shift in payer mix: percentage change in Medicare/Medicaid versus private pay.",
+    "4. Transaction size or market\u2011share threshold that triggers Pennsylvania and New Jersey AG review (e.g., >$100\u202fM or >25% market share).",
+    "5. Anticipated net operating margin after the transaction (in %)."
+   ],
+   "plan": {
+    "healthcare": "How will the $310\u202fmillion private\u2011equity recapitalisation impact the hospital\u2019s annual charity\u2011care obligations, staffing cost proportion of revenue, and payer mix shift between Medicare/Medicaid and private payers?",
+    "legal": "What Pennsylvania and New Jersey attorney\u2011general review thresholds apply to a $310\u202fmillion transaction, and how do projected increases in charity care obligations, changes in staffing costs, payer mix shifts, and anticipated net operating margin influence compliance with antitrust and consumer protection standards?",
+    "finance": "What is the expected net operating margin after the recapitalisation, given the estimated annual rise in charity\u2011care obligations and projected change in staffing costs as a % of revenue, and how do these financial outcomes interact with AG review thresholds and payer mix dynamics?"
+   },
+   "coverage_selfcheck": "5/5",
+   "seat_chars": {
+    "healthcare": 5119,
+    "legal": 9460,
+    "finance": 9192
+   },
+   "degenerate": [],
+   "caveat_counts": {
+    "healthcare": 0,
+    "legal": 2,
+    "finance": 3
+   },
+   "n_tensions": 5,
+   "dispatch": {
+    "route": "healthcare",
+    "tension": "1. **Charity\u2011care thresholds vs. covenants** \u2013 The healthcare specialist recommends a fixed dollar cap ($3\u202fM/yr) while the finance specialist insists on keeping charity care \u22648\u202f% of revenue to stay below AG review triggers; the legal specialist requires compliance with PA/NJ community\u2011benefit standards that may demand a higher or differently structured commitment.",
+    "reply_chars": 5703,
+    "blocklist_hits": [],
+    "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+    "delivered": true
+   },
+   "appendix_caveats": 5,
+   "artifact_chars": 9576,
+   "seconds": 1083
+  }
+ ],
+ "seat_gate": {
+  "model": "gpt-oss:20b",
+  "screen_chars": [
+   7443,
+   6295,
+   6365,
+   6286,
+   8249,
+   6567,
+   11304,
+   9515,
+   8786,
+   8530,
+   10158,
+   7918
+  ],
+  "pass": true
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "case": "case_3_capitated_risk_contract",
+ "quantities": [
+  "1. $1,180 per-member\u2011per\u2011month capitation rate",
+  "2. Total monthly revenue from a 25,000\u2011member panel ($\u2248$29.5\u202fmillion)",
+  "3. Baseline average cost of care per member per month (expected operating expense)",
+  "4. HEDIS quality bonus thresholds and maximum potential bonus payout per member",
+  "5. Risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population"
+ ],
+ "plan": {
+  "healthcare": "Given a $1,180 per\u2011member\u2011per\u2011month capitation rate for 25,000 members, baseline average cost of care per member per month (expected operating expense), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population, what clinical staffing, utilization management, and quality improvement strategies should the group implement to stay under budget while maximizing bonuses and serving higher\u2011risk patients?",
+  "legal": "Considering the $1,180 per\u2011member\u2011per\u2011month capitation rate, total monthly revenue from a 25,000\u2011member panel (~$29.5\u202fmillion), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score for the Medicare Advantage population, what contractual clauses (e.g., quality benchmarks, penalty structures, audit rights) must be negotiated to protect the group from legal exposure related to quality compliance, financial liability, and regulatory reporting?",
+  "finance": "With a $1,180 per\u2011member\u2011per\u2011month capitation rate and a projected total monthly revenue of roughly $29.5\u202fmillion for 25,000 members, baseline average cost of care per member per month (expected operating expense), HEDIS quality bonus thresholds and maximum potential bonus payout per member, and risk\u2011adjusted payment modifiers or average risk score, how should the group structure its financial model to assess profitability, break\u2011even points, and sensitivity to quality bonuses or risk adjustments?"
+ },
+ "coverage_selfcheck": "5/5",
+ "seat_chars": {
+  "healthcare": 9298,
+  "legal": 9424,
+  "finance": 7310
+ },
+ "degenerate": [],
+ "caveat_counts": {
+  "healthcare": 1,
+  "legal": 1,
+  "finance": 2
+ },
+ "n_tensions": 24,
+ "dispatch": {
+  "route": "finance",
+  "tension": "*Finance* uses a 1.15 risk multiplier to arrive at an effective cap rate of ~$1,357\u202fPMPM.",
+  "reply_chars": 4863,
+  "blocklist_hits": [],
+  "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+  "delivered": true
+ },
+ "appendix_caveats": 4,
+ "artifact_chars": 8751,
+ "seconds": 1092
+}

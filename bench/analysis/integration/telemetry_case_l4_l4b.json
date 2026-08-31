@@ -1,0 +1,39 @@
+{
+ "case": "case_l4_l4b",
+ "quantities": [
+  "1. Estimated annual increase in charity\u2011care obligations post\u2011recapitalisation (in dollars).",
+  "2. Projected change in staffing costs as a percentage of revenue.",
+  "3. Expected shift in payer mix: percentage change in Medicare/Medicaid versus private pay.",
+  "4. Transaction size or market\u2011share threshold that triggers Pennsylvania and New Jersey AG review (e.g., >$100\u202fM or >25% market share).",
+  "5. Anticipated net operating margin after the transaction (in %)."
+ ],
+ "plan": {
+  "healthcare": "How will the $310\u202fmillion private\u2011equity recapitalisation impact the hospital\u2019s annual charity\u2011care obligations, staffing cost proportion of revenue, and payer mix shift between Medicare/Medicaid and private payers?",
+  "legal": "What Pennsylvania and New Jersey attorney\u2011general review thresholds apply to a $310\u202fmillion transaction, and how do projected increases in charity care obligations, changes in staffing costs, payer mix shifts, and anticipated net operating margin influence compliance with antitrust and consumer protection standards?",
+  "finance": "What is the expected net operating margin after the recapitalisation, given the estimated annual rise in charity\u2011care obligations and projected change in staffing costs as a % of revenue, and how do these financial outcomes interact with AG review thresholds and payer mix dynamics?"
+ },
+ "coverage_selfcheck": "5/5",
+ "seat_chars": {
+  "healthcare": 5119,
+  "legal": 9460,
+  "finance": 9192
+ },
+ "degenerate": [],
+ "caveat_counts": {
+  "healthcare": 0,
+  "legal": 2,
+  "finance": 3
+ },
+ "n_tensions": 5,
+ "dispatch": {
+  "route": "healthcare",
+  "tension": "1. **Charity\u2011care thresholds vs. covenants** \u2013 The healthcare specialist recommends a fixed dollar cap ($3\u202fM/yr) while the finance specialist insists on keeping charity care \u22648\u202f% of revenue to stay below AG review triggers; the legal specialist requires compliance with PA/NJ community\u2011benefit standards that may demand a higher or differently structured commitment.",
+  "reply_chars": 5703,
+  "blocklist_hits": [],
+  "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+  "delivered": true
+ },
+ "appendix_caveats": 5,
+ "artifact_chars": 9576,
+ "seconds": 1083
+}

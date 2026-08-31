@@ -1,0 +1,38 @@
+{
+ "case": "case_l1_l1a",
+ "quantities": [
+  "1. Estimated pick rate per picker (units\u202fper\u202fhour).",
+  "2. Required number of pickers to process 1,400 units in a six\u2011hour shift.",
+  "3. Total hourly labour cost per picker ($28 loaded rate).",
+  "4. Resulting cost per unit."
+ ],
+ "plan": {
+  "healthcare": "What estimated pick rate per picker is appropriate for safe ergonomics, how many pickers are required to process 1,400 units in a six\u2011hour shift, and what would be the cost per unit at a $28 loaded labour rate?",
+  "legal": "What estimated pick rate per picker meets labor regulations, how many pickers are needed to handle 1,400 units in a six\u2011hour shift, and does the $28 hourly rate comply with wage laws for that staffing level?",
+  "finance": "Given an estimated pick rate per picker, how many pickers are required to process 1,400 units in a six\u2011hour shift, what is the total hourly labour cost per picker ($28), and what is the resulting cost per unit?"
+ },
+ "coverage_selfcheck": "3/4",
+ "seat_chars": {
+  "healthcare": 2372,
+  "legal": 4934,
+  "finance": 4012
+ },
+ "degenerate": [],
+ "caveat_counts": {
+  "healthcare": 2,
+  "legal": 3,
+  "finance": 0
+ },
+ "n_tensions": 5,
+ "dispatch": {
+  "route": "healthcare",
+  "tension": "1. **Pick\u2011rate assumption conflict** \u2013 The healthcare specialist assumes a high ergonomic pick rate (~240\u202funits/h), the finance specialist uses an intermediate range (120\u2013200\u202funits/h), while the legal specialist adopts a very conservative rate (70\u202funits/h) to satisfy safety concerns.",
+  "reply_chars": 3928,
+  "blocklist_hits": [],
+  "content_gate": "NOT-DEPLOYABLE/FLAGGED",
+  "delivered": true
+ },
+ "appendix_caveats": 5,
+ "artifact_chars": 3699,
+ "seconds": 820
+}
