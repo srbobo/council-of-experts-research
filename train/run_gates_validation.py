@@ -115,5 +115,58 @@ def main() -> None:
                          "§5's risk open"))
 
 
-if __name__ == "__main__":
+
+
+def main_v2() -> None:
+    from gst.gates import content_gate_v2
+    OUT.mkdir(parents=True, exist_ok=True)
+    cache_p = OUT / "verdicts_v2.json"
+    cache = json.loads(cache_p.read_text()) if cache_p.exists() else {}
+    seats = json.loads(SEATS_PATH.read_text())
+
+    def gated(key, earlier, reply):
+        if key not in cache:
+            cache[key] = content_gate_v2(chat, earlier, reply)
+            cache_p.write_text(json.dumps(cache))
+        return cache[key]
+
+    rows = []
+    for it in C44_ITEMS:
+        earlier = (seats[it["case"]][it["seat_B"]].rstrip()
+                   + "\n\n" + it["pos_B"])
+        for cls, txt in (("informed", it["fact_F"]),
+                         ("filler", it["filler"])):
+            v = gated(f"c44|{it['id']}|{cls}", earlier, txt)
+            rows.append((cls, v))
+            print(f"  v2 C44 item {it['id']} {cls}: {v}", flush=True)
+    inf_ok = sum(1 for c, v in rows if c == "informed" and v == "PASS")
+    fil_ok = sum(1 for c, v in rows if c == "filler" and v == "DROP")
+    q = sum(1 for _, v in rows if v == "QUARANTINE")
+    print(f"\nv2 labeled texts: informed PASS {inf_ok}/6  filler DROP "
+          f"{fil_ok}/6  quarantined {q}/12")
+    c54 = [json.loads(l) for l in
+           (ROOT / "bench" / "runs" / "cell54_briefed.jsonl")
+           .read_text().splitlines() if l.strip()]
+    live = [r for r in c54 if r["arm"] == "live" and r.get("reply")]
+    it_by = {i["id"]: i for i in C44_ITEMS}
+    n_pass = 0
+    for r in live:
+        it = it_by[r["item"]]
+        earlier = (seats[it["case"]][it["seat_B"]].rstrip()
+                   + "\n\n" + it["pos_B"])
+        n_pass += gated(f"c54|{r['run_id']}", earlier, r["reply"]) == "PASS"
+    print(f"v2 C54 live replies: PASS {n_pass}/{len(live)} = "
+          f"{n_pass/max(len(live),1):.3f} (floor 0.8)")
+    ok = inf_ok >= 5 and fil_ok >= 5 and n_pass/max(len(live), 1) >= 0.8
+    print("v2 VERDICT: " + ("DEPLOYABLE" if ok else
+                            "NOT DEPLOYABLE — risk stays open, no v3 "
+                            "without new labeled data"))
+
+
+if len(sys.argv) > 1 and sys.argv[1] == "v2":
+    main_v2()
+    sys.exit(0)
+
+
+if __name__ == "__main__" and not (len(sys.argv) > 1 and sys.argv[1] == "v2"):
     main()

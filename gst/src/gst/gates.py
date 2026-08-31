@@ -68,6 +68,62 @@ def blocklist_gate(reply: str, blocklist: list[str]) -> list[str]:
     return [s for s in blocklist if fold(s) in lo]
 
 
+CONTENT_GATE_V2_PROMPT = (
+    "Below are a specialist's EARLIER CONTRIBUTION and their FOLLOW-UP "
+    "REPLY to a clarification request. Quote, verbatim from the "
+    "FOLLOW-UP REPLY, the single most specific NEW fact, constraint, "
+    "number, or mechanism it states that is not already present in the "
+    "earlier contribution. Output only that verbatim quote on one line. "
+    "If the follow-up states nothing specific and new, output exactly: "
+    "NONE")
+
+
+def _anchored_quote(quote: str, reply: str, earlier: str) -> bool:
+    """Mechanical verification: quote in reply, absent from earlier,
+    carrying a concrete anchor (digit, or capitalized token that is not
+    sentence-initial in the quote's own casing)."""
+    q = (quote or "").strip().strip('"').strip()
+    if not q or q.upper() == "NONE" or len(q) < 8:
+        return False
+    if fold(q) not in fold(reply) or fold(q) in fold(earlier):
+        return False
+    if any(c.isdigit() for c in q):
+        return True
+    words = q.split()
+    for i, w in enumerate(words):
+        core = w.strip('.,;:!?()"\'')
+        if not core or not core[0].isupper() or not core[0].isalpha():
+            continue
+        if i == 0:
+            continue
+        prev = words[i - 1].rstrip()
+        if prev and prev[-1] in ".:!?":
+            continue
+        return True
+    return False
+
+
+def content_gate_v2(chat, earlier: str, reply: str,
+                    judges=CONTENT_GATE_JUDGES) -> str:
+    """Extract-then-verify (registration 91a3e3f). PASS iff both judges
+    produce a mechanically verified anchored quote; both fail -> DROP;
+    split -> QUARANTINE (fails open)."""
+    body = (f"EARLIER CONTRIBUTION:\n{earlier}\n\n"
+            f"FOLLOW-UP REPLY:\n{reply}")
+    oks = []
+    for j in judges:
+        t = chat(j, CONTENT_GATE_V2_PROMPT, body,
+                 temperature=0.0, max_tokens=2048)
+        line = next((l.strip() for l in (t or "").splitlines()[::-1]
+                     if l.strip()), "")
+        oks.append(_anchored_quote(line, reply, earlier))
+    if all(oks):
+        return "PASS"
+    if not any(oks):
+        return "DROP"
+    return "QUARANTINE"
+
+
 # Seed list: the committed Cell 54/56 classifications
 # (docs/CELL56_CLASSIFICATION.json). Grows ONLY by committed manual
 # classification of new confirmed fabrications.
