@@ -102,7 +102,18 @@ with no coverage penalty, and the error-immunity claim is BOUNDED BY
 COVERAGE: redundancy halves corruption on the ~60% of quantities the
 planner lists. Its best class is the right one: MISSING quantities
 (unmeasured rates, untracked inputs) are recalled at 0.813 vs 0.531 for
-stated figures. Sub-question writing remains untested.
+stated figures. **Sub-question writing is measured (Cells 58/59):**
+given the identified quantity, the planner puts it into ≥2 sub-questions
+in 40/40 plans, live seats convey briefed values into their answers at
+0.85–0.95 (but ONLY when the sub-question is task-relevant — Cell 58's
+halt finding: notes orthogonal to the assigned task are ignored 6/8),
+and the writer USES the clean co-source end-to-end (+0.425
+[+0.325, +0.525] clean adoption vs Cell 47's planted +0.500).
+Corruption suppression is directionally present but not evaluable live
+(−0.175 [−0.350, +0.025]): the live bare floor is 0.625 vs the planted
+0.900 — live prose already dilutes corrupted adoption — while the
+protected level replicates at 0.450 exactly. Expected end-to-end
+protection = identification coverage (~0.63) × selection effect.
 
 ## 4. Two-stage lead with mandated artifacts
 

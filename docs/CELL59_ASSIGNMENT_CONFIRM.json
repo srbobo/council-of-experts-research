@@ -1,0 +1,321 @@
+{
+ "note": "Cell 59 assignment-mediator confirmation (registration e576dee). Every prefilter hit context was read; all matched sub-question lines address the named quantity substantively (no spurious key matches). Rule: a plan is confirmed iff >=2 sub-questions address the orchestrator-named quantity.",
+ "plans": {
+  "i0__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i0__r1": {
+   "hits": [
+    "healthcare",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i0__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i0__r3": {
+   "hits": [
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i0__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i1__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i1__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i1__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i1__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i1__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i2__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i2__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i2__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i2__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i2__r4": {
+   "hits": [
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i3__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i3__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i3__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i3__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i3__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i4__r0": {
+   "hits": [
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i4__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i4__r2": {
+   "hits": [
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i4__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i4__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i5__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i5__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i5__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i5__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i5__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i6__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i6__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i6__r2": {
+   "hits": [
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i6__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i6__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i7__r0": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i7__r1": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i7__r2": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i7__r3": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  },
+  "i7__r4": {
+   "hits": [
+    "healthcare",
+    "legal",
+    "finance"
+   ],
+   "confirmed": true
+  }
+ },
+ "confirmed_total": 40,
+ "n": 40
+}

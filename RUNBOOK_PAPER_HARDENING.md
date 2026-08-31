@@ -8923,3 +8923,48 @@ time so the comparison is like-for-like. The format-incident ledger now
 reads: narrow spaces (C47), Unicode hyphens (C53, C57), spaced
 percent/magnitude (C59) — value probes in any future cell start from
 this full set.
+
+## CELL 59 VERDICT (2026-08-31) — the live chain preserves SELECTION; suppression is directionally present but not evaluable. §3's last link is measured.
+
+80 pipeline runs (each planner → three live seats → writer), zero
+failures, zero plan-parse invalids.
+
+**Raw (writer adoption):** bare wrong 0.625 / clean 0.050 · planned
+wrong 0.450 / clean 0.475. Conveyance: corrupted-in-A 0.950/0.850,
+clean-in-B 0.875 (planned). Assignment: 40/40 plans put the named
+quantity into ≥2 sub-questions (committed confirmation table; every
+prefilter context read, no spurious matches).
+
+**P59.2 SUPPORTED — the clean co-source is USED end-to-end:**
++0.425 [+0.325, +0.525] against Cell 47's planted +0.500. The
+selection half of the protection — the half that makes redundancy
+worth building — transfers to the fully live chain nearly undiminished.
+
+**P59.1 NOT EVALUABLE at power:** −0.175 [−0.350, +0.025], direction
+as predicted. The reason is informative: the LIVE bare floor is 0.625
+where Cell 47's planted floor was 0.900 — live seat prose already
+dilutes corrupted adoption before any planner protection — while the
+planned-arm corrupted rate lands at 0.450, exactly Cell 47's planned
+level. The protected level replicates; the floor moved, shrinking the
+measurable suppression. One item inverts (item 1: planned wrong 1.00 vs
+bare 0.60, with weak clean adoption 0.20) — per-item bimodality, fifth
+appearance.
+
+**The §3 chain is now measured at every link:** identification 0.633
+(C57) → assignment 40/40 given the identified quantity (C59) →
+conveyance ~0.85–0.95 (C59) → clean-source selection +0.425 (C59) —
+with expected end-to-end protection = identification coverage ×
+selection effect, both numbers on record.
+
+**Registered estimation (like-for-like matcher):** wrong delta planted
+−0.450 vs live −0.175; clean delta planted +0.500 vs live +0.425.
+
+### Consequences
+- §3's sub-question-writing clause moves from untested to measured:
+  the planner writes usable, quantity-covering decompositions
+  (40/40), and the architecture's protection claim is now stated on
+  live evidence end-to-end.
+- The Cell 58 halt's channel finding stands alongside: briefing
+  conveys only into task-relevant assignments — which the corrected
+  planner input guarantees by construction.
+- Fifth item-bimodal phenomenon logged; boundary still OPEN.
