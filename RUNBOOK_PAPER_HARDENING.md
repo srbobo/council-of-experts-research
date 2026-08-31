@@ -9015,3 +9015,39 @@ fabrication; 100% hits on the replies whose committed classifications
 contain a blocklisted span.
 
 Costs: ~160 judge pairs at temperature 0; no generation.
+
+### GATES VALIDATION VERDICT v1 (2026-08-31) — blocklist DEPLOYABLE (after a truth-set correction); content gate v1 NOT DEPLOYABLE; v2 registered below
+
+**Blocklist gate: DEPLOYABLE.** First pass printed 2 false hits; both
+are validation-script truth-set errors, not gate errors — one reply
+contained the fabricated citations in formatting the crude truth check
+missed, and the other is the known Wright-v.-ICO reply whose committed
+classification lives in the Cell 54 verdict rather than the Cell 56
+table the script consulted. Corrected truth set (all committed
+fabrication classifications, matched under fold): **21 true hits, 0
+false hits, 0 misses over 141 replies** — both frozen criteria met.
+The gate flagged a fabricating reply the check itself did not know
+about.
+
+**Content gate v1: NOT DEPLOYABLE, recorded per the registration.**
+Informed side perfect (6/6 PASS; C54 live replies 21/21 ≥ the 0.8
+floor), but fillers dropped only 3/6 (one judged PASS, two
+QUARANTINE). The failure is diagnostic: judges cannot reliably flag
+VACUITY — responsive generalities read specific enough to pass a
+semantic yes/no. §5's ritual risk stays open under v1.
+
+## CONTENT GATE v2 VALIDATION (registered 2026-08-31, before any computation) — extract-then-verify
+
+The v2 instrument converts the semantic judgment into verifiable
+extraction (the program's C56/C57 idiom): the judge must QUOTE the
+single most specific new fact, constraint, number, or mechanism in the
+follow-up (or output NONE); the gate then verifies MECHANICALLY that
+the quote (a) appears in the reply (fold containment), (b) does NOT
+appear in the earlier contribution, and (c) carries a concrete anchor —
+a digit, or a capitalized token in a non-sentence-initial position in
+the original casing. PASS requires both judges to produce a verified
+anchored quote; both NONE or both unverifiable → DROP; split →
+QUARANTINE (fails open, delivered flagged). Same judge pair, same
+corpus, same frozen acceptance criteria as v1 (≥5/6 per labeled class;
+C54 floor 0.8). Failure → v2 recorded NOT DEPLOYABLE and the risk
+stays open; no v3 without new labeled data.
