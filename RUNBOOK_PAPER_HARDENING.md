@@ -9076,3 +9076,39 @@ risk (d ≈ 0.22, unconfirmed) remains open and stated.
 **Blocklist gate: DEPLOYABLE**, as recorded above — 21/0/0 over 141
 replies under the corrected truth set, including one fabricating reply
 the validation itself did not know about.
+
+## INTEGRATION RUN (registered 2026-08-31 as a DEMONSTRATION — no hypotheses, no verdicts)
+
+The first single execution of the assembled harness, end-to-end, on
+three cases from the frozen corpus (case_3, case_l1_l1a, case_l4_l4b).
+Multi-factor by construction; everything reported is DESCRIPTIVE
+telemetry. What runs, with each component's evidentiary basis already
+on the ledger:
+
+1. **Seating gate** executed live for the seat model (frozen C42/C55
+   degeneracy rule, 2 screen items × 6 reps) — not assumed.
+2. **Planner, both halves live**: quantity identification (Cell 57
+   prompt), then sub-question writing with the identified list injected
+   and the ≥2-coverage requirement (Cell 59 machinery generalized from
+   one named quantity to the identified list).
+3. **Three live role seats**, roster-only isolation (§2, cost-grounded).
+4. **Caveat extraction for §6**: both judges run the frozen Cell 30
+   document-level property prompt per contribution; caveats = verified
+   quotes (fold containment) for families BOTH judges mark present.
+   Recorded limitation: this is the document-level variant of the
+   validated sentence-level instrument — a demo assembly method, stated
+   as such.
+5. **Two-stage lead** (Cell 44's S1 tension list), **orchestrator
+   routing** of the first role-naming tension to the implicated seat,
+   live reply (C53/54 dispatch template).
+6. **Reply gates per the final gates verdict**: blocklist_gate enforced
+   (drop on hit); content gate NOT applied — the reply is delivered
+   FLAGGED, per the recorded interim posture.
+7. **Synthesis** (Cell 44 S2 flow), then mechanical assembly: writer
+   prose + the ASSUMPTIONS & CAVEATS appendix (Cell 48 format).
+
+Deliverables committed: per-case final artifacts, full telemetry JSON
+(timings, identified quantities, assignment coverage self-check, seat
+lengths and degeneracy flags, caveat counts, tension count, dispatch
+route, gate results, appendix carriage), and this entry. No number from
+this run enters any LIVE claim.
