@@ -9051,3 +9051,28 @@ QUARANTINE (fails open, delivered flagged). Same judge pair, same
 corpus, same frozen acceptance criteria as v1 (≥5/6 per labeled class;
 C54 floor 0.8). Failure → v2 recorded NOT DEPLOYABLE and the risk
 stays open; no v3 without new labeled data.
+
+### GATES VERDICT, FINAL (2026-08-31) — blocklist DEPLOYABLE; content gate NOT DEPLOYABLE after two registered attempts; §5's ritual risk stays open
+
+**Content gate v2: NOT DEPLOYABLE.** The extract-then-verify design
+fixed exactly what v1 failed — filler DROP 6/6, informed PASS 5/6, zero
+quarantines, both labeled criteria met — and then failed the other
+criterion: only 10/21 = 0.476 of Cell 54's real live replies pass
+against the 0.8 floor. The two versions fail complementary halves:
+semantic judgment passes vacuity (v1), mechanical verbatim verification
+rejects genuine content in long formatted replies (v2; the likely
+mechanism is quote-fidelity failure against table-heavy markdown,
+recorded as INFERENCE — the cache holds verdicts, not quotes).
+
+**Per the frozen commitment: no v3 without new labeled data.** The
+honest instrument gap is the corpus: six authored fillers are the only
+contentless exemplars in the archive, and none are live-style. A future
+attempt needs purpose-built labeled data (live-format contentless
+replies), and until then §5's content gate is recorded NOT YET
+DEPLOYABLE. Interim posture in the architecture: follow-up replies are
+delivered FLAGGED (quarantine-style) rather than gated — the ritual
+risk (d ≈ 0.22, unconfirmed) remains open and stated.
+
+**Blocklist gate: DEPLOYABLE**, as recorded above — 21/0/0 over 141
+replies under the corrected truth set, including one fabricating reply
+the validation itself did not know about.

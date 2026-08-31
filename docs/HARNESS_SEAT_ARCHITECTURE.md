@@ -166,14 +166,21 @@ positive but not evaluable at power (+0.050 [+0.000, +0.150]); and the
 bound covers adversarial case citations only — a floor, not a ceiling,
 on confabulation generally.
 
-**Content gate on the reply**: the unregistered but three-cut-consistent
-ritual observation (d ≈ 0.22, below this program's power to confirm) is
-that a contentless "reasonable people differ" reply moved commitments the
-WRONG way. Until someone can afford the ~2,600-run test, the harness
-treats it as a live risk: a follow-up reply that adds no content beyond
-the seat's round-1 contribution is DROPPED, not delivered. (This checker
-gates delivery only; per Cell 19 and instrument rule 2, no detector ever
-grades compliance with its own feedback.)
+**Content gate on the reply — NOT YET DEPLOYABLE (two registered
+attempts, 2026-08-31).** The rule stands as design intent: the
+unregistered but three-cut-consistent ritual observation (d ≈ 0.22)
+says a contentless reply moved commitments the WRONG way, so a
+follow-up adding no content beyond round-1 should be dropped. Building
+the checker failed twice against frozen criteria: a two-judge semantic
+gate passes vacuous fillers (3/6 dropped), and an extract-then-verify
+gate that fixes vacuity (6/6 dropped) rejects 52% of genuine live
+replies. No third attempt without purpose-built labeled data
+(live-format contentless exemplars). INTERIM POSTURE: replies are
+delivered FLAGGED, never silently gated; the ritual risk stays open and
+stated. **The fabrication blocklist gate IS deployable**
+(gst.gates.blocklist_gate: 21 true hits, 0 false, 0 missed over the
+141-reply archive; grows only by committed classification; delivery
+filter only, per Cell 19 and instrument rule 2 nothing feeds back).
 
 ## 6. Epistemic freight travels out-of-band
 
