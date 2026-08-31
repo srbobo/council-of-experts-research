@@ -8968,3 +8968,50 @@ selection effect, both numbers on record.
   conveys only into task-relevant assignments — which the corrected
   planner input guarantees by construction.
 - Fifth item-bimodal phenomenon logged; boundary still OPEN.
+
+## GATES-AS-CODE VALIDATION (registered 2026-08-31, before any computation) — §5's content gate and Cell 56's blocklist, frozen and validated on the labeled archive
+
+Not a hypothesis cell: an instrument-construction exercise with
+acceptance criteria frozen first, per the matcher-validation precedent.
+
+**1. Content gate (gst.gates.content_gate).** §5's rule: a follow-up
+reply adding no content beyond the seat's round-1 contribution is
+DROPPED. Design decision recorded: Cell 44's filler arm is novel-WORDED
+but content-free, so no string-novelty metric can implement this gate —
+the implementation is the program's standard two-judge instrument
+(gpt-oss:20b + qwen3-vl:30b-a3b-instruct, Cell 44's pair), frozen
+prompt asking whether the follow-up states at least one specific fact,
+constraint, number, or mechanism not already present in the earlier
+contribution (YES/NO, temperature 0, both-judge agreement; disagreement
+= QUARANTINE, delivered with a flag rather than dropped — the gate
+fails open on ambiguity). Gate G-E applies to the prompt. The gate
+filters delivery only; per instrument rule 2 nothing it produces is
+ever fed back to any model.
+
+**Validation corpus (ground truth by construction):**
+- Cell 44's 6 informed clarifications (fact_F: each contains the
+  deciding fact ABSENT from round-1) → true label PASS;
+- Cell 44's 6 fillers (registered as responsive-but-contentless) →
+  true label DROP;
+- Cell 54's 21 live replies (each conveyed a fact held only in private
+  notes) → expected PASS, reported descriptively;
+- Cell 56's 120 replies → pass rate descriptive.
+
+**Acceptance criteria (frozen):** on the 12 labeled texts, agreed-label
+accuracy ≥ 5/6 on EACH class, quarantine rate reported; on Cell 54's
+replies, pass ≥ 0.8 expected (below → over-strictness flagged, gate not
+deployable as-is). Failure on any criterion → the gate is recorded NOT
+DEPLOYABLE (the dictation-matcher precedent) and §5 keeps the risk
+open.
+
+**2. Blocklist gate (gst.gates.blocklist_gate).** Delivery filter over
+confirmed fabricated authorities, matching under the cumulative
+format-folding (vdeep). Seed list = the committed Cell 56/54
+classifications: "Rosenbaum v. Uber", "Klein v. Lyft", "Wright v.
+ICO". The list grows ONLY by committed manual classification; the gate
+flags/drops delivery and feeds nothing back. **Acceptance criteria
+(frozen):** zero hits on the archive replies with no confirmed
+fabrication; 100% hits on the replies whose committed classifications
+contain a blocklisted span.
+
+Costs: ~160 judge pairs at temperature 0; no generation.
