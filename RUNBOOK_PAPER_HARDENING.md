@@ -9333,7 +9333,7 @@ NOT EVALUABLE, accepted in advance).
 
 **Registered sensitivity (primary judge only): prose-only re-judging**
 — the harness prose with the appendix stripped, same pairs, same
-protocol. Frozen reading: divergence between the two판 verdicts is
+protocol. Frozen reading: divergence between the two verdicts is
 attributed to the appendix's presence and reported alongside Cell 48's
 NE preference bound; no verdict beyond that attribution.
 
