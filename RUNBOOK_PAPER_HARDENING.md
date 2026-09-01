@@ -9290,3 +9290,56 @@ The battery's registered machinery (36+30 frozen items, engines,
 screens) is committed and reusable against any future writer for whom
 the ceiling may not hold — the screen itself is the portable
 instrument.
+
+## CELL 61 PRE-REGISTRATION (2026-09-01) — the bundle A/B: old architecture vs the assembled harness, on preference
+
+Registered before any run. The deployment question no cell has asked:
+with every component's mechanism separately verdicted, is the assembled
+harness's artifact actually PREFERRED over what the old pipeline
+produced? This is explicitly a BUNDLE comparison — multi-factor by
+construction, attribution supplied by the component cells, not by this
+one.
+
+**Arms.**
+- **old**: the archived Cell 41 control corpus (the classic pipeline:
+  full-case seats → writer; 18 cases, reps 0–5 used), zero generation.
+- **harness**: the assembled pipeline live per case (planner identify +
+  assign → three sub-question seats → caveat extraction → two-stage
+  lead with orchestrator-routed follow-up through the blocklist gate,
+  flagged reply → synthesis → mechanical assembly). 18 cases × 3 reps.
+  The judged artifact is the DEPLOYMENT artifact — prose plus the
+  ASSUMPTIONS & CAVEATS appendix — because that is what a deployment
+  ships; a prose-only sensitivity is registered below.
+
+**Pairs and judging.** Harness rep r pairs against old reps r and r+3
+per case → 108 pairs. Cell 43's validated protocol verbatim: both
+orderings per pair, decisive only when the same side wins both,
+temperature 0; primary judge gpt-oss:20b (verdict), replication judge
+qwen3-vl:30b-a3b-instruct (the blind-selected disjoint family), both on
+all pairs. Side-1 = harness in the forward ordering (recorded
+convention). Self-preference is symmetric: one writer authored every
+artifact on both sides.
+
+**Prediction P61.1 (two-sided, the deployment verdict).** Harness share
+of decisive pairs, cluster bootstrap over 18 cases (5000 draws). Frozen
+interpretations: CI above 0.5 → the harness bundle preserves-or-extends
+the preference lift and §0 gains the deployment sentence; CI below
+0.5 → the harness bundle COSTS preference against the old architecture
+— recorded at full prominence and the architecture document says so;
+CI spanning 0.5 → graded against realized decisive count (attainability
+note: at Cell 43's decisive rates, ~35–45 decisive pairs are expected,
+resolving shares beyond ≈0.65–0.70; smaller true preferences return
+NOT EVALUABLE, accepted in advance).
+
+**Registered sensitivity (primary judge only): prose-only re-judging**
+— the harness prose with the appendix stripped, same pairs, same
+protocol. Frozen reading: divergence between the two판 verdicts is
+attributed to the appendix's presence and reported alongside Cell 48's
+NE preference bound; no verdict beyond that attribution.
+
+**Descriptives:** per-case table; length comparison; dispatch/telemetry
+of the harness arm; decisive rates per judge.
+
+**Costs.** 54 live pipelines (~14h) + ~648 temperature-0 judgings.
+Goodhart note: preference here is measurement of a registered
+deployment question; nothing tunes toward it.
