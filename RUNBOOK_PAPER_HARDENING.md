@@ -9257,3 +9257,36 @@ guessable — eliminated by construction (offset caps, a stacking
 rebate) rather than by wording. Same screen, same band, same arms as
 the registration; the runner takes an "R" round switch with separate
 run and analysis paths.
+
+## CELL 60 FINAL VERDICT (2026-09-01) — the two-strikes rule fires: the accuracy question has no testable form at this scale on well-specified items
+
+Second screen: direct accuracy **177/180 = 0.983** on the
+rule-interaction round — HIGHER than the arithmetic round's 0.977 —
+with 3/30 items in band (r3_v1, r4_v2, r5_v1: the refundability,
+out-of-pocket, and seventh-day interactions; anecdote-grade n). Per the
+rule frozen at 8c53e0e, there is no third authoring round.
+
+**The resolution, entered on the ledger:** three convergent
+measurements — Cell 36 (0.92–0.97), Cell 60 arithmetic (0.977), Cell
+60-R rule interaction (0.983) — establish that the direct writer is at
+ceiling on well-specified advisory items across BOTH difficulty
+dimensions the program could construct. A council cannot add accuracy
+where there is no headroom, and no battery of well-specified
+known-answer items can measure the difference. The long-open row
+resolves not as "advantage absent" but as **"advantage untestable for
+lack of headroom"** — which is itself the strongest statement of §0
+the evidence permits: if the deployment's value is correctness on
+well-specified items, the single writer already delivers it, and the
+council's entire case rests on the three measured gains (preference,
+engineered error immunity, routed resolution).
+
+**Scope, stated:** well-specified items — every rule and figure given.
+Under-specified or adversarial constructions change the question (they
+measure retrieval, assumption-choice, or robustness, not the same
+accuracy construct) and any future attempt there registers as a new
+question, not this row.
+
+The battery's registered machinery (36+30 frozen items, engines,
+screens) is committed and reusable against any future writer for whom
+the ceiling may not hold — the screen itself is the portable
+instrument.

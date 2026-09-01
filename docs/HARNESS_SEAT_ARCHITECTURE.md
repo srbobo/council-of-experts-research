@@ -10,10 +10,12 @@ the instrument for testing whether they hold elsewhere.
 
 ## 0. When NOT to build this
 
-A council is not an accuracy device (Cells 8/14/15/36: no measured
-advantage, held as absence of evidence). If the deployment's value is
-correctness on verifiable items, a single strong model plus an external
-verifier is the evidenced baseline, and this harness must beat it on the
+A council is not an accuracy device — and as of Cells 60/60-R this is
+RESOLVED, not provisional: the direct writer is at ceiling (0.977–0.983)
+on well-specified advisory items across both constructible difficulty
+dimensions, so no accuracy advantage is testable for lack of headroom.
+If the deployment's value is correctness on well-specified items, the
+single writer already delivers it, and this harness must beat it on the
 gains below or not be used. The council is justified by exactly three
 measured gains and nothing else:
 
