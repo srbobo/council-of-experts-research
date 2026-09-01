@@ -9214,3 +9214,31 @@ the completed table. (Budget-starvation incidents now: judge verdict
 lines ×3 (pre-C44), C43 preflight, C43 judge, and this — token budgets
 are attainability parameters and belong in every registration's
 checklist item.)
+
+### CELL 60 DIFFICULTY SCREEN: FAIL RECORDED — THE HALT STANDS (2026-09-01)
+
+Direct-arm pilot complete: 216 runs, accuracy 211/216 = 0.977; only
+5/36 items land in the registered band (t4_v0, t7_v2, t7_v3, t8_v0,
+t8_v3 — and those at 4–5 of 6, the band's soft top). The cell halts for
+re-authoring per registration; no council run occurs against this item
+set.
+
+**The finding the halt leaves behind (descriptive):** this is the
+ceiling's SECOND appearance on the accuracy question (Cell 36: 0.92–
+0.97; here 0.98). At 20B with an adequate thinking budget, the direct
+writer solves well-specified multi-step applied arithmetic — proration,
+clamps, tiered thresholds, trebling, 20-year compounding — essentially
+perfectly. Fully-specified computation is NOT a discriminative
+dimension for this writer, and "harder arithmetic" is a losing chase.
+
+**Path registered for the next attempt (two-strikes rule, frozen
+now):** one further authoring round moves the difficulty to RULE
+INTERACTION — known-answer items whose challenge is selecting and
+sequencing interacting rules, exceptions, and applicability conditions
+(the dimension where Cells 51/53–56 saw real model errors), with
+arithmetic kept trivial. Same screen, same band, same arms. If that
+screen ALSO fails, no third authoring round: the recorded verdict
+becomes "the accuracy question has no testable form at this scale on
+well-specified items — the direct writer is at ceiling, and a council
+cannot add accuracy where there is no headroom," and §0's row is
+resolved on those terms rather than left open.
