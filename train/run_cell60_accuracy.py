@@ -283,5 +283,11 @@ def stage_measure():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 2 and sys.argv[2] == "R":
+        ITEMS = json.loads((ROOT / "docs" /
+                            "CELL60R_ITEMS.json").read_text())["items"]
+        OUT = ROOT / "bench" / "analysis" / "cell60R"
+        RUNS = ROOT / "bench" / "runs" / "cell60R_accuracy.jsonl"
+        globals().update(ITEMS=ITEMS, OUT=OUT, RUNS=RUNS)
     {"pilot": stage_pilot, "runs": stage_runs,
      "measure": stage_measure}[sys.argv[1]]()

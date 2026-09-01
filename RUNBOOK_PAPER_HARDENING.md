@@ -9242,3 +9242,18 @@ becomes "the accuracy question has no testable form at this scale on
 well-specified items — the direct writer is at ceiling, and a council
 cannot add accuracy where there is no headroom," and §0's row is
 resolved on those terms rather than left open.
+
+### CELL 60-R ITEMS FROZEN (2026-09-01) — the rule-interaction round under the two-strikes rule
+
+30 items from six rule-engine templates (termination payouts, penalty
+carve-outs, claim-processing order, credit stacking, overtime
+interaction, retention deadlines): the code is the ground truth, the
+prompts state the rules verbatim, arithmetic is trivial, and a NEW
+authoring guard requires each template's variants to traverse ≥3
+distinct rule paths (achieved: 4/4/4/4/3/5). The guards caught a
+subtle echo class before freeze: cap- and liability-binding paths
+whose answer equals a stated bound — semantically correct but
+guessable — eliminated by construction (offset caps, a stacking
+rebate) rather than by wording. Same screen, same band, same arms as
+the registration; the runner takes an "R" round switch with separate
+run and analysis paths.

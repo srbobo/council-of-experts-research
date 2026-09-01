@@ -1,0 +1,245 @@
+{
+ "note": "Cell 60-R items (frozen path 8c53e0e). Rule-engine ground truth computed by train/gen_cell60R_items.py; each template's variants traverse >=3 distinct rule paths (asserted). Tolerance: relative 0.5%, min absolute 0.01.",
+ "items": [
+  {
+   "id": "r1_v0",
+   "template": "r1",
+   "params": "(2012, True, 20, 85, 90, 31, False)",
+   "path": "grandfathered-sick+notice-bonus",
+   "prompt": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2012; departure is voluntary; 20 days' notice was given; 85 unused vacation hours; 90 unused sick hours; base rate $31/hour. What is the total payout, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 4995
+  },
+  {
+   "id": "r1_v1",
+   "template": "r1",
+   "params": "(2018, True, 9, 62, 45, 27, False)",
+   "path": "base",
+   "prompt": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2018; departure is voluntary; 9 days' notice was given; 62 unused vacation hours; 45 unused sick hours; base rate $27/hour. What is the total payout, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1674
+  },
+  {
+   "id": "r1_v2",
+   "template": "r1",
+   "params": "(2013, False, 0, 70, 30, 29, True)",
+   "path": "cause-cap+grandfathered-sick",
+   "prompt": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; 30 unused sick hours; base rate $29/hour. What is the total payout, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2030
+  },
+  {
+   "id": "r1_v3",
+   "template": "r1",
+   "params": "(2016, False, 30, 55, 80, 33, False)",
+   "path": "base",
+   "prompt": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; 55 unused vacation hours; 80 unused sick hours; base rate $33/hour. What is the total payout, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1815
+  },
+  {
+   "id": "r1_v4",
+   "template": "r1",
+   "params": "(2011, True, 14, 38, 72, 26, True)",
+   "path": "cause-cap+grandfathered-sick+notice-bonus",
+   "prompt": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2011; departure is voluntary; 14 days' notice was given; 38 unused vacation hours; 72 unused sick hours; base rate $26/hour. What is the total payout, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 3048
+  },
+  {
+   "id": "r2_v0",
+   "template": "r2",
+   "params": "(34, 9, True, 180000, 850, False)",
+   "path": "fm-excluded",
+   "prompt": "A supplier delivered 34 days after the contract date. Penalty rules: (1) a penalty of $850 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date \u2014 the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days \u2014 9 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $180,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 12750
+  },
+  {
+   "id": "r2_v1",
+   "template": "r2",
+   "params": "(27, 6, False, 120000, 950, False)",
+   "path": "cap",
+   "prompt": "A supplier delivered 27 days after the contract date. Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date \u2014 the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days \u2014 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $120,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 10000
+  },
+  {
+   "id": "r2_v2",
+   "template": "r2",
+   "params": "(41, 12, True, 90000, 1100, True)",
+   "path": "fm-excluded+grace-forfeit+cap",
+   "prompt": "A supplier delivered 41 days after the contract date. Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date \u2014 which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days \u2014 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $90,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 7000
+  },
+  {
+   "id": "r2_v3",
+   "template": "r2",
+   "params": "(19, 0, True, 300000, 700, True)",
+   "path": "fm-excluded+grace-forfeit",
+   "prompt": "A supplier delivered 19 days after the contract date. Penalty rules: (1) a penalty of $700 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date \u2014 which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days \u2014 0 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $300,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 13300
+  },
+  {
+   "id": "r2_v4",
+   "template": "r2",
+   "params": "(52, 15, False, 150000, 800, False)",
+   "path": "cap",
+   "prompt": "A supplier delivered 52 days after the contract date. Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date \u2014 the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days \u2014 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $150,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 13000
+  },
+  {
+   "id": "r3_v0",
+   "template": "r3",
+   "params": "([(900, 'in'), (2400, 'in'), (600, 'prev')], 1500, 0.2, 3000)",
+   "path": "prev-bypass",
+   "prompt": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,500 applies first \u2014 the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free \u2014 no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $2,400, in-network; claim 3: $600, in-network preventive. What is the member's total payment, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1860
+  },
+  {
+   "id": "r3_v1",
+   "template": "r3",
+   "params": "([(900, 'in'), (6800, 'in'), (1500, 'oon')], 1000, 0.25, 2200)",
+   "path": "oon+oop-cap",
+   "prompt": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,000 applies first \u2014 the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,200; (4) preventive in-network care is free \u2014 no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $6,800, in-network; claim 3: $1,500, out-of-network. What is the member's total payment, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 3700
+  },
+  {
+   "id": "r3_v2",
+   "template": "r3",
+   "params": "([(1800, 'oon'), (1200, 'in'), (2600, 'in')], 1200, 0.3, 2800)",
+   "path": "oon",
+   "prompt": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,200 applies first \u2014 the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free \u2014 no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $1,800, out-of-network; claim 2: $1,200, in-network; claim 3: $2,600, in-network. What is the member's total payment, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 3780
+  },
+  {
+   "id": "r3_v3",
+   "template": "r3",
+   "params": "([(3100, 'in'), (450, 'prev'), (2900, 'oon')], 2000, 0.2, 3500)",
+   "path": "oon+prev-bypass",
+   "prompt": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $2,000 applies first \u2014 the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free \u2014 no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $3,100, in-network; claim 2: $450, in-network preventive; claim 3: $2,900, out-of-network. What is the member's total payment, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 5120
+  },
+  {
+   "id": "r3_v4",
+   "template": "r3",
+   "params": "([(2000, 'in'), (900, 'in'), (1200, 'oon')], 1400, 0.25, 1700)",
+   "path": "oon+oop-cap",
+   "prompt": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,400 applies first \u2014 the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $1,700; (4) preventive in-network care is free \u2014 no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $2,000, in-network; claim 2: $900, in-network; claim 3: $1,200, out-of-network. What is the member's total payment, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2900
+  },
+  {
+   "id": "r4_v0",
+   "template": "r4",
+   "params": "(52000, 60000, True, 4000)",
+   "path": "choose-larger",
+   "prompt": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year \u2014 it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable \u2014 together they cannot exceed the tax liability of $4,000; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $52,000. What is the total benefit, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2950
+  },
+  {
+   "id": "r4_v1",
+   "template": "r4",
+   "params": "(95000, 60000, True, 5000)",
+   "path": "c-phaseout",
+   "prompt": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year \u2014 it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable \u2014 together they cannot exceed the tax liability of $5,000; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $95,000. What is the total benefit, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2200
+  },
+  {
+   "id": "r4_v2",
+   "template": "r4",
+   "params": "(52000, 60000, False, 400)",
+   "path": "liability-limit",
+   "prompt": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year \u2014 it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable \u2014 together they cannot exceed the tax liability of $400; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $52,000. What is the total benefit, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1950
+  },
+  {
+   "id": "r4_v3",
+   "template": "r4",
+   "params": "(85000, 60000, True, 2100)",
+   "path": "liability-limit",
+   "prompt": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year \u2014 it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable \u2014 together they cannot exceed the tax liability of $2,100; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $85,000. What is the total benefit, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2450
+  },
+  {
+   "id": "r4_v4",
+   "template": "r4",
+   "params": "(40000, 60000, False, 900)",
+   "path": "base",
+   "prompt": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year \u2014 it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable \u2014 together they cannot exceed the tax liability of $900; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $40,000. What is the total benefit, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 2300
+  },
+  {
+   "id": "r5_v0",
+   "template": "r5",
+   "params": "([9, 8, 10, 8, 8, 4, 0], 30, 15)",
+   "path": "weekly-ot",
+   "prompt": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 8, 10, 8, 8, 4, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x \u2014 hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $30/hour only, never to the differential. What is the weekly pay, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1605
+  },
+  {
+   "id": "r5_v1",
+   "template": "r5",
+   "params": "([8, 8, 8, 8, 8, 8, 6], 28, 12)",
+   "path": "seventh-day+weekly-ot",
+   "prompt": "Compute a worker's weekly pay. Hours Monday through Sunday: 8, 8, 8, 8, 8, 8, 6. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x \u2014 hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of $28/hour only, never to the differential. What is the weekly pay, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1792
+  },
+  {
+   "id": "r5_v2",
+   "template": "r5",
+   "params": "([10, 9, 9, 8, 8, 0, 0], 32, 20)",
+   "path": "base",
+   "prompt": "Compute a worker's weekly pay. Hours Monday through Sunday: 10, 9, 9, 8, 8, 0, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x \u2014 hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $20 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential. What is the weekly pay, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1572
+  },
+  {
+   "id": "r5_v3",
+   "template": "r5",
+   "params": "([9, 9, 9, 9, 9, 5, 4], 26, 10)",
+   "path": "seventh-day+weekly-ot",
+   "prompt": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 9, 9, 9, 9, 5, 4. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x \u2014 hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of $26/hour only, never to the differential. What is the weekly pay, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1656
+  },
+  {
+   "id": "r5_v4",
+   "template": "r5",
+   "params": "([12, 8, 8, 8, 8, 0, 3], 34, 18)",
+   "path": "weekly-ot",
+   "prompt": "Compute a worker's weekly pay. Hours Monday through Sunday: 12, 8, 8, 8, 8, 0, 3. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x \u2014 hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of $34/hour only, never to the differential. What is the weekly pay, in dollars?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 1825
+  },
+  {
+   "id": "r6_v0",
+   "template": "r6",
+   "params": "(6, None, 0, None)",
+   "path": "base",
+   "prompt": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 6 months after January 2025; the person was an adult at closure; no erasure request was made; there was no litigation hold. What is the deletion deadline, in months after January 2025?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 30
+  },
+  {
+   "id": "r6_v1",
+   "template": "r6",
+   "params": "(4, 30, 0, None)",
+   "path": "minor-clock",
+   "prompt": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 4 months after January 2025; the person turns 18 30 months after January 2025; no erasure request was made; there was no litigation hold. What is the deletion deadline, in months after January 2025?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 54
+  },
+  {
+   "id": "r6_v2",
+   "template": "r6",
+   "params": "(8, None, 5, 12)",
+   "path": "erasure-override+hold-extends",
+   "prompt": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived 12 months after January 2025; a litigation hold ran for 5 months. What is the deletion deadline, in months after January 2025?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 18
+  },
+  {
+   "id": "r6_v3",
+   "template": "r6",
+   "params": "(3, 26, 7, 14)",
+   "path": "minor-clock+erasure-override+hold-extends",
+   "prompt": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for 7 months. What is the deletion deadline, in months after January 2025?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 22
+  },
+  {
+   "id": "r6_v4",
+   "template": "r6",
+   "params": "(10, None, 6, None)",
+   "path": "hold-extends",
+   "prompt": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 10 months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months. What is the deletion deadline, in months after January 2025?\n\nEvery rule and fact needed is stated above. Reason through which rules apply and in what order, then end your reply with a final line of exactly:\nANSWER: <number>",
+   "answer": 40
+  }
+ ]
+}
