@@ -142,7 +142,7 @@ def _run_grid(jobs, label):
     with RUNS.open("a") as fh:
         for k, (rid, it, arm, rep) in enumerate(jobs):
             if arm == "direct":
-                txt = gen(DIRECT_PROMPT, it["prompt"])
+                txt = gen(DIRECT_PROMPT, it["prompt"], toks=16384)
                 route = None
             else:
                 txt, route = council_run(it)

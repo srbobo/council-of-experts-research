@@ -9200,3 +9200,17 @@ ceiling = surviving items (~20–30), stated.
 **Goodhart note.** Accuracy here is measurement of a registered
 question, not a tuning target; no prompt in either arm changes after
 this registration.
+
+### CELL 60 PILOT DEVIATION (2026-09-01) — the budget-exhaustion incident, fourth appearance
+
+The pilot's final items (the longest bookkeeping chains) returned empty
+content with no transport error: the reasoning writer spends the whole
+8,192-token budget thinking and never emits the answer line. Recorded
+risk: an item failing by BUDGET rather than by reasoning would slip
+into the difficulty band as an artifact and poison the comparison.
+Correction, frozen before the remaining ~10 runs: direct-arm budget
+raised to 16,384; completed runs stand untouched; the screen fires on
+the completed table. (Budget-starvation incidents now: judge verdict
+lines ×3 (pre-C44), C43 preflight, C43 judge, and this — token budgets
+are attainability parameters and belong in every registration's
+checklist item.)
