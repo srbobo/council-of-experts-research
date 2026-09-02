@@ -16,7 +16,7 @@
 an Evidence-Bound Multi-Agent Harness Distilled from a\\
 Council of Experts That Mostly Did Not Work}
 \author{Sam Bobo\\ \small with analysis assistance from Claude (Anthropic)}
-\date{Draft v0.1 --- August 2026}
+\date{Draft v0.2 --- September 2026}
 
 \newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
 
@@ -97,11 +97,16 @@ resource in consultation is the trigger, never the capability.
 prose loses freight, do not ship freight in prose. If self-assessment
 is empty, trigger from mandated artifacts instead.
 \item \textbf{The harness was then attacked, component by component}
-(\S\ref{sec:retests}). Six registered verdicts: four components
-survived with causal or predictive effect sizes, one design rationale
-was demoted by an informative null, and one candidate law was killed by
-its own confirmation cell. The architecture that remains is smaller
-than what we designed and better than what we assumed.
+(\S\ref{sec:retests}). The campaign's verdicts: the load-bearing
+components survived with causal or predictive effect sizes; one design
+rationale was demoted by an informative null; one candidate law was
+killed by its own confirmation cell; one gate failed its frozen
+criteria twice and is recorded as not deployable; the accuracy
+question was resolved as untestable for lack of headroom; and the
+assembled bundle was finally A/B'd against the original architecture
+and ships its machinery at no detectable preference cost. The
+architecture that remains is smaller than what we designed and better
+than what we assumed.
 \end{enumerate}
 
 \paragraph{Why this is a systems contribution.} Multi-agent frameworks
@@ -374,6 +379,59 @@ predict seat defects (the legal fine-tune failed the format smoke $0/4$
 yet seated defect-free; that component's proper target is
 verdict-emitting roles).
 
+\textbf{The planner chain works, measured link by link (survived,
+with bounds).} The redundancy planner was the one component that had
+never been exercised: every prior redundancy result used human-planted
+assignments. Three cells closed the gap. Identification: the
+orchestrator recalls load-bearing quantities at $0.633$
+\ci{0.506}{0.758} against analyst-authored labels (thirty-fold
+specificity separation over a mismatched-case control), unchanged by
+seeing the specialists' contributions --- so it runs at decomposition
+time --- and its best class is the right one: \emph{missing} quantities
+(unmeasured rates, untracked inputs) at $0.813$ vs.\ $0.531$ for
+stated figures. Assignment and use, fully live: given the identified
+quantity the planner writes it into ${\ge}2$ sub-questions in $40/40$
+plans, live seats convey briefed values at $0.85$--$0.95$, and the
+writer uses the clean co-source end-to-end ($+0.425$
+\ci{+0.325}{+0.525} clean adoption vs.\ the planted $+0.500$). A
+halted first attempt en route bought a channel finding: privately
+briefed facts convey only into task-\emph{relevant} assignments
+($2/8$ when orthogonal vs.\ $21/21$ when pointed), a constraint the
+corrected planner input satisfies by construction. Expected end-to-end
+protection is therefore an honest product: identification coverage
+(${\sim}0.63$) $\times$ the selection effect.
+
+\textbf{The content gate failed honestly (recorded not deployable).}
+The rule --- drop follow-up replies that add nothing --- failed two
+registered attempts on complementary halves: a two-judge semantic gate
+passes vacuous fillers ($3/6$ dropped), and an extract-then-verify
+gate that fixes vacuity ($6/6$) rejects $52\%$ of genuine live
+replies. Per the frozen commitment there is no third attempt without
+purpose-built labeled data; the interim posture is flagged delivery,
+never silent gating. The fabrication blocklist gate, by contrast,
+deploys: $21$ true hits, $0$ false, $0$ missed over the $141$-reply
+archive, seeded only from committed classifications. We report the
+failed gate beside the shipped one because the asymmetry-refusal is
+the method.
+
+\textbf{The bundle itself was A/B'd (survived: no detectable cost).}
+With every component separately verdicted, the remaining deployment
+question was head-to-head: the assembled harness's artifact against
+the original architecture's, on the validated order-debiased
+two-family protocol ($108$ pairs). Result: no evaluable difference ---
+primary-judge share $0.562$ \ci{0.375}{0.765}, replication $0.333$
+\ci{0.083}{0.562}, both spanning $0.5$, large effects excluded in both
+directions. The harness's preference standing is inherited from
+aggregation itself, which both bundles share; its differentiators were
+never preference plays, and shipping them --- five caveats per
+artifact, a follow-up round, restructured seats --- costs nothing
+detectable. The appendix's within-pair attribution is mildly positive
+($+0.073$ toward the harness). One descriptive from the same cell
+reframes the loop's economics: on organic inquiries the orchestrator
+dispatched a follow-up on $46/54$ pipelines ($0.85$) --- real
+disagreement between seats is abundant, against the $0.21$--$0.58$
+trigger range measured on planted tensions.
+
 \textbf{Redundancy is causal (survived).} One factor --- assign the
 contested quantity to a second seat --- halved corrupted-value
 adoption, $0.900\to0.450$ (\ci{+0.200}{+0.725}), with the clean value
@@ -481,13 +539,16 @@ by component.
 \section{Operating economics and open risks}
 \label{sec:economics}
 
-\textbf{The trigger bounds coverage.} Everything downstream of the
-trigger is now measured and works; the trigger itself fires at
-$0.208$--$0.583$ by batch and is deliberately not an optimization
-target (raising it blind manufactures the ritual condition the loop's
-own control arm exposed). Deployments should budget coverage
-accordingly: the loop resolves the contested quantities it notices,
-and it does not notice most of them.
+\textbf{The trigger bounds coverage --- less than we feared.}
+Everything downstream of the trigger is measured and works; on planted
+tensions the trigger fires at only $0.208$--$0.583$ by batch, and it
+is deliberately not an optimization target (raising it blind
+manufactures the ritual condition the loop's own control arm exposed).
+But the bundle A/B's telemetry reframes the economics: on organic
+inquiries, where seats genuinely disagree, dispatch fired on $0.85$ of
+pipelines. The scarcity that bounded the experimental cells largely
+dissolves on natural problems; planted-tension rates are the floor,
+not the forecast.
 
 \textbf{Open risks, stated.} Per-item protection is bimodal with the
 boundary mechanism unknown (two candidates killed). Live-reply

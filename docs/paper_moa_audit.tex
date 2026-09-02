@@ -14,7 +14,7 @@
 \title{Instructions Buy the Phrase; the Phrase Costs Preference:\\
 an Epistemic Audit of LLM Aggregation Pipelines at Auditable Scale}
 \author{Sam Bobo\\ \small with analysis assistance from Claude (Anthropic)}
-\date{Draft v0.1 --- August 2026}
+\date{Draft v0.2 --- September 2026}
 
 \newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
 
@@ -640,6 +640,29 @@ positive results: the architecture documents what its evidence
 \emph{failed} to support, which is what distinguishes an evidence-bound
 harness from a prompt stack.
 
+\textbf{The remaining components were then closed out the same way.}
+The seating gate's verdict at selection predicts pipeline defects
+(strict rank separation over ten candidates, verdicts committed before
+any pipeline run; pooled contrast $+0.632$ \ci{+0.549}{+0.722} --- and
+gate verdicts \emph{age}: one model that passed an archived screen
+failed a fresh re-gate and then defected in-pipeline exactly as the
+fresh verdict predicted). The redundancy planner was measured link by
+link --- identification $0.633$, best on \emph{missing} quantities
+($0.813$); assignment $40/40$ plans; live conveyance $0.85$--$0.95$;
+end-to-end clean-source adoption $+0.425$ \ci{+0.325}{+0.525} against
+the planted $+0.500$. Live-reply fabrication was bounded
+($0.10$--$0.15$ reply-level, concentrated on a single trigger topic
+and name-stable across samples, never self-admitted), licensing a
+blocklist delivery filter that validated at $21/0/0$ over the reply
+archive; a content gate for vacuous replies failed two registered
+attempts on complementary halves and is recorded as not deployable.
+Finally, the assembled bundle was A/B'd against the plain pipeline on
+the deployment artifact: no evaluable preference difference
+(primary-judge share $0.562$ \ci{0.375}{0.765}; large effects excluded
+both ways), with the appendix's within-pair attribution mildly
+positive --- the harness ships its machinery at no detectable
+preference cost.
+
 \section{What does work: routed re-consultation}
 \label{sec:reconsult}
 
@@ -675,7 +698,11 @@ tested that operates \emph{through} the one capability the aggregator
 demonstrably has --- preference among overlapping sources --- by
 manufacturing an uncorrupted source exactly at the contested quantity.
 
-\textbf{Why it is not yet worth much: the trigger is scarce.} A companion
+\textbf{Why its coverage is bounded: the trigger is scarce on planted
+tensions.} (On organic inquiries the picture is friendlier: in the
+bundle A/B's 54 live pipelines, the orchestrator found a role-named
+tension and dispatched on $0.85$ of runs --- planted-tension rates are
+the floor, not the forecast.) A companion
 cell asked whether proposers can initiate the loop themselves, giving each
 a roster and a structured deferral token, then putting the identical
 sub-question to the proposer whose domain holds the deciding
