@@ -9357,3 +9357,9 @@ Cell 61 path raised (identify/sub-questions/tension-list/follow-up
 Completed artifacts stand; generation resumes under the raised
 budgets. The incident ledger's rule is now unconditional: EVERY stage
 budget in a reasoning-model pipeline is an attainability parameter.
+
+### CELL 61 ASSEMBLY DEVIATION (2026-09-02, before any judging) —
+duplicate caveats from per-seat concatenation deduplicated in the
+assembled artifacts (exact-match, order-preserving); prose untouched;
+recorded as an assembly correction applied prior to the first judge
+call.
