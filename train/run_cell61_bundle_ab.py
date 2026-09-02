@@ -48,14 +48,14 @@ def old_corpus():
 def harness_artifact(case: str) -> dict:
     from examples.test_cases import get_case
     q = get_case(case).prompt
-    ids = gen(IDENTIFY, f"Question:\n{q}", toks=2048)
+    ids = gen(IDENTIFY, f"Question:\n{q}", toks=4096)
     quants = [l.strip() for l in ids.splitlines() if l.strip()][:6]
     plan = None
     for _ in range(3):
         plan = parse_plan(gen("Follow the output format exactly.",
                               SUBQ_PROMPT.format(
                                   quantities="\n".join(quants))
-                              + f"\n\nQuestion:\n{q}", toks=2048))
+                              + f"\n\nQuestion:\n{q}", toks=4096))
         if plan:
             break
     if not plan:
@@ -71,7 +71,7 @@ def harness_artifact(case: str) -> dict:
     pile = "\n\n".join(
         f"--- {r.upper()} SPECIALIST CONTRIBUTION ---\n{contribs[r]}"
         for r in ROLES)
-    s1 = gen(S1_PROMPT, f"{pile}\n\nQuestion:\n{q}", temp=0.6, toks=2048)
+    s1 = gen(S1_PROMPT, f"{pile}\n\nQuestion:\n{q}", temp=0.6, toks=4096)
     route, tension = None, None
     for line in (l.strip() for l in s1.splitlines() if l.strip()):
         for r in ROLES:
@@ -85,13 +85,13 @@ def harness_artifact(case: str) -> dict:
         reply = gen(SEATS[route],
                     f"Case:\n{q}\n\nYour earlier contribution:\n"
                     f"{contribs[route]}\n\n"
-                    + FOLLOWUP.format(tension=tension), toks=2048)
+                    + FOLLOWUP.format(tension=tension), toks=4096)
         if not blocklist_gate(reply, FABRICATION_BLOCKLIST):
             reply_block = (f"--- FOLLOW-UP CLARIFICATION (from the "
                            f"{route} specialist) ---\n{reply}\n\n")
     prose = gen(S2_PROMPT,
                 f"{pile}\n\n--- YOUR TENSION LIST ---\n{s1}\n\n"
-                f"{reply_block}Question:\n{q}", temp=0.6, toks=8192)
+                f"{reply_block}Question:\n{q}", temp=0.6, toks=12288)
     full = prose
     if caveats:
         full += ("\n\n---\nASSUMPTIONS & CAVEATS (as stated by the "

@@ -9343,3 +9343,17 @@ of the harness arm; decisive rates per judge.
 **Costs.** 54 live pipelines (~14h) + ~648 temperature-0 judgings.
 Goodhart note: preference here is measurement of a registered
 deployment question; nothing tunes toward it.
+
+### CELL 61 DEVIATION (2026-09-01) — fifth budget-exhaustion incident; the "backend wedges" were budget starvation
+
+The intermittent generation-failed aborts during the Cell 61 harness
+arm (and retrospectively the Cell 60 pilot stalls) are not daemon
+failures: the server log shows clean 200s and idle slots. They are the
+recorded budget-exhaustion class — 2,048-token stages returning empty
+content whenever the reasoning writer thinks long, with same-budget
+retries unable to help. Correction: all small-stage budgets in the
+Cell 61 path raised (identify/sub-questions/tension-list/follow-up
+2,048→4,096; synthesis 8,192→12,288; caveat judges 2,048→4,096).
+Completed artifacts stand; generation resumes under the raised
+budgets. The incident ledger's rule is now unconditional: EVERY stage
+budget in a reasoning-model pipeline is an attainability parameter.

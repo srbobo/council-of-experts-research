@@ -84,7 +84,7 @@ def extract_caveats(text):
     per_judge = []
     for j in JUDGES:
         t = gen("Reply with STRICT JSON only.", prompt, temp=0.0,
-                toks=2048, model=j)
+                toks=4096, model=j)
         try:
             s = t[t.index("{"):t.rindex("}") + 1]
             per_judge.append(json.loads(s))
