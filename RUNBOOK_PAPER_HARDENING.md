@@ -9363,3 +9363,38 @@ duplicate caveats from per-seat concatenation deduplicated in the
 assembled artifacts (exact-match, order-preserving); prose untouched;
 recorded as an assembly correction applied prior to the first judge
 call.
+
+## CELL 61 VERDICT (2026-09-02) — the bundle A/B: no evaluable preference difference; large effects excluded in both directions; the appendix nudges positive
+
+54 harness pipelines (zero aborts under the raised budgets), 108 pairs,
+both orderings, both judge families; one undecided pair.
+
+**P61.1 — spans 0.5, graded per the registration.**
+- Primary judge: harness 27 / old 21 / tie 59 → share **0.562
+  [0.375, 0.765]**, n=48 decisive, 17 case clusters.
+- Replication judge: harness 5 / old 10 / tie 93 → share 0.333
+  [0.083, 0.562], n=15 decisive — leaning the OTHER way at a tiny
+  decisive count; neither family excludes 0.5.
+
+Frozen grading: NOT EVALUABLE for moderate differences; what the CIs DO
+exclude is any large effect — the harness bundle neither wins big
+(≥0.77 excluded) nor loses big (≤0.37 excluded) against the old
+architecture on preference. The honest deployment sentence: **the
+harness's preference standing is inherited from aggregation itself
+(Cell 43's lift, which both bundles share); its differentiators —
+engineered protection, the freight channel, the routed loop — were
+never preference plays and remain justified by their own cells, and
+the bundle costs nothing detectable to ship them.**
+
+**Registered sensitivity — the appendix attribution:** prose-only
+share 0.489 vs full-artifact 0.562: within-pair, the appendix moves
+preference +0.073 TOWARD the harness (descriptive). Direction now
+mildly positive, consistent with and slightly strengthening Cell 48's
+no-detected-penalty bound.
+
+**Descriptives:** artifact lengths comparable (8,725 chars incl.
+appendix vs 7,758 old, +12%); 5.0 caveats per artifact after the
+recorded dedup; **organic dispatch rate 46/54 = 0.85** — real
+disagreements between sub-question seats are plentiful, versus the
+0.21–0.58 trigger range on planted tensions; tie rates 55%/86% in line
+with the order-debiased protocol's known behavior.

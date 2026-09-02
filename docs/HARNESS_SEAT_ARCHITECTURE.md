@@ -17,7 +17,11 @@ dimensions, so no accuracy advantage is testable for lack of headroom.
 If the deployment's value is correctness on well-specified items, the
 single writer already delivers it, and this harness must beat it on the
 gains below or not be used. The council is justified by exactly three
-measured gains and nothing else:
+measured gains and nothing else — and the assembled harness ships its
+additional machinery at no detectable preference cost against the
+plain pipeline (Cell 61: bundle A/B spans 0.5 with large effects
+excluded both ways; the appendix's within-pair attribution is mildly
+positive):
 
 | gain | evidence |
 |---|---|
