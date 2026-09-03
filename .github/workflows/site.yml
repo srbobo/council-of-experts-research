@@ -1,0 +1,22 @@
+name: site
+on:
+  push:
+    paths: ["site_v2/**", ".github/workflows/site.yml"]
+  pull_request:
+    paths: ["site_v2/**"]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:unit
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test

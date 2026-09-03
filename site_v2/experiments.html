@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every Experiment — Council of Experts</title>
+<meta name="description" content="The complete record: every experiment in the Council of Experts program — what we asked, what we did, what happened, and what it taught us. Misses included.">
+<link rel="stylesheet" href="static/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="index.html">Council of Experts</a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="index.html">The story</a>
+    <a href="experiments.html" aria-current="page">Every experiment</a>
+    <a href="static/audit-paper.pdf">Papers</a>
+  </nav>
+</header>
+<main id="main">
+  <div class="catalog-head">
+    <h1>Every experiment</h1>
+    <p style="max-width:66ch;color:var(--ink-soft)">The complete record, misses included. Each card
+    is one experiment: what we asked, what we did, what happened, and what it taught us. Depth is
+    uneven by design — later experiments were documented far more thoroughly than the early
+    exploratory ones, and we'd rather show you a thin honest entry than a padded one. Earlier
+    entries carry lower numbers; the story roughly follows the numbering.</p>
+    <div id="filters" class="filters" role="group" aria-label="Filter by outcome"></div>
+    <p id="count" class="eyebrow" role="status" aria-live="polite" style="margin-top:8px"></p>
+  </div>
+  <ul id="cards" class="cards"></ul>
+  <noscript>
+    <p style="max-width:640px;margin:20px auto;padding:0 20px">This page renders the experiment
+    record with JavaScript. The same content is available as plain data:
+    <a href="data/experiments_early.json">early experiments</a> and
+    <a href="data/experiments_main.json">later experiments</a>.</p>
+  </noscript>
+</main>
+<footer class="site-footer">
+  <p>Council of Experts — an independent research program by Sam Bobo. Full ledger in the
+  <a href="https://github.com/srbobo/council-of-experts-research">public repository</a>.</p>
+</footer>
+<script type="module" src="static/js/catalog.js"></script>
+</body>
+</html>

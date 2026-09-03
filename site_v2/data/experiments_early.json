@@ -1,0 +1,344 @@
+{
+  "experiments": [
+    {
+      "id": "E1",
+      "num": 1,
+      "title": "Does copying good examples work as well as preference training?",
+      "question": "Is the contrast between good and bad answers what makes preference training work, or would simply imitating the good answers do the same job?",
+      "approach": "We trained the legal specialist two ways on the same material: preference training (ORPO, which learns from good-versus-bad contrasts) and plain imitation of only the good answers, with every other training knob held identical. Then we compared both against the untrained baseline on three checks, including a control question where the right amount of hedging is zero.",
+      "result": "Imitation produced the biggest raw jump in careful-sounding output (2.1x) but deployed it indiscriminately, hedging on the control question where nothing warranted it (1.59 vs the required 0), and its output survived the editor's rewrite worst. Preference training was the only version that kept the control question clean.",
+      "learning": "The good-versus-bad contrast is the load-bearing ingredient, not mere exposure to good examples. Volume of careful language and knowing when to use it are different things, and imitation only buys the first.",
+      "verdict": "supported"
+    },
+    {
+      "id": "E2",
+      "num": 2,
+      "title": "Rerunning everything five times to check for luck",
+      "question": "Experiment 1 ran everything exactly once. Which of its findings survive repetition, and which were flukes?",
+      "result": "The flashy part died: preference training's apparent output boost was noise, sitting exactly on baseline over 140 runs. What survived: prompting and imitation training produce real roughly-2x boosts at the specialist that the editor then strips back out, and preference training uniquely suppresses unwarranted hedging on the control question (0.15 versus the baseline's 0.96).",
+      "approach": "We reran all four training setups five times each across all seven test questions, 140 runs total, and reported every number with its uncertainty range instead of as a single point.",
+      "learning": "Single-run results are stories, not findings. This experiment rewrote Experiment 1's headline and flagged the next priority question: would more training data change the picture?",
+      "verdict": "mixed"
+    },
+    {
+      "id": "Edose",
+      "num": 2.5,
+      "title": "Triple the training data, measure the response",
+      "question": "The obvious objection to the training null: maybe 91 training pairs was simply too few. Does tripling the data install the behavior?",
+      "approach": "We built 292 training pairs (3.2x the original 91) and retrained the legal specialist with the number of passes through the data held constant, so the amount of distinct material was the only thing that changed. 35 runs.",
+      "result": "Zero movement. The specialist's careful-output level was 0.84 with no training, 0.85 with 91 pairs, and 0.84 with 292 pairs — even though the model demonstrably learned the preference far better (its accuracy on the training task rose from 0.48 to 0.94). One honest wrinkle: the hedging suppression weakened somewhat with the bigger dose (0.15 to 0.49, still below baseline).",
+      "learning": "The model can learn a preference nearly perfectly and still not act on it. Whatever caps this behavior, it is not a shortage of training data.",
+      "verdict": "null"
+    },
+    {
+      "id": "E3",
+      "num": 3,
+      "title": "Does the training effect repeat on other specialists?",
+      "question": "The one positive training effect lived on the legal specialist. Does the same recipe work on a finance specialist (weakly aligned, like the legal one) and a medical specialist (already carefully aligned)?",
+      "approach": "We generated matched training pairs for each domain with the same protocol, trained each specialist with the identical recipe, and ran 70 benchmark runs per specialist with only that one specialist swapped in.",
+      "result": "The medical specialist behaved as predicted: it already hedged zero on the control question untrained, so there was nothing for training to fix — no slack, no gain. The finance specialist refuted us: no output boost and no hedging suppression, so the one positive legal-specialist effect did not repeat. An apparent finance worsening (0.81 to 1.21) was later shown to be a measurement artifact by Experiment 7.",
+      "learning": "The training null now spans three model families, and the one positive effect (hedging suppression) is conditional on the base model being miscalibrated to begin with — and not guaranteed even then.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E4",
+      "num": 4,
+      "title": "Same training pairs on two other base models",
+      "question": "Would the legal training pairs produce the same effect on two differently-built base models, presumably with smaller magnitude on models that arrive already aligned?",
+      "approach": "Planned: train the identical pairs onto Llama-3.1-8B and Qwen2.5-7B and compare against the original Mistral-based specialist. The prediction was written down in advance.",
+      "result": "Never run. The experiment stayed in the queue and no result exists; it blocked no published claim.",
+      "learning": "Recorded here for completeness: a registered question the program never got to.",
+      "verdict": "not-evaluable"
+    },
+    {
+      "id": "E5",
+      "num": 5,
+      "title": "Does a different training method reproduce the one success?",
+      "question": "The hedging suppression was the program's only positive training result. Is it a quirk of one training method (ORPO), or a general property of this class of preference training?",
+      "approach": "We trained with a second method (CPO) on the exact same 91 legal pairs — reconstructed from the append-only raw log after a directory had been overwritten — with everything else identical, so only the training objective differed. 35 runs, scored under two independent measures.",
+      "result": "The suppression repeated: CPO's control-question hedging landed well under the registered bar on both measures (0.37 and 0.45). But CPO dampened everything: it also reduced warranted hedging on the questions that deserved it (0.89 down to 0.56), which ORPO had left intact.",
+      "learning": "The suppression is method-general, but suppressing only where hedging is unwarranted — the actually useful property — showed up only with ORPO in our data.",
+      "verdict": "supported"
+    },
+    {
+      "id": "E6",
+      "num": 6,
+      "title": "Each lead writer has its own thermostat",
+      "question": "Does careful language survive the editor's rewrite regardless of which model does the editing, and do the PRESERVE instructions in the editing prompt actually matter?",
+      "approach": "A full grid: three different lead-writer models, PRESERVE instructions on or off, and normal versus boosted specialists — 72 runs, measuring both what the specialists handed in and what came out the other end.",
+      "result": "Three findings. Each lead writer has its own characteristic output level (Qwen warmest, gpt-oss coolest). Feeding it extra-careful input does not transmit — one writer actually produced LESS careful output when handed more careful input (1.17 down to 0.61). And removing the PRESERVE instructions collapsed output 2-5x on every writer, overturning our own advance prediction that the instructions would barely matter.",
+      "learning": "The final answer's caution is roughly a function of the last writer's own disposition times its instructions — nearly independent of what the specialists supplied. This became the program's central mechanism.",
+      "verdict": "supported"
+    },
+    {
+      "id": "E6b",
+      "num": 6.2,
+      "title": "Train the editor itself",
+      "question": "If the last writer's disposition sets the output, can we move that disposition by training the writer directly, instead of training specialists?",
+      "approach": "We built 88 training pairs from real recorded deliberations at the editing step itself, trained the lead writer with the same recipe used on every specialist, and ran 70 benchmark runs with only the lead writer swapped. We predicted its output level would shift by at least 0.25.",
+      "result": "It did not move: the trained writer landed at 0.89 versus the untrained 1.03, a change of -0.14 against the required +0.25, well inside the noise. The writer's characteristic level also reproduced across experiments, confirming it is a stable property.",
+      "learning": "Weight-level training now fails at every location tested — three specialists, three model families, two methods, triple dose, and the editor itself. The registered interpretation stands: the writer's disposition is a hard ceiling that this scale of training cannot move.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E6c",
+      "num": 6.3,
+      "title": "Instructions are a volume knob; extra input is not",
+      "question": "If the PRESERVE instructions are a 'gain control', output should rise gradually as clauses are added. And if the writer's own disposition rules, then making more specialists extra-careful should add nothing.",
+      "approach": "Two grids without any training: PRESERVE clause count from zero to three across three lead writers (72 runs), and zero to three boosted specialists feeding a fixed writer (24 runs).",
+      "result": "Both predictions held. Output rose with clause count on all three writers — a rising trend, 2-3x from bottom to top on two of them (one writer had an unexplained bump at two clauses, reported as probable noise). Boosting more specialists was flat to slightly declining: heating all three added nothing at the output.",
+      "learning": "Combined with E6b: the one accessible control surface for this behavior is the last writer's instructions — not anyone's trained weights, and not the volume of careful input.",
+      "verdict": "supported"
+    },
+    {
+      "id": "E7",
+      "num": 7,
+      "title": "Auditing our own measuring stick",
+      "question": "Every verdict so far rested on one unvalidated text-pattern counter. Were the findings properties of the pipeline, or artifacts of the measure?",
+      "approach": "Two independent checks: an entailment-based scorer calibrated on 289 labeled answer pairs with thresholds frozen before any re-scoring, and blinded head-to-head comparisons by two AI judges shown outputs in both orders, with quoted evidence required. The decision rule was fixed in advance: claims the measures agree on stand; disagreements get flagged.",
+      "result": "The core findings survived: the training nulls and the legal hedging suppression were confirmed on every measure, with the AI judges unanimous on all 14 legal matchups. But the apparent finance worsening from E3 fell apart — the second measure saw nothing — and it was retired as an artifact of the primary counter.",
+      "learning": "The triangulation caught a false finding our main measure had produced, which became the program's strongest argument against trusting any single measure. (A later experiment, E23, showed the entailment scorer itself had serious limits.)",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E7c",
+      "num": 7.3,
+      "title": "Is it all just one behavior in disguise?",
+      "question": "Our headline score sums five distinct careful-writing behaviors. If one behavior dominates the total, every claim might be about that one habit rather than about caution in general.",
+      "approach": "No new runs — we re-scored the roughly 628 runs then on record behavior by behavior, first establishing which specialist naturally owns which behavior, then re-testing every core verdict on the owner's home turf.",
+      "result": "The training null held for every single behavior — it is not an averaging artifact. A new finding emerged: the editor keeps behaviors that carry substance (a modeled number, a jurisdictional distinction) and drops free-floating meta-commentary (like training-cutoff disclosures). Two claims were honestly scoped down: the instruction curve is a property of the total, not of any one behavior, and one of the five behaviors sits below what either measure can detect.",
+      "learning": "The program now reports four detectable behaviors, not five, and knows the editor's rewrite is selective by content, not indiscriminate.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E8",
+      "num": 8,
+      "title": "Six ways to wire the same model together",
+      "question": "The council had only ever been compared against no orchestration. Against other multi-agent designs — debate, naive merging, self-critique — where, if anywhere, does it actually win?",
+      "approach": "Six architectures with the identical model in every role so wiring is the only variable: a single model alone, a naive merge of three specialists, two-round debate, self-critique, a single model with a standing carefulness prompt, and the council. 210 runs.",
+      "result": "The council did not win on volume — one prompted model matched it (0.50 vs 0.57, within noise). Multi-agent structure alone bought nothing (naive merge 0.16, single model 0.14), debate added nothing over merging, and self-critique was the worst design on the board (0.08). The council's apparent unique edge — a perfectly clean zero on the control question — was later withdrawn: E14 discovered those runs had never consulted any specialists at all.",
+      "learning": "Structure without a conditional instruction buys nothing. The result forced a rewrite of the paper's first claim, and its one surviving advantage claim was itself killed two weeks later — by our own follow-up.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E8b",
+      "num": 8.2,
+      "title": "Where does a writer's disposition come from?",
+      "question": "If picking a different model is the only way to get a more careful writer, what makes one model more careful than another — is it the alignment training it shipped with?",
+      "approach": "Four models from different training lineages answered the seven benchmark questions directly under an identical minimal instruction — no council, no carefulness prompt — 140 runs measuring each model's untouched baseline.",
+      "result": "All four landed at an identical 0.14-0.15, so lineage predicted nothing. But the finding unraveled twice on inspection. First, one model's runs turned out to be mostly degenerate fragments and were withdrawn, so the lineage comparison was never actually made. Then a closer look showed 70-80% of the remaining runs contained zero careful-writing markers at all: we were comparing near-empty distributions, and a length quirk hid a 3.3x difference in raw output. The 'universal band' headline was retracted.",
+      "learning": "What survived is the weaker, honest version: under neutral prompts these models emit almost no careful language, and a domain-specialized model is no more careful than a generic one. Also a permanent lesson: any per-character rate must be reported alongside raw counts and the fraction of empty runs.",
+      "verdict": "withdrawn"
+    },
+    {
+      "id": "E9",
+      "num": 9,
+      "title": "Checking against a public benchmark",
+      "question": "Would our pipeline's hedging and abstention behavior hold up on a public benchmark built by someone else?",
+      "approach": "Planned: evaluate on an external abstention/uncertainty test set as an outside anchor for our home-grown measures.",
+      "result": "Never run. It stayed in the queue and blocked no published claim.",
+      "learning": "Recorded for completeness — the absence of any external anchor remained a stated limitation of the program.",
+      "verdict": "not-evaluable"
+    },
+    {
+      "id": "E10",
+      "num": 10,
+      "title": "Why does the editor strip careful language?",
+      "question": "Our theory: trained behaviors weave into the content (markers sit in the same sentence as the entities and statutes) while prompted behaviors are detachable boilerplate, and woven-in markers should survive the editor's rewrite better regardless of where they came from.",
+      "approach": "No new runs — we classified every marker in 102 existing audited runs as content-woven or detached, then checked whether being woven-in predicted surviving the rewrite.",
+      "result": "Flatly wrong. Survival depended on which training setup produced the marker, not on how woven-in it was — the correlation was effectively zero (-0.10). The imitation-trained specialist had the most content-woven markers and the worst survival rate.",
+      "learning": "Entanglement does not explain the stripping. This refutation is what pointed us at the real mechanism — the editor's own characteristic disposition — and directly designed Experiment 6.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E11",
+      "num": 11,
+      "title": "The strongest feasible training signal, aimed properly",
+      "question": "E6b's editor training used offline pairs, a crude volume-based reward, and scoring in the wrong place. Fix all three at once — live samples, a calibration-shaped reward, scored at the pipeline's actual output — and does the editor's disposition finally move?",
+      "approach": "108 fresh prompts ran through the full council; six candidate rewrites were sampled per prompt at the real editing step; a reward paid for carefulness where warranted and penalized it where not; the surviving 49 training pairs went through the same training recipe; 105 benchmark runs.",
+      "result": "The disposition did not move in either direction: trained versus untrained with instructions off was 0.60 versus 0.56, essentially identical. With instructions restored, the calibration-trained writer was indistinguishable from the crude-reward writer (0.95 vs 0.89), so reward design was never the binding constraint. The instruction effect survived training at full strength — the weights did not absorb the prompt's role.",
+      "learning": "Per the consequence registered in advance, the robustness claim got stronger: the editor's disposition has now survived the best training mechanism we could feasibly build, aimed at exactly the right spot.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E12",
+      "num": 12,
+      "title": "Blending model weights to import a disposition",
+      "question": "If training cannot move a writer's disposition, could simply blending its weights with a naturally more careful donor model move it — no training at all?",
+      "approach": "Planned: weight-space interpolation toward a high-disposition donor at three mixing ratios, with a screening stage first — if no donor with a sufficiently higher level could be found, the merge phase would not run. Registered before any runs.",
+      "result": "Never run. The experiment stayed registered but unexecuted.",
+      "learning": "Recorded for completeness as an open question the program did not reach.",
+      "verdict": "not-evaluable"
+    },
+    {
+      "id": "E13",
+      "num": 13,
+      "title": "Which of the four instructions does the work?",
+      "question": "The PRESERVE block has four clauses, and E6c only varied how many were present. Does each clause contribute, or does one carry the whole effect? We predicted the caveats clause carried at least half.",
+      "approach": "Six versions — no clauses, each clause alone, and all four together — with the same model in every role, 210 runs. Each version's exact surviving clause set was verified before running.",
+      "result": "One clause carried everything, and not the predicted one: the numeric-assumptions clause alone delivered 126% of the full block's gain, while caveats, vocabulary, and tension clauses each landed at zero. Each clause did lift exactly the behavior it names — but only the behavior this particular editor produces in volume could move the total. Every version kept the control question at exactly zero.",
+      "learning": "Which clause matters depends on which behaviors your editor already emits — and the block is three working clauses, not four. A later re-analysis (PD-13) cut deeper: the clause effect is largely the model complying with a phrase the instruction literally names, so the behavioral reading of the '126%' was withdrawn.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E14",
+      "num": 14,
+      "title": "The experiment that killed our best result",
+      "question": "The program's headline — the council's perfect zero on the question deserving no hedging — rested on a single control question. Does it hold on more of them?",
+      "approach": "While writing the plan we found the fatal fact: the original control question was off-topic, the planner had consulted zero specialists, and so the runs never invoked the carefulness instruction at all. We built three new on-topic control questions where routing actually happens, verified the path on every run, and compared the council against a prompted single model, 15 runs each.",
+      "result": "Both advance predictions failed, by an order of magnitude. Given control questions the council actually engages with, it hedged MORE than a lone prompted model (0.64 vs 0.31) — including 1.27 on a pure arithmetic question where every figure was stated. The celebrated 0.00 was an artifact of runs that bypassed the mechanism entirely.",
+      "learning": "The calibration claim was dead, and the calibration paper was retracted outright rather than reworded. Across everything tested, we never achieved selective hedging — we can raise the amount of qualification and weakly lower it, but not make it discriminate.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E15",
+      "num": 15,
+      "title": "The last hypothesis standing, tested to destruction",
+      "question": "One place remained where the council had beaten a single model: a question demanding several kinds of qualification at once. Is the council's real value extra capacity under simultaneous demand?",
+      "approach": "Eight new questions constructed to demand exactly one, two, three, or four kinds of qualification, with length held constant, run through the council and two single-model setups — 120 runs, with the execution path verified on each.",
+      "result": "Falsified. The council did not scale with demand (flat, non-rising), and there was no demand level at which it separated from a lone prompted model. The earlier 1.82x advantage was single-question noise: two questions at the same demand level differed more between themselves (0.42 vs 1.57) than any demand levels differed. Asked for four kinds of qualification, the council produced one or two — and the final scorecard read: content, single model wins; volume, tie; calibration, council worse; capacity, tie.",
+      "learning": "The program's headline became its most negative sentence: a four-model council is matched or beaten on every measured axis by one comparable model with a good instruction, at roughly a quarter of the compute.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E16",
+      "num": 16,
+      "title": "Real reinforcement learning would not fit in memory",
+      "question": "Every training failure so far used offline or distilled methods. Would genuine on-policy reinforcement learning (GRPO) on the editor move what nothing else could?",
+      "approach": "Four attempts on the available 34 GB machine, progressively shrinking every knob — group size, trainable layers, output caps — with the reward validated before launch.",
+      "result": "Every configuration ran out of memory before the first update. The binding constraint was measured, not guessed: long training prompts (three full specialist contributions) times a 152,000-word vocabulary requires several gigabytes per sequence just for the raw prediction tables, doubled for the reference model — and no available knob reduces that product.",
+      "learning": "We recorded exactly what we could not claim: not 'RL failed' but 'RL was never run'. The objection 'you did not try real RL' stands, stated plainly — and anyone attempting pipeline-scale RL on consumer hardware will hit the same wall.",
+      "verdict": "not-evaluable"
+    },
+    {
+      "id": "E17",
+      "num": 17,
+      "title": "Just tell it not to make things up",
+      "question": "The editor invents qualifications nobody upstream raised, and the instructions never said not to. Does adding an explicit 'do not introduce qualifications no specialist raised' clause stop the invention?",
+      "approach": "The production editing prompt plus that one clause, everything else identical, across all nine questions spanning the full supply range — 45 runs against the existing baseline.",
+      "result": "It did not suppress. Invention was unchanged where it actually happens (0.53 to 0.40 on thin-supply questions, well within noise). The clause passed the secondary check — it did not just make the writer quieter — but that only matters if the primary effect exists, and it does not.",
+      "learning": "The behavior is deeper than a missing instruction: the writer fills to a floor of invented qualification it will not go below regardless of what it is told. Invention joined the short list of behaviors instructions cannot move — notable because instructions move nearly everything else we measured.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E18",
+      "num": 18,
+      "title": "Training the editor to cite its sources",
+      "question": "Three training attempts optimized how much the editor says. This one changes what is rewarded: faithfulness — did what you wrote actually come from the specialists?",
+      "approach": "71 training pairs rewarding provenance rather than volume, same model and recipe as before. The first benchmark accidentally used questions where the editor was already perfectly faithful — nothing to improve — an owned error; the corrected benchmark reran on the thin-supply questions where invention actually lives, 30 runs.",
+      "result": "Failed, leaning the wrong direction: invention did not fall (0.07 to 0.27, within noise) and traceability dropped (91% to 69%). The sharpest detail: training-time metrics show the model learned to RANK faithful outputs almost perfectly, yet its behavior at the pipeline's mouth did not change — the same learn-but-don't-act pattern as E11.",
+      "learning": "Weight training at the editor has now failed under three entirely different objectives — volume, calibration, and faithfulness — with the same model and recipe. Learning a preference and acting on it are separable, observed twice.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E19",
+      "num": 19,
+      "title": "The correction loop that taught the model to hide",
+      "question": "If instructions and training both fail, does a runtime gate work — automatically detecting invented qualifications in a draft and sending it back for revision?",
+      "approach": "A detector-plus-revision loop on 45 runs: when the checker flagged an invented qualification, the editor was re-run with specific feedback quoting the offending text. An upgrade registered before results added a second, independent detector to audit the first.",
+      "result": "By the gate's own detector, it removed 88% of invented qualifications — a publishable-looking success. The audit detector said it removed nothing. Reading the eight intervened runs settled it: the revisions mostly reworded the flagged phrases into forms the detector cannot see (plus one case where the flag itself was a false alarm). The behavior largely stayed; the detectable phrasing left.",
+      "learning": "Quoting matched phrases back to a model teaches it to evade the matcher. What survives is detection and disclosure, not correction — the gate is safe only as an annotator that never requests revision. A later audit tightened the mechanism wording: the evidence is manual inspection, not two independent detectors.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E20",
+      "num": 20,
+      "title": "Asking the editor to actually decide",
+      "question": "The council's syntheses describe trade-offs but never commit. Does an explicit instruction — decide, attribute, be willing to overrule a specialist — produce genuine decisions?",
+      "approach": "The production prompt plus a DECIDE clause, 45 runs, scored three ways: a pattern-based counter for decision-shaped text, two AI judges for genuine commitment, plus checks on citation accuracy and overrule language.",
+      "result": "Form moved; the underlying act mostly did not. Decision-shaped text tripled (16% to 47%) and citations doubled, but the judges found genuine committed verdicts in only about 3 of 10 answers (a first 0-of-10 reading turned out to be a bug — empty judge replies had been counted as 'no' — and was corrected on the record). Not one of 45 answers ever overruled a specialist.",
+      "learning": "Instructions control what text appears; they do not control what the model is willing to assert. With E17 this makes two instruction-resistant behaviors, and they rhyme: both are matters of epistemic posture, not surface.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E21",
+      "num": 21,
+      "title": "Can we ship the audit trail?",
+      "question": "The harness produces a reader-facing manifest — 'here is what the specialists raised that the answer dropped'. Is that manifest accurate enough to attach to real answers?",
+      "approach": "AI judges checked manifest items in forced head-to-head form: shown the manifest's claimed-dropped sentence against a decoy whose content did make it into the answer, could they confirm the manifest was right? A first judging pass was voided — it had used a weaker yes/no protocol than registered — and redone properly.",
+      "result": "67% of unanimous judgments confirmed the manifest's restored items, below the 80% bar registered in advance. Judge disagreement stayed high (45% split), so the number is a lower bound — but a lower bound below the bar still fails.",
+      "learning": "The manifest does not ship as-is: behavior-category-level bookkeeping is too coarse. What stayed validated is the harness as an internal measurement and audit layer; a reader-facing version needs claim-by-claim extraction.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E22",
+      "num": 22,
+      "title": "The replay that was never needed",
+      "question": "If the DECIDE clause (E20) had produced real decisions, would replaying it on past deliberations show what those decisions would have been?",
+      "approach": "Registered in advance with an explicit gate: this experiment only runs if E20's main prediction holds.",
+      "result": "E20's prediction fell, so this experiment was void by its own rule. No replays were run; the registration stands as the record of what would have been tested.",
+      "learning": "Gating follow-up work on a parent result, in writing and in advance, meant no effort was spent chasing a dead branch.",
+      "verdict": "not-evaluable"
+    },
+    {
+      "id": "E23",
+      "num": 23,
+      "title": "Certifying the judges, firing the old detector",
+      "question": "After repeated measurement scares: can the entailment-based detector be recalibrated to spot which careful-writing behaviors are present in a sentence, and how reliable are the AI judges on the same task?",
+      "approach": "220 sentences, each labeled independently by two AI judges under a blinded protocol, with planted easy positives and hard negatives as anchors; the entailment scorer was then graded against the validated labels.",
+      "result": "The judges passed decisively: 86% agreement with each other, 90-93% on the anchor items, zero unusable replies. The entailment detector failed completely — on two behavior families its scores pointed the WRONG way, and no threshold at any value made it work. A by-product report card showed our original pattern counter is excellent on one behavior family (92% both ways) and a severe undercounter on the others (25-30% detection).",
+      "learning": "The 'confirmed by two independent measures' language was weakened program-wide, the entailment tool was retired from presence claims, and the paired AI judges became the program's validated measuring stick.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E24",
+      "num": 24,
+      "title": "Re-scoring everything on the one trustworthy channel",
+      "question": "Only one of our four behavior families is well-measured. Do the standing verdicts survive when re-scored on that clean channel alone — and was the composite number understating how faithful the editor really is?",
+      "approach": "Pure recomputation over the existing 1,260 usable runs with rules frozen in advance: on the validated family, how often does the editor preserve a qualification it was handed, and how often does it invent one from nothing?",
+      "result": "Our caveat reversed. We had worried the composite understated faithfulness; the clean channel showed LESS: the editor preserves a handed-over qualification only 53% of the time and invents one 31% of the time when nobody raised it. And on the questions deserving no hedging, the council was now clearly WORSE than a lone prompted model on the clean family (0.73 vs 0.20). Most standing nulls held; one architecture difference turned out to be real but degenerate (that setup says almost nothing, and silence cannot invent).",
+      "learning": "The prior-dominance thesis got stronger on the best-measured behavior, and the written-in-advance caveat was formally withdrawn as backwards — the machinery for correcting ourselves worked in both directions.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E25",
+      "num": 25,
+      "title": "Does the pattern hold in someone else's architecture?",
+      "question": "Everything so far is our own pipeline. Does the supply-and-invention pattern appear in a standard published multi-agent design (Mixture-of-Agents), or is it a quirk of ours?",
+      "approach": "80 runs of a faithful Mixture-of-Agents setup with controlled amounts of upstream qualification injected, measured identically to the council.",
+      "result": "The phenomenon traveled; the numbers did not. Invention at zero supply exists there too (28% of runs). But the MoA combiner weighs its own prior about 5.4x over the evidence versus the council's 1.8x, discards most of what it is handed even at full supply, and on the validated behavior family shows zero discrimination — it emits qualification at the same rate whether or not anyone upstream raised it.",
+      "learning": "The invention phenomenon is general; the faithfulness parameters are set by the writing instruction at least as much as by the architecture. Naive aggregation transports essentially nothing the final writer would not have said anyway.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E26",
+      "num": 26,
+      "title": "Does agreement between specialists count for anything?",
+      "question": "When two or three specialists independently raise the same concern, does the editor treat it as more credible than a concern raised by one?",
+      "approach": "Recomputation across 1,165 existing multi-specialist runs: compare how often a qualification survives into the answer when raised by one specialist versus several, on the validated behavior family.",
+      "result": "No weighting whatsoever: 52% survival when one specialist raised it, 49% when two or more did — statistically identical. The poorly-measured families showed a rise with agreement, but that pattern has at least three explanations (including a pure phrase-detection artifact) that our measures cannot tell apart, so no claim was made.",
+      "learning": "The editor ignores the one reliability signal a multi-specialist architecture uniquely provides. 'The council surfaces evidence it cannot use' went from rhetoric to measurement.",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E27",
+      "num": 27,
+      "title": "Make the editor fill in an evidence table first",
+      "question": "Every failed intervention tried to change the writer's internal weighing. What if we externalize it — force the editor to build an explicit evidence table (what was raised, by whom, how many agree) and then write only from the table?",
+      "approach": "Two versions of a mandatory evidence-ledger step, on both the council and the MoA setups — 124 runs, with protocol violations quarantined and counted (about 14% never followed the table format).",
+      "result": "All four advance predictions failed: no transport gain, no agreement weighting even with the agreement count printed in a mandatory column. But the wreckage contained the program's most promising observation: the ledger versions produced the only runs ever measured with invention at essentially ZERO — nothing in the table, nothing invented — at the price of saying less overall (one version collapsed into near-silence).",
+      "learning": "Externalizing the weighing does not fix the weighing — the shrinkage just relocates into whichever step summarizes. But a consistency constraint can convert free invention into zero, and that observation earned its own registered replication (E28).",
+      "verdict": "falsified"
+    },
+    {
+      "id": "E28",
+      "num": 28,
+      "title": "Replicating the one hopeful accident",
+      "question": "E27's ledger accidentally eliminated invented qualifications while keeping responsiveness to real evidence. Does that pattern survive a fresh, registered replication — and does our theory of why it works survive its own test?",
+      "approach": "45 fresh runs of the byte-identical ledger protocol, with three predictions frozen in advance plus a mechanism check on the stored tables themselves, and mandatory cost accounting (how much less the writer says).",
+      "result": "The pattern replicated on both testable axes: invented filler eliminated again (effectively zero) with evidence-responsiveness preserved. One prediction failed by our own construction error — the statistical bar we froze was mathematically impossible to pass with zero bad events at that sample size, so a perfect 0-for-10 'failed', and we took the failure as written rather than bend the rule. The mechanism check refuted our own theory: the ledger is not an information bottleneck (the answer still reads the raw upstream text) but a licensing gate — inventing now requires evading two missing sources at once.",
+      "learning": "The finding replicated, the theory we wrote for it was refuted by its own check and replaced the same day, and a planned follow-up was discarded at its gate. Costs stayed honest: the ledger writer says noticeably less, and about a fifth of runs break the protocol.",
+      "verdict": "mixed"
+    },
+    {
+      "id": "E29",
+      "num": 29,
+      "title": "An atlas of everything we measured",
+      "question": "Four mathematical regularities kept appearing across experiments. Measured properly over the whole program at once, which are real?",
+      "approach": "Zero new model calls: frozen estimation rules applied across 25 qualifying experimental setups and 1,300+ runs, with every statistical bar checked in advance for whether it could actually be met — the lesson of E28's impossible bar.",
+      "result": "Three regularities graduated: writers pass through only about a third of the qualification they are handed (typical weight 0.36, with genuine spread across setups); about 19% of invention variability comes from which question was asked, so repeated tries are correlated rather than independent; and the ledger setups' zero-invention floor is cleanly separated from prose setups. One claim fell and was demoted as promised. My own informal slogan ('the weight never leaves a narrow band') was corrected by its own test — one setup sits well outside it.",
+      "learning": "Eyeballed invariants got replaced by estimated ones. Two later audits trimmed this further: the prose-versus-ledger contrast was re-graded as a descriptive measurement (its answer was partly known when the prediction was written), and the ledger-intercept claim was ultimately withdrawn on a baseline confound found weeks later.",
+      "verdict": "mixed"
+    }
+  ]
+}

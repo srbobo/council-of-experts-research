@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Council of Experts</title>
+<meta name="description" content="We tried to prove a panel of AI specialists beats one strong model. Sixty-one experiments later, the panel isn't smarter — it's something better: an answer you can audit.">
+<link rel="stylesheet" href="static/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="index.html">Council of Experts</a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="index.html" aria-current="page">The story</a>
+    <a href="experiments.html">Every experiment</a>
+    <a href="static/audit-paper.pdf">Papers</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="hero-net" aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+    <g stroke="currentColor" opacity="0.14" fill="none">
+      <circle cx="180" cy="140" r="5" fill="currentColor"/>
+      <circle cx="420" cy="90" r="4" fill="currentColor"/>
+      <circle cx="1010" cy="180" r="5" fill="currentColor"/>
+      <circle cx="860" cy="520" r="4" fill="currentColor"/>
+      <circle cx="240" cy="560" r="4" fill="currentColor"/>
+      <circle cx="620" cy="640" r="5" fill="currentColor"/>
+      <path d="M180 140 L420 90 M420 90 L1010 180 M1010 180 L860 520 M860 520 L620 640 M620 640 L240 560 M240 560 L180 140"/>
+    </g>
+  </svg>
+  <p class="kicker">A research story in sixty-one experiments</p>
+  <h1 id="hero-title">We tried to prove a panel of AI experts beats one strong model.</h1>
+  <p class="lede">We mostly failed — and that failure turned out to be the discovery. The panel isn't
+  smarter. But rebuilt around what the evidence actually supports, it becomes something rarer:
+  <strong>an answer you can audit.</strong></p>
+  <div class="stats" role="list" aria-label="Program at a glance">
+    <span class="stat" role="listitem"><b>61</b> experiments</span>
+    <span class="stat" role="listitem"><b>2</b> papers</span>
+    <span class="stat" role="listitem"><b>every</b> miss published</span>
+  </div>
+  <p class="scroll-cue">Scroll to follow the story
+    <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 7l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </p>
+</section>
+
+<!-- ================= ACT I ================= -->
+<section class="act" aria-labelledby="act1">
+  <p class="eyebrow">Part one · The idea</p>
+  <h2 id="act1">A council of experts</h2>
+  <p>Imagine bringing a hard decision to three advisers at once — say a clinician, a lawyer, and an
+  accountant. Each studies the problem from their own angle and writes their own analysis. Then a
+  chief of staff reads all three and writes you one clear recommendation.</p>
+  <p>That's the <strong>Council of Experts</strong>: several specialist AI models work a question
+  independently, and a lead writer — we call it <strong>the editor</strong> — merges their work into
+  a single answer. The specialists can come from any industry: clinical, regulatory, financial,
+  engineering, supply chain. The seats are interchangeable; the structure is the point.</p>
+  <figure class="mini" aria-hidden="true">
+    <svg viewBox="0 0 560 120" width="100%" style="max-width:560px;color:var(--ink)">
+      <rect class="d-box" x="10" y="40" width="120" height="40" rx="4"/><text class="d-lbl" x="70" y="64" text-anchor="middle">Specialist</text>
+      <rect class="d-box" x="150" y="40" width="120" height="40" rx="4"/><text class="d-lbl" x="210" y="64" text-anchor="middle">Specialist</text>
+      <rect class="d-box" x="290" y="40" width="120" height="40" rx="4"/><text class="d-lbl" x="350" y="64" text-anchor="middle">Specialist</text>
+      <rect class="d-box" x="440" y="40" width="110" height="40" rx="4"/><text class="d-lbl" x="495" y="64" text-anchor="middle">The editor</text>
+      <path class="d-edge" d="M130 60 L148 60 M270 60 L288 60 M410 60 L438 60" marker-end="none"/>
+    </svg>
+  </figure>
+</section>
+
+<section class="act" aria-labelledby="act2">
+  <h2 id="act2">This is not "mixture of experts"</h2>
+  <p>If you follow AI, you may have heard of <em>mixture-of-experts</em> models. Those are single
+  neural networks whose internal circuitry is divided into blocks, with traffic routed between them
+  invisibly, millions of times per answer. You can't read what an internal "expert" contributed —
+  there's nothing to read.</p>
+  <p>The council lives at a different level entirely. Its experts are <strong>whole, separate
+  models</strong>, and every contribution is a <strong>document you can open</strong>: three
+  analyses, an editor's draft, a paper trail. That visibility is what makes everything in this story
+  measurable — and, eventually, what the whole project came to be about.</p>
+</section>
+
+<section class="act" aria-labelledby="act3">
+  <h2 id="act3">The bet</h2>
+  <p>Our starting hypothesis was the industry's conventional wisdom: <strong>specialists together
+  beat a generalist alone</strong> — more accurate, more careful, better coverage. And we added a
+  rule that shaped everything after: every claim would be written down <em>before</em> the test, with
+  the conditions that would kill it. If we were wrong, we'd know — and we'd say so.</p>
+  <p class="pull">What follows is what sixty-one experiments did to that bet — told finding by
+  finding, while the thing we ended up building assembles itself alongside.</p>
+</section>
+
+<!-- ================= ACT II: SCROLLY ================= -->
+<section aria-labelledby="findings-title">
+  <div class="act" style="padding-bottom:0">
+    <p class="eyebrow">Part two · What the experiments said</p>
+    <h2 id="findings-title">Thirteen findings, one machine</h2>
+  </div>
+  <div class="scrolly">
+    <div class="steps">
+
+      <article class="step setback" data-rail-caption="If the panel isn't smarter, why build anything at all?">
+        <span class="num">Finding 1</span>
+        <h3>The panel isn't smarter.</h3>
+        <p>We built three separate accuracy showdowns against a single strong model — business
+        calculations, tangled rule puzzles, checkable answers throughout. The single model scored
+        97–98% every time. There was simply no room for a panel to add correctness.</p>
+        <span class="figure">single model alone: 98% on our hardest tests</span>
+      </article>
+
+      <article class="step" data-rail-caption="Rule one: a seat must be earned by measurement — the qualification gate.">
+        <span class="num">Finding 2</span>
+        <h3>A specialist label means nothing.</h3>
+        <p>Two "medical" AI models built from the same base disagreed with each other more than with
+        a generalist. And a screening test we built later genuinely forecast which models would break
+        down on the job — including one whose old passing grade had silently expired.</p>
+        <span class="figure">screen-failers broke down in service; screen-passers ran clean</span>
+      </article>
+
+      <article class="step setback" data-rail-caption="Rule two: no pep talks. Instructions to 'be careful' are dropped entirely.">
+        <span class="num">Finding 3</span>
+        <h3>Telling the editor to be careful only buys the words.</h3>
+        <p>Instruct the editor to flag its assumptions with a particular phrase, and that exact
+        phrase appears — in two-thirds of answers. Swap in a synonym and the new word appears instead.
+        Actual carefulness beneath the wording? Unchanged, every time we measured it.</p>
+        <span class="figure">the phrase: installed · the behavior: unmoved</span>
+      </article>
+
+      <article class="step" data-rail-caption="The core is real: separate specialists, one editor. This part earns its keep.">
+        <span class="num">Finding 4</span>
+        <h3>But the merged answer genuinely reads better.</h3>
+        <p>In blind side-by-side matchups — order flipped both ways so nobody wins by going first —
+        the panel's merged answer beat the same model answering alone 82% of the time. A second,
+        unrelated judge agreed. This is the one thing the original design got right.</p>
+        <span class="figure">panel vs. going solo: 82% of decisive matchups</span>
+      </article>
+
+      <article class="step setback" data-rail-caption="A dilemma: readers punish exactly the caution we want answers to carry.">
+        <span class="num">Finding 5</span>
+        <h3>And the same judges punish visible caution.</h3>
+        <p>Answers carrying instructed cautious phrasing <em>lost</em> to their own plain twins —
+        winning only about a quarter of matchups. Any system tuned to please readers will quietly
+        shed its hedges and disclaimers. Careful language and crowd appeal pull in opposite
+        directions, measurably.</p>
+        <span class="figure">cautious phrasing's win rate: 26–32%</span>
+      </article>
+
+      <article class="step" data-rail-caption="So assumptions get their own track — they never travel through the editor.">
+        <span class="num">Finding 6</span>
+        <h3>Caution dies in transit anyway.</h3>
+        <p>Even when specialists write careful qualifications, the editor's rewrite destroys most of
+        them: only one to three of every ten survive into the final answer. Measured twice, with two
+        different editors. Prose is simply a lossy channel for the fine print.</p>
+        <span class="figure">qualifications surviving the rewrite: 11–33%</span>
+      </article>
+
+      <article class="step" data-rail-caption="The planner: every figure the decision turns on goes to at least two specialists.">
+        <span class="num">Finding 7</span>
+        <h3>The editor doesn't check facts — it chooses between sources.</h3>
+        <p>Plant a wrong number in one specialist's work and the editor repeats it 90% of the time.
+        Give a second specialist the same figure, correct, and errors are cut in half — the editor
+        actively picks the clean source. Protection isn't judgment; it's coverage. So we made
+        coverage a job: a planner that assigns every key figure to two specialists.</p>
+        <span class="figure">wrong number repeated: 90% alone → 45% with a clean second source</span>
+      </article>
+
+      <article class="step setback" data-rail-caption="Never trust self-ratings. Triggers come from work products instead.">
+        <span class="num">Finding 8</span>
+        <h3>Models don't know what they don't know.</h3>
+        <p>Specialists recognized questions outside their expertise only 30% of the time — one
+        deferred its own specialty away. The editor holds confident opinions about which specialist
+        "owns" which figure; tested on fresh cases, those opinions predicted its choices exactly as
+        well as a coin flip. Self-assessment came up empty everywhere we looked.</p>
+        <span class="figure">the "ownership" theory's prediction rate: 50% — a coin flip</span>
+      </article>
+
+      <article class="step" data-rail-caption="The follow-up loop: a mandatory disagreement list triggers one pointed question back.">
+        <span class="num">Finding 9</span>
+        <h3>A pointed follow-up works — end to end.</h3>
+        <p>Make the editor list where specialists disagree — a document, not a feeling — and send one
+        follow-up question back to the right specialist. With a real specialist answering from its own
+        knowledge, the editor landed the right resolution 90% of the time versus 33% without the
+        loop. Empty, vibes-only replies made things <em>worse</em> than silence.</p>
+        <span class="figure">right resolution: 90% with the loop, 33% without</span>
+      </article>
+
+      <article class="step" data-rail-caption="The finished answer: recommendation on top, assumptions attached beneath — intact.">
+        <span class="num">Finding 10</span>
+        <h3>Assumptions shipped in their own section actually get used.</h3>
+        <p>Attach the specialists' assumptions as a section of the final document — assembled by
+        machinery, never rewritten by the editor — and 100% arrive, versus 17% through prose. Readers
+        act on them: a decision-relevant caveat flipped a reader's call 73% of the time. And judges
+        don't punish the section; if anything they like it slightly.</p>
+        <span class="figure">assumptions delivered: 100% · reader decisions changed: 73%</span>
+      </article>
+
+      <article class="step setback" data-rail-caption="A fabrication filter screens known fakes; what can't be checked ships flagged.">
+        <span class="num">Finding 11</span>
+        <h3>Under pressure, specialists invent sources.</h3>
+        <p>Asked about a topic where it lacked the facts, one specialist repeatedly cited the same
+        two court cases — cases that don't exist. Invention ran 10–15% of replies, concentrated on
+        trigger topics, and never once came with an admission of uncertainty. The same fakes recur, so
+        a filter for known fabrications works; our attempt at a vaguer "empty reply" detector failed
+        its own tests twice, and we shipped the honest version: flag, never hide.</p>
+        <span class="figure">the same invented court case, 14 independent times</span>
+      </article>
+
+      <article class="step" data-rail-caption="Even our own rules go on trial. The ones that lose, we say so.">
+        <span class="num">Finding 12</span>
+        <h3>We were wrong about contamination — and published it.</h3>
+        <p>We kept specialists from seeing each other's work, sure that peeking would drag them out
+        of their lanes. Tested properly: nothing. No drift, at a sensitivity that would have caught a
+        third of the everyday level. The rule survives only because sharing costs computing time. An
+        architecture is trustworthy exactly to the degree it advertises its own overturned beliefs.</p>
+        <span class="figure">lane drift from peeking: none detectable</span>
+      </article>
+
+      <article class="step" data-rail-caption="The Harness, complete: same appeal, plus an audit trail — the safety comes free.">
+        <span class="num">Finding 13</span>
+        <h3>Head-to-head with the original: the safety comes free.</h3>
+        <p>The rebuilt panel faced the original in a final blind taste test. A draw — same reader
+        appeal, no penalty for all the added machinery. But now every answer carries its assumptions,
+        its error protection, and its fabrication screen. And on real questions, the follow-up loop
+        fired 85% of the time: genuine disagreements are everywhere once you look.</p>
+        <span class="figure">reader appeal: a draw · the audit trail: free</span>
+      </article>
+
+    </div>
+
+    <!-- sticky rail: the harness assembles -->
+    <aside class="rail" aria-label="The Harness, assembling as the findings accumulate">
+      <figure>
+        <svg viewBox="0 0 360 560" role="img" aria-label="Diagram of the Harness being assembled piece by piece: a question flows through a qualification gate and planner to three specialists, whose assumptions travel on a separate track while an editor drafts, asks one follow-up through filters, and assembles the final answer.">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+            <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+            </marker>
+            <marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--amber)"/>
+            </marker>
+          </defs>
+
+          <g data-piece="question">
+            <rect class="d-box" x="120" y="8" width="120" height="34" rx="4"/>
+            <text class="d-lbl" x="180" y="29" text-anchor="middle">The question</text>
+          </g>
+
+          <g data-piece="gate">
+            <rect class="d-gate" x="8" y="8" width="96" height="46" rx="4"/>
+            <text class="d-lbl" x="56" y="27" text-anchor="middle">Qualification</text>
+            <text class="d-lbl" x="56" y="41" text-anchor="middle">gate</text>
+            <path class="d-edge" d="M56 54 L56 150" stroke-dasharray="3 4" marker-end="url(#ar)"/>
+          </g>
+
+          <g data-piece="planner">
+            <rect class="d-box" x="105" y="70" width="150" height="44" rx="4"/>
+            <text class="d-lbl" x="180" y="88" text-anchor="middle">The planner</text>
+            <text class="d-sub" x="180" y="103" text-anchor="middle">every key figure → two seats</text>
+            <path class="d-edge" d="M180 42 L180 70" marker-end="url(#ar)"/>
+            <path class="d-edge" d="M140 114 L64 152 M180 114 L180 152 M220 114 L296 152" marker-end="url(#ar)"/>
+          </g>
+
+          <g data-piece="seats">
+            <rect class="d-box" x="10" y="156" width="104" height="42" rx="4"/>
+            <text class="d-lbl" x="62" y="174" text-anchor="middle">Specialist</text>
+            <text class="d-sub" x="62" y="188" text-anchor="middle">any industry</text>
+            <rect class="d-box" x="128" y="156" width="104" height="42" rx="4"/>
+            <text class="d-lbl" x="180" y="174" text-anchor="middle">Specialist</text>
+            <text class="d-sub" x="180" y="188" text-anchor="middle">any industry</text>
+            <rect class="d-box" x="246" y="156" width="104" height="42" rx="4"/>
+            <text class="d-lbl" x="298" y="174" text-anchor="middle">Specialist</text>
+            <text class="d-sub" x="298" y="188" text-anchor="middle">any industry</text>
+            <path class="d-edge" d="M62 198 L150 286 M180 198 L180 286 M298 198 L210 286" marker-end="url(#ar)"/>
+          </g>
+
+          <g data-piece="freight">
+            <rect class="d-blue" x="252" y="228" width="100" height="46" rx="4"/>
+            <text class="d-lbl" x="302" y="246" text-anchor="middle" fill="var(--accent)">Assumption</text>
+            <text class="d-lbl" x="302" y="260" text-anchor="middle" fill="var(--accent)">collector</text>
+            <path class="d-freight" d="M320 198 L312 228" marker-end="url(#arb)"/>
+            <path class="d-freight" d="M302 274 L302 480" marker-end="url(#arb)"/>
+            <text class="d-sub" x="308" y="380" fill="var(--accent)">never through</text>
+            <text class="d-sub" x="308" y="393" fill="var(--accent)">the editor</text>
+          </g>
+
+          <g data-piece="editor">
+            <rect class="d-box" x="110" y="290" width="140" height="44" rx="4"/>
+            <text class="d-lbl" x="180" y="308" text-anchor="middle">The editor</text>
+            <text class="d-sub" x="180" y="322" text-anchor="middle">drafts, no pep talks</text>
+          </g>
+
+          <g data-piece="trigger">
+            <rect class="d-box" x="110" y="350" width="140" height="34" rx="4"/>
+            <text class="d-sub" x="180" y="365" text-anchor="middle">mandatory list of</text>
+            <text class="d-sub" x="180" y="378" text-anchor="middle">disagreements — not a feeling</text>
+            <path class="d-edge" d="M180 334 L180 350" marker-end="url(#ar)"/>
+          </g>
+
+          <g data-piece="loop">
+            <path class="d-loop" d="M110 367 C 40 360, 30 240, 55 202" marker-end="url(#aro)"/>
+            <text class="d-sub" x="18" y="290" fill="var(--amber)">one pointed</text>
+            <text class="d-sub" x="18" y="303" fill="var(--amber)">follow-up</text>
+          </g>
+
+          <g data-piece="filters">
+            <rect class="d-box" x="16" y="410" width="112" height="46" rx="4"/>
+            <text class="d-lbl" x="72" y="428" text-anchor="middle">Reply filters</text>
+            <text class="d-sub" x="72" y="443" text-anchor="middle">known fakes out; rest flagged</text>
+            <path class="d-loop" d="M62 208 C 60 330, 64 380, 70 410" marker-end="url(#aro)"/>
+            <path class="d-edge" d="M128 440 L162 400" marker-end="url(#ar)"/>
+          </g>
+
+          <g data-piece="answer">
+            <path class="d-edge" d="M180 384 L180 470" marker-end="url(#ar)"/>
+            <rect class="d-box" x="104" y="474" width="152" height="70" rx="4"/>
+            <line class="d-edge" x1="104" y1="508" x2="256" y2="508"/>
+            <text class="d-lbl" x="180" y="496" text-anchor="middle">The answer</text>
+            <text class="d-lbl" x="180" y="526" text-anchor="middle" fill="var(--accent)">+ its assumptions</text>
+            <text class="d-sub" x="180" y="539" text-anchor="middle">attached, word for word</text>
+          </g>
+
+          <g data-piece="done">
+            <rect x="2" y="2" width="356" height="556" rx="8" fill="none" stroke="var(--good)" stroke-width="2"/>
+          </g>
+
+          <g data-piece="noinstr">
+            <text class="d-sub" x="262" y="304">no "be careful"</text>
+            <text class="d-sub" x="262" y="317">instructions —</text>
+            <text class="d-sub" x="262" y="330">they don't work</text>
+          </g>
+        </svg>
+        <figcaption aria-live="polite">The Harness assembles as the findings accumulate.</figcaption>
+      </figure>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= ACT III: PIVOT ================= -->
+<section class="act" aria-labelledby="pivot">
+  <p class="eyebrow">Part three · The pivot</p>
+  <h2 id="pivot">We stopped chasing "smarter" and built "auditable"</h2>
+  <p>Midway through, the honest reading of our own ledger forced a turn. The panel would never win on
+  raw correctness — a strong single model already delivers that on any well-posed question. But three
+  things had survived every attempt to kill them: the merged answer <strong>reads better</strong>;
+  engineered coverage <strong>catches errors</strong>; and a pointed follow-up
+  <strong>resolves disagreements</strong>.</p>
+  <p>So the second half of the program rebuilt the council around only what the evidence supports —
+  and then attacked every piece of the new design the same way we'd attacked the old one. Two of our
+  own design beliefs died in that process. They're in the record with everything else.</p>
+  <p class="pull">The result is the Harness: not a smarter panel — a panel whose every answer arrives
+  with its homework attached.</p>
+</section>
+
+<!-- ================= ACT IV: THE HARNESS ================= -->
+<section class="act" aria-labelledby="harness" style="max-width:1020px">
+  <p class="eyebrow">Part four · What we built</p>
+  <h2 id="harness">The Harness</h2>
+  <p style="max-width:62ch">One question in, one audited answer out. Every component below exists
+  because a specific experiment earned it — and each card says how it fared when we tried to break
+  it.</p>
+</section>
+<div class="diagram-wide">
+  <svg viewBox="0 0 960 300" role="img" aria-label="The full Harness pipeline left to right: a question passes the qualification gate, the planner assigns work to interchangeable specialists, assumptions travel on their own track, the editor drafts with one filtered follow-up, and machinery assembles the final answer with its assumptions attached.">
+    <defs>
+      <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+      </marker>
+      <marker id="arb2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+      </marker>
+      <marker id="aro2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--amber)"/>
+      </marker>
+    </defs>
+    <rect class="d-box" x="10" y="120" width="100" height="44" rx="4"/>
+    <text class="d-lbl" x="60" y="146" text-anchor="middle">Question</text>
+    <path class="d-edge" d="M110 142 L146 142" marker-end="url(#ar2)"/>
+    <rect class="d-gate" x="150" y="20" width="120" height="44" rx="4"/>
+    <text class="d-lbl" x="210" y="38" text-anchor="middle">Qualification gate</text>
+    <text class="d-sub" x="210" y="53" text-anchor="middle">seats are earned</text>
+    <path class="d-edge" d="M210 64 L210 116" stroke-dasharray="3 4" marker-end="url(#ar2)"/>
+    <rect class="d-box" x="150" y="120" width="120" height="44" rx="4"/>
+    <text class="d-lbl" x="210" y="138" text-anchor="middle">Planner</text>
+    <text class="d-sub" x="210" y="153" text-anchor="middle">key figures ×2 seats</text>
+    <path class="d-edge" d="M270 132 L316 96 M270 142 L316 142 M270 152 L316 188" marker-end="url(#ar2)"/>
+    <rect class="d-box" x="320" y="74" width="118" height="40" rx="4"/>
+    <rect class="d-box" x="320" y="122" width="118" height="40" rx="4"/>
+    <rect class="d-box" x="320" y="170" width="118" height="40" rx="4"/>
+    <text class="d-lbl" x="379" y="98" text-anchor="middle">Specialist</text>
+    <text class="d-lbl" x="379" y="146" text-anchor="middle">Specialist</text>
+    <text class="d-lbl" x="379" y="194" text-anchor="middle">Specialist</text>
+    <path class="d-freight" d="M438 94 L500 48 L560 48" marker-end="url(#arb2)"/>
+    <rect class="d-blue" x="564" y="26" width="130" height="44" rx="4"/>
+    <text class="d-lbl" x="629" y="44" text-anchor="middle" fill="var(--accent)">Assumptions</text>
+    <text class="d-sub" x="629" y="59" text-anchor="middle">their own track</text>
+    <path class="d-freight" d="M694 48 L830 48 L830 116" marker-end="url(#arb2)"/>
+    <path class="d-edge" d="M438 142 L556 142" marker-end="url(#ar2)"/>
+    <rect class="d-box" x="560" y="120" width="120" height="44" rx="4"/>
+    <text class="d-lbl" x="620" y="138" text-anchor="middle">The editor</text>
+    <text class="d-sub" x="620" y="153" text-anchor="middle">lists disagreements</text>
+    <path class="d-loop" d="M620 164 C 610 236, 480 240, 442 200" marker-end="url(#aro2)"/>
+    <rect class="d-box" x="500" y="236" width="130" height="40" rx="4"/>
+    <text class="d-lbl" x="565" y="252" text-anchor="middle">Reply filters</text>
+    <text class="d-sub" x="565" y="266" text-anchor="middle">fakes out · rest flagged</text>
+    <path class="d-loop" d="M446 210 C 470 240, 480 250, 498 254" marker-end="url(#aro2)"/>
+    <path class="d-edge" d="M630 236 L648 168" marker-end="url(#ar2)"/>
+    <path class="d-edge" d="M680 142 L766 142" marker-end="url(#ar2)"/>
+    <rect class="d-box" x="770" y="120" width="120" height="70" rx="4"/>
+    <line class="d-edge" x1="770" y1="154" x2="890" y2="154"/>
+    <text class="d-lbl" x="830" y="141" text-anchor="middle">The answer</text>
+    <text class="d-lbl" x="830" y="172" text-anchor="middle" fill="var(--accent)">+ assumptions</text>
+  </svg>
+</div>
+<div class="harness-grid">
+  <div class="hcard"><span class="tag good">held up under test</span>
+    <h3>Qualification gate</h3>
+    <p>No model is seated for its label. A screening test — which genuinely forecast on-the-job
+    breakdowns, and which must be re-run because passing grades expire.</p></div>
+  <div class="hcard"><span class="tag good">held up under test</span>
+    <h3>The planner</h3>
+    <p>Finds the figures a decision turns on — best at spotting the ones that are <em>missing</em> —
+    and assigns each to at least two specialists. That coverage is where error protection lives.</p></div>
+  <div class="hcard"><span class="tag blue">kept on cost, not fear</span>
+    <h3>Independent specialists</h3>
+    <p>Each seat works its own brief, in any industry. They don't see each other's drafts — not
+    because peeking corrupts (we tested; it doesn't) but because sharing costs computing time.</p></div>
+  <div class="hcard"><span class="tag good">held up under test</span>
+    <h3>The follow-up loop</h3>
+    <p>The editor must list where specialists disagree; one pointed question goes back to the right
+    seat. Works end to end with live specialists — and fires constantly on real questions.</p></div>
+  <div class="hcard"><span class="tag amber">one filter shipped, one honestly didn't</span>
+    <h3>Reply filters</h3>
+    <p>Known fabrications are screened out by a growing blocklist. Our detector for empty,
+    say-nothing replies failed its own tests twice — so replies ship flagged, never silently
+    dropped.</p></div>
+  <div class="hcard"><span class="tag good">held up under test</span>
+    <h3>The assumptions track</h3>
+    <p>Every caveat the specialists state travels outside the editor's rewrite, word for word, into
+    a section of the final answer. All of it arrives; readers act on it; judges don't mind it.</p></div>
+</div>
+
+<section class="act" aria-labelledby="closing">
+  <h2 id="closing">Where it landed</h2>
+  <p>The finished Harness faced the original council in one last blind comparison: a draw on reader
+  appeal, which is exactly the point — <strong>the audit trail costs nothing</strong>. Sixty-one
+  experiments, every one recorded before it ran, every miss published beside every win.</p>
+  <p>The full record is on the <a href="experiments.html">experiments page</a>, and the two research
+  papers — <a href="static/audit-paper.pdf">the audit</a> and
+  <a href="static/harness-paper.pdf">the design story</a> — carry the technical detail.</p>
+</section>
+
+</main>
+<footer class="site-footer">
+  <p>Council of Experts — an independent research program by Sam Bobo, with analysis assistance from
+  Claude (Anthropic). Every experiment, deviation, and verdict is in the
+  <a href="https://github.com/srbobo/council-of-experts-research">public repository</a>.</p>
+</footer>
+<script type="module" src="static/js/story.js"></script>
+</body>
+</html>
