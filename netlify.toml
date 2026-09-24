@@ -15,6 +15,13 @@
   publish = "site_v3"
   command = ""
 
+# BUILDS PAUSED (re-applied 2026-09-24 after the one-time deploy that made
+# site_v3 the public site). Netlify runs `ignore` before every build; exit 0 =
+# skip, so this unconditionally skips all deploys until lifted. To resume:
+# delete this [build.ignore] block and push.
+[build.ignore]
+  command = "exit 0"
+
 [[headers]]
   for = "/data/*"
   [headers.values]
