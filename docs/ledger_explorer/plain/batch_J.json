@@ -1,0 +1,256 @@
+{
+ "batch": "J",
+ "cells": {
+  "47": {
+   "title": "Does giving a key number to a second specialist block errors?",
+   "description": "We planted a wrong number with one specialist and, in one version, also had a second specialist state it correctly. The overlap halved how often the error reached the final answer, from 90% to 45%, but it worked completely for some numbers and not at all for others.",
+   "outcome": "held",
+   "size": "80 runs over 8 scenarios",
+   "why": "The rebuilt system, which we call the harness, includes a planning step that gives each key number to more than one specialist. The idea is that if one specialist gets a number wrong, another has it right, and the editor can use the right one. Cells 35 and 37 had seen this protection when overlap happened by chance. With a correct second source, the error reached the final answer in 0 of 27 runs, against 5 of 27 and 12 of 27 runs without one. No cell had yet tested the overlap itself as the only difference between two setups. This cell did, and we wrote down the plan and what we expected before running it.",
+   "expectations": [
+    {
+     "id": "L2.1",
+     "text": "The wrong number would reach the final answer less often when a second specialist had also been given that number and stated it correctly.",
+     "outcome": "held",
+     "note": "The wrong number appeared in 90% of runs with one source and 45% of runs with two, a clear difference. The second source halved how often the error got through."
+    },
+    {
+     "id": "L2.2",
+     "text": "The correct number would appear more often with two sources. That would show the editor used the second source, rather than the wrong number merely being crowded out.",
+     "outcome": "held",
+     "note": "The correct number appeared in 50% of two-source runs and in none of the one-source runs. There it existed nowhere, and the editor never made it up."
+    },
+    {
+     "id": "L2.3",
+     "text": "We would report the full breakdown for each version, including runs that stated neither number, the results for each planted number, and average answer length.",
+     "outcome": "not-graded",
+     "note": "Neither number appeared in 4 one-source and 7 two-source runs, and both appeared in 5 two-source runs. Answers averaged 7,217 characters with one source and 7,780 with two."
+    }
+   ],
+   "found": "All 80 runs completed. In each of 8 scenarios we added one number, such as a price, a rate or a budget, and one specialist stated it wrongly. The question asked for that figure. In one version that specialist was the only source. In the other, a second specialist also stated the number, with the value we had chosen as correct. The test was about which source the editor followed, not real-world accuracy. Answers were scored by exact match, with no AI judge.\n\nWith one source, the editor repeated the wrong number in 36 of 40 runs (90%), the project's strongest single measurement of the editor passing on an error without checking it. With two sources, the wrong number appeared in 18 of 40 runs (45%) and the correct one in 20 of 40 (50%).\n\nProtection was uneven. Three numbers were fully or almost fully protected, two not at all, and three partly. The two failures differed. For a vendor's price per user, the editor used only the finance specialist's wrong value. For an agency's markup, it stated both values but chose the wrong 42%, calling it \"typical (industry-average)\", a label no specialist had used. Earlier, a first pilot had seemed to fail its checkpoint because our matcher missed numbers written with unusual spacing or hyphens. We fixed the matcher, re-scored the same answers, and replaced one item's values that broke a construction rule.",
+   "means": "The harness's claim that planned overlap protects against errors held up in a test written down before it ran. The harness design document gained a warning: the protection worked completely for some numbers and not at all for others, so the average halving should not be quoted as if it applied to every number. Which numbers get protected became an open question. The close reading suggested the editor chooses by which specialist's field a number seems to belong to and by what it already expects, not by which source is reliable. Cells 49 and 50 followed up on those ideas.",
+   "later": "Cells 49 and 50 tested explanations for the uneven protection and none survived, so the cause is still open. Cell 57 found the planning step names only about 6 in 10 key numbers, which limits the protection in practice. In Cell 59, with every step run live, the correct number was still used almost as often. The drop in the wrong number was too close to call there, because with live specialists the error got through less often even without overlap.",
+   "entries": {
+    "7348": {
+     "label": "Plan",
+     "title": "Plant a wrong number and test a planned second source",
+     "summary": "Eight planted numbers, one per scenario, each stated wrongly by one specialist, plus a version where a second specialist stated it correctly. The first pilot failed its checkpoint, but the values were present in 15 of 16 answers, some in forms our matcher missed. We fixed the matcher and re-scored those answers. That exposed an item whose correct value was already in a specialist's text, so its values were replaced by rule and its pilot re-run."
+    },
+    "7441": {
+     "label": "Result",
+     "title": "A second source halved how often the error got through",
+     "summary": "The wrong number reached the final answer in 90% of one-source runs and 45% of two-source runs, and the correct number appeared in 50% of two-source runs. Protection was complete or nearly so for three numbers and absent for two, so the average should not be quoted as if it applied to every number."
+    },
+    "7483": {
+     "label": "Note",
+     "title": "Why protection failed completely on two numbers",
+     "summary": "We read 10 runs. For a vendor's price per user, the editor took only the finance specialist's wrong value and never mentioned the correct one. For an agency markup, it stated both values but chose the wrong 42%, calling it \"typical (industry-average)\", a label no specialist used. Our working guess: the editor picks by field and by what it expects, not by which source is reliable."
+    }
+   }
+  },
+  "48": {
+   "title": "Does a separate caveats section keep caveats without a penalty?",
+   "description": "We attached the specialists' caveat sentences to the editor's unchanged reports as a separate section. It carried every caveat, against 17% in the editor's prose, but whether AI judges penalize the section was too close to call.",
+   "outcome": "mixed",
+   "size": "No new answers, 159 pairs of reports judged",
+   "why": "The rebuilt system, which we call the harness, does not rely on the editor to carry caveats. It copies them into a separate caveats section attached to the end of the report, which the editor never touches. Three earlier findings led to this design. The editor passes along only a small share of the caution it is given, losing 67% to 89%. An instruction to keep caveats mostly produces the exact phrase it names. And caveat phrases written into the prose made AI judges prefer the answer less. This cell tested the design's main bet: that the section keeps the caveats without that preference penalty.",
+   "expectations": [
+    {
+     "id": "P48.1",
+     "text": "With the section attached, at least 95% of the specialists' caveat sentences would appear in the final report. In the editor's prose alone, at most 35% would.",
+     "outcome": "held",
+     "note": "All 2,079 caveat sentences appeared with the section attached. Only 361 of the 2,079 (17%) appeared in the editor's prose alone."
+    },
+    {
+     "id": "P48.2",
+     "text": "Judges would not penalize the section as they did caveats in the prose. It would count as held if even the low end of its plausible win share was above 32%, and as failed if the whole range was below 40%.",
+     "outcome": "unclear",
+     "note": "The report with the section won 51% of the 51 settled matchups, plausibly anywhere from 27% to 75%. That range was too wide to meet either rule, so the result was too close to call."
+    },
+    {
+     "id": "P48.3",
+     "text": "We would report ties, unreadable replies and first-position effects for each judge, the section's length, results per scenario, and any link between winning and length.",
+     "outcome": "not-graded",
+     "note": "The main judge called 65 of 116 usable pairs a tie. The second judge, Qwen3-VL, answered \"A\" in all 80 of its calls, always picking the report it read first, so it settled nothing."
+    }
+   ],
+   "found": "No new answers were written. Both versions used the same saved editor reports from Cell 41, so the only difference was the section. No model wrote it. It was built mechanically from specialist sentences that two AI judges had both labeled as caveats in earlier cells. Before judging, we dropped one scenario, a simple hand-hygiene question built to need no caveats, because it had no such sentences to list. That left 17 scenarios and 119 pairs.\n\nThe section carried all 2,079 caveat sentences. The editor's prose alone kept 361 (17%). This new, direct count falls inside the range earlier cells had estimated by a different method, 11% to 33% of the specialists' caution reaching the final answer. It was the third separate estimate to agree.\n\nWe showed each pair to the judges in both orders and counted a win only when a judge picked the same report both times. The main judge, gpt-oss-20B, did so for 51 pairs, called 65 ties and gave 3 unreadable replies. The report with the section won 51% of the 51, plausibly anywhere from 27% to 75%. That is far from the 20% to 32% seen for caveats in the prose, but too uncertain to settle. The second judge always picked the report it read first. We also fixed a printout bug that showed zero ties when a judge settled nothing. The estimates were unaffected.",
+   "means": "Half of the section's design bet was settled. The section carries every caveat, where the editor's prose keeps about one in six. The other half, whether judges penalize it, stayed open. There was no sign of the penalty that caveats in the prose receive, but too few settled matchups to rule it out. A clear answer would need more scenarios, or a judge that calls fewer ties on nearly identical reports. Whether a reader actually uses the section became the question for Cell 51.",
+   "later": "Cell 51 found that a reader does act on what the section says, almost as often as when the same caveat sits in the prose. In Cell 61, removing the section from the harness's reports lowered their share of wins against the old system's reports from 56% to 49%. That small nudge in the section's favor was reported without a pass/fail test, and it fits the no-penalty reading here.",
+   "entries": {
+    "7513": {
+     "label": "Plan",
+     "title": "Attach the caveats as a separate section and ask AI judges",
+     "summary": "Two versions of the same saved editor reports: the prose alone, and the prose plus a section listing the specialists' caveat sentences. AI judges compared them in both orders. Before any judging, we found one scenario had no caveat sentences to list, so we dropped it rather than fill it in, leaving 17 scenarios and 119 pairs."
+    },
+    "7581": {
+     "label": "Result",
+     "title": "Every caveat carried, the judges' view too close to call",
+     "summary": "The section carried all 2,079 caveat sentences, against 17% for the editor's prose. The main judge preferred the report with the section in 51% of settled matchups, too uncertain to confirm or rule out a penalty. The second judge always picked the report it read first."
+    }
+   }
+  },
+  "49": {
+   "title": "Why does the editor pick one conflicting number over another?",
+   "description": "We tested two explanations from Cell 47: the editor picks the number it already expects, or the one from the specialist whose field it fits. Both results were too close to call, but looking afterwards, the editor tended to follow one fixed specialist for each number.",
+   "outcome": "unclear",
+   "size": "80 runs plus 40 short questions",
+   "why": "Cell 47 tested a key part of the rebuilt system, which we call the harness: giving a key number to two specialists so that one can catch the other's error. It protected some numbers completely and others not at all. A close reading of 10 runs suggested two explanations. The editor might pick the value it already expects, or the value from the specialist whose field the number seems to belong to. This cell tested both at once. Rather than guess what the editor expects, we asked it. The editor alone gave a typical figure for each number 5 times, and the middle answer became the plausible value. The implausible value was double or half that.",
+   "expectations": [
+    {
+     "id": "P49.1",
+     "text": "Across both versions, the editor would choose the plausible value more often than the 50% expected by chance. With this much data, only a strong preference could be detected.",
+     "outcome": "unclear",
+     "note": "It chose the plausible value in 54% of the runs that settled on one number, close to chance. Leaving out item 7, whose values were probably in the wrong unit, gave 52%."
+    },
+    {
+     "id": "P49.2",
+     "text": "The editor would choose the plausible value more often when it sat with the specialist whose field the number fits than when it sat with the other specialist.",
+     "outcome": "unclear",
+     "note": "58% against 52%, but the plausible range for the difference ran from 62 points lower to 58 points higher, far too wide to call."
+    },
+    {
+     "id": "P49.3",
+     "text": "We would report the breakdown for each version and number, and count words such as \"typical\" or \"industry\" in the sentence stating the chosen value, without using that count to judge the result.",
+     "outcome": "not-graded",
+     "note": "The breakdown by number showed a pattern we had not predicted: each number tended to follow one specialist, whichever value that specialist held."
+    }
+   ],
+   "found": "All 80 runs completed, and 57 of them stated exactly one of the two numbers. The editor showed almost no preference for the value it expects. It chose the plausible value in 31 of 57 runs (54%), close to the 50% of chance. It was 52% without item 7, a migration window whose values were set in weeks from guesses that were almost certainly in days. Where the plausible value sat made little difference: 58% when it was with the specialist we had judged the number's natural home, 52% when it was with the other.\n\nLooking at the table afterwards, we found a pattern we had not predicted. For each number, the editor tended to follow one fixed specialist, whatever value that specialist held. It took that specialist's value in 51 of the 57 runs. On three numbers the same specialist won every time (10 of 10, 6 of 6 and 5 of 5 runs), even though the two versions swapped the values. The specialist the editor followed matched our own choice of natural home on only 4 of 8 numbers. It treated a clinical program's budget as healthcare's, and a damages cap and a migration window as finance's.\n\nThis pattern was found in the same runs it describes, so it is not a tested result. But it held when the values were swapped, which chance alone would not produce. It would also explain Cell 47: overlap protects when the correct value sits with the specialist the editor follows, and fails when the wrong value does.",
+   "means": "Neither explanation from Cell 47, as we had framed it, held up as the main cause. The idea that the editor picks the value it expects was set aside. The \"industry-average\" label seen in Cell 47 now looked like the editor following one specialist while using the language of typical values. A new candidate rule took its place: a second source protects a number only if it sits with the specialist the editor treats as the number's owner. Because that rule came from the same runs it explains, we planned Cell 50 to test it on fresh numbers. Asking the editor for its own expected values worked as a method, and its one gap, not stating units, was fixed for next time.",
+   "later": "Cell 50 tested the owner idea on fresh numbers, asking the editor in advance which specialist it relies on for each. The prediction came out at exactly 50%, chance level, so the pattern found here is now treated as a product of analyzing the runs after the fact. Cell 50 also saw the editor favor its expected value, the opposite of this cell, and concluded that no explanation has yet survived a proper test.",
+   "entries": {
+    "7618": {
+     "label": "Plan",
+     "title": "Test two explanations for which conflicting number wins",
+     "summary": "Eight of Cell 47's numbers got new values, set by rule from the editor's own guesses. Both specialists stated a value in every run, and the two versions swapped which specialist held the plausible one. Before any result, we recorded that item 7's guesses were almost certainly in days while its values were in weeks, so the main result would be reported with and without it."
+    },
+    "7690": {
+     "label": "Result",
+     "title": "Neither explanation showed, and an unplanned pattern appeared",
+     "summary": "The editor chose its expected value in 54% of settled runs, near chance, and where that value sat made little difference. Both results were too close to call. Looking afterwards, the editor followed one fixed specialist per number in 51 of 57 runs, whichever value it held, a pattern that needed its own test."
+    }
+   }
+  },
+  "50": {
+   "title": "Does the editor's own view of who owns a number predict its choice?",
+   "description": "We asked the editor in advance which specialist it relies on for each of several fresh numbers, then gave that specialist and another conflicting values. The editor's answers were consistent, but the named specialist's value won exactly half the time.",
+   "outcome": "failed",
+   "size": "70 runs over 7 fresh numbers",
+   "why": "In Cell 49, the editor seemed to follow one fixed specialist for each number, whatever value that specialist held. That pattern could explain why the rebuilt system, which we call the harness, protected some numbers from errors and not others. But it was found in the same runs it explained. To test it properly, we asked the editor first, with no specialists and no values in view, which one analyst (healthcare, legal or finance) it would rely on for each figure. We asked 5 times per number and took the most common answer as the predicted owner. Then we tested that prediction on fresh numbers.",
+   "expectations": [
+    {
+     "id": "P50.1",
+     "text": "On numbers where the editor's owner answer was stable, the predicted owner's value would be chosen more often than the 50% expected by chance, whichever value it held.",
+     "outcome": "failed",
+     "note": "The predicted owner's value won in exactly 50% of the 28 runs that settled on one value, chance level, against 51 of 57 runs in Cell 49."
+    },
+    {
+     "id": "P50.2",
+     "text": "The editor would name the same owner in at least 4 of 5 askings for at least 4 numbers, enough to run the main test.",
+     "outcome": "held",
+     "note": "All 7 numbers that went ahead were stable, most with 5 of 5 votes, and the owners were spread across all three fields."
+    },
+    {
+     "id": "P50.3",
+     "text": "We would report the full breakdown for each placement and each number, how often answers settled on one value, and how often numbers were stated at all.",
+     "outcome": "not-graded",
+     "note": "Only 28 of 70 runs settled on one value (40%, against 71% in Cell 49), and 35 of 70 stated neither value."
+    }
+   ],
+   "found": "For each of 8 fresh numbers we asked the editor who owns it, then asked for a typical value, this time naming the unit. The middle of its guesses became one value and double or half of it the other. One number was dropped before any run, because both allowed second values, double and half, already appeared in the specialists' text. The other 7 went ahead. The predicted owner stated one value and the next specialist in a fixed rotation stated the other, with the values swapped between versions. That gave 70 runs, with no failures.\n\nThe editor's owner answers were stable and varied. Across the 8 numbers it named finance for five, legal for one (a cap on sick-leave accrual, unanimously) and healthcare for two. But the predicted owner's value won in 14 of the 28 runs that settled on one value, exactly 50%.\n\nTwo further observations were reported without a pass/fail test. Fewer runs settled on one value than in Cell 49 (40% against 71%), and half of all runs stated neither value, even though the question asked for it. And the value at the middle of the editor's own guesses won 20 of 28 settled runs (71%), the opposite of Cell 49, where that kind of value won 54%. Each cell's after-the-fact pattern contradicts the other's. We concluded that which value wins depends on the particular number, and no explanation has yet survived a test set up in advance.",
+   "means": "The ownership idea was dropped before it became part of the design. The editor has a consistent view of which specialist owns a number, but that view does not decide which value it uses. With Cell 49, two candidate explanations for Cell 47's uneven protection had now been tested, and neither survived. The harness's warning stayed where Cell 47 left it: protection is real on average, uneven from number to number, and the cause is unknown. What the editor said it expects and whom it trusts was stable but did not predict what it did, echoing Cell 45. No follow-up was planned. The next attempt should wait for a design that predicts in advance rather than sorting results afterwards.",
+   "later": null,
+   "entries": {
+    "7748": {
+     "label": "Plan",
+     "title": "Ask the editor who owns each number, then test the prediction",
+     "summary": "For 8 fresh numbers, we asked the editor 5 times which specialist it would rely on and took the most common answer as the predicted owner. Conflicting values then went to that owner and one other specialist, swapped between versions. Before any run, one number was dropped because both allowed second values already appeared in the specialists' text, leaving 7."
+    },
+    "7810": {
+     "label": "Result",
+     "title": "The editor's named owner predicted nothing",
+     "summary": "The predicted owner's value won in exactly 50% of settled runs, chance level, although the editor named owners consistently. We judged Cell 49's pattern to be a product of after-the-fact analysis. The editor also ignored these made-up numbers in half of all runs."
+    }
+   }
+  },
+  "51": {
+   "title": "Does a reader act on caveats in the separate caveats section?",
+   "description": "We planted a decision-changing caveat in the separate caveats section and asked an AI reader to decide. It changed its decision 73% of the time, against 4% for an irrelevant caveat there and 82% with the caveat in the prose.",
+   "outcome": "held",
+   "size": "440 reads over 11 test items",
+   "why": "The rebuilt system, which we call the harness, puts caveats in a separate caveats section attached to the end of the report, which the editor never touches. Cell 48 showed that this section carries every caveat and found no sign that AI judges penalize it. It did not show whether anyone uses it. If a reader never acts on a caveat that appears only in the section, the section is for show, not a working part of the report. So we tested whether a caveat placed there changes a reader's decision.",
+   "expectations": [
+    {
+     "id": "P51.1",
+     "text": "A relevant caveat in the section would change the reader's decision more often than an irrelevant caveat in the same section.",
+     "outcome": "held",
+     "note": "The relevant caveat changed the decision in 73% of reads and the irrelevant one in 4%, a clear difference of 69 points."
+    },
+    {
+     "id": "P51.2",
+     "text": "We made no prediction about direction. We wrote down in advance how to read the gap between placing the caveat in the prose and placing it in the section.",
+     "outcome": "not-graded",
+     "note": "The prose version changed decisions 9 points more often, plausibly anywhere from 4 points less to 22 more. By our rule, that counts as no measurable loss from using the section."
+    }
+   ],
+   "found": "We used one saved report per scenario from Cell 41 and wrote 18 test items. Each had a caveat that should change a decision and a question that the reader, gpt-oss-20B, had to answer with one word, PROCEED or HOLD. In some items the caveat should make the reader stop, and in others it should let the reader go ahead. That way, a reader that simply grew more cautious could not pass for one that used the caveat.\n\nA pilot dropped 7 items, all of the stopping kind, because the reader mostly answered HOLD even with no caveat. The plan capped such no-caveat changes at 20% without saying over which items. Over all 18 it was 33%, over the 11 kept items 0%. We applied it to the kept items and recorded both. The main test had 440 reads across two readers, with no unusable replies.\n\nWith no caveat, the reader never changed its decision. An irrelevant caveat in the section changed it in 4% of reads, the relevant caveat in the section in 73%, and the same caveat in the prose in 82%. On items where the caveat should let the reader go ahead, 40% to 100% of reads switched to PROCEED, so the effect was not a general lean towards caution. A smaller second reader, Qwen2.5-7B, showed the same pattern at a lower level (55% against 9%). Where it failed, it failed with the caveat in the prose too. Most items worked completely or not at all.",
+   "means": "The section works as a channel, not a display. A caveat placed there changed a reader's decision almost as often as the same caveat in the prose, and an irrelevant caveat in the same place changed almost nothing. With Cell 48, the section's design had now been tested on all three counts: it carries every caveat, no preference penalty was detected, and readers act on what it says. The limits are one set of saved reports, one main reader, caveats we planted, and the 11 of 18 items that passed the pilot.",
+   "later": null,
+   "entries": {
+    "7856": {
+     "label": "Plan",
+     "title": "Test whether a reader acts on a caveat in the separate section",
+     "summary": "Four versions of the same saved reports: unchanged, with an irrelevant caveat in a separate section, with a relevant caveat in the section, and with the relevant caveat as a final paragraph. An AI reader answered PROCEED or HOLD. Items were balanced so that some caveats called for stopping and others for going ahead."
+    },
+    "7951": {
+     "label": "Change to the plan",
+     "title": "An unclear pilot rule, settled before the main runs",
+     "summary": "The pilot dropped 7 of 18 items because the reader said HOLD even without a caveat. The plan capped no-caveat changes at 20% without saying over which items. Over all 18 it was 33%, which would have stopped the cell. Over the 11 kept items it was 0%. We used the kept items, recorded both numbers and changed nothing else."
+    },
+    "7980": {
+     "label": "Result",
+     "title": "Readers act on the section almost as much as on the prose",
+     "summary": "Across 440 reads, a relevant caveat in the section changed the decision 73% of the time, an irrelevant one 4%, and the same caveat in the prose 82%. The gap between section and prose was small enough to count as no measurable loss. A smaller second reader showed the same pattern at a lower level."
+    }
+   }
+  },
+  "52": {
+   "title": "Do other specialists' drafts pull a specialist out of its field?",
+   "description": "We gave specialists a one-line list of the other specialists, or that list plus the other two specialists' drafts. Seeing the drafts did not make them use more terms from other fields, so the rule against sharing drafts is now kept for cost reasons only.",
+   "outcome": "failed",
+   "size": "322 specialist answers over 18 scenarios",
+   "why": "The rebuilt system, which we call the harness, gives each specialist its task and a one-line list of the other specialists, but never their drafts. That rule rested only on history. It came from a lesson learned between the second and third versions of the council, when specialists strayed outside their fields. No cell had tested it as a single change. This cell did. The same specialist answered the same scenario with the same prompt, with or without the other two specialists' saved drafts attached.",
+   "expectations": [
+    {
+     "id": "P52.1",
+     "text": "With the other drafts visible, specialists would use more terms from the other two fields per 1,000 characters than with the one-line list alone.",
+     "outcome": "failed",
+     "note": "They used slightly fewer. The largest increase still plausible, 0.028 per 1,000 characters, was below the smallest effect the test was built to detect."
+    },
+    {
+     "id": "P52.2",
+     "text": "Counting only off-field terms not found in the drafts, to leave out copying, we would estimate the same difference. We had rules for reading it only if the first expectation held.",
+     "outcome": "not-graded",
+     "note": "This count was lower with the drafts visible, by 0.033 per 1,000 characters (plausibly 0.013 to 0.053 lower). We had no rule for this direction, so it has no pass/fail result."
+    }
+   ],
+   "found": "Of 324 planned answers, 323 were produced. One came back empty and, because of a flaw in the retry loop, was never retried. One unusable answer, under 800 characters, was excluded, leaving 322. All specialists were gpt-oss-20B with their fixed role prompts from Cell 30. We counted how often each used terms from the other two fields, per 1,000 characters, from a fixed list of field-specific terms.\n\nSeeing the drafts did not increase off-field terms. Specialists who saw them used slightly fewer off-field terms, by 0.009 per 1,000 characters, against a typical level of about 0.23. Before running, we had worked out that the test could detect an increase of 0.05 to 0.08, about a third of the typical level. The largest increase still plausible was 0.028.\n\nCounting only off-field terms not found in the drafts, specialists who saw the drafts used fewer, by 0.033. One possible reading, noted but not claimed, is that a specialist who can see the other fields already covered keeps more to its own. Terms from a specialist's own field were about the same (0.143 and 0.141). Answers with the drafts visible were about 14% longer (9,310 against 8,158 characters). The differences for each field were all small.",
+   "means": "The rule against showing specialists each other's drafts can no longer claim that drafts make specialists stray, as we had said in advance would happen if this expectation failed. The harness design document now calls it a lesson from history. The test has a limit. The old problem involved instructions that framed a specialist's task across fields, while this cell tested drafts with clean instructions, so that case is still untested. The harness still gives specialists only the one-line list, now on cost grounds alone. The drafts add about 10,000 characters of input per specialist and make answers 14% longer, with no measured change in how well specialists stay in their field.",
+   "later": null,
+   "entries": {
+    "8029": {
+     "label": "Plan",
+     "title": "Show specialists each other's drafts and count off-field terms",
+     "summary": "Each of the three specialists answered all 18 scenarios 3 times in two versions: with a one-line list of the other specialists, or with the other two specialists' saved drafts attached as well. We counted terms from the other two fields per 1,000 characters, using a fixed list of field-specific terms."
+    },
+    "8087": {
+     "label": "Result",
+     "title": "Seeing the drafts did not pull specialists out of their field",
+     "summary": "Off-field terms were slightly lower with the drafts visible, although the test could have detected an increase a third the size of the typical level. The rule against sharing drafts was downgraded to a lesson from history and kept on cost grounds only."
+    }
+   }
+  }
+ },
+ "studies": {}
+}

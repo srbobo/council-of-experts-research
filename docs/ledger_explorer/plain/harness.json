@@ -1,0 +1,306 @@
+{
+ "eyebrow": "The rebuilt system",
+ "title": "The harness: a council rebuilt from the parts that held up",
+ "standfirst": "After 46 cells had tested the original council piece by piece, we redesigned it using only what the evidence supported. Every part below names the cell that earned its place, and everything the evidence ruled out is listed as deliberately missing. We call the result the harness.",
+ "name_note": "In early August the notebook also used the word harness for a package of measuring and checking tools. That package is a different thing. This page is about the rebuilt council, designed on 21 August 2026 and tested part by part in Cells 47 to 61.",
+ "purpose_title": "What it is for, and what it is not for",
+ "purpose": "The harness is not a way to get more correct answers. On well-specified questions, one editor model answering alone already scored about 98% (Cells 36 and 60), so there was no room for a council to add accuracy. If correctness on well-specified questions is what matters, a single model already delivers it.\n\nThe harness is justified by three measured gains and nothing else.",
+ "gains": [
+  {
+   "title": "AI judges prefer the combined answer",
+   "text": "Judges from two different model families preferred the council's combined answer over one model answering alone in 79% to 82% of clear-cut matchups, and length did not explain it.",
+   "cells": [
+    "43",
+    "43-R"
+   ]
+  },
+  {
+   "title": "A second source keeps errors out",
+   "text": "When one specialist had a wrong figure but another had the right one, the wrong figure reached the final answer 0 times out of 27.",
+   "cells": [
+    "35",
+    "37"
+   ]
+  },
+  {
+   "title": "A follow-up question settles a disagreement",
+   "text": "When the editor could ask the specialist involved and the reply held the deciding fact, it took the right side 7 times out of 7. With a live specialist it did so in 90% of runs, against 33% with no follow-up.",
+   "cells": [
+    "44",
+    "54"
+   ]
+  }
+ ],
+ "flow_title": "How a question moves through it",
+ "flow_intro": "The steps run in this order for every question. The first happens once, before a model is allowed to serve as a specialist.",
+ "steps": [
+  {
+   "short": "Screen the models",
+   "name": "Screen each model before it serves as a specialist",
+   "status": "Tested and kept",
+   "kind": "kept",
+   "does": "A candidate model has to pass a screening test before it can serve as a specialist. It must write real answers of at least 800 characters on every screening question, rather than garbled, repetitive or empty text. We also check that it differs measurably from the base model it was built from, and that it can produce a required format within the length limits the system will actually use.",
+   "why": "A fine-tune's label predicts nothing: two medical fine-tunes of the same base model disagreed, and a third moved the other way (Cell 42). One downloaded medical model produced broken output on all 12 test runs, which we only discovered after it had spoiled a comparison. The screening test was then checked on ten models, with its results locked in before any real run. Both models that failed it went on to break in real use (33% and 94% of their answers), while the eight that passed broke 0% to 6% of the time (Cell 55).",
+   "limits": "Results go stale. One model that passed an older screen failed a fresh one and then broke in real use, so every model is screened again rather than trusted from an earlier pass. The format check is a separate matter: the legal fine-tune failed it 4 times out of 4 and still worked perfectly as a specialist.",
+   "cells": [
+    "42",
+    "55"
+   ]
+  },
+  {
+   "short": "Plan and assign",
+   "name": "The planning step finds the key numbers and gives each to two specialists",
+   "status": "Tested and kept, with limits",
+   "kind": "limits",
+   "does": "Before any specialist answers, the planning step lists the figures the answer depends on, such as rates, deadlines and eligibility rules. It then writes each specialist a self-contained question and makes sure every key figure appears in at least two of those questions.",
+   "why": "The editor does not check facts. It picks between sources. With a correct second source a planted error never reached the answer (0 of 27). When every source was wrong it did (5 of 27), and more often still with the working removed (12 of 27). Giving a planted wrong number a second, correct source cut its use from 90% to 45% of runs, and the correct value went from never used to used half the time (Cell 47). Tested live, the planning step found about 63% of the key figures, and it was best at the ones nobody had stated, finding 81% of those (Cell 57). It then put each figure into two specialists' questions in 40 of 40 plans, and the editor used the correct second source 43 points more often than without it (Cell 59).",
+   "limits": "Protection only covers the figures the planning step finds, so in practice it is roughly 63% coverage times the protection effect, not a guarantee. It also worked completely for some figures and not at all for others, and two explanations for that pattern were tested and failed (Cells 49 and 50). A specialist passes along a fact it was privately given only when its question is about that fact (Cell 58).",
+   "cells": [
+    "35",
+    "37",
+    "47",
+    "49",
+    "50",
+    "57",
+    "58",
+    "59"
+   ]
+  },
+  {
+   "short": "Specialists answer alone",
+   "name": "Each specialist answers alone, knowing only who else is on the panel",
+   "status": "Kept, for cost reasons only",
+   "kind": "cost",
+   "does": "Each specialist sees its own question and a one-line list of the other specialists. It never sees their drafts. It writes its answer and lists its caveats, assumptions and confidence as separate fields.",
+   "why": "Knowing who else is on the panel helps: specialists named the right colleague 10 times out of 11 when they did hand a point over (Cell 45). We first kept drafts private out of fear that specialists would drift outside their field. Cell 52 tested that directly and found no measurable drift.",
+   "limits": "The rule now stands on cost alone. Showing each specialist the others' drafts adds about 10,000 characters of input and 14% longer answers, and changes nothing we could measure.",
+   "cells": [
+    "45",
+    "52"
+   ]
+  },
+  {
+   "short": "Caveats set aside",
+   "name": "Caveats go straight into their own section",
+   "status": "Tested and kept",
+   "kind": "kept",
+   "does": "The system copies each specialist's caveats, assumptions and confidence into a separate Assumptions and caveats section attached to the end of the report. The editor never rewrites this section and gets no instructions about being careful.",
+   "why": "Three results point the same way. When caveats pass through the editor's prose, only 11% to 33% survive (Cells 30 and 46). Telling the editor to keep them only produces the exact phrase the instruction names (Cell 41 and PD-13). And AI judges mark answers down when they carry that scripted phrase (Cell 43). The separate section carried 100% of the specialists' caveats, against 17% surviving in prose (Cell 48). A caveat that should change a decision was then placed only in that section. An AI reader changed its decision 69 points more often than with an irrelevant caveat in the same place, and about as often as when the caveat sat in the prose (Cell 51).",
+   "limits": "Whether judges mark reports down for having the section was too close to call: 51% of clear-cut matchups, plausibly anywhere from 27% to 75% (Cell 48). There is no sign of a penalty, but its absence is not proven.",
+   "cells": [
+    "30",
+    "41",
+    "43",
+    "46",
+    "48",
+    "51"
+   ]
+  },
+  {
+   "short": "Editor lists disagreements",
+   "name": "The editor first lists where the specialists disagree",
+   "status": "Kept",
+   "kind": "kept",
+   "does": "The editor works in two passes. In the first it writes only a required list of the points where the specialists' answers conflict, plus an inventory of their claims. It writes the answer itself only in the second pass.",
+   "why": "In every test, models acted well once prompted but rarely noticed on their own that they needed help. The editor used a follow-up answer 7 times out of 7, yet named a planted disagreement unprompted only 34% of the time. Specialists handed a point to the right colleague 91% of the time, but only recognized that a point lay outside their field 31% of the time (Cells 44 and 45). So the system takes its cue from a list the editor is required to write, which it produced in 391 of 396 saved runs, and never from a model judging its own competence.",
+   "limits": "On planted disagreements the list named the key one only 21% to 58% of the time, depending on the batch (Cells 44, 53 and 54). On real questions, disagreements were far more common (see the whole-system test below).",
+   "cells": [
+    "44",
+    "45",
+    "53",
+    "54"
+   ]
+  },
+  {
+   "short": "Follow-up question",
+   "name": "Software sends a follow-up question to the specialist involved",
+   "status": "Tested and kept",
+   "kind": "kept",
+   "does": "Software, not the editor, reads the disagreement list and sends a follow-up question to the specialist involved. The reply is added before the editor writes its answer.",
+   "why": "This is the one change that worked in its first test. With a reply containing the deciding fact, the editor took the right side 7 times out of 7, against 33% with no follow-up and 20% with a reply that sounded helpful but held no new information (Cell 44). With a live specialist holding the fact only in private notes, the fact reached the editor in 21 of 21 replies and the editor used it in 90% of runs, against 33% without the follow-up (Cell 54).",
+   "limits": "In 4 of those 21 live replies the specialist also invented legal authority, such as court cases that do not exist, and the editor accepted them. Cell 56 measured this at 10% to 15% of replies, all on one legal scenario, and the specialist never admitted a gap in its knowledge. The next step filters for this.",
+   "cells": [
+    "44",
+    "54",
+    "56"
+   ]
+  },
+  {
+   "short": "Replies filtered",
+   "name": "Replies pass a citation blocklist and arrive flagged",
+   "status": "Blocklist works, empty-reply filter does not",
+   "kind": "mixed",
+   "does": "Each follow-up reply is checked against a list of known made-up citations before the editor sees it. The same two invented court decisions kept recurring across independent replies, which is what makes a list like this possible. Nothing is fed back to the specialist. Every reply is also delivered with a flag, because the filter meant to catch replies with no real content failed its tests.",
+   "why": "On 141 saved replies, the blocklist made 21 correct catches, with no false alarms and nothing missed. A reply that sounds helpful but adds nothing appeared to push the editor the wrong way, although that was never confirmed, so we tried twice to build a filter for such replies. The first version let half of the empty test replies through (it dropped 3 of 6). The second caught all 6 but also rejected 52% of real replies.",
+   "limits": "The blocklist only covers made-up citations already caught, so it sets a floor on invented detail, not a ceiling. There will be no third attempt at the empty-reply filter until we have examples built for it.",
+   "cells": [
+    "54",
+    "56"
+   ]
+  },
+  {
+   "short": "Editor writes",
+   "name": "The editor writes the answer, with no instructions about caution",
+   "status": "Kept",
+   "kind": "kept",
+   "does": "In its second pass the editor writes the report from the specialists' answers and any follow-up replies. Its instructions say nothing about hedging, caveats or carefulness.",
+   "why": "Such instructions change the wording they name and nothing else (Cell 41 and PD-13), and AI judges prefer answers without that wording (Cells 43 and 43-R). The caution the report needs arrives through the separate section instead.",
+   "limits": "",
+   "cells": [
+    "41",
+    "43",
+    "43-R"
+   ]
+  },
+  {
+   "short": "Report assembled",
+   "name": "The report is assembled mechanically",
+   "status": "Kept",
+   "kind": "kept",
+   "does": "Software joins the editor's prose and the Assumptions and caveats section into the final report. Exact duplicate caveats are removed and nothing else is changed.",
+   "why": "Keeping assembly mechanical means no model can drop or soften a caveat on the way out.",
+   "limits": "",
+   "cells": [
+    "48",
+    "61"
+   ]
+  }
+ ],
+ "whole_title": "Tested as a whole",
+ "whole": [
+  {
+   "title": "A first full run",
+   "text": "On 31 August 2026 every step ran on three scenarios, with nothing garbled and a follow-up sent each time. Each question took 14 to 18 minutes. This was a demonstration, so none of its numbers supports a claim.",
+   "study": "integration"
+  },
+  {
+   "title": "Head to head with the original design",
+   "text": "The complete harness ran 3 times on each of the 18 scenarios, and two AI judges compared its reports with saved answers from the original design. The main judge picked the harness in 56% of clear-cut matchups and the second judge in 33%, neither a clear difference, and a large win or loss was ruled out. So the added parts cost nothing a judge could detect. On real questions a follow-up went out in 46 of 54 runs (85%), far more often than on planted disagreements.",
+   "cells": [
+    "61"
+   ]
+  }
+ ],
+ "omits_title": "What it leaves out on purpose",
+ "omits": [
+  {
+   "what": "Instructions telling any model to be careful or to hedge",
+   "why": "They produce the named phrase and nothing more.",
+   "cells": [
+    "13",
+    "14",
+    "41"
+   ]
+  },
+  {
+   "what": "Using a model's own confidence to decide where a question goes",
+   "why": "Confidence-style measures failed when tested, and the project withdrew its earlier paper claiming the council knew when caveats were called for.",
+   "cells": [
+    "14",
+    "26",
+    "40",
+    "45"
+   ]
+  },
+  {
+   "what": "Letting specialists decide on their own to hand a question over",
+   "why": "They handed questions over about as often inside their field as outside it.",
+   "cells": [
+    "45"
+   ]
+  },
+  {
+   "what": "Loops that detect a problem and ask the model to fix it",
+   "why": "The model reworded the flagged text instead of removing the problem.",
+   "cells": [
+    "19"
+   ]
+  },
+  {
+   "what": "Seating a model because of its label",
+   "why": "Each fine-tune behaves in its own way, so the label predicts nothing.",
+   "cells": [
+    "42"
+   ]
+  },
+  {
+   "what": "Keyword counters as a measuring tool",
+   "why": "Our prompts told models to use the very phrases the counters looked for.",
+   "cells": []
+  }
+ ],
+ "never_title": "Numbers it must never be tuned toward",
+ "never_intro": "Pushing any of these numbers up or down would distort the behavior it is meant to show. They are watched, never chased.",
+ "never": [
+  {
+   "what": "How many caveat phrases an answer contains",
+   "why": "Instructions produce the phrase without the behavior.",
+   "cells": [
+    "41"
+   ]
+  },
+  {
+   "what": "AI judges' preference scores on caveats and caution",
+   "why": "Judges mark scripted caution down, so tuning toward them strips it out.",
+   "cells": [
+    "43"
+   ]
+  },
+  {
+   "what": "How often disagreements are named, questions handed over or follow-ups sent",
+   "why": "More follow-ups without new information recreate the empty exchange that appeared to push the editor the wrong way.",
+   "cells": [
+    "44"
+   ]
+  },
+  {
+   "what": "The share of caution passed along, w, or any other measured parameter",
+   "why": "These describe the system. They are not goals.",
+   "cells": []
+  },
+  {
+   "what": "Anything scored by the same tool that produced the feedback",
+   "why": "The model learns to satisfy the tool, not to improve.",
+   "cells": [
+    "19"
+   ]
+  }
+ ],
+ "never_ok": "The only numbers worth optimizing are checked from outside the system's own text: exact correctness on questions with known answers, and effects measured somewhere the system cannot rewrite.",
+ "risks_title": "Open risks and costs",
+ "risks": [
+  {
+   "title": "Which figures get protected is unexplained",
+   "text": "A second source protected some figures completely and others not at all, and two explanations failed.",
+   "cells": [
+    "47",
+    "49",
+    "50"
+   ]
+  },
+  {
+   "title": "Invented detail is only partly filtered",
+   "text": "Made-up citations appeared in 10% to 15% of live replies. The blocklist covers the ones already caught and nothing else.",
+   "cells": [
+    "56"
+   ]
+  },
+  {
+   "title": "Empty replies are flagged, not removed",
+   "text": "Two attempts to filter them failed, so every reply arrives with a flag and a reader has to judge it.",
+   "cells": []
+  },
+  {
+   "title": "Follow-ups depend on the disagreement list",
+   "text": "On planted problems the key disagreement was named only 21% to 58% of the time. On real questions follow-ups went out 85% of the time, so the planted rate is a floor, not a forecast.",
+   "cells": [
+    "53",
+    "61"
+   ]
+  }
+ ],
+ "replication_title": "Running it checks the findings again",
+ "replication": "The harness keeps measuring as it runs. In any new field it reports how much caution the specialists supplied and how much reached the report, which repeats the w measurement with a new editor and new questions. It can swap the wording of any proposed instruction to see whether only the phrase changes, as Cell 41 did. It records how often disagreements trigger follow-ups and whether they reach the right specialist. Wherever answers can be checked, it compares what judges prefer with what is correct. A faithful deployment therefore doubles as the outside test these findings still need.",
+ "scope": "All of this was measured with open models of 7 to 20 billion parameters running on one machine, on English business-advisory questions, mostly with one editor model family. Groups of 6 to 18 scenarios limit every result. The design should not be stretched beyond that without testing it again.",
+ "source": "docs/HARNESS_SEAT_ARCHITECTURE.md"
+}

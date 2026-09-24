@@ -1,0 +1,191 @@
+{
+ "batch": "L",
+ "cells": {
+  "59": {
+   "title": "Does a second source for a key figure still protect in live runs?",
+   "description": "Told which figure mattered, the planning step gave it to at least two specialists in all 40 plans. The editor then used the correct second source nearly as well as in our earlier planted test, but the drop in repeating the wrong value was too close to call.",
+   "outcome": "mixed",
+   "size": "80 runs over 8 scenarios, every step live",
+   "why": "Cell 47 found that giving a key figure to two specialists halved how often the editor repeated a wrong value. One specialist held the wrong value and the other the correct one, but we had inserted both values into saved answers ourselves. The rebuilt system, which we call the harness, relies on its planning step to write each specialist's question so that every key figure is covered at least twice. Cell 58 tried this with every step live and stopped at a checkpoint. The planning step had never been told which figure mattered, and specialists ignored private notes that had nothing to do with their question. Cell 59 repeated Cell 58 with one change: the planning step was told the key figure and had to make at least two of its three questions address it.",
+   "expectations": [
+    {
+     "id": "P59.1",
+     "text": "When a second specialist also held the key figure at its correct value, the editor would repeat the wrong value less often than when only one specialist had the figure.",
+     "outcome": "unclear",
+     "note": "It fell from 63% to 45% of runs, the expected direction, but the plausible range ran from a 35-point drop to a small rise, so it was too close to call."
+    },
+    {
+     "id": "P59.2",
+     "text": "With a second specialist holding the correct value, the editor would give the correct value more often, showing it used that source rather than just dropping the wrong one.",
+     "outcome": "held",
+     "note": "Use of the correct value rose from 5% to 48% of runs, a clear gain of 43 percentage points, close to the 50 points seen in Cell 47 when we inserted the values ourselves."
+    }
+   ],
+   "found": "All 80 runs completed, each with a live planning step, three live specialists and the editor. In all 40 plans, the planning step put the named figure into at least two questions. The specialists passed their private figures along in 85% to 95% of runs. A scoring problem with figures written with a space, such as \"37 %\", was caught at the first checkpoint and fixed before the main run.\n\nWithout the second source, the editor repeated the wrong value in 63% of runs and gave the correct value in 5%. With a second specialist holding the correct value, it repeated the wrong value in 45% of runs and gave the correct one in 48%. The rise in using the correct value, 43 percentage points, was a clear difference and close to the 50 points seen in Cell 47.\n\nThe drop in repeating the wrong value, 18 points, went the expected way but was too close to call. It was plausibly anywhere from a 35-point drop to a small rise. Live specialists' answers had already watered the wrong value down: without protection the editor repeated it in 63% of runs, against 90% in Cell 47. The protected level, 45%, matched Cell 47 exactly, so there was less of a drop to detect. In one scenario the result went the other way, with the wrong value repeated in every protected run against 60% unprotected.",
+   "means": "The rebuilt system's protection now has live evidence at every step. The planning step finds about 63% of key figures on its own (Cell 57). Told a figure, it covered it at least twice in 40 of 40 plans. Specialists passed the figures along 85% to 95% of the time, and the editor then used a correct second source far more often. The protection to expect overall is the share of figures found times the gain from a second source. Cell 58's lesson stands too: a specialist passes on a private note only when its question asks for it, which naming the figure guarantees. Why protection works fully on some scenarios and not at all on others is still unexplained.",
+   "later": null,
+   "entries": {
+    "8893": {
+     "label": "Plan",
+     "title": "Plan: repeat Cell 58, but tell the planning step the key figure",
+     "summary": "Everything matched Cell 58, including its two expectations and its checkpoints, except one change. The planning step was told which figure mattered and that at least two of its three questions had to address it. A new count tracked how many plans actually covered the figure at least twice. Cell 58's pilot runs were set aside, not reused."
+    },
+    "8910": {
+     "label": "Change to the plan",
+     "title": "Figures written with a space fooled our scoring, fixed and rescored",
+     "summary": "The first checkpoint read 5 of 8 and 4 of 8. Five of the seven misses were formatting: answers wrote \"37 %\" or \"4.6 m\" with a space, which our figure matching missed. One miss was real. We widened the matching for both versions, rescored the same outputs, and planned to rescore Cell 47's answers the same way for a fair comparison. It was the fourth formatting problem of this kind."
+    },
+    "8927": {
+     "label": "Result",
+     "title": "Correct second source used, drop in wrong values too close to call",
+     "summary": "All 80 runs completed, and every plan covered the figure at least twice. Use of the correct value rose from 5% to 48% of runs, close to Cell 47. Repeating the wrong value fell from 63% to 45%, too close to call, because live answers had already lowered the unprotected rate from Cell 47's 90%."
+    }
+   }
+  },
+  "60": {
+   "title": "Is the council more accurate than one model on harder questions?",
+   "description": "We wrote two rounds of harder questions with exact answers to test whether the council beats a single model on accuracy. The single model got about 98% right both times, leaving no room for a difference, so the council never ran and the question was closed as untestable.",
+   "outcome": "stopped",
+   "size": "216 then 180 single-model runs, council never run",
+   "why": "One of the project's weakest standing claims was that the council had shown no accuracy advantage over a single model, a claim that rested on a lack of evidence. It came from older cells scored with a keyword counter and from Cell 36, where accuracy was already 92% to 97%, too high to show a difference. We set out to settle it. We wrote questions in the style of our scenarios, each with an exact answer computed by a script. We planned to compare a single model, gpt-oss-20B, with the council running as the rebuilt system, which we call the harness. The single model would first answer each question 6 times. Only questions it got right 1 to 5 times would be kept, since the rest leave no room for a difference. We needed at least 20.",
+   "expectations": [
+    {
+     "id": "P60.1",
+     "text": "No direction was assumed. We would compare the council's accuracy with the single model's and record a gain, a loss, or no difference, judged against the smallest gap the test could detect.",
+     "outcome": "not-tested",
+     "note": "The council never ran. In both rounds too few questions were hard enough for the single model, and the rule set in advance allowed no third round."
+    }
+   ],
+   "found": "Round 1 used 36 questions built from about 8 templates, such as depreciation, staffing cost and break-even. Partway through, the longest questions came back empty: the model used its whole 8,192-token allowance thinking and never answered, so we raised the allowance to 16,384 tokens for the remaining runs. In the end the single model got 211 of 216 answers right (97.7%). Only 5 questions were in the range we needed, and those at 4 or 5 correct out of 6, so the cell stopped at the checkpoint with no council runs.\n\nBefore round 2 we set a rule: one more round, and no third. Round 2 moved the difficulty from arithmetic to rules that interact, with 30 questions from six templates such as termination payouts and overtime. Every rule was stated in the question and the arithmetic was simple. The single model did even better, 177 of 180 (98.3%), and only 3 of 30 questions were in range. Under the rule, the question was closed.",
+   "means": "Three measurements now agree: Cell 36 (92% to 97%), round 1 (97.7%) and round 2 (98.3%). On fully specified advisory questions, where every rule and figure is given, the single model is already near perfect, so a council has no room to add accuracy. The claim changed from \"no advantage found\" to \"advantage cannot be tested at this scale, for lack of room\". The council's case now rests on its three measured gains: AI judges prefer combined answers, a second source protects key figures, and follow-up questions to specialists resolve disagreements. Questions that leave things out or try to trick the model would be a new question. The question sets and screening code are kept for testing other models.",
+   "later": "Cell 61's notes later traced stalls during this cell's screening runs to the same cause, the model using up its length allowance while thinking. No later entry changed the accuracy result.",
+   "entries": {
+    "9131": {
+     "label": "Plan",
+     "title": "Plan: harder questions with exact answers, single model against council",
+     "summary": "We would write 36 questions whose answers a script computes exactly. The single model would answer each 6 times first, and only questions it got right 1 to 5 times would be kept, with at least 20 needed. The council would then answer each kept question 3 times. No direction was assumed."
+    },
+    "9204": {
+     "label": "Change to the plan",
+     "title": "Longest questions came back empty, so the thinking allowance was raised",
+     "summary": "On the longest questions the model spent its whole 8,192-token allowance thinking and never gave an answer. Such a question could look hard for the wrong reason. Before the last 10 or so runs we raised the allowance to 16,384 tokens and kept the finished runs. It was the fourth time this problem had appeared."
+    },
+    "9218": {
+     "label": "Stopped",
+     "title": "Round 1 stopped: the single model got 97.7% right",
+     "summary": "The single model got 211 of 216 answers right, and only 5 of 36 questions were in the range we needed. The cell stopped and no council runs took place. We then set a rule: one more round, with the difficulty moved to interacting rules, and no third round if that also failed."
+    },
+    "9246": {
+     "label": "Plan",
+     "title": "Round 2 questions fixed: interacting rules, simple arithmetic",
+     "summary": "We fixed 30 questions from six rule templates, such as termination payouts, claim-processing order and retention deadlines. Each question stated its rules in full and the arithmetic was simple. The questions from each template had to follow at least 3 different rule paths. Checks caught answers that equalled a stated limit, which could be guessed, and those questions were rebuilt."
+    },
+    "9261": {
+     "label": "Result",
+     "title": "Round 2 was even easier, so the question was closed as untestable",
+     "summary": "The single model got 177 of 180 answers right (98.3%), higher than round 1, and only 3 of 30 questions were in range. Under the rule there was no third round. The accuracy question was closed as untestable for lack of room: the single model is already near perfect on fully specified questions."
+    }
+   }
+  },
+  "61": {
+   "title": "Do AI judges prefer the rebuilt system over the original design?",
+   "description": "We ran the whole rebuilt system on our 18 scenarios and had two AI judges compare its reports with saved answers from the original design. Neither judge found a clear preference. The main judge's results ruled out a large win or a large loss.",
+   "outcome": "unclear",
+   "size": "54 new runs of the rebuilt system, 108 judged pairs",
+   "why": "By now each part of the rebuilt system, which we call the harness, had been tested on its own. No cell had asked whether AI judges prefer its finished reports to what the original design produced, which is what someone deploying it would want to know. This was a whole-package comparison with many differences at once, so it could show whether the package wins but not which part is responsible. The earlier cells answer that. The original design's answers were saved from Cell 41, where specialists read the full scenario and the editor combined their answers. The harness ran live 3 times on each of the 18 scenarios. We judged what a user would receive, the report plus its attached caveats section. The same editor model wrote both sides, so a judge's liking for that model's writing would affect both sides equally.",
+   "expectations": [
+    {
+     "id": "P61.1",
+     "text": "No direction was assumed. We would measure the harness's share of wins among matchups with a consistent winner, knowing only a strong preference, beyond about 65% to 70%, could be detected.",
+     "outcome": "unclear",
+     "note": "The main judge picked the harness in 27 of 48 matchups (56%), the second judge in 5 of 15 (33%). Neither was a clear difference, though the main judge ruled out a large win or loss."
+    }
+   ],
+   "found": "All 54 runs of the harness completed once the length allowances were raised. Each of the 108 pairs was judged in both orders by two AI judges, and a pair counted only when the same side won both times.\n\nThe main judge, gpt-oss-20B, picked a consistent winner in 48 pairs: 27 for the harness and 21 for the original design. That is 56% for the harness, not a clear difference from an even split. The second judge, Qwen3-VL, from a different model family, picked a consistent winner only 15 times: 5 for the harness and 10 for the original, leaning the other way on very few matchups. The main judge's results rule out a big win for the harness (77% of matchups or more) and a big loss (37% or less).\n\nWith the caveats section removed, the main judge's share for the harness fell to 49%, so the section moved preference 7 points toward the harness, a measurement without a pass or fail test. Reports were of similar length, 8,725 characters with the caveats section against 7,758, and carried 5 caveats each on average. Follow-up questions went to a specialist in 46 of 54 runs (85%), against 21% to 58% in earlier tests with planted disagreements.",
+   "means": "The judges showed no clear preference between the harness and the original design, and a large difference was ruled out. The harness's standing with AI judges comes from combining several answers in the first place (Cell 43), which both designs share. Its distinctive parts, a second source for key figures, the separate caveats section and follow-up questions to specialists, were never meant to win preference. They rest on their own cells, and adding them cost nothing we could detect. Real disagreements between specialists turned out to be common: follow-up questions went out in 85% of runs, far more often than in earlier tests with planted disagreements. The comparison used one editor model and our 18 scenarios.",
+   "later": null,
+   "entries": {
+    "9294": {
+     "label": "Plan",
+     "title": "Plan: the whole rebuilt system against the original design",
+     "summary": "The original design's answers came from saved Cell 41 runs. The rebuilt system would run live 3 times on each of 18 scenarios, each run paired with two saved answers, 108 pairs in all. Two AI judges from different model families would judge every pair in both orders, counting a win only when the same side won both times. A second pass by the main judge would remove the caveats section to see its effect."
+    },
+    "9347": {
+     "label": "Change to the plan",
+     "title": "Failed runs traced to the model running out of room while thinking",
+     "summary": "Some runs of the rebuilt system aborted. Server logs showed clean completions, so the server was not at fault. Steps with a 2,048-token allowance returned nothing when the model thought at length. We raised every small step's allowance, most to 4,096 tokens and the editor's write-up to 12,288, and kept the finished runs. It was the fifth time this problem had appeared."
+    },
+    "9361": {
+     "label": "Change to the plan",
+     "title": "Duplicate caveats removed before any judging",
+     "summary": "Joining each specialist's caveats into the attached section had produced exact duplicates. Before the first judge call we removed the exact duplicates, kept the order, and left the report's prose untouched."
+    },
+    "9367": {
+     "label": "Result",
+     "title": "No clear preference either way, and large differences ruled out",
+     "summary": "All 54 runs completed. The main judge picked the rebuilt system in 27 of 48 matchups with a consistent winner (56%), the second judge in 5 of 15 (33%). Neither was a clear difference, but the main judge ruled out a large win or loss. Follow-up questions went to a specialist in 46 of 54 runs."
+    }
+   }
+  }
+ },
+ "studies": {
+  "gates": {
+   "title": "Checking two filters for specialists' follow-up replies",
+   "description": "We tested two filters for specialists' follow-up replies on saved replies with known labels. The filter that blocks known made-up citations passed with no false hits or misses. The filter meant to catch replies with no real content failed in two attempts and was not adopted.",
+   "outcome": "mixed",
+   "size": "No new answers, only saved replies re-checked",
+   "why": "The rebuilt system, which we call the harness, can send a follow-up question to a specialist to settle a disagreement. Two filters were planned for the replies. The first would drop a reply that adds nothing to the specialist's first answer. Cell 44 had hinted, without a formal test, that a reply that sounds helpful but adds no new information can push the editor the wrong way. The second would block made-up legal citations. In Cells 54 and 56, live replies invented court decisions, and the same invented names kept coming back, so a fixed list could catch them. Before building either filter into the system, we checked each against saved replies whose correct labels we already knew, with pass marks written down in advance.",
+   "expectations": [],
+   "found": "The blocklist filter started from three invented citations found earlier, such as \"Rosenbaum v. Uber\". Its first check showed 2 false hits, but both were errors in our answer key, not in the filter. With the key corrected, it made 21 correct hits, no false hits and no misses across 141 saved replies. One of those hits was a reply with made-up citations that our answer key had missed.\n\nThe content filter failed twice. In the first attempt, two AI judges were asked whether a reply stated at least one specific new fact, and both had to agree. The test set included 6 informative replies and 6 replies we had written to sound helpful while adding no new information. The filter passed all 6 informative replies and all 21 real replies from Cell 54, but dropped only 3 of the 6 content-free ones, short of the 5 required. Of the other 3, one was passed and two were flagged.\n\nIn the second attempt, each judge had to quote the most specific new fact or say there was none. Code then checked that the quote appeared in the reply, was not in the first answer, and contained a number or a name. That dropped all 6 content-free replies and passed 5 of 6 informative ones, but passed only 10 of the 21 real replies (48%), short of the 80% required. The likely cause, which could not be checked because the quotes were not saved, was judges' quotes not matching long replies full of tables word for word.",
+   "means": "The blocklist filter was cleared for use in the rebuilt system. The content filter was not. Under the rule set in advance, there is no third attempt without new labeled examples, and none exist: the only content-free replies on file are six we wrote ourselves, none in the style of live replies. Until then, follow-up replies are delivered with a warning flag rather than filtered, and the risk that a reply with no new information sways the editor stays open.",
+   "later": null,
+   "related": [
+    "44",
+    "54",
+    "56"
+   ],
+   "entries": {
+    "entry-8972": {
+     "label": "Result",
+     "title": "First round: the blocklist filter passes, the content filter fails",
+     "summary": "Pass marks were written down before any checking. After 2 errors in our answer key were fixed, the blocklist filter made 21 correct hits, no false hits and no misses across 141 saved replies. The first content filter passed every informative reply but dropped only 3 of 6 content-free ones, short of the 5 required."
+    },
+    "entry-9039": {
+     "label": "Result",
+     "title": "Second content filter also fails, so no third try for now",
+     "summary": "The second design made the judges quote the new fact and had code check the quote. It dropped all 6 content-free replies but passed only 10 of 21 real replies, short of the 80% mark. As agreed in advance, there is no third try without new labeled examples, and replies are delivered with a warning flag meanwhile."
+    }
+   }
+  },
+  "integration": {
+   "title": "First full run of the rebuilt system from start to finish",
+   "description": "We ran the whole rebuilt system once on each of three scenarios to check that every step works together. Every step ran in all three, at 14 to 18 minutes per question. It was a demonstration with no expectations, so none of its numbers supports a claim.",
+   "outcome": "measured",
+   "size": "3 scenarios, one run each",
+   "why": "By this point each part of the rebuilt system, which we call the harness, had been tested on its own in earlier cells. The parts had never all run together. We ran the whole system once on three scenarios as a demonstration. We wrote down in advance that there were no expectations and that no number from the run would support any claim. The aim was to see every step work from start to finish and to record timings and other operating data.",
+   "expectations": [],
+   "found": "All three runs finished, no specialist produced garbled or empty output, and every step ran in every scenario. The screening test a model must pass before serving as a specialist ran live and passed. The planning step named 4 to 5 key figures per scenario and wrote the specialists' questions. Its own coverage check read between 3 of 4 and 5 of 5.\n\nAfter the specialists answered, two AI judges marked which kinds of caveat each answer contained, and we kept quoted caveats only for kinds both judges marked, 4 to 5 per report. This used a whole-answer version of our checked sentence-by-sentence method, which we noted as a limitation. The editor then listed disagreements between specialists (5 to 24 lines). In all three scenarios a follow-up question went to the specialist named in the first disagreement: finance once, healthcare twice. No reply matched the list of known made-up citations, and each reply was delivered with a warning flag, since the content filter had not passed its tests.\n\nThe final reports ran from 3,699 to 9,576 characters, with the caveats in a separate section at the end. Each question took 14 to 18 minutes. One weakness was fixed along the way: the run's log had been saved only at the end.",
+   "means": "The parts of the rebuilt system worked together without breaking, at 14 to 18 minutes per question. As agreed in advance, none of these numbers supports a claim. The assembled system was later tested against the original design in Cell 61.",
+   "later": null,
+   "related": [
+    "30",
+    "42",
+    "44",
+    "48",
+    "53",
+    "54",
+    "55",
+    "57",
+    "59",
+    "61"
+   ],
+   "entries": {
+    "entry-9080": {
+     "label": "Result",
+     "title": "Demonstration run: every step of the rebuilt system worked together",
+     "summary": "Planned in advance as a demonstration, with no expectations. The whole system ran once on each of three scenarios: every step ran, no specialist's output was garbled, a follow-up question went out each time, and each run took 14 to 18 minutes. A logging weakness was fixed. No number here supports a claim."
+    }
+   }
+  }
+ }
+}

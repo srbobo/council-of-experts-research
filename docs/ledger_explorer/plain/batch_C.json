@@ -1,0 +1,269 @@
+{
+ "batch": "C",
+ "cells": {
+  "14": {
+   "title": "Does the council leave out caveats on questions that need none?",
+   "description": "We wrote three new questions on the specialists' own topics that need no caveats. With specialists consulted, the council was no better than a single model with an instruction at leaving caveats out, and the claim that it knows when to hold back was retracted.",
+   "outcome": "failed",
+   "size": "30 runs over 3 new questions, plus reference runs",
+   "why": "In Cell 8, the council's final answers carried no cautious language at all on a simple control question that calls for no caveats. A single model with a standing instruction to flag uncertainty scored 0.15 cautious phrases per 1,000 characters. That zero was the main support for a draft paper, the calibration paper, which argued that the council knows when caveats are called for. It rested on one question and 5 runs per version, so we planned three more such questions. While writing the plan we found a flaw. The control question was off-topic for the specialists by design, so in the council's runs the planning step consulted none of them. In that case the editor gets a plain direct-answer prompt without the instruction to keep the specialists' caveats. We rewrote the test around questions squarely in healthcare, law and finance.",
+   "expectations": [
+    {
+     "id": "P14.1",
+     "text": "On questions in the specialists' own areas that need no caveats, with specialists consulted, the council would stay near zero, with even the top of its plausible range below 0.10.",
+     "outcome": "failed",
+     "note": "The council averaged 0.64 cautious phrases per 1,000 characters, plausibly as high as 0.95, far past the 0.10 limit."
+    },
+    {
+     "id": "P14.2",
+     "text": "The council would still add less needless caution than a single model with a standing instruction to flag uncertainty, by a clear margin.",
+     "outcome": "failed",
+     "note": "There was no clear difference, and the council's average was the higher of the two, 0.64 against 0.31."
+    },
+    {
+     "id": "P14.3",
+     "text": "For each question we would report how often the planning step consulted no specialists, to tell holding back by the planning step apart from holding back by the instruction.",
+     "outcome": "not-graded",
+     "note": "Every council run consulted its specialists and received the instruction. Needless caution then appeared on all three questions, at 0.49, 0.15 and 1.27."
+    }
+   ],
+   "found": "The two main versions ran 15 times each, 5 times on each new question. We confirmed that every council run consulted its specialists and that the editor received the keep-caveats instruction, which had never happened in the council's runs on the old control question.\n\nOn these questions, the council's final answers averaged 0.64 cautious phrases per 1,000 characters (plausibly anywhere from 0.36 to 0.95). The single model with a standing instruction averaged 0.31 (0.21 to 0.42). Our pass mark was that the council's upper end stay below 0.10. The council was highest, at 1.27, on a pure arithmetic question about depreciation where every figure was given.\n\nSo the council's old zero came entirely from the planning step declining to consult anyone on an off-topic question. When the instruction actually ran, it did not hold back needless caveats. The two ranges overlapped, so we could not say the council was worse, but it was not better. Two reference versions were still running and could not change the result.",
+   "means": "The claim that the council knows when to hold back was wrong. The calibration paper's central claim was retracted in full rather than reworded. Cell 8's claim stayed withdrawn, now shown wrong rather than merely unmeasured, and every draft dropped the idea that the council design makes caveats better targeted. Across every setup and change tested so far, nothing made the system add caveats only where they were called for. Instructions raised the amount reliably, and training lowered it only weakly.",
+   "later": "Cell 24 re-checked this on the kind of caveat our scoring measured best, saying a number is an estimate. On these questions the council flagged estimates in 73% of runs against 20% for the single model, a clear difference, reported without a pass/fail test. So on that kind, the council was worse. Like all keyword-counter figures, the numbers here were later marked provisional.",
+   "entries": {
+    "1632": {
+     "label": "Plan",
+     "title": "Test the council's zero on three more questions that need no caveats",
+     "summary": "The council's zero rested on one control question with 5 runs per version. We planned three new questions with every figure stated and nothing to estimate, one each for healthcare, law and finance, each answered 5 times by four versions, 60 runs. We wrote down in advance that if the result failed, the calibration paper's main claim would be rewritten."
+    },
+    "1686": {
+     "label": "Mistake caught",
+     "title": "The control question never ran the instruction being tested",
+     "summary": "The control question was off-topic, so in the council's runs the planning step consulted no specialists and the editor used a plain prompt without the keep-caveats instruction. In one setup the question scored 0.00 when no specialist was consulted and 0.40 when specialists were. Before any runs, we switched to on-topic questions and checked routing on every run."
+    },
+    "1832": {
+     "label": "Result",
+     "title": "Both main expectations failed and the calibration claim was retracted",
+     "summary": "With specialists consulted and the instruction applied in every council run, the council scored 0.64 against 0.31 for the single model with an instruction. The pass mark was below 0.10. The calibration paper's central claim was retracted in full."
+    }
+   }
+  },
+  "15": {
+   "title": "Does the council do better when questions need many kinds of caveat?",
+   "description": "We wrote 8 new questions calling for one to four kinds of caveat. The council did not rise with the number of kinds and never beat a single prompted model by a clear margin at any level, so its last edge was noise and it had no measured advantage left.",
+   "outcome": "failed",
+   "size": "80 runs over 8 new questions, plus reference runs",
+   "why": "After Cell 14, the council had no measured advantage in holding back needless caveats. It had none in the overall amount of caution either, 0.57 cautious phrases per 1,000 characters against 0.50 for a single model with an instruction, with no clear difference. One result still favored it. On a question that needed several different kinds of caveat at once, the council reached 0.91 against the single model's 0.48, or 1.82 times the council's own usual level, while the single model stayed flat. The idea was capacity. Each specialist covers one area with attention to spare, while one model asked for four things at once spreads itself thin. This was the last idea under which the council design had any advantage.",
+   "expectations": [
+    {
+     "id": "P15.1",
+     "text": "The council's caution would rise steadily as questions called for more kinds of caveat, with a clear difference between four kinds and one.",
+     "outcome": "failed",
+     "note": "It scored 0.51, 0.99, 0.73 and 0.60 for one to four kinds. It did not rise steadily, and four kinds overlapped with one."
+    },
+    {
+     "id": "P15.2",
+     "text": "The single model with an instruction would not rise with the number of kinds: its results at four kinds and at one would overlap.",
+     "outcome": "held",
+     "note": "It stayed flat as expected. But the council was flat too, so this no longer told the two apart."
+    },
+    {
+     "id": "P15.3",
+     "text": "At some level from one to four kinds, the council would beat the single model by a clear margin. We would report the lowest such level.",
+     "outcome": "failed",
+     "note": "No such level existed. The two overlapped at every level from one to four kinds."
+    },
+    {
+     "id": "P15.4",
+     "text": "Questions calling for more kinds also consult more specialists, so this design cannot separate the two. We would record specialists consulted per run and report the link.",
+     "outcome": "not-graded",
+     "note": "The result entry did not report this link."
+    }
+   ],
+   "found": "Each new question was written to call for a set number of the four kinds of caveat our counter detects: information may be out of date, a number is an estimate, rules differ by place, and general hedging. The two main versions completed all 80 runs, 40 each. At no level did the council and the single model separate. By number of kinds from one to four, the council scored 0.51, 0.99, 0.73 and 0.60 cautious phrases per 1,000 characters, and the single model 0.57, 0.71, 0.62 and 0.45. Pooled over all levels, the council scored 0.71 against 0.59, with no clear difference. A plain single model with no instruction was still running as a reference and could not change the result.\n\nThe earlier 1.82 times was noise from a single question. Two questions at the same level differed more than any change across levels. At the level of two kinds, the two questions scored 0.42 and 1.57. With only one question per level, that noise would have looked like a clean curve.\n\nThe council also used only 1.2 to 1.7 of the four kinds of caveat, whatever the question called for. Asked for four different kinds, it repeated the same one or two in slightly different amounts. It was not dividing the work across specialists to cover more ground.",
+   "means": "With this, the council had no measured advantage on anything we had tested. On covering an answer's key points, a single 20B model had beaten it, 42% against 25% to 31%. It showed no clear difference on the amount of caution, added more needless caution on average (Cell 14), and stayed flat under heavier demands. One model of similar size with a good instruction matched or beat a four-model council at roughly a quarter of the computing cost. We recorded this as the program's main result, and a negative one. What still held was about where in a pipeline caution is decided.",
+   "later": "Cell 24 later limited the claim that the council used only 1.2 to 1.7 kinds of caveat. Our keyword counter misses most instances of three of the four kinds, so the true number is unknown. The comparisons were unaffected. Later cells found gains on questions this cell never tested, such as AI judges preferring combined answers (Cell 43).",
+   "entries": {
+    "1893": {
+     "label": "Plan",
+     "title": "Test whether the council gains as questions demand more kinds of caveat",
+     "summary": "We would write 8 new questions, two for each level from one to four kinds of caveat, all of similar length, and fix each level before any run. The council, a single model with an instruction and a plain single model would answer each 5 times, 120 runs. If the council did not rise with the number of kinds, the earlier edge would count as noise."
+    },
+    "1953": {
+     "label": "Change to the plan",
+     "title": "The new questions came out shorter than planned",
+     "summary": "We planned questions of 80 to 110 words. They came out at 61 to 79 words, closely matched across levels. The one-kind questions were slightly longer than the four-kind ones, so any effect of length would work against our expectation. We wrote this down before running."
+    },
+    "1961": {
+     "label": "Result",
+     "title": "No edge at any level, plus a correction to Cell 8B",
+     "summary": "The council never beat the single model by a clear margin at any level and did not rise with the number of kinds, so the earlier edge was noise and the council had no measured advantage left. The entry also corrected Cell 8B: models had seemed to share one habitual level of caution only because most answers had no caveats at all and a per-length rate hid real differences in amount."
+    }
+   }
+  },
+  "16": {
+   "title": "Can GRPO training teach the editor to pass along caveats faithfully?",
+   "description": "We planned to train the editor with GRPO, a reinforcement learning method, to keep the caveats the specialists raised and add none of its own. Every attempt ran out of memory at the first step on our machine, so the experiment never ran.",
+   "outcome": "stopped",
+   "size": "No training: all 4 attempts ran out of memory",
+   "why": "The main paper's central claim was that training a model's weights could not change how the editor handles caveats. It rested on two attempts, Cell 6b and Cell 11, and both were stand-ins for real reinforcement learning (RL). Cell 6b used ORPO, an offline preference-training method, and Cell 11 trained on the best of several sampled answers. A reviewer could fairly say we never actually did RL. The mlx-lm-lora training library supported GRPO, an RL method in which the model writes several answers to each prompt and learns from which scored best, using a reward computed by our own code. The 108 saved editor prompts from Cell 11 meant no pipeline had to run during training.",
+   "expectations": [
+    {
+     "id": "P16.1",
+     "text": "Tested with the keep-caveats clauses removed from its prompt, the trained editor would show more cautious language on questions that call for caveats than the untrained editor, by a clear margin.",
+     "outcome": "not-tested",
+     "note": "Never tested. Every training attempt ran out of memory before the first step."
+    },
+    {
+     "id": "P16.2",
+     "text": "The trained editor would add more kinds of caveat to questions that need them than to ones that do not, moving from the untrained editor's ratio of about 1 toward the specialists' 2.6.",
+     "outcome": "not-tested",
+     "note": "Never tested. A check before launch had already shown that the reward separated the two kinds of question only weakly."
+    },
+    {
+     "id": "P16.3",
+     "text": "We expected the model to game the reward: its score would rise while it copied more specialist text, wrote outside the normal length range, or lost favor with AI judges.",
+     "outcome": "not-tested",
+     "note": "Never tested, because training never started."
+    },
+    {
+     "id": "P16.4",
+     "text": "We would check whether the instruction still raised caution after training, as in Cell 11, where it raised caution 1.58 times in the trained editor against 1.82 times untrained.",
+     "outcome": "not-tested",
+     "note": "Never tested, because training never started."
+    }
+   ],
+   "found": "No training step ever ran. We tried four setups: four answers per prompt, then two, then fewer trainable layers and a shorter answer limit, then online DPO in place of GRPO. All four stopped at the first step with an out-of-memory error. The last also tried to download a second 7B model to act as judge.\n\nWe measured the cause. The machine had 34.4 GB of memory, but only about 19 GB was free after desktop apps and the operating system. Each training prompt held three full specialist answers, 2,154 tokens at the median. GRPO keeps a score for every entry in Qwen2.5's 151,665-token vocabulary at every position in the text, for both the model being trained and a reference copy. That took 3.2 to 3.9 GB per sequence, doubled for the reference copy, on top of the model itself. None of the settings we could change reduces it, since it grows with text length and vocabulary size.\n\nThe plan had changed twice before this. A timing test showed each answer took over 80 seconds, so we cut 108 prompts to 40 and went over them three times. Then we replaced the reward. Instead of counting kinds of caveat, it scored whether the editor kept what the specialists raised and added nothing they had not.",
+   "means": "We never ran GRPO, so we cannot say it failed. What we can support is that training failed with offline preference methods (ORPO and CPO) on both the specialists and the editor, and with training on the best of several sampled answers. Full RL could not be attempted on a 34 GB machine. The objection that we never did real RL still stands, and we say so. For anyone trying this on consumer hardware, the limit is prompt length times vocabulary size, not model size.",
+   "later": null,
+   "entries": {
+    "2060": {
+     "label": "Plan",
+     "title": "Train the editor with GRPO, a real reinforcement learning method",
+     "summary": "We planned to train Qwen2.5-7B-Instruct as the editor with GRPO on the 108 saved editor prompts from Cell 11, matched to Cells 6b and 11. The reward favored more kinds of caveat on questions that need them and fewer on questions that do not, with checks against gaming. We expected gaming anyway. The entry also records clearing disk space, from 23 GB to 56 GB free."
+    },
+    "2162": {
+     "label": "Change to the plan",
+     "title": "Fewer prompts and more passes after a timing test",
+     "summary": "A timing test showed each answer took over 80 seconds, and every workable setup would take about 11 hours. We cut the prompts from 108 to 40 and went over them three times, since GRPO learns from its own new answers. The 7 test scenarios stayed out of training, so gains that did not carry over to them would show."
+    },
+    "2204": {
+     "label": "Change to the plan",
+     "title": "A new reward: keep what the specialists raised, add nothing",
+     "summary": "The first launch ran out of memory before any training, and we rewrote the plan. The specialists raised 2.6 times as many kinds of caveat on questions that need them as on questions that do not, while the editor showed no difference. The new reward scored whether the editor kept what the specialists raised and penalized caveats nobody raised."
+    },
+    "2280": {
+     "label": "Note",
+     "title": "Checking the reward before launch",
+     "summary": "The reward's checks worked on real data: empty, too-short, copied and repetitive answers all scored the minimum. A repetitive answer that fooled the first version led to a new check. But the reward barely separated the two kinds of question, 0.48 against 0.38, because the specialists raise caveats even where none are needed."
+    },
+    "2299": {
+     "label": "Stopped",
+     "title": "Not runnable on our hardware",
+     "summary": "All four setups ran out of memory at the first step. We measured why: long prompts times a 151,665-token vocabulary, stored for both the trained model and a reference copy, exceeded the roughly 19 GB free. The record says GRPO was never run, not that it failed."
+    }
+   }
+  }
+ },
+ "studies": {
+  "execution-path-audit": {
+   "title": "Which results measured an instruction that never ran?",
+   "description": "We checked every experiment that changed the editor's instructions for runs where no specialist was consulted, so the change never took effect. 39 runs across 11 versions were affected, all on one control question, and two earlier claims were withdrawn.",
+   "outcome": "measured",
+   "size": "No new runs, saved runs checked for skipped prompts",
+   "why": "While planning Cell 14, we found a flaw in our code. When the planning step consulted no specialists, the system skipped the editor's normal instructions and used a plain direct-answer prompt. Any replacement instruction we were testing was dropped silently, with no error and no record of which prompt had run. We checked every earlier experiment that changed the editor's instructions for runs like this, to see which results had measured a prompt that never ran.",
+   "expectations": [],
+   "found": "39 runs across 11 versions were affected, and every one was on the simple control question that calls for no caveats and is off-topic for the specialists. No run on the six questions that do call for caveats was affected. Results built on those questions, or on single models with no planning step, stand. These include Cells 6, 6c and 8B and the training versions in Cell 11.\n\nTwo published claims were wrong. Cell 8 said the council holds back needless caveats, scoring 0.00 against 0.15 for a single model with an instruction. All 5 of those council runs consulted no one and never used the keep-caveats instruction. Cell 13 said every clause of that instruction kept the score at exactly 0.00. But all six of its versions ran the same plain prompt on that question, so the claim was never tested. Both were withdrawn.\n\nA second automatic addition, a note about recent information added to questions flagged as time-sensitive, fired at similar rates across compared versions, so it explained no differences.",
+   "means": "Cell 14 became the first valid test of whether the council's instruction holds back needless caveats, because every earlier measurement had run a different prompt. Both draft papers had to drop that claim until Cell 14 reported. Three earlier checks had missed the flaw because they confirmed the numbers, not which prompt produced them. From then on, a run that swapped in a new editor instruction had to confirm a specialist was consulted, and runs had to record which editor prompt was used.",
+   "later": "Cell 14 then ran that first valid test. The council was not better at holding back, so Cell 8's withdrawn claim turned out wrong rather than merely unmeasured. The project's claims list still names this flaw first among its measurement problems: 39 runs measured a prompt that never ran.",
+   "entries": {
+    "entry-1762": {
+     "label": "Correction",
+     "title": "39 runs measured a prompt that never ran, and two claims were withdrawn",
+     "summary": "All 39 affected runs were on the one control question that is off-topic for the specialists, so results built on the other six questions stand. Cell 8's claim that the council holds back needless caveats, and Cell 13's claim that every instruction clause did so, were withdrawn. The fix was to check that specialists were consulted and record which prompt ran."
+    }
+   },
+   "related": [
+    "6",
+    "6c",
+    "8",
+    "8B",
+    "11",
+    "13",
+    "14"
+   ]
+  },
+  "paper-behavior": {
+   "title": "Fourth paper: what combining answers does to caveats",
+   "description": "We wrote a fourth paper describing how the editor treats caveats, using saved runs only. Its new measurement traced each caveat in final answers to its source. The editor dropped a similar share whatever it got and added more of its own when given little.",
+   "outcome": "measured",
+   "size": "A paper written from saved answers, no new runs",
+   "why": "By early August the council had no measured advantage and the calibration paper had been retracted. We wanted a paper that describes how the editor step behaves, not one arguing that something worked or failed. That changes how negative results read. \"Training did nothing\" is a failure in a paper about outcomes. \"The editor's caution stays the same under training\" is a fact that any account of its behavior has to fit.",
+   "expectations": [],
+   "found": "The paper had four parts: what the editor does to the caveats it receives, what it responds to (instructions), what leaves it unmoved (everything else), and a short overall description. Its new measurement traced every kind of caveat in the final answer to its source. On questions that call for caveats, the specialists raised 2.51 kinds on average. The editor kept 1.81, dropped 0.70 and added 0.12 of its own, so 94% of what it wrote traced back to a specialist. On questions that need none, the specialists raised 0.97. The editor kept 0.68, dropped 0.29 and added 0.38, so only 64% traced back.\n\nThree patterns stood out. The editor dropped a similar share either way, 28% and 30%. It added about three times as many of its own when given little, so over a third of its caution on those questions came from no specialist. And the gap between question types shrank, from 2.59 times at the specialists to 1.82 times in the final answer.\n\nThe paper described the editor as though it aims for a set amount of caution. Given more, it trims, and given less, it fills in. Two expectations that follow from this were checked against existing data after the fact, and the paper says so.",
+   "means": "That one account tied together four earlier puzzles. It explained why making the specialists more cautious left final answers less cautious, and why final answers looked unaffected by their input. It also explained why needless caveats appeared, and why the specialists' distinction between question types faded. We judged this the most defensible of the four drafts because its core claim is a measurement. Its limitations covered the GRPO attempt that could not run, a withdrawn set of garbled runs, and the skipped-instruction mistake and its correction.",
+   "later": "The same day, a second check across four editors found the final amount does rise with what the specialists supply, only less than in proportion, so the set-amount description was too strong. An audit on 5 August replaced an example quote in the paper that appeared in no run. Cell 23 weakened its claim of confirmation by two measuring tools. The claims list says the draft still needs a provisional notice.",
+   "entries": {
+    "entry-2343": {
+     "label": "Note",
+     "title": "A fourth paper on what the editor does to the caveats it receives",
+     "summary": "A 7-page paper built from saved runs only. It restated results where nothing changed as stable properties of the editor, added a measurement tracing each caveat to its source, and described the editor as aiming for a set amount of caution. With the calibration paper retracted, we judged this the most defensible of the four drafts."
+    }
+   },
+   "related": [
+    "6b",
+    "8B",
+    "11",
+    "14",
+    "16"
+   ]
+  },
+  "tension-enumeration": {
+   "title": "Measuring the council's lists of disagreements between specialists",
+   "description": "Only the council's answers listed disagreements between specialists, the one output a single prompted model could not match. Of the listed disagreements that cited a figure, 89% used figures from the specialists. An automatic check of the rest failed.",
+   "outcome": "measured",
+   "size": "Saved answers re-analyzed, no new runs",
+   "why": "We reviewed which parts of our design were new. Step-back prompting, where the model first considers the broader question, is borrowed from earlier work, and we never tested removing it. A separate editor step is standard in Mixture-of-Agents (MoA) designs. The editor's habitual level of caution we had already weakened ourselves, and separate work in another field found the same effect. The fourth part, the editor's required list of disagreements between specialists, was new, so we measured it for the fourth paper.",
+   "expectations": [],
+   "found": "The split was all or nothing. In 195 council runs across all versions, 86% to 100% of answers had a section listing disagreements, with 3.0 to 3.9 per answer. In 50 runs of a plain merge of the same specialists' answers, and 90 runs of a single model with an instruction, none did. A single model cannot do this by design, because a disagreement needs two sources. It was the only output in the program where a well-prompted single model did not match the council.\n\nWe checked the 210 listed disagreements that cite a figure. 89% used figures found in the specialists' answers, and 11% cited a figure found nowhere in the specialists' answers. Set beside the 64% traceability of caveats when specialists supplied little, the editor made up caveats far more readily than disagreements.\n\nOur attempt to check the rest automatically failed. An NLI model, which judges whether one text supports another, rated only 16% of the figure-citing disagreements supported, against 89% for the figure check. Splitting each disagreement into its parts raised that to 48% with at least one part supported. A listed disagreement paraphrases two specialists at once, so no single sentence in the specialists' answers supports it.",
+   "means": "Listing disagreements was the one part of the design that is both new and beyond a single model, and it became a new section of the fourth paper. We reported the figure check and recorded the 139 disagreements without figures as not measurable with our tools. Settling them needs human readers or an AI judge shown both specialists' answers. This was the program's third finding about a measuring tool not measuring what we assumed. Repeatedly, the disagreement between tools told us more than either number alone.",
+   "later": "An audit on 13 August found the editor took a position on about 80% of the disagreements it listed and dropped none outright, though it could not say whether those positions were right. The required list later became the trigger for sending follow-up questions to specialists in the rebuilt system, which we call the harness (Cell 44 onward).",
+   "entries": {
+    "entry-2392": {
+     "label": "Result",
+     "title": "Only the council lists disagreements, and most cited figures check out",
+     "summary": "In 195 council runs, 86% to 100% of answers listed disagreements between specialists, and no answer from a plain merge or a single model did. Of disagreements citing a figure, 89% used figures from the specialists. An NLI model could not check the rest, so 139 were recorded as not measurable with our tools."
+    }
+   },
+   "related": [
+    "8",
+    "8B"
+   ]
+  },
+  "provenance-replication": {
+   "title": "Re-checking where the editor's caveats come from, on four editors",
+   "description": "We repeated the tracing of caveats back to specialists on 358 saved council runs with four different editors. The main pattern held, but the final amount of caution rose with what the specialists supplied, so we corrected the fourth paper's set-target claim.",
+   "outcome": "measured",
+   "size": "358 saved council runs re-analyzed, no new runs",
+   "why": "The fourth paper's central measurement traced each caveat in the final answer back to the specialists, and it came from one editor, the untrained Qwen2.5-7B. We wanted to know whether the pattern held for other editors, and whether the paper's description, that the editor aims for a set amount of caution, fit the data. The specialists' answers were already saved in every run's log, so no new runs were needed.",
+   "expectations": [],
+   "found": "On questions that call for caveats, 81% to 96% of the editor's caveats traced back to a specialist, for all four editors: gpt-oss-20B, Phi-4-14B, and Qwen2.5-7B untrained and trained. On questions that need no caveats, traceability dropped for two of the three editors we could test, to 33% for gpt-oss-20B and 50% for the trained Qwen2.5-7B.\n\nThe exception, Phi-4 at 100%, fit once we looked at supply. Its four such runs were on the off-topic control question, where its specialists raised 3.00 kinds of caveat. Phi-4 kept 1.25 and added none. gpt-oss-20B's runs used the Cell 14 questions, where the specialists raised only 0.40, and there most of its caveats were its own. What mattered was how much the specialists supplied, not the type of question.\n\nSo we grouped all 358 runs by how many kinds the specialists raised, from none to four. The editor's own additions were 0.53, 0.26, 0.29, 0.07 and 0.00 kinds. Traceability rose steadily, from 0% through 65%, 78% and 96% to 100%. The total in the final answer also rose, from 0.53 through 0.76, 1.35 and 1.71 to 1.98 kinds.",
+   "means": "This corrected our own framing. The fourth paper said the editor aims for a set amount, trimming when given more and filling in when given less. But the final amount rose with supply, only less than in proportion. The supported claim is partial filling in: the editor adds caveats of its own when given few, most of all when given none, and stops by three or four kinds. We decided the paper's two-way comparison should give way to the fuller table, which is stronger evidence for a weaker claim.",
+   "later": "The checking code built on 4 August found that the gpt-oss-20B figure for demanding questions had pooled Cell 15's runs with Cell 8's, because they shared a version name. On Cell 8's questions alone it was 87%, not 81%, and the conclusions held. Cell 38 later noted that every zero-supply figure so far came from input that was never truly caveat-free. On input AI judges confirmed was caveat-free, the editor still added caveats in 4 of 12 runs.",
+   "entries": {
+    "entry-2444": {
+     "label": "Correction",
+     "title": "The pattern holds on four editors, but the set-amount claim was too strong",
+     "summary": "Across 358 saved runs and four editors, caveats on demanding questions mostly traced back to specialists, and what mattered was how much the specialists supplied. The final amount rose with supply, less than in proportion, so we corrected the fourth paper's set-target claim to partial filling in."
+    }
+   },
+   "related": [
+    "8",
+    "11",
+    "13",
+    "14",
+    "15"
+   ]
+  }
+ }
+}

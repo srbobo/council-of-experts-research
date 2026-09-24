@@ -1,0 +1,349 @@
+{
+ "batch": "F",
+ "cells": {
+  "29": {
+   "title": "Do four recurring patterns hold across all our saved runs?",
+   "description": "We pooled over 1,300 saved runs from 25 setups to measure four patterns seen in earlier cells. Three held up and one did not. The pooled data also broke an informal rule we had been repeating about how much caution the editor passes along.",
+   "outcome": "mixed",
+   "size": "No new runs, over 1,300 saved runs from 25 setups",
+   "why": "Across earlier cells we had noticed four numerical patterns, but only by eye, never measured across all our runs. They concern the formula y = w·s + c. Here s is how many kinds of caveat the specialists handed over and y is how many reach the final answer. The share the editor passes along is w, and c is the caution it adds on its own when handed none. The share w seemed to stay well below 1. Some prompts seemed to draw added caution more than others, run after run. One kind of caveat seemed to be passed along less than its fair share. And c seemed to depend on the format of the answer. This cell measured all four across every saved setup with enough data, with no new model calls. Because Cell 28 had set a pass mark that could never be met, we first checked that each new pass mark could be met with the data available.",
+   "expectations": [
+    {
+     "id": "P29.1",
+     "text": "Pooling all setups, the average share passed along and its plausible range would sit between 0.15 and 0.50, and a new setup's likely range would stay below 0.85, short of passing everything along.",
+     "outcome": "held",
+     "note": "The average was 0.364, plausibly 0.290 to 0.438, and a new setup would likely land between 0.045 and 0.682. One setup, from Cell 6b, reached 0.760, breaking our informal rule that the share stays between 0.12 and 0.45."
+    },
+    {
+     "id": "P29.2",
+     "text": "Some prompts would draw added caution more than others, so a measurable part of the variation in caution the editor adds on its own would come from which prompt it was answering.",
+     "outcome": "held",
+     "note": "About 19% of that variation came from the prompt, plausibly 13% to 24%, measured over 251 groups of repeated runs, 1,279 runs in all."
+    },
+    {
+     "id": "P29.3",
+     "text": "The kind of caveat our scoring handled best, saying a number is an estimate, would make up reliably less than a quarter of everything passed along, its equal share among four kinds.",
+     "outcome": "failed",
+     "note": "Its share was 0.219, below a quarter, but the plausible range of 0.170 to 0.268 included a quarter. General hedging carried the largest single share, about 39%."
+    },
+    {
+     "id": "P29.4",
+     "text": "The editor would add more caution on its own in ordinary prose answers than in answers written after filling in an evidence table, a required table of claims, with no overlap in the ranges.",
+     "outcome": "held",
+     "note": "Prose answers came out at 0.407 and evidence-table answers at minus 0.023, with no overlap. The same-day program audit re-graded this as a measurement only, because the expectation was written after the answer was known."
+    }
+   ],
+   "found": "Twenty-five setups qualified, covering over 1,300 saved runs. Pooled, w, the share of the specialists' caution that reaches the final answer, averaged 0.364, plausibly 0.290 to 0.438. Setups really did differ, with a typical spread of 0.158 between them, and a new setup would be expected to land anywhere from 0.045 to 0.682. No setup came near passing everything along. But one setup from Cell 6b reached 0.760, so our informal rule that the share always stays between 0.12 and 0.45 was wrong.\n\nAbout 19% of the variation in caution the editor added on its own came from which prompt it was answering. Those counts were mostly 0 or 1 per answer, behaving like a yes-or-no event, so we retired the label \"near-Poisson\" we had used for them. The caveat kind that says a number is an estimate carried 0.219 of the overall share, not reliably below a quarter. The caution the editor adds on its own when handed none, c, was 0.407 in prose answers against minus 0.023 in evidence-table answers.\n\nWe also checked every numeric pass mark in the notebook against the data each cell actually collected. One could never have been met, in Cell 28, as already known. Two others, in Cells 17 and 19, were too weak to detect moderate effects, so their \"no effect\" results count as weak evidence.",
+   "means": "The three patterns that held up went into the framework paper's discussion as measured findings, with the range for w, the share passed along, stated in its corrected form. The claim about the estimate kind of caveat was dropped from the paper's discussion. Because some prompts draw more added caution than others, repeated runs of one prompt are not independent tries, so later planning had to treat them as correlated. The same day, the program's second self-audit found that the specialists' prompts dictated some of the exact phrases our keyword counter looked for, which limited what the pooled figures could show.",
+   "later": "The same-day audit re-graded the fourth pattern as a measurement only, because its expectation was written after the answer was known. Cell 31 then found that an instruction removed at the same time explained most of that low figure, and could not show an effect of the evidence table itself, so the fourth pattern was withdrawn. The pooled average share is provisional, because most pooled setups used prompts that dictated the counted wording. The finding on repeated runs still stands.",
+   "entries": {
+    "4142": {
+     "label": "Plan",
+     "title": "Measure four recurring patterns across all saved runs",
+     "summary": "We would pool every saved setup with at least 30 usable runs and at least three levels of caveat input, and measure four patterns with methods fixed in advance, using no new model calls. Each pass mark was first checked to be achievable with that much data. It is not the earlier draft Cell 29, a test of a formula for chained steps, which was dropped after Cell 28."
+    },
+    "4191": {
+     "label": "Result",
+     "title": "Three patterns held, one did not, and an informal rule was corrected",
+     "summary": "Across 25 setups and over 1,300 runs, three patterns held up and the one about the estimate kind of caveat did not. One setup broke our informal rule about how much caution passes along. The entry ends with the program's second self-audit, which found the prompts dictated phrases our counter looked for and re-graded the fourth pattern as a measurement only."
+    }
+   }
+  },
+  "30": {
+   "title": "Does the pattern survive with all scripted wording removed?",
+   "description": "We rewrote the specialists' prompts with no scripted wording and scored answers with AI judges instead of a keyword counter. The first judging method failed its checkpoint. With a validated method, the editor still passed along about one caveat sentence in seven.",
+   "outcome": "mixed",
+   "size": "60 runs over 9 scenarios, two editor models",
+   "why": "The program's second self-audit found a serious flaw. The specialists' prompts named the kinds of caveat we measured and, in two places, dictated the exact phrases our keyword counter looked for. So every estimate of w, the share of the specialists' caution that reaches the final answer, came from a system whose instructions and scoring shared vocabulary. This cell removed that shared vocabulary from both sides. The specialists' prompts asked for domain analysis with no caveat names, no instruction about uncertainty and no dictated phrases, and two AI judges replaced the keyword counter. A second editor model was added. The question was whether the basic pattern survives when nothing in the system is told the words we count.",
+   "expectations": [
+    {
+     "id": "P30.0",
+     "text": "The two AI judges would agree on at least 70% of their decisions. Below that, none of the other expectations would be scored.",
+     "outcome": "held",
+     "note": "It failed at first: judging whole documents, the judges agreed on 62%. Judging one sentence at a time on the same 60 answers, they agreed on 83% and it passed."
+    },
+    {
+     "id": "P30.1",
+     "text": "For the main editor, gpt-oss-20B, the share of the specialists' caution passed along, as measured by the judges, would be reliably above zero.",
+     "outcome": "held",
+     "note": "Pooling all 60 runs, the share was 0.150, plausibly 0.058 to 0.252. For gpt-oss-20B alone it was 0.172, also above zero. Roughly one caveat sentence was passed along for every seven supplied."
+    },
+    {
+     "id": "P30.2",
+     "text": "Given drafts with no caveats at all, the editors would still add some of their own in a measurable share of runs, pooled across both editors.",
+     "outcome": "not-tested",
+     "note": "It could not be scored. Only 3 runs had drafts truly free of caveats, against about 36 planned, because deleting sentences by keyword had left an average of 5.4 caveat sentences in drafts meant to have none."
+    },
+    {
+     "id": "P30.3",
+     "text": "The second editor, Phi-4, would also pass along a share above zero, and would also add caution when handed none.",
+     "outcome": "partly",
+     "note": "gpt-oss-20B passed along 0.172, above zero, but Phi-4's 0.105 had a range that included zero, over only 20 runs. The part about adding caution could not be checked."
+    },
+    {
+     "id": "P30.4",
+     "text": "Without the scripted phrases, the keyword counter would find less caution in the answers than the judges did.",
+     "outcome": "held",
+     "note": "On the same 60 answers, the keyword counter's rate was 8% against the judges' 63%, an undercount of about 7.6 times."
+    }
+   ],
+   "found": "The first attempt failed at its checkpoint. Judging whole documents of about 5,000 characters, the two AI judges agreed on only 179 of 288 decisions (62%), below the 70% required, so nothing else was scored. One judge flagged general hedging in 71 of 72 texts, and on out-of-date-information caveats the two judges differed elevenfold. The same judges had agreed 86% of the time on single sentences in Cell 23. We also found and fixed a bug in the quote check, which had not caused the failure.\n\nThe second attempt, after Cell IV, had the same judges score one sentence at a time in batches of 10 and counted caveat sentences. Agreement rose to 83% on the same 60 answers. Pooled, w, the share of the specialists' caution that reaches the final answer, was 0.150, plausibly 0.058 to 0.252. It was 0.172 for gpt-oss-20B alone, while Phi-4's 0.105 could not be told apart from zero.\n\nThe test of added caution could not be scored. Deleting caveat sentences by keyword had left an average of 5.4 caveat sentences in drafts labeled as having none, so only 3 runs truly had none. The keyword counter also saw far less caution than the judges, 8% against 63%.",
+   "means": "The main pattern held without scripted wording: with no dictated phrases in the prompts and no keyword counting in the scoring, more caution in still meant more caution out. The effect was small and shown for only one editor model. The two attempts together showed that judges who agree on single sentences can disagree on whole documents, so the unit of judging matters. The second attempt also showed that every published rate for drafts with no caveats, in Cells 25, 27, 30 and 31, had been measured on drafts that still contained some. Whether the editor adds caution of its own became an open question again.",
+   "later": "Cell 38 later built drafts confirmed to hold no caveats and found the editor added some in 4 of 12 runs, answering the question this cell could not. Cell 46 showed the pattern for Phi-4 too, on 18 scenarios. A re-analysis of these 60 runs found the share of 0.150 is probably an underestimate, because the measured input is noisy, and put it between 0.150 and 0.217.",
+   "entries": {
+    "4284": {
+     "label": "Plan",
+     "title": "Remove all scripted wording and score with AI judges",
+     "summary": "gpt-oss-20B would play all three specialists under prompts with no caveat names and no dictated phrases. Sentences picked out by keyword would be deleted to vary the caution handed over, and two editors, gpt-oss-20B and Phi-4, would write answers. Two AI judges had to agree on at least 70% of decisions before anything else was scored."
+    },
+    "4369": {
+     "label": "Stopped",
+     "title": "The AI judges disagreed too often on whole documents",
+     "summary": "The judges agreed on only 62% of decisions, below the 70% checkpoint, so nothing else was scored. The same judges had agreed 86% on single sentences, suggesting the unit of judging was the problem. A rough keyword count, not used for scoring, suggested added caution had not vanished."
+    },
+    "5166": {
+     "label": "Result",
+     "title": "Judged sentence by sentence, the pattern holds for one editor",
+     "summary": "With the Cell IV method, the same judges agreed on 83% of decisions on the same answers. The share passed along was 0.150, above zero, shown for gpt-oss-20B but not for Phi-4. The test of added caution could not be scored: drafts meant to have no caveats still held an average of 5.4 caveat sentences."
+    }
+   }
+  },
+  "31": {
+   "title": "Does the evidence table itself stop the editor inventing caveats?",
+   "description": "Earlier cells credited the evidence table with stopping the editor inventing caveats, but they had also removed an instruction. Changing only the evidence table, we found no effect, and the claim was withdrawn. A later audit judged the test too imprecise to rule an effect out.",
+   "outcome": "mixed",
+   "size": "60 new runs (51 usable), paired with Cell 30's 60",
+   "why": "Cells 27 and 28 tested an evidence table: a table the editor had to fill in before answering, listing each claim, who raised it and whether to keep, caveat or drop it. With the evidence table, the editor stopped adding caveats of its own. But those cells changed two things at once. They added the evidence table and also removed the instruction telling the editor to keep the specialists' caveats, then compared against a version that still had that instruction. Existing data already hinted that removing the instruction did most of the work. The caution the editor adds on its own when handed none, c, was 0.799 with the instruction, 0.162 without it, and about minus 0.02 with the evidence table. This cell changed only one thing.",
+   "expectations": [
+    {
+     "id": "P31.1",
+     "text": "With everything else the same, the evidence-table version would add less caution on its own than the plain version.",
+     "outcome": "failed",
+     "note": "The evidence-table version came out 0.182 higher, not lower, with a range from minus 0.87 to plus 1.26 that included zero, so no effect of the evidence table could be shown."
+    },
+    {
+     "id": "P31.2",
+     "text": "The evidence table would not lower the share of the specialists' caution passed along, ruling out that it worked only by making the editor say less.",
+     "outcome": "held",
+     "note": "The share passed along was 0.034 higher with the evidence table, with a range from minus 0.151 to plus 0.193, so it was not reduced. The evidence-table version also wrote more caveat sentences, not fewer."
+    }
+   ],
+   "found": "We scored with the judging method validated in Cell IV instead of the keyword counter, a change written down before any numbers were computed. The judges read 2,339 sentences in 468 calls. Of those calls, 44 (9.4%) came back unreadable and were counted rather than dropped. Nine evidence-table runs broke the required format and were excluded, as planned.\n\nThe evidence table made no measurable difference. Its version's c, the caution added on its own when handed none, was 0.623 against 0.441 for the plain version, a gap of 0.182 in the opposite direction to the one expected. The share passed along, w, was 0.183 against 0.150. Both versions received the same amount of caution, about 5.4 caveat sentences, and the evidence-table version wrote more caveat sentences, 1.61 against 1.25.\n\nThe earlier result came from two flaws working together. The comparison changed two things at once, and the keyword counter looked for phrases that the removed instruction itself dictated. Removing the instruction removed the phrases, and the counter read that as no added caution.",
+   "means": "The claim from Cells 27 and 28 that the evidence table stops the editor inventing caveats was withdrawn, and the framework paper lost its evidence-table result. What replaced it was an existing, better supported finding: the instruction to keep the specialists' caveats itself makes the editor add caveats nobody raised. Caution added on its own was 0.799 with that instruction against 0.162 without it. The range here was very wide, so this was a failure to show an effect, not proof that none exists.",
+   "later": "An audit on 11 August 2026 judged this \"no effect\" result uninformative. The range for the evidence table's effect was wide enough to include an effect as large as the one originally claimed. So Cell 31 shows only that the claim could not be re-established, not that the evidence table does nothing, and the question is open. A clear answer would need about four times as much data.",
+   "entries": {
+    "4430": {
+     "label": "Plan",
+     "title": "Change only the evidence table, holding everything else the same",
+     "summary": "The Cell 27 evidence-table instruction would be given to the same two editors over exactly the same drafts as Cell 30, whose plain answers served as the comparison. Because the versions shared drafts, the difference would be measured draft by draft. The keyword counter would score both, a limitation stated up front."
+    },
+    "5090": {
+     "label": "Change to the plan",
+     "title": "Score with the validated judges, not the keyword counter",
+     "summary": "After this plan was written, the team stopped using the keyword counter as a measuring tool, and Cell IV validated judging sentences in batches of 10. Before computing any numbers we switched to that method and to counting caveat sentences, so the pass marks could be read only as direction of change."
+    },
+    "5117": {
+     "label": "Result",
+     "title": "No effect of the evidence table itself, and the earlier claim is withdrawn",
+     "summary": "With only the evidence table changed and validated scoring, the evidence-table version added slightly more caution on its own, not less, and passed along about the same share. The Cell 27 and 28 finding was withdrawn. We traced the earlier result to removing an instruction at the same time and to a keyword counter that looked for that instruction's phrases."
+    }
+   }
+  },
+  "IV": {
+   "title": "Does judging sentences in batches of 10 keep the method accurate?",
+   "description": "We checked whether two AI judges could label sentences in batches of 5 or 10 per call instead of one at a time. Both sizes passed every test, so batches of 10 became the project's scoring method at about a tenth of the cost.",
+   "outcome": "held",
+   "size": "No new answers, 220 sentences judged in batches",
+   "why": "After the team stopped using the keyword counter as a measuring tool, one validated method remained: two AI judges labeling one sentence at a time. In Cell 23 they had agreed 86% of the time and scored 90% and 92.5% on test sentences with known answers. But one sentence per call would take about 4,800 calls for a single collection of 60 runs, far too many for our roughly 1,800 saved runs. Batching was the only affordable route. Cell 30 had just shown that changing how much text a judge sees at once can break a method: agreement fell from 86% on sentences to 62% on whole documents. So batching had to be checked before we relied on it.",
+   "expectations": [
+    {
+     "id": "P-IV.1",
+     "text": "Labels given in batches would match the one-at-a-time labels at least 80% of the time for each of three kinds of caveat.",
+     "outcome": "held",
+     "note": "At batches of 10 they matched 91% for estimates, 94.5% for rules that differ by place and 83.5% for general hedging, again the weakest."
+    },
+    {
+     "id": "P-IV.2",
+     "text": "On 20 hand-written test sentences with known answers, both judges would score at least 80%, against 90% and 92.5% when judging one sentence at a time.",
+     "outcome": "held",
+     "note": "At batches of 10, gpt-oss-20B scored 90% and Qwen2.5-7B 93.8%, matching or beating the one-at-a-time results."
+    },
+    {
+     "id": "P-IV.3",
+     "text": "Each judge would return unreadable replies less than 20% of the time, since longer batched replies were the most likely way for the method to break.",
+     "outcome": "held",
+     "note": "At batches of 10 neither judge returned an unreadable reply, though over only 13 batches. At batches of 5 the rates were 3.8% and 11.5%."
+    }
+   ],
+   "found": "Both batch sizes passed every test. At batches of 10, the batched labels matched the one-at-a-time labels 91% of the time for estimates, 94.5% for rules that differ by place and 83.5% for general hedging. On the test sentences with known answers, gpt-oss-20B scored 90% and Qwen2.5-7B 93.8%, as good as or better than before. Neither judge returned an unreadable reply, including Qwen2.5-7B, which had failed on 38% of whole-document calls in Cell 35.\n\nBatching did not hurt accuracy because each judgment still covered a single sentence. Only the packaging changed. In Cell 30, by contrast, the judges had been asked to judge a whole document at once. General hedging was again the hardest kind to score, as it had been for the keyword counter, the NLI model (a natural-language-inference model) and the judges before.",
+   "means": "Batches of 10, the largest size that passed, became the project's measuring tool, at about a tenth of the cost. Re-scoring the roughly 1,800 saved runs became an overnight job, and the waiting measurements for Cells 30 and 31 could go ahead. We also fixed what gets measured: the number of caveat sentences of each kind, not whether any sentence in a document has one. Counting a document as positive when any one of its roughly 40 sentences is flagged piles up false alarms.",
+   "later": "When the method was put to work in Cell 31, 44 of 468 judge calls (9.4%) came back unreadable, more than the zero seen here but within the 20% limit.",
+   "entries": {
+    "5003": {
+     "label": "Plan",
+     "title": "Test judging in batches of 5 and 10 before relying on it",
+     "summary": "Sentences would be shown numbered and separate, several per call, so each judgment still covered one sentence. Both judges would label 200 sentences with settled one-at-a-time labels and 20 test sentences with known answers. All three pass marks had to be met for the method to be adopted."
+    },
+    "5048": {
+     "label": "Result",
+     "title": "Batches of 10 pass every test and become the scoring method",
+     "summary": "Both batch sizes passed on agreement, accuracy and readable replies. Batches of 10 were adopted, cutting the cost about tenfold, which made re-scoring the saved runs affordable and unblocked the waiting measurements for Cells 30 and 31."
+    }
+   }
+  },
+  "32": {
+   "title": "Do three different models beat three tries of one model?",
+   "description": "We planned to compare three answers from three different models with three tries from one model, to see whether different models make different mistakes. It never ran: it needed a new checklist scoring tool that first had to pass an agreement check.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "Every earlier test had scored the answer itself, and there the council had lost. This cell belonged to a block of five looking for advantages elsewhere. One argument for councils is that different models make different mistakes, so the best of several answers from different models should beat the best of several tries from one model. The plan tied this to Cell 29's finding that repeated runs of one prompt are correlated, which would limit what repeat tries from one model can add.",
+   "expectations": [
+    {
+     "id": "P32.1",
+     "text": "Three answers from three different models would be less alike in how much of each scenario's checklist they covered than three tries from gpt-oss-20B.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell did not run."
+    },
+    {
+     "id": "P32.2",
+     "text": "The best of three answers from different models would cover more of each scenario's checklist than the best of three tries from one model.",
+     "outcome": "not-tested",
+     "note": "Never tested. The plan called this the practical form of the question, since variety only helps if the best available answer improves."
+    }
+   ],
+   "found": "The cell never ran. The plan was 54 answers over 9 scenarios: for each scenario, one answer each from gpt-oss-20B, Phi-4 and Qwen2.5-7B, against three tries from gpt-oss-20B with the same total compute. Answers would be scored against a checklist of yes-or-no questions per scenario, each answered by two AI judges. That tool first had to show the judges agreeing on at least 75% of at least 60 checklist items. The notebook records no attempt at that check.",
+   "means": "The project has no evidence either way on whether different models beat repeated tries of one model. The plan had said a positive result would give councils an advantage that resampling one model cannot, and a negative one would leave that argument for councils without support in our data.",
+   "later": null,
+   "entries": {
+    "4721": {
+     "label": "Plan",
+     "title": "Compare three different models with three tries of one",
+     "summary": "Per scenario, one answer each from gpt-oss-20B, Phi-4 and Qwen2.5-7B against three tries from gpt-oss-20B, 54 answers in all, scored with the new checklist tool. The cell could run only after that tool passed its agreement check."
+    }
+   }
+  },
+  "33": {
+   "title": "Does disagreement between specialists warn of a weaker answer?",
+   "description": "We planned to measure how much the specialists disagreed in saved council runs and see whether more disagreement meant a weaker final answer. It never ran, because it needed the same checklist scoring tool as Cell 32.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "Cell 26 had shown that the editor ignores whether the specialists agree or disagree. This cell asked whether their disagreement is still useful to the system. If answers were weaker when specialists disagreed, the council would give a warning sign a single model cannot, and its value might lie in routing questions rather than writing answers. The study would only observe saved runs, with no intervention.",
+   "expectations": [
+    {
+     "id": "P33.1",
+     "text": "The more two specialists disagreed, the less of the scenario's checklist the final answer would cover.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell did not run."
+    },
+    {
+     "id": "P33.2",
+     "text": "Setting aside the quarter of runs with the most disagreement would raise the average checklist score of the runs kept, with the share of runs kept reported alongside.",
+     "outcome": "not-tested",
+     "note": "Never tested. The plan required reporting how many runs were kept, since a rule that sets aside every run would trivially look good."
+    }
+   ],
+   "found": "The cell never ran. It would have used saved council runs with the specialists' texts stored. A judge would rate whether each pair of specialists conflicted on any substantive point, and we would relate that to the final answer's checklist score. Like Cell 32, it had to wait until the checklist scoring tool showed the two judges agreeing on at least 75% of at least 60 items. The notebook records no attempt at that check.",
+   "means": "The project has no evidence either way on whether disagreement between specialists warns of a weaker answer. The plan had said a negative result would mean the project's machinery for tracking disagreements between specialists had no demonstrated use.",
+   "later": null,
+   "entries": {
+    "4743": {
+     "label": "Plan",
+     "title": "Relate specialist disagreement to the final answer's quality",
+     "summary": "An observational study of saved council runs. Judges would rate how much each pair of specialists conflicted, and we would test whether more conflict meant lower checklist coverage and whether holding back the most disputed runs raised the average."
+    }
+   }
+  },
+  "34": {
+   "title": "Does seeing the specialists' texts help a checker catch errors?",
+   "description": "We planned to ask AI checkers whether an answer contained a wrong claim, once with the specialists' texts and once without. It never ran: it needed Cell 35's planted errors to reach the final answers, and none did.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "A council has something a single model lacks: a separate text from each specialist, so a claim in the final answer can be traced to where it came from. If that made answers easier to check, it would be an advantage that shows up after the answer is written rather than in the answer itself. This cell would test whether access to the specialists' texts actually helps a checker, reusing Cell 35's answers, where a specific factual error had been planted in one specialist's text.",
+   "expectations": [
+    {
+     "id": "P34.1",
+     "text": "Checkers given the specialists' texts would catch wrong or unsupported claims more often than checkers given the answer alone.",
+     "outcome": "not-tested",
+     "note": "Never tested. Cell 35's planted errors reached the final answer in 0 of 27 runs, so there was nothing to catch."
+    },
+    {
+     "id": "P34.2",
+     "text": "On answers with no planted error, seeing the specialists' texts would not make checkers raise more false alarms.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell did not run. The plan noted that with 27 paired answers, differences smaller than about 20 percentage points could not be detected."
+    }
+   ],
+   "found": "The cell never ran. It depended on Cell 35's planted errors getting through to the final answers, so that checkers would have something to find. In Cell 35 the planted error reached the final answer 0 times in 27 runs. With nothing to detect, the cell was recorded as not runnable, and it was not redesigned to fit the data.",
+   "means": "The project has no test of whether access to the specialists' texts helps a checker. The plan had said a positive result would show an advantage no single-model system can offer, and a negative one would withdraw that argument.",
+   "later": null,
+   "entries": {
+    "4699": {
+     "label": "Plan",
+     "title": "Ask checkers to find errors with and without the sources",
+     "summary": "Reusing Cell 35's answers with planted errors, both AI judges would act as checkers, once with the specialists' texts and once with the answer alone, in random order. A second test would check that the texts did not simply make checkers more suspicious of clean answers."
+    }
+   }
+  }
+ },
+ "studies": {
+  "pd13": {
+   "title": "Re-scoring Cell 13: new behavior, or just the dictated words?",
+   "description": "We re-scored saved Cell 13 answers, splitting the counted phrases into those our prompts dictated and all others. The numeric clause's whole effect was the model typing the two phrases it dictated, so the framework paper's claim about instructions was withdrawn.",
+   "outcome": "held",
+   "size": "No new runs, re-scored saved Cell 13 answers",
+   "why": "The program's second self-audit had found that our prompts dictated some of the exact phrases the keyword counter looked for. Cells 13 and 6c had credited large effects to single clauses of the editor's instruction. If a clause only makes the model type the phrases it names, that is compliance with wording, not a change in how cautious the model is. This re-analysis asked which it was. The split between dictated and other phrases was made mechanically, before any results were looked at.",
+   "expectations": [
+    {
+     "id": "PD13.1",
+     "text": "For the kind of caveat a clause names, the clause would raise the dictated phrasings by more than it raised other ways of saying the same thing.",
+     "outcome": "held",
+     "note": "The numeric clause raised dictated phrasings from 0 to 28 of 30 answers but other phrasings only from 1 to 4 of 30, a gap of 0.833, plausibly 0.667 to 1.000."
+    }
+   ],
+   "found": "The split put 2 of the 7 counted phrasings for \"this number is an estimate\" on the dictated side: \"modeled at\" and \"under the assumption\". Our prompts told the model to use exactly these two. With the numeric clause, answers using a dictated phrasing rose from 0 to 28 of 30, while answers using any of the other five rose only from 1 to 4 of 30. The clause's entire effect was the model typing the two phrases it was told to type.\n\nThe clause about out-of-date information pointed the same way, 0 to 8 of 30 on dictated phrasings and 0 on the rest, but fell below the minimum set in advance and was not scored. For the full instruction block, general hedging showed the opposite: dictated phrasings stayed flat, 18 to 17, while other phrasings rose from 1 to 9. That is the sign of a real change in behavior, and not the kind of caveat Cell 13's main claim was about.\n\nThe same entry records a clean-up pass, because some consequences written in the notebook had never been applied. We rewrote the framework paper's section as an explicit withdrawal and added a warning to both active papers that their numbers were provisional. We also created docs/STATUS.md as the authoritative list of claims, and added a toolkit check that flags counted phrases appearing in the system's own prompts. It found them for all four kinds of caveat.",
+   "means": "The claims from Cells 13 and 6c that single clauses change how cautious the editor is were relabelled as instruction compliance, and the framework paper's contribution about instructions was withdrawn. Three statements were retired with it. One was that the writing instruction changes the share passed along more than the whole difference between designs. The others were the rise in that share from 0.16 to 0.35 as evidence about instructions, and the claim that one clause carried 126% of the block's gain. The narrower replacement is that an instruction dictating a phrase reliably produces that phrase and almost nothing else. With the audit's finding that the same instruction adds caveats to simple control questions, it works as a phrase generator, not a control on caution.",
+   "later": "Cell 41 later confirmed this by direct experiment on 378 runs. An instruction naming a phrase produced it in 67% or 70% of answers, for the two phrases tried, and with the named phrase set aside, instructed answers matched uninstructed ones. An audit of past results on 11 August 2026 rated this re-analysis informative.",
+   "entries": {
+    "entry-4491": {
+     "label": "Plan",
+     "title": "Split counted phrases into dictated and other, then compare",
+     "summary": "A counted phrase would be \"dictated\" if it appeared anywhere in the prompts file, and \"other\" if not. Cell 13's answers would be scored on each set separately, comparing each clause's version with the version without clauses. A kind of caveat would be scored only if its other phrases appeared in at least 5 runs."
+    },
+    "entry-4528": {
+     "label": "Result",
+     "title": "The clause effect is compliance, and the instruction claim is withdrawn",
+     "summary": "The numeric clause's effect was almost entirely the two phrases it dictated, 0 to 28 of 30 answers against 1 to 4 for other phrasings. Only general hedging showed a real change in behavior. The instruction claim was withdrawn, and a clean-up pass applied this and other audit consequences to the papers and code, creating docs/STATUS.md."
+    }
+   },
+   "related": [
+    "13",
+    "6c"
+   ]
+  },
+  "block-32-36": {
+   "title": "Does the council help in ways that scoring the answer misses?",
+   "description": "We planned five cells to look for council advantages beyond the answer itself, such as tracing errors to their source. Only Cells 35 and 36 ran. Cells 32 and 33 never ran, and Cell 34 was blocked by Cell 35's result.",
+   "outcome": "stopped",
+   "size": "Plans for five cells, two of which ran",
+   "why": "Every earlier council test had scored the answer itself. There a single model of similar size had matched or beaten the council on content, on knowing when caution is called for, and on handling heavier loads, while the council used about four times the compute. The CollabLLM paper (arXiv:2502.00640) values a response by its longer-term contribution rather than by the response alone. Its reinforcement-learning method could not run on our machine, because GRPO ran out of memory, but the idea needs no training. These five cells looked for advantages of that kind. We started from the assumption that none exists.",
+   "expectations": [],
+   "found": "The block set out five plans, none using the keyword counter. Cell 35 would plant a factual error in one specialist's text and see whether it reached the answer and could be traced. Cell 34 would test whether checkers catch errors more often with the specialists' texts. Cell 32 would compare three different models with three tries of one. Cell 33 would test specialist disagreement as a warning sign. Cell 36 would test factual accuracy once a set of questions with checkable answers existed.\n\nCells 32, 33 and 36 needed a new scoring tool, a checklist of yes-or-no questions per scenario, and two AI judges had to agree on at least 75% of at least 60 items before it could be used. If every cell failed, we would conclude the council has no demonstrated advantage over a single model, an outcome accepted in advance.\n\nA change to Cell 36's plan noted that gpt-oss-20B is a mixture-of-experts model, using about 3.6B of its roughly 21B parameters for each token, so the single-model version already routed work to internal experts. A dense single model, Phi-4, was added, and the question set was raised to at least 50 items.\n\nOnly Cells 35 and 36 ran. Cell 35's planted errors never reached the answer, which left Cell 34 nothing to test. The notebook records no attempt at the checklist check, and Cells 32 and 33 never ran.",
+   "means": "Because three of the five cells never ran, the block's overall conclusion was never reached. The project has no evidence either way on model variety, on disagreement as a warning sign, or on checking answers against sources. Cell 35 did produce what the notebook called the first council advantage found so far, though not one it had planned to test: planted errors did not reach the final answer.",
+   "later": "Cell 37 later narrowed Cell 35's result: planted errors were kept out only when another specialist supplied the correct figure. Cell 36 found no accuracy gain, but every version scored 92% to 97%, and an audit on 11 August 2026 found only 3 of 59 paired questions differed between versions. The project later judged the accuracy question untestable at this scale.",
+   "entries": {
+    "block-32-36": {
+     "label": "Plan",
+     "title": "Five cells to test council advantages beyond the answer",
+     "summary": "Five plans written together: tracing planted errors (Cell 35, run first), checking answers with sources (34), model variety (32), disagreement as a warning (33) and factual accuracy (36). Cells 32, 33 and 36 needed a checklist scoring tool to pass an agreement check first. A change to Cell 36's plan added a dense single model."
+    }
+   },
+   "related": [
+    "32",
+    "33",
+    "34",
+    "35",
+    "36"
+   ]
+  }
+ }
+}

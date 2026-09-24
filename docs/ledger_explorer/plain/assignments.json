@@ -1,0 +1,3553 @@
+{
+ "batches": {
+  "A": {
+   "cells": [
+    {
+     "id": "1",
+     "current_title": "SFT-on-chosen control",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P1"
+     ],
+     "entries": [
+      {
+       "line": 51,
+       "end": 72,
+       "kind": "verdict",
+       "heading": "P1 VERDICT — recorded 2026-07-11 (cell 1 complete, single run/case)"
+      }
+     ],
+     "matrix_row": "SFT-on-chosen control (FIRST — only cell that can invalidate the headline). Same package (mlx_lm_lora --train-mode sft --mask-prompt), same LoRA config/iters/seed as arm C, chosen responses only. Endpoints identical to arm C: seat density, case-7 gate, final CDS, rubric. Verdict grid = P1."
+    },
+    {
+     "id": "2",
+     "current_title": "Five seeds per cell — bootstrap CIs",
+     "status_parsed": "verdict",
+     "never_ran": false,
+     "pids": [],
+     "entries": [
+      {
+       "line": 99,
+       "end": 125,
+       "kind": "verdict",
+       "heading": "CELL 2 VERDICT — bootstrap CIs, 140 runs (2026-07-12)"
+      }
+     ],
+     "matrix_row": "5 seeds per cell for A′/B2/C/SFT on all 7 cases; report mean ± bootstrap CI."
+    },
+    {
+     "id": "3",
+     "current_title": "Seat interventions — finance and healthcare seats",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P2",
+      "P3"
+     ],
+     "entries": [
+      {
+       "line": 238,
+       "end": 266,
+       "kind": "verdict",
+       "heading": "CELL 3 / P3 VERDICT — healthcare seat, diminishing returns CONFIRMED (2026-07-24, 70 runs)"
+      },
+      {
+       "line": 267,
+       "end": 302,
+       "kind": "verdict",
+       "heading": "CELL 3 / P2 VERDICT — finance seat, ORPO did NOT replicate — FALSIFIED (2026-07-25, 70 runs)"
+      }
+     ],
+     "matrix_row": "Seat interventions: domain pair-sets for finance + healthcare (same generation protocol, leakage-screened), ORPO per seat → P2, P3."
+    },
+    {
+     "id": "4",
+     "current_title": "Cross-base — legal pairs on two aligned bases",
+     "status_parsed": "matrix-only",
+     "never_ran": true,
+     "pids": [
+      "P4"
+     ],
+     "entries": [],
+     "matrix_row": "Cross-base: legal pairs on 2 aligned bases → P4."
+    },
+    {
+     "id": "5",
+     "current_title": "CPO arm",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P5.1",
+      "P5.2"
+     ],
+     "entries": [
+      {
+       "line": 460,
+       "end": 489,
+       "kind": "prereg",
+       "heading": "CELL 5 PRE-REGISTRATION — CPO arm (registered 2026-07-25, BEFORE training)"
+      },
+      {
+       "line": 490,
+       "end": 521,
+       "kind": "verdict",
+       "heading": "CELL 5 / P5 VERDICT — CPO replicates suppression; blunter than ORPO (2026-07-26, 35 runs)"
+      }
+     ],
+     "matrix_row": "CPO arm on Saul → P5."
+    },
+    {
+     "id": "6",
+     "current_title": "Synthesizer ablation — 3 Leads × PRESERVE on/off",
+     "status_parsed": "verdict",
+     "never_ran": false,
+     "pids": [
+      "P6"
+     ],
+     "entries": [
+      {
+       "line": 179,
+       "end": 208,
+       "kind": "verdict",
+       "heading": "CELL 6 / P6 VERDICT — synthesizer register confirmed, refined (2026-07-12, 72 runs)"
+      }
+     ],
+     "matrix_row": "Synthesizer ablation: 3 Leads × PRESERVE on/off → P6."
+    },
+    {
+     "id": "6b",
+     "current_title": "train the SYNTHESIZER",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P6b.1",
+      "P6b.2",
+      "P6b.3"
+     ],
+     "entries": [
+      {
+       "line": 522,
+       "end": 560,
+       "kind": "prereg",
+       "heading": "CELL 6b PRE-REGISTRATION — train the SYNTHESIZER (registered 2026-07-26, BEFORE any pair gen or training)"
+      },
+      {
+       "line": 643,
+       "end": 686,
+       "kind": "verdict",
+       "heading": "CELL 6b / P6b VERDICT — the register survives DIRECT training of the writer (2026-07-27, 70 runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "6c",
+     "current_title": "gain curve + input additivity",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P6c.1",
+      "P6c.2",
+      "P6c.3",
+      "P6c.4"
+     ],
+     "entries": [
+      {
+       "line": 561,
+       "end": 642,
+       "kind": "prereg",
+       "heading": "CELL 6c PRE-REGISTRATION — gain curve + input additivity (registered 2026-07-26)"
+      },
+      {
+       "line": 687,
+       "end": 732,
+       "kind": "verdict",
+       "heading": "CELL 6c VERDICT — instructions are a graded gain control; seat input is non-additive (2026-07-27, 96 runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "7",
+     "current_title": "Scoring hardening",
+     "status_parsed": "matrix-only",
+     "never_ran": true,
+     "pids": [],
+     "entries": [],
+     "matrix_row": "Scoring hardening: gpt-oss-20b judge + ~50-item human validation + per-claim normalization reported alongside per-character."
+    },
+    {
+     "id": "7a",
+     "current_title": "NLI instrument",
+     "status_parsed": "verdict",
+     "never_ran": false,
+     "pids": [
+      "P-7a.1",
+      "P-7a.2",
+      "P-7a.3"
+     ],
+     "entries": [
+      {
+       "line": 303,
+       "end": 341,
+       "kind": "prereg",
+       "heading": "CELL 7a PRE-REGISTRATION — NLI instrument (registered 2026-07-25, BEFORE any scoring)"
+      },
+      {
+       "line": 342,
+       "end": 392,
+       "kind": "verdict",
+       "heading": "CELL 7a VERDICT — NLI instrument (2026-07-25, 289-pair calibration + verdict re-score)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "7b",
+     "current_title": "pairwise LLM judge",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P-7b.1",
+      "P-7b.2"
+     ],
+     "entries": [
+      {
+       "line": 393,
+       "end": 423,
+       "kind": "prereg",
+       "heading": "CELL 7b PRE-REGISTRATION — pairwise LLM judge (registered 2026-07-25, BEFORE any judging)"
+      },
+      {
+       "line": 424,
+       "end": 459,
+       "kind": "verdict",
+       "heading": "CELL 7b VERDICT — pairwise judge (2026-07-25, ~180 calls, dual judges)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "7c",
+     "current_title": "PER-FAMILY, SEAT-MATCHED DECOMPOSITION",
+     "status_parsed": "analysis",
+     "never_ran": false,
+     "pids": [],
+     "entries": [
+      {
+       "line": 733,
+       "end": 807,
+       "kind": "analysis",
+       "heading": "CELL 7c — PER-FAMILY, SEAT-MATCHED DECOMPOSITION (2026-07-27, no new runs)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "setup",
+     "kind": "setup",
+     "entries": [
+      {
+       "id": "entry-7",
+       "line": 7,
+       "end": 20,
+       "heading": "Pre-registered predictions (falsifiable, in advance)",
+       "parts": []
+      },
+      {
+       "id": "entry-21",
+       "line": 21,
+       "end": 40,
+       "heading": "Cells & success criteria",
+       "parts": []
+      },
+      {
+       "id": "entry-41",
+       "line": 41,
+       "end": 45,
+       "heading": "$0 constraint — accepted losses (stated in paper limitations)",
+       "parts": []
+      },
+      {
+       "id": "entry-46",
+       "line": 46,
+       "end": 50,
+       "heading": "Recovery note",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "writing-notes",
+     "kind": "paper",
+     "entries": [
+      {
+       "id": "entry-73",
+       "line": 73,
+       "end": 98,
+       "heading": "Paper framing notes (captured 2026-07-11)",
+       "parts": []
+      },
+      {
+       "id": "entry-126",
+       "line": 126,
+       "end": 153,
+       "heading": "GLOSSARY — define these in every write-up (paper, README, Results page)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "dose",
+     "kind": "experiment",
+     "entries": [
+      {
+       "id": "entry-209",
+       "line": 209,
+       "end": 237,
+       "heading": "DOSE-RESPONSE VERDICT — 3.2× dose (2026-07-14, 35 v2 runs, deduped to 5/case, bootstrap CIs)",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_A.json"
+  },
+  "B": {
+   "cells": [
+    {
+     "id": "8",
+     "current_title": "architecture comparison",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P8.1",
+      "P8.2",
+      "P8.3",
+      "P8.4"
+     ],
+     "entries": [
+      {
+       "line": 808,
+       "end": 862,
+       "kind": "prereg",
+       "heading": "CELL 8 PRE-REGISTRATION — architecture comparison (registered 2026-07-27, BEFORE any runs)"
+      },
+      {
+       "line": 863,
+       "end": 920,
+       "kind": "verdict",
+       "heading": "CELL 8 VERDICT — architecture comparison, 210 runs (2026-07-28)"
+      }
+     ],
+     "matrix_row": "Seat expansion: bench OpenBioLLM-8B + BioMistral-7B as seats → P7."
+    },
+    {
+     "id": "8B",
+     "current_title": "register provenance / alignment lineage",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P8b.1",
+      "P8b.2",
+      "P8b.3"
+     ],
+     "entries": [
+      {
+       "line": 993,
+       "end": 1039,
+       "kind": "prereg",
+       "heading": "CELL 8B PRE-REGISTRATION — register provenance / alignment lineage (registered 2026-07-30, before any runs)"
+      },
+      {
+       "line": 1124,
+       "end": 1173,
+       "kind": "verdict",
+       "heading": "CELL 8B AMENDMENT — Lead role is not executable for one candidate (2026-07-30, BEFORE any bench runs)"
+      },
+      {
+       "line": 1174,
+       "end": 1218,
+       "kind": "amendment",
+       "heading": "CELL 8B AMENDMENT #2 — OpenBioLLM excluded (unbenchable), Med42 substituted (2026-07-30, BEFORE any retained runs)"
+      },
+      {
+       "line": 1287,
+       "end": 1349,
+       "kind": "verdict",
+       "heading": "CELL 8B VERDICT — intrinsic register is MODEL-INVARIANT (2026-07-30, 140 runs, zero failures)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "9",
+     "current_title": "External anchor — public abstention benchmark",
+     "status_parsed": "matrix-only",
+     "never_ran": true,
+     "pids": [],
+     "entries": [],
+     "matrix_row": "External anchor: public abstention/uncertainty benchmark, local, baseline vs ORPO'd seat."
+    },
+    {
+     "id": "10",
+     "current_title": "Marker-position analysis (P8, content entanglement)",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P8"
+     ],
+     "entries": [
+      {
+       "line": 154,
+       "end": 178,
+       "kind": "verdict",
+       "heading": "P8 VERDICT — entanglement hypothesis FALSIFIED (2026-07-12, 102 runs)"
+      }
+     ],
+     "matrix_row": "Marker-position analysis on existing logs → P8."
+    },
+    {
+     "id": "11",
+     "current_title": "pipeline-mouth calibration reward",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P11.1",
+      "P11.2",
+      "P11.3",
+      "P11.4"
+     ],
+     "entries": [
+      {
+       "line": 921,
+       "end": 992,
+       "kind": "prereg",
+       "heading": "CELL 11 PRE-REGISTRATION — pipeline-mouth calibration reward (registered 2026-07-28, before any code or runs)"
+      },
+      {
+       "line": 1079,
+       "end": 1123,
+       "kind": "verdict",
+       "heading": "CELL 11 VERDICT — calibration reward cannot move the register (2026-07-30, 105 new runs, zero failures)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "12",
+     "current_title": "register portability via weight interpolation",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P12.1",
+      "P12.2",
+      "P12.3"
+     ],
+     "entries": [
+      {
+       "line": 1040,
+       "end": 1078,
+       "kind": "prereg",
+       "heading": "CELL 12 PRE-REGISTRATION — register portability via weight interpolation (registered 2026-07-30, before any runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "13",
+     "current_title": "per-clause isolation of the PRESERVE block",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P13.1",
+      "P13.2",
+      "P13.3",
+      "P13.4"
+     ],
+     "entries": [
+      {
+       "line": 1219,
+       "end": 1286,
+       "kind": "prereg",
+       "heading": "CELL 13 PRE-REGISTRATION — per-clause isolation of the PRESERVE block (registered 2026-07-30, before any runs)"
+      },
+      {
+       "line": 1350,
+       "end": 1370,
+       "kind": "correction",
+       "heading": "CELL 13 CORRECTION — baseline definition (2026-07-30, before any runs)"
+      },
+      {
+       "line": 1371,
+       "end": 1447,
+       "kind": "verdict",
+       "heading": "CELL 13 VERDICT — one clause carries the block, but WHICH clause is Lead-dependent (2026-08-01, 210 runs, zero failures)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "verification-audit",
+     "kind": "audit",
+     "entries": [
+      {
+       "id": "entry-1448",
+       "line": 1448,
+       "end": 1496,
+       "heading": "INDEPENDENT VERIFICATION AUDIT (2026-08-01)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "data-integrity-audit",
+     "kind": "audit",
+     "entries": [
+      {
+       "id": "entry-1497",
+       "line": 1497,
+       "end": 1539,
+       "heading": "DATA-INTEGRITY AUDIT (2026-08-01) — findings and dispositions",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "paper-v07",
+     "kind": "paper",
+     "entries": [
+      {
+       "id": "entry-1540",
+       "line": 1540,
+       "end": 1591,
+       "heading": "PAPER v0.7 — TRANSPORT-VS-RENDERING REFRAME (2026-08-01)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "paper-witnesses",
+     "kind": "paper",
+     "entries": [
+      {
+       "id": "entry-1592",
+       "line": 1592,
+       "end": 1631,
+       "heading": "SECOND PAPER — \"Witnesses, Not Amplifiers\" (docs/paper_witnesses.tex, v0.1, 2026-08-01)",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_B.json"
+  },
+  "C": {
+   "cells": [
+    {
+     "id": "14",
+     "current_title": "trigger-free control expansion",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P14.1",
+      "P14.2",
+      "P14.3"
+     ],
+     "entries": [
+      {
+       "line": 1632,
+       "end": 1685,
+       "kind": "prereg",
+       "heading": "CELL 14 PRE-REGISTRATION — trigger-free control expansion (registered 2026-08-01, before any runs)"
+      },
+      {
+       "line": 1686,
+       "end": 1761,
+       "kind": "note",
+       "heading": "CELL 14 — CONFOUND FOUND WHILE REGISTERING; DESIGN CORRECTED (2026-08-01, before any runs)"
+      },
+      {
+       "line": 1832,
+       "end": 1892,
+       "kind": "verdict",
+       "heading": "CELL 14 VERDICT — P14.1 AND P14.2 BOTH FALSIFIED; THE CALIBRATION CLAIM IS DEAD (2026-08-02)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "15",
+     "current_title": "load dose-response",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P15.1",
+      "P15.2",
+      "P15.3",
+      "P15.4"
+     ],
+     "entries": [
+      {
+       "line": 1893,
+       "end": 1952,
+       "kind": "prereg",
+       "heading": "CELL 15 PRE-REGISTRATION — load dose-response (registered 2026-08-02, before any cases are written or runs made)"
+      },
+      {
+       "line": 1953,
+       "end": 1960,
+       "kind": "deviation",
+       "heading": "CELL 15 — deviation from registration, recorded before running"
+      },
+      {
+       "line": 1961,
+       "end": 2059,
+       "kind": "verdict",
+       "heading": "CELL 15 VERDICT — P15.1 FALSIFIED; THE COUNCIL HAS NO MEASURED ADVANTAGE ON ANY AXIS (2026-08-02)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "16",
+     "current_title": "GRPO on the Lead",
+     "status_parsed": "not-executable",
+     "never_ran": false,
+     "pids": [
+      "P16.1",
+      "P16.2",
+      "P16.3"
+     ],
+     "entries": [
+      {
+       "line": 2060,
+       "end": 2161,
+       "kind": "prereg",
+       "heading": "CELL 16 PRE-REGISTRATION — GRPO on the Lead (registered 2026-08-02, before any training)"
+      },
+      {
+       "line": 2162,
+       "end": 2203,
+       "kind": "deviation",
+       "heading": "CELL 16 — REGISTERED DEVIATION (2026-08-02, before training starts)"
+      },
+      {
+       "line": 2204,
+       "end": 2279,
+       "kind": "note",
+       "heading": "CELL 16 — REGISTRATION REWRITTEN BEFORE ANY TRAINING (2026-08-02)"
+      },
+      {
+       "line": 2280,
+       "end": 2298,
+       "kind": "note",
+       "heading": "CELL 16 — reward validated before launch (2026-08-02)"
+      },
+      {
+       "line": 2299,
+       "end": 2342,
+       "kind": "verdict",
+       "heading": "CELL 16 — NOT EXECUTABLE ON THIS HARDWARE (2026-08-03)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "execution-path-audit",
+     "kind": "audit",
+     "entries": [
+      {
+       "id": "entry-1762",
+       "line": 1762,
+       "end": 1831,
+       "heading": "EXECUTION-PATH AUDIT (2026-08-01) — how far the zero-route flaw reaches",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "paper-behavior",
+     "kind": "paper",
+     "entries": [
+      {
+       "id": "entry-2343",
+       "line": 2343,
+       "end": 2391,
+       "heading": "FOURTH PAPER — \"What Aggregation Does to Epistemic Content\" (docs/paper_behavior.tex, v0.1, 2026-08-03)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "tension-enumeration",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-2392",
+       "line": 2392,
+       "end": 2443,
+       "heading": "TENSION ENUMERATION — new section in paper_behavior (2026-08-03)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "provenance-replication",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-2444",
+       "line": 2444,
+       "end": 2494,
+       "heading": "PROVENANCE REPLICATION (2026-08-03) — confirms the phenomenon, CORRECTS our framing",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_C.json"
+  },
+  "D": {
+   "cells": [
+    {
+     "id": "17",
+     "current_title": "the suppression clause",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P17.1",
+      "P17.2",
+      "P17.3"
+     ],
+     "entries": [
+      {
+       "line": 2495,
+       "end": 2538,
+       "kind": "prereg",
+       "heading": "CELL 17 PRE-REGISTRATION — the suppression clause (registered 2026-08-03, before any runs)"
+      },
+      {
+       "line": 2539,
+       "end": 2585,
+       "kind": "verdict",
+       "heading": "CELL 17 VERDICT — the suppression clause does not suppress (2026-08-03, 45 runs, zero failures)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "18",
+     "current_title": "provenance-rewarded training",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P18.1",
+      "P18.2",
+      "P18.3"
+     ],
+     "entries": [
+      {
+       "line": 2586,
+       "end": 2649,
+       "kind": "prereg",
+       "heading": "CELL 18 PRE-REGISTRATION — provenance-rewarded training (registered 2026-08-04, before any pairs are built or training run)"
+      },
+      {
+       "line": 2650,
+       "end": 2659,
+       "kind": "deviation",
+       "heading": "CELL 18 — dose deviation recorded before training"
+      },
+      {
+       "line": 2660,
+       "end": 2700,
+       "kind": "incident",
+       "heading": "CELL 18 — BENCHED ON THE WRONG CONDITION (2026-08-04, harness error, owned)"
+      },
+      {
+       "line": 2701,
+       "end": 2749,
+       "kind": "verdict",
+       "heading": "CELL 18 VERDICT (corrected bench) — P18.1 FALSIFIED (2026-08-04, 30 thin-supply runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "19",
+     "current_title": "the runtime provenance gate",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P19.1",
+      "P19.2",
+      "P19.3",
+      "P19.4"
+     ],
+     "entries": [
+      {
+       "line": 2772,
+       "end": 2815,
+       "kind": "prereg",
+       "heading": "CELL 19 PRE-REGISTRATION — the runtime provenance gate (registered 2026-08-04, before any runs)"
+      },
+      {
+       "line": 2816,
+       "end": 2851,
+       "kind": "amendment",
+       "heading": "CELL 19 AMENDMENT — instrument upgrade, registered before any gate outcomes were examined (2026-08-04)"
+      },
+      {
+       "line": 2852,
+       "end": 2910,
+       "kind": "verdict",
+       "heading": "CELL 19 VERDICT — the gate taught EVASION. Your amendment caught it. (2026-08-05, 45 runs, 0 failures, 0 quarantines)"
+      },
+      {
+       "line": 3337,
+       "end": 3393,
+       "kind": "amendment",
+       "heading": "CELL 19 AMENDMENT #2 — the \"taught evasion\" mechanism claim is corrected (2026-08-05, program audit)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "20",
+     "current_title": "the decision/attribution instruction",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P20.1",
+      "P20.2",
+      "P20.3",
+      "P20.4"
+     ],
+     "entries": [
+      {
+       "line": 2911,
+       "end": 2992,
+       "kind": "prereg",
+       "heading": "CELL 20 PRE-REGISTRATION — the decision/attribution instruction (registered 2026-08-05, before any runs)"
+      },
+      {
+       "line": 3089,
+       "end": 3149,
+       "kind": "verdict",
+       "heading": "CELL 20 VERDICT — the Lead renders the FORM of a decision but will not COMMIT (2026-08-05, 45 runs, 0 failures, 0 quarantines)"
+      },
+      {
+       "line": 3203,
+       "end": 3221,
+       "kind": "rerun",
+       "heading": "CELL 20 — JUDGE TIER RE-RUN with the corrected instrument (2026-08-05)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "21",
+     "current_title": "manifest accuracy",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P21.1",
+      "P21.2",
+      "P21.3"
+     ],
+     "entries": [
+      {
+       "line": 2993,
+       "end": 3024,
+       "kind": "prereg",
+       "heading": "CELL 21 PRE-REGISTRATION — manifest accuracy (registered 2026-08-05; design finalised after Cell 20 reports)"
+      },
+      {
+       "line": 3150,
+       "end": 3202,
+       "kind": "incident",
+       "heading": "CELL 21 — FIRST JUDGING PASS VOID: instrument implementation deviated from registration (2026-08-05)"
+      },
+      {
+       "line": 3222,
+       "end": 3256,
+       "kind": "verdict",
+       "heading": "CELL 21 VERDICT — P21.1 FALSIFIED; the manifest does not ship as-is (2026-08-05)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "22",
+     "current_title": "retrospective paired replay of the DECIDE clause",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P22.1",
+      "P22.2",
+      "P22.3",
+      "P22.4"
+     ],
+     "entries": [
+      {
+       "line": 3025,
+       "end": 3088,
+       "kind": "prereg",
+       "heading": "CELL 22 PRE-REGISTRATION — retrospective paired replay of the DECIDE clause (registered 2026-08-05, before Cell 20 has reported; execution contingent on Cell 20's outcome)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "harness-built",
+     "kind": "engineering",
+     "entries": [
+      {
+       "id": "entry-2750",
+       "line": 2750,
+       "end": 2771,
+       "heading": "HARNESS BUILT + VALIDATED (2026-08-04) — and it immediately caught a cohorting defect",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_D.json"
+  },
+  "E": {
+   "cells": [
+    {
+     "id": "23",
+     "current_title": "NLI recalibration on FAMILY PRESENCE",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P23.1",
+      "P23.2",
+      "P23.3"
+     ],
+     "entries": [
+      {
+       "line": 3257,
+       "end": 3336,
+       "kind": "prereg",
+       "heading": "CELL 23 PRE-REGISTRATION — NLI recalibration on FAMILY PRESENCE"
+      },
+      {
+       "line": 3394,
+       "end": 3453,
+       "kind": "verdict",
+       "heading": "CELL 23 VERDICT — presence calibration FAILS; the judges are the instrument now (2026-08-05, 220 items x 2 judges, 0 unusable replies)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "24",
+     "current_title": "per-family robustness re-analysis of standing verdicts",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P24.1",
+      "P24.2",
+      "P24.3",
+      "P24.4"
+     ],
+     "entries": [
+      {
+       "line": 3454,
+       "end": 3519,
+       "kind": "prereg",
+       "heading": "CELL 24 PRE-REGISTRATION — per-family robustness re-analysis of standing verdicts (registered 2026-08-05, before any numbers are computed)"
+      },
+      {
+       "line": 3520,
+       "end": 3575,
+       "kind": "verdict",
+       "heading": "CELL 24 VERDICT — the validated channel shows MORE prior-dominance, not less; the attenuation caveat is withdrawn and reversed (2026-08-05, pure ledger recomputation, registered estimator)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "25",
+     "current_title": "the shrinkage law on a second architecture (Mixture-of-Agents)",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P25.1",
+      "P25.2",
+      "P25.3"
+     ],
+     "entries": [
+      {
+       "line": 3576,
+       "end": 3643,
+       "kind": "prereg",
+       "heading": "CELL 25 PRE-REGISTRATION — the shrinkage law on a second architecture (Mixture-of-Agents), registered 2026-08-05 before any runs"
+      },
+      {
+       "line": 3644,
+       "end": 3680,
+       "kind": "deviation",
+       "heading": "CELL 25 — REGISTERED DEVIATION, before any aggregator runs (2026-08-05)"
+      },
+      {
+       "line": 3681,
+       "end": 3756,
+       "kind": "verdict",
+       "heading": "CELL 25 VERDICT — the phenomenon travels; the parameters do not. The MoA aggregator sits near the pure-register corner (2026-08-06, 80/80 runs, zero failures, zero guard flags)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "26",
+     "current_title": "agreement-conditioned transport",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P26.1",
+      "P26.2"
+     ],
+     "entries": [
+      {
+       "line": 3757,
+       "end": 3818,
+       "kind": "prereg",
+       "heading": "CELL 26 PRE-REGISTRATION — agreement-conditioned transport (registered 2026-08-06, before any numbers are computed)"
+      },
+      {
+       "line": 3819,
+       "end": 3863,
+       "kind": "verdict",
+       "heading": "CELL 26 VERDICT — no agreement weighting on the validated channel; the low-validity families show a strong k-response whose mechanism these instruments cannot adjudicate (2026-08-06, 1,165 multi-seat runs, zero model calls)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "27",
+     "current_title": "the evidence ledger: externalizing the writer's estimator",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P27.1",
+      "P27.2",
+      "P27.3",
+      "P27.4"
+     ],
+     "entries": [
+      {
+       "line": 3864,
+       "end": 3943,
+       "kind": "prereg",
+       "heading": "CELL 27 PRE-REGISTRATION — the evidence ledger: externalizing the writer's estimator (registered 2026-08-06, before any runs)"
+      },
+      {
+       "line": 3944,
+       "end": 3998,
+       "kind": "verdict",
+       "heading": "CELL 27 VERDICT — all four registered predictions falsified; the ledger is not a transport mechanism, it is a bottleneck that relocates the estimator and, in doing so, eliminates prior fill (2026-08-07, L2 79 runs / L1 45 runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "28",
+     "current_title": "replication of the ledger's c→0 / w-preserved pattern",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P28.1",
+      "P28.2",
+      "P28.3"
+     ],
+     "entries": [
+      {
+       "line": 3999,
+       "end": 4055,
+       "kind": "prereg",
+       "heading": "CELL 28 PRE-REGISTRATION — replication of the ledger's c→0 / w-preserved pattern (registered 2026-08-07, before any runs)"
+      },
+      {
+       "line": 4056,
+       "end": 4079,
+       "kind": "note",
+       "heading": "CELL 28 PRE-ANALYSIS NOTE — composition-law predictions, registered before the measure stage runs (2026-08-07; runs in progress, no measurements examined)"
+      },
+      {
+       "line": 4080,
+       "end": 4141,
+       "kind": "verdict",
+       "heading": "CELL 28 VERDICT + PA28 — the pattern replicates; the formula does not survive its own mechanism check; Cell 29 is discarded at its gate (2026-08-07, 45 runs; measure + PA reports in bench/analysis/cell28/)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [],
+   "output": "docs/ledger_explorer/plain/batch_E.json"
+  },
+  "F": {
+   "cells": [
+    {
+     "id": "29",
+     "current_title": "phenomena atlas: corpus-wide measurement of the observed mathematical regularities",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P29.1",
+      "P29.2",
+      "P29.3",
+      "P29.4"
+     ],
+     "entries": [
+      {
+       "line": 4142,
+       "end": 4190,
+       "kind": "prereg",
+       "heading": "CELL 29 PRE-REGISTRATION — phenomena atlas: corpus-wide measurement of the observed mathematical regularities (registered 2026-08-07, before any numbers are computed)"
+      },
+      {
+       "line": 4191,
+       "end": 4283,
+       "kind": "verdict",
+       "heading": "CELL 29 VERDICT — phenomena atlas: three regularities graduate to corpus-level measurements; one falsifies; my informal \"band\" narrative is corrected by its own test (2026-08-07, 1,300+ runs, 25 qualifying arms, zero model calls)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "30",
+     "current_title": "the de-scaffolded replication",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P30.0",
+      "P30.1",
+      "P30.2",
+      "P30.3",
+      "P30.4"
+     ],
+     "entries": [
+      {
+       "line": 4284,
+       "end": 4368,
+       "kind": "prereg",
+       "heading": "CELL 30 PRE-REGISTRATION — the de-scaffolded replication (registered 2026-08-07, before any runs)"
+      },
+      {
+       "line": 4369,
+       "end": 4429,
+       "kind": "verdict",
+       "heading": "CELL 30 VERDICT — INSTRUMENT FAILURE at the registered gate; the audit's mandated replication is BLOCKED on instrumentation (2026-08-07, 60 runs generated, 80 texts judged)"
+      },
+      {
+       "line": 5166,
+       "end": 5225,
+       "kind": "verdict",
+       "heading": "CELL 30 VERDICT — the law SURVIVES de-scaffolding: w = 0.150 [0.058, 0.252], measured with no lexicon anywhere in the system or the instrument (2026-08-10)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "31",
+     "current_title": "the matched-baseline ledger test",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P31.1",
+      "P31.2"
+     ],
+     "entries": [
+      {
+       "line": 4430,
+       "end": 4490,
+       "kind": "prereg",
+       "heading": "CELL 31 PRE-REGISTRATION — the matched-baseline ledger test (registered 2026-08-07, before any runs)"
+      },
+      {
+       "line": 5090,
+       "end": 5116,
+       "kind": "deviation",
+       "heading": "CELL 31 — REGISTERED DEVIATION, before any measurement (2026-08-09)"
+      },
+      {
+       "line": 5117,
+       "end": 5165,
+       "kind": "verdict",
+       "heading": "CELL 31 VERDICT — the ledger's c->0 finding is WITHDRAWN. It was clause removal, not the ledger (2026-08-10, first measurement in this program produced by an instrument that passed a registered validation gate)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "IV",
+     "current_title": "instrument validation: does BATCHED sentence judging preserve the validated protocol?",
+     "status_parsed": "verdict",
+     "never_ran": false,
+     "pids": [
+      "P-IV.1",
+      "P-IV.2",
+      "P-IV.3"
+     ],
+     "entries": [
+      {
+       "line": 5003,
+       "end": 5047,
+       "kind": "prereg",
+       "heading": "CELL IV PRE-REGISTRATION — instrument validation: does BATCHED sentence judging preserve the validated protocol? (registered 2026-08-09, before any judging)"
+      },
+      {
+       "line": 5048,
+       "end": 5089,
+       "kind": "verdict",
+       "heading": "CELL IV VERDICT — BATCHED JUDGING VALIDATES AT B=10. The program has a working instrument again (2026-08-09)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "32",
+     "current_title": "heterogeneous error decorrelation (gated on G-R)",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P32.1",
+      "P32.2"
+     ],
+     "entries": [
+      {
+       "line": 4721,
+       "end": 4742,
+       "kind": "prereg",
+       "heading": "CELL 32 — heterogeneous error decorrelation (gated on G-R)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "33",
+     "current_title": "inter-seat disagreement as a triage signal (gated on G-R)",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P33.1",
+      "P33.2"
+     ],
+     "entries": [
+      {
+       "line": 4743,
+       "end": 4765,
+       "kind": "prereg",
+       "heading": "CELL 33 — inter-seat disagreement as a triage signal (gated on G-R)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "34",
+     "current_title": "does provenance make auditing possible? (gated on Cell 35's injections)",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P34.1",
+      "P34.2"
+     ],
+     "entries": [
+      {
+       "line": 4699,
+       "end": 4720,
+       "kind": "prereg",
+       "heading": "CELL 34 — does provenance make auditing possible? (gated on Cell 35's injections)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "pd13",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-4491",
+       "line": 4491,
+       "end": 4527,
+       "heading": "REGISTERED RE-ANALYSIS PD-13 — is the clause effect compliance or behavior? (registered 2026-08-07, before computation; zero model calls)",
+       "parts": []
+      },
+      {
+       "id": "entry-4528",
+       "line": 4528,
+       "end": 4624,
+       "heading": "PD-13 VERDICT — SUPPORTED, decisively. The clause effects are instruction compliance, and the framework paper's instruction-gain contribution is WITHDRAWN per the registered consequence (2026-08-09, zero model calls)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "block-32-36",
+     "kind": "setup",
+     "entries": [
+      {
+       "id": "block-32-36",
+       "line": 4625,
+       "end": 4626,
+       "heading": "CELLS 32-36 PRE-REGISTRATION BLOCK — extrinsic council advantages (registered 2026-08-09, before any runs)",
+       "parts": [
+        "Framing and the burden of proof",
+        "Shared instrument gate — RUBRIC-COVERAGE INSTRUMENT (blocks 32, 33, 36)",
+        "Block-level consequence"
+       ]
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_F.json"
+  },
+  "G": {
+   "cells": [
+    {
+     "id": "35",
+     "current_title": "error attribution and targeted repair (runs FIRST; no instrument gate)",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P35.1",
+      "P35.2",
+      "P35.3"
+     ],
+     "entries": [
+      {
+       "line": 4657,
+       "end": 4698,
+       "kind": "prereg",
+       "heading": "CELL 35 — error attribution and targeted repair (runs FIRST; no instrument gate)"
+      },
+      {
+       "line": 4863,
+       "end": 4922,
+       "kind": "verdict",
+       "heading": "CELL 35 VERDICT — planted errors did NOT propagate: 0/27 by exact match and 0/17 by dual judges. The first council advantage the program has found, and it is not the one that was registered (2026-08-09, 54 runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "36",
+     "current_title": "domain factual accuracy (BLOCKED: requires a new battery)",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P36.1",
+      "P36.2"
+     ],
+     "entries": [
+      {
+       "line": 4766,
+       "end": 4789,
+       "kind": "prereg",
+       "heading": "CELL 36 — domain factual accuracy (BLOCKED: requires a new battery)"
+      },
+      {
+       "line": 4800,
+       "end": 4862,
+       "kind": "amendment",
+       "heading": "CELL 36 AMENDMENT #1 — the routing-mechanism dimension (registered 2026-08-09, before the battery exists and before any correctness has ever been measured)"
+      },
+      {
+       "line": 5359,
+       "end": 5399,
+       "kind": "amendment",
+       "heading": "CELL 36 AMENDMENT #2 — the verifiable battery is BUILT; scope narrowed and stated (2026-08-10, before any Cell 36 runs)"
+      },
+      {
+       "line": 5475,
+       "end": 5528,
+       "kind": "verdict",
+       "heading": "CELL 36 VERDICT — P36.1 FALSIFIED. The council buys no accuracy, and the ceiling effect means this battery could not have shown much either way (2026-08-10, 179 runs over 60 verifiable items)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "37",
+     "current_title": "does the writer RECOMPUTE, or merely prefer an uncorrupted source?",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P37.1",
+      "P37.2",
+      "P37.3"
+     ],
+     "entries": [
+      {
+       "line": 4923,
+       "end": 5002,
+       "kind": "prereg",
+       "heading": "CELL 37 PRE-REGISTRATION — does the writer RECOMPUTE, or merely prefer an uncorrupted source? (registered 2026-08-09, before any runs)"
+      },
+      {
+       "line": 5609,
+       "end": 5663,
+       "kind": "verdict",
+       "heading": "CELL 37 VERDICT — the writer does NOT recompute. \"Recomputation\" is struck from every artifact, and the corrupted value wins whenever no clean source exists (2026-08-10, 108 runs, four arms)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "38",
+     "current_title": "judge-driven ablation: does compensating invention exist at TRUE zero supply?",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P38.1",
+      "P38.2",
+      "P38.3"
+     ],
+     "entries": [
+      {
+       "line": 5226,
+       "end": 5291,
+       "kind": "prereg",
+       "heading": "CELL 38 PRE-REGISTRATION — judge-driven ablation: does compensating invention exist at TRUE zero supply? (registered 2026-08-10, before any runs)"
+      },
+      {
+       "line": 5439,
+       "end": 5474,
+       "kind": "verdict",
+       "heading": "CELL 38 VERDICT — invention at TRUE zero supply is REAL: 4/12 [0.138, 0.609]. The program's most striking claim survives proper measurement (2026-08-10)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "39",
+     "current_title": "is the error filtering a COUNCIL property or a WRITER-ARCHITECTURE property?",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P39.1",
+      "P39.2",
+      "P39.3"
+     ],
+     "entries": [
+      {
+       "line": 5292,
+       "end": 5358,
+       "kind": "prereg",
+       "heading": "CELL 39 PRE-REGISTRATION — is the error filtering a COUNCIL property or a WRITER-ARCHITECTURE property? (registered 2026-08-10, before any runs)"
+      },
+      {
+       "line": 5400,
+       "end": 5438,
+       "kind": "verdict",
+       "heading": "CELL 39 VERDICT — the filtering is NOT the MoE writer's doing. Both architectures reject planted errors completely (2026-08-10, 54 dense runs against Cell 35's 54 MoE runs)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "40",
+     "current_title": "can a SEAT instruct the lead?",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P40.1",
+      "P40.2",
+      "P40.3",
+      "P40.4"
+     ],
+     "entries": [
+      {
+       "line": 5529,
+       "end": 5608,
+       "kind": "prereg",
+       "heading": "CELL 40 PRE-REGISTRATION — can a SEAT instruct the lead? (registered 2026-08-10, before any runs)"
+      },
+      {
+       "line": 5664,
+       "end": 5744,
+       "kind": "verdict",
+       "heading": "CELL 40 VERDICT — NOT EVALUABLE (measured 2026-08-11)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [],
+   "output": "docs/ledger_explorer/plain/batch_G.json"
+  },
+  "H": {
+   "cells": [
+    {
+     "id": "41",
+     "current_title": "the phrase-swap cell",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P41.1",
+      "P41.2",
+      "P41.3",
+      "P41.4"
+     ],
+     "entries": [
+      {
+       "line": 6007,
+       "end": 6096,
+       "kind": "prereg",
+       "heading": "CELL 41 PRE-REGISTRATION — the phrase-swap cell (registered 2026-08-11, before any run)"
+      },
+      {
+       "line": 6177,
+       "end": 6257,
+       "kind": "verdict",
+       "heading": "CELL 41 VERDICT (2026-08-11) — the instruction is its phrase"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "42",
+     "current_title": "do domain fine-tunes reason differently?",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P42.1",
+      "P42.2",
+      "P42.3",
+      "P42.4",
+      "P42.5"
+     ],
+     "entries": [
+      {
+       "line": 6327,
+       "end": 6421,
+       "kind": "prereg",
+       "heading": "CELL 42 PRE-REGISTRATION — do domain fine-tunes reason differently? (registered 2026-08-11, before any run)"
+      },
+      {
+       "line": 6422,
+       "end": 6514,
+       "kind": "verdict",
+       "heading": "CELL 42 VERDICT (2026-08-11) — the signature is per-model, not per-domain-training"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "dictation",
+     "kind": "tool",
+     "entries": [
+      {
+       "id": "entry-5745",
+       "line": 5745,
+       "end": 5826,
+       "heading": "DICTATION REGISTRY + PARAPHRASE MATCHER — PRE-REGISTRATION (2026-08-11, before any scoring)",
+       "parts": []
+      },
+      {
+       "id": "entry-5827",
+       "line": 5827,
+       "end": 5923,
+       "heading": "DICTATION REGISTRY + PARAPHRASE MATCHER — VERDICT (2026-08-11)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "phrase-forms",
+     "kind": "tool",
+     "entries": [
+      {
+       "id": "entry-5924",
+       "line": 5924,
+       "end": 6006,
+       "heading": "LAYER 3 ATTAINABILITY + FORM FREEZE (2026-08-11, before the cell is registered)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "seat-pilot",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-6097",
+       "line": 6097,
+       "end": 6176,
+       "heading": "SEAT-APPROACH PILOT (2026-08-11) — descriptive, zero model calls",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "domain-probe",
+     "kind": "tool",
+     "entries": [
+      {
+       "id": "entry-6258",
+       "line": 6258,
+       "end": 6326,
+       "heading": "DOMAIN-SIGNATURE ATTAINABILITY PROBE (2026-08-11) — instrument viable, design needs a third lineage",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_H.json"
+  },
+  "I": {
+   "cells": [
+    {
+     "id": "43",
+     "current_title": "the preference-lift decomposition",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P43.1",
+      "P43.2",
+      "P43.3",
+      "P43.4"
+     ],
+     "entries": [
+      {
+       "line": 6515,
+       "end": 6586,
+       "kind": "prereg",
+       "heading": "CELL 43 PRE-REGISTRATION — the preference-lift decomposition (registered 2026-08-11, before any run or judgment)"
+      },
+      {
+       "line": 6587,
+       "end": 6661,
+       "kind": "verdict",
+       "heading": "CELL 43 VERDICT (2026-08-12) — the lift is real; the compliance phrases COST preference"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "43-R",
+     "current_title": "disjoint-family judge replication",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P43R.1",
+      "P43R.2"
+     ],
+     "entries": [
+      {
+       "line": 6662,
+       "end": 6703,
+       "kind": "prereg",
+       "heading": "CELL 43-R PRE-REGISTRATION — disjoint-family judge replication (registered 2026-08-12, before any pilot or run)"
+      },
+      {
+       "line": 6704,
+       "end": 6738,
+       "kind": "verdict",
+       "heading": "CELL 43-R VERDICT (2026-08-12) — PARTIAL replication: the lift and one phrase penalty cross judge families; the other spans at this power"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "44",
+     "current_title": "orchestrator-routed re-consultation, design (c)",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P44.1",
+      "P44.2",
+      "P44.3",
+      "P44.4"
+     ],
+     "entries": [
+      {
+       "line": 6813,
+       "end": 6891,
+       "kind": "prereg",
+       "heading": "CELL 44 PRE-REGISTRATION — orchestrator-routed re-consultation, design (c) (registered 2026-08-13, before items or runs)"
+      },
+      {
+       "line": 6892,
+       "end": 6912,
+       "kind": "pilot",
+       "heading": "CELL 44 PILOT GATES (2026-08-13) — PASS; full run launched"
+      },
+      {
+       "line": 6913,
+       "end": 6969,
+       "kind": "verdict",
+       "heading": "CELL 44 VERDICT (2026-08-13) — the loop works at the lead: P44.1 and P44.2 SUPPORTED"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "45",
+     "current_title": "design (b) stage one: seat-side deferral discrimination",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P45.1",
+      "P45.2",
+      "P45.3"
+     ],
+     "entries": [
+      {
+       "line": 6970,
+       "end": 7027,
+       "kind": "prereg",
+       "heading": "CELL 45 PRE-REGISTRATION — design (b) stage one: seat-side deferral discrimination (registered 2026-08-13, before items or runs)"
+      },
+      {
+       "line": 7028,
+       "end": 7087,
+       "kind": "verdict",
+       "heading": "CELL 45 VERDICT (2026-08-20) — P45.1 FALSIFIED, P45.2 SUPPORTED: seats route well but rarely recognize the need. Design (b) does NOT proceed."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "46",
+     "current_title": "second-writer replication of the transport law",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P46.1",
+      "P46.2",
+      "P46.3"
+     ],
+     "entries": [
+      {
+       "line": 7209,
+       "end": 7260,
+       "kind": "prereg",
+       "heading": "CELL 46 PRE-REGISTRATION — second-writer replication of the transport law (registered 2026-08-20, before any run)"
+      },
+      {
+       "line": 7261,
+       "end": 7347,
+       "kind": "verdict",
+       "heading": "CELL 46 VERDICT (2026-08-21) — P46.1 and P46.2 SUPPORTED: the transport law holds for a SECOND writer"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "tension-fate",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-6739",
+       "line": 6739,
+       "end": 6765,
+       "heading": "TENSION-FATE AUDIT — registered scope (2026-08-13, before any judging)",
+       "parts": []
+      },
+      {
+       "id": "entry-6766",
+       "line": 6766,
+       "end": 6812,
+       "heading": "TENSION-FATE AUDIT — RESULT (2026-08-13; descriptive, as registered)",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "transport-battery",
+     "kind": "analysis",
+     "entries": [
+      {
+       "id": "entry-7088",
+       "line": 7088,
+       "end": 7121,
+       "heading": "TRANSPORT-COEFFICIENT ARCHIVAL BATTERY — registered scope (2026-08-20, before any computation)",
+       "parts": []
+      },
+      {
+       "id": "entry-7122",
+       "line": 7122,
+       "end": 7208,
+       "heading": "TRANSPORT-COEFFICIENT BATTERY — RESULT (2026-08-20; descriptive)",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_I.json"
+  },
+  "J": {
+   "cells": [
+    {
+     "id": "47",
+     "current_title": "the redundancy-planner lift",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "L2.1",
+      "L2.2",
+      "L2.3"
+     ],
+     "entries": [
+      {
+       "line": 7348,
+       "end": 7440,
+       "kind": "prereg",
+       "heading": "CELL 47 (L2) PRE-REGISTRATION — the redundancy-planner lift (registered 2026-08-21, before items or runs)"
+      },
+      {
+       "line": 7441,
+       "end": 7482,
+       "kind": "verdict",
+       "heading": "CELL 47 (L2) VERDICT (2026-08-22) — the redundancy planner is causal: L2.1 and L2.2 SUPPORTED"
+      },
+      {
+       "line": 7483,
+       "end": 7512,
+       "kind": "note",
+       "heading": "CELL 47 BIMODALITY READ (2026-08-22; descriptive, 10 runs read)"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "48",
+     "current_title": "out-of-band epistemic freight",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P48.1",
+      "P48.2",
+      "P48.3"
+     ],
+     "entries": [
+      {
+       "line": 7513,
+       "end": 7580,
+       "kind": "prereg",
+       "heading": "CELL 48 (L4) PRE-REGISTRATION — out-of-band epistemic freight (registered 2026-08-22, before any judging)"
+      },
+      {
+       "line": 7581,
+       "end": 7617,
+       "kind": "verdict",
+       "heading": "CELL 48 (L4) VERDICT (2026-08-22) — carriage established; the preference estimand NOT EVALUABLE at this power"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "49",
+     "current_title": "the arbitration mechanism",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P49.1",
+      "P49.2",
+      "P49.3"
+     ],
+     "entries": [
+      {
+       "line": 7618,
+       "end": 7689,
+       "kind": "prereg",
+       "heading": "CELL 49 PRE-REGISTRATION — the arbitration mechanism (registered 2026-08-22, before any run)"
+      },
+      {
+       "line": 7690,
+       "end": 7747,
+       "kind": "verdict",
+       "heading": "CELL 49 VERDICT (2026-08-22) — both registered predictions NOT EVALUABLE; the table exposes a third mechanism neither predicted"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "50",
+     "current_title": "the ownership law",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P50.1",
+      "P50.2",
+      "P50.3"
+     ],
+     "entries": [
+      {
+       "line": 7748,
+       "end": 7809,
+       "kind": "prereg",
+       "heading": "CELL 50 PRE-REGISTRATION — the ownership law (registered 2026-08-22, before any elicitation or run)"
+      },
+      {
+       "line": 7810,
+       "end": 7855,
+       "kind": "verdict",
+       "heading": "CELL 50 VERDICT (2026-08-23) — P50.1 FALSIFIED: the elicited ownership map does not predict arbitration. The confirmation cell did its job by killing the law."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "51",
+     "current_title": "freight uptake: is appendix-carried content ever USED?",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P51.1",
+      "P51.2"
+     ],
+     "entries": [
+      {
+       "line": 7856,
+       "end": 7950,
+       "kind": "prereg",
+       "heading": "CELL 51 PRE-REGISTRATION (2026-08-24) — freight uptake: is appendix-carried content ever USED?"
+      },
+      {
+       "line": 7951,
+       "end": 7979,
+       "kind": "deviation",
+       "heading": "CELL 51 PILOT DEVIATION (2026-08-24) — pooled-floor population ambiguity, recorded before any main run"
+      },
+      {
+       "line": 7980,
+       "end": 8028,
+       "kind": "verdict",
+       "heading": "CELL 51 VERDICT (2026-08-24) — P51.1 SUPPORTED: appendix-carried content moves decisions. P51.2: channel parity at power. §6 is now tested on all three halves."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "52",
+     "current_title": "isolation made causal: does seeing sibling outputs bleed a seat out of its lane?",
+     "status_parsed": "falsified",
+     "never_ran": false,
+     "pids": [
+      "P52.1",
+      "P52.2"
+     ],
+     "entries": [
+      {
+       "line": 8029,
+       "end": 8086,
+       "kind": "prereg",
+       "heading": "CELL 52 PRE-REGISTRATION (2026-08-24) — isolation made causal: does seeing sibling outputs bleed a seat out of its lane?"
+      },
+      {
+       "line": 8087,
+       "end": 8131,
+       "kind": "verdict",
+       "heading": "CELL 52 VERDICT (2026-08-25) — P52.1 FALSIFIED: sibling visibility does not cause lane bleed. §2's prohibition loses its causal warrant per the registered consequence."
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [],
+   "output": "docs/ledger_explorer/plain/batch_J.json"
+  },
+  "K": {
+   "cells": [
+    {
+     "id": "53",
+     "current_title": "live-seat follow-ups: does the routed loop work end-to-end when a real seat writes the reply?",
+     "status_parsed": "halted",
+     "never_ran": false,
+     "pids": [
+      "P53.1",
+      "P53.2",
+      "P53.3"
+     ],
+     "entries": [
+      {
+       "line": 8132,
+       "end": 8218,
+       "kind": "prereg",
+       "heading": "CELL 53 PRE-REGISTRATION (2026-08-25) — live-seat follow-ups: does the routed loop work end-to-end when a real seat writes the reply?"
+      },
+      {
+       "line": 8219,
+       "end": 8258,
+       "kind": "deviation",
+       "heading": "CELL 53 PILOT: FAIL RECORDED, TWO DEVIATIONS REGISTERED BEFORE ANY FURTHER DATA (2026-08-25)"
+      },
+      {
+       "line": 8259,
+       "end": 8298,
+       "kind": "halt",
+       "heading": "CELL 53 DOES NOT PROCEED (2026-08-25) — the registered halt stands: the trigger, not the seat, is the bottleneck"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "54",
+     "current_title": "the private briefing: a live seat conveys a decisive fact it holds but never wrote",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P54.1",
+      "P54.2",
+      "P54.3"
+     ],
+     "entries": [
+      {
+       "line": 8299,
+       "end": 8371,
+       "kind": "prereg",
+       "heading": "CELL 54 PRE-REGISTRATION (2026-08-25) — the private briefing: a live seat conveys a decisive fact it holds but never wrote"
+      },
+      {
+       "line": 8372,
+       "end": 8413,
+       "kind": "verdict",
+       "heading": "CELL 54 VERDICT (2026-08-25) — P54.1 SUPPORTED: the live loop works end-to-end. §5's production half is established, with one new risk on record."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "55",
+     "current_title": "seating-gate predictive validity: does S1's verdict at selection predict defects at pipeline time?",
+     "status_parsed": "supported",
+     "never_ran": false,
+     "pids": [
+      "P55.1",
+      "P55.2"
+     ],
+     "entries": [
+      {
+       "line": 8414,
+       "end": 8481,
+       "kind": "prereg",
+       "heading": "CELL 55 PRE-REGISTRATION (2026-08-26) — seating-gate predictive validity: does S1's verdict at selection predict defects at pipeline time?"
+      },
+      {
+       "line": 8482,
+       "end": 8518,
+       "kind": "verdict",
+       "heading": "CELL 55 VERDICT (2026-08-29) — P55.1 SUPPORTED: the seating gate's verdict at selection predicts defects at pipeline time. The last untested harness component is tested."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "56",
+     "current_title": "bounding live-reply fabrication, and testing whether it is backfill",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P56.1",
+      "P56.2"
+     ],
+     "entries": [
+      {
+       "line": 8519,
+       "end": 8596,
+       "kind": "prereg",
+       "heading": "CELL 56 PRE-REGISTRATION (2026-08-29) — bounding live-reply fabrication, and testing whether it is backfill"
+      },
+      {
+       "line": 8597,
+       "end": 8648,
+       "kind": "verdict",
+       "heading": "CELL 56 VERDICT (2026-08-29) — the fabrication bound: item-triggered, name-stable, never admitted. P56.2 NOT EVALUABLE at power."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "57",
+     "current_title": "planner competence: can the orchestrator find the load-bearing quantities?",
+     "status_parsed": "mixed",
+     "never_ran": false,
+     "pids": [
+      "P57.1",
+      "P57.2",
+      "P57.3"
+     ],
+     "entries": [
+      {
+       "line": 8649,
+       "end": 8727,
+       "kind": "prereg",
+       "heading": "CELL 57 PRE-REGISTRATION (2026-08-29) — planner competence: can the orchestrator find the load-bearing quantities?"
+      },
+      {
+       "line": 8728,
+       "end": 8740,
+       "kind": "deviation",
+       "heading": "CELL 57 DEVIATION (2026-08-29) — the Unicode-hyphen incident, third occurrence, caught at the prefilter stage before any confirmation or measure"
+      },
+      {
+       "line": 8741,
+       "end": 8790,
+       "kind": "verdict",
+       "heading": "CELL 57 VERDICT (2026-08-29) — the planner finds about six in ten load-bearing quantities, and it is BEST at naming what is missing"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "58",
+     "current_title": "sub-question writing: does a live planner-authored assignment preserve the redundancy protection end-to-end?",
+     "status_parsed": "halted",
+     "never_ran": false,
+     "pids": [
+      "P58.1",
+      "P58.2"
+     ],
+     "entries": [
+      {
+       "line": 8791,
+       "end": 8865,
+       "kind": "prereg",
+       "heading": "CELL 58 PRE-REGISTRATION (2026-08-30) — sub-question writing: does a live planner-authored assignment preserve the redundancy protection end-to-end?"
+      },
+      {
+       "line": 8866,
+       "end": 8892,
+       "kind": "halt",
+       "heading": "CELL 58 PILOT: HALT RECORDED, WITH THE FINDING THAT CAUSED IT (2026-08-30)"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [],
+   "output": "docs/ledger_explorer/plain/batch_K.json"
+  },
+  "L": {
+   "cells": [
+    {
+     "id": "59",
+     "current_title": "sub-question writing, corrected: the planner assigns a NAMED quantity",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P59.1",
+      "P59.2"
+     ],
+     "entries": [
+      {
+       "line": 8893,
+       "end": 8909,
+       "kind": "prereg",
+       "heading": "CELL 59 PRE-REGISTRATION (2026-08-30) — sub-question writing, corrected: the planner assigns a NAMED quantity"
+      },
+      {
+       "line": 8910,
+       "end": 8926,
+       "kind": "deviation",
+       "heading": "CELL 59 PILOT DEVIATION (2026-08-30) — fourth value-format instrument incident; gate re-evaluated on rescored SAME outputs"
+      },
+      {
+       "line": 8927,
+       "end": 8971,
+       "kind": "verdict",
+       "heading": "CELL 59 VERDICT (2026-08-31) — the live chain preserves SELECTION; suppression is directionally present but not evaluable. §3's last link is measured."
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "60",
+     "current_title": "the harder accuracy battery: is the council an accuracy device or not?",
+     "status_parsed": "not-testable",
+     "never_ran": false,
+     "pids": [
+      "P60.1"
+     ],
+     "entries": [
+      {
+       "line": 9131,
+       "end": 9203,
+       "kind": "prereg",
+       "heading": "CELL 60 PRE-REGISTRATION (2026-08-31) — the harder accuracy battery: is the council an accuracy device or not?"
+      },
+      {
+       "line": 9204,
+       "end": 9217,
+       "kind": "deviation",
+       "heading": "CELL 60 PILOT DEVIATION (2026-09-01) — the budget-exhaustion incident, fourth appearance"
+      },
+      {
+       "line": 9218,
+       "end": 9245,
+       "kind": "halt",
+       "heading": "CELL 60 DIFFICULTY SCREEN: FAIL RECORDED — THE HALT STANDS (2026-09-01)"
+      },
+      {
+       "line": 9246,
+       "end": 9260,
+       "kind": "note",
+       "heading": "CELL 60-R ITEMS FROZEN (2026-09-01) — the rule-interaction round under the two-strikes rule"
+      },
+      {
+       "line": 9261,
+       "end": 9293,
+       "kind": "verdict",
+       "heading": "CELL 60 FINAL VERDICT (2026-09-01) — the two-strikes rule fires: the accuracy question has no testable form at this scale on well-specified items"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "61",
+     "current_title": "the bundle A/B: old architecture vs the assembled harness, on preference",
+     "status_parsed": "not-evaluable",
+     "never_ran": false,
+     "pids": [
+      "P61.1"
+     ],
+     "entries": [
+      {
+       "line": 9294,
+       "end": 9346,
+       "kind": "prereg",
+       "heading": "CELL 61 PRE-REGISTRATION (2026-09-01) — the bundle A/B: old architecture vs the assembled harness, on preference"
+      },
+      {
+       "line": 9347,
+       "end": 9360,
+       "kind": "deviation",
+       "heading": "CELL 61 DEVIATION (2026-09-01) — fifth budget-exhaustion incident; the \"backend wedges\" were budget starvation"
+      },
+      {
+       "line": 9361,
+       "end": 9366,
+       "kind": "deviation",
+       "heading": "CELL 61 ASSEMBLY DEVIATION (2026-09-02, before any judging) —"
+      },
+      {
+       "line": 9367,
+       "end": 9401,
+       "kind": "verdict",
+       "heading": "CELL 61 VERDICT (2026-09-02) — the bundle A/B: no evaluable preference difference; large effects excluded in both directions; the appendix nudges positive"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "gates",
+     "kind": "tool",
+     "entries": [
+      {
+       "id": "entry-8972",
+       "line": 8972,
+       "end": 9038,
+       "heading": "GATES-AS-CODE VALIDATION (registered 2026-08-31, before any computation) — §5's content gate and Cell 56's blocklist, frozen and validated on the labeled archive",
+       "parts": []
+      },
+      {
+       "id": "entry-9039",
+       "line": 9039,
+       "end": 9079,
+       "heading": "CONTENT GATE v2 VALIDATION (registered 2026-08-31, before any computation) — extract-then-verify",
+       "parts": []
+      }
+     ]
+    },
+    {
+     "id": "integration",
+     "kind": "engineering",
+     "entries": [
+      {
+       "id": "entry-9080",
+       "line": 9080,
+       "end": 9130,
+       "heading": "INTEGRATION RUN (registered 2026-08-31 as a DEMONSTRATION — no hypotheses, no verdicts)",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_L.json"
+  }
+ },
+ "status": {
+  "output": "docs/ledger_explorer/plain/status.json",
+  "items": [
+   {
+    "id": "S1-01",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 27,
+    "cells": [
+     "14"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "The PRESERVE instruction causes unwarranted qualification",
+     "c = 0.799 [0.56,1.05] with clause vs 0.162 [-0.10,0.43] without, disjoint; Cell 14: conditional clause fired on trigger-free cases at 1.27",
+     "contrast between two arms measured identically; direction does not depend on instrument recall"
+    ]
+   },
+   {
+    "id": "S1-02",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 28,
+    "cells": [
+     "38"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Writers invent qualification with no upstream source",
+     "**Cell 38: 4/12 = 0.333 [0.138, 0.609]** on upstream CONFIRMED at exactly zero by the validated instrument",
+     "first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded"
+    ]
+   },
+   {
+    "id": "S1-03",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 29,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "An instruction produces the phrasing it names, not the behavior",
+     "PD-13: dictated 0/30→28/30 vs non-dictated 1/30→4/30, DiD +0.83 [+0.67,+1.00]",
+     "the decomposition is internal to one instrument and needs no cross-instrument validity"
+    ]
+   },
+   {
+    "id": "S1-04",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 30,
+    "cells": [
+     "19"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Detector-fed correction loops produce rewording",
+     "Cell 19 + manual inspection of the eight intervened runs",
+     "established by reading the rewrites, not by an instrument"
+    ]
+   },
+   {
+    "id": "S1-05",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 31,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Sequence-level preference training does not move the behavior",
+     "three objective classes; preference accuracy 0.48→0.94, behavior unchanged",
+     "the null is about the training outcome, measured on both sides identically"
+    ]
+   },
+   {
+    "id": "S1-06",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 32,
+    "cells": [
+     "36",
+     "60"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The accuracy question is RESOLVED: untestable for lack of headroom at this scale** — a council cannot add accuracy where the direct writer is at ceiling",
+     "Cell 36 (0.92–0.97, 3 discordant of 59); Cell 60 arithmetic battery: direct 0.977 over 216 runs, 5/36 items in the registered difficulty band; Cell 60-R rule-interaction battery: direct **0.983** over 180 runs, 3/30 in band — the two-strikes rule (frozen before the second round) fires",
+     "three convergent ceilings across both constructible difficulty dimensions (multi-step computation; rule-path selection); screening was baseline-only and blind to council performance; no council run was spent against ceiling items. Scope: WELL-SPECIFIED items only — under-specified or adversarial constructions are a different question and register anew. §0's case for the council now rests entirely and explicitly on the three measured gains"
+    ]
+   },
+   {
+    "id": "S1-07",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 33,
+    "cells": [
+     "26"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Corroboration does not increase transport",
+     "Cell 26: 0.487 vs 0.524 on the validated channel, CI spanning zero",
+     "null under a conservative instrument"
+    ]
+   },
+   {
+    "id": "S1-08",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 34,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Repeated attempts are correlated, not independent",
+     "ICC 0.190 [0.13,0.24] over 251 cells",
+     "structural property of the run design"
+    ]
+   },
+   {
+    "id": "S1-09",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 35,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Rich qualification is a property of instructed specialists",
+     "5 detectable qualifications across 27 uninstructed analyses; de-scaffolded seats ~half of scaffolded",
+     "direction robust to recall"
+    ]
+   },
+   {
+    "id": "S1-10",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 36,
+    "cells": [
+     "43",
+     "43-R"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Aggregation wins preference at 20B scale — **now TWO judge families**",
+     "Cell 43: 0.818 [0.718,0.919] (gpt-oss); Cell 43-R: 0.788 [0.645,0.917] (qwen3-vl, judge selected blind to direction); survives length-matching; arm lengths within 1.4%",
+     "replicated across vendor/architecture/generation; self-preference symmetric; NOT explained by length or framework density — composition unidentified"
+    ]
+   },
+   {
+    "id": "S1-11",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 37,
+    "cells": [
+     "43",
+     "43-R"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Dictated qualification phrases COST preference",
+     "Cell 43: 0.261 [0.140,0.388] and 0.317 [0.152,0.480] (gpt-oss, both forms below 0.5); Cell 43-R: form-Y replicates at 0.217 [0.125,0.333]; form-X points the same way (0.276) but spans at n=29 decisive",
+     "causal and counterbalanced; three of four judge-x-form cells exclude 0.5, the fourth agrees in point estimate, none contradicts. Preference pressure is in measured tension with epistemic marking"
+    ]
+   },
+   {
+    "id": "S1-12",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 38,
+    "cells": [
+     "44"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The lead uses a routed clarification it asked for** — the first supported positive intervention in the program",
+     "Cell 44: informed 7/7 = 1.000 vs control 0.333 (CI [+0.200,+1.000]) and vs ritual filler 0.200 (CI [+0.545,+0.947]); informed arm unanimous across both judges; adversarial resolution of every judge disagreement still leaves gaps of +0.40/+0.53; literal secondary agrees",
+     "orchestrator-routed re-consultation (design c), lead-side with controlled clarifications; conditioned n=7, agreement 0.703 on the analysis population (0.583 overall, recorded), one writer — scope stated; seat-side realism is design (b), not yet run"
+    ]
+   },
+   {
+    "id": "S1-13",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 39,
+    "cells": [
+     "44",
+     "45"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Re-consultation is recognition-limited, not capability-limited**",
+     "Cell 44: lead uses a routed clarification 7/7 but names the tension 0.34; Cell 45: seat routes correctly 10/11 = 0.909 [0.623,0.984] but recognizes the out-of-domain need only 0.306, gap CI [-0.056,+0.528] spanning zero (P45.1 falsified, P45.2 supported)",
+     "both halves of the loop show a working mechanism behind a scarce trigger; design (c), which takes its trigger from the mandated tension list rather than model self-assessment, is the recommended architecture — design (b) does not proceed per its registered consequence"
+    ]
+   },
+   {
+    "id": "S1-14",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 40,
+    "cells": [
+     "47"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Engineered redundancy is causal** — the planner's overlap assignment, isolated as one factor, halves corruption adoption",
+     "Cell 47: corrupted-value adoption 0.900 bare vs 0.450 planned (CI [+0.200,+0.725]); clean-value adoption 0.000 vs 0.500 (CI [+0.175,+0.825]) — the co-source is USED, not merely diluting; exact-match instrument, decisive 0.94",
+     "first prospective test of the harness architecture (§3); bare arm doubles as the sharpest no-verification number on record (0.900 corruption repeat when sole-sourced). Protection is BIMODAL across items — three fully protected, two not at all — so the mean halving must not be quoted as uniform; which quantities the selector protects is OPEN"
+    ]
+   },
+   {
+    "id": "S1-15",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 41,
+    "cells": [
+     "48",
+     "51"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Out-of-band freight carries AND is used** — the harness's §6 channel tested on both halves",
+     "Cell 48: appendix carriage 1.000 vs 0.174 surviving prose transport (third convergent transport measurement); preference cost NOT EVALUABLE at power (0.510 [0.267,0.754], 65/116 ties — no evidence of penalty, no license to claim absence). Cell 51: appendix-carried caveats FLIP a reader's registered two-token decision at +0.691 [+0.455,+0.891] over a matched irrelevant-appendix control (k=11 items, 440 runs, 0 invalid); channel parity with in-prose placement (+0.091 [-0.036,+0.218] under frozen thresholds); bare floor 0.000, caution-priming delta +0.036",
+     "uptake is causal and content-specific (irrelevant appendix moves nothing, 0.036); direction-balanced items rule out caution-as-uptake; replication reader (qwen2.5:7b) shows same structure at lower reader capability (uptake +0.455, with per-item failures shared by prose — reader-limited, not channel-limited). Verdict population is 11 of 18 authored items after the G1 floor gate (deviation recorded); one artifact corpus, one primary reader family"
+    ]
+   },
+   {
+    "id": "S1-16",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 42,
+    "cells": [
+     "50",
+     "52"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Sibling visibility does not cause lane bleed** — §2's prohibition loses its causal warrant (informative null)",
+     "Cell 52: off-domain framework density, sibling − roster, **−0.009 [−0.048, +0.028]**, 18 case clusters, 322 generations analyzed; CI upper bound BELOW the registered MDD band (+0.05–0.08 computed from archive before the run); in-domain density unchanged (0.143 vs 0.141)",
+     "one-factor, byte-fixed archived sibling context, production prompts; tests the sibling-OUTPUT clause only — the historical v2→v3 incident involved cross-domain framing in seat INSTRUCTIONS, untested here. Echo-excluded estimation came back −0.033 [−0.053, −0.013] (LOWER with siblings visible) — unregistered direction, descriptive only, candidate \"free-riding keeps seats narrower\" mechanism NOT claimed (C50 discipline). Roster-only isolation now stands on cost grounds, not contamination"
+    ]
+   },
+   {
+    "id": "S1-17",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 43,
+    "cells": [
+     "44",
+     "53",
+     "54"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The re-consultation loop works end-to-end with a live seat** — production, conveyance, and use, no controlled inputs",
+     "Cell 54: live-briefed R-adoption 0.905 (19/21) vs archived control 0.333, diff **+0.571 [+0.139, +0.912]**; within −0.095 [−0.227, 0.000] of the scripted ceiling (frozen 0.3 threshold); fact conveyed 21/21 from private working notes (corrected Unicode-folding instrument, replies persisted)",
+     "comparators are Cell 44's archived arms under a passed, never-pooled batch check; 6 item clusters; trigger rate is batch-variable (0.208–0.583 across C44/C53/C54) and remains the loop's binding coverage constraint. NEW RISK on record: 4/21 live replies embellished the true fact with fabricated legal authority and were adopted anyway — the content gate screens absence, not invention; fabrication is unbounded pending its own cell"
+    ]
+   },
+   {
+    "id": "S1-18",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 44,
+    "cells": [
+     "55"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The seating gate predicts pipeline defects** — verdicts frozen at selection, tested at pipeline time",
+     "Cell 55: strict rank separation SUPPORTED over ten candidates (min fail-rate 0.333 > max pass-rate 0.056, no inversion); pooled contrast **+0.632 [+0.549, +0.722]**; gate verdicts committed before any pipeline run; screen items disjoint from pipeline cases",
+     "fail side has two members (biomistral 17/18 defects; openbiollm 6/18 — a FRESH failure that passed the archive-era screen, so verdicts age and seating must re-gate, not import). Format smoke is a separate axis and does not predict seat defects (saul 0/4 format, 0/18 pipeline) — its target is verdict-emitting roles. Defect = visible text <800 chars; one writer-side outcome family"
+    ]
+   },
+   {
+    "id": "S1-19",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 45,
+    "cells": [
+     "56"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Live-reply fabrication is bounded: item-triggered, name-stable, never admitted**",
+     "Cell 56: reply-level fabrication 0.100 [0.047,0.201] briefed / 0.150 [0.081,0.261] unbriefed (120 replies, archive-validated two-stage instrument, committed classification table); 0/100 on five items vs 15/20 on the one trigger item; the SAME two invented decisions recur in 14 and 13 independent replies; admission of missing specifics 0/20 sampled; backfill contrast +0.050 [+0.000,+0.150] NE at power, direction positive (0.60→0.90 within the trigger item, descriptive)",
+     "fourth item-bimodal phenomenon on record; instrument scope is adversarial case citations only, and the sample read shows confident unverified specifics outside that class, so the bound is a FLOOR on confabulation generally; name-stability licenses a blocklist delivery filter (filters, never feeds back — Goodhart-safe); 6 items, one writer, one reply channel"
+    ]
+   },
+   {
+    "id": "S1-20",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 46,
+    "cells": [
+     "57"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The planner finds ~six in ten load-bearing quantities — and is best at naming what is MISSING**",
+     "Cell 57: confirmed recall 0.633 [0.506,0.758] pre-seat / 0.616 [0.469,0.766] post-seat vs mismatched cross-recall 0.019/0.020 (thirty-fold specificity separation); seats add nothing to coverage (−0.017 [−0.100,+0.064]) though list composition churns; unknown-class recall 0.813 vs stated-class 0.531",
+     "PARTIAL band per frozen registration: §3's error immunity is now stated as bounded by planner coverage (~0.6); measured recall is a FLOOR (probe under-recall observed and recorded); ground truth is 41 analyst-authored labels under a frozen decision-relevance rule after the archive labels were rejected as deliberately-peripheral; 493-pair committed confirmation table; sub-question writing untested; third occurrence of the Unicode-hyphen instrument bug recorded and corrected pre-confirmation"
+    ]
+   },
+   {
+    "id": "S1-21",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 47,
+    "cells": [
+     "47",
+     "54",
+     "58",
+     "59"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The §3 chain works end-to-end live: the clean co-source is USED through planner-authored sub-questions**",
+     "Cell 59: clean adoption +0.425 [+0.325,+0.525] (vs Cell 47's planted +0.500), 80 fully-live pipeline runs; assignment 40/40 plans (committed confirmation), conveyance 0.85–0.95; corrupted suppression NE at power (−0.175 [−0.350,+0.025]) with the live bare floor at 0.625 vs planted 0.900 and the protected level replicating at 0.450",
+     "Cell 58's registered halt en route yielded the channel finding: briefed notes convey only into task-relevant assignments (2/8 orthogonal vs 21/21 pointed, C54) — the corrected planner input guarantees relevance by construction. Fourth value-format instrument incident (spaced percent/magnitude) recorded with the cumulative probe-format set; C47 archive rescored under the identical matcher for the like-for-like estimation; 8 item clusters; fifth item-bimodal phenomenon logged"
+    ]
+   },
+   {
+    "id": "S1-22",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 48,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**Gates as code: the blocklist deploys; the content gate honestly does not**",
+     "Blocklist gate (gst.gates): 21 true hits / 0 false / 0 missed over the 141-reply archive under the cumulative format folding, seeded only from committed classifications — including one fabricating reply the validation truth-set itself missed. Content gate: two registered attempts against frozen criteria — v1 (two-judge semantic) passes vacuity (filler DROP 3/6); v2 (extract-then-verify) fixes vacuity (6/6) but rejects 52% of genuine live replies (10/21 vs 0.8 floor)",
+     "complementary failure halves recorded; no v3 without purpose-built labeled data (live-format contentless exemplars do not exist in the archive); interim posture is flagged delivery, never silent gating; §5's ritual risk (d≈0.22, unconfirmed) stays open and stated. The matcher precedent holds: instruments that fail their criteria are recorded as failed, not massaged"
+    ]
+   },
+   {
+    "id": "S1-23",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 49,
+    "cells": [
+     "43",
+     "48",
+     "61"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The bundle A/B: the harness ships its differentiators at no detectable preference cost**",
+     "Cell 61: harness vs old architecture on the deployment artifact — primary judge share 0.562 [0.375,0.765] (n=48 decisive, 17 clusters), replication 0.333 [0.083,0.562] (n=15); both span 0.5; large effects excluded both directions. Appendix attribution (prose-only sensitivity): within-pair +0.073 toward the harness — direction mildly positive on the C48 no-penalty bound",
+     "graded NOT EVALUABLE for moderate differences per the frozen registration; the harness's preference standing is inherited from aggregation (C43, shared by both bundles) and its differentiators are justified by their component cells, not by bundle preference. Organic dispatch fired 0.85 (46/54) vs 0.21–0.58 on planted tensions — real inter-seat disagreement is abundant. One writer, 18-case corpus, archived old arm"
+    ]
+   },
+   {
+    "id": "S1-24",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 50,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Silence scores well on invention metrics",
+     "best invention numbers belong to arms with feature-span 0.000–0.002",
+     "definitional"
+    ]
+   },
+   {
+    "id": "S1-25",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 51,
+    "cells": [],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "Fourteen instrument-validity findings",
+     "see §4",
+     "these are *about* measurement, so no instrument confound applies"
+    ]
+   },
+   {
+    "id": "S2-01",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 57,
+    "cells": [
+     "30",
+     "37",
+     "46"
+    ],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "~~The shrinkage form~~ **The transport coefficient** $y = ws + c$ — **now LIVE for TWO writers** (Cell 46)",
+     "gpt-oss w = 0.318 [+0.221,+0.431] (n=82); phi4 w = 0.177 [+0.058,+0.275] (n=62), 18 cases, judge agreement 0.877. Within-corpus: gpt-oss 0.172 old / 0.326 new; **phi4 0.170 [+0.067,+0.265] on the new corpus alone** — replication owing nothing to pooling. Linear form holds (T1); observed w is an attenuated LOWER bound, disattenuated band 0.150-0.217 on Cell 30 (T2)",
+     "**Pooled figures are cross-regime and must NOT be quoted as a within-corpus rate** — new cases carry mean supply 25.3 vs 5.4, and the pooled slope equals the between-cluster line. phi4's realized n_eff was 42.3 against a registered 47, so point estimates carry Type-M inflation risk. Name retired: transport coefficient, not shrinkage (Cell 37 falsified the estimator story)"
+    ]
+   },
+   {
+    "id": "S2-02",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 58,
+    "cells": [],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "The parameter cards (both)",
+     "see framework paper Table 1",
+     "re-measurement under a validated instrument"
+    ]
+   },
+   {
+    "id": "S2-03",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 59,
+    "cells": [],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "The w-band meta-analysis",
+     "mu_w 0.364 [0.29,0.44], tau 0.158",
+     "pools mostly scaffolded arms; must be relabelled as instruction-compliance pooling even after re-measurement"
+    ]
+   },
+   {
+    "id": "S2-04",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 60,
+    "cells": [
+     "31"
+    ],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "~~Register-dependent intercept~~",
+     "—",
+     "**WITHDRAWN 2026-08-10.** The original result compounded a two-factor baseline with an entangled instrument, so the claim had no support — the withdrawal is a burden-of-proof decision and stands. **Attainability audit 2026-08-11: Cell 31's null is UNINFORMATIVE** — Δc = +0.182 [−0.868, +1.261] *contains the originally claimed gap of +0.637*. Cell 31 may be cited only as failure to re-establish the claim, never as evidence the ledger does nothing. The question is OPEN, not answered-no."
+    ]
+   },
+   {
+    "id": "S2-05",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 61,
+    "cells": [],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "Feature-span fraction f",
+     "0.068 median",
+     "definitionally regex-bound"
+    ]
+   },
+   {
+    "id": "S2-06",
+    "section": 2,
+    "section_title": "PROVISIONAL — form supported, values pending re-measurement",
+    "kind": "tentative",
+    "line": 62,
+    "cells": [],
+    "header": [
+     "claim",
+     "current value",
+     "what is pending"
+    ],
+    "cols": [
+     "Aggregation/slope decomposition",
+     "modeled share 0.219",
+     "falsified as registered; retained only descriptively"
+    ]
+   },
+   {
+    "id": "S3-01",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 68,
+    "cells": [
+     "37"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"The writer recomputes\" / any use of the word recomputation",
+     "Cell 37 P37.1 FALSIFIED — **re-checked 2026-08-11 against finding #11 and it holds**, because its falsification condition is a within-arm contrast (A2: 5 corrupted vs 2 correct) that base-rate depression cannot manufacture. P37.2 downgraded to NOT EVALUABLE",
+     "the writer is a SOURCE SELECTOR: prefers an uncorrupted source when one exists, propagates the error when none does. Cell 37's *rates* are not behaviour rates and its \"neither\" cells are not omission"
+    ]
+   },
+   {
+    "id": "S3-02",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 69,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"The instruction moves w more than the architectural difference\"",
+     "PD-13",
+     "\"an instruction produces the phrase it names\""
+    ]
+   },
+   {
+    "id": "S3-03",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 70,
+    "cells": [
+     "2"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"C2 carries 126% of the block's gain\" as behavioral",
+     "PD-13",
+     "compliance with a phrase order"
+    ]
+   },
+   {
+    "id": "S3-04",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 71,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The 0.16→0.35 gradient as evidence about instructions",
+     "PD-13 + audit #2",
+     "—"
+    ]
+   },
+   {
+    "id": "S3-05",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 72,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Cross-architecture w comparison as instruction evidence",
+     "audit #2 (four factors move at once)",
+     "—"
+    ]
+   },
+   {
+    "id": "S3-06",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 73,
+    "cells": [
+     "31"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The ledger as a demonstrated distinct mechanism",
+     "ledger-baseline confound",
+     "pending Cell 31"
+    ]
+   },
+   {
+    "id": "S3-07",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 74,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The Markov composition law w'=∏w_k",
+     "PA28.a (own pre-registered check)",
+     "licensing-gate model, unregistered"
+    ]
+   },
+   {
+    "id": "S3-08",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 75,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"The gate taught evasion\" as a two-instrument finding",
+     "audit #1",
+     "inspection-based finding only"
+    ]
+   },
+   {
+    "id": "S3-09",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 76,
+    "cells": [
+     "29"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Aggregation-distortion claim",
+     "P29.3 falsified",
+     "hedging's 39% share, descriptive only"
+    ]
+   },
+   {
+    "id": "S3-10",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 77,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Ecological claims about natural specialist caution",
+     "audit #2",
+     "supply is manufactured"
+    ]
+   },
+   {
+    "id": "S3-11",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 78,
+    "cells": [
+     "14"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The calibration paper's central claim",
+     "Cell 14",
+     "paper retracted entire"
+    ]
+   },
+   {
+    "id": "S3-12",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 79,
+    "cells": [],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Intrinsic-band model invariance",
+     "earlier correction",
+     "floor + length artifact"
+    ]
+   },
+   {
+    "id": "S4-01",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 83,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Zero-route contamination — 39 runs measured a prompt that never executed"
+    ]
+   },
+   {
+    "id": "S4-02",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 84,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Empty judge replies scored as substantive labels"
+    ]
+   },
+   {
+    "id": "S4-03",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 85,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Off-label instrument use — NLI at 0.93 AUC on its calibration task, 0.12–0.55 on the deployed task"
+    ]
+   },
+   {
+    "id": "S4-04",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 86,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Point estimates ranked without intervals — 21 of 27 arms never powered"
+    ]
+   },
+   {
+    "id": "S4-05",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 87,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Reused arm labels spanning different case batteries"
+    ]
+   },
+   {
+    "id": "S4-06",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 88,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Floor/length artifacts from degenerate outputs"
+    ]
+   },
+   {
+    "id": "S4-07",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 89,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Illustrative example presented as observed data"
+    ]
+   },
+   {
+    "id": "S4-08",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 90,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Instrument–scaffold entanglement** — prompts dictate the measured strings"
+    ]
+   },
+   {
+    "id": "S4-09",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 91,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Granularity-dependent judge reliability** — demonstrated on one corpus: 0.833 per sentence vs 0.622 per document, same judges, same 60 documents"
+    ]
+   },
+   {
+    "id": "S4-10",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 92,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Construction blind spots propagate into the design** — regex-driven ablation left 5.4 qualification-bearing sentences in texts labelled zero-supply; the manipulation never created the condition it was built for"
+    ]
+   },
+   {
+    "id": "S4-11",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 93,
+    "cells": [
+     "37",
+     "40"
+    ],
+    "header": null,
+    "cols": [
+     "**An injected premise that contradicts its host question creates a competing source rather than manipulating the intended one** — Cells 37/40 injected primitives conflicting with the case prompt; on item 0 the writer used the case's numbers in 21/21 runs across both cells and the injected numbers 0 times. The \"use novel numbers to reduce memorization\" rule and coherence with the host question are in direct conflict, and no registration reconciled them. Repair is not idempotent either: this defect was introduced by the fix for a probe collision"
+    ]
+   },
+   {
+    "id": "S4-12",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 94,
+    "cells": [
+     "7b"
+    ],
+    "header": null,
+    "cols": [
+     "**Entanglement reached the INSTRUMENT layer, not only the scaffold** — `train/judge_instrument.py::PROMPT` (Cell 7b's pairwise judge) enumerates the same seven phrases dictated to writers by the ADD/addendum prompts (registry R101-R107). A judge told to look for \"modeled at\" was scoring a writer told to say \"modeled at\". Found mechanically by the dictation registry on its first run (`docs/DICTATION_REGISTRY.json`)"
+    ]
+   },
+   {
+    "id": "S4-13",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 95,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Registry form essentially never arises without dictation** — 0 of 2907 spans and 0 of 60 de-scaffolded runs (438,797 chars) contain any registry phrase; run-level Wilson upper bound 0.060. The scaffold's phrases are diagnostic OF the scaffold, which is what makes literal-stage partitioning trustworthy, and it corroborates PD-13 from an independent corpus"
+    ]
+   },
+   {
+    "id": "S4-14",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 96,
+    "cells": [
+     "43",
+     "43-R"
+    ],
+    "header": null,
+    "cols": [
+     "**Local pairwise preference judging is majority reading-order — a task-format property, not a model quirk** — raw first-position preference 0.85-0.88 across four judges from four families (gpt-oss, qwen2.5, phi4, qwen3-vl; Cells 43/43-R); decisive rates under order-debiasing span 0.05-0.40. The bias magnitude is invariant; only the escape rate varies. Both-orderings protocols pay 60-95% of the sample for honesty"
+    ]
+   },
+   {
+    "id": "S5-01",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 100,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "~~Does the supply→emission slope survive de-scaffolding?~~ **ANSWERED 2026-08-10: yes, w = 0.150 [0.058, 0.252] on gpt-oss.**"
+    ]
+   },
+   {
+    "id": "S5-02",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 101,
+    "cells": [
+     "38"
+    ],
+    "header": null,
+    "cols": [
+     "~~Does compensating invention survive?~~ **ANSWERED 2026-08-10 (Cell 38): yes, 0.333 [0.138, 0.609] on confirmed-zero upstream.**"
+    ]
+   },
+   {
+    "id": "S5-03",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 102,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Can ablation reach true zero supply at all? **NO** — judge-driven ablation also leaves residue (finding #10 generalised); requires upstream authored to contain no qualification"
+    ]
+   },
+   {
+    "id": "S5-04",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 103,
+    "cells": [
+     "31"
+    ],
+    "header": null,
+    "cols": [
+     "Is the ledger a distinct mechanism? **OPEN** — Cell 31 completed but its null is uninformative (CI contains the original effect; attainability audit 2026-08-11). A decisive cell needs the n its CI width implies (~4× Cell 31's)"
+    ]
+   },
+   {
+    "id": "S5-05",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 104,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)"
+    ]
+   },
+   {
+    "id": "S5-06",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 105,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "Is qualification *warranted*? (no warrant labels exist; caps every normative claim)"
+    ]
+   },
+   {
+    "id": "S5-07",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 106,
+    "cells": [
+     "36"
+    ],
+    "header": null,
+    "cols": [
+     "Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery)"
+    ]
+   },
+   {
+    "id": "S5-08",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 107,
+    "cells": [
+     "36"
+    ],
+    "header": null,
+    "cols": [
+     "Would a harder battery separate the arms? (Cell 36 hit a ceiling at 0.92-0.97; its null is weak)"
+    ]
+   },
+   {
+    "id": "S5-09",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 108,
+    "cells": [
+     "40"
+    ],
+    "header": null,
+    "cols": [
+     "**Can a SEAT instruct the lead?** STILL OPEN. Cell 40 ran to completion (81/81) and is **NOT EVALUABLE**: 3, 6 and 2 decisive runs against a required 6 per arm, because the injected premises contradicted the host case and the writer answered the case (finding #11). Neither prediction is falsified. A re-run is blocked on two pre-run conditions: premises drawn from the host case, and an attainability check on the outcome itself"
+    ]
+   },
+   {
+    "id": "S5-10",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 109,
+    "cells": [
+     "37"
+    ],
+    "header": null,
+    "cols": [
+     "Is the writer's use of a prior distinguishable from computation? (Cell 37's P37.2 downgraded to NOT EVALUABLE — both arms at floor, no attainability check was registered for it)"
+    ]
+   },
+   {
+    "id": "S6-01",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 113,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**No regex as an instrument** (user directive, 2026-08-09). All prior regex measurements are provisional."
+    ]
+   },
+   {
+    "id": "S6-02",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 114,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Cutoff family is unmeasurable** with current labels (3 positives). The program covers three families until more labels exist."
+    ]
+   },
+   {
+    "id": "S6-03",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 115,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Sentence-level counts, not document-level presence** — \"any sentence positive\" compounds false positives across ~40 sentences."
+    ]
+   },
+   {
+    "id": "S6-04",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 116,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**One factor per comparison**, using the nine-factor arm space; never reuse an arm label across batteries."
+    ]
+   },
+   {
+    "id": "S6-05",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 117,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Parameters are diagnostics, never optimization targets.**"
+    ]
+   },
+   {
+    "id": "S6-06",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 118,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Report emission alongside any invention metric** — otherwise silence wins."
+    ]
+   },
+   {
+    "id": "S6-07",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 119,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**The 12-item pre-recommendation checklist** runs before any proposed cell."
+    ]
+   },
+   {
+    "id": "S6-08",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 120,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Outcome attainability** (item 12, from the attainability audit 2026-08-11): before a cell runs, compute from existing runs the fraction in which the outcome variable can fire, and the CI width the planned n buys against the effect the cell must detect — for every registered prediction, not just the primary. Decisive-fraction is a pre-run check, NEVER a design target (finding #8)."
+    ]
+   },
+   {
+    "id": "S6-09",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 121,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Citation strength follows the audit classes** — a DEGENERATE or UNINFORMATIVE null moves its question to OPEN; it is never cited as evidence of absence (`docs/ATTAINABILITY_AUDIT_2026-08-11.md`)."
+    ]
+   }
+  ]
+ }
+}

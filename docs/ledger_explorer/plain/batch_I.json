@@ -1,0 +1,283 @@
+{
+ "batch": "I",
+ "cells": {
+  "43": {
+   "title": "Does an AI judge prefer the council's combined answers, and why?",
+   "description": "An AI judge compared pairs of answers shown in both orders. It preferred combined answers to one model answering alone in 82% of matchups with a consistent winner, and length did not explain it. Answers with a scripted caveat phrase mostly lost, the opposite of what we expected.",
+   "outcome": "mixed",
+   "size": "126 new answers, 498 pairs judged in both orders",
+   "why": "The main evidence for Mixture-of-Agents (MoA) systems is preference: AI judges tend to prefer answers built by combining several models. Our project had never measured preference. Our draft paper's working idea was that such preference is made of outward features, such as the caveat phrases that instructions produce. Cell 41 made a clean test possible. It had two versions of the editor whose instructions named one extra phrase, 'modeled at' or 'taken to be', and it found no measurable change other than that phrase. So we asked whether an AI judge prefers our combined answers, and what any preference is made of. Here the judge was the thing being studied, not a scoring tool.",
+   "expectations": [
+    {
+     "id": "P43.1",
+     "text": "The judge's preference between combined answers and the same model answering alone would differ from an even split by a clear margin, in either direction.",
+     "outcome": "held",
+     "note": "The judge preferred the combined answers in 82% of matchups with a consistent winner, and still 82% among pairs of nearly equal length."
+    },
+    {
+     "id": "P43.2",
+     "text": "The judge would prefer answers containing a scripted caveat phrase over the untouched answers, for both phrases.",
+     "outcome": "reversed",
+     "note": "The opposite happened. Answers with the phrase won only 26% ('modeled at') and 32% ('taken to be') of matchups, both well below half, and this held for answers of similar length."
+    },
+    {
+     "id": "P43.3",
+     "text": "Among matchups with a consistent winner, the longer answer would win more than half the time.",
+     "outcome": "not-graded",
+     "note": "The longer answer won 73% to 80% of matchups in every comparison, but both main results held among answers of similar length, so length did not explain them."
+    },
+    {
+     "id": "P43.4",
+     "text": "We would report how often each judge gave a consistent winner or a tie, the average length of each version, and how much answer order mattered.",
+     "outcome": "not-graded",
+     "note": "The main judge picked the answer it read first about 85% of the time, leaving 35% of pairs with a consistent winner. The second judge called 95% of its pairs a tie."
+    }
+   ],
+   "found": "We generated 126 new answers from gpt-oss-20B working alone. The same model then judged 378 pairs, each shown in both orders, and counted a win only when it picked the same answer both times. A second judge, Qwen2.5-7B, judged 40 pairs per comparison. Because gpt-oss-20B wrote every answer on both sides, any liking for its own writing applied equally to both. After a fix to the judge's length allowance, only 1 judgment could not be read.\n\nThe judge preferred the combined answers in 82% of the 44 matchups with a consistent winner. Length did not explain this. The two versions averaged 7,757 and 7,649 characters, and among 27 pairs of nearly equal length the share was still 82%. Nor did mentions of professional frameworks: the winner mentioned them more often, per 1,000 characters, in only 41% of matchups.\n\nThe scripted phrases lost. Answers with 'modeled at' won 26% of matchups and answers with 'taken to be' 32%. This held among pairs of similar length, and the winner had more caveat sentences in only 41% and 35% of matchups. Longer answers won 73% to 80% of matchups overall, but neither main result came from length. What makes combined answers win remains unknown.\n\nThe judge showed strong position bias, picking the answer it read first about 85% of the time. So only 35% of pairs had a consistent winner. The second judge called 95% of its pairs a tie, leaving too few to use.",
+   "means": "The idea behind our draft paper, that preference for combined answers is made of outward features, was wrong by this cell's own test. Combining answers did win preference, and not because of length, framework mentions or cautious phrasing. Because the phrase versions differed from the untouched version only in the phrase, the phrase itself cost preference. With Cell 41, which showed an instruction produces only the phrase it names, this points to a conflict: a system tuned to please a preference judge would tend to drop exactly the caveats instructions try to add. We also recorded that this kind of AI judging mostly follows reading order at this scale. Showing both orders fixes that but costs about two-thirds of the pairs.",
+   "later": "Cell 43-R repeated the judging with a judge from a different model family, chosen without looking at which side it favored. The preference for combined answers held at 79%. The 'taken to be' penalty held, and the 'modeled at' penalty pointed the same way but was too close to call.",
+   "entries": {
+    "6515": {
+     "label": "Plan",
+     "title": "Plan: measure preference for combined answers and scripted phrases",
+     "summary": "We had hoped to use saved answers only, but every saved gpt-oss-20B answer had received specialist input. So we generated one new version, gpt-oss-20B answering the 18 scenarios alone, 126 runs. The same model would judge each pair in both orders and count a win only when it picked the same answer both times."
+    },
+    "6587": {
+     "label": "Result",
+     "title": "Combined answers win, and scripted caveat phrases lose",
+     "summary": "The judge preferred combined answers in 82% of matchups with a consistent winner, including among answers of nearly equal length. The opposite of our expectation happened for the scripted phrases: answers containing them won only 26% and 32% of matchups. The judge picked the answer it read first about 85% of the time."
+    }
+   }
+  },
+  "43-R": {
+   "title": "Does a judge from a different model family reach the same result?",
+   "description": "We repeated Cell 43's judging with Qwen3-VL-30B-A3B, a judge from a different model family chosen without seeing which side it favored. It agreed on the preference for combined answers and on one of the two phrase penalties. The other was too close to call.",
+   "outcome": "mixed",
+   "size": "No new answers, 378 pairs re-judged both ways",
+   "why": "Cell 43 rested on one judge, gpt-oss-20B, which had also written every answer it judged. Both sides of each pair came from that model, so any liking for its own writing applied equally to both. Still, every result came from one model family. We wanted to know whether a judge from a different family would agree on the same pairs, judged the same way. Cell 43's second judge, Qwen2.5-7B, had called 95% of pairs a tie, so it was ruled out. To avoid choosing a judge because it gave the answer we liked, we chose only on whether it produced usable data, without looking at which side it favored.",
+   "expectations": [
+    {
+     "id": "P43R.1",
+     "text": "For each of the three comparisons, the new judge's plausible range would sit on the same side of an even split as the first judge's result.",
+     "outcome": "partly",
+     "note": "Two agreed: combined answers won 79% and 'taken to be' answers 22%. 'Modeled at' answers won 28%, close to the first judge's 26%, but with 29 usable matchups this was too close to call. Nothing contradicted."
+    },
+    {
+     "id": "P43R.2",
+     "text": "We would report how much answer order mattered, the counts of consistent winners, ties and unreadable replies per comparison, and Cell 43's length checks.",
+     "outcome": "not-graded",
+     "note": "The new judge picked the answer it read first 88% of the time, against 85% for gpt-oss-20B. None of its replies were unreadable, and 33, 29 and 23 of each comparison's 126 pairs had a consistent winner."
+    }
+   ],
+   "found": "We tried three candidates on 20 pairs each. Qwen3-VL-30B-A3B was chosen: all its replies could be read, and 40% of its pairs had a consistent winner, meaning it picked the same answer in both orders. Phi-4 dropped out at 15%, below our 20% minimum. DeepSeek-R1 7B reached 45%, but only 80% of its replies could be read, below our 90% minimum.\n\nThe chosen judge then judged all 378 pairs in both orders, with no unreadable replies. Only the direction of each result counted, because judges differ in how often they give a consistent winner. Combined answers won 79% of matchups, against 82% with the first judge. Answers with 'taken to be' won 22%, against 32%. Answers with 'modeled at' won 28%, close to the first judge's 26%, but only 29 matchups had a consistent winner, so the true share was plausibly anywhere from 10% to 52%. By the rule we wrote down in advance, that counts as not repeated with this much data, which is different from a contradiction. We kept that rule after seeing the data.\n\nThis judge picked the answer it read first 88% of the time. Across the four judges measured in Cells 43 and 43-R, that share ran from 85% to 88%, while the share of pairs with a consistent winner ranged from 5% to 40%.",
+   "means": "The preference for combined answers now rests on two judges from different model families, which removed the single-judge limit on Cell 43's main result. The phrase penalty was narrowed rather than settled: three of the four judge-and-phrase results stayed below half even at the top of their plausible range, and the fourth pointed the same way. The pull toward the first answer read looked like a property of this judging format rather than of one model, because its size barely changed from judge to judge. Only the share of pairs that escaped it varied.",
+   "later": null,
+   "entries": {
+    "6662": {
+     "label": "Plan",
+     "title": "Plan: pick a second judge without seeing which side it favors",
+     "summary": "Three local candidates, Phi-4, DeepSeek-R1 7B and Qwen3-VL-30B-A3B, would each judge 20 pairs in both orders. The pilot reported only how many replies could be read and how often a pair had a consistent winner, never which side won. The best candidate would then judge all 378 pairs."
+    },
+    "6704": {
+     "label": "Result",
+     "title": "The second judge agrees on the preference and on one phrase",
+     "summary": "Qwen3-VL-30B-A3B was chosen. It preferred combined answers in 79% of matchups with a consistent winner and marked down 'taken to be' answers, which won 22%. 'Modeled at' answers won 28%, close to the first judge, but too few matchups were usable to call it."
+    }
+   }
+  },
+  "44": {
+   "title": "Does the editor use a specialist's answer to a follow-up question?",
+   "description": "When the editor listed a planted disagreement, the system could send a follow-up to the specialist involved, with a reply we wrote. If the reply held the deciding fact, the editor took the right side in 7 of 7 runs, against 33% with no follow-up.",
+   "outcome": "held",
+   "size": "108 runs over 6 planted disagreements",
+   "why": "An audit of saved runs had just found that the editor takes a side on about 80% of the disagreements it lists, with no way to tell an informed choice from a guess. Cell 37 had shown the editor does not work facts out for itself. So we tested a loop in which the system, not the editor, reads the editor's own list of disagreements and sends a follow-up question to the specialist involved. This cell tested only the editor's half of that loop. We wrote the specialists' replies ourselves, so we controlled exactly what information came back. Whether real specialists would give useful replies was left for later.",
+   "expectations": [
+    {
+     "id": "P44.1",
+     "text": "With the deciding fact in the reply, the editor would take the right side more often than with no follow-up, by a clear margin.",
+     "outcome": "held",
+     "note": "It took the right side in 7 of 7 runs, against 5 of 15 (33%) with no follow-up."
+    },
+    {
+     "id": "P44.2",
+     "text": "The editor would take the right side more often with the informative reply than with a helpful-sounding reply that held no new facts.",
+     "outcome": "held",
+     "note": "It did so in 7 of 7 runs against 3 of 15 (20%) with the reply that held no new facts, so the information mattered, not the act of asking."
+    },
+    {
+     "id": "P44.3",
+     "text": "We would report whether a reply with no new facts still made the editor commit to one side more often, with no pass mark set.",
+     "outcome": "not-graded",
+     "note": "With that reply the editor picked a side in 73% of the runs analyzed, against 53% with no follow-up. That hints that being consulted makes it bolder, but it was too close to call."
+    },
+    {
+     "id": "P44.4",
+     "text": "We would report how often the editor named the planted disagreement, how often a follow-up could be sent, the full results for each version, and judge agreement.",
+     "outcome": "not-graded",
+     "note": "The editor named the disagreement in 34% of runs, and all 22 follow-ups that were due were sent. Judge agreement was 70.3% on the runs analyzed and 58% overall."
+    }
+   ],
+   "found": "We built 6 test items on existing scenarios. In each, two specialists took conflicting positions, and a fact neither had stated settled the question toward a known right side. The editor worked in two steps: first it listed disagreements, then it wrote the final answer. Between the steps, one version got nothing, one got a reply that sounded helpful but only restated what the specialist had said, and one got a reply of the same style and length containing the deciding fact. Two AI judges classed which side each final answer took.\n\nAll 108 runs finished. The editor named the planted disagreement in 37 runs (34%), below the pilot's 50%, and by chance only 7 of those fell in the informed version. In all 7 the editor took the right side, and both judges agreed every time. With no follow-up it did so in 5 of 15 runs (33%), and with the reply that held no new facts in 3 of 15 (20%).\n\nThe results script printed a pass without checking our minimum of 70% judge agreement, the third such slip in the project. Checked by hand, agreement was 70.3% on the runs analyzed but 58% across all 108. The result did not depend on it. Counting every judge disagreement against our expectation still left the comparison version at 60% and the no-new-facts version at 47%, against 100%. A simple keyword check agreed.",
+   "means": "The editor does use a specialist's follow-up answer when it contains the deciding fact, and the information is what matters, not the act of asking. This was the first change to the system in the project that worked as intended. It rests on 7 runs, one editor model, six test items and replies we wrote ourselves. Two things were carried forward. The reply with no new facts seemed to push the editor toward the wrong side, 8 of 15 runs against 3 of 15, which we had not planned to test. And the scarce part was how often the editor listed the planted disagreement at all. Any attempt to raise that rate had to be a new, planned design, never tuning against this result.",
+   "later": "Cell 54 later reused this cell's saved runs as the comparison and showed the loop working with a live specialist writing its own reply, though 4 of 21 live replies added made-up legal authority. How often the editor named a planted disagreement varied between batches, from 21% to 58% across Cells 44, 53 and 54. In Cell 61, with real rather than planted disagreements, a follow-up was sent in 46 of 54 runs.",
+   "entries": {
+    "6813": {
+     "label": "Plan",
+     "title": "Plan: send a follow-up to a specialist and see if the editor uses it",
+     "summary": "Six planted disagreements, each settled by a fact only we held. The editor would first list disagreements, then write its answer. In between it would get nothing, a helpful-sounding reply with no new facts, or a reply with the deciding fact. A pilot with two checkpoints came before the 108 main runs."
+    },
+    "6892": {
+     "label": "Pilot",
+     "title": "Pilot passes both checkpoints, one exactly at the minimum",
+     "summary": "The editor named the planted disagreement in 6 of 12 pilot runs, exactly the 50% required. The two AI judges found it took a side in 8 of 12, above the 40% required, although a simpler keyword check read only 33%. Without the fact it already leaned toward the right side, 5 runs to 3."
+    },
+    "6913": {
+     "label": "Result",
+     "title": "With the deciding fact, the editor took the right side 7 times out of 7",
+     "summary": "With the deciding fact the editor took the right side in 7 of 7 runs, against 33% with no follow-up and 20% with the reply that held no new facts. The results script had skipped our judge-agreement check. Checked by hand, the result held even when every judge disagreement was counted against it."
+    }
+   }
+  },
+  "45": {
+   "title": "Can specialists tell when a question is outside their field?",
+   "description": "We gave the same question to the specialist whose field held the deciding point and to one whose field did not. Out of field, specialists flagged it only 31% of the time. When they did flag, they named the right field 10 times out of 11.",
+   "outcome": "mixed",
+   "size": "72 specialist replies",
+   "why": "Cell 44 showed the editor uses a follow-up answer that contains the deciding fact. Another design would let specialists start follow-ups themselves. Each specialist would know who else was on the panel and could say 'this is not my area, ask the X specialist'. We named in advance the risk seen in Cell 41: told they may pass a question on, specialists might produce the words of passing on without the judgment behind them. So what mattered was not how often they flagged, but whether they flagged more when the question really lay outside their field.",
+   "expectations": [
+    {
+     "id": "P45.1",
+     "text": "Specialists would flag a question as outside their field more often when it really was outside than when it was inside, by a clear margin.",
+     "outcome": "failed",
+     "note": "The gap pointed the right way, 31% against 8%, but it came from two of six items and its plausible range included zero, so it did not meet our standard."
+    },
+    {
+     "id": "P45.2",
+     "text": "When a specialist flagged a question, it would name the field that held the deciding point more often than the 50% expected by chance.",
+     "outcome": "held",
+     "note": "It named the right field in 10 of 11 flags (91%, plausibly anywhere from 62% to 98%)."
+    },
+    {
+     "id": "P45.3",
+     "text": "We would report flag rates in both setups, whether specialists still answered when they flagged, and results for each item.",
+     "outcome": "not-graded",
+     "note": "Specialists still wrote full answers when flagging. On item 1 the legal specialist, whose field held the point, passed its own question to finance twice."
+    }
+   ],
+   "found": "All 72 replies came back. Each question went in the same words, with the same scenario text, to both specialists, and it contained no field words such as legal or medical. Specialists flagged 11 of 36 out-of-field questions (31%) and 3 of 36 in-field ones (8%). The direction was right, but our test treated each of the six items as one unit, and the plausible gap ran from minus 6 to plus 53 percentage points, which includes no difference at all.\n\nThe items varied a lot. Two carried the effect, with out-of-field flag rates of 50% and 83% and none in field. Item 1 ran backward. All three in-field flags in the cell came from the legal specialist passing its own question to finance. A looser calculation that treats every run as independent excluded zero, but repeated runs on the same item are correlated, so we kept the test we had written down.\n\nWhen a specialist did flag, it named the right field 10 times out of 11. No specialist went silent to pass a question on: replies averaged 3,810 characters out of field and 4,267 in field.",
+   "means": "Specialists pass a question on well once they notice it is outside their field, but they rarely notice. As planned, the design where specialists start follow-ups was dropped, and Cell 44's design, where the system sends the follow-up from the editor's required list of disagreements, stayed the recommendation. Cells 44 and 45 showed the same pattern: in both halves of the loop the mechanism worked, but noticing the need was rare. Taking the prompt from a list the editor already writes avoids relying on a model judging its own competence, something no model in the project had been shown to do.",
+   "later": "The same pattern appeared again in Cell 53, where the editor named a planted disagreement in only 5 of 24 pilot runs. On the editor's side it was later qualified: in Cell 61, with real rather than planted disagreements, the editor's list led to a follow-up in 46 of 54 runs.",
+   "entries": {
+    "6970": {
+     "label": "Plan",
+     "title": "Plan: ask the same question inside and outside a specialist's field",
+     "summary": "Using Cell 44's six items, one question with no field words would go to the specialist whose field held the deciding point and to one whose field did not. The right behavior was to answer in field and, out of field, to flag CONSULT with the right field. Specialist-started follow-ups would go ahead only if both main expectations held."
+    },
+    "7028": {
+     "label": "Result",
+     "title": "Specialists route well but rarely notice the need",
+     "summary": "Specialists flagged 31% of out-of-field questions and 8% of in-field ones, a gap too uncertain to meet our standard. When they flagged, they named the right field 10 times out of 11. As planned, specialist-started follow-ups were dropped and Cell 44's design stayed the recommendation."
+    }
+   }
+  },
+  "46": {
+   "title": "Does the same formula hold with a second editor model?",
+   "description": "We repeated Cell 30's measurement of how much caution the editor passes along, with Phi-4 as the editor and 18 scenarios instead of 9. Phi-4 passed along a real share, even on the new scenarios alone. Pooled figures mix two very different sets of scenarios.",
+   "outcome": "held",
+   "size": "84 new runs, 144 in total over 18 scenarios",
+   "why": "Cell 30 measured how much of the specialists' caution reaches the final answer, using y = w·s + c. Here s is how many sentences in the specialists' drafts carried a caveat, and y is how many in the final answer did. The share passed along is w, and c is what the editor adds on its own when handed none. With gpt-oss-20B as the editor, w was above zero. With Phi-4 it was 0.105 over 20 runs, and its plausible range included zero. We wanted to know whether the formula describes the editing step or only one model. A calculation before running showed that repeating Cell 30's nine scenarios could never reliably settle it, because repeated runs on one scenario are correlated. So we doubled the scenarios instead.",
+   "expectations": [
+    {
+     "id": "P46.1",
+     "text": "With Phi-4 as the editor, the share of caveat sentences passed along would be above zero, with a plausible range that excludes zero, across both sets of scenarios.",
+     "outcome": "held",
+     "note": "Phi-4's share passed along was w = 0.177, plausibly anywhere from 0.058 to 0.275, so it excluded zero."
+    },
+    {
+     "id": "P46.2",
+     "text": "The plausible ranges for the two editor models' shares would overlap. They needed to agree, not to be equal.",
+     "outcome": "held",
+     "note": "They overlapped: w = 0.177 for Phi-4 and 0.318 for gpt-oss-20B, whose range ran from 0.221 to 0.431."
+    },
+    {
+     "id": "P46.3",
+     "text": "For each editor model we would report runs, how much independent data they amounted to, spread of supply, judge agreement, answer length and the editor's own additions (c).",
+     "outcome": "not-graded",
+     "note": "The judges agreed on 88% of decisions. For both models, c (what the editor adds on its own) shifted between recalculations and remained possibly zero."
+    }
+   ],
+   "found": "All 84 new runs finished, giving 144 with Cell 30's 60. The two AI judges agreed on 88% of their decisions. Across all 18 scenarios, the share passed along, w, was 0.318 for gpt-oss-20B over 82 runs and 0.177 for Phi-4 over 62 runs. Both excluded zero, and their ranges overlapped.\n\nThese pooled numbers need a warning. The nine new scenarios gave the editor far more caution to work with: on average 25.33 caveat sentences supplied, against 5.40 in Cell 30's scenarios. For gpt-oss-20B, the final answers carried 7.79 against 1.43. A straight line between the two sets' averages gives almost the pooled w (0.319 against 0.318 for gpt-oss-20B, 0.189 against 0.177 for Phi-4). So the pooled figures mostly reflect the difference between the two sets and must not be quoted as the rate within one set.\n\nFits within each set rescue the result. Three of the four excluded zero. Phi-4 on the new scenarios alone gave w = 0.170 (plausibly 0.067 to 0.265) over 42 runs, a second test that owes nothing to pooling. Phi-4 on Cell 30's scenarios still included zero. The plan also had an arithmetic error. It said 80 runs would equal 48.4 independent ones, clear of the 47 needed, but its design gave Phi-4 only 62 runs, worth 42.3. The outcome did not change, but the estimates may run somewhat high.",
+   "means": "The formula now holds for two editor models over 18 scenarios, with w, the share passed along, between 0.11 and 0.33 depending on the model and the set of scenarios. Figures pooled across the two sets are not a rate within one set, so the paper's figure shows the sets in two panels with no pooled line. We also corrected the paper's count of experiments. The highest cell number, 46, is not the number of cells, because the numbering has gaps, so the paper now says more than forty.",
+   "later": null,
+   "entries": {
+    "7209": {
+     "label": "Plan",
+     "title": "Plan: a second editor model on twice as many scenarios",
+     "summary": "Phi-4's saved runs showed that repeating Cell 30's nine scenarios could never settle its result, so we added nine scenarios that already had specialist drafts. Both editor models would run 21 new versions of the drafts twice, 84 new runs. Phi-4's share passed along should exclude zero and overlap with gpt-oss-20B's."
+    },
+    "7261": {
+     "label": "Result",
+     "title": "Phi-4 passes caution along too, with a warning about pooling",
+     "summary": "Phi-4's share passed along was 0.177 and gpt-oss-20B's 0.318, both above zero and overlapping. The new scenarios carried far more caution, so pooled numbers mostly reflect the gap between the two sets. Phi-4 on the new scenarios alone gave 0.170. We also recorded an arithmetic error in the plan and corrected the paper's count of cells."
+    }
+   }
+  }
+ },
+ "studies": {
+  "tension-fate": {
+   "title": "What happens to the disagreements the editor lists?",
+   "description": "We had two AI judges re-read saved runs to see what the editor did with each disagreement between specialists that it listed. Where both judges agreed, it took a side on 80%, only mentioned 20% and dropped none. Whether its choices were right could not be checked.",
+   "outcome": "measured",
+   "size": "No new answers, 160 listed disagreements judged",
+   "why": "The editor's instructions required a list of disagreements between the specialists, and 391 of 396 saved runs had one. No run had ever sent a follow-up question back to a specialist. Before designing an experiment on follow-up questions, we wanted to know how much room there was for one. If the editor already settled most of the disagreements it listed, a follow-up could only help with the rest. So we sorted each listed disagreement into resolved (a position taken, a number adjusted or a recommendation ordered because of it), acknowledged (mentioned but left open) or dropped (never addressed again).",
+   "expectations": [],
+   "found": "Two AI judges, gpt-oss-20B and Qwen3-VL-30B-A3B, labeled 160 disagreements from 45 saved runs. None of their replies were unreadable. They agreed on 72% of labels, just above our 70% minimum. On the 115 disagreements where both agreed, 80% were resolved, 20% acknowledged and none dropped. The pattern did not change with the disagreement's place in the list.\n\nThe judges differed in one direction. Qwen3-VL-30B-A3B called 80% resolved and gpt-oss-20B only 62%. So the share left open lay somewhere from 20%, counting only agreed labels, to 38%, using the stricter judge. We had noted in advance that the editor's prompt ordered it to acknowledge disagreements, so the resolved share, which the prompt does not dictate, was the number that mattered. The required list kept every disagreement alive at least in the prose.",
+   "means": "The editor takes a side on most of the disagreements it names. Among those left visibly open, the room for a follow-up question was about one in five, at most one in three. But 'resolved' only means a side was chosen. Cell 37 had shown the editor does not work facts out for itself but picks between its sources, so it may take a side without the information the disagreement turns on. The 80% is therefore an upper limit on real resolution. The better design was to plant disagreements with a known right answer, where the deciding fact sits with only one specialist. The audit did not itself commit us to an experiment, but Cell 44, planned the same day, used that design.",
+   "later": null,
+   "related": [
+    "44",
+    "37"
+   ],
+   "entries": {
+    "entry-6739": {
+     "label": "Plan",
+     "title": "Plan: sort each listed disagreement into resolved, open or dropped",
+     "summary": "Two AI judges would label every disagreement listed in a random sample of 50 saved runs, and only labels both agreed on would count. We noted in advance that the editor's prompt told it to acknowledge disagreements, so the share it actually resolved was the number that mattered."
+    },
+    "entry-6766": {
+     "label": "Result",
+     "title": "The editor takes a side on most listed disagreements",
+     "summary": "Of the 115 disagreements both judges labeled alike, 80% were resolved, 20% acknowledged and none dropped. The stricter judge put the open share at 38%. Nobody could check whether a chosen side was right, so we recommended testing planted disagreements with known answers."
+    }
+   }
+  },
+  "transport-battery": {
+   "title": "Four re-checks of how much caution the editor passes along",
+   "description": "We re-analyzed Cell 30's 60 saved runs four ways. A straight line still fitted, the published share passed along turned out to be a lower limit, the editor's own additions agreed with Cell 38, and every kind of caveat was passed along.",
+   "outcome": "measured",
+   "size": "No new runs, re-analyzed Cell 30's 60 runs",
+   "why": "Cell 30 measured how much of the specialists' caution reaches the final answer, with all scripted wording removed from the prompts. It used y = w·s + c. Here s is how many sentences in the specialists' drafts carried a caveat, and y is how many in the final answer did. The share passed along is w, and c is what the editor adds on its own when handed none. It found w = 0.150, about one caveat sentence kept for every seven supplied. Before building more on that, we ran four checks on the saved data that could weaken, correct or support it but could not make a new claim. We also retired the formula's old name before seeing any results. It implied the editor estimates a proper level of caution and pulls it toward a default, which Cell 37 had ruled out.",
+   "expectations": [],
+   "found": "First, a straight line fitted. Adding a curve term changed almost nothing, and its plausible range included zero across 11 supply levels.\n\nSecond, the published w (the share passed along) is a lower limit. Noise in measuring s (the caveat sentences supplied) makes the fitted w come out too small. The two judges' separate counts of s matched only moderately (a correlation of 0.528), which put the reliability of their combined count at 0.691. Dividing 0.150 by 0.691 gives 0.217, so the fair statement is a range from 0.150 to 0.217. The correction is approximate if s came from agreed labels only.\n\nThird, c (what the editor adds on its own) agreed with Cell 38. That cell found the editor adding caveats in 4 of 12 runs whose drafts truly had none, and that figure of 0.333 fell inside Cell 30's range for c = 0.441. But whether c's range includes zero flipped between two recalculations, so c must still be reported as possibly zero.\n\nFourth, every kind of caveat was passed along. Split as planned, against total supply, the 'rules differ by place' kind carried about 70% of w, and the other two were too small to separate from zero. An extra analysis we had not planned, each kind's own supply against its own output, found all three above zero: 0.121 for estimates, 0.150 for rules differing by place and 0.234 for general hedging. The 'rules differ by place' kind dominates the total because the specialists supplied the most of it.",
+   "means": "Three checks strengthened the result and one qualified it. The straight-line formula holds, the published share passed along is a lower limit, and a second cell supports the size of the editor's own additions. Every kind of caveat is passed along, but the overall share leans toward the 'rules differ by place' kind because it was supplied most, and it should be described that way. The judges' moderate agreement on how many caveats were supplied also limits how precise any estimate from these runs can be.",
+   "later": null,
+   "related": [
+    "30",
+    "38",
+    "46"
+   ],
+   "entries": {
+    "entry-7088": {
+     "label": "Plan",
+     "title": "Plan: four checks on Cell 30's saved runs",
+     "summary": "Four checks on the 60 saved runs: whether a straight line fits, and how much noise in measuring the supply shrinks the share passed along. Also, whether the editor's own additions agree with Cell 38, and whether one kind of caveat carries the total. They could weaken, correct or support the result, not add a claim."
+    },
+    "entry-7122": {
+     "label": "Result",
+     "title": "The line fits, the share is a lower limit, and every kind passes along",
+     "summary": "No curve was found. Correcting for noise in measuring the supply raised the share passed along from 0.150 to 0.217. Cell 38's figure fell inside Cell 30's range for the editor's own additions, which could still be zero. One kind of caveat dominated the total only because it was supplied most."
+    }
+   }
+  }
+ }
+}

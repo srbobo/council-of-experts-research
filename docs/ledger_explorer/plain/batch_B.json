@@ -1,0 +1,379 @@
+{
+ "batch": "B",
+ "cells": {
+  "8": {
+   "title": "Does the council's caution come from its models or its instruction?",
+   "description": "We compared six arrangements of the same model. Using several models added no caution by itself, and the editor's instruction did. The council matched one well-prompted model on volume, and its apparent edge at avoiding needless caveats was later withdrawn.",
+   "outcome": "mixed",
+   "size": "210 runs, none failed",
+   "why": "Our paper's first result said the council design raised the caution in final answers 3 to 9 times over a single model. But we had only compared the council with a single model, never with other multi-model designs. Cell 6c had just shown that removing the instruction telling the editor (the model that writes the final answer) to keep the specialists' caveats dropped the council to 0.16, below a single gpt-oss model's 0.19. So the lift might come from that instruction rather than from using several models. A few earlier runs also hinted that the council's real advantage was knowing when caveats are called for, but each rested on a single run. We used gpt-oss-20B in every role so that the arrangement was the only thing that changed.",
+   "expectations": [
+    {
+     "id": "P8.1",
+     "text": "The council would not produce more caution than a single model whose prompt asks for caveats, at least not by a clear margin.",
+     "outcome": "held",
+     "note": "The council scored 0.57 and the prompted single model 0.50, with overlapping ranges. One prompted model matched the whole council on volume."
+    },
+    {
+     "id": "P8.2",
+     "text": "The council's real edge would be knowing when caveats are called for: on a control question needing none, it would add at most half as many unneeded caveats as the prompted single model.",
+     "outcome": "failed",
+     "note": "It first seemed to hold, 0.00 against 0.15. A later audit found the council had consulted no specialists on that question, and Cell 14 then found it did no better than the single model."
+    },
+    {
+     "id": "P8.3",
+     "text": "Three specialists merged by a plain prompt, with no instruction to keep their caveats, would gain neither more caution nor better judgment about when to add it.",
+     "outcome": "held",
+     "note": "The plain merge scored 0.16, close to a single model's 0.14 and far below the council's 0.57. Its score on the control question was 0.06."
+    },
+    {
+     "id": "P8.4",
+     "text": "No prediction: we would report where a two-round debate and a self-critique loop landed.",
+     "outcome": "not-graded",
+     "note": "Debate scored 0.16 (0.05 on the control question), the same as the plain merge. Self-critique scored 0.08, below a plain single model, because revising tightened the prose and dropped caveats."
+    }
+   ],
+   "found": "All 210 runs completed. We scored caution as cautious phrases per 1,000 characters on the six scenarios that call for caveats. A single model with a neutral prompt scored 0.14. Three specialists merged by a plain prompt scored 0.16, and two rounds of debate also scored 0.16. A model critiquing and revising its own draft scored 0.08, below the plain single model, because the revision tightened the prose and removed caveats. A single model whose prompt asks for caveats every time scored 0.50, and the full council scored 0.57, with no clear difference between the two.\n\nWe also scored a simple control question that calls for no caveats. The prompted single model added unneeded caveats there (0.15), while the council added none in any of its 5 runs. The council was the only setup that combined high caution with a zero on the control question. We read this as its real advantage: its instruction says to keep a caveat only if a specialist raised one, so it should stay quiet when nothing calls for caution.",
+   "means": "Using several models did not raise caution by itself. The plain merge and the debate stayed at single-model levels. The rise came from the editor's instruction to keep the specialists' caveats, applied to what the specialists actually wrote. As planned in advance, we rewrote the paper's first result. A single well-prompted model matched the council on volume, and the council's distinctive contribution became knowing when caveats are needed. That last part did not survive later checks.",
+   "later": "The execution-path audit on August 1 found that in all 5 control-question runs the council's planning step had consulted no specialists, so the instruction being tested never ran. The claim about knowing when caveats are needed was withdrawn. Cell 14 then used three new control questions where specialists were consulted, and the council did no better than the prompted single model (0.64 against 0.31). The volume findings still stand.",
+   "entries": {
+    "808": {
+     "label": "Plan",
+     "title": "Compare the council with five other ways of arranging one model",
+     "summary": "Six setups, all using gpt-oss-20B, with 7 scenarios run 5 times each. They were a single model, a single model always asked for caveats, the full council, three specialists merged by a plain prompt, a two-round debate, and a self-critique loop. We wrote down in advance that if the council's edge on the control question failed, the case for its design would largely dissolve."
+    },
+    "863": {
+     "label": "Result",
+     "title": "The instruction, not the number of models, raised caution",
+     "summary": "All 210 runs completed. The council (0.57) matched a single prompted model (0.50) on volume, the plain merge and the debate stayed near a single model, and only the council combined high caution with zero unneeded caveats on the control question. A note added the same day says the earlier expectation P8, tested in Cell 10, is unrelated to this cell."
+    }
+   }
+  },
+  "8B": {
+   "title": "Does a model's training history set its default level of caution?",
+   "description": "We measured how much caution four models write under a neutral instruction, to see if preference-trained models are more cautious by default. All scored about the same, but audits later found broken answers and near-zero counts, and withdrew both findings.",
+   "outcome": "unclear",
+   "size": "140 runs, none failed",
+   "why": "Choosing a different model was the only thing that had ever raised the habitual caution of the editor (the model that writes the final answer). Across editors it varied 3.3 times. If that level is set by the large-scale preference training a model's builder applies, then a model's training history should predict it. That would explain why our small training runs (49 to 88 pairs) could not compete, and it would tell practitioners what to look for on a model card when picking an editor. The original plan (expectation P7) had framed a similar comparison with two biomedical models as specialists. No such runs had been made, and before collecting any data we moved the test to the editor's role.",
+   "expectations": [
+    {
+     "id": "P8b.1",
+     "text": "A biomedical model with preference training (OpenBioLLM, later replaced by Med42) would show more caution than BioMistral, which only had extra training on medical text, by a clear margin.",
+     "outcome": "unclear",
+     "note": "Both scored 0.15, which we first read as the expectation failing. An audit then found most BioMistral answers were broken fragments, so the comparison was never really made."
+    },
+    {
+     "id": "P8b.2",
+     "text": "BioMistral would not score above Mistral-7B-Instruct, a general model from the same family, by a clear margin, because medical knowledge is not the same as caution.",
+     "outcome": "held",
+     "note": "BioMistral scored 0.15 and Mistral-Instruct 0.14, but only because no model differed from any other, and an audit later found most BioMistral answers were broken."
+    },
+    {
+     "id": "P8b.3",
+     "text": "No prediction: we would report each model's score on the control question that calls for no caveats.",
+     "outcome": "not-graded",
+     "note": "Every model scored 0.00 there. With no instruction to over-apply, none added unneeded caveats."
+    }
+   ],
+   "found": "The plan changed twice before any runs we kept. First, a check before the runs showed OpenBioLLM could not act as the editor. It ignored instructions in both the system prompt and the user message and could not produce the planning step's structured output. So we measured each model on its own, answering the 7 scenarios under a short neutral instruction in the user message, and added Qwen2.5-7B-Instruct as a reference point. Second, OpenBioLLM's answers were unstable, sometimes only a 15-character heading, so we dropped it, deleted its 35 test runs unanalysed, and put Med42-8B in its place.\n\nAll four models landed at nearly the same level: Med42 0.15, BioMistral 0.15, Mistral-7B-Instruct 0.14 and Qwen2.5-7B-Instruct 0.14 cautious phrases per 1,000 characters on the scenarios that call for caveats. BioMistral's answers were very short (median 310 characters), so its estimate was the least precise, as we had noted in advance. A plain gpt-oss-20B had scored 0.14 under the same neutral prompt in Cell 8. We concluded that every model shares one default level, so the large differences between editors must come from how they respond to instructions. For Qwen2.5 we traced the chain: 0.14 alone, 0.56 inside the council without the instruction to keep the specialists' caveats, and 1.03 with it.\n\nOpenBioLLM and BioMistral both ignored system prompts entirely. We concluded that following instructions is a basic requirement for any editor.",
+   "means": "At the time, this changed how we described the editor: not as a model with its own fixed level of caution, but as a model with its own sensitivity to instructions. It offered an explanation for why training had not moved the editor in Cells 6b and 11, and it made instruction-following the main thing to check when choosing an editor. The main paper was reframed around it (see the paper v0.7 entry). Later audits withdrew both the training-history comparison and the shared default level.",
+   "later": "The data-integrity audit (August 1) found 26 of BioMistral's 30 answers on the caveat scenarios were broken fragments, so the training-history comparison was reclassified as too close to call and withdrawn. A correction in Cell 15's result (August 2) found 70% to 80% of runs for three models had no cautious phrases, and equal rates hid gpt-oss writing 3.3 times as many as Med42. The shared level was withdrawn: unprompted, these models add almost no caveats and cannot be told apart.",
+   "entries": {
+    "993": {
+     "label": "Plan",
+     "title": "Does training history predict caution when a model acts as editor?",
+     "summary": "Three models would each act as the editor over the usual specialists, 35 runs each: OpenBioLLM-8B (preference-trained), BioMistral-7B (extra medical text only) and Mistral-7B-Instruct (a general model from BioMistral's family). We noted in advance that the models also differ in base family and size, and dropped an older plan to test these models as specialists."
+    },
+    "1124": {
+     "label": "Change to the plan",
+     "title": "OpenBioLLM cannot follow instructions, so we measure models on their own",
+     "summary": "A check before the runs found OpenBioLLM ignored instructions in any position and could not produce the planning step's output, even after we fixed a broken prompt template in the downloaded file. Rather than score that failure as low caution, we measured each model answering the scenarios directly under a neutral instruction, and added Qwen2.5-7B-Instruct as a reference. The expectations were unchanged."
+    },
+    "1174": {
+     "label": "Change to the plan",
+     "title": "OpenBioLLM dropped for unstable output, Med42 takes its place",
+     "summary": "OpenBioLLM's answers swung between 15 and over 2,000 characters under every template we tried, which makes a per-character score meaningless. Its 35 test runs were deleted unanalysed. Med42-8B, a Llama-3 model with clinical SFT and DPO, replaced it. We noted in advance that BioMistral's very short answers would make its estimate imprecise."
+    },
+    "1287": {
+     "label": "Result",
+     "title": "All four models showed the same low default caution",
+     "summary": "Med42 and BioMistral both scored 0.15, and Mistral-Instruct and Qwen2.5 scored 0.14, so the training-history expectation did not hold at the time. We read the shared level as the real finding: editors differ in how they respond to instructions, not in their defaults. Later audits withdrew both readings."
+    }
+   }
+  },
+  "9": {
+   "title": "An outside check on a public uncertainty benchmark",
+   "description": "The original plan included an outside check: compare the untouched specialist with the ORPO-trained one on a public benchmark of abstaining and flagging uncertainty, run on our own machine. It was never run.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "When the campaign began on July 11, we listed ten cells to run. Our measurements used our own business scenarios and our own scoring. Cell 9 was meant to anchor the results to something outside the project: a public benchmark that tests whether a model abstains or flags uncertainty. It would compare the untouched specialist with the one trained using ORPO, a preference-training method, on our own machine with no paid services.",
+   "expectations": [],
+   "found": "This cell was never run. It appears only as one line in the original plan.",
+   "means": "No public benchmark was used to anchor the results of this early phase. They rest on the project's own scenarios and scoring.",
+   "later": null,
+   "entries": {}
+  },
+  "10": {
+   "title": "Do caveats tied to specific facts survive the editor better?",
+   "description": "Using saved runs, we checked whether caveats written in the same sentence as a specific fact survived the editor's write-up more often. They did not. Survival differed between versions of the specialist, but not by whether a caveat was tied to a fact.",
+   "outcome": "failed",
+   "size": "No new runs, 102 saved runs analyzed",
+   "why": "When the campaign began on July 11, we wrote down nine expectations before running anything. P8 offered one reason why some caveats survive the editor (the model that writes the final answer) and others do not. Training might tie a caveat to the content it qualifies, in the same sentence as a named entity or a statute, while a caveat added by prompting might stand apart as a loose disclaimer. If so, caveats tied to facts should survive more often, however the specialist had been prepared. Cell 10 tested this on saved logs. This P8 is unrelated to Cell 8's expectations (P8.1 onward), which share the number by coincidence.",
+   "expectations": [
+    {
+     "id": "P8",
+     "text": "Caveats built in by training would sit in the same sentence as specific facts, prompted ones would stand apart, and caveats tied to facts would survive the editor more often in every version.",
+     "outcome": "failed",
+     "note": "The share tied to facts was similar in every version (56% to 67%) and did not predict survival. The SFT version's caveats were the most tied to facts, yet they survived worst."
+    }
+   ],
+   "found": "We looked at four versions of the legal specialist: untouched, prompted with a description of the caveats, trained with ORPO, and trained with SFT on the preferred answers. For each cautious phrase, we checked whether it sat in the same sentence as a specific fact such as a named entity or a statute. The share tied to facts barely differed: 56% for the untouched version, 61% for the prompted one, 61% for ORPO and 67% for SFT.\n\nSurvival differed a lot. We measured it as the caution in the final answer divided by the caution in the specialist's answer. The untouched and ORPO versions came through at about their original level (ratios of 1.08 and 0.96). The prompted and SFT versions kept about half (0.49 each). The SFT caveats were the most tied to facts, yet they survived worst. Across versions, the share tied to facts and survival were unrelated, with a correlation of −0.10.\n\nThe final answers all fell in a narrow range of caution, 0.58 to 0.86 cautious phrases per 1,000 characters, even though the specialists handed over between 0.87 and 1.85.",
+   "means": "Tying a caveat to a fact did not protect it. We proposed a different explanation: the editor writes at its own habitual level of caution, largely regardless of what it receives. A specialist that hands over a lot of caution loses most of it, and the ORPO version seemed to survive only because it never went above that level. That made Cell 6, which compared three editors with and without the instruction to keep the specialists' caveats, the next test.",
+   "later": "Cell 7c (July 27) found a related pattern at a different level, reported as an observation rather than a test. Caveats that carry content, such as an estimated figure or a difference between jurisdictions, survived the editor, while notes that information may be out of date were partly cut. Like other early scores, these came from a keyword counter, and in August the project marked all such scores as provisional.",
+   "entries": {
+    "154": {
+     "label": "Result",
+     "title": "Caveats tied to facts did not survive better",
+     "summary": "In 102 saved runs from four versions of the legal specialist, the share of caveats tied to a specific fact was similar in every version, while survival through the editor differed by version. The failure condition we had written down was met. We proposed instead that the editor writes at its own habitual level of caution."
+    }
+   }
+  },
+  "11": {
+   "title": "Can rewarding caution only where it is needed change the editor?",
+   "description": "We trained the editor with ORPO on its own best and worst final answers, rewarding caution only where a question called for it. Its caution did not move in either direction, so this corrected form of training also failed.",
+   "outcome": "failed",
+   "size": "105 new runs, none failed",
+   "why": "Cell 6b had trained the editor (the model that writes the final answer) with ORPO, a preference-training method, and its habitual level of caution did not change. That training had three possible weaknesses. Its practice answers were not ones the editor wrote inside the full pipeline. Its reward simply favored more caution everywhere. And it judged answers on their own rather than as the pipeline's final output. Published work on a method called CollabLLM suggested that exactly these features make such training fail. Cell 11 fixed all three and changed nothing else, to see whether training can move the editor's caution at all.",
+   "expectations": [
+    {
+     "id": "P11.1",
+     "text": "Without the instruction to keep the specialists' caveats, the trained editor would show more caution than the untrained editor, by a clear margin.",
+     "outcome": "failed",
+     "note": "It scored 0.60 against 0.56, with nearly identical ranges. An early hint of lower caution after 16 runs had disappeared by 35."
+    },
+    {
+     "id": "P11.2",
+     "text": "On a control question needing no caveats, the trained editor without the instruction would stay at or below the untrained editor with it, showing it had learned when to be cautious rather than simply more caution.",
+     "outcome": "not-graded",
+     "note": "It scored 0.09, below the untrained editor's 0.15 with the instruction, but we did not count this as a pass because the training had installed nothing to test."
+    },
+    {
+     "id": "P11.3",
+     "text": "With the full instruction, the editor trained on this reward would show more caution than Cell 6b's editor, which was trained to favor caution everywhere, by a clear margin.",
+     "outcome": "failed",
+     "note": "It scored 0.95 against 0.89, with overlapping ranges, and both sat within the untrained editor's range. The shape of the reward was not what held Cell 6b back."
+    },
+    {
+     "id": "P11.4",
+     "text": "No prediction: would training make the instruction less necessary, or would the instruction's effect stay as large as before?",
+     "outcome": "not-graded",
+     "note": "The instruction's effect stayed about as large. Adding it raised caution 1.58 times on the trained editor and 1.82 times on the untrained one."
+    }
+   ],
+   "found": "We ran the council on 108 new training questions, 76 that call for caveats and 32 that do not, and had the editor write 6 final answers for each, 648 in all. On questions calling for caveats, more caution earned more reward. On the others, any caution was penalized. The best and worst answer for each question formed a training pair. Filters left 57 pairs and we trained on 49, short of the planned cap of 88, a shortfall we recorded before seeing results.\n\nScores are cautious phrases per 1,000 characters on the scenarios that call for caveats. Without the instruction to keep the specialists' caveats, the trained editor scored 0.60 and the untrained one 0.56. With the full instruction, the trained editor scored 0.95, against 0.89 for Cell 6b's trained editor and 1.03 for the untrained one, all within the same range. On a control question that calls for no caveats, the trained editor with the instruction scored 0.45, but one run of five (1.99) drove that, so we did not interpret it. The instruction still mattered as much as before: it raised caution 1.58 times on the trained editor and 1.82 times on the untrained one.",
+   "means": "As planned in advance, we strengthened the claim that training cannot move the editor's habitual caution at the scale we can run. It had now survived two kinds of training on the editor itself. Every attempt to train weights, at any point in the pipeline, had left the final caution where the editor and its instructions put it. The prompt stayed the practical control. Two caveats remain. This method only approximates full reinforcement learning, and it trained on 49 pairs, 56% of the limit. Earlier tests with more training data had shown no change, so more data seemed unlikely to help.",
+   "later": "Cell 16 tried full reinforcement learning (GRPO) on the same editor to answer the first caveat, but it ran out of memory on our machine before the first training step, so that objection still stands. Cell 18 later drew the same lesson: a model can learn to tell good answers from bad ones without changing how it writes. In August the project marked all keyword-counter scores, including these, as provisional.",
+   "entries": {
+    "921": {
+     "label": "Plan",
+     "title": "Train the editor on its own final answers with a calibrated reward",
+     "summary": "Keep everything from Cell 6b (the Qwen2.5-7B editor, trainer, LoRA settings, seed and data limit), but sample 6 final answers per training question from the full pipeline and reward caution only where the question calls for it. Then run the trained editor with and without the instruction to keep the specialists' caveats on all 7 scenarios, 5 times each."
+    },
+    "1079": {
+     "label": "Result",
+     "title": "Calibrated training did not move the editor",
+     "summary": "Only 49 training pairs survived the filters, against a cap of 88, which we recorded before the results. We added a fresh untrained comparison without the instruction, for 105 runs in all. The trained editor matched the untrained one with and without the instruction, so we strengthened the claim that training cannot move it at this scale."
+    }
+   }
+  },
+  "12": {
+   "title": "Can blending in another model's weights raise an editor's caution?",
+   "description": "We planned to blend the editor's weights with those of a more cautious model at several mixing levels, with no training, to see whether its habitual caution would move. The plan was written down but never run.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "By late July, training had not changed the habitual caution of the editor (the model that writes the final answer), and choosing a different model was the only thing that had ever raised it. Cell 12 asked whether that level is portable. Could it be copied into the editor by blending its weights with those of a model that already writes more cautiously, with no training at all? This was the cheapest untried way to change the editor other than its prompt. Instead of asking a small training run to find the behavior, it would copy the weights of a model that already shows it.",
+   "expectations": [
+    {
+     "id": "P12.1",
+     "text": "The editor's caution would rise steadily as more of the cautious model's weights were blended in, moving from the stock level toward that model's level.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell was not run."
+    },
+    {
+     "id": "P12.2",
+     "text": "No prediction: we would check whether knowing when caveats are called for moved along with the caution level or stayed as before.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell was not run."
+    },
+    {
+     "id": "P12.3",
+     "text": "No prediction: we would spot-check answer quality, since blended models are known to lose coherence at middle mixing levels, and report any damage.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell was not run."
+    }
+   ],
+   "found": "The cell was never run. Cell 11's result listed it as queued after Cell 8B, but the notebook has no later entry for it and records no reason. An audit of every cell on August 5 also lists it as planned and never run.",
+   "means": "The question stayed open: we never learned whether blending weights can move an editor's caution. The plan had said in advance what each outcome would mean. Success would be the first working way to change it other than the prompt or the choice of model. Failure would add a second kind of method that could not move it.",
+   "later": null,
+   "entries": {
+    "1040": {
+     "label": "Plan",
+     "title": "Blend the editor with a more cautious model, in stages",
+     "summary": "First, screen fine-tuned versions of Qwen2.5-7B as the editor, 12 runs each, and go on only if one scored at least 1.3 times the stock level (about 1.35 against 1.03). Then blend the stock model with the best candidate at 25%, 50% and 75% using SLERP, a standard merging method, and run each blend and that candidate on all 7 scenarios, 5 times each, up to 140 runs."
+    }
+   }
+  },
+  "13": {
+   "title": "Which clause of the keep-the-caveats instructions does the work?",
+   "description": "We tested each clause of the editor's keep-the-caveats instructions on its own. One clause, about how numbers are framed, produced all of the gain, not the one we expected. A later check found it mostly made the model type exact phrases its prompts dictated.",
+   "outcome": "mixed",
+   "size": "210 runs, none failed",
+   "why": "The editor (the model that writes the final answer) works from a block of instructions telling it to keep the specialists' caveats. Cell 6c had shown that caution rises with the number of clauses kept. But the clauses had always been removed in the same order, so the count could not be separated from which clause was present. Two facts made this pressing. One clause asks to keep precise wording, a kind of caveat our scoring had not been able to detect. And our overall score was dominated by “my information may be out of date” notes, which only the caveats clause asks for. If one sentence did all the work, the advice could shrink from “write this block” to “write this sentence”. The cell also settled whether the block has three working clauses or four.",
+   "expectations": [
+    {
+     "id": "P13.1",
+     "text": "The caveats clause alone, which asks the editor to keep notes like “my information may be out of date”, would recover at least half of the full block's gain.",
+     "outcome": "failed",
+     "note": "It recovered none of it (−1%), landing exactly at the no-clause level of 0.20."
+    },
+    {
+     "id": "P13.2",
+     "text": "The precise-wording clause alone would make no clear difference to the overall score, because it asks for a kind of caveat our scoring had not been able to detect.",
+     "outcome": "held",
+     "note": "It scored 0.18 against 0.20 with no clauses. It did raise its own rare kind of caveat slightly, but too little to move the overall score."
+    },
+    {
+     "id": "P13.3",
+     "text": "Every version, including each single clause, would keep unneeded caveats near zero on a control question that calls for none.",
+     "outcome": "not-tested",
+     "note": "All six scored 0.00, but a later audit found the planning step consulted no specialists on that question, so no clause was ever applied there. The result was withdrawn."
+    },
+    {
+     "id": "P13.4",
+     "text": "No prediction: would the first clause, which asks the editor to acknowledge disagreements between specialists, add caution on its own?",
+     "outcome": "not-graded",
+     "note": "It added nothing (0.19 against 0.20), so the block has three working clauses, not four. Cell 6c's version with only this clause, at 0.16, agreed."
+    }
+   ],
+   "found": "We used one editor, gpt-oss-20B, because it had responded most strongly to the instructions in Cell 6c. Before running, we corrected the no-clause version so that it also removed the first clause. Scores are cautious phrases per 1,000 characters on the scenarios that call for caveats. With no clauses the editor scored 0.20, and with the full block 0.55. The clause asking the editor to keep how numbers were framed, for example that a figure is an estimate, scored 0.64 on its own, 126% of the full block's gain. Each other clause alone stayed at the no-clause level: disagreements 0.19, precise wording 0.18 and caveats 0.20. Each clause did raise its own kind of caveat, but only the numbers clause targeted a kind this editor writes in volume.\n\nThe single-clause gains added up to more than the full block's gain (0.41 against 0.35), and the numbers clause alone scored slightly above the full block, with overlapping ranges. Adding clauses for rare kinds of caveat seemed to crowd out the one that works, slightly. This cell and Cell 6c showed gpt-oss barely writes out-of-date notes (0.018 to 0.026), while earlier runs showed Qwen2.5 and Phi-4 write many. On those editors the caveats clause would be expected to carry the block.",
+   "means": "Which clause does the work depends on the editor. The gain comes from whichever clause targets the kind of caveat that editor already writes most. So the paper should not say “write the numbers clause”. It should say: find which kind of caveat your editor already produces and write the conditional clause for that kind. This also explained Cell 6c's rising curve without appealing to the number of clauses. We limited the claim that our score is dominated by out-of-date notes to Qwen2.5 and Phi-4, since it is false for gpt-oss, and planned a check on a Qwen2.5 editor (Cell 13b).",
+   "later": "The execution-path audit (August 1) found the planning step consulted no specialists on the control question in all six versions, so that result was withdrawn as never tested. The PD-13 re-analysis (August 9) found the numbers clause's gain was almost entirely the model using two phrasings our prompts dictated, which appeared in 28 of 30 runs, up from 0. Other ways of flagging an estimate rose only from 1 to 4 of 30. Cell 13b never appears again in the notebook.",
+   "entries": {
+    "1219": {
+     "label": "Plan",
+     "title": "Test each clause of the keep-the-caveats block on its own",
+     "summary": "Six versions with one editor, gpt-oss-20B, 35 runs each: no clauses, each of four clauses alone, and the full block. We chose the editor with the widest response in Cell 6c and noted in advance that this might overstate the differences between clauses on other editors."
+    },
+    "1350": {
+     "label": "Correction",
+     "title": "The no-clause version must also remove the first clause",
+     "summary": "The plan described the no-clause version as identical to Cell 6c's version without the instruction, but that version still kept the first clause. Since we wanted to test the first clause alone, we fixed the no-clause version to remove it too, before any runs. Removed clauses leave gaps in the numbering, as they did in Cell 6c."
+    },
+    "1371": {
+     "label": "Result",
+     "title": "One clause carries the block, and which one depends on the editor",
+     "summary": "The numbers clause alone produced all of the block's gain, and the caveats clause, which we expected to lead, produced none. Each clause raised its own kind of caveat. Because gpt-oss rarely writes out-of-date notes, we concluded the working clause depends on what the editor already writes, and planned a check on Qwen2.5."
+    }
+   }
+  }
+ },
+ "studies": {
+  "verification-audit": {
+   "title": "Independent check of every published number",
+   "description": "An independent process recomputed 45 published figures from the raw run files, and all of them matched. It found two wording errors in the paper and a gap in the record of when Cell 8B's plan changes were saved.",
+   "outcome": "measured",
+   "size": "No new runs, 1,293 saved runs rechecked",
+   "why": "By August 1 the paper reported results from four new experiments, Cells 8, 11, 8B and 13, alongside results from Cell 6c. We had an independent process try to rebuild every published figure from the raw run files, using exactly the same keyword patterns as our own scoring script. It also checked the project's version history to see whether each plan had been saved before its first run.",
+   "expectations": [],
+   "found": "All 45 figures matched within 0.006, and every published range matched to two decimal places. File names agreed with their contents on all 1,293 runs, and every version in Cells 8, 11, 13 and 8B had exactly 7 scenarios with 5 runs each.\n\nTwo wording errors were found and fixed. The paper said caution rose steadily with each added clause on all three editors, but only gpt-oss rose at every step. Qwen2.5 dipped going from one clause to two (0.999 to 0.954), and Phi-4 going from two to three (1.528 to 0.675). The Phi-4 dip had been disclosed, but the Qwen2.5 dip was mentioned nowhere. The abstract's claim of a 2 to 3 times effect also left out Phi-4's 1.30 times, and is now stated per editor. The paper also gave a stale run count of about 630, the total before the four new cells. The true count was 1,293.\n\nEach plan was saved before its first run: Cell 8 by 2 minutes, Cell 11 by 22.4 hours, Cell 8B by 2.9 hours and Cell 13 by 3.8 hours. Cell 8B's two changes to the plan were written before its runs started, but they were saved to version history 33 seconds after the first kept run. So the history alone cannot prove they came first. The Cell 13 correction was saved 6 minutes before its first run. No OpenBioLLM runs remained in the records.",
+   "means": "The numbers held up. The fixes were to wording: the paper now describes each editor's curve separately and reports both dips, and it gives the correct run count. We adopted a rule that future changes to a plan must be saved before the runs start, not alongside them.",
+   "later": "The execution-path audit, also dated August 1, found a flaw this check could not catch. On the control question the council had consulted no specialists, so the instruction under test never ran. This audit confirmed that numbers were computed correctly, not that the pipeline took the path the claims assumed.",
+   "entries": {
+    "entry-1448": {
+     "label": "Result",
+     "title": "All 45 figures reproduce, two wording errors fixed",
+     "summary": "An independent recomputation matched all 45 published figures and their ranges. It corrected a false claim that caution rose at every step on all three editors and a stale run count, and found that Cell 8B's plan changes were saved 33 seconds after its first kept run."
+    }
+   },
+   "related": [
+    "8",
+    "11",
+    "8B",
+    "13",
+    "6c"
+   ]
+  },
+  "data-integrity-audit": {
+   "title": "Audit of the 1,293 saved runs for hidden defects",
+   "description": "An independent audit inspected every saved run file. Most checks came back clean, but it found most of BioMistral's answers in Cell 8B were broken fragments, so we withdrew the claim about training history.",
+   "outcome": "measured",
+   "size": "No new runs, 1,293 saved runs inspected",
+   "why": "On the same day as the number check, an independent process audited all 1,293 saved run files themselves. It looked for a known bug that could have saved internal program text in place of an answer, and for duplicate, empty or tiny answers. It also checked that file names matched their contents and that each version had the planned number of runs.",
+   "expectations": [],
+   "found": "Most checks were clean. There was no leaked program text, no identical answers within any version and scenario, no answers under 50 characters, and every file name matched its contents. Every version in Cells 8, 11, 13 and 8B had exactly 7 scenarios with 5 runs each. A reported 386 missing audit-log files turned out to be an error in where the check was run from, and all 386 were present.\n\nOne finding mattered. In Cell 8B, 26 of BioMistral's 30 answers on the scenarios calling for caveats were broken. They were 208 to 463 characters long and ended on a colon after one setup sentence, with no analysis, although the model was nowhere near its length limit. Within a scenario, answers were either fragments or full length, for example 208, 209, 234, 1,506 and 1,905 characters. The three-probe check before the runs could not reveal this. Scoring only the 4 full answers gave 0.29, with a range too wide to place.\n\nThree smaller problems in older runs were disclosed without changing any ranges. In the earliest council versions, each scenario's 5 runs came from two sessions (1 plus 4), with a consistent 5% to 8% length difference in three of four versions. One version had 6 control-question runs instead of 5. And 133 runs stored a batch label where the model name belonged. No run had recorded its random seed, which is why the session split went unnoticed.",
+   "means": "We reclassified the Cell 8B training-history expectation as too close to call and withdrew that claim, because the comparison was never really made. The claim that all models share one default level of caution was kept on the four usable models, now described as one medical model and three general ones, and the paper was corrected. We added two process rules: scores per 1,000 characters need a minimum answer length, and stability checks must cover all scenarios, not three probes. The older-run problems went into the paper's limitations.",
+   "later": "The execution-path audit, also dated August 1, found a flaw this audit missed: the council's control-question runs never used the instruction under test. On August 2 a correction in Cell 15's result withdrew the shared-level claim this audit had kept, finding it was mostly an effect of near-zero counts and different answer lengths.",
+   "entries": {
+    "entry-1497": {
+     "label": "Result",
+     "title": "Clean files, but BioMistral's answers in Cell 8B were mostly broken",
+     "summary": "The audit found no leaks, duplicates or empty answers, and a reported set of missing files was a false alarm. But 26 of 30 BioMistral answers in Cell 8B were broken fragments, so the training-history claim was withdrawn. Three smaller problems in older runs went into the paper's limitations."
+    }
+   },
+   "related": [
+    "8B",
+    "8",
+    "11",
+    "13",
+    "2"
+   ]
+  },
+  "paper-v07": {
+   "title": "Paper v0.7: caution is decided at the point of writing",
+   "description": "We retitled the main paper and rebuilt it around one test. With the specialists' text held fixed, changing only the editor's instruction changed how much caution the final answer carried, so the caution had not simply been lost between agents.",
+   "outcome": "measured",
+   "size": "No new runs, paper revision",
+   "why": "Until then the paper explained our results with the idea that each editor (the model that writes the final answer) has its own habitual level of caution. Cell 8B had just suggested that all models share the same low default and differ in how strongly they respond to instructions. Meanwhile, the common account in the research literature treats uncertainty as cargo that gets erased as it passes between agents, with remedies such as passing it along as numbers or as hidden internal representations. We rebuilt the paper to test that account directly.",
+   "expectations": [],
+   "found": "The paper was retitled “Rendered, Not Transported”, 20 pages with 34 references. The editor's habitual level of caution was recast as a product of two things, written “disposition ~ g_writer x I(instructions, evidence)”. Here g is the model's sensitivity to instructions and I is what its instructions and the evidence call for.\n\nThe main test compared the same editor with and without the instruction to keep the specialists' caveats. The planning step, the specialists and their answers were the same, so only the prompt differed. Caution moved from 0.159 to 0.525 for gpt-oss and from 0.575 to 1.211 for Qwen2.5. Cell 13 narrowed it to one clause over identical specialist text: 0.20 to 0.64. If caution were simply lost in transit, these setups should look the same, and they did not. The Cell 8 contrast between the plain merge and the council (0.16 against 0.57) served only as support, because those setups also differ slightly before the editor. The council's planning step sends each specialist a sub-question, while the plain merge gives them the raw question.\n\nThe paper states that agent interfaces can lose uncertainty. Structured tool calls do. Its claim is about which failure dominates when agents pass prose to each other.",
+   "means": "The paper now opened with this test and listed six contributions, led by it. The website was updated to match. The key change in wording: the editor's habitual caution stopped being treated as a fixed trait and became the product of its sensitivity to instructions and the instructions it was given.",
+   "later": "The project's list of current claims marks this draft as superseded by a later framework paper and kept only for history. Two of its supports were later withdrawn. The shared default level of caution was found on August 2 to be mostly an effect of near-zero counts. The PD-13 re-analysis (August 9) found the instruction effects were mostly the model typing phrases its prompts dictated, not a change in behavior.",
+   "entries": {
+    "entry-1540": {
+     "label": "Note",
+     "title": "Main paper retitled and rebuilt around a direct test",
+     "summary": "The main paper (v0.7) now opens by testing the common idea that caution is lost as it passes between agents. Holding the specialists' text fixed and changing only the editor's instruction moved caution sharply. The abstract, introduction, contributions, related work, results, conclusion, glossary, figure captions and the website were updated."
+    }
+   },
+   "related": [
+    "6c",
+    "13",
+    "8",
+    "8B"
+   ]
+  },
+  "paper-witnesses": {
+   "title": "Second paper: specialists as witnesses, not amplifiers",
+   "description": "A short standalone draft asked what specialists are for, using existing runs. It argued that specialists add neither care nor volume, that tuning them to be more cautious backfires, and that their value lies in being checkable.",
+   "outcome": "measured",
+   "size": "No new runs, 7-page draft",
+   "why": "We wrote it on August 1, alongside the v0.7 paper. The main paper asked where caution is decided. The question of what specialists contribute could be answered on its own, and we judged the answer sharper stated alone than folded into the larger paper. It is also the claim that runs most directly against common practice.",
+   "expectations": [],
+   "found": "The draft argued that the two usual reasons for using specialists both fail: that they bring better judgment about uncertainty, and that the editor's job is to keep it. It made four points. All scores are cautious phrases per 1,000 characters. First, specialisation does not produce care. Under a neutral prompt, the medical model Med42 scored 0.15, about the same as general models (0.14 each for Mistral-Instruct, Qwen2.5 and gpt-oss). As a specialist in our pipeline it scored 1.31, 8.8 times higher. The difference came from its system prompt, which told it to flag out-of-date information, plus a recency note the planning step added in 30 of 34 runs. Second, specialists do not add volume: a single prompted model scored 0.50 against the full council's 0.57, with overlapping ranges.\n\nThird, and in its central figure, tuning specialists to be more cautious makes the final answer worse. Prompting the legal specialist raised its own score from 0.84 to 1.82, but the final answer fell from 1.21 to 0.92. SFT gave 1.75 at the specialist and 0.92 in the final answer. With 0, 1, 2 and 3 specialists made more cautious, the final answer scored 1.01, 1.03, 0.84 and 0.64. Fourth, what specialists do supply is grounds for an instruction that depends on what they say. The draft cited the council's 0.00 against 0.15 for a single prompted model on the control question.",
+   "means": "The draft framed specialists as witnesses rather than amplifiers. Their value is being checkable, and training them to add caution to everything destroys it, because a witness who always says the same thing carries no information. It shared its evidence with the main paper but asked a narrower question with a more immediately usable answer.",
+   "later": "Its fourth point did not survive. The execution-path audit (August 1) found the council's 0.00 came from runs where no specialist was consulted, and Cell 14 found the council did no better than a single prompted model. The shared-level comparison in its first point was withdrawn on August 2, though the contrast between Med42 unprompted and Med42 as an instructed specialist was kept. The project's list of claims marks this draft as superseded.",
+   "entries": {
+    "entry-1592": {
+     "label": "Note",
+     "title": "A second, shorter paper on what specialists are for",
+     "summary": "A 7-page standalone draft built from the same runs. It argued that specialists add neither care nor volume, that making them more cautious lowers the final answer's caution, and that what they supply is grounds for an instruction that depends on them."
+    }
+   },
+   "related": [
+    "8B",
+    "8",
+    "6c"
+   ]
+  }
+ }
+}

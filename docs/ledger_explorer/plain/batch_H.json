@@ -1,0 +1,218 @@
+{
+ "batch": "H",
+ "cells": {
+  "41": {
+   "title": "Does an instruction change behavior, or only the wording?",
+   "description": "We told the editor to mark estimates with a named phrase, either our long-used \"modeled at\" or a brand-new \"taken to be\". Each phrase appeared on cue, but with it set aside the editor flagged estimates no more often than with no instruction.",
+   "outcome": "mixed",
+   "size": "378 runs over 18 scenarios, 3 versions",
+   "why": "Earlier checks had found a problem with how we measured caution. Our prompts told models to use exact phrases such as \"modeled at\", and our measuring tools counted those same phrases. So when an instruction raised a caveat count, the model might only be repeating words it was told to use, without flagging uncertainty any more often. An earlier re-analysis, PD-13, had pointed that way by splitting existing counts. This cell tested it directly by swapping the phrase the instruction names for a new one. If the instruction changes behavior, caveats worded in other ways should rise whichever phrase is named. If it changes only the wording, the named phrase should appear and nothing else should move.",
+   "expectations": [
+    {
+     "id": "P41.1",
+     "text": "Each instruction would make the editor use the phrase it named more often than the comparison version did, by a clear margin, for both phrases.",
+     "outcome": "held",
+     "note": "\"Modeled at\" rose from 0% to 67% of runs and \"taken to be\" from 0% to 70%, both clear rises. Our long-used phrase had no advantage over the new one."
+    },
+    {
+     "id": "P41.2",
+     "text": "Even with the named phrase set aside, both instructed versions would flag estimates more often than the comparison version.",
+     "outcome": "failed",
+     "note": "They did not: 36.5% and 31.7% of runs against 34.1%, no clear difference, in opposite directions. Effects of 22 points or more are ruled out, smaller ones are not."
+    },
+    {
+     "id": "P41.3",
+     "text": "Neither instructed version would use the other version's phrase, so each phrase could be credited to its own instruction.",
+     "outcome": "held",
+     "note": "Across 252 instructed runs, neither version ever used the other's phrase, and the comparison version used neither."
+    },
+    {
+     "id": "P41.4",
+     "text": "No version would score well by writing less. Answer length would be reported beside every rate.",
+     "outcome": "held",
+     "note": "Length barely moved: 43.7 to 46.6 sentences and 7,309 to 7,758 characters per answer on average across the three versions."
+    }
+   ],
+   "found": "The cell produced 378 answers over 18 scenarios, 126 per version, with gpt-oss-20B as the editor. Two AI judges labeled every sentence, using definitions that named no phrase. They agreed on the estimate caveats 91% of the time, the highest the project had recorded. A small share of judge output, about 4% to 5% per version, could not be read, and we checked before looking at the results that this loss did not depend on the version.\n\nEach instruction produced its own phrase. \"Modeled at\" appeared in 67% of runs when named and \"taken to be\" in 70%. Neither appeared anywhere else. Our long-used phrase, dictated in 11 places across 9 prompts, did no better than one chosen the day before.\n\nRuns judged to contain at least one estimate caveat rose from 34% without the instruction to 57% with \"modeled at\" and 43% with \"taken to be\". With sentences containing the named phrase set aside, the rates were 36.5% and 31.7% against 34.1%. Both differences could plausibly be zero, and they pointed in opposite directions. Answer length stayed flat, so no version gained by saying less. The test could rule out an effect beyond the phrase of 22 percentage points or more. PD-13, rescaled to this scoring method, had pointed to about 33.",
+   "means": "The measurable effect of the instruction was the phrase it named. Once those words were set aside, an instructed editor could not be told apart from an uninstructed one. So every caution number the project had produced by instruction reflects obedience to a phrase order, at the level of detail this test could see. It does not show that the instruction does nothing at all, since an effect under 22 points would go unseen here. This was the last of three steps on the scripted-wording problem, after the list of scripted phrases and the exact-phrase check. Cell 43 then reused these answers to ask whether AI judges prefer answers that carry the phrase.",
+   "later": null,
+   "entries": {
+    "6007": {
+     "label": "Plan",
+     "title": "Swap the named phrase for a new one and see what else changes",
+     "summary": "Three versions of the editor prompt: no added instruction, an instruction naming \"modeled at\", and the identical instruction naming \"taken to be\". 18 scenarios, 7 repeats each, 378 runs. We wrote down that a negative result could only rule out effects of 22 points or more. Before running, we found that with 9 scenarios no number of extra runs could reach the precision we had quoted, so we doubled them to 18."
+    },
+    "6177": {
+     "label": "Result",
+     "title": "Each phrase appeared on cue, and nothing else changed",
+     "summary": "Each instruction produced its own phrase, in 67% and 70% of runs, and never the other one. With the named phrase set aside, estimate caveats were no more common than with no instruction: 36.5% and 31.7% against 34.1%. Answer length did not change. An effect of 22 points or more beyond the phrase is ruled out, a smaller one is not."
+    }
+   }
+  },
+  "42": {
+   "title": "Do medical fine-tunes reason differently from their base models?",
+   "description": "We gave three medical fine-tunes and the two base models they were built from the same prompt and questions, and counted the healthcare frameworks they named. Only Med42 differed from its base by a clear margin, so the effect belongs to one model, not to medical training.",
+   "outcome": "failed",
+   "size": "360 runs, 5 models, 12 questions",
+   "why": "One of us suggested that purpose-trained specialist models may be no more capable than general ones, yet approach a question differently, framing it and reasoning through it in their own way. Cell 36 had found no accuracy gain from specialists, but equal accuracy says nothing about how an answer is reached. Comparing a specialist with an unrelated general model changes the architecture, the model, the training data and the size all at once. So we compared each medical fine-tune with the exact base model it was built from, in two unrelated model families. If medical training creates a way of reasoning, each fine-tune should differ from its own base in the same direction in both families.",
+   "expectations": [
+    {
+     "id": "P42.1",
+     "text": "In both model families, the medical fine-tune would name more healthcare frameworks on medical questions than its own base model, by a clear margin.",
+     "outcome": "failed",
+     "note": "Only Med42 did, up 0.232 per 1,000 characters. OpenBioLLM's rise of 0.109 was too small to call, and Meditron3 came out slightly below its Qwen2.5-7B base."
+    },
+    {
+     "id": "P42.2",
+     "text": "Any rise would be specific to medical questions, larger there than on the other questions, rather than a general change of style.",
+     "outcome": "partly",
+     "note": "It was for Med42, up 0.232 on medical questions against 0.029 on others, and OpenBioLLM had the same shape more weakly. Meditron3 was flat on both, which we reported as general style."
+    },
+    {
+     "id": "P42.3",
+     "text": "Med42 and OpenBioLLM, two medical fine-tunes of the same Llama3-8B base, would move in the same direction.",
+     "outcome": "failed",
+     "note": "Med42's rise was clear, but OpenBioLLM's could not be told apart from zero, so the two did not agree. The effect belongs to Med42, not to medical fine-tuning."
+    },
+    {
+     "id": "P42.4",
+     "text": "Length and formatting would be reported beside every number, and frameworks counted per 1,000 characters, so no result could come from longer answers.",
+     "outcome": "held",
+     "note": "Every fine-tune wrote shorter answers than its base. Med42 wrote 17% less than its base and still named more frameworks, so its result is not about length."
+    },
+    {
+     "id": "P42.5",
+     "text": "Every run under 800 characters would be counted, and a model writing that little in over half its runs would be dropped, leaving its family's comparison unusable.",
+     "outcome": "held",
+     "note": "No model crossed that line. Four had no short runs in 72, and OpenBioLLM had 13 of 72 (18%). Screening models before choosing them kept both families in the test."
+    }
+   ],
+   "found": "All 360 runs finished, 72 per model. Every fine-tune wrote shorter answers than its base, so counting frameworks per 1,000 characters, as planned, mattered. OpenBioLLM wrote under 800 characters in 13 of its runs, and the other models never did.\n\nOn medical questions, Med42 named 0.417 healthcare frameworks per 1,000 characters against 0.185 for its Llama3-8B base, a clear rise of 0.232. On other questions it rose by only 0.029, so the shift was specific to medicine. OpenBioLLM, built on the same base, rose by 0.109, too small to call. Meditron3 came out 0.041 below its Qwen2.5-7B base, no clear change. So one fine-tune in three showed the effect, and two fine-tunes of one base disagreed. The probe's early hint, a drop of 0.269 for Meditron3 on 6 runs, shrank to 0.041 on 72.\n\nOur script made a second mistake in its pass/fail logic that day. Its first printout said both families repeated the result and that the effect was real. It had treated \"no clear change\" as if it were a direction, and one family carrying a single label was enough to trigger the message. We fixed it so that a family has a direction only when all its fine-tunes agree on a clear one. As with the probe's mistake hours earlier, the fault was in the lines that print the conclusion. Every number was correct both times.",
+   "means": "Medical fine-tuning, as a category, did not reliably make models approach questions differently from the models they were built from, so the idea did not hold up as we had written it down. The result is not empty. Med42 showed a real shift toward healthcare frameworks on medical questions, and length cannot explain it. Such a shift can come from training, but from particular training runs, not from being purpose-trained. We also took a lesson about our tools: the code that prints a conclusion needs the same scrutiny as the numbers.",
+   "later": "Cell 55 later screened the models again from scratch. OpenBioLLM, which passed the screening used here with answers averaging 1,514 characters, failed the fresh check with one answer only 78 characters long, and its defect rate inside the full system matched the fresh result. Screening results can go stale, so a model should be screened again when it is chosen, not passed on an old result.",
+   "entries": {
+    "6327": {
+     "label": "Plan",
+     "title": "Compare three medical fine-tunes with their own base models",
+     "summary": "Five models got one identical prompt, with no role or field framing, on 12 questions, 6 medical and 6 not, 6 times each: 360 runs. Meditron3 was paired with its Qwen2.5-7B base, and Med42 and OpenBioLLM with Llama3-8B. Each new model had to write at least 800 characters on every screening question, and all three did. BioMistral was left out for its broken output in the probe. We noted in advance that the probe's hint pointed against the idea."
+    },
+    "6422": {
+     "label": "Result",
+     "title": "Only Med42 changed, so the effect belongs to one model, not medical training",
+     "summary": "All 360 runs finished. Med42 named more healthcare frameworks than its base, mainly on medical questions, but Meditron3 showed no clear change and OpenBioLLM's rise was too small to call, so the idea did not hold up. The script's first printout wrongly claimed a repeated result. We caught and fixed that mistake, the second of its kind that day."
+    }
+   }
+  }
+ },
+ "studies": {
+  "dictation": {
+   "title": "Listing every scripted phrase, and testing a rewording detector",
+   "description": "We listed every exact phrase our prompts told models to use and tested an AI check meant to catch reworded versions. The list exposed a judge prompt using the same phrases. The rewording check failed, and no listed phrase appeared in answers written without scripted wording.",
+   "outcome": "mixed",
+   "size": "125 entries listed, 60 passages judged, 60 runs scanned",
+   "why": "An audit had found that our prompts told models to use exact phrases, such as \"modeled at\", and that our measuring tools counted those same phrases. So any caveat count mixed two things: the model repeating words it was told to use, and the model flagging uncertainty on its own. The text alone cannot tell them apart. You need to know what the prompt said. We planned three steps. First, a complete list of every phrase any prompt dictates, judge prompts included. Second, a check that sorts each caveat as echoing a listed phrase or not, even when reworded. Third, a phrase-swap test, which became Cell 41. This study covers the first two.",
+   "expectations": [
+    {
+     "id": "V-A",
+     "text": "The rewording check would separate passages containing a listed phrase from passages without one, scoring at least 0.80 where 0.5 is chance, and its two judges would agree at least 70% of the time.",
+     "outcome": "failed",
+     "note": "Both bars were cleared on paper, 0.904 and 72%, but we recorded a failure: agreement came from easy cases, one judge was at chance, and 12 of 30 key passages were lost."
+    },
+    {
+     "id": "V-B",
+     "text": "We would measure, with no pass mark, how often a listed phrase appears in answers written without any scripted wording.",
+     "outcome": "not-graded",
+     "note": "It never did: 0 of 2,907 passages in 60 runs. With 60 runs, the true rate is plausibly no higher than 6% of runs."
+    }
+   ],
+   "found": "The list held 125 entries drawn from 35 prompts in our code. On its first run it showed that the AI judge prompt from Cell 7b listed seven of the phrases our other prompts told models to use, \"modeled at\" among them. A judge told to look for those words had been scoring answers from a model told to use them. The lookup took under a second.\n\nThe rewording check failed. On paper it cleared both bars, a separation score of 0.904 against 0.80 (0.5 is chance, 1 is perfect) and 72% judge agreement against 70%, but we recorded a failure. Agreement came mostly from easy passages where both judges answered \"none\". On passages with a listed phrase they agreed on 7 of 18. One judge, Qwen2.5-7B, answered \"none\" to almost everything and scored at chance. The other, gpt-oss-20B, lost 12 of 30 key passages, likely by using up its length allowance while thinking. Together they caught 1 in 18 exact matches, so we fell back to checking for exact phrases only.\n\nThat exact check proved trustworthy. In 60 runs written without scripted wording, 438,797 characters in all, no listed phrase appeared even once. Our plan also had a direction backwards. It said the count of caveats matching no listed phrase would understate the caution a model shows on its own. It is the reverse: reworded echoes the check misses land in that count, so it sets a ceiling, not a floor. We corrected the plan, the code and the notebook.",
+   "means": "The phrase list became the basis of a standing check that refuses prompts containing a listed phrase, judge prompts included. On its first run it caught a problem in a judge prompt that nobody had looked for, now one of the project's recorded measurement findings. Because the scripted phrases did not appear in answers written without them, counting them exactly is a reliable way to spot obeyed wording. The rewording check was withdrawn. The gpt-oss-20B judge alone looked promising, but only on the passages it managed to answer, so it would need its own written plan before use. Cell 41 never relied on the rewording check and went ahead.",
+   "later": null,
+   "related": [
+    "7b",
+    "30",
+    "41"
+   ],
+   "entries": {
+    "entry-5745": {
+     "label": "Plan",
+     "title": "Plan for a scripted-phrase list and a check for reworded phrases",
+     "summary": "We would list every exact phrase our prompts dictate, judge prompts included, and test an AI check for reworded versions on passages whose prompts we could inspect. We set pass marks in advance, noted that passing would show only that the check works on the easy case, and ruled that no prompt may be tuned to lower the count of obeyed phrases."
+    },
+    "entry-5827": {
+     "label": "Result",
+     "title": "The phrase list worked, the rewording check did not",
+     "summary": "The list of 125 entries showed at once that a judge prompt used the same phrases our other prompts told models to use. The rewording check passed its bars only on paper and was withdrawn. No listed phrase appeared in 60 runs written without scripted wording. We also corrected a direction error in our own plan."
+    }
+   }
+  },
+  "phrase-forms": {
+   "title": "Choosing the two phrases and the size of the phrase-swap test",
+   "description": "Before planning Cell 41, we fixed its two phrases, \"modeled at\" and \"taken to be\", and used saved answers to size the test. Neither phrase appears unprompted, and the caveat we would measure was five times more common than we had assumed.",
+   "outcome": "measured",
+   "size": "Saved answers, plus 16 short test calls",
+   "why": "Cell 41 would add an instruction naming one phrase and then swap in another. For a fair swap, both phrases had to fit the same slot in a sentence, and neither could ever appear in answers on its own. We also had a standing rule: before any test, check with existing data whether it could realistically detect the effect it is looking for. This entry did both, before Cell 41's plan was written.",
+   "expectations": [],
+   "found": "Our proposal had relied on the old keyword counter, which found the \"this number is an estimate\" kind of caveat in only 1 of 30 answers without the added instruction. The sentence-by-sentence AI judges found it in 16.7% of Cell 30's 60 runs written without scripted wording, five times as often. Some kind of caveat appeared in 63.3% of those runs.\n\nAcross 2 million characters of saved answers, \"modeled at\", dictated in 11 places across 9 prompts, appeared in 0 of 249 runs written without scripted wording and in 172 of 396 council runs with it, 43%. \"Taken to be\" appeared in neither. It fits the same slot (\"persistence is modeled at 60%\" becomes \"persistence is taken to be 60%\") and marks an assumption rather than setting a value. We rejected \"estimated at\" and \"projected at\" because they already appeared unprompted, and kept \"a working figure of\" in reserve. A 16-call probe showed the new phrase could be produced, but was too small to rank candidates.\n\nAt 60 runs per version, 180 runs and about 8 hours, the test would catch any effect beyond the phrase of 26 percentage points or more. A smaller effect would go unseen, and the right reading would then be too close to call, not no effect.",
+   "means": "Both phrases were locked in a file, with their measured rates, before Cell 41's plan was written, so neither could be changed after seeing results. The sizing showed the test was feasible and could be planned around real numbers. How large to make it, to rule out smaller effects as well, was left to Cell 41's plan.",
+   "later": "Cell 41's plan found a flaw in this sizing. It had assumed three repeats per scenario at every run count. With only 9 scenarios, no number of extra runs could reach the precision needed, so the claim here that 120 or more runs per version could rule out smaller effects was wrong. Cell 41 doubled the scenarios to 18 instead.",
+   "related": [
+    "30",
+    "41"
+   ],
+   "entries": {
+    "entry-5924": {
+     "label": "Plan",
+     "title": "Lock the two phrases and size the phrase-swap test",
+     "summary": "We locked \"modeled at\" and \"taken to be\" after checking both on 249 saved runs written without scripted wording and 396 with it. Neither appears unprompted, and \"modeled at\" appears in 43% of saved council runs made with scripted prompts. The caveat to be measured was five times more common than assumed, and 60 runs per version looked feasible."
+    }
+   }
+  },
+  "seat-pilot": {
+   "title": "Can saved answers show whether specialists reason differently?",
+   "description": "Before testing whether specialist models approach questions differently, we checked our saved answers. Two general models could be told apart by formatting alone, and every saved collection had other differences built in, so a new test was needed.",
+   "outcome": "measured",
+   "size": "No model calls, saved answers only",
+   "why": "One of us suggested that purpose-trained specialist models may be no more capable than general ones, yet approach a question differently, framing it and reasoning through it their own way, even when they reach the same answer. Cell 36 had found no accuracy gain from specialists, but equal accuracy says nothing about the path to an answer. Before designing a new test, we checked whether our saved answers could already settle the question. The pilot made no model calls, and Cell 41's judging was left untouched.",
+   "expectations": [],
+   "found": "Telling models apart proved nothing about approach. Two general models, gpt-oss-20B and Phi-4, given the same prompt and questions, could be told apart almost perfectly by formatting alone. In Cell 30's long answers, gpt-oss-20B wrote 8,690 characters to Phi-4's 4,559, and Phi-4 used far more lists. A test of whether a judge can tell who wrote an answer would have scored near perfect for reasons unrelated to specialist training. Matching lengths after the fact did not work either. The overlapping range left 7 gpt-oss-20B runs and 16 Phi-4 runs, too few to use.\n\nEvery saved collection also had a second difference built in. In Cell 36, specialists and single models used different prompts, and their answers differed about fourfold in length. Cells 30 and 41 used one general model given role prompts, with no specialist training at all. In the 396 saved council runs each specialist answered a different sub-question, so the topic decided which field's terms appeared. A fixed list of framework names did pick up each real specialist's own field, but here that reflects the questions they were sent. A general model even named slightly more clinical frameworks per 1,000 characters than Med42, 0.136 against 0.101, which cannot be interpreted on this data.",
+   "means": "The idea could not be answered from saved answers, and it was not ruled out either. The pilot's value was in defining the test that could answer it, and in avoiding a misleading positive result. That test needed one identical prompt for every model, the same questions, scoring that ignores formatting with length always reported, and each medical fine-tune compared with its own base model in more than one model family. Cell 42 was built to that design.",
+   "later": "Cell 42 ran that test with two model families. Medical fine-tuning as a category did not reliably make models reason differently from their base models, though one model, Med42, did shift toward healthcare frameworks on medical questions.",
+   "related": [
+    "30",
+    "36",
+    "41",
+    "42"
+   ],
+   "entries": {
+    "entry-6097": {
+     "label": "Pilot",
+     "title": "Saved answers cannot show whether specialists reason differently",
+     "summary": "Two general models could be told apart by length and list use alone, so telling models apart is no evidence of a different approach. Lengths could not be matched after the fact, and every saved collection mixed in a second difference, such as different prompts or topics. We wrote out what a proper test must control instead."
+    }
+   }
+  },
+  "domain-probe": {
+   "title": "Can we measure how a medical fine-tune differs from its base?",
+   "description": "In 48 runs we checked whether counting named healthcare frameworks can tell a medical fine-tune from its base model. It can, at a feasible size, but BioMistral's output was broken, and our script misread the result until we fixed it.",
+   "outcome": "measured",
+   "size": "48 runs, 4 models, 6 questions",
+   "why": "Before planning Cell 42, we checked whether its scoring method could work at all. The method counts named professional frameworks from a fixed list, per 1,000 characters, so longer answers do not score higher. We ran two medical fine-tunes and the base models closest to them, Meditron3 with Qwen2.5-7B and BioMistral with Mistral 7B, on 6 questions with one identical prompt. This was a sizing probe, not a test, and it could support no claim about how the models reason.",
+   "expectations": [],
+   "found": "The scoring method worked. The gap between Meditron3 and its base was large enough that about 24 runs per model would detect it 4 times out of 5, which is cheap. Formatting differences between Meditron3 and its base were much milder than between the two general models in the pilot.\n\nBioMistral's output was broken. All 12 of its runs were under 800 characters, the longest 620. It wrote an opening paragraph and stopped, so its zero counts meant missing text, not missing frameworks. That knocked out its model family, and one family alone cannot separate medical training from the quirks of a single model. A check now drops such models automatically.\n\nOur script also made a mistake. Its first printout called the result \"consistent with a domain signature\". It had only checked that the two fine-tune differences shared a sign, never that the sign matched the idea. Both were negative, meaning the fine-tunes named fewer healthcare frameworks than their bases. We fixed it to check direction and to drop broken models before deciding. On the one usable pair, Meditron3 named 0.122 healthcare frameworks per 1,000 characters on medical questions against its base's 0.391. That points against the idea, but with 6 runs behind each number it was a reason to run the test, not a finding.",
+   "means": "Counting named frameworks per 1,000 characters was usable at a feasible size. The real test needed a third model family to replace BioMistral's, a check that rejects any model writing under 800 characters before it is chosen, about 24 to 30 runs per model, and the corrected pass/fail logic. Cell 42 followed all four. The probe's fixed list of framework names was later reused as the scoring method in Cell 52.",
+   "later": "Cell 42 re-checked the early hint with 72 runs per model. Meditron3's drop of 0.269 shrank to 0.041 and was no longer a clear change, so the hint did not hold up.",
+   "related": [
+    "42",
+    "52"
+   ],
+   "entries": {
+    "entry-6258": {
+     "label": "Pilot",
+     "title": "The scoring method works, but BioMistral's output was broken",
+     "summary": "48 runs showed that counting named frameworks per 1,000 characters could tell a fine-tune from its base with about 24 runs per model. BioMistral wrote under 800 characters every time, which knocked out its model family. Our script first reported support for the idea when both differences pointed the wrong way. We caught and fixed it."
+    }
+   }
+  }
+ }
+}

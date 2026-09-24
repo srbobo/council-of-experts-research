@@ -1,0 +1,23 @@
+{
+ "studies": {
+  "baseline-corpus": {
+   "title": "The first runs, saved before the experiments began",
+   "description": "39 runs saved between May and early July 2026: our first council, a second version of it, gpt-oss-20B alone and as a whole council, and a few reference runs with Claude Opus.",
+   "outcome": "measured",
+   "size": "39 runs in 7 setups",
+   "why": "These runs came before the numbered cells. They were saved while the council was first being built, to see how it behaved and how it compared with a single model. They are kept here because they hold complete conversations from the project's earliest setups.",
+   "expectations": [],
+   "found": "There were no expectations and there is no result, only saved runs. Each run keeps the whole conversation: the question, the planning step, every specialist's instructions and draft, and the editor's final answer.\n\nThe setups are the first council (Phi-4 14B as editor, with Med42, Saul and Qwen-Open-Finance as specialists), a second council with different specialists, gpt-oss-20B answering alone with and without extra instructions, gpt-oss-20B filling every council role, and 2 runs each of Claude Opus alone and as a council.",
+   "means": "Nothing was decided from these runs on their own. Open the Data tab to read them.",
+   "later": null,
+   "related": [],
+   "entries": {
+    "baseline-corpus": {
+     "label": "Note",
+     "title": "Runs saved before the experiment plan was written",
+     "summary": "39 runs captured between 14 May and 7 July 2026 in seven setups, copied in from the council's own logs. They were not planned as an experiment."
+    }
+   }
+  }
+ }
+}

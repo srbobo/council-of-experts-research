@@ -1,0 +1,415 @@
+{
+ "terms": [
+  {
+   "group": "The setup",
+   "term": "Council",
+   "also": [
+    "Council of Experts",
+    "CoE"
+   ],
+   "definition": "Our multi-model system. Three specialist models each answer part of a question, and an editor model combines their answers into one report."
+  },
+  {
+   "group": "The setup",
+   "term": "Specialist",
+   "also": [
+    "seat"
+   ],
+   "definition": "One of the models on the council, each given one field: healthcare, legal or finance. The first council used Med42 (healthcare), Saul (legal) and Qwen-Open-Finance (finance). Many later cells used a general model given the specialist's role in its prompt."
+  },
+  {
+   "group": "The setup",
+   "term": "Editor",
+   "also": [
+    "Lead",
+    "synthesizer",
+    "writer",
+    "aggregator"
+   ],
+   "definition": "The model that plans the work, reads the specialists' drafts and writes the final answer. Phi-4 14B held this job at first, and gpt-oss-20B for most of the later work."
+  },
+  {
+   "group": "The setup",
+   "term": "Planning step",
+   "also": [
+    "planner",
+    "orchestrator"
+   ],
+   "definition": "The editor's first job: splitting the question into parts and deciding which specialists to ask."
+  },
+  {
+   "group": "The setup",
+   "term": "Scenario",
+   "also": [
+    "case",
+    "battery"
+   ],
+   "definition": "One of the 18 business-advisory questions every setup answered, such as rolling out an AI sepsis-warning tool across 12 hospitals."
+  },
+  {
+   "group": "The setup",
+   "term": "Control question",
+   "also": [
+    "trigger-light case",
+    "trigger-free case",
+    "case 7"
+   ],
+   "definition": "A simple scenario that calls for no caveats at all. It catches models that hedge everywhere instead of only where it is warranted."
+  },
+  {
+   "group": "The setup",
+   "term": "Cell",
+   "also": [],
+   "definition": "One experiment. Cells are numbered in the order they were planned, with letters for close relatives (6b, 6c) and \"-R\" for a repeat (43-R). Cell IV is a Roman numeral: a check of a measuring method."
+  },
+  {
+   "group": "The setup",
+   "term": "Setup or version",
+   "also": [
+    "arm",
+    "condition"
+   ],
+   "definition": "One way of running an experiment, compared against another way. For example, the editor with an extra instruction and the editor without it."
+  },
+  {
+   "group": "The setup",
+   "term": "Run",
+   "also": [],
+   "definition": "One complete pass of a setup on one scenario, from the question to the final answer. Most cells repeat each run several times because models give different answers each time."
+  },
+  {
+   "group": "The setup",
+   "term": "Mixture-of-Agents (MoA)",
+   "also": [
+    "MoA"
+   ],
+   "definition": "A published recipe for combining models: several general-purpose models answer, then one model merges their answers. We used it as a second design to check whether our findings were specific to our council."
+  },
+  {
+   "group": "The setup",
+   "term": "Rebuilt system",
+   "also": [
+    "harness"
+   ],
+   "definition": "The redesigned council, built only from parts that held up in testing and tested piece by piece from Cell 47 onward. It gives key numbers to two specialists on purpose, carries caveats in a separate section, and sends follow-up questions back to specialists. In early August the lab notes also use \"harness\" for an earlier package of measuring and checking tools, which is a different thing."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Caveat",
+   "also": [
+    "qualification",
+    "hedging",
+    "disposition",
+    "epistemic marking"
+   ],
+   "definition": "A sentence that flags uncertainty or a limit, such as \"this figure is an estimate\" or \"the rules differ in Germany\". Whether caveats survive from the specialists into the final answer was the project's first big question."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Five kinds of caveat",
+   "also": [
+    "families: cutoff, modeled, precise, jurisdictional, hedging"
+   ],
+   "definition": "The categories we counted: my information may be out of date, this number is an estimate, these two terms mean different things, the rules differ by place, and general hedging."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Caveat score",
+   "also": [
+    "density",
+    "CDS",
+    "ALR"
+   ],
+   "definition": "How much cautious language a text contains, counted per 1,000 characters. The early cells report it for the specialists' drafts and for the final answer."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "y = w·s + c",
+   "also": [
+    "shrinkage law",
+    "transport coefficient"
+   ],
+   "definition": "The formula for how caveats move from the specialists into the final answer. Here s is how much caution the specialists handed over and y is how much reaches the final answer. The early cells count kinds of caveat, and the later cells scored by AI judges (Cell 30 onward) count sentences that carry a caveat. The share passed along is w, and c is how much the editor adds on its own when handed none."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Caution the editor adds on its own",
+   "also": [
+    "prior fill",
+    "c",
+    "invention",
+    "compensating invention"
+   ],
+   "definition": "Caveats that appear in the final answer even though no specialist raised them. Cell 38 found this happens even when the drafts contain no caveats at all."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Habitual level of caution",
+   "also": [
+    "register",
+    "intrinsic register",
+    "band"
+   ],
+   "definition": "The amount of caution a given editor model tends to produce whatever its input. Early cells found each editor has its own."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Keep-the-caveats instruction",
+   "also": [
+    "PRESERVE clause",
+    "PRESERVE block"
+   ],
+   "definition": "A passage in the editor's prompt telling it to keep the specialists' caveats. Cells 6, 13 and 14 tested what it does."
+  },
+  {
+   "group": "Caveats and caution",
+   "term": "Scripted wording",
+   "also": [
+    "scaffold",
+    "dictated phrase",
+    "dictation"
+   ],
+   "definition": "Exact phrases our prompts told models to use, such as \"modeled at\". Counting those phrases measures obedience, not caution, which PD-13 and Cell 41 showed directly."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Fine-tuning",
+   "also": [],
+   "definition": "Further training of an existing model on new examples to specialize it. The first council's specialists were fine-tuned versions of general models."
+  },
+  {
+   "group": "AI training terms",
+   "term": "SFT",
+   "also": [
+    "supervised fine-tuning",
+    "SFT-on-chosen"
+   ],
+   "definition": "Fine-tuning by showing a model good example answers to imitate. Cell 1 compared it with preference training."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Preference training",
+   "also": [
+    "preference optimization",
+    "alignment"
+   ],
+   "definition": "Fine-tuning by showing a model pairs of answers, one preferred and one rejected, so it learns to favor the better kind. ORPO, CPO and DPO are three versions."
+  },
+  {
+   "group": "AI training terms",
+   "term": "ORPO, CPO and DPO",
+   "also": [
+    "local-council-dpo",
+    "saul-dpo"
+   ],
+   "definition": "Three preference-training methods. The project trained with ORPO and CPO. A bug in the training software ruled out DPO itself, although some run names still say \"dpo\"."
+  },
+  {
+   "group": "AI training terms",
+   "term": "GRPO",
+   "also": [],
+   "definition": "A reward-based training method: the model writes several answers and is pushed toward the ones that score best. Cell 16 planned to use it and could not run it on our hardware."
+  },
+  {
+   "group": "AI training terms",
+   "term": "LoRA",
+   "also": [],
+   "definition": "A lightweight way to fine-tune. A small add-on is trained instead of the whole model, which let us train on one machine."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Base model and instruct model",
+   "also": [],
+   "definition": "A base model is trained only to continue text. An instruct model has been further trained to follow instructions and hold a conversation."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Reasoning model",
+   "also": [
+    "thinking"
+   ],
+   "definition": "A model that writes hidden working notes before it answers. gpt-oss-20B and Qwen3 work this way, so a length limit set too low can leave them with no room for the answer itself."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Token",
+   "also": [],
+   "definition": "The unit AI models read and write in, roughly three quarters of an English word. Length limits are set in tokens."
+  },
+  {
+   "group": "AI training terms",
+   "term": "System prompt",
+   "also": [],
+   "definition": "Standing instructions given to a model before the question itself."
+  },
+  {
+   "group": "AI training terms",
+   "term": "Temperature",
+   "also": [],
+   "definition": "A setting for how much randomness a model uses when choosing words. At temperature 0 it always picks its most likely next word."
+  },
+  {
+   "group": "How we measured",
+   "term": "Writing the plan first",
+   "also": [
+    "pre-registration",
+    "registered",
+    "frozen"
+   ],
+   "definition": "Before each cell ran, we wrote down what we expected, what result would prove us wrong, and what we would do either way. The plans were saved in version control before the first run."
+  },
+  {
+   "group": "How we measured",
+   "term": "Expectation",
+   "also": [
+    "prediction",
+    "hypothesis",
+    "P25.1"
+   ],
+   "definition": "One specific result we expected before a cell ran. Each has an id such as P25.1 (Cell 25, expectation 1) so it can be traced in the lab notes."
+  },
+  {
+   "group": "How we measured",
+   "term": "Change to the plan",
+   "also": [
+    "deviation",
+    "amendment"
+   ],
+   "definition": "An adjustment to a cell's plan, written down before any of its results were seen."
+  },
+  {
+   "group": "How we measured",
+   "term": "Checkpoint",
+   "also": [
+    "gate",
+    "halt",
+    "stop condition"
+   ],
+   "definition": "A stopping rule set in advance. If a pilot run failed it, the experiment stopped instead of carrying on."
+  },
+  {
+   "group": "How we measured",
+   "term": "AI judge",
+   "also": [
+    "LLM-as-judge",
+    "pairwise judge"
+   ],
+   "definition": "A separate model asked to compare or grade answers. Many cells used judges from two different model families, so one family's quirks could not decide a result alone."
+  },
+  {
+   "group": "How we measured",
+   "term": "Position bias",
+   "also": [
+    "reading order"
+   ],
+   "definition": "An AI judge's habit of preferring whichever answer it reads first. Our judges picked the first answer 85% to 88% of the time, so every comparison was shown in both orders."
+  },
+  {
+   "group": "How we measured",
+   "term": "Clear-cut win",
+   "also": [
+    "decisive pair"
+   ],
+   "definition": "A comparison where the judge picked the same answer in both orders. Everything else counts as a tie."
+  },
+  {
+   "group": "How we measured",
+   "term": "Keyword counter",
+   "also": [
+    "regex instrument",
+    "lexicon"
+   ],
+   "definition": "A scoring method that counts words and phrases from a fixed list. From 9 August 2026 the project stopped using it as a measuring tool, because prompts had told models to use the very phrases it counted."
+  },
+  {
+   "group": "How we measured",
+   "term": "NLI model",
+   "also": [
+    "natural-language inference"
+   ],
+   "definition": "A model that judges whether one sentence follows from another. Cells 7a and 23 tried it as a caveat detector."
+  },
+  {
+   "group": "How we measured",
+   "term": "Sentence-by-sentence judging",
+   "also": [
+    "validated judge instrument",
+    "batched judging"
+   ],
+   "definition": "Two AI judges labeling each sentence of an answer separately. It became the project's main measuring tool after Cell 23, and Cell IV checked that judging sentences in batches of 10 keeps its accuracy."
+  },
+  {
+   "group": "How we measured",
+   "term": "Plausible range",
+   "also": [
+    "confidence interval",
+    "CI"
+   ],
+   "definition": "The range the true value could reasonably fall in, given how few runs there were. When the range for a head-to-head test includes 50%, the result is too close to call."
+  },
+  {
+   "group": "How we measured",
+   "term": "Too close to call",
+   "also": [
+    "not evaluable",
+    "NE"
+   ],
+   "definition": "The data could not separate the possibilities, usually because too few runs gave a clear answer."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Follow-up question",
+   "also": [
+    "re-consultation",
+    "routed follow-up",
+    "dispatch"
+   ],
+   "definition": "A question the system sends back to a specialist when the drafts disagree, so the editor gets the deciding fact."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Disagreement list",
+   "also": [
+    "tension list",
+    "Tensions-then-Synthesis"
+   ],
+   "definition": "A list the editor must write of the points where the specialists' drafts conflict, before it writes the answer. Software reads it to decide which follow-ups to send."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Caveats section",
+   "also": [
+    "freight",
+    "appendix",
+    "out-of-band channel"
+   ],
+   "definition": "A section attached to the end of the final report that carries the specialists' caveats directly. The editor never rewrites it, so nothing is lost on the way."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Overlapping assignment",
+   "also": [
+    "redundancy",
+    "redundancy planner"
+   ],
+   "definition": "Giving the same key number to two specialists on purpose, so one wrong draft cannot decide the answer on its own."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Screening test",
+   "also": [
+    "seating gate",
+    "S1"
+   ],
+   "definition": "A check a model must pass before it can serve as a specialist. It has to produce real answers rather than garbled, repetitive or empty ones."
+  },
+  {
+   "group": "The rebuilt system",
+   "term": "Citation blocklist",
+   "also": [
+    "blocklist gate"
+   ],
+   "definition": "A filter that catches made-up legal citations the live specialists were found to repeat. It screens specialists' follow-up replies before the editor sees them and never feeds anything back to the specialist."
+  }
+ ]
+}

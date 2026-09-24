@@ -1,0 +1,250 @@
+{
+ "batch": "K",
+ "cells": {
+  "53": {
+   "title": "Does the follow-up loop work when a live specialist writes the reply?",
+   "description": "We planned to let a live specialist answer the follow-up question, with the deciding fact hidden in its own first draft. The pilot stopped the cell: the editor rarely flagged the planted disagreement, so too few follow-ups would have gone out.",
+   "outcome": "stopped",
+   "size": "Pilot only: 24 control runs plus test replies",
+   "why": "The rebuilt system, which we call the harness, has the editor work in two steps. First it lists where the specialists disagree, then it writes the final answer. When the list names a disagreement, the system sends a follow-up question back to the specialist involved. In Cell 44 the editor made good use of such a reply, but we had scripted the reply ourselves. The open question was whether a live specialist could write a useful one. A live model cannot state a fact it has never seen, so we planted each scenario's deciding fact as a sentence in that specialist's own first draft. The fact was there in every version. Only the follow-up differed: none, a live reply from gpt-oss-20B playing the specialist, or Cell 44's scripted reply.",
+   "expectations": [
+    {
+     "id": "P53.1",
+     "text": "When the editor flagged the disagreement, a live reply would make the final answer take the side the deciding fact supports more often than no follow-up.",
+     "outcome": "not-tested",
+     "note": "Never tested. The cell stopped at its pilot, before any main runs."
+    },
+    {
+     "id": "P53.2",
+     "text": "We would measure how far the live reply fell short of Cell 44's scripted reply, and call them comparable if a shortfall above 30 percentage points was ruled out.",
+     "outcome": "not-tested",
+     "note": "Never tested, because the cell stopped at its pilot."
+    },
+    {
+     "id": "P53.3",
+     "text": "We would count how often live replies contained the deciding fact, and compare outcomes with and without it, reporting this without a pass/fail test.",
+     "outcome": "not-tested",
+     "note": "Not measured in main runs. In the pilot, after a scoring fix, the live specialist stated its fact in 6 of 6 replies, and in 4 of 6 in another set of test replies."
+    }
+   ],
+   "found": "The pilot failed two of its three checkpoints. Only 2 of 6 live replies seemed to contain the deciding fact, against a bar of 4. The editor flagged the planted disagreement in 2 of 12 runs, against a bar of half. The third checkpoint passed: with no follow-up, the final answer took the fact's side in 33% of runs by a simple keyword check, which left room for improvement.\n\nWe looked into both failures before collecting more data. The first was mostly a fault in our scoring. The live model wrote Unicode non-breaking hyphens in table headings, which look like ordinary hyphens, so our fact detector missed facts that were there. After the fix, fresh replies contained the fact 6 of 6 times. Test replies drawn during the diagnosis scored 4 of 6, with two real misses. The pilot had also not saved its replies. One test reply cited a court case that does not exist, \"Rosenbaum v. Uber\", instead of the planted fact.\n\nThe second failure was our own error. We had copied the 50% bar from Cell 44's pilot, but Cell 44's full run flagged the disagreement only 34% of the time. We lowered the bar to 25%, the least that would give about 9 follow-up runs per version, and doubled the pilot to 24 runs. The editor flagged the disagreement in 5 of 24 (21%, plausibly anywhere from 9% to 40%). The checkpoint failed and the cell stopped.",
+   "means": "The live specialist was not the weak point. Asked the right question, it stated its fact most of the time. The scarce part was the trigger: the editor seldom names the planted disagreement in the first place. This was the third time we saw this, after Cells 44 and 45. Hiding the fact in the drafts may make the disagreement look settled, so the editor does not flag it. The plausible range here, 9% to 40%, still included Cell 44's 34%, so that was not shown. The made-up court case was noted as a risk for follow-up replies. We wrote down two ways forward, and one became Cell 54: keep the drafts as in Cell 44 and give the specialist the fact as private notes.",
+   "later": "Cell 54 took the private-notes path and showed the loop works with a live specialist. It also showed the flagging rate varies between batches, from 21% to 58% across Cells 44, 53 and 54. In Cell 61, real rather than planted disagreements between specialists were plentiful: a follow-up went out in 46 of 54 runs (85%).",
+   "entries": {
+    "8132": {
+     "label": "Plan",
+     "title": "A live specialist answers the follow-up question",
+     "summary": "The deciding fact would sit in the specialist's own first draft, identical in every version. We would compare no follow-up, a reply written live by gpt-oss-20B, and Cell 44's scripted reply, over 108 runs. Three pilot checkpoints could stop the cell before the main runs."
+    },
+    "8219": {
+     "label": "Change to the plan",
+     "title": "Pilot fails two checkpoints, and two changes to the plan",
+     "summary": "A hyphen character had hidden facts from our detector, and after the fix fresh replies scored 6 of 6. The 50% bar for flagging the disagreement was our error, since Cell 44's full run had managed only 34%. We lowered it to 25% over 24 runs before collecting any more data."
+    },
+    "8259": {
+     "label": "Stopped",
+     "title": "The cell stops: the editor rarely flags the disagreement",
+     "summary": "The editor flagged the planted disagreement in 5 of 24 runs, 21%, below the 25% bar, so no main runs took place. The pilot did show that the live specialist can state its own fact when asked. The shortage of flagged disagreements, not the specialist, was the bottleneck."
+    }
+   }
+  },
+  "54": {
+   "title": "Can a live specialist pass on a fact it holds only in private notes?",
+   "description": "We gave a live specialist the deciding fact as private notes. In the 21 runs where a follow-up went out, the final answer took the fact's side 19 times, close to a scripted reply. But 4 of the 21 replies also cited court cases or rulings that do not exist.",
+   "outcome": "held",
+   "size": "36 live runs plus 12 check runs",
+   "why": "In the rebuilt system, which we call the harness, the editor lists where the specialists disagree and a follow-up question goes back to the specialist involved. Cell 53 found that a live specialist can state a fact when asked, but hiding the fact in its first draft left the editor rarely flagging the disagreement. This cell kept the first drafts exactly as in Cell 44, with the fact nowhere in them. The specialist instead got the fact as private working notes, not shared with the others, when it wrote its reply. That is closer to real use, where a specialist knows things it did not write down. We reused Cell 44's saved results as the comparison, after a small fresh check that nothing else had changed.",
+   "expectations": [
+    {
+     "id": "P54.1",
+     "text": "When the editor flagged the disagreement, a live reply from the specialist with notes would make the final answer take the fact's side more often than no follow-up did in Cell 44.",
+     "outcome": "held",
+     "note": "It did in 19 of 21 runs (90%), against 5 of 15 (33%) with no follow-up, a gain of 57 points (plausibly anywhere from 14 to 91)."
+    },
+    {
+     "id": "P54.2",
+     "text": "We would measure how far the live reply fell short of Cell 44's scripted reply, and call them comparable if a shortfall above 30 percentage points was ruled out.",
+     "outcome": "held",
+     "note": "The live version reached 90% against the scripted 100%. The shortfall was plausibly anywhere from 0 to 23 points, so the two counted as comparable."
+    },
+    {
+     "id": "P54.3",
+     "text": "We would count how often live replies contained the fact, compare outcomes with and without it, and note any invented authorities, without a pass/fail test.",
+     "outcome": "not-graded",
+     "note": "All 21 replies contained the fact. 4 of 21 also cited court cases or rulings that do not exist, and the final answer took the fact's side in those runs anyway."
+    }
+   ],
+   "found": "We ran 36 live runs. The editor flagged the planted disagreement in 21 of them (58%), and each of those sent a follow-up to the live specialist. All 21 replies stated the fact. Two AI judges then decided which side the final answer took. It took the fact's side in 19 of 21 runs (90%), and in the other 2 the judges disagreed. In Cell 44's saved runs, the figure was 5 of 15 (33%) with no follow-up and 7 of 7 with the scripted reply. In a fresh check with no follow-up, the final answer took the fact's side in 2 of 6 flagged runs, in line with the saved runs.\n\nThere was a new problem. 4 of the 21 replies passed the fact on correctly but dressed it up with legal authority that does not exist. On one scenario, three replies cited invented court cases (\"Rosenbaum v. Uber, 2023\" and \"Klein v. Lyft\"), including the one seen in Cell 53. On another, a reply invented regulatory rulings (\"Wright v. ICO\"). The final answer took the fact's side in these runs anyway.\n\nThe editor flagged the disagreement in 58% of runs here against 34% in Cell 44, so the flagging rate varies from batch to batch and should not be quoted as a single number.",
+   "means": "The full follow-up loop worked with nothing scripted. A live specialist passed on a fact it held only privately, and the editor used it almost as well as a perfect scripted reply. The cost is a risk the scripted version could not have: live replies can invent authority even when the real fact comes through. The filter we had planned for follow-up replies looks for replies with no real content, so it cannot catch invented content. Measuring how often this happens became Cell 56.",
+   "later": "Cell 56 measured the made-up citations over 120 more replies: 10% to 15% of replies, all on one legal scenario. A later test of reply filters reused these 21 replies. A blocklist of the known invented names worked. A filter meant to catch replies with no real content was not adopted, and one version of it passed only 10 of these 21 real replies.",
+   "entries": {
+    "8299": {
+     "label": "Plan",
+     "title": "Give the live specialist the fact as private notes",
+     "summary": "The first drafts would match Cell 44 exactly, with the fact nowhere in them. When the editor flagged the disagreement, the live specialist would answer the follow-up with the fact in private working notes. Cell 44's saved runs would be the comparison, after a fresh check of 12 runs."
+    },
+    "8372": {
+     "label": "Result",
+     "title": "The live loop works, but some replies invent legal authority",
+     "summary": "The final answer took the fact's side in 19 of 21 runs with a live reply, against 5 of 15 with no follow-up and 7 of 7 with the scripted reply. Every reply contained the fact. 4 of 21 replies also cited court cases or rulings that do not exist."
+    }
+   }
+  },
+  "55": {
+   "title": "Does the screening test predict which models fail as specialists?",
+   "description": "We gave ten local models the screening test, locked in the results, then ran each one as a specialist on real scenarios. Both models that failed went on to write empty or very short answers in real use. The eight that passed almost never did.",
+   "outcome": "held",
+   "size": "160 screening runs, then 180 answers from 10 models",
+   "why": "The rebuilt system, which we call the harness, lets a model serve as a specialist only if it passes a screening test. The test checks that the model writes real answers rather than garbled, repetitive or empty ones. Its parts came from earlier problems, such as BioMistral writing only very short answers and models using up their length allowance while thinking. But nobody had checked whether the screen's result predicts how a model behaves on real scenarios. This cell screened ten models from scratch, saved the results, and then used every one of them as a specialist to see whether the screen had called it right. We used only models already on the machine, whose disk was 92% full.",
+   "expectations": [
+    {
+     "id": "P55.1",
+     "text": "Every model that failed the screen would produce defective answers in real use more often than every model that passed it, with no overlap and no tie.",
+     "outcome": "held",
+     "note": "It held. The two failing models were defective in 33% and 94% of their answers, and no passing model was above 6%."
+    },
+    {
+     "id": "P55.2",
+     "text": "We would measure the gap in defect rates between the failing and the passing models taken together, without a pass/fail test.",
+     "outcome": "not-graded",
+     "note": "Answers from the failing models were defective 63 points more often (plausibly anywhere from 55 to 72 points)."
+    }
+   ],
+   "found": "The screen came first. Each model answered 2 test questions 6 times and passed only if every answer reached 800 characters. The results were written down and saved before any real run. Eight models passed. Two medical fine-tunes failed: BioMistral and OpenBioLLM.\n\nEach model then wrote 18 specialist answers, 3 on each of six scenarios. An answer counted as defective if it was empty after 3 tries or under 800 characters. Seven of the passing models had no defects, and Med42 had 1 in 18. OpenBioLLM was defective in 6 of 18 answers and BioMistral in 17 of 18, averaging 422 characters. Ranked by average length, the models fell in the same order in the screen as in real use.\n\nTwo more findings. OpenBioLLM had passed this same screen at the time of Cell 42, averaging 1,514 characters, but failed it now with a shortest answer of 78. Its real answers agreed with the new result. And a second test in the screen, which checks that a model can give a one-line answer in a set format, did not predict defects. The legal model Saul failed all 4 formatting tries but wrote sound answers in all 18 real runs.",
+   "means": "The screening test does what it claims. Failing it predicted trouble in real use, and passing it predicted little or none. Two rules followed. Screen a model again whenever it is chosen, rather than trusting an old result, because results go stale. And use the formatting test for roles that must give a short set-format answer, such as the editor or an AI judge, not for specialists. With this cell, every part of the rebuilt system that runs during a question had been tested against expectations written down in advance.",
+   "later": null,
+   "entries": {
+    "8414": {
+     "label": "Plan",
+     "title": "Screen ten models, then use each one as a specialist",
+     "summary": "Ten local models, including four medical fine-tunes and the legal model Saul, would take the screening test first, with results saved before any real run. Each would then write 18 specialist answers. We expected every failing model to break down more often than every passing one."
+    },
+    "8482": {
+     "label": "Result",
+     "title": "The screen predicts real failures, and old results go stale",
+     "summary": "Both failing models broke down in real use, OpenBioLLM in 6 of 18 answers and BioMistral in 17 of 18. Seven passing models had no defects and the eighth had 1 in 18. OpenBioLLM had passed the screen in the past, so models should be screened again when chosen."
+    }
+   }
+  },
+  "56": {
+   "title": "How often do live replies cite made-up cases, and why?",
+   "description": "We collected 120 follow-up replies, half with the deciding fact in private notes and half without. Made-up court cases appeared in 10% of replies with notes and 15% without, all on one legal scenario. Whether a missing fact causes them was too close to call.",
+   "outcome": "unclear",
+   "size": "120 specialist replies, none failed",
+   "why": "The rebuilt system, which we call the harness, sends follow-up questions to live specialists. In Cell 54, 4 of 21 live replies added court cases or rulings that do not exist. That was a single observation, not a measured rate, and we did not know the cause. One idea was that a specialist invents authority when it has nothing real to say. In Cell 53, a made-up case had appeared just when the specialist failed to find its planted fact. This cell measured the rate and tested that idea. The same specialists answered the same follow-up questions, either with the deciding fact in private notes or without it. We collected the replies only, with no editor and no judges.",
+   "expectations": [
+    {
+     "id": "P56.1",
+     "text": "We would measure how often replies contain a made-up citation, with and without the private notes, by scenario and by field, without a pass/fail test.",
+     "outcome": "not-graded",
+     "note": "6 of 60 replies with notes (10%) and 9 of 60 without (15%). All 15 came from one legal scenario, and the other five scenarios had none."
+    },
+    {
+     "id": "P56.2",
+     "text": "Replies without the private notes would cite made-up authorities more often than replies with them, because the specialist fills the gap with invented detail.",
+     "outcome": "unclear",
+     "note": "The difference went the expected way, 15% against 10%, but with only six scenarios it was too close to call, as we had warned in advance."
+    }
+   ],
+   "found": "All 120 replies came back. A text search flagged 23 replies containing something shaped like a case name, and we read each of the 11 different names by hand. 2 were made-up court decisions and the other 9 were not citations at all. With no web access, we counted a name as made up only when we were confident the case does not exist.\n\nWith private notes, 6 of 60 replies cited a made-up case (10%, plausibly anywhere from 5% to 20%). Without them, 9 of 60 did (15%, plausibly 8% to 26%). Five of the six scenarios produced none in 100 replies. The sixth, a legal question about reclassifying drivers, produced them in 15 of 20 replies, 60% with notes and 90% without. The same two invented cases kept coming back, \"Rosenbaum v. Uber\" in 14 replies and \"Klein v. Lyft\" in 13, across independent samples. Four of the six scenarios were legal, so the trigger is the scenario, not the field.\n\nWe read 20 replies to see whether a specialist ever admitted it lacked specifics. None did. Replies without notes gave confident specifics instead, some of them invented but outside what our search could catch, such as an invented version of a health-records system, \"Epic 2022.1\".",
+   "means": "We now know roughly how large the risk is and where it appears. Made-up citations appeared in 10% to 15% of replies overall. They came in most replies on one topic and in none on the others, and no specialist flagged its own. Because the same invented names recur, a blocklist of names already caught is a cheap safeguard. It removes known fakes before a reply is delivered and feeds nothing back to the model. The count covers case citations only, so for invented detail in general it is a lower limit. Whether a missing fact causes the invention stays open, though the numbers leaned that way.",
+   "later": "A later test of reply filters (31 August 2026) built a blocklist from the invented names. Over the 141 saved replies from Cells 54 and 56, it made 21 correct catches with no false alarms and no misses, and was judged ready to use.",
+   "entries": {
+    "8519": {
+     "label": "Plan",
+     "title": "Count made-up citations, with and without private notes",
+     "summary": "Six scenarios, two versions, 10 replies each: the specialist answered the follow-up with the deciding fact in private notes or without it. A text search, first checked on Cell 54's replies, would find anything shaped like a case name, and we would judge each by hand. We expected more invention without the notes."
+    },
+    "8597": {
+     "label": "Result",
+     "title": "Made-up cases cluster on one scenario, and the same names recur",
+     "summary": "Made-up citations appeared in 10% of replies with notes and 15% without, all on one legal scenario, where 15 of 20 replies had them. The same two invented cases kept recurring. No specialist admitted lacking specifics. The difference between versions was too close to call."
+    }
+   }
+  },
+  "57": {
+   "title": "Can the planning step find the numbers a recommendation depends on?",
+   "description": "We had the planning step list the key numbers for 12 scenarios and checked the lists against an answer key we wrote first. It found about six in ten, and it was better at naming missing numbers than numbers stated in the question.",
+   "outcome": "mixed",
+   "size": "120 planning lists over 12 scenarios",
+   "why": "In the rebuilt system, which we call the harness, the planning step splits a question into parts for the specialists. One of its jobs is to give every number the recommendation depends on to two specialists, so one wrong figure cannot decide the answer alone. Cell 47 showed this overlap halves how often a wrong figure reaches the final answer, but in every test so far we had chosen the numbers by hand. Before building the planning step, we needed to know whether a model could find those numbers itself. We wrote an answer key for 12 scenarios: 3 to 6 numbers each, where a different plausible value would change the recommendation. Each was marked as either stated in the question or left unknown by it.",
+   "expectations": [
+    {
+     "id": "P57.1",
+     "text": "The planning step's lists would match the answer key for their own scenario far more often than keys for other scenarios, showing the scoring measures real skill.",
+     "outcome": "held",
+     "note": "Lists matched their own scenario's key 62% to 63% of the time and other scenarios' keys about 2% of the time, in both versions."
+    },
+    {
+     "id": "P57.2",
+     "text": "We would measure the share of key numbers found, read against bands set in advance: 70% or more strong, 40% to 70% partial, under 40% weak.",
+     "outcome": "partly",
+     "note": "It found 63% from the question alone and 62% after reading the drafts, in the range we had set in advance as partial success. Our search missed some real matches, so the true share may be higher."
+    },
+    {
+     "id": "P57.3",
+     "text": "We would measure whether reading the specialists' first drafts helps the planning step find more key numbers, without a pass/fail test.",
+     "outcome": "not-graded",
+     "note": "It did not help: 2 points lower (plausibly anywhere from 10 points lower to 6 higher). The drafts did change which numbers made the list."
+    }
+   ],
+   "found": "The planning step, gpt-oss-20B, listed the 3 to 6 numbers each recommendation turns on, 5 times per scenario. It did so in two versions: with the question alone, and after also reading the three specialists' first drafts. A keyword search matched list lines to the answer key, and we checked all 493 matches by hand.\n\nThe scoring worked: lists matched their own scenario's key about thirty times as often as other scenarios' keys. The planning step found 63% of the key numbers from the question alone (plausibly anywhere from 51% to 76%) and 62% after reading the drafts. Reading about 20,000 characters of drafts did not raise that, but it reshuffled the list. Some numbers went from always listed to never listed, or the reverse.\n\nThe best result was for missing numbers. When the question left a figure unknown, such as a pick rate nobody had recorded or a no-show rate nobody had measured, the planning step listed it 81% of the time from the question alone. For figures printed in the question, it managed 53%.\n\nA text-formatting bug affected the first scoring pass. The model wrote words such as \"no-show\" with a Unicode non-breaking hyphen, which looks like an ordinary one but is a different character, so clear matches were missed. We fixed it before checking any match by hand, with no label or threshold changed.",
+   "means": "The planning step can be built, but it covers only part of the job. The rebuilt system's protection against a wrong figure now carries a limit: it applies to the roughly 60% of key numbers the planning step lists, not to all of them. It is best at flagging missing figures, the ones that most need a second source. Because the drafts added nothing, the planning step can run at the start, before the specialists write. Whether it writes good questions for each specialist was still untested.",
+   "later": "Cell 58 set out to test the next step, the planning step writing each specialist's question, and stopped at its pilot. Cell 59 then measured it: told which number to cover, the planning step put it into at least two specialists' questions in 40 of 40 plans.",
+   "entries": {
+    "8649": {
+     "label": "Plan",
+     "title": "Check the planning step's lists against our own answer key",
+     "summary": "Older number labels were rejected as an answer key, because some had been made minor on purpose. We wrote new ones for 12 scenarios from Cell 42, under a fixed rule. gpt-oss-20B would list the key numbers 5 times per scenario, with and without the specialists' drafts."
+    },
+    "8728": {
+     "label": "Mistake caught",
+     "title": "A hyphen character hides matches, fixed before any hand check",
+     "summary": "The first scoring pass missed obvious matches because the model wrote words like \"no-show\" with a Unicode non-breaking hyphen. We applied Cell 53's fix to every scoring step, changing no label or threshold. This kind of text-formatting bug had now appeared in Cells 47, 53 and 57."
+    },
+    "8741": {
+     "label": "Result",
+     "title": "The planning step finds about six in ten key numbers",
+     "summary": "It found 63% of the key numbers from the question alone and 62% after reading the drafts, the middle of our three bands. It named missing figures more reliably than stated ones, 81% against 53%. The true share may be higher, since our search missed some matches."
+    }
+   }
+  },
+  "58": {
+   "title": "Does the protection hold when the planning step writes the questions?",
+   "description": "We planned to run the whole chain live, with the planning step writing each specialist's question and key figures given as private notes. The pilot stopped the cell: specialists ignored notes their question did not ask about.",
+   "outcome": "stopped",
+   "size": "8 pilot runs, then stopped",
+   "why": "In the rebuilt system, which we call the harness, the planning step gives each key number to two specialists, so one wrong figure cannot decide the answer alone. Cell 47 showed this works when we planted the figures by hand, and Cell 57 showed the planning step finds about six in ten key numbers. The link in between was untested: the planning step writing the questions, live specialists answering them, and the editor combining their answers. This cell reused Cell 47's eight scenarios. One specialist got the key figure at a wrong value in private notes. In the protected version, a second specialist also got the right value. The planning step wrote three questions per scenario and was told every key number must reach at least two specialists.",
+   "expectations": [
+    {
+     "id": "P58.1",
+     "text": "With a second specialist holding the right value, the final answer would repeat the wrong value less often than when only the wrong value was given.",
+     "outcome": "not-tested",
+     "note": "Never tested. The cell stopped at its pilot."
+    },
+    {
+     "id": "P58.2",
+     "text": "With a second specialist holding the right value, the final answer would use the right value more often, showing the editor picks the better source.",
+     "outcome": "not-tested",
+     "note": "Never tested here. Cell 59 took up both expectations with a corrected design."
+    }
+   ],
+   "found": "The pilot ran the protected version once on each of the 8 scenarios. The planning step produced three usable questions every time. The specialist holding the wrong value passed it on in 6 of 8 answers, which met the bar of 6. The specialist holding the right value passed it on in only 2 of 8, so the checkpoint failed and the cell stopped.\n\nWe then looked for the cause, saving the specialists' answers this time. The pilot had not saved them, the same lapse as in Cell 53. The planning step, given only the scenario, wrote questions about the scenario's central numbers. Cell 47's target figures were partly side issues, as we had found when building Cell 57's answer key. A specialist whose question did not touch the figure in its notes ignored the notes. The finance specialist, asked for a budget analysis, built one without its rebate rate. The healthcare specialist, asked about validation steps, left out its subscription price.\n\nIn Cell 54, where the question pointed straight at the fact, 21 of 21 replies passed it on. Here, in pilot numbers, questions roughly in line with the note passed it on in about 6 of 8 cases and unrelated questions in 2 of 8.",
+   "means": "Private notes reach the answer only when the question asks for them. We recorded this as a basic rule of how private notes work. The halt also exposed a flaw in our design. The planning step was never told which number we wanted covered, so the cell tested whether specialists pass on notes unrelated to their task, not the question we meant to ask. In the rebuilt system, the planning step first finds the key numbers, which Cell 57 tested, and then assigns each one. A corrected test would give the planning step the number to cover as its input.",
+   "later": "Cell 59 repeated the design with the planning step told which number to cover. It put that number into at least two questions in 40 of 40 plans, and the right value then reached the final answer far more often. Whether the wrong value appeared less often was too close to call.",
+   "entries": {
+    "8791": {
+     "label": "Plan",
+     "title": "Run the whole chain live, from planning step to final answer",
+     "summary": "On Cell 47's eight scenarios, the planning step would write three questions each, covering every key number twice. One specialist would get a wrong value in private notes, and in the protected version a second would get the right value. The pilot had to show each value passed on in 6 of 8 answers."
+    },
+    "8866": {
+     "label": "Stopped",
+     "title": "The pilot stops the cell: notes pass on only when asked for",
+     "summary": "The right value was passed on in only 2 of 8 answers, below the bar of 6, so the cell stopped. Specialists ignored private notes their question did not ask about. The planning step had never been told which number to cover, a flaw in our design that Cell 59 corrected."
+    }
+   }
+  }
+ },
+ "studies": {}
+}

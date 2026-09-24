@@ -1,0 +1,582 @@
+{
+ "status": {
+  "S1-01": {
+   "claim": "The instruction telling the editor to keep the specialists' caveats makes it add caveats where nothing calls for them.",
+   "detail": "With that instruction, c was 0.799 (plausibly 0.56 to 1.05). Here c is the caution the editor adds on its own when handed none. Without the instruction, c was 0.162 (plausibly from just below zero to 0.43), and the two ranges did not overlap. In Cell 14 the instruction also fired on control questions that called for no caveats. On a plain arithmetic question with every figure given, the council's answers carried 1.27 cautious phrases per 1,000 characters. Both versions were scored the same way, so the direction does not depend on how many caveats our scoring catches.",
+   "cells": [
+    "8",
+    "14",
+    "31"
+   ]
+  },
+  "S1-02": {
+   "claim": "The editor adds caution that no specialist supplied, even when the specialists' text has been checked and contains none.",
+   "detail": "In Cell 38 we deleted every caveat sentence two AI judges flagged in the specialists' text, then checked the result again. On the scenarios confirmed at exactly zero caveats, the editor still wrote at least one caveat sentence in 4 of 12 runs, 33% (plausibly 14% to 61%). No keyword counter was used anywhere in the system or the scoring. This was the first measurement where the absence of caveats was actually confirmed, and it replaces earlier rates from a keyword counter. Given nothing, the editor also wrote shorter answers, so the rate depends on answer length.",
+   "cells": [
+    "38"
+   ]
+  },
+  "S1-03": {
+   "claim": "An instruction produces the exact phrase it names, not the behavior it was meant to encourage.",
+   "detail": "PD-13 re-analyzed saved answers from Cell 13, with no new model runs. It split the ways of saying \"this number is an estimate\" into phrasings our prompts dictated, such as \"modeled at\", and all others. With the instruction's clause about numbers, the dictated phrasings went from 0 of 30 runs to 28 of 30. Other ways of saying the same thing went from 1 of 30 to 4 of 30. The dictated phrases rose 83 percentage points more than the other wordings (plausibly 67 to 100). The comparison sits inside one scoring method, so it does not depend on that method agreeing with any other.",
+   "cells": [
+    "13"
+   ]
+  },
+  "S1-04": {
+   "claim": "A loop that feeds a caveat detector's findings back to the editor for a rewrite changes the wording, not the behavior.",
+   "detail": "In Cell 19 an automatic checker flagged caveats the editor had added with no specialist source and asked it to rewrite. On the 8 runs where the checker stepped in, the keyword counter said 88% of the flagged caveats were gone. Reading the rewrites showed the content was still there in new words: \"a modeled assumption\" became \"assumed by the Finance contribution\". One flag was a false alarm on an ordinary instruction to staff. This finding rests on reading the rewrites, not on a scoring tool.",
+   "cells": [
+    "19"
+   ]
+  },
+  "S1-05": {
+   "claim": "Preference training on whole answers did not change how cautious the editor was.",
+   "detail": "We trained the editor with preference training (ORPO) toward three different goals: more caution (Cell 6b), caution only where called for (Cell 11), and keeping only caveats the specialists had raised (Cell 18). None changed its behavior. In one comparison, the trained model's accuracy at ranking the preferred answer first rose from 48% to 94%, yet its behavior stayed the same. The model learned the preference without acting on it. The finding is about the result of training, and behavior was measured the same way for trained and untrained editors.",
+   "cells": [
+    "6b",
+    "11",
+    "18"
+   ]
+  },
+  "S1-06": {
+   "claim": "Whether the council makes answers more accurate cannot be tested at this scale: a single model already gets nearly every well-specified question right, so there is no room to improve.",
+   "detail": "In Cell 36 all three setups scored 92% to 97%, and only 3 of 59 paired questions came out differently. Cell 60 then built harder questions. On multi-step arithmetic a single model got 211 of 216 runs right, and only 5 of 36 questions fell in the difficulty range we needed. On questions about interacting rules it got 177 of 180 right, with 3 of 30 in range. A rule written down before the second round said to stop after two failed attempts, so we stopped. Questions were screened on the single model alone, and the council never ran on them. This covers questions where every rule and figure is given. The case for the council now rests on its three measured gains.",
+   "cells": [
+    "36",
+    "60"
+   ]
+  },
+  "S1-07": {
+   "claim": "A caveat raised by several specialists is no more likely to reach the final answer than one raised by a single specialist.",
+   "detail": "Cell 26 re-scored 1,165 saved runs that had more than one specialist, with no new model runs. For the kind of caveat our keyword counter measured well, \"this number is an estimate\", the caveat reached the final answer in 49% of cases when two or more specialists raised it and 52% when only one did. The difference was too close to call (plausibly from 15 points lower to 8 points higher), which rules out any gain larger than 8 points. The editor ignores agreement between specialists, the one reliability cue a design with several specialists provides.",
+   "cells": [
+    "26"
+   ]
+  },
+  "S1-08": {
+   "claim": "Repeated runs of the same prompt resemble each other, so they are not independent draws.",
+   "detail": "In Cell 29 we looked at 251 groups of repeated runs (1,279 runs, each group sharing a prompt, setup and editor model). About 19% of the variation in how much caution the editor added on its own came from which group a run belonged to (plausibly 13% to 24%). This comes from how the runs are structured, not from any one result. It means repeats of one prompt count for less than new prompts, and study sizes must allow for it.",
+   "cells": [
+    "29"
+   ]
+  },
+  "S1-09": {
+   "claim": "The rich caution in the specialists' drafts comes from instructing them to add it.",
+   "detail": "Across 27 answers from general models with no instruction to add caveats, our scoring detected a kind of caveat only 5 times (Cell 25). Specialists whose prompts no longer named any kind of caveat raised roughly half as many as instructed specialists (Cell 30). The direction holds even allowing for caveats our scoring misses.",
+   "cells": [
+    "25",
+    "30"
+   ]
+  },
+  "S1-10": {
+   "claim": "AI judges prefer an answer combined from several drafts over a single model's direct answer, with 20-billion-parameter models, and two judge families agree.",
+   "detail": "In Cell 43 the gpt-oss judge preferred the combined answer in 82% of the matchups it decided the same way in both reading orders (plausibly 72% to 92%). In Cell 43-R a judge from another model family, qwen3-vl, chosen without seeing which side it favored, gave 79% (plausibly 65% to 92%). The preference held among pairs of similar length, and the two versions' average lengths differed by only 1.4%. gpt-oss wrote both sides, so any taste a judge has for its own model's writing applies to both. Length and use of specialist terms do not explain the preference, and what does is still unknown.",
+   "cells": [
+    "41",
+    "43",
+    "43-R"
+   ]
+  },
+  "S1-11": {
+   "claim": "Telling the editor to use an exact caveat phrase makes AI judges like its answers less.",
+   "detail": "Cell 41 made answers that differed from a comparison version only in a phrase the editor was told to use. Against that comparison, the gpt-oss judge in Cell 43 preferred the \"modeled at\" version in only 26% of matchups decided the same way in both reading orders (plausibly 14% to 39%). The \"taken to be\" version got 32% (plausibly 15% to 48%). In Cell 43-R a judge from another family gave 22% for \"taken to be\" (plausibly 13% to 33%). For \"modeled at\" it gave 28%, the same direction, but on only 29 matchups its range reached past even. None pointed the other way. Only the phrase differed, so the phrase caused the drop. Seeking judges' preference works against flagging uncertainty.",
+   "cells": [
+    "41",
+    "43",
+    "43-R"
+   ]
+  },
+  "S1-12": {
+   "claim": "When the editor flags a disagreement and a follow-up reply with the deciding fact comes back, the editor uses it. This was the first change we tested that held up as an improvement.",
+   "detail": "In Cell 44 the editor first wrote a required list of disagreements between specialists. When it named the planted one, the system added a reply from the relevant specialist. With a reply containing the deciding fact, the editor took the right position in 7 of 7 runs. Without a reply it did so in 33% of runs, and with a reply that sounded helpful but added nothing, in 20%. Both gaps were clear (plausibly 20 to 100 points and 55 to 95 points). Both AI judges agreed on all 7, and counting every judge disagreement against us still left gaps of 40 and 53 points. Scope: we wrote the replies, only 7 runs counted, and there was one editor model.",
+   "cells": [
+    "44"
+   ]
+  },
+  "S1-13": {
+   "claim": "Follow-up questions are held back by how rarely models notice they need one, not by their ability to route or use one.",
+   "detail": "In Cell 44 the editor used a routed reply 7 of 7 times but named the planted disagreement in only 34% of runs. In Cell 45, when a specialist facing a question outside its field flagged a need for help, it named the right specialist 10 of 11 times (91%, plausibly 62% to 98%). But it flagged the need in only 31% of runs. Whether it flagged more often outside its field than inside was too close to call, so that expectation did not hold, while the routing one did. We therefore recommend sending follow-ups based on the editor's required list of disagreements, not on a model judging its own limits. As planned in advance, the design where specialists decide to defer was dropped.",
+   "cells": [
+    "44",
+    "45"
+   ]
+  },
+  "S1-14": {
+   "claim": "Giving the same key figure to a second specialist halves how often a planted wrong value reaches the final answer.",
+   "detail": "In Cell 47 one specialist's text carried a wrong value for a key figure. With no other source, the editor repeated the wrong value in 90% of runs. When the planning step also gave the figure to a second specialist holding the correct value, that fell to 45%, and the correct value appeared in 50% of runs, against 0% before. Both changes were clear, so the editor used the second source rather than being diluted. Values were checked by exact match. This was the first planned-in-advance test of the rebuilt system's design. Protection was all or nothing by question: three were fully protected and two not at all, so which figures get protected is open.",
+   "cells": [
+    "47"
+   ]
+  },
+  "S1-15": {
+   "claim": "A separate caveats section attached to the end of the report, which the editor never touches, carries every caveat, and readers use it to change their decisions.",
+   "detail": "In Cell 48 the section carried 100% of the specialists' caveats, against 17% surviving in the editor's prose. Whether AI judges penalize it was too close to call: they preferred the report with it in 51% of decided matchups (plausibly 27% to 75%), with 65 of 116 pairs tied. In Cell 51 a reader model read the report and chose to proceed or hold. A relevant caveat in the section changed its choice 69 percentage points more often than an irrelevant one (plausibly 46 to 89), over 11 questions and 440 runs. The same caveat in the prose worked about as well. Some caveats argued for going ahead, so plain caution cannot explain it. A smaller reader showed the same pattern, more weakly.",
+   "cells": [
+    "48",
+    "51"
+   ]
+  },
+  "S1-16": {
+   "claim": "Letting a specialist see the other specialists' answers does not make it stray outside its own field.",
+   "detail": "In Cell 52 each specialist answered with either a list of the other specialists or their saved answers attached, nothing else changed. We counted specialist terms from the other two fields per 1,000 characters. With answers visible the rate was 0.009 lower (plausibly 0.048 lower to 0.028 higher), over 18 scenarios and 322 answers. The plan said a rise of 0.05 to 0.08 was detectable, so a meaningful rise is ruled out. Terms from its own field were unchanged. This tested seeing answers, not the cross-field wording in instructions behind an earlier problem. Following Cell 50, we claim no reason for a slight drop in uncopied terms. Specialists are now kept apart only to save cost.",
+   "cells": [
+    "50",
+    "52"
+   ]
+  },
+  "S1-17": {
+   "claim": "Sending a follow-up question to a live specialist works from start to finish: the specialist passes on the missing fact and the editor uses it.",
+   "detail": "In Cell 54 the deciding fact existed only in a specialist's private notes. When the editor flagged the disagreement, that specialist got a follow-up question. It passed the fact on in 21 of 21 replies, and the editor took the right position in 19 of 21 runs (90%), against 33% with no follow-up in Cell 44 (a gap plausibly 14 to 91 points). That is about 10 points below a perfect scripted reply, within the margin set in advance. How often the editor flags a disagreement ranged from 21% to 58% across batches (Cells 44, 53 and 54), which limits coverage. New risk: 4 of 21 replies added made-up legal authority, and the editor used it anyway. A filter for empty replies cannot catch that.",
+   "cells": [
+    "44",
+    "53",
+    "54"
+   ]
+  },
+  "S1-18": {
+   "claim": "The screening test a model must pass before it can serve as a specialist predicts which models will produce broken answers in the real system.",
+   "detail": "In Cell 55 we screened ten candidate models, recorded the results, and only then ran each as a specialist on 18 real tasks. A broken answer meant under 800 characters of visible text. The eight models that passed broke at most 6% of the time. The two that failed broke 33% (OpenBioLLM, 6 of 18) and 94% (BioMistral, 17 of 18) of the time, a gap of 63 points (plausibly 55 to 72). OpenBioLLM had passed an earlier screening, so results go stale and models must be screened again. A separate formatting check did not predict broken answers: Saul passed it 0 of 4 times yet never broke in 18 tasks.",
+   "cells": [
+    "55"
+   ]
+  },
+  "S1-19": {
+   "claim": "Made-up legal citations in live specialist replies are now measured: they cluster on one topic, repeat the same invented names, and are never admitted.",
+   "detail": "Cell 56 collected 120 follow-up replies. Replies citing a made-up court case ran 10% when the specialist had the real fact in its notes (plausibly 5% to 20%) and 15% without it (plausibly 8% to 26%). Five of six questions produced none in 100 replies, while one legal question produced them in 15 of 20. The same two invented decisions appeared in 14 and 13 separate replies. No sampled reply admitted lacking specifics (0 of 20). Whether a missing fact causes the invention was too close to call. We counted court-case citations only, and other confident unchecked details appeared, so made-up details overall are more common. Because the names repeat, a filter blocking known ones can work.",
+   "cells": [
+    "56"
+   ]
+  },
+  "S1-20": {
+   "claim": "The planning step finds about 6 in 10 of the figures a recommendation depends on, and it is best at naming figures that are missing.",
+   "detail": "In Cell 57 we wrote down 41 key figures for 12 scenarios, each one a figure whose value could change the recommendation. From the question alone, the planning step listed 63% of them (plausibly 51% to 76%). After reading the specialists' answers it listed 62%, so reading them added nothing, though the list changed. The same search terms matched only 2% of lists for other scenarios. It found 81% of figures the question left unknown but only 53% of figures stated in it. So giving a figure to two specialists protects only the roughly 60% the planning step lists. Our search missed some matches, so the true rate may be higher.",
+   "cells": [
+    "57"
+   ]
+  },
+  "S1-21": {
+   "claim": "With every step live, the planning step's assignments still let the editor use a second, correct source for a key figure.",
+   "detail": "In Cell 59 the planning step was told which figure mattered and wrote the specialists' questions. All 40 plans asked at least two specialists about it, and specialists passed on their briefed values 85% to 95% of the time. The correct value appeared 43 points more often than without a second source (plausibly 33 to 53), close to the 50 in Cell 47. Whether the wrong value dropped was too close to call. Live specialists already diluted it to 63% with no second source, against 90% in Cell 47, while the protected level matched at 45%. Cell 58, stopped at a checkpoint, showed a specialist passes on a private note only if asked about it (2 of 8 off-topic, 21 of 21 in Cell 54).",
+   "cells": [
+    "47",
+    "54",
+    "58",
+    "59"
+   ]
+  },
+  "S1-22": {
+   "claim": "The filter that blocks known made-up citations is ready to use. The filter meant to catch replies with no real content is not, after two attempts.",
+   "detail": "Over 141 saved replies, the citation filter caught all 21 containing a known invented citation, with no false alarms or misses, including one our own answer key had missed. Its list grows only from citations we have confirmed as invented. The content filter failed both versions against targets set in advance. The first, using two AI judges, dropped only 3 of 6 replies written to sound helpful while adding nothing. The second made the judges quote the new fact, then checked the quote. It dropped all 6 empty replies but passed only 10 of 21 real replies that did add a fact, against a target of 80%. Replies now go out with a warning flag, and this risk stays open.",
+   "cells": [
+    "44",
+    "54",
+    "56"
+   ]
+  },
+  "S1-23": {
+   "claim": "AI judges showed no clear preference between the rebuilt system's reports and the old system's, so its added protections cost nothing measurable in preference.",
+   "detail": "In Cell 61 we paired full reports from the rebuilt system, which we call the harness, with the old system's, on 18 scenarios. The main judge preferred the harness in 56% of matchups decided the same way in both reading orders (plausibly 38% to 77%, 48 matchups). A second judge leaned the other way, 33% (plausibly 8% to 56%), on only 15. Large wins or losses are ruled out, while moderate ones are too close to call. Judges' liking comes from combining answers, which both systems do (Cell 43). Its other features rest on their own tests. Without its caveats section its share was 49%, so the section helps slightly (Cell 48). Follow-ups fired in 85% of runs, against 21% to 58% on planted ones.",
+   "cells": [
+    "43",
+    "48",
+    "61"
+   ]
+  },
+  "S1-24": {
+   "claim": "Setups that say almost nothing cautious score best on measures of caution the editor adds on its own.",
+   "detail": "The setups with the best scores for caution the editor added on its own were those whose answers had almost no cautious language: it made up 0% to 0.2% of their text. Examples are a plain merge of the specialists' answers (Cell 24), the Mixture-of-Agents setup (Cell 25) and the evidence-list format (Cells 27 and 28). An answer with no caution in it cannot contain caution the editor added, so this follows from the definition. That is why we report total caution next to any such measure.",
+   "cells": [
+    "24",
+    "25",
+    "27",
+    "28"
+   ]
+  },
+  "S1-25": {
+   "claim": "We stand behind all fourteen lessons about our measuring tools, listed in the section on lessons about our tools.",
+   "detail": "These are findings about how we measured, not about how the models behave. A flaw in a measuring tool therefore cannot undermine them the way it could undermine a result about behavior.",
+   "cells": []
+  },
+  "S2-01": {
+   "claim": "The formula y = w·s + c now holds for two editor models, so we stand behind it. It says the caution in the final answer (y) rises with the caution supplied (s) at a steady share w, plus caution c the editor adds itself.",
+   "detail": "In Cell 46, over 18 scenarios, w (the share of supplied caution passed along) was 0.318 for gpt-oss (82 runs, about 32%) and 0.177 for Phi-4 (62 runs, plausibly 0.058 to 0.275). Phi-4 on the nine new scenarios alone gave 0.170, a second test owing nothing to combined data. A straight line fits, and measured w understates the true share (0.150 to 0.217 on Cell 30's data). The combined figures mix two scenario sets given very different amounts of caution (25.3 caveat sentences on average against 5.4), so they are not a rate for any one set. Phi-4's effective sample fell short of plan (42.3 against 47), so its estimate may run high. After Cell 37 we dropped an older story of how w arises.",
+   "cells": [
+    "30",
+    "37",
+    "46"
+   ]
+  },
+  "S2-02": {
+   "claim": "The two summary tables of fitted values, one for our council and one for the Mixture-of-Agents setup, hold in overall shape, but their numbers await re-measurement.",
+   "detail": "These tables are Table 1 of the framework paper. They list values such as w, the share of the specialists' caution passed along, and c, the caution the editor adds on its own, for the council (1,260 runs) and the Mixture-of-Agents setup (80 runs, Cell 25). The numbers were measured with our keyword counter, which we no longer trust as a measuring tool, so they must be measured again with a checked scoring method.",
+   "cells": [
+    "25"
+   ]
+  },
+  "S2-03": {
+   "claim": "Combining w across 25 setups gives an average of 0.364, where w is the share of the specialists' caution that reaches the final answer.",
+   "detail": "Cell 29 combined the w values of 25 setups. The average was 0.364, about 36% passed along (plausibly 29% to 44%), with a typical spread between setups of 0.158. No setup came close to passing everything along. Most of these setups used prompts that scripted the caveat wording, so even after re-measurement this average must be labeled as a measure of how closely the editor follows instructions, not of its natural behavior.",
+   "cells": [
+    "29"
+   ]
+  },
+  "S2-04": {
+   "claim": "We used to claim that how much caution the editor adds on its own (c) depends on the form of its output: ordinary prose, or a required list of the evidence behind each caveat.",
+   "detail": "Withdrawn on 10 August 2026. The original comparison changed two things at once and was scored by a keyword counter that matched phrases our own prompts dictated, so the claim had no support. An audit on 11 August 2026 found that Cell 31, the retest, was too imprecise to settle it. Its estimate was a difference of 0.182 in the unexpected direction (plausibly 0.868 lower to 1.261 higher), a range wide enough to include the originally claimed gap of 0.637. So Cell 31 shows only that we failed to re-establish the claim, not that the list does nothing. The question is open.",
+   "cells": [
+    "27",
+    "28",
+    "29",
+    "31"
+   ]
+  },
+  "S2-05": {
+   "claim": "The share of the council's answer text taken up by cautious language, called f, had a median of 0.068, about 7%.",
+   "detail": "f is the fraction of an answer's tokens that belong to cautious phrases. The council's median was 0.068, against 0.002 for the Mixture-of-Agents setup (Cell 25). f is defined by the stretches of text our keyword counter matches, so it is tied to that counter by definition, and we no longer trust the counter as a measuring tool.",
+   "cells": [
+    "25"
+   ]
+  },
+  "S2-06": {
+   "claim": "Splitting w, the share of the specialists' caution passed along, by kind of caveat: the \"this number is an estimate\" kind carries about 22% of it.",
+   "detail": "In Cell 29 we split w into parts for each kind of caveat, which add up to the whole. The \"this number is an estimate\" kind carried 0.219 of the total, about 22% (plausibly 17% to 27%). We had expected it to carry entirely less than a quarter, its equal share, and the range includes a quarter, so that expectation did not hold. We keep the split only as a measurement, with no pass or fail claim attached.",
+   "cells": [
+    "29"
+   ]
+  },
+  "S3-01": {
+   "claim": "We used to claim that the editor recomputes figures from their inputs, and we used the word \"recomputation\".",
+   "detail": "Cell 37 had every specialist state the same wrong figure while leaving the inputs needed to compute the right one. The editor gave the correct value in 2 of 27 runs and the wrong one in 5 of 27, so it did not compute. A re-check on 11 August 2026 upheld this: it compares outcomes within one version, which the flaw found in Cell 40 cannot produce. A second expectation, about the editor's prior knowledge, was downgraded to too close to call. Replacement: the editor picks between sources. It prefers a correct source when one exists and repeats the error when none does. Cell 37's rates do not describe usual behavior, and its runs with neither value were not simple omissions.",
+   "cells": [
+    "35",
+    "37",
+    "40"
+   ]
+  },
+  "S3-02": {
+   "claim": "We used to claim that the editor's instruction moves w, the share of the specialists' caution passed along, more than the difference between whole system designs does.",
+   "detail": "The design comparison was the council against the Mixture-of-Agents setup (Cell 25). PD-13, a re-analysis of saved answers from Cell 13, withdrew the claim. The instruction's effect was almost entirely the editor typing phrases our prompts dictated. Those rose from 0 of 30 runs to 28 of 30, while other ways of saying the same thing rose only from 1 of 30 to 4 of 30. The narrower claim that replaced it: an instruction produces the phrase it names.",
+   "cells": [
+    "13",
+    "25"
+   ]
+  },
+  "S3-03": {
+   "claim": "We used to claim that the clause about numbers, in the instruction telling the editor to keep the specialists' caveats, carried 126% of the whole instruction's effect as a change in behavior.",
+   "detail": "The figure came from Cell 13. PD-13 re-analyzed those answers and found the clause's effect was the editor typing phrases our prompts dictated, such as \"modeled at\": from 0 of 30 runs to 28 of 30, while other wordings barely moved. What remains is compliance with an order to use a phrase, not a change in behavior.",
+   "cells": [
+    "13"
+   ]
+  },
+  "S3-04": {
+   "claim": "We used to cite the rise in w from 0.16 to 0.35 across setups as evidence about what instructions do (w is the share of the specialists' caution passed along).",
+   "detail": "The 0.16 came from the Mixture-of-Agents setup's standard prompt (Cell 25) and the 0.35 from our council with its instruction. The second program audit found the council's prompts scripted the exact phrases being counted, while the other setup's did not. The one comparison using the same specialist prompts, a plain merge at 0.255 against the council at 0.346, had overlapping ranges. The PD-13 re-analysis then showed the instruction's effect was mostly the editor typing its dictated phrases. No replacement claim.",
+   "cells": [
+    "13",
+    "25"
+   ]
+  },
+  "S3-05": {
+   "claim": "We used to treat differences in w between system designs, such as our council against Mixture-of-Agents, as evidence about instructions (w is the share of caution passed along).",
+   "detail": "The second program audit (7 August 2026) found that four things changed at once between those designs, so no single one, including the instruction, can be credited with the difference. The council's prompts also scripted the exact phrases being counted. No replacement claim.",
+   "cells": [
+    "25"
+   ]
+  },
+  "S3-06": {
+   "claim": "We used to claim that making the editor fill in an evidence table before answering was a distinct way to stop it adding caution of its own.",
+   "detail": "In Cells 27 and 28 the editor first filled in a table of each caveat and who raised it, and the caution it added on its own fell to about zero. But those cells changed two things at once: they added the list and removed the instruction to keep the specialists' caveats, then compared against a version that still had that instruction. Most of the drop came from removing the instruction. Cell 31 tested the list alone and could not re-establish the effect, and a later audit found that test too imprecise to settle it. The question is open.",
+   "cells": [
+    "27",
+    "28",
+    "31"
+   ]
+  },
+  "S3-07": {
+   "claim": "We used to claim that the share of caution surviving several steps is the product of each step's share, w' = ∏ w_k. Here w' is the overall share, w_k the share kept at step k, and ∏ means multiply them all.",
+   "detail": "Our own check, written down before measuring (part of Cell 28), fitted two steps separately: the editor's evidence table, then its answer. Multiplying their shares gave 0.225, below the directly measured 0.367 (plausibly 0.27 to 0.46), and the prediction for added caution also missed. The answer reads the specialists' text directly, not only through the list, so the steps are not a simple chain. The replacement idea, not yet tested with a written plan, is that the list works as a permission check on caution the editor would add on its own.",
+   "cells": [
+    "28"
+   ]
+  },
+  "S3-08": {
+   "claim": "We used to claim that two separate scoring tools confirmed that our correction loop taught the editor to dodge its detector.",
+   "detail": "In Cell 19 a checker flagged caveats in the editor's draft that no specialist had raised, and asked for a rewrite. The keyword counter said 88% of flagged caveats were removed, and an NLI model (natural-language-inference model) said none were, which we read as the caveats surviving in new words. The first program audit (5 August 2026) found the NLI model had detected nothing before or after the rewrite, 0 of 8 both times, so it confirmed nothing. The finding now rests only on reading the rewrites.",
+   "cells": [
+    "19"
+   ]
+  },
+  "S3-09": {
+   "claim": "We used to claim that combining answers distorts which kinds of caveat survive, with the best-measured kind carrying less than its fair share.",
+   "detail": "Cell 29 split the overall share of caution passed along across four kinds of caveat. We expected the \"this number is an estimate\" kind to carry entirely less than a quarter. It carried about 22% (plausibly 17% to 27%), a range that includes a quarter, so the expectation did not hold across our saved runs. What remains, reported without a pass or fail test, is that general hedging, the kind our keyword counter most often got wrong, carried the largest single share, about 39%.",
+   "cells": [
+    "29"
+   ]
+  },
+  "S3-10": {
+   "claim": "We used to make claims about how much caution specialist models raise naturally.",
+   "detail": "The second program audit (7 August 2026) found that our specialists raised 2.5 to 4 kinds of caveat per scenario because their prompts and fine-tuning told them to. General models with no such instructions raised about none (Cell 25). The caution the specialists handed over was produced by our setup. The findings survive in a sharper form: even with conditions set up to favor passing caution along, only about a third of it arrived.",
+   "cells": [
+    "25"
+   ]
+  },
+  "S3-11": {
+   "claim": "We used to claim, in our calibration paper, that the council adds caveats only when a question calls for them, unlike a single prompted model.",
+   "detail": "The claim rested on the council scoring zero on a control question in Cell 8. That zero came from the planning step sending the question to no specialists, so the editor's instruction never ran. Cell 14 used three new control questions that the planning step did send out. The council scored 0.64 cautious phrases per 1,000 characters against 0.31 for a single prompted model, so if anything it did worse, and it reached 1.27 on one arithmetic question. The whole paper was retracted.",
+   "cells": [
+    "8",
+    "14"
+   ]
+  },
+  "S3-12": {
+   "claim": "We used to claim that, with no instruction, every model we tested produced the same low level of caution, about 0.14 to 0.15 cautious phrases per 1,000 characters.",
+   "detail": "The claim came from Cell 8B, where five models with different training histories all landed in that band. A correction on 2 August 2026 found two problems. For three of four models, 70% to 80% of runs had no cautious phrases at all, so at that level we could not tell the models apart. And gpt-oss wrote 3.3 times as many phrases as Med42 but 3.7 times as much text, so equal rates hid unequal amounts. The corrected claim: under a neutral prompt these models produce almost no caveats.",
+   "cells": [
+    "8B"
+   ]
+  },
+  "S4-01": {
+   "claim": "A silent fallback meant 39 runs measured an editor instruction that never actually ran.",
+   "detail": "When the planning step sent a question to no specialists, the system quietly used a different prompt and dropped the one being tested, with no error and no record. All 39 affected runs were on the one control question that called for no caveats, across 11 versions. Two published results were withdrawn: the council's apparent zero on that question (Cell 8) and a result about instruction clauses (Cell 13). We found it while planning Cell 14. Every run record now stores which prompt actually ran.",
+   "cells": [
+    "8",
+    "13",
+    "14"
+   ]
+  },
+  "S4-02": {
+   "claim": "When an AI judge returned an empty reply, our scripts counted it as a real answer.",
+   "detail": "gpt-oss, a reasoning model, used up its short length allowance while thinking and returned nothing, and our judging scripts scored the empty reply as \"no\". In Cell 21 this made one judge look strict when it was silent. In Cell 20 it made the editor look as if it never committed to a decision (0 of 10), where a corrected re-run found 3 of 10. The rule now: an empty reply is excluded and counted, never given a label.",
+   "cells": [
+    "20",
+    "21"
+   ]
+  },
+  "S4-03": {
+   "claim": "A measuring tool checked on one task was then used for a different task, where it failed.",
+   "detail": "In Cell 7a an NLI model (natural-language-inference model) told preferred answers from rejected ones well, scoring 0.93 on a scale where 1.0 is perfect and 0.5 is chance. We then used it to detect whether a kind of caveat was present at all. When Cell 23 checked that use against labeled sentences, it scored 0.12 to 0.55, no better than chance, and no threshold worked. We retired it for that use. A tool must be checked on the job it will actually do.",
+   "cells": [
+    "7a",
+    "23"
+   ]
+  },
+  "S4-04": {
+   "claim": "We ranked setups by single best-guess numbers without their plausible ranges, even though most comparisons could not tell setups apart.",
+   "detail": "A sweep of our saved runs on 5 August 2026 looked at 27 setups with at least 30 runs each. For 21 of them, w (the share of caution passed along) was so poorly pinned down that its plausible range was wider than 0.35. The leaders of the naive ranking were setups with no runs where the specialists supplied no caution, so their numbers were projections beyond the data, one of them an impossible negative value. Our tools now refuse such estimates, and a difference counts only when its range excludes zero.",
+   "cells": []
+  },
+  "S4-05": {
+   "claim": "One version name was reused across experiments that ran different sets of scenarios, so comparisons mixed scenario sets with versions.",
+   "detail": "The name \"arch-council\" was used by three cells (8, 14 and 15) that ran different sets of scenarios. An earlier analysis pooled 40 runs from another set into one table, and correcting it moved one figure from 81% to 87%. A later sweep found the name covered 17 scenarios, so comparing it with versions run on 9 compared scenario sets rather than versions. Every run now records its cell, and our tools check comparisons for this problem.",
+   "cells": [
+    "8",
+    "14",
+    "15"
+   ]
+  },
+  "S4-06": {
+   "claim": "Rates per 1,000 characters misled us when most outputs were empty of caveats or very short.",
+   "detail": "A re-check of Cell 8B found that for three of four models, 70% to 80% of runs had no cautious phrases at all, so a shared low rate hid that we could not tell the models apart. Equal rates also hid that gpt-oss wrote 3.3 times as many phrases in 3.7 times as much text. BioMistral's answers were so short, a median of 310 characters, that its rate meant little. We now report raw counts and the share of runs with none beside any rate, and set aside garbled or very short outputs.",
+   "cells": [
+    "8B"
+   ]
+  },
+  "S4-07": {
+   "claim": "We once presented a made-up example as if it were observed data.",
+   "detail": "Our paper on the editor's behavior quoted a rewrite from the Cell 19 runs: \"modeled at\" becoming \"we estimate\". No such rewrite occurred in any run. The program audit of 5 August 2026 replaced it with real quotes from the runs, and presenting an invented example as data is now a defect our audits check for.",
+   "cells": [
+    "19"
+   ]
+  },
+  "S4-08": {
+   "claim": "Our prompts told the models the exact words our scoring then counted, so part of what we measured was obedience, not behavior.",
+   "detail": "The second program audit (7 August 2026) found that our prompts named the kinds of caveat we measured. In two places, one of them the editor's instruction, they dictated the exact strings our keyword counter looked for, such as \"modeled at\". The PD-13 re-analysis of Cell 13 then showed the instruction's effect was almost all dictated phrases. When Cell 30 removed the scripted wording, the keyword counter's rate was 7.6 times lower than a checked method's on the same 60 answers.",
+   "cells": [
+    "13",
+    "30"
+   ]
+  },
+  "S4-09": {
+   "claim": "How reliable an AI judge is depends on the size of the piece it judges.",
+   "detail": "In Cell 30 two AI judges agreed on 83% of labels when judging one sentence at a time, but only 62% when judging whole documents, with the same judges and the same 60 documents. The failure came from the unit judged, not from the judges. Cell IV later showed that sending several separate sentences in one request keeps the reliability of one-sentence judging.",
+   "cells": [
+    "30",
+    "IV"
+   ]
+  },
+  "S4-10": {
+   "claim": "Flaws in how we built test material carried into the design: text labeled caveat-free still contained caveats.",
+   "detail": "In Cell 30 we made caveat-free versions of the specialists' text by deleting sentences our keyword counter flagged. A checked method then found an average of 5.4 caveat sentences left in texts labeled as having none. So the design never created the condition it was built to test. The same problem affected the texts labeled caveat-free in Cells 25, 27, 30 and 31.",
+   "cells": [
+    "25",
+    "27",
+    "30",
+    "31"
+   ]
+  },
+  "S4-11": {
+   "claim": "A planted figure that contradicts the question itself does not change what the editor reads. It adds a competing source.",
+   "detail": "In Cells 37 and 40 we planted figures in the specialists' text that contradicted the figures in the scenario itself. On one question the editor used the scenario's figures in 21 of 21 runs across both cells and the planted ones never. Our rule to use unfamiliar numbers, meant to stop the model relying on memory, clashed with keeping planted figures consistent with the question, and no plan reconciled the two. The flaw was itself created by an earlier fix for a different scoring clash.",
+   "cells": [
+    "37",
+    "40"
+   ]
+  },
+  "S4-12": {
+   "claim": "Scripted wording reached our scoring tools too: an AI judge was told to look for the same phrases the models were told to write.",
+   "detail": "The prompt for Cell 7b's AI judge, which compared answers in pairs, listed seven example phrases, such as \"modeled at\" and \"this may vary if\". The same phrases appeared in the prompts given to the models being judged. So a judge told to look for \"modeled at\" was scoring a model told to say \"modeled at\". We found this automatically the first time we ran a searchable list of every exact phrase our prompts dictate.",
+   "cells": [
+    "7b"
+   ]
+  },
+  "S4-13": {
+   "claim": "Models almost never use the exact phrases our prompts dictate unless a prompt tells them to.",
+   "detail": "In 60 runs whose prompts contained no scripted wording (Cell 30), none of 2,907 caveat passages, across 438,797 characters, contained any phrase from our list of dictated phrases. With 60 runs, the true rate is plausibly at most 6%. Finding one of these phrases is therefore a sign the prompt dictated it, which makes exact-phrase counting a trustworthy way to separate obedience from behavior. This agrees with the PD-13 re-analysis of Cell 13, using different data.",
+   "cells": [
+    "13",
+    "30"
+   ]
+  },
+  "S4-14": {
+   "claim": "The AI judges we ran on our own machine mostly pick whichever of two answers they read first, whatever model does the judging.",
+   "detail": "Across four judges from four model families (gpt-oss, Qwen2.5, Phi-4 and qwen3-vl), the first answer shown won 85% to 88% of the time (Cells 43 and 43-R). This position bias was the same size for every judge. Showing each pair in both orders and counting only matchups where the judge picked the same winner both times removes it, but only 5% to 40% of matchups survive, depending on the judge. So this method gives up 60% to 95% of the comparisons to stay fair.",
+   "cells": [
+    "43",
+    "43-R"
+   ]
+  },
+  "S5-01": {
+   "claim": "Answered yes: more caution from the specialists still means more caution in the final answer, even with all scripted wording removed from the prompts.",
+   "detail": "Answered on 10 August 2026 by Cell 30. The specialists' prompts named no kind of caveat and scripted no phrases, and the scoring method shared no vocabulary with the prompts. With gpt-oss as editor, w was 0.150 (plausibly 0.058 to 0.252), a range that stays above zero. Here w is the share of the specialists' caution that reaches the final answer, roughly one caveat sentence carried for every seven supplied.",
+   "cells": [
+    "30"
+   ]
+  },
+  "S5-02": {
+   "claim": "Answered yes: the editor still adds caution of its own when the specialists' text has been checked and contains none.",
+   "detail": "Answered on 10 August 2026 by Cell 38. On scenarios where our checked scoring method confirmed the specialists' text had no caveats at all, the editor added some in 4 of 12 runs, 33% (plausibly 14% to 61%).",
+   "cells": [
+    "38"
+   ]
+  },
+  "S5-03": {
+   "claim": "Answered no: deleting caveat sentences from the specialists' text does not reliably leave it with no caution at all.",
+   "detail": "In Cell 30, deleting sentences flagged by a keyword counter left an average of 5.4 caveat sentences in texts labeled caveat-free. In Cell 38, deleting sentences flagged by AI judges also left some behind: only 6 of 9 scenarios got down to one or none, against the 7 we required. Removing a caveat changes how the remaining sentences read, so judges then flag new ones. Reaching true zero needs specialist text written from the start to contain no caveats.",
+   "cells": [
+    "30",
+    "38"
+   ]
+  },
+  "S5-04": {
+   "claim": "Does making the editor fill in an evidence table before answering, by itself, reduce the caution it adds on its own?",
+   "detail": "Still open. Cells 27 and 28 suggested it did, but they changed two things at once. Cell 31 tested the list alone and found no clear effect, yet the audit of 11 August 2026 showed its result was too imprecise to rule out the effect originally claimed. A test able to settle it would need about four times as much data as Cell 31.",
+   "cells": [
+    "27",
+    "28",
+    "31"
+   ]
+  },
+  "S5-05": {
+   "claim": "For the \"my information may be out of date\" kind of caveat, does the instruction change wordings other than the ones it dictates?",
+   "detail": "In the PD-13 re-analysis of Cell 13, the instruction clause aimed at this kind of caveat raised its dictated phrases from 0 of 30 runs to 8 of 30. Other wordings stayed at 0 of 30 with and without it. With no events at all, we cannot tell whether the clause changes anything beyond its phrases. Answering this needs more labeled examples of this kind of caveat.",
+   "cells": [
+    "13"
+   ]
+  },
+  "S5-06": {
+   "claim": "When the editor adds a caveat, is the caveat actually called for?",
+   "detail": "We have no labels saying which caveats a scenario truly calls for, only our own judgment when we wrote the scenarios. Until such labels exist, we cannot say whether more or less caution is better, and that limits every claim about how the system should behave.",
+   "cells": []
+  },
+  "S5-07": {
+   "claim": "Do the specialist models make answers more accurate on facts they must remember, rather than rules and figures the question supplies?",
+   "detail": "Cell 36 only tested applying stated rules to stated figures, so it says nothing about remembered facts such as statutes, dosing tables or market rates. Testing recall needs a set of questions whose facts come from outside sources, not written by us from memory.",
+   "cells": [
+    "36"
+   ]
+  },
+  "S5-08": {
+   "claim": "Would harder questions reveal an accuracy difference between the council and a single model?",
+   "detail": "Cell 36's questions were too easy: every setup scored 92% to 97%, so its finding of no difference is weak. Cell 60 later built two harder sets, and the single model still scored about 98% on both. So for questions where every rule and figure is given, we now treat the accuracy question as untestable at this scale (see the claims we stand behind).",
+   "cells": [
+    "36",
+    "60"
+   ]
+  },
+  "S5-09": {
+   "claim": "Can a specialist tell the editor how to use its content, for example which of two conflicting figures to trust?",
+   "detail": "Still open. Cell 40 completed all 81 runs but was too close to call. Only 3, 6 and 2 runs in the three versions stated either specialist's figure, against the 6 per version we required. The figures we planted contradicted the scenario's own, and the editor used the scenario's. Neither expectation was shown wrong. A new run must first draw its planted figures from the scenario itself and check in advance that answers will state the figure at all.",
+   "cells": [
+    "40"
+   ]
+  },
+  "S5-10": {
+   "claim": "Can we tell apart the editor drawing on its own prior knowledge and the editor computing a figure from its inputs?",
+   "detail": "Cell 37 was meant to test this, but that expectation was downgraded to too close to call. The editor almost never gave the correct figure in either version (2 of 27 with the inputs present, 0 of 27 with them removed), so there was nothing to compare. The plan had not checked in advance whether this outcome would occur often enough to measure.",
+   "cells": [
+    "37"
+   ]
+  },
+  "S6-01": {
+   "claim": "Do not use keyword counters as a measuring tool. Every earlier result measured with one is provisional.",
+   "detail": "Set by the project owner on 9 August 2026. By then, audits had shown that our keyword counter largely counted the exact phrases our own prompts dictated. Checking whether a specific known string, such as a planted number, appears in an answer is still allowed. That is how Cell 37 and later cells scored exact values.",
+   "cells": [
+    "37"
+   ]
+  },
+  "S6-02": {
+   "claim": "Treat the \"my information may be out of date\" kind of caveat as unmeasurable for now, and cover the other three kinds only.",
+   "detail": "When we labeled a sample of sentences in Cell 23, only 3 contained this kind of caveat. Three examples cannot support a rate, so the project covers three kinds of caveat until more labels exist: \"this number is an estimate\", \"the rules differ by place\", and general hedging.",
+   "cells": [
+    "23"
+   ]
+  },
+  "S6-03": {
+   "claim": "Count the sentences that carry a caveat, rather than marking a whole document as containing one.",
+   "detail": "A typical answer has about 40 sentences. If one wrong flag on any sentence marks the whole document, false alarms pile up across all 40. Counting sentences keeps each error to a single sentence. Our checked scoring method, validated in Cell IV, counts caveat sentences for this reason.",
+   "cells": [
+    "IV"
+   ]
+  },
+  "S6-04": {
+   "claim": "Change only one thing per comparison, and never reuse a version's name across different sets of scenarios.",
+   "detail": "Several early comparisons changed more than one thing at once, and a reused version name once mixed runs from different scenario sets (see the lessons about our tools). Comparisons are planned against our fixed list of nine ways a version can differ, so each one can be checked for a single change.",
+   "cells": []
+  },
+  "S6-05": {
+   "claim": "Treat fitted values such as w and c as readings that describe the system, never as numbers to push up or down.",
+   "detail": "Here w is the share of the specialists' caution passed along and c is the caution the editor adds on its own. Pushing a number up can distort the thing it is meant to measure. Cell 19 showed how: a loop that fed a caveat detector's findings back to the editor changed the wording, not the behavior. So no prompt, model or setting is tuned toward these readings.",
+   "cells": [
+    "19"
+   ]
+  },
+  "S6-06": {
+   "claim": "Whenever we report how much caution the editor adds on its own, also report how much caution it produces in total.",
+   "detail": "An answer that says almost nothing cautious cannot add caution of its own, so on that measure alone the quietest setup looks best. Reporting the total beside it shows when a low score just reflects silence.",
+   "cells": []
+  },
+  "S6-07": {
+   "claim": "Before proposing any new experiment, run our 12-item checklist.",
+   "detail": "The checklist grew out of our own mistakes. Items named in the notebook include changing one thing per comparison (item 1) and labeling unplanned analyses as unplanned (item 6). Others are checking the names and metaphors we use (item 7), never tuning toward a measured number (item 10), and checking that the outcome can be detected at all (item 12). Item 12 was added by the audit of 11 August 2026, when the list grew from 11 items to 12.",
+   "cells": []
+  },
+  "S6-08": {
+   "claim": "Before an experiment runs, check from existing runs how often the outcome can occur at all, and whether the planned size can detect the effect we care about.",
+   "detail": "This is item 12 of the checklist, added by the audit of 11 August 2026. That audit followed three results in a row decided by scores stuck at the top or bottom rather than by what we changed (Cells 36, 37 and 40). The check applies to every expectation we write down, not only the main one, since Cell 37 checked only its main one. How often the outcome occurs is a check before running, never a design target: a test built to force the outcome would measure obedience to that design.",
+   "cells": [
+    "36",
+    "37",
+    "40"
+   ]
+  },
+  "S6-09": {
+   "claim": "How strongly we cite a no-difference result depends on how the audit graded it. A result that could not have detected the effect never counts as evidence the effect is absent.",
+   "detail": "The audit of 11 August 2026 graded each no-difference result. If the outcome almost never or almost always occurred, or if the plausible range still includes the effect we once claimed, the question goes back to open. For example, Cell 31 could not rule out the evidence-list effect originally claimed, so that question is open, not answered no. Other results held up: Cell 26 rules out any gain above 8 points.",
+   "cells": [
+    "26",
+    "31"
+   ]
+  }
+ }
+}

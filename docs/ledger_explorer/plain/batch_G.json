@@ -1,0 +1,268 @@
+{
+ "batch": "G",
+ "cells": {
+  "35": {
+   "title": "Can a planted error be traced back to the specialist that made it?",
+   "description": "We planted a wrong figure or a reversed rule in one specialist's draft. It never reached the editor's final answer in 27 runs, so there was nothing to trace. The cell found something other than the advantage it set out to test.",
+   "outcome": "failed",
+   "size": "54 runs: 27 with a planted error, 27 clean",
+   "why": "Up to this point every test had scored the final answer. On the answer itself the council had lost on several measures while using about four times the computing power. A paper called CollabLLM suggested judging a response by what it contributes over time rather than by the response itself. So we wrote down five tests of advantages a council might have beyond its answer (Cells 32 to 36), and expected none to show up. Cell 35 ran first because it needed no new scoring method: we planted the error ourselves, so we knew exactly what to look for. The idea was that a council has visible boundaries between its parts. If an error reached the final answer, a reviewer might trace it to the specialist that introduced it. A single model offers no such trail.",
+   "expectations": [
+    {
+     "id": "P35.1",
+     "text": "Planted errors would reach the final answer in some runs, more often than the AI judges wrongly reported them in clean runs.",
+     "outcome": "failed",
+     "note": "No planted error reached a final answer: 0 of 27 runs by exact text match, and 0 of the 17 runs that both AI judges could score."
+    },
+    {
+     "id": "P35.2",
+     "text": "When an error did get through, an AI judge shown the three specialist drafts would name the specialist responsible more often than a one-in-three guess.",
+     "outcome": "not-tested",
+     "note": "Not tested. We needed at least 10 runs where the error got through and there were none, so there was nothing to trace."
+    },
+    {
+     "id": "P35.3",
+     "text": "The same error given to a single model could not be traced to any part, since a single model has no separate parts. This was to be reported without a pass/fail test.",
+     "outcome": "not-tested",
+     "note": "The single-model version was never run, so the cell cannot say whether a single model would do better or worse."
+    }
+   ],
+   "found": "All 54 runs completed. The planted text was present in the specialist input of all 27 runs meant to carry it, and final answers averaged about 7,000 characters, so the zero did not come from a broken pipeline. None of the nine planted errors, five wrong figures and four reversed rules, reached a final answer. By exact text match the count was 0 of 27. The two AI judges could both score 17 of those runs and found no error in any. They also never reported the error in clean runs (0 of 15). One judge, Qwen2.5-7B, returned unreadable output on 20 of 52 runs (38%), which is why fewer runs could be scored. The exact-match count covers every run and does not depend on the judges.\n\nWe then checked, without a test planned in advance, whether the editor dropped the wrong figure or replaced it with the right one. On three arithmetic scenarios where the answer can be checked (depreciation, hand hygiene and an equity split), the final answers gave the correct figure in 3 of 3 runs each, sometimes more often than the clean runs did. It looked as if the editor had redone the arithmetic. With 3 runs per scenario, this was an idea for a new test, not a result.",
+   "means": "What the cell found was not the advantage it set out to test. Nothing got through, so nothing could be traced. Instead, in this council, a false claim planted in one specialist's draft never reached the final answer. Our simplest reading was that the heavy discarding that throws away about two-thirds of what specialists supply also throws away errors. This does not show that councils resist errors better than single models, because no single model was given the same corrupted input. Cell 34, which needed errors to get through so reviewers could look for them, could not run. The redone-arithmetic idea became Cell 37.",
+   "later": "Cell 39 found the same zero with a second editor model, Phi-4. Cell 37 then showed that the editor does not redo the arithmetic. It copies the correct figure from another specialist when one has it, and repeats the wrong figure when every specialist carries it. So planted errors stay out only when a second specialist covers the same figure.",
+   "entries": {
+    "4657": {
+     "label": "Plan",
+     "title": "Plant one error per scenario and see whether it can be traced",
+     "summary": "For each of 9 scenarios we would plant one specific, checkable error, a wrong figure or a reversed rule, in one specialist's draft. The editor, gpt-oss-20B, would run 3 times with it and 3 times without. Two AI judges would check whether the error reached the final answer and whether a judge could tell which specialist introduced it."
+    },
+    "4863": {
+     "label": "Result",
+     "title": "Nothing got through, so there was nothing to trace",
+     "summary": "No planted error reached a final answer in 27 runs, so tracing could not be tested. The answers often gave the correct figure instead, which suggested the editor might redo arithmetic. One AI judge returned unreadable output on 38% of runs. Cell 34, which depended on errors getting through, was recorded as blocked."
+    }
+   }
+  },
+  "36": {
+   "title": "Does a council get more domain questions right than a single model?",
+   "description": "We built 60 questions with checkable answers in healthcare, law and finance. The council scored 93%, gpt-oss-20B alone 97% and Phi-4 alone 92%. The council was no more accurate, but every version was near perfect, leaving little room to show a difference.",
+   "outcome": "failed",
+   "size": "179 runs over 60 questions",
+   "why": "In 31 cells we had measured only cautious language, never whether the specialists' domain content was correct. Yet better accuracy was the council's most obvious possible advantage. Our 18 scenarios are open-ended advisory questions with no single right answer, so this test needed a new set of questions whose answers anyone can check. It was the last of five tests of advantages a council might have (Cells 32 to 36), and we expected none. Before it ran, we noted that gpt-oss-20B is itself a mixture-of-experts model: inside it, a learned router sends each token to a few of many sub-networks. So the test also asked whether sending each question to a specialist model beats that built-in routing.",
+   "expectations": [
+    {
+     "id": "P36.1",
+     "text": "The council would answer more of the checkable questions correctly than gpt-oss-20B answering alone, by a clear margin.",
+     "outcome": "failed",
+     "note": "The council got 56 of 60 right (93%) and gpt-oss-20B alone 57 of 59 (97%). There was no clear difference, and the council's figure was slightly lower."
+    },
+    {
+     "id": "P36.2",
+     "text": "gpt-oss-20B, with its built-in routing, would score higher than Phi-4, which has none. Any gap could also come from other differences between the two models.",
+     "outcome": "unclear",
+     "note": "gpt-oss-20B scored 97% and Phi-4 92%, but the gap was too small to call with this data, and the two models also differ in training data and size."
+    }
+   ],
+   "found": "We scored 179 runs over 60 questions, 20 each in healthcare, law and finance. Every question stated the facts needed, so its answer could be worked out and checked by anyone, with no judge involved. In the council version each question went straight to the right specialist, with no planning step, and the editor wrote the answer. That was the most favorable setup we could give the council.\n\nThe council answered 56 of 60 correctly (93%). gpt-oss-20B alone got 57 of 59 (97%) and Phi-4 alone 55 of 60 (92%). There was no clear difference between the council and gpt-oss-20B, and the council's figure was slightly lower. Every version answered at least 98% of the questions, so none scored well by declining to answer.\n\nAll three versions scored between 92% and 97%. With scores that high and only 60 questions, only very large differences could have shown up. A council advantage of 3 to 5 points would have been invisible. We had sized the question set to detect a gap of about 20 points, but had not expected every version to score so close to perfect.",
+   "means": "On this question set, sending each question to a domain specialist made answers no more accurate than gpt-oss-20B alone. That removed, on this measure, the last reason for the council design we had not yet tested. The claim is narrow in two ways. The questions test applying domain rules to facts stated in the question, not recalling domain facts, which is where Med42's and Saul's model cards claim gains. And with every version near the top, this is weak evidence of no difference. A recall question set, or harder questions that move scores off the top, became the requirement for any stronger claim.",
+   "later": "Later work confirmed the ceiling. The project's list of current claims notes that only 3 of the 59 shared questions got different results from the council and from gpt-oss-20B alone. Cells 60 and 60-R built harder question sets, and the single model still scored 98% on both. The accuracy question was then closed as untestable at this scale: a council cannot add accuracy where a single model leaves no room.",
+   "entries": {
+    "4766": {
+     "label": "Plan",
+     "title": "Check whether domain answers are correct, once a question set exists",
+     "summary": "Every earlier cell measured cautious language, never whether domain content was correct. We expected council answers to be more accurate than a single model's on questions with checkable answers. The test could not run until we built at least 30 healthcare, legal and finance questions whose answers do not depend on any judge's opinion."
+    },
+    "4800": {
+     "label": "Change to the plan",
+     "title": "Adding Phi-4 alone to separate routing from model choice",
+     "summary": "Before any accuracy was measured, we noted that gpt-oss-20B routes each token to internal sub-networks while our other models do not. We added Phi-4 alone as a third version, so the test could ask whether built-in routing helps. We raised the target to at least 50 questions, because 30 could only detect a gap of about 20 points, and added a check on how often each version declined to answer."
+    },
+    "5359": {
+     "label": "Change to the plan",
+     "title": "The question set is built, and what it can show is narrowed",
+     "summary": "We built 60 questions, 20 per field, each with a worked derivation that code confirmed (60 of 60). To avoid writing domain facts from memory, every question states its own facts. So the set tests applying domain rules to given facts, not recalling domain facts, and a no-difference result would be read only that way."
+    },
+    "5475": {
+     "label": "Result",
+     "title": "No accuracy gain, but every version scored near the top",
+     "summary": "The council scored 93%, gpt-oss-20B alone 97% and Phi-4 alone 92%. The council was no more accurate than gpt-oss-20B, and its figure was slightly lower. With every version between 92% and 97%, only very large gaps could have been detected, so this is weak evidence of no difference. Harder or recall-based questions were named as the next step."
+    }
+   }
+  },
+  "37": {
+   "title": "Does the editor redo the arithmetic, or copy a correct source?",
+   "description": "We made every specialist's figure wrong while leaving the inputs needed to work it out. The editor gave the right figure in 2 of 27 runs and the wrong one in 5. It picks among its sources and copies. It does not recompute.",
+   "outcome": "failed",
+   "size": "108 runs: 4 versions of 27",
+   "why": "In Cell 35 no planted error reached the final answer, and on checkable arithmetic the answers often gave the correct figure. It looked as if the editor recomputed. But we formed that idea after seeing the data, and Cell 35 could not tell three explanations apart. The editor might work the figure out from the inputs, copy it from another specialist who had it right, or produce a familiar figure it already knew. This cell tested the idea on new runs, with versions built to separate the three.",
+   "expectations": [
+    {
+     "id": "P37.1",
+     "text": "With every specialist's figure wrong but the inputs still given, the editor would state the correct figure in some runs, and more often than the wrong one.",
+     "outcome": "failed",
+     "note": "It gave the correct figure in 2 of 27 runs and the wrong figure in 5. It did not work the figure out. Later checks left this result standing."
+    },
+    {
+     "id": "P37.2",
+     "text": "With the inputs deleted as well, the correct figure would appear less often than with them, showing it came from the inputs and not from memory.",
+     "outcome": "unclear",
+     "note": "The correct figure appeared 0 times without the inputs and 2 times with them. First recorded as not holding up, it was later judged too close to call because both counts were near zero."
+    },
+    {
+     "id": "P37.3",
+     "text": "For every version we would report how often answers gave the correct figure, the wrong figure, or neither, without a pass/fail test.",
+     "outcome": "not-graded",
+     "note": "Neither figure appeared in 15 to 23 of 27 runs in each version. Cell 40 later found that on at least 3 of the 9 items, those runs used the scenario's own numbers."
+    }
+   ],
+   "found": "All 108 runs completed, 27 in each of four versions (9 arithmetic items, 3 runs each). In the clean version every specialist had the correct figure. In the second, one specialist's figure was wrong, as in Cell 35. In the third, every mention of the figure was wrong but the inputs to compute it were still there. Copying then gave the wrong answer and only working it out gave the right one. In the fourth, the inputs were deleted too.\n\nThe correct figure appeared in 6, 4, 2 and 0 of 27 runs across the four versions. The wrong figure appeared in 1, 0, 5 and 12. With every specialist wrong, the editor gave the wrong figure more often than the right one. With the inputs deleted as well, it repeated the wrong figure in 12 of 27 runs, more than twice as often, and never gave the correct one.\n\nNeither figure appeared in 15 to 23 of the 27 runs in each version. At the time we read this as the editor leaving the figure out.",
+   "means": "The editor does not recompute. The one apparent positive ability we had measured did not survive its own test. As planned, we struck the word \"recomputation\" from every paper and document. Cell 35's result is explained by copying: the editor took the correct figure from a specialist who had it. It prefers a clean source when one exists and repeats the error when every source is wrong. So Cell 35's finding that planted errors stay out of the final answer holds only when another specialist covers the same figure. Cells 35 and 39 measured the benefit of a backup source, not resistance to errors.",
+   "later": "Cell 40 found that some planted numbers contradicted the scenario's own. On item 0, the editor used the scenario's numbers in all 12 Cell 37 runs. The main result still stands, because it compares right and wrong figures within one version, and \"the editor recomputes\" stays withdrawn. But the second expectation was downgraded to too close to call, and runs with neither figure do not show the editor leaving it out.",
+   "entries": {
+    "4923": {
+     "label": "Plan",
+     "title": "Separate working it out, copying, and memory",
+     "summary": "Cell 35 could not tell whether the editor worked out the correct figure, copied it from a clean specialist, or recalled a familiar one. We planned four versions: all clean, one specialist wrong, every specialist wrong with inputs intact, and every specialist wrong with inputs deleted. Items used unfamiliar numbers, and scoring looked for the exact right and wrong numbers."
+    },
+    "5609": {
+     "label": "Result",
+     "title": "The editor picks among sources and does not recompute",
+     "summary": "With every specialist wrong, the editor gave the right figure 2 times and the wrong one 5 times in 27 runs. With inputs deleted too, the wrong figure appeared 12 times. The wrong figure appeared more often once no clean source was left, so the editor copies rather than calculates. The word \"recomputation\" was struck from every document."
+    }
+   }
+  },
+  "38": {
+   "title": "Does the editor add caveats when the specialists gave truly none?",
+   "description": "We removed every sentence that two AI judges both flagged as cautious, then judged the drafts again. Only 4 of 9 scenarios reached exactly zero. On those, the editor still added caveats nobody had raised in 4 of 12 runs, a third of the time.",
+   "outcome": "mixed",
+   "size": "54 runs over 9 scenarios",
+   "why": "The project had claimed that the editor adds caution on its own, with nothing prompting it. But Cell 30 had found that our keyword-based removal of cautious sentences left an average of 5.4 cautious sentences in drafts labeled as having none. So every earlier rate of caution added from nothing had been measured on drafts that were never empty, and the claim was in fact unmeasured. This cell rebuilt the condition. It removed the sentences that two AI judges both flagged and, before running the editor, judged the drafts again to confirm what was left.",
+   "expectations": [
+    {
+     "id": "P38.1",
+     "text": "After removing every sentence both AI judges flagged and judging the drafts again, at least 7 of the 9 scenarios would have at most 1 cautious sentence left.",
+     "outcome": "failed",
+     "note": "Only 6 of 9 did. Removing a caveat made the judges flag other sentences that had read as neutral while the caveat was there."
+    },
+    {
+     "id": "P38.2",
+     "text": "On drafts confirmed to hold no caveats at all, the editor would still write at least one cautious sentence in a share of runs whose plausible range stays above zero.",
+     "outcome": "held",
+     "note": "It did so in 4 of 12 runs (33%, plausibly anywhere from 14% to 61%), counting only the four scenarios confirmed at exactly zero."
+    },
+    {
+     "id": "P38.3",
+     "text": "We would report answer length for both versions, so that a lower rate could not simply come from shorter answers. No pass/fail test.",
+     "outcome": "not-graded",
+     "note": "Answers from emptied drafts were shorter (5,273 against 7,873 characters) and less cautious overall, so the 33% rate is read in light of their length."
+    }
+   ],
+   "found": "All 54 runs completed. The removal fell short. After removing every sentence both judges flagged and judging again, four scenarios had zero cautious sentences left, two had 1, one had 3 and two had 4. That is 6 of 9 at 1 or fewer, one short of the 7 we set. Removing a caveat changed how nearby sentences read: a line that seemed neutral beside an explicit caveat seemed cautious once the caveat was gone. The judges agreed with each other 83% of the time on these drafts, so this was not judge noise. No scoring method we have can reach truly empty drafts by deleting sentences.\n\nOn the four scenarios confirmed at exactly zero, the editor still wrote at least one cautious sentence in 4 of 12 runs (33%, plausibly anywhere from 14% to 61%). This was the project's first measurement on drafts known to be empty. The editor said less when handed nothing. Its answers were shorter than with full drafts (5,273 against 7,873 characters, 9.1 against 13.2 sentences) and held fewer cautious sentences on average (0.58 against 1.67). But it did not say nothing.",
+   "means": "The claim that the editor adds caution with nothing prompting it held up under a stricter measurement, with no keyword counter anywhere. It returned to the project's list of current claims with this cell as its evidence, replacing the withdrawn keyword-based figures. The rate comes from four scenarios and is tied to answer length. The failed removal also means that truly empty drafts must be written from scratch without caveats, not made by deleting sentences.",
+   "later": "Still standing. The project's list of current claims cites this cell as its evidence. A later analysis of saved runs (2026-08-20) found the 33% rate in line with Cell 30's separate estimate of how much caution the editor adds on its own, and counted that as agreement rather than proof.",
+   "entries": {
+    "5226": {
+     "label": "Plan",
+     "title": "Remove caveats with AI judges, confirm the drafts are empty, then run",
+     "summary": "Cell 30 had shown that keyword-based removal left about 5.4 cautious sentences in drafts labeled empty. We planned to remove every sentence that two AI judges both flagged as cautious and judge the drafts again to confirm the result. Then the editor, gpt-oss-20B, would run 27 times on full drafts and 27 times on emptied ones."
+    },
+    "5439": {
+     "label": "Result",
+     "title": "Removal fell short, but the editor still added caution from nothing",
+     "summary": "Only 4 of 9 scenarios reached exactly zero cautious sentences, because removing caveats made other sentences read as cautious. On those four, the editor added caution nobody had raised in 4 of 12 runs (33%). Its answers were shorter, so the rate is read with length in mind. The claim returned to the list of current claims."
+    }
+   }
+  },
+  "39": {
+   "title": "Does a different kind of editor model also keep planted errors out?",
+   "description": "We repeated Cell 35 with Phi-4, a model built differently from gpt-oss-20B, as the editor. Again no planted error reached a final answer (0 of 27). But Phi-4 more often left the checked figure out entirely.",
+   "outcome": "failed",
+   "size": "54 new runs, compared with Cell 35's 54",
+   "why": "Cell 35 used a single editor model, gpt-oss-20B. It is a mixture-of-experts model: a learned router sends each token to a few of many internal sub-networks, so only about 3.6 billion of its roughly 21 billion parameters are active for any one token. Every other model in the project is dense, meaning it uses all of its parameters for every token. So the filtering in Cell 35 might belong to this editor's design rather than to the council. We repeated Cell 35 exactly, changing only the editor to Phi-4, a dense 14B model. The two models also differ in family, training data and size, so a difference could only suggest a design cause, never prove it.",
+   "expectations": [
+    {
+     "id": "P39.1",
+     "text": "With Phi-4 as the editor, planted errors would get through more often than with gpt-oss-20B, which let none through, by a clear margin.",
+     "outcome": "failed",
+     "note": "Phi-4 let none through either: 0 of 27 by exact text match, and 0 of the 11 runs both judges could score."
+    },
+    {
+     "id": "P39.2",
+     "text": "On clean drafts, the judges would not wrongly report the planted claim in Phi-4's answers more often than for gpt-oss-20B, which was 0 of 15.",
+     "outcome": "held",
+     "note": "The judges reported it in 0 of 13 clean Phi-4 answers, so they were not finding claims that were not there."
+    },
+    {
+     "id": "P39.3",
+     "text": "We would report answer length and, on the five arithmetic items, how often answers gave the correct figure, the wrong figure, or neither. No pass/fail test.",
+     "outcome": "not-graded",
+     "note": "gpt-oss-20B gave the correct figure 10 times and neither 5 times, Phi-4 the correct figure 6 times and neither 9 times. Neither model ever gave the wrong figure."
+    }
+   ],
+   "found": "All 54 new runs completed. The nine planted errors, five wrong figures and four reversed rules, reached the final answer 0 times out of 27 with Phi-4 as the editor, by exact text match. gpt-oss-20B had also scored 0 of 27. The two judges could both score 11 Phi-4 runs and found no error in any. On clean drafts they reported nothing (0 of 13).\n\nThe two editors did not behave the same way, though. On the five arithmetic items, gpt-oss-20B gave the correct figure in 10 runs and neither figure in 5. Phi-4 gave the correct figure in 6 runs and neither in 9. Phi-4's answers were about half as long (4,264 against 8,227 characters) and left the figure out nearly twice as often. Neither editor ever repeated a wrong figure, but Phi-4 more often said nothing about it. A count of zero errors cannot tell filtering apart from silence.",
+   "means": "The filtering is not a quirk of gpt-oss-20B. A model that differs in design, family, training data and size behaved the same way, which points to something about the task rather than one model. \"Planted errors do not reach the final answer\" now rested on two editor models instead of one. Whether the editor corrects errors or simply discards them was still open, and Cell 37 was set up to tell the two apart. No change to the system was adopted.",
+   "later": "Cell 37 narrowed this. The editor keeps an error out only when another specialist gives the correct figure, so Cells 35 and 39 measured the benefit of a backup source, not resistance to errors. A review of earlier results on 2026-08-11 rated this cell weak, because Phi-4 stated the checked figure in only 6 of 15 runs and only 11 runs could be judged.",
+   "entries": {
+    "5292": {
+     "label": "Plan",
+     "title": "Repeat Cell 35 with a dense editor model, Phi-4",
+     "summary": "gpt-oss-20B, the only editor in Cell 35, is a mixture-of-experts model, while every other model we use is dense. We planned an exact repeat of Cell 35 with Phi-4 as the editor, 27 runs with planted errors and 27 clean, compared with Cell 35's saved runs. Since the models also differ in training and size, any difference could only suggest a design cause."
+    },
+    "5400": {
+     "label": "Result",
+     "title": "Both editor models keep planted errors out",
+     "summary": "Phi-4 let no planted error through: 0 of 27 by exact match, the same as gpt-oss-20B. The judges reported nothing on clean drafts. But Phi-4 wrote answers about half as long and left the checked figure out more often, so a zero count alone cannot separate filtering from silence."
+    }
+   }
+  },
+  "40": {
+   "title": "Can a specialist tell the editor which figure to use?",
+   "description": "Two specialists gave conflicting figures, and one told the editor to use the other's. All 81 runs completed, but the editor used either figure so rarely that no comparison was possible. Our planted numbers had contradicted the scenario's own.",
+   "outcome": "unclear",
+   "size": "81 runs: 3 versions of 27",
+   "why": "Every instruction the editor had received in 39 cells came from us, the designers, and five earlier tests had found it unmoved by general instructions. The specialists were only ever asked to answer questions, never to tell the editor anything. But one earlier study found that an instruction reliably produces the specific wording it names, going from 0 of 30 runs to 28 of 30. A note from a specialist would be specific, naming one claim, and would come from the model that wrote the content, only when needed. So we asked whether a specialist, rather than the designer, could tell the editor how to use its content.",
+   "expectations": [
+    {
+     "id": "P40.1",
+     "text": "When one specialist said its figure was weaker and the other's should be used, the editor would shift toward the named figure, by a clear margin compared with no note.",
+     "outcome": "unclear",
+     "note": "Too close to call. The editor used either figure in only 3, 6 and 2 of 27 runs across the three versions, short of the 6 per version we required."
+    },
+    {
+     "id": "P40.2",
+     "text": "The two mirror-image notes would move the editor in opposite directions, showing that the note did the work and not its position in the input.",
+     "outcome": "unclear",
+     "note": "Too close to call for the same reason. With so few runs using either figure, no comparison could be computed."
+    },
+    {
+     "id": "P40.3",
+     "text": "In a second experiment, a specialist's note asking the editor to carry a caveat into the answer would make that caveat appear more often.",
+     "outcome": "not-tested",
+     "note": "It was to run only after the main experiment. The notebook reports no result for it, and all 81 runs belonged to the main experiment."
+    },
+    {
+     "id": "P40.4",
+     "text": "We would report answer length and how often neither figure appeared, since dropping the topic is not following the note. No pass/fail test.",
+     "outcome": "not-graded",
+     "note": "Neither figure appeared in 24, 21 and 25 of the 27 runs in the three versions."
+    }
+   ],
+   "found": "All 81 runs completed, 27 in each version: no note, a note from the first specialist deferring to the second, and the mirror-image note from the second specialist. The editor rarely used either conflicting figure. It stated one of them in 3, 6 and 2 runs across the three versions, and neither in 24, 21 and 25. It never stated both. We had required at least 6 such runs in each version being compared, and the no-note version had 3, so no comparison could be computed. One version's 5-to-1 split between the figures rested on only 6 runs. Neither expectation was shown wrong, and nothing here shows that a specialist cannot instruct the editor.\n\nThe low rate held across all nine items, so the design was at fault, not one bad item. Item 0 showed why. Our planted inputs described a $66,000 asset with $6,000 salvage value, but the scenario itself described a $60,000 asset with $10,000 salvage. In all 9 Cell 40 runs of that item, and all 12 Cell 37 runs, the editor used the scenario's numbers and never the planted ones. Items 6 and 7 had the same kind of contradiction. The question itself was a third source, and it outweighed the specialists.",
+   "means": "The test was built wrongly, so the question stayed open. We recorded a general lesson: planted numbers that contradict the scenario do not change what a source says, they add a competing source. Our rule of using unfamiliar numbers, meant to stop the editor relying on memory, forced that contradiction, and a fix for a number-matching clash in Cell 37 created it on item 0. The lesson also limited Cell 37, whose second expectation was downgraded. A valid repeat must take its inputs from the scenario and must first check that the editor states the figure at all.",
+   "later": "The project's list of current claims still marks the question as open, with any repeat blocked until the planted inputs come from the scenario and a check shows the editor states the figure at all. Cell 47 applied both lessons in its own design. The result also prompted a review of earlier results (2026-08-11) and a standing rule to check, before any cell runs, how often its outcome can occur.",
+   "entries": {
+    "5529": {
+     "label": "Plan",
+     "title": "Let one specialist tell the editor to use the other's figure",
+     "summary": "Two specialists would state conflicting figures for the same quantity, on the nine items from Cell 37. In one version the first specialist would say its figure was weaker and the second's should be used, in another the mirror image, and in a third there would be no note. Scoring would look for the exact numbers. A second experiment on carrying caveats would follow if this one completed."
+    },
+    "5664": {
+     "label": "Result",
+     "title": "Too few usable runs, because the planted numbers clashed with the scenario",
+     "summary": "All 81 runs completed, but the editor stated either figure in only 3, 6 and 2 runs per version, so no comparison was possible. The planted numbers contradicted the scenario's own, and the editor used the scenario's. We recorded this as a general lesson, downgraded one of Cell 37's expectations, and set two conditions for any repeat."
+    }
+   }
+  }
+ },
+ "studies": {}
+}

@@ -1,0 +1,333 @@
+{
+ "batch": "D",
+ "cells": {
+  "17": {
+   "title": "Does telling the editor not to add caveats stop it adding them?",
+   "description": "We added one line to the editor's instructions telling it not to add caveats that no specialist raised. It did not reliably add fewer, and it went on keeping the caveats the specialists handed it.",
+   "outcome": "failed",
+   "size": "45 runs, none failed",
+   "why": "Earlier work showed two sides to how the editor handles caution. It keeps some of the caveats the specialists raise, and it adds some that nobody raised. The added ones cause the problems, and they grow as the specialists' input thins. Across 358 earlier runs with four editor models, the editor added 0.53 kinds of caveat per answer on average when the specialists raised none, and none when the specialists raised the most. Its instructions said which caveats to keep but never said what not to add. We asked whether stating that missing half would fix the problem. A useful fix had to cut the added caveats without making the editor say less overall.",
+   "expectations": [
+    {
+     "id": "P17.1",
+     "text": "The new line would cut the caveats the editor adds on its own, most of all in runs where the specialists raised few.",
+     "outcome": "failed",
+     "note": "Added caveats did not fall reliably: 0.10 to 0.11 per answer on caveat-heavy scenarios, and 0.53 to 0.40 on no-caveat scenarios, a drop too close to call."
+    },
+    {
+     "id": "P17.2",
+     "text": "The line would be a targeted fix, not a way of making the editor say less, so the specialist caveats it kept would not drop much.",
+     "outcome": "held",
+     "note": "Kept caveats held (1.83 to 1.77 on caveat-heavy scenarios, 0.27 to 0.53 on the others). This only mattered if the first expectation had held, and it did not."
+    },
+    {
+     "id": "P17.3",
+     "text": "Measured without a pass/fail test: the share of the answer's caveats that trace back to a specialist, and whether the answer would better reflect that specialists raise 2.6 times as many caveats where they are called for.",
+     "outcome": "not-graded",
+     "note": "The traced share barely moved on caveat-heavy scenarios (95% to 94%) and rose from 33% to 57% on the others, which came with more specialist caveats, not the line. The 2.6-to-1 comparison was not reported."
+    }
+   ],
+   "found": "All 45 runs completed, with gpt-oss-20B as the editor. The new line did not reliably cut added caveats. On scenarios built to call for caveats, the editor added almost none either way: 0.10 kinds per answer with the standard instructions and 0.11 with the new line. On scenarios that call for no caveats, where most of the adding happens, the figure fell from 0.53 to 0.40. That drop was too close to call with 15 runs per version. The plausible ranges overlapped heavily, 0.27 to 0.80 against 0.13 to 0.73.\n\nThe editor did not simply go quiet. The caveats it kept from the specialists held steady on the caveat-heavy scenarios, 1.83 kinds before and 1.77 after. On the no-caveat scenarios, kept caveats rose from 0.27 to 0.53, and the share of the answer's caveats that traced back to a specialist rose from 33% to 57%. But the specialists also happened to raise more caveats in those runs, 0.53 against 0.40, because each version drew its own specialist replies. With more to keep, the editor kept more. We did not credit the new line with that gain.",
+   "means": "Telling the editor plainly not to add caveats that nobody raised did not stop it. So the adding is not simply a gap in the instructions. Together with the earlier finding that it adds more when the specialists give it less, the editor looks as if it tops up caution to a minimum level, whatever it is told. The behavior paper's planned section on a tested fix became a report of a fix that failed. Adding caution on its own joined the list of behaviors our instructions did not change, although instructions had changed everything else we measured.",
+   "later": "Cell 24 re-checked this result using only the kind of caveat our keyword counter measured well, saying a number is an estimate, and found the same lack of effect. Cell 29's review of all tests noted that 15 runs per version could not detect a moderate effect, so this no-effect result is weak evidence. The project later stopped using the keyword counter as a measuring tool and treats its earlier figures as provisional.",
+   "entries": {
+    "2495": {
+     "label": "Plan",
+     "title": "Add a line telling the editor not to add caveats nobody raised",
+     "summary": "We would add one line to the standard instructions: do not introduce caveats, assumptions or place-specific distinctions no specialist raised, and state things plainly where no specialist flagged uncertainty. gpt-oss-20B would run 9 scenarios 5 times each, compared with earlier runs under the standard instructions. The key test was whether it added fewer caveats without keeping fewer."
+    },
+    "2539": {
+     "label": "Result",
+     "title": "The line did not cut added caveats",
+     "summary": "All 45 runs completed. Added caveats did not fall reliably on either type of scenario. Kept caveats held, so the line did not simply make the editor quieter, but that only mattered if added caveats had fallen. A rise in traced caveats on no-caveat scenarios came with more specialist input, so we did not credit it to the line."
+    }
+   }
+  },
+  "18": {
+   "title": "Can training the editor to stick to its sources stop added caveats?",
+   "description": "We trained the Qwen2.5-7B editor to prefer answers whose caveats came from the specialists. It learned the preference but did not add fewer caveats of its own. The first test ran on the wrong scenarios and had to be redone.",
+   "outcome": "failed",
+   "size": "35 runs on the wrong scenarios, then 30 corrected runs",
+   "why": "This was our fourth attempt to change the editor through training. Earlier rewards, in Cells 6b and 11, scored how much caution the editor produced, or whether it produced caution where it was called for. Neither changed its behavior. This reward was different in kind. It scored whether the answer's caveats came from the specialists: score = kept/max(raised,1) − 0.5 × invented/4. Here raised is how many kinds of caveat the specialists raised, kept is how many of those the answer kept, and invented is how many kinds it added on its own, out of four kinds counted. Preference training can only favor behavior a model already shows sometimes. In 648 saved answers from the untrained model, the best answer to a prompt, on average, kept more caveats and added fewer than the worst, and the gap was big enough to use for 88 of 108 prompts. We still expected no effect.",
+   "expectations": [
+    {
+     "id": "P18.1",
+     "text": "After training, the editor would add fewer caveats of its own than the untrained editor, with no overlap between the plausible ranges.",
+     "outcome": "failed",
+     "note": "On the corrected test it added more, not fewer, 0.27 against 0.07 kinds per answer, though the ranges overlapped. The first test could not check this, since the untrained editor added none there."
+    },
+    {
+     "id": "P18.2",
+     "text": "Training would not simply make the editor say less, so the specialist caveats it kept would not drop much.",
+     "outcome": "held",
+     "note": "Kept caveats barely moved, 0.67 to 0.60 on the corrected test and 1.77 to 1.73 on the first. This mattered little, because added caveats had not fallen."
+    },
+    {
+     "id": "P18.3",
+     "text": "Measured without a pass/fail test: whether more of the answer's caveats would trace back to a specialist, and whether the answer would better reflect that specialists raise 2.6 times as many caveats where they are called for.",
+     "outcome": "not-graded",
+     "note": "The traced share fell rather than rose, from 91% to 69% on the corrected test. The 2.6-to-1 comparison was not reported."
+    }
+   ],
+   "found": "We built 71 training pairs, each pairing a prompt's best-scoring saved answer with its worst. The plan called for 88 to match Cell 6b, but a length filter left fewer. We trained with ORPO, a preference-training method, and LoRA, a light form of fine-tuning, using Cell 6b's exact settings.\n\nThe first test was a mistake. It used the original scenarios, where the untrained editor already added no caveats of its own, so there was nothing to fix. It did show that training did no harm there: kept caveats went from 1.77 to 1.73. We re-ran on three on-topic scenarios that call for no caveats, where the adding happens, with 15 runs each for the trained and untrained editor.\n\nThe trained editor did not add fewer caveats. It added 0.27 kinds per answer against 0.07 for the untrained one, and the share of its caveats that traced back to a specialist fell from 91% to 69%. The ranges overlapped, so we do not claim training made it worse, only that it did not help. It kept about as many specialist caveats, 0.60 against 0.67. In training it had learned to rank the pairs well (a validation loss of 0.069), yet it did not act more faithfully in its answers.",
+   "means": "Training the editor has now failed under three kinds of reward, with the same model, training method and settings. The rewards scored how much caution it produces (Cell 6b, 88 pairs), whether caution appears where called for (Cell 11, 49 pairs) and whether caution comes from the specialists (this cell, 71 pairs). That is a stronger statement than three failures with one kind of reward. As in Cell 11, the model learned which answer to prefer but did not act on it. The test was small, 15 runs per version, and a larger effort could differ. It does show that the kind of reward was not what held training back.",
+   "later": "A program-wide audit the next day rated this result sound. The project's current list of claims still includes it: preference training under three kinds of reward did not change the behavior. The exact figures come from the keyword counter, which the project later stopped using as a measuring tool, so they are treated as provisional.",
+   "entries": {
+    "2586": {
+     "label": "Plan",
+     "title": "Train the editor to prefer answers whose caveats came from specialists",
+     "summary": "No new answers would be generated. We would score 648 saved answers from the untrained Qwen2.5-7B editor on whether their caveats came from specialists, pair each prompt's best answer with its worst, and train with Cell 6b's exact recipe. The trained editor would face 35 test runs, compared with the untrained editor and Cell 11's trained version."
+    },
+    "2650": {
+     "label": "Change to the plan",
+     "title": "71 training pairs instead of 88",
+     "summary": "The plan capped training at 88 pairs to match Cell 6b. A carried-over length filter left 71, about 81% of Cell 6b's amount, so the training attempts were comparable but not exactly matched. The pairs differed as intended: chosen answers kept 2.18 kinds of caveat and added 0.03, rejected ones kept 0.78 and added 0.33."
+    },
+    "2660": {
+     "label": "Mistake caught",
+     "title": "Tested on scenarios where there was nothing to fix",
+     "summary": "Training went smoothly and all 35 test runs completed, but the untrained editor added no caveats of its own on these scenarios. The test script was copied from Cell 11 and used the original scenarios, whose one no-caveat question is off-topic and never reaches a specialist. Our design notes, written two hours earlier, warned against this. We set up 30 corrective runs with the expectations unchanged."
+    },
+    "2701": {
+     "label": "Result",
+     "title": "Corrected test: training did not cut added caveats",
+     "summary": "On three on-topic no-caveat scenarios, 15 runs each, the trained editor added 0.27 kinds of caveat per answer against 0.07 for the untrained one, with overlapping ranges. Training did not help, though the model had learned to rank the training pairs well. Training the editor has now failed under three kinds of reward."
+    }
+   }
+  },
+  "19": {
+   "title": "Can an automatic check-and-revise step stop added caveats?",
+   "description": "An automatic checker sent the editor's draft back whenever it found caveats nobody had raised. Our keyword counter said most were removed. Reading the rewrites showed a mix: some content survived in new wording, and one flag was a false alarm.",
+   "outcome": "failed",
+   "size": "45 runs, none failed",
+   "why": "Two remedies for the caveats the editor adds on its own had failed: a standing instruction not to add them (Cell 17) and training under three kinds of reward (Cells 6b, 11 and 18). This cell tried a third kind of fix, applied during the run. A checker reads the editor's draft, names the exact caveats and phrases it finds that no specialist raised, and asks the editor to remove them or tie them to a source. Only the editor's step re-runs, at most twice, and anything left is flagged in the answer. Cell 17's instruction was general and given in advance. Our idea was that feedback that is specific and comes after the draft might work where that did not.",
+   "expectations": [
+    {
+     "id": "P19.1",
+     "text": "On the no-caveat scenarios, the checker would cut the caveats the editor adds on its own below the earlier 0.53 kinds per answer, with no overlap in the plausible ranges.",
+     "outcome": "failed",
+     "note": "By the keyword counter they fell from 0.20 to 0.07, too close to call with 15 runs. The runs started low because the specialists happened to raise more, leaving less to remove."
+    },
+    {
+     "id": "P19.2",
+     "text": "The checker would not remove caveats that came from the specialists, on either type of scenario.",
+     "outcome": "held",
+     "note": "Kept caveats did not change at all: 1.73 before and after on caveat-heavy scenarios, 0.53 before and after on no-caveat ones."
+    },
+    {
+     "id": "P19.3",
+     "text": "Reported without a prediction: the cost, meaning how often the checker stepped in, how many retries it needed and how much time it added.",
+     "outcome": "not-graded",
+     "note": "It stepped in on 8 of 45 runs, averaged 0.22 retries per run and added about 7% to run time, 28 seconds on top of 381."
+    },
+    {
+     "id": "P19.4",
+     "text": "Measured without a pass/fail test: how often caveats would remain after two retries, so that flagging them in the answer was the last step.",
+     "outcome": "not-graded",
+     "note": "This happened in 1 of 45 runs."
+    },
+    {
+     "id": "P19.5",
+     "text": "Added before any results were seen: re-scoring revised answers with an NLI model would show whether the checker removed caveats or only the phrases the keyword counter looks for.",
+     "outcome": "unclear",
+     "note": "The NLI model found none of the flagged caveats even before revision, so it could not settle this. Reading the rewrites showed a mix of reworded content and a keyword false alarm."
+    }
+   ],
+   "found": "All 45 runs completed, with gpt-oss-20B as the editor. The checker stepped in on 8 runs. It was cheap: 0.22 retries per run on average and about 7% more time. Only 1 run ended with leftover caveats flagged in the answer. The caveats kept from the specialists did not change at all.\n\nOur keyword counter spots caveats by their wording. By its count, added caveats fell from 0.17 kinds per answer to zero on scenarios built to call for caveats, a clear difference. On the no-caveat scenarios, the main test, they fell from 0.20 to 0.07, too close to call with 15 runs. These runs started below the earlier 0.53 because the specialists happened to raise more.\n\nThe checker quoted the phrases it found, so the editor could reword a caveat and keep it. Before seeing results, we had added a re-score of the revised answers with an NLI model (a natural-language-inference model). On the 8 revised answers, the counter said 88% of flagged caveats were gone. The NLI model showed none removed, and we first read this as proof of rewording. An audit then found the NLI model had detected none of the flagged caveats even before revision, so it proved nothing. Reading the rewrites showed a mix. Some content survived in new words, such as \"a modeled assumption\" becoming \"assumed by the Finance contribution\". One flag was a false alarm on an action item to verify a percentage.",
+   "means": "The clean win the keyword counter showed did not hold up on reading. Part of it was rewording and part was the counter's own false alarms being removed. A checker that quotes the phrases it flags teaches the model to avoid those phrases. We adopted a design rule: the tool that writes the feedback must never be the tool that grades whether it was followed. Of the options we listed, the only one we had evidence for was to flag leftover caveats in the answer and never ask for a rewrite. With the instruction and training attempts, this left detecting and disclosing problems, not correcting them, as our recommendation.",
+   "later": "Cell 23 found the NLI model could not detect these kinds of caveat at any setting, so a planned re-score was dropped. The finding rests on reading the rewrites and stands in that form in the project's list of claims. Cell 29 noted that 15 runs per version could not detect a moderate drop. Cell 56 cited this result as the reason a detector for made-up citations must never feed back to the model.",
+   "entries": {
+    "2772": {
+     "label": "Plan",
+     "title": "A checker that sends drafts back to the editor for revision",
+     "summary": "A checker would read each draft, name the caveats it found that no specialist raised, and send it back to the editor, gpt-oss-20B, up to twice. Anything left would be flagged in the answer. We would run 9 scenarios 5 times each: 3 no-caveat scenarios where added caveats were common, and 6 caveat-heavy ones to check for side effects."
+    },
+    "2816": {
+     "label": "Change to the plan",
+     "title": "A second scoring method to catch rewording",
+     "summary": "A team member pointed out a flaw. The checker quoted the phrases the keyword counter found and then re-checked with the same counter, so a caveat kept in new words would pass. Before seeing any results, we added a re-score of revised answers with an NLI model. A drop in added caveats would count only if both tools showed it."
+    },
+    "2852": {
+     "label": "Result",
+     "title": "Keyword counter showed success, the NLI model showed none",
+     "summary": "All 45 runs completed and the checker was cheap. The main test on no-caveat scenarios was too close to call. On the 8 revised runs, the keyword counter said 88% of flagged caveats were removed and the NLI model said none were. We concluded the checker had taught the editor to reword, a reading corrected the same day."
+    },
+    "3337": {
+     "label": "Correction",
+     "title": "The NLI model had seen nothing, so the rewording claim was corrected",
+     "summary": "A program-wide audit re-scored the 8 revised runs. The NLI model had detected none of the flagged caveats before or after revision, so it confirmed nothing. Reading the rewrites showed some content kept in new words and one keyword false alarm. The design rule stood and the two-tool claim was withdrawn. An example rewrite in the behavior paper that occurred in no run was replaced with real quotes, and a re-score waited on Cell 23."
+    }
+   }
+  },
+  "20": {
+   "title": "Can an instruction make the editor decide and name its sources?",
+   "description": "We told the editor to end with a clear recommendation, credit specialists by name and explain any overruling. Answers took on the look of a decision and citations doubled, but AI judges found a firm decision in only 3 of 10.",
+   "outcome": "failed",
+   "size": "45 runs, none failed, 20 answers judged",
+   "why": "The council is meant to work like a chief executive who weighs expert advice and then decides. Earlier runs showed the editor listing disagreements between specialists and dealing with them in the text. But only 13% of answers made an explicit recommendation, and only 23% named a specialist in the body. The editor's instructions asked it to acknowledge and keep what the specialists said, never to decide or to credit anyone. Instructions had reliably changed the editor's writing before, so we tried one more. We also took a new view of added judgment: it is fine when labeled as the editor's own, and a caveat openly overruled with a reason is better than one silently dropped.",
+   "expectations": [
+    {
+     "id": "P20.1",
+     "text": "A majority of answers, up from 13%, would end with an explicit recommendation, confirmed by AI judges.",
+     "outcome": "failed",
+     "note": "The keyword counter rose from 16% to 47%, but after a corrected re-run the judges agreed on a firm decision in only 3 of 10 answers, against 0 of 10 before."
+    },
+    {
+     "id": "P20.2",
+     "text": "Citations of specialists would rise to at least 1.5 per answer, and cited figures would stay at least as accurate as before, 57%.",
+     "outcome": "failed",
+     "note": "Citations doubled to 2.3 per answer, but figure accuracy dipped to 47%. The ranges overlapped heavily, so it missed the bar as written without a clear collapse."
+    },
+    {
+     "id": "P20.3",
+     "text": "Measured without a pass/fail test: how often caveats missing from the answer were openly overruled with a reason instead of silently dropped.",
+     "outcome": "not-graded",
+     "note": "No answer contained language overruling a specialist, 0 of 45, by a first keyword search that had not been tuned."
+    },
+    {
+     "id": "P20.4",
+     "text": "Measured without a pass/fail test: whether judgment labeled as the editor's own would replace some of the caveats it adds without a source.",
+     "outcome": "not-graded",
+     "note": "It did not. Added caveats went from 0.10 to 0.07 per answer on caveat-heavy scenarios and stayed at 0.53 on no-caveat ones, the same as earlier runs."
+    }
+   ],
+   "found": "All 45 runs completed, with gpt-oss-20B as the editor. By our keyword counter, answers with a recommendation rose from 16% to 47%, a clear difference, and citations of specialists doubled from 1.1 to 2.3 per answer. Two AI judges then checked 10 answers from each version for a firm decision. In the first pass, the stricter judge, gpt-oss-20B, found a firm decision in none of the 10 answers with the instruction, while a Qwen judge found 3. Reading the endings showed fragments such as \"Adopt X with cap Y\" inside conditional plans.\n\nThat first pass was flawed. gpt-oss-20B is a reasoning model. With a short length allowance it used it all up thinking and returned nothing, and our scripts scored empty replies as a no. With a larger allowance, the judges agreed on a firm decision in 3 of 10 answers with the instruction and 0 of 10 without. That is still far below the majority we expected. The keyword counter and the judges disagreed because a decision comes in degrees, from decision-shaped text to a real commitment.\n\nWhen a citation gave a figure, it matched the named specialist's text 47% of the time, against 57% before, but the ranges overlapped heavily. No answer openly overruled a specialist, 0 of 45. Added caveats did not change.",
+   "means": "The instruction changed the form of the answers more than what the editor was willing to commit to. It produced decision-shaped text and more citations, occasional firm decisions and no open overruling. With Cell 17, this made two behaviors that resisted instructions, and both concern what the model is willing to assert. Our summary became: instructions control what text appears, not what the model commits to. Because the decision expectation failed, Cell 22, which depended on it, never ran. Cell 21 went ahead with the existing answer format.",
+   "later": "Cell 24 re-checked added caveats using only the best-measured kind of caveat and still found no change. Cell 26 extended the finding: the editor also gave no extra weight to points that several specialists agreed on.",
+   "entries": {
+    "2911": {
+     "label": "Plan",
+     "title": "An instruction to decide, credit specialists and explain overrulings",
+     "summary": "We would add an instruction telling the editor to end with an explicit recommendation, credit supporting and opposing points to specialists by name, and give a reason whenever it overrules one. gpt-oss-20B would run 9 scenarios 5 times each. We fixed rules in advance: citation counts and accuracy always reported together, and no feedback to the editor during runs."
+    },
+    "3089": {
+     "label": "Result",
+     "title": "Decision-shaped text, but few firm decisions",
+     "summary": "All 45 runs completed. Recommendation-shaped text rose from 16% to 47% and citations doubled, but in the first judging pass the stricter AI judge found a firm decision in 0 of 10 answers and the other in 3 of 10. No answer openly overruled a specialist. Because the decision expectation failed, Cell 22 was declared void."
+    },
+    "3203": {
+     "label": "Correction",
+     "title": "Judges re-run after empty replies had been scored as no",
+     "summary": "The stricter judge, a reasoning model, had often returned empty replies that our scripts scored as no. With a larger length allowance it answered every time. The judges then agreed on a firm decision in 3 of 10 answers with the instruction and 0 of 10 without. The expectation still failed: the form changed, and commitment lagged behind."
+    }
+   }
+  },
+  "21": {
+   "title": "Is our automatic caveat report accurate enough to attach?",
+   "description": "We tested an automatic report meant to list caveats an answer dropped and flag those the editor added. After a first judging pass was thrown out, its restored caveats were right only 67% of the time, short of our 80% bar.",
+   "outcome": "failed",
+   "size": "No new council runs, 49 caveat and 10 citation pairs",
+   "why": "After Cell 19, our recommendation was to detect and disclose the editor's caveat problems rather than try to correct them. The next version of our checking toolkit, the harness, produced a report for each answer, which we called the manifest. Built only from quotations, it restores caveats the editor dropped, quoting the specialist who raised them, flags caveats the editor added on its own, and marks each citation of a specialist as checked or not. Before attaching it to answers, we wanted to know whether it was accurate. AI judges would score its items on a sample of saved runs.",
+   "expectations": [
+    {
+     "id": "P21.1",
+     "text": "At least 80% of the caveats the report restored would be ones the answer had really dropped, as judged by AI judges.",
+     "outcome": "failed",
+     "note": "Where both judges agreed, they backed the report in 18 of 27 pairs, 67%, below the bar. Judges split on 45% of pairs, and the test design may have understated accuracy."
+    },
+    {
+     "id": "P21.2",
+     "text": "At least 80% of the caveats the report flagged as added by the editor would really have no source among the specialists.",
+     "outcome": "not-graded",
+     "note": "Only 5 items were flagged, too few to test. The voided first pass gave a nominal 3 out of 3, which we never counted as a result."
+    },
+    {
+     "id": "P21.3",
+     "text": "Measured without a pass/fail test: how many dropped caveats the report missed, and whether its checked and unchecked marks on citations matched the judges.",
+     "outcome": "not-graded",
+     "note": "Citation marks told us nothing: judges split on 7 of 10 pairs and backed the report on 1 of the other 3. Missed caveats were not reported."
+    }
+   ],
+   "found": "The first judging pass had to be thrown out. On 55 restored items, one judge said no to every item and the other said yes to every item. The cause was ours. The plan called for the side-by-side method that had worked before, but the scripts asked for plain yes-or-no answers to a two-part question. Then we found a second fault. The stricter judge, a reasoning model, often used up its length allowance and returned nothing, and the scripts had counted each empty reply as no. We fixed both before judging again.\n\nIn the corrected pass, each judge saw the report's restored sentence next to another specialist sentence whose kind of caveat was already in the answer, and picked the one that was missing. The judges agreed on 27 of 49 pairs, and in 18 of those they picked the report's sentence. That is 67%, below the 80% we required. They split on 45% of pairs, and some pairs may have had two missing sentences, so 67% may understate accuracy. Citation marks told us little: the judges agreed on only 3 of 10 pairs. Only 5 added caveats were flagged, too few to test.",
+   "means": "The report could not be attached to answers as it stood. Restoring dropped caveats by kind could not be shown to be right 80% of the time with the tools we had. What did hold up in the toolkit was the routing check, the overall caveat statistics and exact checking of cited figures. We treated the toolkit as a measuring and auditing layer. A report for readers would need to work claim by claim rather than by kind of caveat. We also adopted a rule: an empty reply from a judge is never scored as an answer, only excluded and counted.",
+   "later": "The empty-reply fault is on the project's standing list of measurement problems. Later judging, starting with Cell 23, used large length allowances and excluded empty replies. A program-wide audit rated this result sound.",
+   "entries": {
+    "2993": {
+     "label": "Plan",
+     "title": "Test whether the automatic caveat report is accurate",
+     "summary": "The report, built from quotations only, restores dropped caveats with their source, flags caveats the editor added, and marks citations as checked or not. Two AI judges, shown items in both orders, would score each item on a sample of saved runs. We set a bar of 80% correct for restored caveats and for flagged ones."
+    },
+    "3150": {
+     "label": "Mistake caught",
+     "title": "First judging pass thrown out, and empty replies scored as no",
+     "summary": "The first pass used plain yes-or-no labels instead of the planned side-by-side method, and the judges split completely: one said no to all 55 restored items, the other yes to all. We then found the stricter judge, a reasoning model, often returned nothing when its length allowance was short, and our scripts counted that as no. This also put Cell 20's judge scores in doubt. We fixed both faults."
+    },
+    "3222": {
+     "label": "Result",
+     "title": "Restored caveats right only 67% of the time, so no report attached",
+     "summary": "With the corrected side-by-side method, the judges agreed on 27 of 49 restored pairs and backed the report in 18, 67%, below the 80% bar. Citation marks were uninformative and flagged items too few to test. The report cannot be attached as it stands. The toolkit's routing check, overall statistics and figure checking still held up."
+    }
+   }
+  },
+  "22": {
+   "title": "Would the decision instruction work when replayed on saved runs?",
+   "description": "We planned to re-run only the editor's step on 195 saved runs with Cell 20's decision instruction, comparing each new answer with its original. The plan depended on Cell 20 succeeding. It did not, so this never ran.",
+   "outcome": "not-run",
+   "size": "Never run",
+   "why": "Saved runs kept the exact input the editor had received, including the specialists' replies. So we could replay just the editor's step with a different instruction and hold everything else fixed. Differences in what the specialists happened to say had been our largest source of noise, and pairing each new answer with its original removes that, though not the randomness in the editor's own writing. We wanted to know whether Cell 20's decision instruction worked for three editor models, Phi-4, gpt-oss-20B and Qwen2.5-7B. We also wanted to revisit an earlier result: when we tuned specialists to raise more caveats, the final answers carried fewer. Perhaps the editor trimmed them because it had no approved way to disagree.",
+   "expectations": [
+    {
+     "id": "P22.1",
+     "text": "Replayed with the instruction, each of the three editor models would make an explicit decision more often than in its original answer.",
+     "outcome": "not-tested",
+     "note": "Never tested, because Cell 20's decision expectation failed and this cell depended on it."
+    },
+    {
+     "id": "P22.2",
+     "text": "Where specialists had been tuned, caveats the editor dropped would more often be openly overruled with a reason than silently dropped.",
+     "outcome": "not-tested",
+     "note": "Never tested. The cell did not run."
+    },
+    {
+     "id": "P22.3",
+     "text": "Measured without a pass/fail test: whether decisions would hold up as scenarios piled more demands on the editor at once, over four levels.",
+     "outcome": "not-tested",
+     "note": "Never tested. The cell did not run."
+    },
+    {
+     "id": "P22.4",
+     "text": "For each editor model, citation counts and citation accuracy would be reported together, and more citations with collapsing accuracy would count as a failure.",
+     "outcome": "not-tested",
+     "note": "Never tested. The cell did not run."
+    }
+   ],
+   "found": "This cell never ran. We wrote down in advance that it would run only if Cell 20's main expectation held, meaning the decision instruction produced firm decisions in most fresh answers. It did not. AI judges found a firm decision in only 3 of 10 answers, even after a corrected re-run. With nothing to generalize, we declared the cell void and made no replays.\n\nWhile designing it, we found that every saved editor step recorded Phi-4 as the model, whichever model had actually written it. The plan would have taken the true model from another saved field and excluded runs where it was unclear.",
+   "means": "The plan stands as a record of what we would have tested. Neither question was tested here: whether the instruction works across editor models, or whether the earlier trimming came from the prompt rather than the editor.",
+   "later": null,
+   "entries": {
+    "3025": {
+     "label": "Plan",
+     "title": "Replay the editor's step with the decision instruction on saved runs",
+     "summary": "We would re-run only the editor's step on 195 saved runs, swapping in Cell 20's decision instruction and keeping the specialists' replies fixed, then compare each new answer with its original. The cell would run only if Cell 20's decision expectation held. It did not, so no replays were made."
+    }
+   }
+  }
+ },
+ "studies": {
+  "harness-built": {
+   "title": "Building our checking toolkit, which caught a run-grouping mistake",
+   "description": "We built the harness, our toolkit for scoring and checking runs, and tested it on saved results. It matched known figures exactly and exposed an error: an earlier table had pooled runs from three experiments that shared one label.",
+   "outcome": "measured",
+   "size": "No new runs, tested on saved results",
+   "why": "We had written a design for the harness, a software toolkit for scoring and checking runs. This entry records building it, following version 0.2 of that design. It held the keyword counter used to spot caveats, identical character for character to the one used before. It also held a scorer that traces each caveat in the final answer back to a specialist and refuses to score answers too short to measure. A routing check sets aside any run that never reached the specialists it was meant to. The last part was the check-and-revise step tested next in Cell 19. Before relying on the toolkit, we tested it against results we already knew.",
+   "expectations": [],
+   "found": "The toolkit reproduced known results exactly. We ran it on the 15 earlier council runs that used on-topic scenarios calling for no caveats, and it gave the same figures as before. Specialists raised 0.40 kinds of caveat per run, the editor kept 0.27 and added 0.53 of its own, and 33% of the answer's caveats traced back to a specialist. The routing check set aside exactly the 5 known runs that never reached a specialist.\n\nOne check disagreed with an earlier table. For scenarios built to call for caveats, the toolkit found 30 runs with 87% of caveats traced to a specialist, where the table said 70 runs and 81%. The toolkit was right. Cells 8, 14 and 15 had all saved runs under the same label, and the earlier analysis had pooled 40 runs from Cell 15 into this group. With only the right 30 runs, specialists raised 3.17 kinds, the editor kept 1.60 and added 0.23, and 87% traced back.",
+   "means": "We corrected the table's figure from 81% to 87%. The wider conclusions did not change, because the pooled analysis behind them groups runs by how much caution the specialists supplied, not by set of scenarios. The lesson went into the design: every run's record must carry the experiment it belongs to, because labels get reused. The corrected 30-run figures became the comparison for Cell 19.",
+   "later": "Reusing one run label across different sets of scenarios is now on the project's standing list of measurement problems, and a standing rule forbids it. Cell 21 later listed the routing check and the overall caveat statistics among the parts of the toolkit that still held up.",
+   "entries": {
+    "entry-2750": {
+     "label": "Mistake caught",
+     "title": "Toolkit built and tested, catching an earlier grouping error",
+     "summary": "We built the toolkit from our design and tested it on saved runs. It reproduced known figures exactly and set aside exactly the 5 runs known to have reached no specialist. It also showed that an earlier table had pooled runs from three experiments sharing one label, so we corrected a figure from 81% to 87%."
+    }
+   },
+   "related": [
+    "8",
+    "14",
+    "15",
+    "19",
+    "21"
+   ]
+  }
+ }
+}

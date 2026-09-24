@@ -1,0 +1,970 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper-Hardening Cell Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F2F4F3; --surface:#FFFFFF; --surface-2:#E9EDEC; --ink:#171D21; --ink-2:#4C575D; --ink-3:#737D82;
+  --line:#D3DAD8; --line-2:#C0C9C6;
+  --accent:#1E6B74; --accent-ink:#FFFFFF; --accent-soft:#DCEBEC;
+  --amber:#8F6114; --amber-soft:#F3E7D0;
+  --ok:#2C7A4B; --ok-soft:#D9EDDF;
+  --bad:#B0413A; --bad-soft:#F4DBD8;
+  --ne:#86661B; --ne-soft:#F1E6C8;
+  --neutral:#646D74; --neutral-soft:#E3E7E6;
+  --shadow:0 1px 2px rgba(23,29,33,.06),0 4px 14px rgba(23,29,33,.06);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111618; --surface:#181F22; --surface-2:#1F282C; --ink:#E3E8E6; --ink-2:#A9B3B1; --ink-3:#838E92;
+    --line:#2A3438; --line-2:#364247;
+    --accent:#63B6BE; --accent-ink:#0E1517; --accent-soft:#1E3437;
+    --amber:#D9A34A; --amber-soft:#3A2D14;
+    --ok:#6DC28E; --ok-soft:#173A26;
+    --bad:#E3837A; --bad-soft:#42211E;
+    --ne:#D3A94F; --ne-soft:#3B2F12;
+    --neutral:#9AA4A9; --neutral-soft:#242D31;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111618; --surface:#181F22; --surface-2:#1F282C; --ink:#E3E8E6; --ink-2:#A9B3B1; --ink-3:#838E92;
+  --line:#2A3438; --line-2:#364247;
+  --accent:#63B6BE; --accent-ink:#0E1517; --accent-soft:#1E3437;
+  --amber:#D9A34A; --amber-soft:#3A2D14;
+  --ok:#6DC28E; --ok-soft:#173A26;
+  --bad:#E3837A; --bad-soft:#42211E;
+  --ne:#D3A94F; --ne-soft:#3B2F12;
+  --neutral:#9AA4A9; --neutral-soft:#242D31;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 4px 16px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;padding-inline:clamp(16px,4vw,48px);padding-block:0 72px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:2px}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1280px;margin:0 auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;padding-block:16px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;gap:1px;text-decoration:none;color:inherit;margin-right:auto}
+.brand .name{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.2}
+.brand .sub{font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:500;padding:6px 11px;border-radius:6px}
+.nav a:hover{background:var(--surface-2);color:var(--ink)}
+.nav a[aria-current="page"]{color:var(--ink);background:var(--surface);box-shadow:inset 0 0 0 1px var(--line-2)}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--surface);border-radius:6px;padding:7px 12px;cursor:pointer;font-size:13.5px;font-weight:500;text-decoration:none;color:var(--ink)}
+.nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-btn[disabled]{opacity:.45;cursor:default}
+.nav-btn[disabled]:hover{border-color:var(--line-2);color:inherit}
+.subbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-block:14px 0}
+.subbar .spacer{flex:1}
+
+/* ---------- chips ---------- */
+.chip-o{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.01em;padding:3px 9px 3px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent;line-height:1.35}
+.chip-o::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.o-held{background:var(--ok-soft);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}
+.o-failed{background:var(--bad-soft);color:var(--bad);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+.o-mixed{background:var(--surface);color:var(--ink-2);border-color:var(--line-2)}
+.o-mixed::before{background:linear-gradient(90deg,var(--ok) 0 50%,var(--bad) 50% 100%)}
+.o-unclear{background:var(--ne-soft);color:var(--ne);border-color:color-mix(in srgb,var(--ne) 30%,transparent)}
+.o-stopped{background:var(--neutral-soft);color:var(--neutral);border-color:var(--line-2)}
+.o-stopped::before{border-radius:1px}
+.o-notrun{background:transparent;color:var(--neutral);border:1px dashed var(--line-2)}
+.o-notrun::before{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor}
+.o-measured{background:var(--accent-soft);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.sq{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--neutral-soft);border:1px solid var(--line-2);flex:none}
+.sq.e-held{background:var(--ok);border-color:var(--ok)}
+.sq.e-partly{background:linear-gradient(135deg,var(--ok) 0 50%,var(--ne) 50% 100%);border-color:var(--ne)}
+.sq.e-failed{background:var(--bad);border-color:var(--bad)}
+.sq.e-unclear{background:var(--ne);border-color:var(--ne)}
+.sq.e-none{background:transparent;border-style:dashed}
+.chip-e{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.kind{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--neutral-soft);color:var(--neutral);white-space:nowrap}
+.cell-no{font-family:var(--mono);font-weight:500;color:var(--accent);white-space:nowrap}
+
+/* ---------- index: lede ---------- */
+.lede{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:40px;align-items:start;padding-block:40px 30px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.lede h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-.018em;margin-top:10px;max-width:18ch}
+.lede .intro{margin-top:16px;max-width:62ch;color:var(--ink-2);font-size:16px;display:flex;flex-direction:column;gap:10px}
+.lede .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat .v{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stat .k{font-size:12.5px;color:var(--ink-3);margin-top:6px;line-height:1.35}
+.bar-h{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:20px 0 8px}
+.bar{display:flex;height:14px;border-radius:4px;overflow:hidden;gap:2px;background:var(--surface)}
+.bar span{display:block;height:100%}
+.legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin-top:12px;font-size:13px;color:var(--ink-2)}
+.legend div{display:flex;align-items:center;gap:8px;min-width:0}
+.legend b{font-family:var(--mono);font-weight:500;color:var(--ink);font-size:12.5px;margin-left:auto;font-variant-numeric:tabular-nums}
+.legend i{width:10px;height:10px;border-radius:2px;flex:none}
+.c-held{background:var(--ok)}.c-mixed{background:linear-gradient(90deg,var(--ok) 0 50%,var(--bad) 50%)}.c-failed{background:var(--bad)}.c-unclear{background:var(--ne)}.c-stopped{background:var(--neutral)}.c-notrun{background:var(--line-2)}.c-measured{background:var(--accent)}
+
+/* ---------- index: controls + table ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;background:var(--paper);z-index:3;padding-block:12px;border-bottom:1px solid var(--line)}
+.search{flex:1 1 260px;min-width:200px;border:1px solid var(--line-2);background:var(--surface);border-radius:6px;padding:8px 12px;font:inherit;font-size:14px;color:var(--ink)}
+.search::placeholder{color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip .n{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.sort{display:flex;gap:2px;border:1px solid var(--line-2);border-radius:6px;overflow:hidden;background:var(--surface)}
+.sort button{border:0;background:transparent;padding:6px 10px;font-size:13px;cursor:pointer}
+.sort button[aria-pressed="true"]{background:var(--surface-2);font-weight:600}
+.count{font-size:12.5px;color:var(--ink-3);margin-left:auto;font-variant-numeric:tabular-nums}
+.ledger{margin-top:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.ledger-scroll{overflow-x:auto}
+table.list{width:100%;border-collapse:collapse;min-width:1080px;table-layout:fixed}
+table.list col.w-id{width:60px}table.list col.w-title{width:21%}table.list col.w-date{width:78px}table.list col.w-out{width:148px}table.list col.w-exp{width:104px}table.list col.w-size{width:140px}
+table.list th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface-2);white-space:nowrap}
+table.list td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.list tr.row{cursor:pointer}
+table.list tr.row:hover td{background:color-mix(in srgb,var(--accent-soft) 70%,var(--surface))}
+table.list tr.row:last-child td{border-bottom:0}
+td.c-id{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);white-space:nowrap;width:72px}
+td.c-title{font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.3}
+td.c-desc{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+td.c-date{font-size:13px;white-space:nowrap;color:var(--ink-2);font-variant-numeric:tabular-nums}
+td.c-exp .sqs{display:flex;gap:3px;flex-wrap:wrap;max-width:96px;padding-top:4px}
+td.c-size{font-size:12.5px;color:var(--ink-2)}
+td.c-size .dl{display:block;font-size:11.5px;color:var(--accent);margin-top:3px}
+.empty-row{padding:28px;color:var(--ink-3);font-style:italic}
+
+/* ---------- index: other studies ---------- */
+.section-h{font-family:var(--serif);font-size:24px;font-weight:600;margin:48px 0 6px}
+.section-p{color:var(--ink-2);margin:0 0 16px;max-width:68ch}
+.studies{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.srow{display:grid;grid-template-columns:96px 150px minmax(0,1fr) auto;gap:16px;align-items:start;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
+.srow:last-child{border-bottom:0}
+.srow:hover{background:color-mix(in srgb,var(--accent-soft) 70%,var(--surface))}
+.srow .d{font-size:13px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;padding-top:2px}
+.srow .t{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.3}
+.srow .s{font-size:13.5px;color:var(--ink-2);margin-top:3px;max-width:78ch}
+.srow .k{padding-top:1px}
+
+/* ---------- detail header ---------- */
+.detail-head{padding-block:26px 24px;border-bottom:1px solid var(--line)}
+.detail-head .top{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:13px;color:var(--ink-2)}
+.detail-head .top .cell-no{font-size:14px}
+.detail-head h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.12;letter-spacing:-.014em;margin-top:10px;max-width:28ch}
+.standfirst{font-size:18px;line-height:1.5;color:var(--ink-2);margin-top:12px;max-width:62ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;margin-top:18px;font-size:13.5px;color:var(--ink-2)}
+.facts .f{display:flex;flex-direction:column;gap:1px}
+.facts .f .l{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.facts .f .x{color:var(--ink);font-variant-numeric:tabular-nums}
+.relchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;font-size:13px;color:var(--ink-2);align-items:center}
+.relchips a{font-family:var(--mono);font-size:12.5px;text-decoration:none;border:1px solid var(--line-2);background:var(--surface);border-radius:5px;padding:2px 8px}
+.relchips a:hover{border-color:var(--accent)}
+.notice{background:var(--amber-soft);color:var(--amber);border-radius:6px;padding:9px 13px;font-size:13.5px;margin-top:14px;max-width:80ch}
+.notice a{color:inherit;font-weight:600}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:4px;margin-top:4px;border-bottom:1px solid var(--line)}
+.tab{border:0;background:transparent;padding:12px 14px;font-size:14.5px;font-weight:500;cursor:pointer;color:var(--ink-2);border-bottom:2px solid transparent;margin-bottom:-1px;display:inline-flex;gap:8px;align-items:center}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .n{font-size:12px;color:var(--ink-3);font-weight:400}
+.tab:hover{color:var(--ink)}
+
+/* ---------- explanation cards ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 24px;box-shadow:var(--shadow);min-width:0}
+.card h2{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:12px}
+.card h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:20px 0 10px}
+.prose{display:flex;flex-direction:column;gap:12px;font-size:15.5px;line-height:1.62;max-width:68ch}
+.prose p{margin:0}
+.exps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.exps li{padding:12px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.exps li:first-child{border-top:0;padding-top:2px}
+.exps .row1{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.exps .pid{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-left:auto}
+.exps .txt{font-size:15px;line-height:1.5}
+.exps .note{font-size:14px;color:var(--ink-2);line-height:1.5}
+.later{margin-top:18px;border-left:3px solid var(--amber);background:var(--amber-soft);border-radius:0 8px 8px 0;padding:12px 16px}
+.later .l{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.later p{font-size:14.5px;line-height:1.55;color:var(--ink)}
+.none{color:var(--ink-3);font-style:italic}
+
+/* ---------- timeline ---------- */
+.body-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:32px;margin-top:36px;align-items:start}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.tl{position:relative;padding:0 0 26px 32px}
+.tl:last-child{padding-bottom:0}
+.tl .dot{position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--neutral)}
+.tl.l-plan .dot{border-color:var(--accent)}
+.tl.l-result .dot{border-color:var(--ink);background:var(--ink)}
+.tl.l-stop .dot{border-color:var(--bad);background:var(--bad)}
+.tl.l-change .dot{border-color:var(--amber)}
+.tl .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:var(--ink-3)}
+.tl .lab{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--neutral-soft);color:var(--neutral)}
+.tl.l-plan .lab{background:var(--accent-soft);color:var(--accent)}
+.tl.l-result .lab{background:var(--ink);color:var(--paper)}
+.tl.l-stop .lab{background:var(--bad-soft);color:var(--bad)}
+.tl.l-change .lab{background:var(--amber-soft);color:var(--amber)}
+.tl h3{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.3;margin:6px 0 6px}
+.tl .sum{font-size:15px;line-height:1.6;color:var(--ink);max-width:70ch}
+details.orig{margin-top:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+details.orig>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:8px 12px;font-size:13px;color:var(--ink-2)}
+details.orig>summary::-webkit-details-marker{display:none}
+details.orig>summary::before{content:"";width:0;height:0;border-left:5px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .15s}
+details.orig[open]>summary::before{transform:rotate(90deg)}
+details.orig>summary .ln{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+details.orig>summary:hover{background:var(--surface-2)}
+details.orig[open]>summary{border-bottom:1px solid var(--line)}
+.md-body{padding:14px 18px 16px;font-size:14px;line-height:1.55}
+.md-body>*:first-child{margin-top:0}
+.md-body p{margin:0 0 11px;max-width:74ch}
+.md-body ul,.md-body ol{padding-left:22px;margin:0 0 11px;max-width:74ch}
+.md-body li{margin-bottom:4px}
+.md-body h2,.md-body h3,.md-body h4{font-family:var(--serif);font-size:16px;font-weight:600;margin:18px 0 8px}
+.md-body code{font-family:var(--mono);font-size:12.5px;background:var(--surface-2);padding:1px 5px;border-radius:3px}
+.md-body pre{background:var(--surface-2);padding:12px;border-radius:6px;overflow-x:auto;font-size:12.5px}
+.md-body blockquote{margin:0 0 11px;padding-left:12px;border-left:3px solid var(--line-2);color:var(--ink-2)}
+.md-body hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.tbl{overflow-x:auto;margin:6px 0 14px;border:1px solid var(--line);border-radius:6px}
+.md-body table{border-collapse:collapse;font-size:13px;min-width:100%;font-variant-numeric:tabular-nums}
+.md-body th{background:var(--surface-2);text-align:left;font-weight:600;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:12px}
+.md-body td{padding:6px 10px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12.5px;vertical-align:top}
+.md-body td:first-child{font-family:var(--sans);font-size:13px}
+.md-body tr:last-child td{border-bottom:0}
+
+/* ---------- rail ---------- */
+.rail{display:flex;flex-direction:column;gap:14px;position:sticky;top:18px}
+.rail .box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.rail h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.rail ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.rail li{font-size:13.5px;line-height:1.45}
+.rail .claim a{color:var(--ink);text-decoration:none;display:block}
+.rail .claim a:hover{color:var(--accent)}
+.rail .claim .kind{margin-bottom:4px}
+.rail .path{font-family:var(--mono);font-size:12px;word-break:break-all;color:var(--ink-2)}
+.rail .path .n{color:var(--ink-3)}
+.rail .muted{font-size:13px;color:var(--ink-3)}
+.k-believe{background:var(--ok-soft);color:var(--ok)}
+.k-tentative{background:var(--ne-soft);color:var(--ne)}
+.k-withdrawn{background:var(--bad-soft);color:var(--bad)}
+.k-tool-lesson{background:var(--accent-soft);color:var(--accent)}
+.k-open{background:var(--surface-2);color:var(--ink-2)}
+.k-rule{background:var(--neutral-soft);color:var(--neutral)}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:40px;flex-wrap:wrap}
+.pager a{flex:1 1 280px;max-width:48%;display:flex;flex-direction:column;gap:3px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.pager a:hover{border-color:var(--accent)}
+.pager a .d{font-size:12px;color:var(--ink-3)}
+.pager a .t{font-family:var(--serif);font-weight:600;font-size:15.5px;line-height:1.3}
+.pager a.next{text-align:right;margin-left:auto}
+
+/* ---------- claims + glossary pages ---------- */
+.page-head{padding-block:34px 22px;border-bottom:1px solid var(--line)}
+.page-head h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-.015em;margin-top:8px}
+.page-head .standfirst{margin-top:12px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.jump a{font-size:13.5px;text-decoration:none;border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:4px 12px;color:var(--ink)}
+.jump a .n{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-left:4px}
+.jump a:hover{border-color:var(--accent)}
+.claim-sec{margin-top:40px;scroll-margin-top:16px}
+.claim-sec h2{font-family:var(--serif);font-size:24px;font-weight:600}
+.claim-sec>p{color:var(--ink-2);margin:6px 0 16px;max-width:68ch}
+.citems{display:flex;flex-direction:column;gap:12px}
+.citem{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;scroll-margin-top:16px}
+.citem.hl{box-shadow:0 0 0 2px var(--accent)}
+.citem .c{font-family:var(--serif);font-size:17.5px;font-weight:600;line-height:1.35;max-width:70ch}
+.citem .dt{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin-top:6px;max-width:74ch}
+.citem .foot{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:10px}
+.citem .foot .ids{display:flex;flex-wrap:wrap;gap:6px}
+.citem .foot .ids a{font-family:var(--mono);font-size:12px;text-decoration:none;border:1px solid var(--line-2);border-radius:5px;padding:1px 7px;background:var(--surface)}
+.citem .foot .ids a:hover{border-color:var(--accent)}
+.citem details.orig{margin-top:12px}
+.gl-sec{margin-top:36px}
+.gl-sec h2{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:12px}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.gterm{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;scroll-margin-top:16px}
+.gterm .t{font-family:var(--serif);font-size:17px;font-weight:600}
+.gterm .d{font-size:14.5px;line-height:1.55;margin-top:4px;color:var(--ink)}
+.gterm .a{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:9px;font-size:12px;color:var(--ink-3)}
+.gterm .a code{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);border-radius:4px;padding:1px 6px;color:var(--ink-2)}
+/* ---------- harness page ---------- */
+.gains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+.gain{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.gain .t{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1.3}
+.gain .d{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.cellrefs{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:6px}
+.cellrefs a{font-family:var(--mono);font-size:11.5px;text-decoration:none;border:1px solid var(--line-2);border-radius:5px;padding:1px 7px;background:var(--surface)}
+.cellrefs a:hover{border-color:var(--accent)}
+.flow{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 0;align-items:center}
+.flow li{display:flex;align-items:center}
+.flow a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:6px 12px 6px 6px;font-size:13.5px;font-weight:500}
+.flow a:hover{border-color:var(--accent)}
+.flow .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.flow li:not(:last-child)::after{content:"";width:18px;height:1px;background:var(--line-2);margin:0 2px}
+.hsteps{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.hstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;scroll-margin-top:16px}
+.hstep.hl{box-shadow:0 0 0 2px var(--accent)}
+.hstep .num{width:36px;height:36px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--serif);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.hstep h3{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.25}
+.hstep .st{margin:8px 0 12px}
+.hstep .parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.hstep .part h4{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.hstep .part p{font-size:14.5px;line-height:1.6}
+.s-kept{background:var(--ok-soft);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}
+.s-limits{background:var(--ne-soft);color:var(--ne);border-color:color-mix(in srgb,var(--ne) 30%,transparent)}
+.s-cost{background:var(--neutral-soft);color:var(--neutral);border-color:var(--line-2)}
+.s-mixed{background:var(--surface);color:var(--ink-2);border-color:var(--line-2)}
+.s-mixed::before{background:linear-gradient(90deg,var(--ok) 0 50%,var(--bad) 50% 100%)}
+.hsec{margin-top:44px}
+.hsec h2{font-family:var(--serif);font-size:24px;font-weight:600}
+.hsec>p.lead{color:var(--ink-2);margin:6px 0 0;max-width:70ch;font-size:15.5px}
+.hlist{list-style:none;margin:16px 0 0;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.hlist li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;gap:16px;padding:13px 18px;border-bottom:1px solid var(--line);align-items:start}
+.hlist li:last-child{border-bottom:0}
+.hlist .w{font-weight:600;font-size:14.5px;line-height:1.45}
+.hlist .y{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.hlist .cellrefs{margin:0;padding:0;justify-content:flex-end}
+.okline{margin-top:12px;font-size:14.5px;color:var(--ink-2);max-width:74ch;border-left:3px solid var(--accent);padding-left:12px}
+.rail .hsteplink a{text-decoration:none;color:var(--ink)}
+.rail .hsteplink a:hover{color:var(--accent)}
+@media (max-width:980px){ .gains{grid-template-columns:1fr} .hstep .parts{grid-template-columns:1fr} }
+@media (max-width:760px){ .hstep{grid-template-columns:1fr;padding:16px} .hlist li{grid-template-columns:1fr;gap:6px} .hlist .cellrefs{justify-content:flex-start} .flow li:not(:last-child)::after{width:8px} }
+.hfig{margin:22px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 14px}
+.hfig .scroll{overflow-x:auto}
+.hfig svg{display:block;width:100%;min-width:760px;height:auto;color:var(--ink);font-family:var(--sans)}
+.hfig figcaption{font-size:14px;color:var(--ink-2);line-height:1.55;margin-top:12px;max-width:90ch}
+.hfig .key{display:inline-flex;align-items:center;gap:6px;margin-right:14px;white-space:nowrap}
+.hfig .key i{display:inline-block;width:22px;height:0;border-top:2px solid currentColor}
+.footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:flex;flex-direction:column;gap:4px;max-width:90ch}
+
+@media (max-width:980px){
+  .lede{grid-template-columns:1fr;gap:26px}
+  .cards,.body-grid{grid-template-columns:1fr}
+  .rail{position:static}
+}
+@media (max-width:760px){
+  table.list{min-width:0;table-layout:auto}
+  table.list colgroup{display:none}
+  table.list thead{display:none}
+  table.list,table.list tbody{display:block}
+  table.list tr.row{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"id outcome" "title title" "desc desc" "meta meta";gap:6px 10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  table.list tr.row:last-child{border-bottom:0}
+  table.list td{display:block;padding:0;border:0;min-width:0;width:auto}
+  td.c-id{grid-area:id} td.c-out{grid-area:outcome;justify-self:end} td.c-title{grid-area:title} td.c-desc{grid-area:desc}
+  table.list td.c-date,table.list td.c-exp{display:none} table.list td.c-size{grid-area:meta;font-size:12px;color:var(--ink-3)}
+  td.c-size .dl{display:inline;margin-left:8px}
+  .srow{grid-template-columns:1fr auto;grid-template-areas:"d k" "t t"}
+  .srow .d{grid-area:d}.srow .k{grid-area:k}.srow>div:nth-child(3){grid-area:t}.srow .o{display:none}
+  .stats .stat .v{font-size:28px}
+  .legend{grid-template-columns:1fr}
+  .pager a{max-width:100%}
+}
+</style>
+<style>
+/*__DATA_CSS__*/
+</style>
+
+<div class="wrap" id="app" aria-live="polite"></div>
+
+<script id="ledger-data" type="application/json">/*__DATA__*/</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+(function(){
+  const DATA = JSON.parse(document.getElementById('ledger-data').textContent);
+  const app = document.getElementById('app');
+  const cells = DATA.cells;
+  const cellsById = Object.fromEntries(cells.map(c => [c.id, c]));
+  const cellKey = Object.fromEntries(cells.map(c => [c.id.toLowerCase(), c.id]));
+  const studies = DATA.studies || [];
+  const studiesById = Object.fromEntries(studies.map(s => [s.id, s]));
+  const programById = Object.fromEntries(DATA.program.map(p => [p.id, p]));
+  const studyOfEntry = {};
+  studies.forEach(s => s.entry_ids.forEach(e => { studyOfEntry[e] = s.id; }));
+  const claims = DATA.status_items || [];
+  const claimsById = Object.fromEntries(claims.map(c => [c.id, c]));
+  const dataIndex = DATA.data_index || {};
+
+  const haveMarked = typeof marked !== 'undefined';
+  if (haveMarked) marked.use({ gfm: true, breaks: false });
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function md(src){
+    if (!src) return '';
+    src = src.replace(/([^\n|])\n(\|)/g, '$1\n\n$2');
+    let html;
+    try { html = haveMarked ? marked.parse(src) : '<pre>' + esc(src) + '</pre>'; }
+    catch(e){ html = '<pre>' + esc(src) + '</pre>'; }
+    return html.replace(/<table>/g, '<div class="tbl"><table>').replace(/<\/table>/g, '</table></div>');
+  }
+  function go(hash){ location.hash = hash; }
+  Object.assign(window, { DATA, md, esc, go });
+
+  // ---------------- vocabulary
+  const OUTCOME = {
+    held:      { label: 'Held up',            cls: 'o-held',     bar: 'c-held',     hint: 'The main expectations held up.' },
+    mixed:     { label: 'Mixed',              cls: 'o-mixed',    bar: 'c-mixed',    hint: 'Some expectations held up. Others did not, or could not be settled.' },
+    failed:    { label: "Didn't hold up",     cls: 'o-failed',   bar: 'c-failed',   hint: 'The main expectations did not hold up.' },
+    unclear:   { label: 'Too close to call',  cls: 'o-unclear',  bar: 'c-unclear',  hint: 'It ran, but the data could not settle the question.' },
+    stopped:   { label: 'Stopped early',      cls: 'o-stopped',  bar: 'c-stopped',  hint: 'Halted at a checkpoint, blocked, or impossible on our hardware.' },
+    'not-run': { label: 'Never run',          cls: 'o-notrun',   bar: 'c-notrun',   hint: 'Planned but never carried out.' },
+    measured:  { label: 'Measurement only',   cls: 'o-measured', bar: 'c-measured', hint: 'No pass/fail expectation, only a measurement or analysis.' },
+  };
+  const OUTCOME_ORDER = ['held', 'mixed', 'failed', 'unclear', 'stopped', 'not-run', 'measured'];
+  const EXP = {
+    held: { label: 'Held up', cls: 'e-held' }, partly: { label: 'Partly held up', cls: 'e-partly' },
+    failed: { label: "Didn't hold up", cls: 'e-failed' }, reversed: { label: 'Opposite happened', cls: 'e-failed' },
+    unclear: { label: 'Too close to call', cls: 'e-unclear' }, 'not-graded': { label: 'No pass/fail', cls: 'e-none' },
+    'not-tested': { label: 'Not tested', cls: 'e-none' },
+  };
+  const ENTRY_CLS = { 'Plan': 'l-plan', 'Result': 'l-result', 'Stopped': 'l-stop', 'Change to the plan': 'l-change', 'Pilot': 'l-change', 'Correction': 'l-change', 'Mistake caught': 'l-change', 'Note': 'l-note' };
+  const CLAIM = {
+    believe:       { short: 'Current claim',   title: 'What we stand behind', blurb: 'Claims that have survived every review so far. Each rests on a comparison measured the same way on both sides.' },
+    tentative:     { short: 'Tentative',       title: 'Probably right, numbers still being checked', blurb: 'The general pattern held up, but the exact figures are waiting to be measured again with a better tool.' },
+    withdrawn:     { short: 'Withdrawn',       title: 'Claims we took back', blurb: 'Earlier claims that later work showed were wrong or unsupported. They stay listed so the record is complete.' },
+    'tool-lesson': { short: 'Tool lesson',     title: 'Lessons about our measuring tools', blurb: 'Problems we found in how we measured. Each one changed how later cells were run.' },
+    open:          { short: 'Open question',   title: 'Open questions', blurb: 'Questions we have not been able to answer yet, usually for lack of a tool that measures them reliably.' },
+    rule:          { short: 'Working rule',    title: 'Rules we now follow', blurb: 'Working rules the project adopted because of the problems above.' },
+  };
+  const CLAIM_ORDER = ['believe', 'tentative', 'withdrawn', 'tool-lesson', 'open', 'rule'];
+  const STUDY_KIND = { setup: 'Program setup', paper: 'Writing milestone', experiment: 'Experiment', audit: 'Audit', analysis: 'Re-analysis', tool: 'Tool check', engineering: 'Engineering', data: 'Saved runs' };
+  const PARSED_TO_OUTCOME = { supported: 'held', falsified: 'failed', mixed: 'mixed', 'not-evaluable': 'unclear', 'not-testable': 'unclear', halted: 'stopped', blocked: 'stopped', 'not-executable': 'stopped', registered: 'not-run', 'matrix-only': 'not-run' };
+
+  // ---------------- text helpers
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function fmtDate(iso, long){
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-').map(Number);
+    return long ? `${d} ${MONTHS[m-1]} ${y}` : `${d} ${MONTHS[m-1].slice(0,3)}`;
+  }
+  function cellLink(id){
+    const real = cellKey[String(id).toLowerCase()];
+    return real ? `<a href="#cell/${encodeURIComponent(real)}">${esc(id)}</a>` : esc(id);
+  }
+  const ID = '(?:\\d+[A-Za-z]?(?:-R)?|IV)';
+  const RE_LIST = new RegExp(`\\bCells (${ID}(?:(?:, and |, | and | to | or )${ID})+)`, 'g');
+  const RE_ONE = new RegExp(`\\bCell (${ID})\\b`, 'g');
+  function linkify(h){
+    h = h.replace(RE_LIST, (m, list) => 'Cells ' + list.replace(new RegExp(ID, 'g'), id => cellLink(id)));
+    h = h.replace(RE_ONE, (m, id) => cellKey[id.toLowerCase()] ? `<a href="#cell/${encodeURIComponent(cellKey[id.toLowerCase()])}">Cell ${esc(id)}</a>` : m);
+    h = h.replace(/\bPD-13\b/g, '<a href="#study/pd13">PD-13</a>');
+    return h;
+  }
+  const inline = t => linkify(esc(t || ''));
+  const paras = t => (t || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => `<p>${linkify(esc(p).replace(/\n/g, ' '))}</p>`).join('');
+
+  // ---------------- plain content with fallbacks
+  function plainOf(item){
+    const p = item.plain;
+    if (p) return p;
+    return {
+      title: item.title || cleanHeading(item.heading || ''), description: item.result || '', outcome: PARSED_TO_OUTCOME[item.status] || 'measured',
+      size: item.runs || '', why: item.question || '', expectations: (item.grid || []).map(g => ({ id: g.id, text: '', outcome: 'not-graded', note: g.outcome || '' })),
+      found: '', means: '', later: null, entries: {}, missing: true,
+    };
+  }
+  function cleanHeading(h){
+    return String(h).replace(/^(?:CELLS?\s+[\w-]+(?:\s*\([^)]*\))?(?:\s*\/\s*P\d+)?|P\d+)\s*/i,'')
+      .replace(/^(?:PRE-REGISTRATION(?:\s+BLOCK)?|FINAL VERDICT|VERDICT|AMENDMENT(?:\s*#\d+)?|CORRECTION|DEVIATION|PILOT(?: GATES| DEVIATION)?|REGISTERED DEVIATION|ASSEMBLY DEVIATION|PRE-ANALYSIS NOTE)\s*/i,'')
+      .replace(/\s*\((?:[^()]*\d{4}-\d{2}-\d{2}[^()]*)\)\s*/g,' ').replace(/^[\s—\-–:]+/,'').trim();
+  }
+  const outcomeChip = o => { const x = OUTCOME[o] || OUTCOME.measured; return `<span class="chip-o ${x.cls}" title="${esc(x.hint)}">${esc(x.label)}</span>`; };
+  const expChip = o => { const x = EXP[o] || EXP['not-graded']; return `<span class="chip-e"><i class="sq ${x.cls}"></i>${esc(x.label)}</span>`; };
+  function claimsFor(id){ return claims.filter(it => (it.cells || []).includes(id)); }
+  function relatedOf(s){ const p = s.plain; return (p && Array.isArray(p.related) && p.related.length ? p.related : s.related || []).filter(id => cellsById[id]); }
+  function studiesFor(id){ return studies.filter(s => relatedOf(s).includes(id)); }
+
+  // ---------------- routing
+  function route(){
+    const raw = location.hash.replace(/^#\/?/, '');
+    const wantsData = /\?data$/.test(raw);
+    const h = raw.replace(/\?data$/, '');
+    if (h.startsWith('cell/')) return { view: 'cell', id: decodeURIComponent(h.slice(5)), wantsData };
+    if (h.startsWith('study/')) return { view: 'study', id: decodeURIComponent(h.slice(6)), wantsData };
+    if (h.startsWith('entry/')) { const sid = studyOfEntry[decodeURIComponent(h.slice(6))]; return sid ? { view: 'study', id: sid, wantsData } : { view: 'index' }; }
+    if (h === 'claims' || h.startsWith('claims/')) return { view: 'claims', id: h.split('/')[1] };
+    if (h === 'glossary' || h.startsWith('glossary/')) return { view: 'glossary', id: h.split('/')[1] };
+    if (h === 'harness' || h.startsWith('harness/')) return { view: 'harness', id: h.split('/')[1] };
+    return { view: 'index' };
+  }
+  window.addEventListener('hashchange', render);
+
+  function topbar(active){
+    return `<header class="topbar">
+      <a class="brand" href="#"><span class="name">Paper-Hardening Cell Ledger</span><span class="sub">Council of Experts research notebook, in plain language</span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#" ${active === 'index' ? 'aria-current="page"' : ''}>All cells</a>
+        <a href="#harness" ${active === 'harness' ? 'aria-current="page"' : ''}>The harness</a>
+        <a href="#claims" ${active === 'claims' ? 'aria-current="page"' : ''}>What we claim today</a>
+        <a href="#glossary" ${active === 'glossary' ? 'aria-current="page"' : ''}>Glossary</a>
+      </nav>
+    </header>`;
+  }
+  function footer(){
+    return `<footer class="footer">
+      <span>Written from the project's lab notebook (RUNBOOK_PAPER_HARDENING.md, ${DATA.source_lines.toLocaleString()} lines) and its claims file (docs/STATUS.md). Built ${esc(fmtDate(DATA.generated, true))}.</span>
+      <span>Every explanation links to the original notebook text it was written from. The earlier technical edition of this ledger, as published on 15 September 2026, is kept as an archived copy.</span>
+      <span>Council of Experts is an independent research program by Sam Bobo. The full notebook, code and saved runs are in the <a href="https://github.com/srbobo/council-of-experts-research" rel="noopener">public repository</a>.</span>
+    </footer>`;
+  }
+
+  // ---------------- index
+  const state = { q: '', filter: 'all', sort: 'cell' };
+  const hay = {};
+  cells.forEach(c => {
+    const p = plainOf(c);
+    hay[c.id] = [c.display, p.title, p.description, p.why, p.found, p.means, p.later, p.size,
+      ...(p.expectations || []).map(e => `${e.id} ${e.text} ${e.note}`), c.title, ...c.entries.map(e => e.heading)].join(' ').toLowerCase();
+  });
+  function matches(c){
+    const p = plainOf(c);
+    if (state.filter !== 'all' && p.outcome !== state.filter) return false;
+    return !state.q || hay[c.id].includes(state.q.toLowerCase());
+  }
+  function renderIndex(){
+    const counts = {}; cells.forEach(c => { const o = plainOf(c).outcome; counts[o] = (counts[o] || 0) + 1; });
+    const exps = cells.flatMap(c => plainOf(c).expectations || []);
+    const concluded = cells.filter(c => !['not-run'].includes(plainOf(c).outcome) && c.entries.length).length;
+    let list = cells.filter(matches);
+    if (state.sort === 'date') list = [...list].sort((a, b) => (a.registered || '9').localeCompare(b.registered || '9'));
+    const total = cells.length;
+    const barSegs = OUTCOME_ORDER.filter(o => counts[o]).map(o => `<span class="${OUTCOME[o].bar}" style="flex:${counts[o]}" title="${esc(OUTCOME[o].label)}: ${counts[o]}"></span>`).join('');
+    const barLabel = OUTCOME_ORDER.filter(o => counts[o]).map(o => `${OUTCOME[o].label}: ${counts[o]}`).join(', ');
+
+    app.innerHTML = topbar('index') + `
+      <section class="lede">
+        <div>
+          <div class="eyebrow">The lab notebook, in plain words</div>
+          <h1>Every experiment we ran, what we expected, and what actually happened</h1>
+          <div class="intro">
+            <p>The Council of Experts project tested a popular idea: ask several specialist AI models a question, then have one more model combine their answers into a single report. We built a small version on one machine and put it through ${total} experiments between July and September 2026.</p>
+            <p>Each experiment is a numbered cell. Before running it, we wrote down what we expected and what result would prove us wrong. Afterwards we wrote down what happened, mistakes and changes of plan included. Open any row to read it, see the original notebook entries, and browse the saved model inputs and outputs.</p>
+          </div>
+          <div class="links"><a class="nav-btn" href="#harness">The harness we built</a><a class="nav-btn" href="#claims">What we claim today</a><a class="nav-btn" href="#glossary">Words we use</a><a class="nav-btn" href="#studies">Audits and side studies</a></div>
+        </div>
+        <div class="panel">
+          <div class="stats">
+            <div class="stat"><div class="v">${total}</div><div class="k">cells in the notebook</div></div>
+            <div class="stat"><div class="v">${concluded}</div><div class="k">ran far enough to report</div></div>
+            <div class="stat"><div class="v">${exps.length}</div><div class="k">expectations written down first</div></div>
+          </div>
+          <div class="bar-h">How the cells turned out</div>
+          <div class="bar" role="img" aria-label="${esc(barLabel)}">${barSegs}</div>
+          <div class="legend">${OUTCOME_ORDER.filter(o => counts[o]).map(o => `<div><i class="${OUTCOME[o].bar}"></i>${esc(OUTCOME[o].label)}<b>${counts[o]}</b></div>`).join('')}</div>
+        </div>
+      </section>
+      <div class="controls">
+        <input class="search" id="q" type="search" placeholder="Search titles, findings and notebook headings" value="${esc(state.q)}" aria-label="Search the cells">
+        <div class="chips" role="group" aria-label="Show cells by outcome">
+          <button class="chip" id="f-all" data-filter="all" aria-pressed="${state.filter === 'all'}">All <span class="n">${total}</span></button>
+          ${OUTCOME_ORDER.filter(o => counts[o]).map(o => `<button class="chip" id="f-${o}" data-filter="${o}" aria-pressed="${state.filter === o}">${esc(OUTCOME[o].label)} <span class="n">${counts[o]}</span></button>`).join('')}
+        </div>
+        <div class="sort" role="group" aria-label="Order">
+          <button id="s-cell" data-sort="cell" aria-pressed="${state.sort === 'cell'}">By number</button>
+          <button id="s-date" data-sort="date" aria-pressed="${state.sort === 'date'}">By date planned</button>
+        </div>
+        <span class="count">Showing ${list.length} of ${total}</span>
+      </div>
+      <div class="ledger"><div class="ledger-scroll">
+        <table class="list">
+          <colgroup><col class="w-id"><col class="w-title"><col><col class="w-date"><col class="w-date"><col class="w-out"><col class="w-exp"><col class="w-size"></colgroup>
+          <thead><tr><th>Cell</th><th>Title</th><th>Description</th><th>Planned</th><th>Concluded</th><th>Outcome</th><th>Expectations</th><th>Size</th></tr></thead>
+          <tbody>
+          ${list.map(c => { const p = plainOf(c); return `
+            <tr class="row" tabindex="0" data-href="#cell/${encodeURIComponent(c.id)}">
+              <td class="c-id">${esc(c.id)}</td>
+              <td class="c-title">${esc(p.title)}</td>
+              <td class="c-desc">${esc(p.description)}</td>
+              <td class="c-date" title="${esc(fmtDate(c.registered, true))}">${c.registered ? esc(fmtDate(c.registered)) : '<span class="none">none</span>'}</td>
+              <td class="c-date" title="${esc(fmtDate(c.verdict_date, true))}">${c.verdict_date ? esc(fmtDate(c.verdict_date)) : '<span class="none">none</span>'}</td>
+              <td class="c-out">${outcomeChip(p.outcome)}</td>
+              <td class="c-exp"><div class="sqs">${(p.expectations || []).map(e => `<i class="sq ${(EXP[e.outcome] || EXP['not-graded']).cls}" title="${esc(e.id)}: ${esc((EXP[e.outcome] || {}).label || '')}"></i>`).join('') || '<span class="none">none</span>'}</div></td>
+              <td class="c-size">${esc(p.size || '')}${dataIndex[c.id] ? '<span class="dl">Data available</span>' : ''}</td>
+            </tr>`; }).join('') || `<tr><td colspan="8" class="empty-row">No cells match. Try a different word or outcome.</td></tr>`}
+          </tbody>
+        </table>
+      </div></div>
+
+      <h2 class="section-h" id="studies">Audits, tool checks and side studies</h2>
+      <p class="section-p">Work in the notebook that is not a numbered cell: the original plan, reviews of our own methods, checks of our measuring tools, re-analyses of saved runs, and writing milestones.</p>
+      <div class="studies">
+        ${[...studies].sort((a, b) => (a.date || '').localeCompare(b.date || '')).map(s => { const p = plainOf(s); return `
+          <a class="srow" href="#study/${encodeURIComponent(s.id)}">
+            <span class="d">${esc(fmtDate(s.date))}</span>
+            <span class="k"><span class="kind">${esc(STUDY_KIND[s.kind] || s.kind)}</span></span>
+            <div><div class="t">${esc(p.title)}</div><div class="s">${esc(p.description)}</div></div>
+            <span class="o">${p.outcome && p.outcome !== 'measured' ? outcomeChip(p.outcome) : ''}</span>
+          </a>`; }).join('')}
+      </div>` + footer();
+
+    const q = app.querySelector('#q');
+    q.addEventListener('input', e => { state.q = e.target.value; renderIndex(); const el = app.querySelector('#q'); el.focus(); el.setSelectionRange(el.value.length, el.value.length); });
+    app.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.filter; renderIndex(); }));
+    app.querySelectorAll('[data-sort]').forEach(b => b.addEventListener('click', () => { state.sort = b.dataset.sort; renderIndex(); }));
+    app.querySelectorAll('tr.row').forEach(r => {
+      r.addEventListener('click', e => { if (e.target.closest('a')) return; go(r.dataset.href); });
+      r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(r.dataset.href); } });
+    });
+  }
+
+  // ---------------- shared detail pieces
+  function expectedCard(p, emptyText){
+    const exps = p.expectations || [];
+    return `<div class="card">
+      <h2>${exps.length ? 'What we expected' : 'Why we did it'}</h2>
+      <div class="prose">${paras(p.why) || '<p class="none">No background written for this entry.</p>'}</div>
+      ${exps.length ? `<h3>Written down before it ran</h3><ul class="exps">${exps.map(e => `
+        <li><div class="row1">${expChip(e.outcome)}<span class="pid" title="Expectation id in the lab notes">${esc(e.id)}</span></div>
+        <div class="txt">${inline(e.text)}</div>${e.note ? `<div class="note">${inline(e.note)}</div>` : ''}</li>`).join('')}</ul>` : (emptyText ? `<p class="none" style="margin-top:14px">${esc(emptyText)}</p>` : '')}
+    </div>`;
+  }
+  function foundCard(p){
+    return `<div class="card">
+      <h2>What we found</h2>
+      <div class="prose">${paras(p.found) || '<p class="none">No result was recorded.</p>'}</div>
+      ${p.means ? `<h3>What it means</h3><div class="prose">${paras(p.means)}</div>` : ''}
+      ${p.later ? `<div class="later"><div class="l">Later</div><p>${inline(p.later)}</p></div>` : ''}
+    </div>`;
+  }
+  function timelineItem(entry, pe, extraParts){
+    const label = (pe && pe.label) || 'Note';
+    const cls = ENTRY_CLS[label] || 'l-note';
+    const title = (pe && pe.title) || cleanHeading(entry.heading) || entry.heading;
+    const orig = entry.body + (extraParts || []).map(pt => `\n\n### ${pt.heading}\n\n${pt.body}`).join('');
+    const lines = entry.line ? `lines ${entry.line.toLocaleString()} to ${entry.end.toLocaleString()}` : '';
+    return `<li class="tl ${cls}"><span class="dot" aria-hidden="true"></span>
+      <div class="meta"><span class="lab">${esc(label)}</span>${entry.date ? `<span>${esc(fmtDate(entry.date, true))}</span>` : ''}</div>
+      <h3>${esc(title)}</h3>
+      ${pe && pe.summary ? `<div class="sum">${inline(pe.summary)}</div>` : ''}
+      ${orig.trim() ? `<details class="orig"><summary>Original notebook entry<span class="ln">${esc(lines)}</span></summary><div class="md-body"><p style="font-family:var(--mono);font-size:12px;color:var(--ink-3)">${esc(entry.heading)}</p>${md(orig)}</div></details>` : ''}
+    </li>`;
+  }
+  function tabsHtml(id){
+    const m = dataIndex[id];
+    if (!m) return '';
+    const n = m.sources.length;
+    return `<div class="tabs" role="tablist" aria-label="Views">
+      <button class="tab" role="tab" id="tab-record" data-tab="record" aria-selected="true">Explanation</button>
+      <button class="tab" role="tab" id="tab-data" data-tab="data" aria-selected="false">Data <span class="n">${n} source${n === 1 ? '' : 's'}, ${(m.bytes / 1048576).toFixed(1)} MB</span></button>
+    </div>`;
+  }
+  function wireTabs(id, wants){
+    const tabs = app.querySelectorAll('.tab'); if (!tabs.length) return;
+    const show = which => {
+      const toData = which === 'data';
+      tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === which)));
+      app.querySelector('#recordpane').hidden = toData;
+      const dp = app.querySelector('#datapane'); dp.hidden = !toData;
+      if (toData && !dp.dataset.mounted) { dp.dataset.mounted = '1'; window.DataExplorer.mount(dp, id); }
+      const h = location.hash.replace(/\?data$/, ''); history.replaceState(null, '', toData ? h + '?data' : h);
+    };
+    tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
+    if (wants) show('data');
+  }
+  function railClaims(id){
+    const cs = claimsFor(id);
+    return `<div class="box"><h4>What we claim today</h4>${cs.length ? `<ul>${cs.map(it => `<li class="claim"><a href="#claims/${it.id}"><span class="kind k-${it.kind}">${esc(CLAIM[it.kind].short)}</span><br>${esc(it.plain ? it.plain.claim : it.cols[0])}</a></li>`).join('')}</ul>` : '<p class="muted">No current claim cites this cell.</p>'}</div>`;
+  }
+  function railHarness(id){
+    const H = DATA.harness || {}; const steps = (H.steps || []).map((s, i) => [s, i + 1]).filter(([s]) => (s.cells || []).includes(id));
+    if (!steps.length) return '';
+    return `<div class="box"><h4>In the harness</h4><ul>${steps.map(([s, n]) => `<li class="hsteplink"><a href="#harness/step-${n}">Step ${n}: ${esc(s.short)}</a></li>`).join('')}</ul></div>`;
+  }
+  function railFiles(arts){
+    if (!arts || !arts.length) return '';
+    return `<div class="box"><h4>Files in the repository</h4><ul>${arts.map(a => `<li class="path">${esc(a.path)} <span class="n">${a.dir ? a.n + ' files' : (a.size / 1024).toFixed(1) + ' KB'}</span></li>`).join('')}</ul></div>`;
+  }
+
+  // ---------------- cell page
+  function renderCell(id){
+    const c = cellsById[id];
+    if (!c) { app.innerHTML = topbar('') + `<p class="notice">There is no cell called "${esc(id)}". <a href="#">See all cells</a>.</p>`; return; }
+    const p = plainOf(c);
+    const i = cells.indexOf(c), prev = cells[i - 1], next = cells[i + 1];
+    const rel = studiesFor(c.id);
+    const span = c.entries.length ? `lines ${c.entries[0].line.toLocaleString()} to ${c.entries[c.entries.length - 1].end.toLocaleString()}` : 'the original plan at the top of the notebook';
+    const facts = [
+      ['Planned', c.registered ? fmtDate(c.registered, true) : 'not recorded'],
+      ['Concluded', c.verdict_date ? fmtDate(c.verdict_date, true) : (p.outcome === 'not-run' ? 'never ran' : 'no result recorded')],
+      ['Size', p.size || ''],
+    ].filter(f => f[1]);
+    app.innerHTML = topbar('') + `
+      <div class="subbar">
+        <a class="nav-btn" href="#">All cells</a>
+        <span class="spacer"></span>
+        ${prev ? `<a class="nav-btn" href="#cell/${encodeURIComponent(prev.id)}" title="${esc(plainOf(prev).title)}">Previous: Cell ${esc(prev.id)}</a>` : ''}
+        ${next ? `<a class="nav-btn" href="#cell/${encodeURIComponent(next.id)}" title="${esc(plainOf(next).title)}">Next: Cell ${esc(next.id)}</a>` : ''}
+      </div>
+      <section class="detail-head">
+        <div class="top"><span class="cell-no">Cell ${esc(c.id)}</span>${c.block ? `<span>Planned as part of the <a href="#study/block-32-36">Cells 32 to 36 group</a></span>` : ''}</div>
+        <h1>${esc(p.title)}</h1>
+        <p class="standfirst">${inline(p.description)}</p>
+        <div class="facts">${outcomeChip(p.outcome)}${facts.map(f => `<div class="f"><span class="l">${esc(f[0])}</span><span class="x">${esc(f[1])}</span></div>`).join('')}</div>
+        ${p.missing ? `<div class="notice">The plain-language version of this cell has not been written yet. The notebook entries below are the original text.</div>` : ''}
+      </section>
+      ${tabsHtml(c.id)}
+      <div id="datapane" hidden></div>
+      <div id="recordpane">
+        <div class="cards">${expectedCard(p, p.outcome === 'not-run' ? 'Nothing was written down beyond the plan.' : '')}${foundCard(p)}</div>
+        <div class="body-grid">
+          <div>
+            <h2 class="section-h" style="margin-top:0">How it unfolded</h2>
+            <p class="section-p">Each step as the notebook records it, in order. Open any step to read the original entry.</p>
+            ${c.entries.length ? `<ol class="timeline">${c.entries.map(e => timelineItem(e, (p.entries || {})[String(e.line)])).join('')}</ol>`
+              : `<div class="card"><p>This cell has no entries of its own. It appears only in the original plan written on 11 July 2026.</p>${c.matrix ? `<details class="orig"><summary>Original plan text</summary><div class="md-body">${md(c.matrix)}</div></details>` : ''}</div>`}
+          </div>
+          <aside class="rail">
+            ${railHarness(c.id)}
+            ${railClaims(c.id)}
+            ${rel.length ? `<div class="box"><h4>Related studies</h4><ul>${rel.map(s => `<li><a href="#study/${encodeURIComponent(s.id)}">${esc(plainOf(s).title)}</a></li>`).join('')}</ul></div>` : ''}
+            ${railFiles(c.artifacts)}
+            <div class="box"><h4>In the notebook</h4><p class="muted">RUNBOOK_PAPER_HARDENING.md, ${esc(span)}.</p></div>
+          </aside>
+        </div>
+        <nav class="pager" aria-label="Other cells">
+          ${prev ? `<a href="#cell/${encodeURIComponent(prev.id)}"><span class="d">Previous: Cell ${esc(prev.id)}</span><span class="t">${esc(plainOf(prev).title)}</span></a>` : '<span></span>'}
+          ${next ? `<a class="next" href="#cell/${encodeURIComponent(next.id)}"><span class="d">Next: Cell ${esc(next.id)}</span><span class="t">${esc(plainOf(next).title)}</span></a>` : ''}
+        </nav>
+      </div>` + footer();
+    wireTabs(c.id, route().wantsData);
+    window.scrollTo(0, 0);
+  }
+
+  // ---------------- study page
+  function renderStudy(id){
+    const s = studiesById[id];
+    if (!s) { app.innerHTML = topbar('') + `<p class="notice">There is no study called "${esc(id)}". <a href="#studies">See all studies</a>.</p>`; return; }
+    const p = plainOf(s);
+    const rel = relatedOf(s);
+    const ents = s.entry_ids.map(e => programById[e]).filter(Boolean);
+    const dataKey = s.entry_ids.find(e => dataIndex[e]);
+    const ordered = [...studies].sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    const i = ordered.indexOf(s), prev = ordered[i - 1], next = ordered[i + 1];
+    const facts = [['Date', s.date ? fmtDate(s.date, true) + (s.end_date && s.end_date !== s.date ? ' to ' + fmtDate(s.end_date, true) : '') : ''], ['Size', p.size || '']].filter(f => f[1]);
+    app.innerHTML = topbar('') + `
+      <div class="subbar">
+        <a class="nav-btn" href="#studies">All studies</a>
+        <span class="spacer"></span>
+        ${prev ? `<a class="nav-btn" href="#study/${encodeURIComponent(prev.id)}" title="${esc(plainOf(prev).title)}">Previous study</a>` : ''}
+        ${next ? `<a class="nav-btn" href="#study/${encodeURIComponent(next.id)}" title="${esc(plainOf(next).title)}">Next study</a>` : ''}
+      </div>
+      <section class="detail-head">
+        <div class="top"><span class="kind">${esc(STUDY_KIND[s.kind] || s.kind)}</span></div>
+        <h1>${esc(p.title)}</h1>
+        <p class="standfirst">${inline(p.description)}</p>
+        <div class="facts">${p.outcome && p.outcome !== 'measured' ? outcomeChip(p.outcome) : ''}${facts.map(f => `<div class="f"><span class="l">${esc(f[0])}</span><span class="x">${esc(f[1])}</span></div>`).join('')}</div>
+        ${rel.length ? `<div class="relchips">About ${rel.map(r => `<a href="#cell/${encodeURIComponent(r)}" title="${esc(plainOf(cellsById[r]).title)}">Cell ${esc(r)}</a>`).join('')}</div>` : ''}
+        ${p.missing ? `<div class="notice">The plain-language version of this study has not been written yet. The notebook entries below are the original text.</div>` : ''}
+      </section>
+      ${dataKey ? tabsHtml(dataKey) : ''}
+      <div id="datapane" hidden></div>
+      <div id="recordpane">
+        <div class="cards">${expectedCard(p, '')}${foundCard(p)}</div>
+        <div class="body-grid">
+          <div>
+            <h2 class="section-h" style="margin-top:0">In the notebook</h2>
+            <p class="section-p">The entries this study is built from, in order. Open any step to read the original entry.</p>
+            <ol class="timeline">${ents.map(e => timelineItem(e, (p.entries || {})[e.id], e.parts)).join('')}</ol>
+          </div>
+          <aside class="rail">
+            ${rel.length ? `<div class="box"><h4>Cells it concerns</h4><ul>${rel.map(r => `<li><a href="#cell/${encodeURIComponent(r)}">Cell ${esc(r)}</a>: ${esc(plainOf(cellsById[r]).title)}</li>`).join('')}</ul></div>` : ''}
+            ${ents[0] && ents[0].line ? `<div class="box"><h4>In the notebook</h4><p class="muted">RUNBOOK_PAPER_HARDENING.md, lines ${ents[0].line.toLocaleString()} to ${ents[ents.length - 1].end.toLocaleString()}.</p></div>` : ''}
+          </aside>
+        </div>
+      </div>` + footer();
+    if (dataKey) wireTabs(dataKey, route().wantsData);
+    window.scrollTo(0, 0);
+  }
+
+  // ---------------- claims page
+  function renderClaims(focus){
+    const groups = CLAIM_ORDER.map(k => [k, claims.filter(c => c.kind === k)]).filter(g => g[1].length);
+    app.innerHTML = topbar('claims') + `
+      <section class="page-head">
+        <div class="eyebrow">The project's current position</div>
+        <h1>What we claim today</h1>
+        <p class="standfirst">Everything the project currently stands behind, what it has taken back, and what it still cannot answer. It is rewritten from the claims file the team keeps up to date after every cell. Each item links to the cells behind it.</p>
+        <div class="jump">${groups.map(([k, list]) => `<a href="#claims/${k}">${esc(CLAIM[k].title)}<span class="n">${list.length}</span></a>`).join('')}</div>
+      </section>
+      ${groups.map(([k, list]) => `
+        <section class="claim-sec" id="sec-${k}">
+          <h2>${esc(CLAIM[k].title)}</h2>
+          <p>${esc(CLAIM[k].blurb)}</p>
+          <div class="citems">${list.map(it => { const pl = it.plain; const ids = (it.cells || []).filter(x => cellsById[x]);
+            const orig = it.header ? it.cols.map((v, j) => `**${esc(it.header[j] || '')}:** ${v}`).join('\n\n') : it.text;
+            return `
+            <article class="citem" id="item-${it.id}">
+              <div class="c">${inline(pl ? pl.claim : it.cols[0])}</div>
+              ${pl && pl.detail ? `<div class="dt">${inline(pl.detail)}</div>` : ''}
+              <div class="foot">${ids.length ? `<span class="muted" style="font-size:13px;color:var(--ink-3)">Cells:</span><span class="ids">${ids.map(x => `<a href="#cell/${encodeURIComponent(x)}" title="${esc(plainOf(cellsById[x]).title)}">${esc(x)}</a>`).join('')}</span>` : ''}</div>
+              <details class="orig"><summary>Original wording<span class="ln">docs/STATUS.md, line ${it.line}</span></summary><div class="md-body">${md(orig)}</div></details>
+            </article>`; }).join('')}</div>
+        </section>`).join('')}` + footer();
+    if (focus) {
+      const el = app.querySelector(CLAIM[focus] ? `#sec-${focus}` : `#item-${CSS.escape(focus)}`);
+      if (el) { el.scrollIntoView({ block: 'start' }); if (!CLAIM[focus]) el.classList.add('hl'); }
+    } else window.scrollTo(0, 0);
+  }
+
+  // ---------------- glossary page
+  function renderGlossary(focus){
+    const terms = DATA.glossary || [];
+    const groups = [...new Set(terms.map(t => t.group))];
+    const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    app.innerHTML = topbar('glossary') + `
+      <section class="page-head">
+        <div class="eyebrow">Reference</div>
+        <h1>Words we use</h1>
+        <p class="standfirst">Plain definitions of the terms in this ledger. Where the original notebook uses a different name for the same thing, it is listed so you can follow along in the original entries.</p>
+        <div class="jump">${groups.map(g => `<a href="#glossary/${slug(g)}">${esc(g)}</a>`).join('')}</div>
+      </section>
+      ${groups.map(g => `<section class="gl-sec" id="g-${slug(g)}"><h2>${esc(g)}</h2><div class="gl">${terms.filter(t => t.group === g).map(t => `
+        <div class="gterm" id="t-${slug(t.term)}"><div class="t">${esc(t.term)}</div><div class="d">${inline(t.definition)}</div>
+        ${t.also && t.also.length ? `<div class="a">In the notebook: ${t.also.map(a => `<code>${esc(a)}</code>`).join('')}</div>` : ''}</div>`).join('')}</div></section>`).join('')}` + footer();
+    if (focus) { const el = app.querySelector(`#g-${CSS.escape(focus)}`) || app.querySelector(`#t-${CSS.escape(focus)}`); if (el) el.scrollIntoView({ block: 'start' }); }
+    else window.scrollTo(0, 0);
+  }
+
+  // ---------------- harness diagram (redrawn from the harness paper's architecture figure)
+  function harnessSvg(){
+    const INK = 'var(--ink-2)', ACC = 'var(--accent)', AMB = 'var(--amber)', MUT = 'var(--ink-3)';
+    const box = (x, y, w, h, title, lines, kind) => {
+      const stroke = kind === 'accent' ? ACC : kind === 'check' ? MUT : 'currentColor';
+      const fill = kind === 'accent' ? 'var(--accent-soft)' : 'var(--surface)';
+      const cx = x + w / 2;
+      return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" style="fill:${fill};stroke:${stroke}" stroke-width="1.4"${kind === 'check' ? ' stroke-dasharray="5 4"' : ''}/>` +
+        `<text x="${cx}" y="${y + (lines.length ? 21 : h / 2 + 5)}" text-anchor="middle" font-size="14" font-weight="600" style="fill:currentColor">${title}</text>` +
+        lines.map((l, i) => `<text x="${cx}" y="${y + 38 + i * 16}" text-anchor="middle" font-size="12" style="fill:${l.startsWith('!') ? ACC : INK}">${esc(l.replace(/^!/, ''))}</text>`).join('');
+    };
+    const edge = (d, kind) => `<path d="${d}" fill="none" stroke-width="1.6" style="stroke:${kind === 'acc' ? ACC : kind === 'amb' ? AMB : kind === 'mut' ? MUT : INK}"${kind === 'acc' || kind === 'mut' ? ' stroke-dasharray="6 4"' : ''} marker-end="url(#hx-${kind || 'ink'})"/>`;
+    const label = (x, y, s, anchor, color, extra) => `<text x="${x}" y="${y}" text-anchor="${anchor || 'start'}" font-size="11.5" style="fill:${color || INK}"${extra || ''}>${esc(s)}</text>`;
+    const marker = (id, color) => `<marker id="hx-${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:${color}"/></marker>`;
+    return `<svg viewBox="0 0 980 890" role="img" aria-label="The harness on one question: a screened panel of specialists answers planner-assigned questions, caveats travel around the editor into their own report section, and disagreements trigger a filtered follow-up before the editor writes.">
+      <defs>${marker('ink', INK)}${marker('acc', ACC)}${marker('amb', AMB)}${marker('mut', MUT)}</defs>
+      ${edge('M480 60 V116')}
+      ${edge('M135 92 V275 H276', 'mut')}${label(145, 184, 'only models that pass', 'start', MUT)}
+      ${edge('M345 196 V256')}${edge('M490 196 V256')}${edge('M635 196 V256')}${label(355, 232, 'own question')}
+      ${edge('M345 318 V368')}${edge('M490 318 V368')}${edge('M635 318 V368')}${label(500, 348, 'answers')}
+      ${edge('M700 289 H850 V348', 'acc')}${label(775, 280, 'caveats as separate fields', 'middle', ACC)}
+      ${edge('M850 414 V728 H604', 'acc')}${label(838, 468, 'carries 100% of caveats', 'end', ACC)}${label(838, 484, 'prose alone keeps 17% · C48', 'end', ACC)}
+      ${edge('M330 401 H135 V466', 'amb')}${label(232, 393, 'disagreement named 21% to 58%', 'middle', AMB)}
+      ${edge('M30 499 H14 V305 H276', 'amb')}${label(30, 400, 'follow-up question', 'middle', AMB, ' transform="rotate(-90 30 400)"')}
+      ${edge('M135 528 V582')}${label(145, 559, 'live reply: fact passed on 21 of 21 · C54')}
+      ${edge('M240 623 H326')}${label(283, 615, 'flagged reply', 'middle')}
+      ${label(135, 686, 'editor takes the fact\'s side 90% vs 33% · C54', 'middle', 'var(--ok)')}
+      ${edge('M490 430 V582')}${label(500, 510, 'second pass')}
+      ${edge('M490 644 V696')}${label(500, 675, 'prose passes on 11% to 33% (w) · C30, C46')}
+      ${edge('M490 756 V796')}
+      ${edge('M620 835 H736', 'mut')}
+      ${box(400, 20, 160, 40, 'The question', [])}
+      ${box(30, 20, 210, 72, 'Screening test', ['re-run before every use', 'predicts which models break · C55'], 'check')}
+      ${box(300, 120, 380, 76, 'Planning step', ['finds 63% of key figures, 81% of unstated ones · C57', 'gives each to 2+ specialists: 40 of 40 plans · C59'])}
+      ${box(280, 260, 130, 58, 'Specialist', ['answers alone'])}
+      ${box(425, 260, 130, 58, 'Specialist', ['answers alone'])}
+      ${box(570, 260, 130, 58, 'Specialist', ['answers alone'])}
+      ${box(740, 352, 220, 62, 'Caveats set aside', ['kept where two judges agree'], 'accent')}
+      ${box(330, 372, 320, 58, 'Editor, first pass', ['required disagreement list: 391 of 396 runs'])}
+      ${box(30, 470, 210, 58, 'Software sends follow-up', ['never the model\'s own call · C45'])}
+      ${box(30, 586, 210, 74, 'Reply filters', ['citation blocklist: 21 caught, 0 wrong', 'empty-reply filter failed: flag all'])}
+      ${box(330, 586, 320, 58, 'Editor, second pass', ['no instructions about caution · C41, C43'])}
+      ${box(380, 700, 220, 56, 'Mechanical assembly', ['prose + caveats section'], 'accent')}
+      ${box(360, 800, 260, 70, 'Final report', ['recommendation', '!Assumptions and caveats'])}
+      ${box(740, 800, 220, 70, 'Reader', ['changes decision +69 points · C51', 'same as caveat in prose'], 'check')}
+    </svg>`;
+  }
+
+  // ---------------- harness page
+  function refs(ids){ const ok = (ids || []).filter(x => cellsById[x]); return ok.length ? `<div class="cellrefs">${ok.map(x => `<a href="#cell/${encodeURIComponent(x)}" title="${esc(plainOf(cellsById[x]).title)}">Cell ${esc(x)}</a>`).join('')}</div>` : ''; }
+  function renderHarness(focus){
+    const H = DATA.harness || {};
+    if (!H.steps) { app.innerHTML = topbar('harness') + '<p class="notice">The harness page has not been built yet.</p>'; return; }
+    const steps = H.steps;
+    const list = items => `<ul class="hlist">${items.map(o => `<li><span class="w">${inline(o.what || o.title)}</span><span class="y">${inline(o.why || o.text)}</span>${refs(o.cells)}</li>`).join('')}</ul>`;
+    app.innerHTML = topbar('harness') + `
+      <section class="page-head">
+        <div class="eyebrow">${esc(H.eyebrow)}</div>
+        <h1>${esc(H.title)}</h1>
+        <p class="standfirst">${inline(H.standfirst)}</p>
+        <p class="notice" style="background:var(--surface-2);color:var(--ink-2)">${inline(H.name_note)}</p>
+      </section>
+      <section class="hsec" style="margin-top:32px">
+        <h2>${esc(H.purpose_title)}</h2>
+        <div class="prose" style="margin-top:10px">${paras(H.purpose)}</div>
+        <div class="gains">${(H.gains || []).map(g => `<div class="gain"><div class="t">${esc(g.title)}</div><div class="d">${inline(g.text)}</div>${refs(g.cells)}</div>`).join('')}</div>
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.flow_title)}</h2>
+        <p class="lead">${inline(H.flow_intro)}</p>
+        <figure class="hfig">
+          <div class="scroll">${harnessSvg()}</div>
+          <figcaption>The assembled harness on one question, redrawn from the architecture figure in the harness paper. Each label gives the measured value and the cell behind it.
+            <br><span class="key" style="color:var(--ink-2)"><i></i>main path</span><span class="key" style="color:var(--accent)"><i style="border-top-style:dashed"></i>caveats travel around the editor, which never sees them</span><span class="key" style="color:var(--amber)"><i></i>follow-up loop, limited by how often a disagreement is named</span><span class="key" style="color:var(--ink-3)"><i style="border-top-style:dashed"></i>checks outside the main path</span></figcaption>
+        </figure>
+        <ol class="flow" aria-label="Steps in order">${steps.map((s, i) => `<li><a href="#harness/step-${i + 1}"><span class="n">${i + 1}</span>${esc(s.short)}</a></li>`).join('')}</ol>
+        <ol class="hsteps">${steps.map((s, i) => `
+          <li class="hstep" id="step-${i + 1}">
+            <span class="num" aria-hidden="true">${i + 1}</span>
+            <div>
+              <h3>${esc(s.name)}</h3>
+              <div class="st"><span class="chip-o s-${esc(s.kind)}">${esc(s.status)}</span></div>
+              <div class="parts">
+                <div class="part"><h4>What it does</h4><p>${inline(s.does)}</p></div>
+                <div class="part"><h4>Why it is there</h4><p>${inline(s.why)}</p></div>
+                <div class="part"><h4>Limits</h4><p>${s.limits ? inline(s.limits) : '<span class="none">None recorded.</span>'}</p></div>
+              </div>
+              ${refs(s.cells)}
+            </div>
+          </li>`).join('')}</ol>
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.whole_title)}</h2>
+        <ul class="hlist">${(H.whole || []).map(o => `<li><span class="w">${esc(o.title)}</span><span class="y">${inline(o.text)}</span>${o.study ? `<div class="cellrefs"><a href="#study/${encodeURIComponent(o.study)}">Study</a></div>` : refs(o.cells)}</li>`).join('')}</ul>
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.omits_title)}</h2>
+        ${list(H.omits || [])}
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.never_title)}</h2>
+        <p class="lead">${inline(H.never_intro)}</p>
+        ${list(H.never || [])}
+        <p class="okline">${inline(H.never_ok)}</p>
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.risks_title)}</h2>
+        ${list(H.risks || [])}
+      </section>
+      <section class="hsec">
+        <h2>${esc(H.replication_title)}</h2>
+        <div class="prose" style="margin-top:10px">${paras(H.replication)}</div>
+        <p class="okline" style="border-left-color:var(--amber)">${inline(H.scope)}</p>
+        ${H.source_text ? `<details class="orig" style="margin-top:22px"><summary>Original design document<span class="ln">${esc(H.source)}</span></summary><div class="md-body">${md(H.source_text)}</div></details>` : ''}
+      </section>` + footer();
+    const m = focus && /^step-(\d+)$/.exec(focus);
+    if (m) { const el = app.querySelector('#step-' + m[1]); if (el) { el.scrollIntoView({ block: 'start' }); el.classList.add('hl'); } }
+    else window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && route().view !== 'index' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) go('#');
+  });
+
+  function render(){
+    const r = route();
+    if (r.view === 'cell') renderCell(r.id);
+    else if (r.view === 'study') renderStudy(r.id);
+    else if (r.view === 'claims') renderClaims(r.id);
+    else if (r.view === 'glossary') renderGlossary(r.id);
+    else if (r.view === 'harness') renderHarness(r.id);
+    else { renderIndex(); if (location.hash === '#studies') { const el = app.querySelector('#studies'); if (el) el.scrollIntoView(); } }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+})();
+</script>
+<script>/*__DATA_JS__*/</script>

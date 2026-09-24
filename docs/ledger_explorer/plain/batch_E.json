@@ -1,0 +1,286 @@
+{
+ "batch": "E",
+ "cells": {
+  "23": {
+   "title": "Can the NLI model be retuned to spot each kind of caveat?",
+   "description": "Two AI judges labeled 200 sentences so we could retune the NLI model to spot each kind of caveat. The judges agreed well, but no setting of the NLI model worked, and the keyword counter proved reliable for only one kind.",
+   "outcome": "mixed",
+   "size": "200 sentences plus 20 test items, 2 AI judges",
+   "why": "Our results so far relied on two tools that look for caveats in text: a keyword counter and an NLI model (a natural-language-inference model, which scores whether a sentence expresses a given statement). A review of 225 runs found the two never once agreed on which kind of caveat the editor had added on its own, and in 26% of runs they disagreed on whether it had added any. The NLI model's cut-off scores had been tuned in Cell 7a for another job, telling apart the preferred and rejected answers in our preference-training pairs. We had been using them to decide whether each kind of caveat was present. This cell tried to retune them for that job. The right answers came from two AI judges, not from the keyword counter, so that the two tools would stay independent.",
+   "expectations": [
+    {
+     "id": "P23.1",
+     "text": "Cut-off scores tuned for spotting each kind of caveat would differ from the old ones by at least 0.10 for at least 2 of the 4 kinds.",
+     "outcome": "held",
+     "note": "Technically held, with 3 of 4 cut-offs moving that much, but only because no cut-off worked: the best ones flagged either every sentence or almost none."
+    },
+    {
+     "id": "P23.2",
+     "text": "With retuned cut-offs, the keyword counter and the NLI model would at least sometimes agree on which kind of caveat the editor had added on its own.",
+     "outcome": "failed",
+     "note": "No cut-off worked, so agreement could not rise. The two tools had never measured the same thing, so their disagreement was not a tuning problem."
+    },
+    {
+     "id": "P23.3",
+     "text": "The two AI judges would agree on at least 70% of their labels, and each would score at least 80% on 20 hand-written test sentences with known answers.",
+     "outcome": "held",
+     "note": "They agreed on 86% of labels and scored 72 and 74 out of 80 on the test sentences, with no empty or unreadable replies."
+    }
+   ],
+   "found": "The two judges, gpt-oss-20B and Qwen2.5-7B, were reliable. They agreed on 86% of their labels (688 of 800), scored 72 and 74 out of 80 on the test sentences with known answers, and never returned an empty or unreadable reply.\n\nMeasured against the judges' labels, the NLI model could not detect the caveats at all. For 'this number is an estimate' and general hedging its scores pointed the wrong way: sentences with the caveat tended to score lower than sentences without it. For 'the rules differ by place' it did no better than chance, and 'my information may be out of date' appeared only 3 times, too few to measure. The best available cut-offs either flagged every sentence or almost none. As the plan required, we saved them in a separate new file, leaving the old cut-offs untouched, and marked it do not use.\n\nIn a side check that was not in the plan, we also graded the keyword counter against the judges. For the 'estimate' caveat it was good: it found 92% of the sentences the judges marked and was right 92% of the time it fired. For the other kinds it missed most cases. It found 30% of 'rules differ by place' sentences, with no false hits, 25% of general hedging, where about a third of its hits were wrong, and none of the 3 'out of date' sentences.",
+   "means": "No setting of this NLI model, as we used it, can detect these caveats, so it was dropped for that purpose. As the plan required, we stopped describing results as 'confirmed by two measuring tools' and wrote 'two independent measurements' in the paper and the website text. A planned NLI re-check of Cell 19 was canceled, leaving manual reading as the evidence there. The judge pair became our checked way to label caveats. The keyword counter's rates for three of the four kinds became known undercounts. We also noted that, because the counter missed many caveats the specialists supplied, w = 0.35, the share of their caveats the editor passes along, might be too low.",
+   "later": "Cell 24 withdrew the note that w = 0.35, the share of caveats the editor passes along, might be too low: on the well-measured 'estimate' caveat the editor followed its input less closely, not more. Cell 30 found the same two judges agreed only 62% of the time when labeling whole documents rather than single sentences, so this check holds for sentence-level labels only. From 2026-08-09 the keyword counter was no longer used as a measuring tool.",
+   "entries": {
+    "3257": {
+     "label": "Plan",
+     "title": "Retune the NLI model using labels from two AI judges",
+     "summary": "Two AI judges, gpt-oss-20B and Qwen2.5-7B, would label 200 sentences from saved runs, plus 20 hand-written test sentences with known answers, for each kind of caveat. They saw only the definitions, never either tool's output. New NLI cut-offs would come from sentences where both judges agreed."
+    },
+    "3394": {
+     "label": "Result",
+     "title": "The judges agree, but no NLI setting works",
+     "summary": "The judges agreed on 86% of labels and scored 90% or better on the test sentences. Measured against their labels, the NLI model could not detect any kind of caveat at any cut-off. A side check showed the keyword counter measured the 'estimate' caveat well and missed most of the other kinds."
+    }
+   }
+  },
+  "24": {
+   "title": "Do earlier results hold on the one well-measured kind of caveat?",
+   "description": "Without new runs, we re-checked four earlier results using only the 'this number is an estimate' caveat, the one kind our keyword counter measured well. Two held, one came out the opposite way, and one did not hold.",
+   "outcome": "mixed",
+   "size": "No new runs, re-analyzed 1,260 saved runs",
+   "why": "Cell 23 showed that our keyword counter measured one kind of caveat well, 'this number is an estimate', and missed most instances of the other three. Every combined score so far had added the four kinds together, one well measured and three poorly measured. So we re-checked four standing results on the 'estimate' caveat alone, using saved runs and no new model calls. We wrote down the rules and what we expected before computing any numbers. One question was Cell 23's suggestion that w, the share of the specialists' caveats that the editor passes along, had been understated because the counter missed caveats.",
+   "expectations": [
+    {
+     "id": "P24.1",
+     "text": "On the 'estimate' caveat, the gap between how often the editor included it when a specialist raised it and when none did would be at least 0.50. That is above w = 0.352, the share passed along for all four kinds.",
+     "outcome": "reversed",
+     "note": "The opposite happened. The gap was 0.21, well below 0.352: the editor included a raised 'estimate' caveat 53% of the time and added one nobody raised 31% of the time."
+    },
+    {
+     "id": "P24.2",
+     "text": "On made-up 'estimate' caveats, none of the other four versions in our five-version comparison would show a clear difference from the council.",
+     "outcome": "failed",
+     "note": "The flat version, which merged the specialists' answers with a plain prompt, made them up in 17% of runs where no specialist raised one, against 72% for the council."
+    },
+    {
+     "id": "P24.3",
+     "text": "Cell 17's version, which told the editor not to add caveats no specialist raised, would still show no clear difference from the council on made-up 'estimate' caveats.",
+     "outcome": "held",
+     "note": "No clear difference, so Cell 17's finding that the instruction did not cut made-up caveats stands on the well-measured kind."
+    },
+    {
+     "id": "P24.4",
+     "text": "On simple control questions that call for no caveats, the council would not use fewer 'estimate' caveats than a single model with a standing instruction to flag uncertainty.",
+     "outcome": "held",
+     "note": "It held and went further: the council used them in 73% of runs against 20% for the single model, a clear difference we report as measured without a pass/fail test."
+    }
+   ],
+   "found": "On the 'estimate' caveat, the editor included it in 53% of runs where a specialist had raised it and in 31% of runs where none had. The gap between those two rates, 0.21, was well below w = 0.352, the share of all four kinds that the editor passes along. The gap and w are not quite the same measure, but the result was plain against the bar we had set. The three poorly measured kinds showed larger gaps, from 0.38 to 0.53.\n\nIn our five-version comparison, the flat version, which merged the three specialists' answers with a plain prompt, made up 'estimate' caveats in 17% of runs where no specialist had raised one, against 72% for the council. That is a clear difference, though with only 9 to 18 runs per version. The flat version said almost nothing cautious at all, and an answer that says nothing cannot make anything up. The versions from Cells 17, 19 and 20 did not differ from the council.\n\nOn simple control questions that call for no caveats, the council used the 'estimate' caveat in 73% of runs, against 20% for a single model with a standing instruction to flag uncertainty (15 runs each).",
+   "means": "We withdrew Cell 23's note that w = 0.35, the share of caveats the editor passes along, was probably too low. It was backwards. If anything, the poorly measured kinds made the editor look more responsive than it was, so the picture of an editor that leans mostly on its own habits got stronger. The write-up of the five-version comparison was corrected: the flat version's lower rate of made-up caveats is real but comes from saying almost nothing, and its NLI section no longer counts after Cell 23. Cell 14's finding held and got sharper: the council was worse than a single prompted model at adding 'estimate' caveats nobody needed. As planned whatever the results, Cell 15's claim that the editor used only 1.2 to 1.7 of the four kinds was limited to what the keyword counter could see.",
+   "later": "A program audit on 2026-08-07 noted that we had seen these saved runs in summary before writing the plan, but kept the results because the main one came out the opposite of what we expected. From 2026-08-09 the keyword counter was no longer used as a measuring tool, so these figures are provisional.",
+   "entries": {
+    "3454": {
+     "label": "Plan",
+     "title": "Re-check four standing results on the best-measured caveat",
+     "summary": "Using only saved runs, we would recompute four earlier results on the 'this number is an estimate' caveat alone, the kind Cell 23 found the keyword counter measured well. The rules and expectations were written down before any numbers were computed."
+    },
+    "3520": {
+     "label": "Result",
+     "title": "One result reversed, one did not hold, two held",
+     "summary": "On the 'estimate' caveat the editor followed its input less closely than the combined measure suggested, so Cell 23's doubt about the measured share passed along was withdrawn as backwards. The flat version made up fewer 'estimate' caveats than the council. Cells 17 and 14 held, and the council used more unneeded 'estimate' caveats than a single model."
+    }
+   }
+  },
+  "25": {
+   "title": "Does the same pattern show up in a Mixture-of-Agents setup?",
+   "description": "We repeated our main measurement on the published Mixture-of-Agents recipe. Its editor also added caveats nobody had raised, but it kept far fewer of the caveats it was handed than our council's editor did.",
+   "outcome": "mixed",
+   "size": "80 runs over 9 scenarios, none failed",
+   "why": "Our main finding so far came from one design, the council. The editor passed along only part of the caution the specialists raised, and it also added some caution of its own. Before building a paper on that, we wanted to know whether the same pattern appears in Mixture-of-Agents (MoA), a well-known published recipe where several general-purpose models answer and one model merges their answers. We kept the same scenarios and the same editor model, gpt-oss-20B, so this was a second look inside our own lab rather than an independent check.",
+   "expectations": [
+    {
+     "id": "P25.1",
+     "text": "The editor would pass along a middling share of the caveats it was given, somewhere between 15% and 85%: more caveats in, more caveats out, but well short of all of them.",
+     "outcome": "partly",
+     "note": "More caveats in did mean more out, but the share passed along was so small, plausibly anywhere from 8% to 23%, that we could not rule out the editor mostly ignoring its input."
+    },
+    {
+     "id": "P25.2",
+     "text": "Given drafts with no caveats at all, the editor would still add some of its own in at least 10% of runs.",
+     "outcome": "held",
+     "note": "It added caveats nobody had raised in 28% of those runs (plausibly anywhere from 12% to 51%)."
+    },
+    {
+     "id": "P25.3",
+     "text": "For the kind of caveat our scoring handled best, saying a number is an estimate, the editor would flag estimates more often when the drafts did, though not every time.",
+     "outcome": "failed",
+     "note": "It flagged estimates at the same rate whether or not any draft had done so."
+    }
+   ],
+   "found": "All 80 runs completed. When the drafts carried more caveats, the final answers carried more too, so the basic pattern was there. We describe it with the formula y = w·s + c. Here s is how many kinds of caveat the drafts contained and y is how many appear in the final answer. The share passed along is w, and c is what the editor adds on its own when handed none. This editor's w was 0.158, roughly 16%, against 0.352 for the council's editor. The ratio (1 − w)/w, which compares the weight the editor gives its own habits with the weight it gives the drafts, was 5.35, three times the council editor's 1.84. Even with four kinds of caveat in the drafts, the answers contained fewer than one kind on average.\n\nThe editor also added caution on its own. Its c was 0.275, against 0.540 for the council's editor, and when the drafts contained no caveats it added some in 28% of runs. For estimates in particular it showed no sign of reading its input. What response it did show came from the other kinds, where it echoed distinctive wording such as the names of jurisdictions.\n\nThe three general models raised almost no caveats themselves, 5 across 27 answers. Rich caution in the drafts came from our specialists, not from using several models.",
+   "means": "The pattern is not unique to our council. A second design also produced an editor that adds caution nobody raised and passes along only part of what it is given. How much gets passed along is not fixed, though. The standard MoA prompt says nothing about keeping caveats. Under it, the editor passed along about as little as the flat version from our five-version comparison, which merged the specialists' answers with a plain prompt (its share passed along, w, was 0.255). We read this as fitting Cell 8's early finding that specialists' caution, without an instruction to keep it, ends up at single-model levels, and concluded that the editor's instructions matter at least as much as the design. As planned, the paper reports this result beside the council's with equal weight.",
+   "later": "A re-analysis (PD-13) and the second program audit withdrew the reading about instructions: the comparison changed several things at once, and the council's prompts told models the exact phrases the keyword counter looked for. Cell 30 found that drafts with caveats deleted still held caveats the counter missed, so the 28% is not a true zero-caveat rate. Cell 38 later confirmed made-up caution on drafts checked to be empty. These figures are provisional.",
+   "entries": {
+    "3576": {
+     "label": "Plan",
+     "title": "Repeat our measurement on a Mixture-of-Agents setup",
+     "summary": "Three general-purpose models (Phi-4 14B, Qwen2.5-7B and Mistral 7B) would answer each scenario, and gpt-oss-20B would merge their answers using the standard MoA prompt, which has no instruction to keep caveats. To vary how much caution the editor received, we would delete caveat sentences from the drafts, down to none."
+    },
+    "3644": {
+     "label": "Change to the plan",
+     "title": "Adding caveats, because the drafts had almost none",
+     "summary": "The general models raised almost no caveats on their own, 5 across 27 answers, so deleting sentences could not create enough variety. Before running the editor, we changed the plan to also add caveat sentences copied from our specialists' earlier answers to the same scenario, up to four kinds per draft. The drafts with the most caveats therefore mixed general-model text with specialist sentences."
+    },
+    "3681": {
+     "label": "Result",
+     "title": "The pattern appears, but this editor keeps far less",
+     "summary": "All 80 runs completed. The editor added caveats nobody raised and passed along only about 16% of those it received, well below our council's editor. Before writing up, we caught and fixed a mistake in our analysis script that had marked the first expectation as held."
+    }
+   }
+  },
+  "26": {
+   "title": "Does the editor keep a caveat more often when specialists agree?",
+   "description": "Using 1,165 saved runs, we checked whether the editor kept a caveat more often when two or more specialists raised it. On the well-measured 'estimate' caveat it did not: 49% when two or more raised it, against 52% when only one did.",
+   "outcome": "failed",
+   "size": "No new runs, re-analyzed 1,165 saved runs",
+   "why": "Whether specialists agree or disagree is the only evidence inside the system about how reliable a point is. A good editor might give more weight to points that several specialists raised independently. We checked whether ours did, using saved runs and no new model calls. Our keyword counter can tell how many specialists raised a kind of caveat, but not whether another specialist disputed it, so this tested agreement counts only. The main test used the 'this number is an estimate' caveat, the one kind the counter measured well. We wrote down the plan and what we expected before computing any numbers.",
+   "expectations": [
+    {
+     "id": "P26.1",
+     "text": "On the 'estimate' caveat, the editor would include it more often when two or more specialists raised it than when only one did.",
+     "outcome": "failed",
+     "note": "It did not: 49% with two or more specialists (76 runs) against 52% with one (824 runs), no clear difference."
+    },
+    {
+     "id": "P26.2",
+     "text": "Pooled over all four kinds of caveat, agreement would also raise how often a caveat was kept, read only alongside how well each kind is measured.",
+     "outcome": "not-graded",
+     "note": "Pooled, caveats raised by more specialists were kept more often, by 16 percentage points, but all of it came from the three poorly measured kinds, and we could not tell why."
+    }
+   ],
+   "found": "On the 'estimate' caveat the editor paid no attention to agreement. It included the caveat in 52% of runs where one specialist raised it (824 runs) and in 49% where two or more did (76 runs), no clear difference. The smaller set of runs from our five-version comparison pointed the same way, if anything lower with agreement.\n\nThe three poorly measured kinds looked different. The more specialists raised them, the more often they appeared. For 'my information may be out of date' the rate rose from 15% with one specialist to 40% with two and 62% with three. 'The rules differ by place' rose from 28% to 65% to 85%, and general hedging from 51% to 70% to 80%. The pooled result over all four kinds came entirely from these three.\n\nOur tools could not tell why. The editor might weigh agreement for these kinds only. Or it may be a side effect of counting: the keyword counter spots these kinds only through particular phrases, so more specialists using a phrase makes it likelier that one copy lands in the answer. The rises were steeper than copying alone would predict, though. Or scenarios where more specialists agree may simply carry more caveats overall.",
+   "means": "The editor ignores the one clue about reliability that only a multi-specialist system can offer, at least on the kind of caveat we could measure well. This extended Cell 20, which found that the council points out disagreements between specialists but does not use them. Now it also gave no extra weight to points they agreed on. The result added support to our working summary that nothing we found makes the editor match its caution to the evidence, and the framework paper's discussion was updated with it. Sorting out the pattern in the other three kinds would need AI judges to label a fresh sample, which we noted as the next step but did not run.",
+   "later": "Later reviews kept this result. A program audit on 2026-08-07 noted that we had seen these saved runs in summary before writing the plan, but kept the result because it went against the idea being tested. An audit on 2026-08-11 judged the test large enough to rule out a gain of more than about 8 percentage points, and the project's list of standing claims still includes it.",
+   "entries": {
+    "3757": {
+     "label": "Plan",
+     "title": "Check whether agreement among specialists changes what is kept",
+     "summary": "Using saved runs with two or more specialists, we would compare how often the editor kept a caveat raised by one specialist with one raised by two or more. The 'estimate' caveat was the main test. Cell 25's runs were left out because their added sentences would distort the counts."
+    },
+    "3819": {
+     "label": "Result",
+     "title": "No extra weight for agreement on the well-measured caveat",
+     "summary": "Across 1,165 saved runs, the editor kept the 'estimate' caveat about as often whether one specialist or several raised it. The three poorly measured kinds rose steeply with agreement, for reasons our tools could not pin down."
+    }
+   }
+  },
+  "27": {
+   "title": "Does filling in an evidence table first change the editor's caveats?",
+   "description": "Before answering, the editor had to fill in an evidence table: who raised each point, how many specialists agreed, and what to do with it. All four expectations failed. An unplanned drop in caution the editor adds on its own was later withdrawn.",
+   "outcome": "failed",
+   "size": "124 runs in two setups (79 and 45)",
+   "why": "Earlier attempts to change the editor's behavior with rules, training or feedback had failed. This cell tried something different. Before answering, the editor had to write out an evidence table with one row per claim or caveat. Each row said who raised it, how many specialists raised it, whether anyone disputed it, and whether to adopt it, keep it with a caveat, or drop it. Every caveat in the answer then had to match a row marked for a caveat. The idea was to hand the editor the agreement evidence Cell 26 found it ignoring, in a form it could not skip. We noted in advance that our past results predicted failure.",
+   "expectations": [
+    {
+     "id": "P27.1",
+     "text": "With the table, the editor would pass along a larger share of caveats (w) than the plain Mixture-of-Agents editor in Cell 25, whose w was 0.158, with a clear gap.",
+     "outcome": "failed",
+     "note": "No gain: the share was 0.119 against 0.158 in the Mixture-of-Agents setup, and 0.385 against 0.346 for the ordinary council, no clear difference in either."
+    },
+    {
+     "id": "P27.2",
+     "text": "Given drafts with no caveats, the editor would add caveats on its own less often with the table than the matching setups did without it.",
+     "outcome": "failed",
+     "note": "It failed on the main comparison, the Mixture-of-Agents setup, where the difference was too close to call. In the council setup the drop was clear: 0 of 12 runs against 5 of 9 for the ordinary council."
+    },
+    {
+     "id": "P27.3",
+     "text": "With the table, the editor would keep caveats raised by two or more specialists more often than those raised by one, unlike the versions without the table.",
+     "outcome": "failed",
+     "note": "No such weighting appeared, even with the number of specialists written in a required column."
+    },
+    {
+     "id": "P27.4",
+     "text": "At least 80% of caveats in the answers would match a table row marked for a caveat, and answers with empty tables would contain no caveats at all.",
+     "outcome": "failed",
+     "note": "It narrowly failed: 15 of 20 caveats matched a row (75%), and 43 of 49 answers with empty tables (88%) had no caveats."
+    }
+   ],
+   "found": "We describe results with the formula y = w·s + c. Here s is how many kinds of caveat the drafts contained and y is how many appear in the final answer. The share passed along is w, and c is how much the editor adds on its own when handed none.\n\nThe format itself was a burden. In the Mixture-of-Agents setup, 9 of 79 runs broke it and 1 came back empty. In the council setup, 7 of 45 broke it. Those runs were set aside, never mixed in, and only the answer section was scored. None of the four expectations held: w did not rise, and the editor still did not weigh agreement.\n\nAn unplanned pattern appeared, which we reported as unplanned. In both setups c fell to about zero (0.083 and −0.022), the only such results the project had measured. In the council setup w stayed at 0.385, and more caveats in still gave more out. The filtering seemed to move into the table: 49 of 69 Mixture-of-Agents tables listed no caveats even though most drafts had some, and the answers then followed the thin tables. The cost was saying less. In the Mixture-of-Agents setup, 52 of 69 answers had no caveats at all, an even quieter result than the flat version from our five-version comparison. In the council setup, answers carried 0.80 kinds of caveat on average, against about 1.5 for the ordinary council. Part of the drop in made-up caution was simply less caution of any kind.",
+   "means": "The evidence table was recorded as tried and failed on all four expectations, and no setup was adopted. The editor was handed the agreement evidence in a required column and still did not use it, which added support to our working summary that nothing we found makes the editor match its caution to the evidence. The drop in c, the caution the editor adds on its own, with w, the share passed along, unchanged in the council setup, was the most promising unplanned observation the project had produced. Under our own rule, it had to be repeated on fresh runs under a written plan before any paper could present it as more than an observation, with the loss of caution reported beside it. Cell 28 was that repeat.",
+   "later": "Cell 28 repeated the unplanned pattern. Cell 31 then withdrew it: Cells 27 and 28 had also dropped the instruction to keep the specialists' caveats, which the comparison council still had and which told models the exact phrases the keyword counter looked for. With only the table changing, Cell 31 found no clear effect, but its test was too small to rule one out, so the question is open. Cell 30 found drafts the counter scored as caveat-free still held caveats.",
+   "entries": {
+    "3864": {
+     "label": "Plan",
+     "title": "Make the editor fill in an evidence table before answering",
+     "summary": "The editor would first write a table listing each claim or caveat, who raised it, how many specialists did, whether it was disputed, and whether to adopt, caveat or drop it. We would test this in Cell 25's Mixture-of-Agents setup (80 runs) and in the council (45 runs), where the table replaced the instruction to keep caveats."
+    },
+    "3944": {
+     "label": "Result",
+     "title": "All four expectations fail, but made-up caution vanishes",
+     "summary": "The table did not raise the share of caveats passed along or make the editor weigh agreement. In an unplanned pattern, the editor stopped adding caution on its own, partly because it said less overall. We marked this as needing a repeat before any claim."
+    }
+   }
+  },
+  "28": {
+   "title": "Does the evidence-table pattern repeat on fresh runs?",
+   "description": "We repeated Cell 27's council setup on 45 fresh runs. The editor again added almost no caution of its own while passing along a normal share of caveats, but a formula we wrote to explain this failed its own check. Cell 31 later withdrew the finding.",
+   "outcome": "mixed",
+   "size": "45 runs, plus a re-analysis of saved tables",
+   "why": "Cell 27's council setup produced an unplanned pattern. With the evidence table, the editor stopped adding caution on its own (c, the amount it adds when handed no caveats, was about zero) while still passing along its usual share of caveats (w = 0.385). Our rule was that an unplanned pattern must be repeated on fresh runs, with expectations written down first, before any paper could present it as more than an observation. This cell was that repeat, with a prompt identical to Cell 27's. We compared against the council's earlier results instead of running a fresh comparison version, and noted that as a limitation. No setup would be adopted whatever the outcome.",
+   "expectations": [
+    {
+     "id": "P28.1",
+     "text": "The caution the editor adds on its own (c) would be well below the council's usual level, with its plausible range ending below 0.44.",
+     "outcome": "held",
+     "note": "It was −0.024, about zero, and its plausible range sat wholly below the council's range of 0.44 to 0.99."
+    },
+    {
+     "id": "P28.2",
+     "text": "In runs where the drafts had no caveats, the plausible range for how often the editor made caveats up would end below 27%, under the council's range, provided at least 8 such runs occurred.",
+     "outcome": "failed",
+     "note": "It added none in 10 such runs, the best possible result, but the bar could not be met with fewer than 11 runs. It failed because of how we set the bar, not because of the data."
+    },
+    {
+     "id": "P28.3",
+     "text": "The share passed along (w) would stay above 0.15 and in line with Cell 27's council setup, so the drop in made-up caution would not come from saying nothing.",
+     "outcome": "held",
+     "note": "The share was 0.308, with its plausible range above 0.15 and overlapping Cell 27's."
+    },
+    {
+     "id": "PA28.a",
+     "text": "With the table as a middle step, the overall share passed along would equal the share passed into the table times the share passed from table to answer, w1·w2. Caution added on its own would follow the same chain.",
+     "outcome": "failed",
+     "note": "It failed: the product came to 0.225, below the directly measured share of 0.367, and the chained figure for caution added on its own was too high. The answer drew on the drafts directly, not only through the table."
+    },
+    {
+     "id": "PA28.b",
+     "text": "Runs that broke the table format would add caveats on their own at the council's usual rate, not at the near-zero rate of runs that kept the format.",
+     "outcome": "unclear",
+     "note": "Too little data to test: only 1 format-breaking run had drafts with no caveats, against the 5 we required."
+    }
+   ],
+   "found": "We describe results with the formula y = w·s + c. Here s is how many kinds of caveat the specialists handed over and y is how many appear in the final answer. The share passed along is w, and c is how much the editor adds on its own when handed none.\n\nThe pattern repeated. With the table, c was −0.024, about zero. In 10 runs where the drafts had no caveats, the editor added none. But even that could not pass our bar: zero in 10 runs still leaves a plausible range up to 28%, above the 27% line we set, and our plan allowed as few as 8 runs. w was 0.308, a normal share, so the drop did not come from silence. The cost was saying less. Answers carried 0.59 kinds of caveat on average, below Cell 27's 0.80, and more than half had none. 9 of 45 runs (20%) broke the table format, mostly early on.\n\nThe formula check failed. We fitted the two steps separately on the saved tables from Cells 27 and 28: w1 and c1 for drafts to table, w2 and c2 for table to answer. The table step made nothing up on its own (c1 = −0.062). But the shares did not multiply: w1·w2 came to 0.225, below the directly measured w of 0.367. The answer draws on the drafts directly, not only through the table. Caveats reach the answer by going around the table, while made-up caveats still disappear, since one would have to appear with neither a source in the drafts nor a row in the table. The table acts as a permission check on caveats, not as a narrow channel.",
+   "means": "By the plan's own rule, the drop in made-up caution could not enter any paper on this cell's authority. Pooled with Cell 27, the editor made up caveats in 0 of 22 such runs, a clear drop, but that was not the plan, so a new plan with a bar that can be met would be needed. From then on, checking in advance that every pass/fail bar could be met became standard practice. The chain formula w' = ∏ w_k, which gives the overall share w' as the product of each step's share w_k, was withdrawn for setups where one model writes the table and the answer together. A two-path formula replaced it as a candidate needing its own test. The planned Cell 29, a chain test across all saved runs, was dropped at the checkpoint we had set, and a different Cell 29 took its place.",
+   "later": "Cell 31 withdrew the finding. Cells 27 and 28 had also dropped the instruction to keep the specialists' caveats, which the comparison council still had and which told models the exact phrases the keyword counter looked for. With only the table changing and a checked scoring method, Cell 31 found no clear effect. Its test was too small to rule one out, so whether the table matters is an open question.",
+   "entries": {
+    "3999": {
+     "label": "Plan",
+     "title": "Repeat the evidence-table pattern on fresh runs",
+     "summary": "We would run Cell 27's council setup again, with an identical prompt, on 45 fresh runs and compare against the council's earlier results. Three expectations were written down, and the costs, how much less the editor says and how often it breaks the format, had to be reported beside them."
+    },
+    "4056": {
+     "label": "Note",
+     "title": "A formula to explain the pattern, written before scoring",
+     "summary": "While the runs were in progress and before any scoring, we wrote down a formula treating the table as a middle step, predicting that the shares passed along at each step would multiply. We also predicted that runs breaking the table format would behave like ordinary answers."
+    },
+    "4080": {
+     "label": "Result",
+     "title": "The pattern repeats, the formula fails, Cell 29 is dropped",
+     "summary": "The editor again added almost no caution of its own while passing along a normal share. One expectation failed only because its bar could not be met. The chain formula failed its own check, so the chain test planned for Cell 29 was dropped at its checkpoint."
+    }
+   }
+  }
+ },
+ "studies": {}
+}
