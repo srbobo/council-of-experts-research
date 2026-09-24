@@ -1,0 +1,340 @@
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r0", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 3909}
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r1", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 4507}
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r2", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 3666}
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r3", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 4276}
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r4", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 3761}
+{"run_id": "qwen2.5__screen__case_8_trigger_light_hand_hygiene__r5", "label": "qwen2.5", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 3899}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r0", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 4982}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r1", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 4657}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r2", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 4175}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r3", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 5018}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r4", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 5039}
+{"run_id": "qwen2.5__screen__case_7_trigger_light_baseline__r5", "label": "qwen2.5", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 4738}
+{"run_id": "qwen2.5__format__r0", "label": "qwen2.5", "stage": "format", "rep": 0, "ok": true, "chars": 319}
+{"run_id": "qwen2.5__format__r1", "label": "qwen2.5", "stage": "format", "rep": 1, "ok": false, "chars": 215}
+{"run_id": "qwen2.5__format__r2", "label": "qwen2.5", "stage": "format", "rep": 2, "ok": true, "chars": 304}
+{"run_id": "qwen2.5__format__r3", "label": "qwen2.5", "stage": "format", "rep": 3, "ok": true, "chars": 249}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r0", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 2827}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r1", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 2527}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r2", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 2420}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r3", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 2328}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r4", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 2736}
+{"run_id": "llama3__screen__case_8_trigger_light_hand_hygiene__r5", "label": "llama3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 2081}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r0", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 3639}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r1", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 3675}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r2", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 3158}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r3", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 3163}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r4", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 4000}
+{"run_id": "llama3__screen__case_7_trigger_light_baseline__r5", "label": "llama3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 4043}
+{"run_id": "llama3__format__r0", "label": "llama3", "stage": "format", "rep": 0, "ok": true, "chars": 285}
+{"run_id": "llama3__format__r1", "label": "llama3", "stage": "format", "rep": 1, "ok": true, "chars": 297}
+{"run_id": "llama3__format__r2", "label": "llama3", "stage": "format", "rep": 2, "ok": true, "chars": 332}
+{"run_id": "llama3__format__r3", "label": "llama3", "stage": "format", "rep": 3, "ok": true, "chars": 370}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r0", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 2199}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r1", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 3204}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r2", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 3025}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r3", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 3175}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r4", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 2882}
+{"run_id": "mistral__screen__case_8_trigger_light_hand_hygiene__r5", "label": "mistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 2713}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r0", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 3311}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r1", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 4616}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r2", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 3638}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r3", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 4227}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r4", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 4697}
+{"run_id": "mistral__screen__case_7_trigger_light_baseline__r5", "label": "mistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 4414}
+{"run_id": "mistral__format__r0", "label": "mistral", "stage": "format", "rep": 0, "ok": true, "chars": 283}
+{"run_id": "mistral__format__r1", "label": "mistral", "stage": "format", "rep": 1, "ok": true, "chars": 278}
+{"run_id": "mistral__format__r2", "label": "mistral", "stage": "format", "rep": 2, "ok": false, "chars": 171}
+{"run_id": "mistral__format__r3", "label": "mistral", "stage": "format", "rep": 3, "ok": true, "chars": 272}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r0", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 1639}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r1", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 2040}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r2", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 5736}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r3", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 1781}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r4", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 1712}
+{"run_id": "deepseek__screen__case_8_trigger_light_hand_hygiene__r5", "label": "deepseek", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 1529}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r0", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 4118}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r1", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 2618}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r2", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 2907}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r3", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 2195}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r4", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 1988}
+{"run_id": "deepseek__screen__case_7_trigger_light_baseline__r5", "label": "deepseek", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 2064}
+{"run_id": "deepseek__format__r0", "label": "deepseek", "stage": "format", "rep": 0, "ok": true, "chars": 114}
+{"run_id": "deepseek__format__r1", "label": "deepseek", "stage": "format", "rep": 1, "ok": false, "chars": 124}
+{"run_id": "deepseek__format__r2", "label": "deepseek", "stage": "format", "rep": 2, "ok": true, "chars": 316}
+{"run_id": "deepseek__format__r3", "label": "deepseek", "stage": "format", "rep": 3, "ok": true, "chars": 354}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r0", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 3494}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r1", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 3973}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r2", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 3850}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r3", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 3679}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r4", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 3886}
+{"run_id": "phi4__screen__case_8_trigger_light_hand_hygiene__r5", "label": "phi4", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 3680}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r0", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 4415}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r1", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 4892}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r2", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 4061}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r3", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 4504}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r4", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 5031}
+{"run_id": "phi4__screen__case_7_trigger_light_baseline__r5", "label": "phi4", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 4003}
+{"run_id": "phi4__format__r0", "label": "phi4", "stage": "format", "rep": 0, "ok": true, "chars": 502}
+{"run_id": "phi4__format__r1", "label": "phi4", "stage": "format", "rep": 1, "ok": true, "chars": 539}
+{"run_id": "phi4__format__r2", "label": "phi4", "stage": "format", "rep": 2, "ok": true, "chars": 429}
+{"run_id": "phi4__format__r3", "label": "phi4", "stage": "format", "rep": 3, "ok": false, "chars": 445}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r0", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 2232}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r1", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 2988}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r2", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 2128}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r3", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 2494}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r4", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 2780}
+{"run_id": "meditron3__screen__case_8_trigger_light_hand_hygiene__r5", "label": "meditron3", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 3143}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r0", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 3597}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r1", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 3474}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r2", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 2767}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r3", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 2784}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r4", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 2782}
+{"run_id": "meditron3__screen__case_7_trigger_light_baseline__r5", "label": "meditron3", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 2372}
+{"run_id": "meditron3__format__r0", "label": "meditron3", "stage": "format", "rep": 0, "ok": true, "chars": 218}
+{"run_id": "meditron3__format__r1", "label": "meditron3", "stage": "format", "rep": 1, "ok": true, "chars": 192}
+{"run_id": "meditron3__format__r2", "label": "meditron3", "stage": "format", "rep": 2, "ok": true, "chars": 633}
+{"run_id": "meditron3__format__r3", "label": "meditron3", "stage": "format", "rep": 3, "ok": true, "chars": 263}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r0", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 1803}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r1", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 1553}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r2", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 1920}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r3", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 2811}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r4", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 1736}
+{"run_id": "med42__screen__case_8_trigger_light_hand_hygiene__r5", "label": "med42", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 1415}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r0", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 2219}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r1", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 1764}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r2", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 2099}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r3", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 2766}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r4", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 1618}
+{"run_id": "med42__screen__case_7_trigger_light_baseline__r5", "label": "med42", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 2154}
+{"run_id": "med42__format__r0", "label": "med42", "stage": "format", "rep": 0, "ok": false, "chars": 237}
+{"run_id": "med42__format__r1", "label": "med42", "stage": "format", "rep": 1, "ok": false, "chars": 397}
+{"run_id": "med42__format__r2", "label": "med42", "stage": "format", "rep": 2, "ok": true, "chars": 252}
+{"run_id": "med42__format__r3", "label": "med42", "stage": "format", "rep": 3, "ok": false, "chars": 427}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r0", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 1122}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r1", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 1184}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r2", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 1477}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r3", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 78}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r4", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 487}
+{"run_id": "openbiollm__screen__case_8_trigger_light_hand_hygiene__r5", "label": "openbiollm", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 1370}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r0", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 1623}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r1", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 1540}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r2", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 299}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r3", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 252}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r4", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 722}
+{"run_id": "openbiollm__screen__case_7_trigger_light_baseline__r5", "label": "openbiollm", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 1523}
+{"run_id": "openbiollm__format__r0", "label": "openbiollm", "stage": "format", "rep": 0, "ok": false, "chars": 199}
+{"run_id": "openbiollm__format__r1", "label": "openbiollm", "stage": "format", "rep": 1, "ok": true, "chars": 22}
+{"run_id": "openbiollm__format__r2", "label": "openbiollm", "stage": "format", "rep": 2, "ok": true, "chars": 22}
+{"run_id": "openbiollm__format__r3", "label": "openbiollm", "stage": "format", "rep": 3, "ok": false, "chars": 347}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r0", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 524}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r1", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 13}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r2", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 427}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r3", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 568}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r4", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 2955}
+{"run_id": "biomistral__screen__case_8_trigger_light_hand_hygiene__r5", "label": "biomistral", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 417}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r0", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 797}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r1", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 556}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r2", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 682}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r3", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 18}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r4", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 614}
+{"run_id": "biomistral__screen__case_7_trigger_light_baseline__r5", "label": "biomistral", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 904}
+{"run_id": "biomistral__format__r0", "label": "biomistral", "stage": "format", "rep": 0, "ok": false, "chars": 351}
+{"run_id": "biomistral__format__r1", "label": "biomistral", "stage": "format", "rep": 1, "ok": false, "chars": 474}
+{"run_id": "biomistral__format__r2", "label": "biomistral", "stage": "format", "rep": 2, "ok": false, "chars": 264}
+{"run_id": "biomistral__format__r3", "label": "biomistral", "stage": "format", "rep": 3, "ok": false, "chars": 265}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r0", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 0, "chars": 1613}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r1", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 1, "chars": 1941}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r2", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 2, "chars": 2136}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r3", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 3, "chars": 2658}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r4", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 4, "chars": 2112}
+{"run_id": "saul__screen__case_8_trigger_light_hand_hygiene__r5", "label": "saul", "stage": "screen", "case": "case_8_trigger_light_hand_hygiene", "rep": 5, "chars": 3156}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r0", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 0, "chars": 4382}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r1", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 1, "chars": 4902}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r2", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 2, "chars": 3363}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r3", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 3, "chars": 4618}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r4", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 4, "chars": 4748}
+{"run_id": "saul__screen__case_7_trigger_light_baseline__r5", "label": "saul", "stage": "screen", "case": "case_7_trigger_light_baseline", "rep": 5, "chars": 5469}
+{"run_id": "saul__format__r0", "label": "saul", "stage": "format", "rep": 0, "ok": false, "chars": 721}
+{"run_id": "saul__format__r1", "label": "saul", "stage": "format", "rep": 1, "ok": false, "chars": 334}
+{"run_id": "saul__format__r2", "label": "saul", "stage": "format", "rep": 2, "ok": false, "chars": 524}
+{"run_id": "saul__format__r3", "label": "saul", "stage": "format", "rep": 3, "ok": false, "chars": 390}
+{"run_id": "qwen2.5__pipe__case_4_glp1_employer_coverage__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 4146, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_4_glp1_employer_coverage__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 4066, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_4_glp1_employer_coverage__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 4717, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 3965, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 1694, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 4582, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 5182, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 4335, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 4355, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l3_l3b__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 3458, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l3_l3b__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3588, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l3_l3b__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 4599, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_1_clinical_decision_support__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 4324, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_1_clinical_decision_support__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 5097, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_1_clinical_decision_support__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 4328, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l2_l2b__r0", "label": "qwen2.5", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 5880, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l2_l2b__r1", "label": "qwen2.5", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 4507, "empty": false, "defect": false}
+{"run_id": "qwen2.5__pipe__case_l2_l2b__r2", "label": "qwen2.5", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 3931, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_4_glp1_employer_coverage__r0", "label": "llama3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 2983, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_4_glp1_employer_coverage__r1", "label": "llama3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 4608, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_4_glp1_employer_coverage__r2", "label": "llama3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 3659, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "llama3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 3319, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "llama3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 3394, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "llama3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 3645, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "llama3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 3396, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "llama3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 3733, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "llama3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 3433, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l3_l3b__r0", "label": "llama3", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 2771, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l3_l3b__r1", "label": "llama3", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3379, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l3_l3b__r2", "label": "llama3", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 2740, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_1_clinical_decision_support__r0", "label": "llama3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 3113, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_1_clinical_decision_support__r1", "label": "llama3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 3378, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_1_clinical_decision_support__r2", "label": "llama3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 3146, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l2_l2b__r0", "label": "llama3", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 3710, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l2_l2b__r1", "label": "llama3", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 3939, "empty": false, "defect": false}
+{"run_id": "llama3__pipe__case_l2_l2b__r2", "label": "llama3", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 3649, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_4_glp1_employer_coverage__r0", "label": "mistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 3826, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_4_glp1_employer_coverage__r1", "label": "mistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 2997, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_4_glp1_employer_coverage__r2", "label": "mistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 3019, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "mistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 3059, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "mistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 2834, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "mistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 2457, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "mistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 3881, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "mistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 2918, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "mistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 2732, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l3_l3b__r0", "label": "mistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 2458, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l3_l3b__r1", "label": "mistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3063, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l3_l3b__r2", "label": "mistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 3087, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_1_clinical_decision_support__r0", "label": "mistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 3009, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_1_clinical_decision_support__r1", "label": "mistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 3537, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_1_clinical_decision_support__r2", "label": "mistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 4150, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l2_l2b__r0", "label": "mistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 2873, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l2_l2b__r1", "label": "mistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 2894, "empty": false, "defect": false}
+{"run_id": "mistral__pipe__case_l2_l2b__r2", "label": "mistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 2904, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_4_glp1_employer_coverage__r0", "label": "deepseek", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 2266, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_4_glp1_employer_coverage__r1", "label": "deepseek", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 3797, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_4_glp1_employer_coverage__r2", "label": "deepseek", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 2596, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "deepseek", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 3093, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "deepseek", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 2782, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "deepseek", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 2884, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "deepseek", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 2867, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "deepseek", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 2876, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "deepseek", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 2902, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l3_l3b__r0", "label": "deepseek", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 1686, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l3_l3b__r1", "label": "deepseek", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3936, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l3_l3b__r2", "label": "deepseek", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 2262, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_1_clinical_decision_support__r0", "label": "deepseek", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 3447, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_1_clinical_decision_support__r1", "label": "deepseek", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 2891, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_1_clinical_decision_support__r2", "label": "deepseek", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 2705, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l2_l2b__r0", "label": "deepseek", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 2377, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l2_l2b__r1", "label": "deepseek", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 2272, "empty": false, "defect": false}
+{"run_id": "deepseek__pipe__case_l2_l2b__r2", "label": "deepseek", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 2338, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_4_glp1_employer_coverage__r0", "label": "phi4", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 4345, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_4_glp1_employer_coverage__r1", "label": "phi4", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 4512, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_4_glp1_employer_coverage__r2", "label": "phi4", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 4203, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "phi4", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 4390, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "phi4", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 4089, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "phi4", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 4780, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "phi4", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 4886, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "phi4", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 4180, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "phi4", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 4146, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l3_l3b__r0", "label": "phi4", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 3756, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l3_l3b__r1", "label": "phi4", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3281, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l3_l3b__r2", "label": "phi4", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 3413, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_1_clinical_decision_support__r0", "label": "phi4", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 4201, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_1_clinical_decision_support__r1", "label": "phi4", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 4170, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_1_clinical_decision_support__r2", "label": "phi4", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 4295, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l2_l2b__r0", "label": "phi4", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 4140, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l2_l2b__r1", "label": "phi4", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 3683, "empty": false, "defect": false}
+{"run_id": "phi4__pipe__case_l2_l2b__r2", "label": "phi4", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 4340, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_4_glp1_employer_coverage__r0", "label": "meditron3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 3967, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_4_glp1_employer_coverage__r1", "label": "meditron3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 3807, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_4_glp1_employer_coverage__r2", "label": "meditron3", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 2924, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "meditron3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 3365, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "meditron3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 3512, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "meditron3", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 3288, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "meditron3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 2851, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "meditron3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 2223, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "meditron3", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 3109, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l3_l3b__r0", "label": "meditron3", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 3203, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l3_l3b__r1", "label": "meditron3", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 4224, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l3_l3b__r2", "label": "meditron3", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 3516, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_1_clinical_decision_support__r0", "label": "meditron3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 3656, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_1_clinical_decision_support__r1", "label": "meditron3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 2975, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_1_clinical_decision_support__r2", "label": "meditron3", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 2539, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l2_l2b__r0", "label": "meditron3", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 3400, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l2_l2b__r1", "label": "meditron3", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 3096, "empty": false, "defect": false}
+{"run_id": "meditron3__pipe__case_l2_l2b__r2", "label": "meditron3", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 3231, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_4_glp1_employer_coverage__r0", "label": "med42", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 2776, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_4_glp1_employer_coverage__r1", "label": "med42", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 3095, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_4_glp1_employer_coverage__r2", "label": "med42", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 3002, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "med42", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 2628, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "med42", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 2372, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "med42", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 3193, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "med42", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 3780, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "med42", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 1970, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "med42", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 1879, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_l3_l3b__r0", "label": "med42", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 364, "empty": false, "defect": true}
+{"run_id": "med42__pipe__case_l3_l3b__r1", "label": "med42", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 1861, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_l3_l3b__r2", "label": "med42", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 3135, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_1_clinical_decision_support__r0", "label": "med42", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 2823, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_1_clinical_decision_support__r1", "label": "med42", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 1890, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_1_clinical_decision_support__r2", "label": "med42", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 2481, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_l2_l2b__r0", "label": "med42", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 2441, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_l2_l2b__r1", "label": "med42", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 2539, "empty": false, "defect": false}
+{"run_id": "med42__pipe__case_l2_l2b__r2", "label": "med42", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 2844, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_4_glp1_employer_coverage__r0", "label": "openbiollm", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 1947, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_4_glp1_employer_coverage__r1", "label": "openbiollm", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 171, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_4_glp1_employer_coverage__r2", "label": "openbiollm", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 1178, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "openbiollm", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 299, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "openbiollm", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 1699, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "openbiollm", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 1511, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "openbiollm", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 741, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "openbiollm", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 1409, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "openbiollm", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 406, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_l3_l3b__r0", "label": "openbiollm", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 1166, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_l3_l3b__r1", "label": "openbiollm", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 11, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_l3_l3b__r2", "label": "openbiollm", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 1151, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_1_clinical_decision_support__r0", "label": "openbiollm", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 1713, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_1_clinical_decision_support__r1", "label": "openbiollm", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 1816, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_1_clinical_decision_support__r2", "label": "openbiollm", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 3110, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_l2_l2b__r0", "label": "openbiollm", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 1700, "empty": false, "defect": false}
+{"run_id": "openbiollm__pipe__case_l2_l2b__r1", "label": "openbiollm", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 529, "empty": false, "defect": true}
+{"run_id": "openbiollm__pipe__case_l2_l2b__r2", "label": "openbiollm", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 1400, "empty": false, "defect": false}
+{"run_id": "biomistral__pipe__case_4_glp1_employer_coverage__r0", "label": "biomistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 284, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_4_glp1_employer_coverage__r1", "label": "biomistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 256, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_4_glp1_employer_coverage__r2", "label": "biomistral", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 974, "empty": false, "defect": false}
+{"run_id": "biomistral__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "biomistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 327, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "biomistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 313, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "biomistral", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 277, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "biomistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 706, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "biomistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 413, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "biomistral", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 333, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l3_l3b__r0", "label": "biomistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 295, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l3_l3b__r1", "label": "biomistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 468, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l3_l3b__r2", "label": "biomistral", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 527, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_1_clinical_decision_support__r0", "label": "biomistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 325, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_1_clinical_decision_support__r1", "label": "biomistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 614, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_1_clinical_decision_support__r2", "label": "biomistral", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 393, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l2_l2b__r0", "label": "biomistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 314, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l2_l2b__r1", "label": "biomistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 492, "empty": false, "defect": true}
+{"run_id": "biomistral__pipe__case_l2_l2b__r2", "label": "biomistral", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 292, "empty": false, "defect": true}
+{"run_id": "saul__pipe__case_4_glp1_employer_coverage__r0", "label": "saul", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 0, "chars": 4389, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_4_glp1_employer_coverage__r1", "label": "saul", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 1, "chars": 1637, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_4_glp1_employer_coverage__r2", "label": "saul", "stage": "pipe", "case": "case_4_glp1_employer_coverage", "rep": 2, "chars": 3201, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_2_cross_border_digital_therapeutic__r0", "label": "saul", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 0, "chars": 2527, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_2_cross_border_digital_therapeutic__r1", "label": "saul", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 1, "chars": 2549, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_2_cross_border_digital_therapeutic__r2", "label": "saul", "stage": "pipe", "case": "case_2_cross_border_digital_therapeutic", "rep": 2, "chars": 2330, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_5_nonprofit_hospital_pe_conversion__r0", "label": "saul", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 0, "chars": 2115, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_5_nonprofit_hospital_pe_conversion__r1", "label": "saul", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 1, "chars": 3148, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_5_nonprofit_hospital_pe_conversion__r2", "label": "saul", "stage": "pipe", "case": "case_5_nonprofit_hospital_pe_conversion", "rep": 2, "chars": 2765, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l3_l3b__r0", "label": "saul", "stage": "pipe", "case": "case_l3_l3b", "rep": 0, "chars": 1638, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l3_l3b__r1", "label": "saul", "stage": "pipe", "case": "case_l3_l3b", "rep": 1, "chars": 3131, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l3_l3b__r2", "label": "saul", "stage": "pipe", "case": "case_l3_l3b", "rep": 2, "chars": 1775, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_1_clinical_decision_support__r0", "label": "saul", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 0, "chars": 2394, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_1_clinical_decision_support__r1", "label": "saul", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 1, "chars": 3982, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_1_clinical_decision_support__r2", "label": "saul", "stage": "pipe", "case": "case_1_clinical_decision_support", "rep": 2, "chars": 1700, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l2_l2b__r0", "label": "saul", "stage": "pipe", "case": "case_l2_l2b", "rep": 0, "chars": 2950, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l2_l2b__r1", "label": "saul", "stage": "pipe", "case": "case_l2_l2b", "rep": 1, "chars": 3308, "empty": false, "defect": false}
+{"run_id": "saul__pipe__case_l2_l2b__r2", "label": "saul", "stage": "pipe", "case": "case_l2_l2b", "rep": 2, "chars": 2399, "empty": false, "defect": false}

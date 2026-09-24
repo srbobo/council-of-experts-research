@@ -24,6 +24,10 @@ venv/
 /bench/runs/*
 !/bench/runs/imported/
 !/bench/runs/imported/**
+# Per-cell run records (one JSONL per cell, plus the domain-signature probe)
+# are checked in: they back the published results and the ledger explorer's
+# Data tab. The timestamped per-run folders above stay local.
+!/bench/runs/*.jsonl
 /bench/reports/
 
 # IDE
@@ -64,3 +68,12 @@ venv/
 /train/adapters/**/merges.txt
 /train/adapters/**/vocab.json
 /train/adapters/**/added_tokens.json
+
+# Ledger explorer build outputs. Regenerate with
+#   .venv/bin/python docs/ledger_explorer/build.py
+# The deployable copy of the site lives in site_v3/ and is checked in.
+/docs/ledger_explorer/data/
+/docs/ledger_explorer/index.html
+/docs/ledger_explorer/ledger.json
+/docs/ledger_explorer/data_manifest.json
+/docs/ledger_explorer/__pycache__/
