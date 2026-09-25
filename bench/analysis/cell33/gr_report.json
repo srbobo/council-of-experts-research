@@ -1,0 +1,19 @@
+{
+ "n_runs": 12,
+ "n_rubric_items": 100,
+ "rubric_agreement": 0.57,
+ "gate_bar": 0.75,
+ "gate_min_items": 60,
+ "gate_pass": false,
+ "conflict_item_agreement": 0.611,
+ "conflict_score_dist": {
+  "0": 11,
+  "1": 1,
+  "2": 0,
+  "3": 0
+ },
+ "conflict_modal_share": 0.917,
+ "conflict_degenerate": true,
+ "coverage_mean": 0.374,
+ "coverage_sd": 0.247
+}

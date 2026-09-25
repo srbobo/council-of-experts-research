@@ -9529,3 +9529,60 @@ routing rather than writing. Falsified → the disagreement structure Cell
 26 showed the writer ignores is also useless to the system, and the
 tension list stays what Cell 61 measured it to be: a dispatch trigger,
 not a quality signal.
+
+## GATE G-R VERDICT (2026-09-25) — FAILED at 0.57 against the 0.75 bar; CELL 33 is NOT RUNNABLE and is recorded as BLOCKED, not null
+
+12 validation runs (2 per case, seed 33), 100 coverage items, both judges,
+48 calls, 25 minutes, zero parse failures. Registration 8ce9ec3.
+
+**Gate.** Both-parsed judge–judge agreement on the closed rubric items:
+**0.57** (57/100). Bar 0.75. FAIL. Per the 2026-08-09 registration and
+the 2026-09-25 execution registration, Cell 33 does not run; the 340
+remaining runs are NOT judged, and no P33 estimate is computed.
+
+**Why it failed — one-directional leniency, not noise.** The pattern is
+(gpt-oss, qwen3-vl): YES/YES 37, NO/YES 42, NO/NO 20, YES/NO 1. The
+cross-family judge marks an item addressed at 0.79 where the primary
+marks 0.38; in 42 of 43 disagreements it is qwen3-vl saying YES. The same
+asymmetry appears on the conflict items: YES rates 0.03 vs 0.42,
+agreement 0.61. Agreement by case runs 0.43 (case 2) to 0.69 (cases 1,
+6); every item with 0/2 agreement is a "distinguishes / keeps distinct /
+addresses" item where a passing mention and a substantive treatment
+diverge. The two judges are applying different thresholds for
+"substantively addresses", and the closed-item form does not pin that
+threshold the way the sentence-level construct definitions do
+(0.910). This is instrument-validity finding #15: closed coverage items
+authored for human review do not transfer to two-judge scoring without
+per-item anchors.
+
+**Attainability, as registered.** Conflict score (both-YES pairs) in the
+sample: 0 on 11 of 12 runs, 1 on one run; modal share 0.917, above the
+0.90 degenerate line. Had the gate passed, P33.1 and P33.2 would have
+been NOT EVALUABLE by construction on the primary conflict measure. The
+either-judge sensitivity is not degenerate (qwen3-vl alone flags 0.42 of
+pairs), but that measure is one judge's threshold, not a validated
+instrument.
+
+**What is NOT done.** No redesign after seeing the labels. The rubric
+items are not re-authored, the bar is not lowered, the judges are not
+swapped, and no single-judge analysis is run — each would be the
+post-hoc move the gate exists to prevent. The 12-run labels stay in
+bench/analysis/cell33/judgments.jsonl as the record of the attempt.
+
+**What a future attempt would need (noted, not registered).** A
+per-item anchor for "substantively addresses" (one sentence of what
+counts, authored before judging), a calibration pass of ≥ 60 items with
+the anchors, and the gate re-run on FRESH runs. Separately, the conflict
+question needs a definition the strict judge fires on at all: with
+gpt-oss at 1/36, either the production seats rarely contradict each
+other on sub-questions the planner already separated by domain (the
+plausible reading, consistent with lane-disciplined seats) or the
+definition is too narrow; the sample cannot tell which.
+
+**Consequence.** Cells 32 and 33 remain blocked on G-R as they were on
+2026-08-09, now with the gate measured rather than unattempted. The
+2026-08-09 block-level statement stands unchanged. Cell 61's organic
+dispatch rate (0.85 of pipelines carry a role-named tension in the
+lead's list) is the writer's artifact and is not evidence about
+judge-scored inter-seat conflict; the two measures are not reconciled by
+this attempt.
