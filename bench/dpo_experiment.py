@@ -1,6 +1,6 @@
 """Bench modes for the DPO + prompt-transfer experiment.
 
-See RUNBOOK_DPO_PROMPT_TRANSFER.md for the full pre-registered design.
+See archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md for the full pre-registered design.
 Four modes live here (arm A is the existing ``local-council`` data):
 
   - ``local-council-repro``  (A') — v1 cabinet with Saul re-converted

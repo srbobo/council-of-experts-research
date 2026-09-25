@@ -69,7 +69,7 @@ async def cmd_list_models() -> int:
         console.print(
             "[red]One or more models are missing from Ollama. "
             "Run the appropriate `ollama pull` commands "
-            "(see IMPLEMENTATION_PLAN.md Phase 1.2) and try again.[/red]"
+            "(see archive/poc_2026-05/IMPLEMENTATION_PLAN.md Phase 1.2) and try again.[/red]"
         )
         return 1
     console.print("[green]All cabinet models present.[/green]")

@@ -10,5 +10,5 @@ thermal      : thermal-aware inter-agent pause policy for fanless M-series
 
 The council module never imports from ``bench``; the reverse is fine.
 
-See IMPLEMENTATION_PLAN.md at the repo root for the full plan.
+See archive/poc_2026-05/IMPLEMENTATION_PLAN.md for the original plan.
 """

@@ -1,8 +1,8 @@
 """Regenerable run ledger: every imported run with prompt, output excerpt,
-and disposition scores. Run: .venv/bin/python train/build_ledger.py"""
+and disposition scores. Run: .venv/bin/python archive/design_2026-08/build_ledger.py"""
 import json, re, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from examples.test_cases import CASES as CASE_OBJS
 BEH = {"cutoff":[r'training[- ]?cut[- ]?off',r'knowledge cut[- ]?off',r'may (?:be |have )(?:stale|outdated|evolved)',r'post[- ]?cut[- ]?off',r'after my training',r'verify (?:current|latest|recent)',r'as of (?:my )?(?:training|knowledge|2024|2025)'],
  "modeled":[r'modell?ed at',r'\bassume[ds]? (?:that|the)',r'\bassuming (?:that|the|a |an |\d)',r'under the assumption',r'this assume[ds]',r'\bwe assume\b',r'\bhypothetical[ly]?\b'],
@@ -18,7 +18,7 @@ def ex(t, n=180): return t[:n].replace("\n"," ").replace("|","/")
 
 out = ["# Run Ledger — every imported run, prompt, output, and score",
  "",
- "Regenerate with `.venv/bin/python train/build_ledger.py`. Full outputs and",
+ "Regenerate with `.venv/bin/python archive/design_2026-08/build_ledger.py`. Full outputs and",
  "per-phase audit trails live in the JSON files referenced per row and are",
  "browsable in the Results UI. Static system prompts: `council/prompts.py`",
  "(planner, 3 seats, synthesis, direct-answer, behavior-spec addendum);",
@@ -43,5 +43,5 @@ for case in CASE_OBJS:
         sd = f"{dens(legal[0]['output_text']):.2f}" if legal else "—"
         out.append(f"| {name} | {d.get('mode','?')} | {len(t)} | {dens(t):.2f} | {cds(t):.3f} | {sd} | {ex(t)}… |")
     out.append("")
-Path('docs/RUN_LEDGER.md').write_text("\n".join(out))
-print(f"ledger: {len(imported)} runs across {len(by_case)} cases -> docs/RUN_LEDGER.md")
+(Path(__file__).parent / "RUN_LEDGER.md").write_text("\n".join(out))
+print(f"ledger: {len(imported)} runs across {len(by_case)} cases -> archive/design_2026-08/RUN_LEDGER.md")

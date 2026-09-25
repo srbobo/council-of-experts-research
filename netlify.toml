@@ -7,8 +7,8 @@
 #
 #     .venv/bin/python docs/ledger_explorer/build.py
 #
-# then commit the updated site_v3/ directory. The previous sites remain in the
-# repository history (site/ was the live site until 2026-09-24; site_v2/ was a
+# then commit the updated site_v3/ directory. The previous sites are kept in
+# archive/sites/ (site/ was the live site until 2026-09-24; site_v2/ was a
 # local draft that was never deployed).
 
 [build]

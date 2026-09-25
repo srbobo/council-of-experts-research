@@ -7,7 +7,7 @@ No "system" key: Saul's Mistral chat template rejects the system role, so
 LEGAL_SYSTEM is folded into the prompt text — which exactly matches how the
 Ollama runtime renders it at inference ([INST] {{.System}} {{.Prompt}} [/INST]).
 
-Pair-construction protocol (RUNBOOK_DPO_PROMPT_TRANSFER.md):
+Pair-construction protocol (archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md):
   1. base    — gpt-oss-20b answers a legal sub-question plainly
   2. chosen  — rewrite of base WEAVING IN the disposition behaviors
   3. rejected— rewrite of base STRIPPING all disposition behaviors
@@ -15,7 +15,7 @@ The pair differs in behavior, not content or quality.
 
 Filters (all must pass):
   - chosen exhibits >= 2 target behaviors (regex, same patterns as
-    server/static/js/disposition.js)
+    archive/poc_2026-05/server/static/js/disposition.js)
   - rejected exhibits 0 of the 5 behaviors
   - length ratio chosen/rejected in [0.8, 1.3]  (DPO length-bias guard)
   - prompt passes the canonical-case leakage screen
@@ -45,7 +45,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from council.prompts import LEGAL_SYSTEM  # noqa: E402
 
 # ---------------------------------------------------------------------------
-# Behavior regexes — Python port of server/static/js/disposition.js.
+# Behavior regexes — Python port of archive/poc_2026-05/server/static/js/disposition.js.
 # Keep in sync; these gates define pair validity.
 # ---------------------------------------------------------------------------
 BEHAVIORS: dict[str, list[str]] = {

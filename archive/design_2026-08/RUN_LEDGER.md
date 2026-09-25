@@ -1,6 +1,6 @@
 # Run Ledger — every imported run, prompt, output, and score
 
-Regenerate with `.venv/bin/python train/build_ledger.py`. Full outputs and
+Regenerate with `.venv/bin/python archive/design_2026-08/build_ledger.py`. Full outputs and
 per-phase audit trails live in the JSON files referenced per row and are
 browsable in the Results UI. Static system prompts: `council/prompts.py`
 (planner, 3 seats, synthesis, direct-answer, behavior-spec addendum);

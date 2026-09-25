@@ -77,3 +77,10 @@ venv/
 /docs/ledger_explorer/ledger.json
 /docs/ledger_explorer/data_manifest.json
 /docs/ledger_explorer/__pycache__/
+
+# Archive: local-only material kept out of git.
+#   - May–June prototype CLI run logs (were /runs/ before the 2026-09-24 cleanup)
+#   - the 2026-09-15 technical edition of the ledger explorer (38 MB; the
+#     published "Cell Ledger Technical Edition" artifact is the durable copy)
+/archive/poc_2026-05/runs/
+/archive/sites/ledger_technical_edition_2026-09-15/

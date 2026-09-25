@@ -89,7 +89,7 @@ LOCAL_SWAP_MODES = list_local_swap_modes()
 # swapped to Llama-3.1-Hawkish-8B. Surfaces as its own column in the
 # Results UI so a reader can compare v1-vs-v2 directly.
 UPGRADED_MODES = ["local-council-v2"]
-# DPO + prompt-transfer experiment arms (RUNBOOK_DPO_PROMPT_TRANSFER.md).
+# DPO + prompt-transfer experiment arms (archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md).
 # 'dpo-experiment' alias expands to the three arms runnable before training
 # completes; local-council-dpo joins once saul-dpo:coe exists.
 DPO_EXPERIMENT_MODES = [

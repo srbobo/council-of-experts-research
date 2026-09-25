@@ -148,8 +148,8 @@ is now the priority open question, ahead of cells 3-5.
 - **Alignment**: post-pretraining procedures (SFT, RLHF, DPO/ORPO/CPO)
   shaping disposition — distinct from the pretraining corpus, which
   shapes knowledge.
-- **CDS / ALR / seat density**: defined in RUNBOOK_DPO_PROMPT_TRANSFER
-  and the Results page "Aggregate Disposition Scores" section.
+- **CDS / ALR / seat density**: seat density = behavior occurrences per 1,000 chars in one seat's turn; CDS = density × √(fraction of the five behaviors exhibited per case); ALR = council density / matched single-shot density.
+  Originally defined in archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md and archive/sites/site/results.html ("Aggregate Disposition Scores"); regexes in archive/design_2026-08/build_ledger.py.
 
 ## P8 VERDICT — entanglement hypothesis FALSIFIED (2026-07-12, 102 runs)
 

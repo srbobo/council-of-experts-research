@@ -1,6 +1,6 @@
 """Re-score the raw pair log under the AMENDED filters and write the splits.
 
-Protocol amendment (2026-07-08, documented in RUNBOOK_DPO_PROMPT_TRANSFER.md,
+Protocol amendment (2026-07-08, documented in archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md,
 applied BEFORE any training):
 
   1. Rejected-gate `jurisd` patterns narrowed to disposition META-COMMENTARY

@@ -1,7 +1,7 @@
 """Behavior lexicon — the pluggable family definitions.
 
 The default is this program's four detectable epistemic families. The regex
-sets are byte-identical to train/build_ledger.py (the canonical instrument);
+sets are byte-identical to archive/design_2026-08/build_ledger.py (the canonical instrument);
 a domain-specific lexicon replaces FAMILIES wholesale.
 """
 import re

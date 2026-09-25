@@ -85,7 +85,7 @@ LEGAL = CabinetMember(
 # The upstream HF GGUF (`pate2464/Qwen-Open-Finance-R-8B-FP8-Q8_0-GGUF`) arrived
 # at Ollama with a passthrough chat template (just `{{ .Prompt }}`), which silently
 # discarded system prompts and put the model in raw-completion mode. We rebuilt
-# it locally with a proper ChatML template — see `modelfiles/qwen-finance.Modelfile`
+# it locally with a proper ChatML template — see `train/qwen-finance.Modelfile`
 # — and use the `qwen-finance-r:coe` tag below. The underlying weights are
 # unchanged; only the template manifest differs.
 #
@@ -161,7 +161,7 @@ CABINET_V2: dict[SeatRole, CabinetMember] = {
 
 
 # -----------------------------------------------------------------------------
-# DPO experiment cabinets (RUNBOOK_DPO_PROMPT_TRANSFER.md).
+# DPO experiment cabinets (archive/dpo_2026-07/RUNBOOK_DPO_PROMPT_TRANSFER.md).
 #
 # LEGAL_REPRO — arm A': the SAME Saul weights re-converted through our own
 # fp16 → GGUF → Q4_K_M pipeline (train/). Conversion control: the only

@@ -49,7 +49,7 @@ Sizes are as reported by `ollama list`. Disk at audit time: 159 GB in
 | qwen2.5:7b-instruct | 845dbda0ea48 | 4.7 GB | judge family, signature base, gate candidate | C43, signature probe, C55 |
 | huggingface.co/mradermacher/Llama3-Med42-8B-GGUF:Q4_K_M | fd9af25fd11f | 4.9 GB | healthcare seat | C13 through C61 |
 | huggingface.co/MaziyarPanahi/Saul-Instruct-v1-GGUF:Q4_K_M | b7aa80544c1d | 4.4 GB | legal seat, gate candidate | C13 through C61, C55 |
-| qwen-finance-r:coe | 3c30df8f8ff9 | 8.7 GB | finance seat | C13 through C61; rebuild from modelfiles/qwen-finance.Modelfile (FROM huggingface.co/pate2464/Qwen-Open-Finance-R-8B-FP8-Q8_0-GGUF) or train/models/Qwen-Open-Finance-R-8B |
+| qwen-finance-r:coe | 3c30df8f8ff9 | 8.7 GB | finance seat | C13 through C61; rebuild from train/qwen-finance.Modelfile (FROM huggingface.co/pate2464/Qwen-Open-Finance-R-8B-FP8-Q8_0-GGUF) or train/models/Qwen-Open-Finance-R-8B |
 | llama3:8b-instruct-q4_K_M | 9b8f3f3385bf | 4.9 GB | gate candidate (pass) | C55 re-gate |
 | mistral:7b-instruct-v0.3-q4_K_M | 6577803aa9a0 | 4.4 GB | gate candidate; BioMistral's own base | C55, signature probe |
 | deepseek-r1:7b | 755ced02ce7b | 4.7 GB | gate candidate (pass) | C55 re-gate |

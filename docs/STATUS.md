@@ -1,6 +1,6 @@
 # Claim status ledger — the authoritative record
 
-**Updated 2026-08-09**, after program audits #1 and #2, PD-13, Cell 30's
+**Claims current through Cell 61 (2026-09-02); artifact table refreshed 2026-09-24.** Framework set 2026-08-09, after program audits #1 and #2, PD-13, Cell 30's
 instrument failure, the ledger-baseline confound, and the standing
 directive that regex not be used as an instrument in this program.
 
@@ -124,11 +124,13 @@ and its status.
 
 | artifact | status |
 |---|---|
-| `docs/paper_moa_audit.tex` | **active draft v0.1 (2026-08-12)** — the MoA-audit paper; thesis: instructions buy the phrase, the phrase costs preference. Every number verified against this ledger at composition; single-judge and 20B-scale scopes stated in-text |
-| `docs/paper_framework.tex` | active draft; instruction-gain contribution withdrawn; carries provisional banner |
-| `docs/paper_behavior.tex` | active draft; needs the same provisional banner |
-| `docs/paper.tex` | superseded by the framework paper; retain for history, do not submit |
-| `docs/paper_calibration.tex` | RETRACTED |
-| `docs/paper_witnesses.tex` | superseded; fold anything surviving into the behavior paper |
-| `site/` | stale — predates audits #1/#2, PD-13, and the regex directive. **Do not deploy** (Netlify paused) until reconciled with this file |
+| `docs/paper_combined.tex` | **the current paper, draft v0.2 (September 2026)**: *Hardening Mixture-of-Agents: An Evidence-Bound Harness for Specialist Aggregation Pipelines*. Merges the MoA-audit and harness-design papers |
+| `docs/PLAIN_LANGUAGE_COMPANION.md` | active; plain-language walk-through of the audit and harness material that the combined paper now carries |
+| `docs/HARNESS_SEAT_ARCHITECTURE.md` | active; runtime architecture, and the source text for the ledger site's harness page |
+| `site_v3/` | **the public site** (the Paper-Hardening Cell Ledger), built by `docs/ledger_explorer/build.py` from the runbook and this file. Netlify builds stay paused between deliberate deploys |
 | `gst/` kit | functional; ships regex as default instrument, which now requires a prominent warning |
+| `archive/papers/paper_moa_audit.tex`, `archive/papers/paper_harness_design.tex` | superseded by the combined paper (last versions v0.3, September 2026) |
+| `archive/papers/paper_framework.tex`, `archive/papers/paper_behavior.tex` | superseded; rested on regex measurements, and the framework paper's instruction-gain contribution is withdrawn |
+| `archive/papers/paper.tex`, `archive/papers/paper_witnesses.tex` | superseded; retained for history, do not submit |
+| `archive/papers/paper_calibration.tex` | RETRACTED |
+| `archive/sites/site/`, `archive/sites/site_v2/` | retired: `site/` was the public site until 2026-09-24; `site_v2/` was a draft that was never deployed |
