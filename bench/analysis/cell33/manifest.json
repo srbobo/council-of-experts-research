@@ -1,0 +1,4349 @@
+{
+ "generated": "2026-09-25",
+ "n_runs": 352,
+ "by_case": {
+  "case_1_clinical_decision_support": 58,
+  "case_2_cross_border_digital_therapeutic": 60,
+  "case_3_capitated_risk_contract": 59,
+  "case_4_glp1_employer_coverage": 60,
+  "case_5_nonprofit_hospital_pe_conversion": 57,
+  "case_6_trigger_heavy_biotech_ma": 58
+ },
+ "by_arm": {
+  "arch-council": 30,
+  "c13-all": 30,
+  "c13-c1": 30,
+  "c13-c2": 30,
+  "c13-c3": 30,
+  "c13-c4": 30,
+  "c13-none": 30,
+  "c17-suppress": 30,
+  "c19-gated": 30,
+  "c20-decide": 30,
+  "c27-ledger": 26,
+  "c28-ledger-rep": 26
+ },
+ "gr_sample_n": 12,
+ "gr_items": 100,
+ "rubric_hash": "6f5de7d4a231",
+ "rubric": {
+  "case_1_clinical_decision_support": [
+   [
+    "Addresses alert fatigue and false-positive / false-negative tolerance",
+    "Distinguishes computer-aided detection from autonomous decision-making for liability framing",
+    "Mentions validation against the deploying system's own patient population, not vendor benchmarks",
+    "Addresses FDA Software-as-a-Medical-Device classification (likely Class II)",
+    "Allocates malpractice liability between vendor and provider in concrete terms",
+    "Considers alternative pricing structures (per-seat vs per-encounter vs outcomes-based)",
+    "Notes revenue recognition implications of subscription vs usage-based models",
+    "Surfaces the genuine tension between fast clinical deployment and regulatory caution"
+   ],
+   [
+    "Confidently asserts a specific FDA classification without acknowledging guidance evolution"
+   ]
+  ],
+  "case_2_cross_border_digital_therapeutic": [
+   [
+    "Distinguishes FDA, MHRA, and the German G-BA / DiGA evidence frameworks correctly",
+    "Notes that DiGA pathway requires a positive healthcare-effect study (DiGA-relevant evidence)",
+    "Keeps HIPAA, UK GDPR, and EU GDPR distinct (does not conflate post-Brexit)",
+    "Addresses German national health-data law (e.g. SGB V, Patientendaten-Schutz-Gesetz) on top of GDPR",
+    "Distinguishes US payer model, NHS commissioning, and DiGA statutory reimbursement as three different revenue mechanics",
+    "Identifies DiGA as the fastest path to reimbursement but with the highest evidence bar",
+    "Treats the three jurisdictions as separately-architected go-to-markets, not one plan with translated labels"
+   ],
+   [
+    "Refers to \"FDA approval\" or \"FDA clearance\" as the controlling concept in UK or German contexts"
+   ]
+  ],
+  "case_3_capitated_risk_contract": [
+   [
+    "Identifies HEDIS-relevant care gaps and chronic conditions driving downside risk",
+    "Mentions risk-adjustment (HCC coding) and its operational implications",
+    "Addresses Stark / Anti-Kickback Statute implications of any downstream physician incentives tied to utilization",
+    "Notes Medicare Advantage quality reporting and Star Ratings exposure",
+    "Flags state corporate-practice-of-medicine constraints if physicians are not contract holders",
+    "Walks through the actuarial reserve calculation needed to defensibly absorb downside",
+    "Computes a breakeven utilization scenario with visible numbers, not hand-waved",
+    "Discusses stop-loss reinsurance structure",
+    "Reaches a clear take/decline recommendation with the conditions under which each case holds"
+   ],
+   [
+    "Produces precise utilization numbers without flagging that they are modeled assumptions"
+   ]
+  ],
+  "case_4_glp1_employer_coverage": [
+   [
+    "Addresses durability of weight loss after discontinuation and the rebound risk",
+    "Compares semaglutide vs tirzepatide on efficacy and tolerability",
+    "Addresses ADA risk on weight-based coverage criteria",
+    "Considers ERISA fiduciary duty and mental-health-parity implications",
+    "Provides PMPM cost projection with sensitivity ranges, not a single point estimate",
+    "Discusses reinsurance structure given the size of the cost exposure",
+    "Explicitly flags training-cutoff uncertainty for clinical evidence post-2024",
+    "Explicitly flags training-cutoff uncertainty on EEOC / ADA guidance and recent rulings",
+    "Explicitly flags training-cutoff uncertainty on rebate / list-price changes"
+   ],
+   [
+    "Cites specific outcomes from named studies without acknowledging they may not be the latest"
+   ]
+  ],
+  "case_5_nonprofit_hospital_pe_conversion": [
+   [
+    "Identifies essential-service continuity risk (especially OB, ED, behavioral health) under PE ownership patterns",
+    "Addresses staffing-model risks PE acquirers tend to pursue (e.g. hospitalist staffing, OR utilization)",
+    "Addresses state Attorney General approval for nonprofit conversion",
+    "Discusses charitable-trust doctrine and its implications for the foundation's mission",
+    "Notes antitrust review thresholds (HSR) given local market concentration",
+    "Walks through the sponsor's deal economics and how leverage is structured",
+    "Surfaces sale-leaseback risk to operations: increased fixed-rent burden under uncertain cash flow",
+    "Addresses foundation endowment management and spending-policy implications",
+    "EXPLICITLY surfaces tension: the sale-leaseback that maximizes sponsor return creates clinical operational fragility AND state AG scrutiny"
+   ],
+   [
+    "Treats the deal as routine M&A without surfacing the cross-domain conflict between PE financial structure and clinical/legal exposure"
+   ]
+  ],
+  "case_6_trigger_heavy_biotech_ma": [
+   [
+    "Addresses clinical trial risk and probability-of-success calibration for Phase 3 oncology",
+    "Distinguishes FDA accelerated approval from EMA conditional marketing authorization (precise vocabulary)",
+    "Flags training-cutoff uncertainty on the specific oncology indication landscape",
+    "Addresses cross-border IP exposure (US patents vs EU SPC, UK divergence post-Brexit)",
+    "Distinguishes US and EU competition-law review thresholds",
+    "Builds an rNPV / probability-weighted DCF; SHOWS the work and flags modeled assumptions",
+    "Discusses milestone calibration with sensitivity analysis",
+    "Surfaces tension between maximizing deal economics and preserving territorial control under regulatory uncertainty"
+   ],
+   [
+    "Treats rNPV inputs as facts rather than modeled assumptions"
+   ]
+  ]
+ },
+ "runs": [
+  {
+   "run_id": "20260728T015956Z__case_1_clinical_decision_support__arch-council.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "arch-council",
+   "final_chars": 9738,
+   "seat_chars": {
+    "healthcare": 6662,
+    "legal": 5665,
+    "finance": 7175
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T020748Z__case_1_clinical_decision_support__arch-council.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "arch-council",
+   "final_chars": 9201,
+   "seat_chars": {
+    "healthcare": 6822,
+    "legal": 7380,
+    "finance": 5354
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T021449Z__case_1_clinical_decision_support__arch-council.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "arch-council",
+   "final_chars": 8654,
+   "seat_chars": {
+    "healthcare": 6379,
+    "legal": 6923,
+    "finance": 5176
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T022137Z__case_1_clinical_decision_support__arch-council.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "arch-council",
+   "final_chars": 8664,
+   "seat_chars": {
+    "healthcare": 5210,
+    "legal": 6266,
+    "finance": 5263
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T022839Z__case_1_clinical_decision_support__arch-council.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "arch-council",
+   "final_chars": 8922,
+   "seat_chars": {
+    "healthcare": 6485,
+    "legal": 6658,
+    "finance": 5697
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T023632Z__case_2_cross_border_digital_therapeutic__arch-council.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "arch-council",
+   "final_chars": 9834,
+   "seat_chars": {
+    "healthcare": 6058,
+    "legal": 6563,
+    "finance": 6243
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T024500Z__case_2_cross_border_digital_therapeutic__arch-council.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "arch-council",
+   "final_chars": 9505,
+   "seat_chars": {
+    "healthcare": 6002,
+    "legal": 5751,
+    "finance": 4199
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T025346Z__case_2_cross_border_digital_therapeutic__arch-council.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "arch-council",
+   "final_chars": 9685,
+   "seat_chars": {
+    "healthcare": 5714,
+    "legal": 8518,
+    "finance": 8138
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T030114Z__case_2_cross_border_digital_therapeutic__arch-council.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "arch-council",
+   "final_chars": 10925,
+   "seat_chars": {
+    "healthcare": 5455,
+    "legal": 6861,
+    "finance": 7113
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T031016Z__case_2_cross_border_digital_therapeutic__arch-council.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "arch-council",
+   "final_chars": 10311,
+   "seat_chars": {
+    "healthcare": 7605,
+    "legal": 5163,
+    "finance": 10039
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T031716Z__case_3_capitated_risk_contract__arch-council.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "arch-council",
+   "final_chars": 6840,
+   "seat_chars": {
+    "healthcare": 5548,
+    "legal": 6678,
+    "finance": 5757
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T032401Z__case_3_capitated_risk_contract__arch-council.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "arch-council",
+   "final_chars": 7972,
+   "seat_chars": {
+    "healthcare": 6994,
+    "legal": 5970,
+    "finance": 4526
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T033026Z__case_3_capitated_risk_contract__arch-council.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "arch-council",
+   "final_chars": 7244,
+   "seat_chars": {
+    "healthcare": 5229,
+    "legal": 6305,
+    "finance": 5401
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T033715Z__case_3_capitated_risk_contract__arch-council.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "arch-council",
+   "final_chars": 6375,
+   "seat_chars": {
+    "healthcare": 7030,
+    "legal": 5780,
+    "finance": 5025
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T034416Z__case_3_capitated_risk_contract__arch-council.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "arch-council",
+   "final_chars": 7437,
+   "seat_chars": {
+    "healthcare": 6992,
+    "legal": 5664,
+    "finance": 5358
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T035218Z__case_4_glp1_employer_coverage__arch-council.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "arch-council",
+   "final_chars": 6308,
+   "seat_chars": {
+    "healthcare": 6108,
+    "legal": 6747,
+    "finance": 6126
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T040029Z__case_4_glp1_employer_coverage__arch-council.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "arch-council",
+   "final_chars": 8293,
+   "seat_chars": {
+    "healthcare": 7090,
+    "legal": 6252,
+    "finance": 4649
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T040905Z__case_4_glp1_employer_coverage__arch-council.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "arch-council",
+   "final_chars": 7655,
+   "seat_chars": {
+    "healthcare": 5191,
+    "legal": 6415,
+    "finance": 6774
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T041711Z__case_4_glp1_employer_coverage__arch-council.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "arch-council",
+   "final_chars": 7066,
+   "seat_chars": {
+    "healthcare": 4698,
+    "legal": 7347,
+    "finance": 6512
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T042601Z__case_4_glp1_employer_coverage__arch-council.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "arch-council",
+   "final_chars": 8015,
+   "seat_chars": {
+    "healthcare": 5496,
+    "legal": 6414,
+    "finance": 6043
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T043432Z__case_5_nonprofit_hospital_pe_conversion__arch-council.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "arch-council",
+   "final_chars": 11999,
+   "seat_chars": {
+    "healthcare": 5481,
+    "legal": 6136,
+    "finance": 6921
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T044256Z__case_5_nonprofit_hospital_pe_conversion__arch-council.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "arch-council",
+   "final_chars": 8753,
+   "seat_chars": {
+    "healthcare": 6039,
+    "legal": 6291,
+    "finance": 8988
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T045038Z__case_5_nonprofit_hospital_pe_conversion__arch-council.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "arch-council",
+   "final_chars": 9750,
+   "seat_chars": {
+    "healthcare": 5819,
+    "legal": 6646,
+    "finance": 7342
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T045819Z__case_5_nonprofit_hospital_pe_conversion__arch-council.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "arch-council",
+   "final_chars": 10646,
+   "seat_chars": {
+    "healthcare": 5407,
+    "legal": 7051,
+    "finance": 5112
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T050647Z__case_5_nonprofit_hospital_pe_conversion__arch-council.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "arch-council",
+   "final_chars": 8810,
+   "seat_chars": {
+    "healthcare": 6331,
+    "legal": 8616,
+    "finance": 7256
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T051343Z__case_6_trigger_heavy_biotech_ma__arch-council.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "arch-council",
+   "final_chars": 7373,
+   "seat_chars": {
+    "healthcare": 6438,
+    "legal": 6978,
+    "finance": 5853
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T052139Z__case_6_trigger_heavy_biotech_ma__arch-council.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "arch-council",
+   "final_chars": 9686,
+   "seat_chars": {
+    "healthcare": 7573,
+    "legal": 7974,
+    "finance": 6614
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T052839Z__case_6_trigger_heavy_biotech_ma__arch-council.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "arch-council",
+   "final_chars": 8812,
+   "seat_chars": {
+    "healthcare": 6963,
+    "legal": 7176,
+    "finance": 6603
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T053650Z__case_6_trigger_heavy_biotech_ma__arch-council.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "arch-council",
+   "final_chars": 8419,
+   "seat_chars": {
+    "healthcare": 6157,
+    "legal": 5956,
+    "finance": 6434
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260728T054413Z__case_6_trigger_heavy_biotech_ma__arch-council.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "arch-council",
+   "final_chars": 9078,
+   "seat_chars": {
+    "healthcare": 6136,
+    "legal": 6752,
+    "finance": 6376
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T012042Z__case_1_clinical_decision_support__c13-none.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-none",
+   "final_chars": 8079,
+   "seat_chars": {
+    "healthcare": 6325,
+    "legal": 6115,
+    "finance": 8128
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T012825Z__case_1_clinical_decision_support__c13-none.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-none",
+   "final_chars": 9412,
+   "seat_chars": {
+    "healthcare": 5796,
+    "legal": 6141,
+    "finance": 6299
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T013518Z__case_1_clinical_decision_support__c13-none.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-none",
+   "final_chars": 7742,
+   "seat_chars": {
+    "healthcare": 5597,
+    "legal": 6924,
+    "finance": 5572
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T014105Z__case_1_clinical_decision_support__c13-none.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-none",
+   "final_chars": 8091,
+   "seat_chars": {
+    "healthcare": 5976,
+    "legal": 4711,
+    "finance": 5657
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T014800Z__case_1_clinical_decision_support__c13-none.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-none",
+   "final_chars": 7899,
+   "seat_chars": {
+    "healthcare": 6754,
+    "legal": 6160,
+    "finance": 6874
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T015549Z__case_2_cross_border_digital_therapeutic__c13-none.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-none",
+   "final_chars": 6640,
+   "seat_chars": {
+    "healthcare": 6480,
+    "legal": 6447,
+    "finance": 6984
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T020605Z__case_2_cross_border_digital_therapeutic__c13-none.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-none",
+   "final_chars": 8247,
+   "seat_chars": {
+    "healthcare": 5653,
+    "legal": 8098,
+    "finance": 7343
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T021446Z__case_2_cross_border_digital_therapeutic__c13-none.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-none",
+   "final_chars": 7773,
+   "seat_chars": {
+    "healthcare": 8576,
+    "legal": 6087,
+    "finance": 8687
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T022224Z__case_2_cross_border_digital_therapeutic__c13-none.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-none",
+   "final_chars": 8208,
+   "seat_chars": {
+    "healthcare": 6146,
+    "legal": 6519,
+    "finance": 7651
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T022904Z__case_2_cross_border_digital_therapeutic__c13-none.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-none",
+   "final_chars": 7267,
+   "seat_chars": {
+    "healthcare": 5574,
+    "legal": 6552,
+    "finance": 5532
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T023537Z__case_3_capitated_risk_contract__c13-none.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-none",
+   "final_chars": 7328,
+   "seat_chars": {
+    "healthcare": 5992,
+    "legal": 6987,
+    "finance": 4489
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T024217Z__case_3_capitated_risk_contract__c13-none.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-none",
+   "final_chars": 7294,
+   "seat_chars": {
+    "healthcare": 5940,
+    "legal": 6331,
+    "finance": 5885
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T024814Z__case_3_capitated_risk_contract__c13-none.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-none",
+   "final_chars": 5907,
+   "seat_chars": {
+    "healthcare": 6143,
+    "legal": 6756,
+    "finance": 5251
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T025425Z__case_3_capitated_risk_contract__c13-none.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-none",
+   "final_chars": 7793,
+   "seat_chars": {
+    "healthcare": 6765,
+    "legal": 5410,
+    "finance": 5092
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T030147Z__case_3_capitated_risk_contract__c13-none.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-none",
+   "final_chars": 9437,
+   "seat_chars": {
+    "healthcare": 5893,
+    "legal": 6007,
+    "finance": 5447
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T030929Z__case_4_glp1_employer_coverage__c13-none.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-none",
+   "final_chars": 8128,
+   "seat_chars": {
+    "healthcare": 7131,
+    "legal": 5752,
+    "finance": 6733
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T031713Z__case_4_glp1_employer_coverage__c13-none.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-none",
+   "final_chars": 7000,
+   "seat_chars": {
+    "healthcare": 6222,
+    "legal": 4754,
+    "finance": 7156
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T032356Z__case_4_glp1_employer_coverage__c13-none.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-none",
+   "final_chars": 7341,
+   "seat_chars": {
+    "healthcare": 6407,
+    "legal": 5333,
+    "finance": 6796
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T033203Z__case_4_glp1_employer_coverage__c13-none.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-none",
+   "final_chars": 6582,
+   "seat_chars": {
+    "healthcare": 6110,
+    "legal": 6022,
+    "finance": 6326
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T033923Z__case_4_glp1_employer_coverage__c13-none.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-none",
+   "final_chars": 6332,
+   "seat_chars": {
+    "healthcare": 6228,
+    "legal": 7193,
+    "finance": 9441
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T034538Z__case_5_nonprofit_hospital_pe_conversion__c13-none.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-none",
+   "final_chars": 8370,
+   "seat_chars": {
+    "healthcare": 6719,
+    "legal": 8661,
+    "finance": 6392
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T035140Z__case_5_nonprofit_hospital_pe_conversion__c13-none.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-none",
+   "final_chars": 8750,
+   "seat_chars": {
+    "healthcare": 6178,
+    "legal": 5632,
+    "finance": 6681
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T035810Z__case_5_nonprofit_hospital_pe_conversion__c13-none.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-none",
+   "final_chars": 6870,
+   "seat_chars": {
+    "healthcare": 5384,
+    "legal": 7704,
+    "finance": 7351
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T040444Z__case_5_nonprofit_hospital_pe_conversion__c13-none.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-none",
+   "final_chars": 8531,
+   "seat_chars": {
+    "healthcare": 6691,
+    "legal": 6151,
+    "finance": 7579
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T041248Z__case_5_nonprofit_hospital_pe_conversion__c13-none.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-none",
+   "final_chars": 10587,
+   "seat_chars": {
+    "healthcare": 7326,
+    "legal": 7628,
+    "finance": 7037
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T041928Z__case_6_trigger_heavy_biotech_ma__c13-none.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-none",
+   "final_chars": 7348,
+   "seat_chars": {
+    "healthcare": 7223,
+    "legal": 6947,
+    "finance": 5460
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T042543Z__case_6_trigger_heavy_biotech_ma__c13-none.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-none",
+   "final_chars": 9190,
+   "seat_chars": {
+    "healthcare": 4771,
+    "legal": 6415,
+    "finance": 5293
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T043225Z__case_6_trigger_heavy_biotech_ma__c13-none.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-none",
+   "final_chars": 9902,
+   "seat_chars": {
+    "healthcare": 5131,
+    "legal": 6602,
+    "finance": 5634
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T044004Z__case_6_trigger_heavy_biotech_ma__c13-none.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-none",
+   "final_chars": 9020,
+   "seat_chars": {
+    "healthcare": 6733,
+    "legal": 5978,
+    "finance": 6113
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T044725Z__case_6_trigger_heavy_biotech_ma__c13-none.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-none",
+   "final_chars": 9625,
+   "seat_chars": {
+    "healthcare": 7278,
+    "legal": 5359,
+    "finance": 4602
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T045910Z__case_1_clinical_decision_support__c13-c1.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c1",
+   "final_chars": 7522,
+   "seat_chars": {
+    "healthcare": 5838,
+    "legal": 6323,
+    "finance": 5824
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260731T050613Z__case_1_clinical_decision_support__c13-c1.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c1",
+   "final_chars": 9633,
+   "seat_chars": {
+    "healthcare": 5415,
+    "legal": 6463,
+    "finance": 7581
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T051313Z__case_1_clinical_decision_support__c13-c1.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c1",
+   "final_chars": 8103,
+   "seat_chars": {
+    "healthcare": 5723,
+    "legal": 5986,
+    "finance": 6287
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T052039Z__case_1_clinical_decision_support__c13-c1.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c1",
+   "final_chars": 7291,
+   "seat_chars": {
+    "healthcare": 8789,
+    "legal": 6140,
+    "finance": 6268
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T052802Z__case_1_clinical_decision_support__c13-c1.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c1",
+   "final_chars": 7998,
+   "seat_chars": {
+    "healthcare": 5369,
+    "legal": 7078,
+    "finance": 7399
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T053528Z__case_2_cross_border_digital_therapeutic__c13-c1.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c1",
+   "final_chars": 8327,
+   "seat_chars": {
+    "healthcare": 6138,
+    "legal": 7571,
+    "finance": 6094
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T054214Z__case_2_cross_border_digital_therapeutic__c13-c1.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c1",
+   "final_chars": 7451,
+   "seat_chars": {
+    "healthcare": 7102,
+    "legal": 5470,
+    "finance": 5974
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T054950Z__case_2_cross_border_digital_therapeutic__c13-c1.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c1",
+   "final_chars": 7195,
+   "seat_chars": {
+    "healthcare": 8038,
+    "legal": 8107,
+    "finance": 6306
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T055718Z__case_2_cross_border_digital_therapeutic__c13-c1.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c1",
+   "final_chars": 8982,
+   "seat_chars": {
+    "healthcare": 6811,
+    "legal": 6948,
+    "finance": 6046
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T060536Z__case_2_cross_border_digital_therapeutic__c13-c1.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c1",
+   "final_chars": 8856,
+   "seat_chars": {
+    "healthcare": 7463,
+    "legal": 7307,
+    "finance": 7390
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260731T061229Z__case_3_capitated_risk_contract__c13-c1.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c1",
+   "final_chars": 7062,
+   "seat_chars": {
+    "healthcare": 6678,
+    "legal": 6187,
+    "finance": 4247
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T061854Z__case_3_capitated_risk_contract__c13-c1.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c1",
+   "final_chars": 6926,
+   "seat_chars": {
+    "healthcare": 3923,
+    "legal": 5100,
+    "finance": 4699
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T062507Z__case_3_capitated_risk_contract__c13-c1.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c1",
+   "final_chars": 8076,
+   "seat_chars": {
+    "healthcare": 7770,
+    "legal": 7447,
+    "finance": 4745
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T063048Z__case_3_capitated_risk_contract__c13-c1.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c1",
+   "final_chars": 6731,
+   "seat_chars": {
+    "healthcare": 6924,
+    "legal": 5440,
+    "finance": 4116
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T063628Z__case_3_capitated_risk_contract__c13-c1.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c1",
+   "final_chars": 5800,
+   "seat_chars": {
+    "healthcare": 5730,
+    "legal": 5743,
+    "finance": 5604
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T064310Z__case_4_glp1_employer_coverage__c13-c1.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c1",
+   "final_chars": 6459,
+   "seat_chars": {
+    "healthcare": 6152,
+    "legal": 7327,
+    "finance": 4827
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T064951Z__case_4_glp1_employer_coverage__c13-c1.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c1",
+   "final_chars": 6340,
+   "seat_chars": {
+    "healthcare": 6347,
+    "legal": 6319,
+    "finance": 4745
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T065644Z__case_4_glp1_employer_coverage__c13-c1.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c1",
+   "final_chars": 6574,
+   "seat_chars": {
+    "healthcare": 5868,
+    "legal": 4887,
+    "finance": 6080
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T070341Z__case_4_glp1_employer_coverage__c13-c1.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c1",
+   "final_chars": 5898,
+   "seat_chars": {
+    "healthcare": 5956,
+    "legal": 5862,
+    "finance": 6272
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T071013Z__case_4_glp1_employer_coverage__c13-c1.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c1",
+   "final_chars": 6460,
+   "seat_chars": {
+    "healthcare": 5915,
+    "legal": 6260,
+    "finance": 5585
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T071654Z__case_5_nonprofit_hospital_pe_conversion__c13-c1.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c1",
+   "final_chars": 6812,
+   "seat_chars": {
+    "healthcare": 6729,
+    "legal": 7472,
+    "finance": 8392
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T072329Z__case_5_nonprofit_hospital_pe_conversion__c13-c1.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c1",
+   "final_chars": 8583,
+   "seat_chars": {
+    "healthcare": 6305,
+    "legal": 6977,
+    "finance": 6383
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T073022Z__case_5_nonprofit_hospital_pe_conversion__c13-c1.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c1",
+   "final_chars": 7337,
+   "seat_chars": {
+    "healthcare": 6453,
+    "legal": 8934,
+    "finance": 8467
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T073731Z__case_5_nonprofit_hospital_pe_conversion__c13-c1.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c1",
+   "final_chars": 9363,
+   "seat_chars": {
+    "healthcare": 7209,
+    "legal": 7245,
+    "finance": 8249
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T074432Z__case_5_nonprofit_hospital_pe_conversion__c13-c1.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c1",
+   "final_chars": 9076,
+   "seat_chars": {
+    "healthcare": 6250,
+    "legal": 7052,
+    "finance": 7702
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T075010Z__case_6_trigger_heavy_biotech_ma__c13-c1.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c1",
+   "final_chars": 7167,
+   "seat_chars": {
+    "healthcare": 6168,
+    "legal": 5405,
+    "finance": 4906
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T075642Z__case_6_trigger_heavy_biotech_ma__c13-c1.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c1",
+   "final_chars": 9125,
+   "seat_chars": {
+    "healthcare": 7010,
+    "legal": 5918,
+    "finance": 7758
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T080345Z__case_6_trigger_heavy_biotech_ma__c13-c1.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c1",
+   "final_chars": 9108,
+   "seat_chars": {
+    "healthcare": 6817,
+    "legal": 6810,
+    "finance": 5490
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T081051Z__case_6_trigger_heavy_biotech_ma__c13-c1.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c1",
+   "final_chars": 8812,
+   "seat_chars": {
+    "healthcare": 5023,
+    "legal": 7102,
+    "finance": 5742
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T081747Z__case_6_trigger_heavy_biotech_ma__c13-c1.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c1",
+   "final_chars": 8016,
+   "seat_chars": {
+    "healthcare": 6462,
+    "legal": 8388,
+    "finance": 7893
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T083107Z__case_1_clinical_decision_support__c13-c2.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c2",
+   "final_chars": 9346,
+   "seat_chars": {
+    "healthcare": 5799,
+    "legal": 6845,
+    "finance": 8401
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T083706Z__case_1_clinical_decision_support__c13-c2.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c2",
+   "final_chars": 6053,
+   "seat_chars": {
+    "healthcare": 5208,
+    "legal": 6952,
+    "finance": 6122
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T084428Z__case_1_clinical_decision_support__c13-c2.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c2",
+   "final_chars": 8919,
+   "seat_chars": {
+    "healthcare": 5672,
+    "legal": 8803,
+    "finance": 7387
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T085207Z__case_1_clinical_decision_support__c13-c2.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c2",
+   "final_chars": 8935,
+   "seat_chars": {
+    "healthcare": 6033,
+    "legal": 6520,
+    "finance": 6002
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T085908Z__case_1_clinical_decision_support__c13-c2.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c2",
+   "final_chars": 8890,
+   "seat_chars": {
+    "healthcare": 6211,
+    "legal": 7679,
+    "finance": 4881
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T090606Z__case_2_cross_border_digital_therapeutic__c13-c2.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c2",
+   "final_chars": 8044,
+   "seat_chars": {
+    "healthcare": 9228,
+    "legal": 7115,
+    "finance": 5468
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T091332Z__case_2_cross_border_digital_therapeutic__c13-c2.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c2",
+   "final_chars": 8215,
+   "seat_chars": {
+    "healthcare": 6341,
+    "legal": 5282,
+    "finance": 6325
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T092023Z__case_2_cross_border_digital_therapeutic__c13-c2.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c2",
+   "final_chars": 6001,
+   "seat_chars": {
+    "healthcare": 6535,
+    "legal": 6759,
+    "finance": 7592
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T092716Z__case_2_cross_border_digital_therapeutic__c13-c2.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c2",
+   "final_chars": 7398,
+   "seat_chars": {
+    "healthcare": 5630,
+    "legal": 6056,
+    "finance": 5954
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T093446Z__case_2_cross_border_digital_therapeutic__c13-c2.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c2",
+   "final_chars": 7748,
+   "seat_chars": {
+    "healthcare": 7478,
+    "legal": 6483,
+    "finance": 6259
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T094117Z__case_3_capitated_risk_contract__c13-c2.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c2",
+   "final_chars": 8172,
+   "seat_chars": {
+    "healthcare": 4709,
+    "legal": 6177,
+    "finance": 5031
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T094715Z__case_3_capitated_risk_contract__c13-c2.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c2",
+   "final_chars": 8221,
+   "seat_chars": {
+    "healthcare": 5777,
+    "legal": 5518,
+    "finance": 3823
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T095334Z__case_3_capitated_risk_contract__c13-c2.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c2",
+   "final_chars": 7388,
+   "seat_chars": {
+    "healthcare": 4983,
+    "legal": 6435,
+    "finance": 4030
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T095956Z__case_3_capitated_risk_contract__c13-c2.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c2",
+   "final_chars": 6493,
+   "seat_chars": {
+    "healthcare": 5343,
+    "legal": 7264,
+    "finance": 4516
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T100654Z__case_3_capitated_risk_contract__c13-c2.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c2",
+   "final_chars": 8590,
+   "seat_chars": {
+    "healthcare": 5266,
+    "legal": 7117,
+    "finance": 5980
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T101349Z__case_4_glp1_employer_coverage__c13-c2.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c2",
+   "final_chars": 6283,
+   "seat_chars": {
+    "healthcare": 6281,
+    "legal": 7281,
+    "finance": 5085
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T102144Z__case_4_glp1_employer_coverage__c13-c2.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c2",
+   "final_chars": 7200,
+   "seat_chars": {
+    "healthcare": 5923,
+    "legal": 5447,
+    "finance": 5880
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T103439Z__case_4_glp1_employer_coverage__c13-c2.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c2",
+   "final_chars": 6789,
+   "seat_chars": {
+    "healthcare": 5553,
+    "legal": 5366,
+    "finance": 5945
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260731T104741Z__case_4_glp1_employer_coverage__c13-c2.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c2",
+   "final_chars": 7388,
+   "seat_chars": {
+    "healthcare": 5810,
+    "legal": 6597,
+    "finance": 4985
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T105558Z__case_4_glp1_employer_coverage__c13-c2.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c2",
+   "final_chars": 7565,
+   "seat_chars": {
+    "healthcare": 6424,
+    "legal": 6800,
+    "finance": 5579
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T110311Z__case_5_nonprofit_hospital_pe_conversion__c13-c2.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c2",
+   "final_chars": 7341,
+   "seat_chars": {
+    "healthcare": 5683,
+    "legal": 6875,
+    "finance": 6527
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T111119Z__case_5_nonprofit_hospital_pe_conversion__c13-c2.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c2",
+   "final_chars": 7786,
+   "seat_chars": {
+    "healthcare": 7278,
+    "legal": 6476,
+    "finance": 9356
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T111947Z__case_5_nonprofit_hospital_pe_conversion__c13-c2.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c2",
+   "final_chars": 9854,
+   "seat_chars": {
+    "healthcare": 6469,
+    "legal": 6942,
+    "finance": 7871
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T112817Z__case_5_nonprofit_hospital_pe_conversion__c13-c2.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c2",
+   "final_chars": 8790,
+   "seat_chars": {
+    "healthcare": 7416,
+    "legal": 7151,
+    "finance": 7632
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T113556Z__case_5_nonprofit_hospital_pe_conversion__c13-c2.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c2",
+   "final_chars": 5754,
+   "seat_chars": {
+    "healthcare": 5429,
+    "legal": 6499,
+    "finance": 7895
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T114256Z__case_6_trigger_heavy_biotech_ma__c13-c2.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c2",
+   "final_chars": 7445,
+   "seat_chars": {
+    "healthcare": 6085,
+    "legal": 6061,
+    "finance": 6233
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T115256Z__case_6_trigger_heavy_biotech_ma__c13-c2.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c2",
+   "final_chars": 9056,
+   "seat_chars": {
+    "healthcare": 6043,
+    "legal": 7209,
+    "finance": 6332
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T120024Z__case_6_trigger_heavy_biotech_ma__c13-c2.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c2",
+   "final_chars": 8911,
+   "seat_chars": {
+    "healthcare": 5959,
+    "legal": 5665,
+    "finance": 6663
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T120815Z__case_6_trigger_heavy_biotech_ma__c13-c2.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c2",
+   "final_chars": 7031,
+   "seat_chars": {
+    "healthcare": 6815,
+    "legal": 6266,
+    "finance": 5704
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T121507Z__case_6_trigger_heavy_biotech_ma__c13-c2.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c2",
+   "final_chars": 5653,
+   "seat_chars": {
+    "healthcare": 6379,
+    "legal": 5081,
+    "finance": 6034
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T122921Z__case_1_clinical_decision_support__c13-c3.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c3",
+   "final_chars": 9295,
+   "seat_chars": {
+    "healthcare": 5763,
+    "legal": 8489,
+    "finance": 6201
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T123734Z__case_1_clinical_decision_support__c13-c3.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c3",
+   "final_chars": 10579,
+   "seat_chars": {
+    "healthcare": 5608,
+    "legal": 8447,
+    "finance": 5752
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T124541Z__case_1_clinical_decision_support__c13-c3.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c3",
+   "final_chars": 7846,
+   "seat_chars": {
+    "healthcare": 5099,
+    "legal": 10764,
+    "finance": 6723
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T125413Z__case_1_clinical_decision_support__c13-c3.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c3",
+   "final_chars": 12001,
+   "seat_chars": {
+    "healthcare": 6057,
+    "legal": 7028,
+    "finance": 6196
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T130223Z__case_1_clinical_decision_support__c13-c3.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c3",
+   "final_chars": 10628,
+   "seat_chars": {
+    "healthcare": 5690,
+    "legal": 7259,
+    "finance": 4891
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T131015Z__case_2_cross_border_digital_therapeutic__c13-c3.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c3",
+   "final_chars": 7755,
+   "seat_chars": {
+    "healthcare": 6399,
+    "legal": 8154,
+    "finance": 5436
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T131830Z__case_2_cross_border_digital_therapeutic__c13-c3.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c3",
+   "final_chars": 8848,
+   "seat_chars": {
+    "healthcare": 6940,
+    "legal": 5509,
+    "finance": 6674
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T132612Z__case_2_cross_border_digital_therapeutic__c13-c3.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c3",
+   "final_chars": 7643,
+   "seat_chars": {
+    "healthcare": 5610,
+    "legal": 6028,
+    "finance": 6176
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T133401Z__case_2_cross_border_digital_therapeutic__c13-c3.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c3",
+   "final_chars": 6577,
+   "seat_chars": {
+    "healthcare": 7238,
+    "legal": 7242,
+    "finance": 6539
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T134156Z__case_2_cross_border_digital_therapeutic__c13-c3.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c3",
+   "final_chars": 8930,
+   "seat_chars": {
+    "healthcare": 6695,
+    "legal": 7285,
+    "finance": 8652
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T134904Z__case_3_capitated_risk_contract__c13-c3.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c3",
+   "final_chars": 6930,
+   "seat_chars": {
+    "healthcare": 5862,
+    "legal": 6720,
+    "finance": 5063
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T135548Z__case_3_capitated_risk_contract__c13-c3.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c3",
+   "final_chars": 7346,
+   "seat_chars": {
+    "healthcare": 5712,
+    "legal": 6566,
+    "finance": 4218
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T140130Z__case_3_capitated_risk_contract__c13-c3.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c3",
+   "final_chars": 6551,
+   "seat_chars": {
+    "healthcare": 6060,
+    "legal": 7292,
+    "finance": 5312
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T140738Z__case_3_capitated_risk_contract__c13-c3.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c3",
+   "final_chars": 6974,
+   "seat_chars": {
+    "healthcare": 7164,
+    "legal": 6768,
+    "finance": 5295
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T141342Z__case_3_capitated_risk_contract__c13-c3.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c3",
+   "final_chars": 8070,
+   "seat_chars": {
+    "healthcare": 5587,
+    "legal": 6041,
+    "finance": 5727
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T142012Z__case_4_glp1_employer_coverage__c13-c3.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c3",
+   "final_chars": 7283,
+   "seat_chars": {
+    "healthcare": 6189,
+    "legal": 4838,
+    "finance": 5932
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T142604Z__case_4_glp1_employer_coverage__c13-c3.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c3",
+   "final_chars": 7294,
+   "seat_chars": {
+    "healthcare": 6506,
+    "legal": 5219,
+    "finance": 5111
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T143313Z__case_4_glp1_employer_coverage__c13-c3.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c3",
+   "final_chars": 6158,
+   "seat_chars": {
+    "healthcare": 7449,
+    "legal": 5793,
+    "finance": 5149
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T144439Z__case_4_glp1_employer_coverage__c13-c3.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c3",
+   "final_chars": 8258,
+   "seat_chars": {
+    "healthcare": 6546,
+    "legal": 5641,
+    "finance": 4838
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T145104Z__case_4_glp1_employer_coverage__c13-c3.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c3",
+   "final_chars": 7544,
+   "seat_chars": {
+    "healthcare": 6091,
+    "legal": 5872,
+    "finance": 4410
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T145722Z__case_5_nonprofit_hospital_pe_conversion__c13-c3.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c3",
+   "final_chars": 8795,
+   "seat_chars": {
+    "healthcare": 5992,
+    "legal": 6317,
+    "finance": 9305
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T150458Z__case_5_nonprofit_hospital_pe_conversion__c13-c3.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c3",
+   "final_chars": 9484,
+   "seat_chars": {
+    "healthcare": 6346,
+    "legal": 8844,
+    "finance": 8684
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T151201Z__case_5_nonprofit_hospital_pe_conversion__c13-c3.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c3",
+   "final_chars": 6720,
+   "seat_chars": {
+    "healthcare": 8145,
+    "legal": 8415,
+    "finance": 6758
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T152019Z__case_5_nonprofit_hospital_pe_conversion__c13-c3.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c3",
+   "final_chars": 8935,
+   "seat_chars": {
+    "healthcare": 7768,
+    "legal": 6633,
+    "finance": 7157
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T152834Z__case_5_nonprofit_hospital_pe_conversion__c13-c3.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c3",
+   "final_chars": 10465,
+   "seat_chars": {
+    "healthcare": 6955,
+    "legal": 8974,
+    "finance": 7676
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T153415Z__case_6_trigger_heavy_biotech_ma__c13-c3.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c3",
+   "final_chars": 6190,
+   "seat_chars": {
+    "healthcare": 6686,
+    "legal": 6933,
+    "finance": 5808
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T154115Z__case_6_trigger_heavy_biotech_ma__c13-c3.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c3",
+   "final_chars": 7787,
+   "seat_chars": {
+    "healthcare": 7397,
+    "legal": 6571,
+    "finance": 5025
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T155036Z__case_6_trigger_heavy_biotech_ma__c13-c3.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c3",
+   "final_chars": 7841,
+   "seat_chars": {
+    "healthcare": 6326,
+    "legal": 5480,
+    "finance": 6398
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T155607Z__case_6_trigger_heavy_biotech_ma__c13-c3.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c3",
+   "final_chars": 7440,
+   "seat_chars": {
+    "healthcare": 6625,
+    "legal": 6610,
+    "finance": 4633
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T160302Z__case_6_trigger_heavy_biotech_ma__c13-c3.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c3",
+   "final_chars": 7513,
+   "seat_chars": {
+    "healthcare": 6277,
+    "legal": 6153,
+    "finance": 5789
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T162306Z__case_1_clinical_decision_support__c13-c4.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c4",
+   "final_chars": 9346,
+   "seat_chars": {
+    "healthcare": 8277,
+    "legal": 7880,
+    "finance": 6316
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T163509Z__case_1_clinical_decision_support__c13-c4.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c4",
+   "final_chars": 9732,
+   "seat_chars": {
+    "healthcare": 5605,
+    "legal": 9315,
+    "finance": 5304
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T164504Z__case_1_clinical_decision_support__c13-c4.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c4",
+   "final_chars": 8518,
+   "seat_chars": {
+    "healthcare": 5764,
+    "legal": 7289,
+    "finance": 6225
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T165251Z__case_1_clinical_decision_support__c13-c4.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c4",
+   "final_chars": 7670,
+   "seat_chars": {
+    "healthcare": 6071,
+    "legal": 8296,
+    "finance": 5553
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T170406Z__case_1_clinical_decision_support__c13-c4.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-c4",
+   "final_chars": 9515,
+   "seat_chars": {
+    "healthcare": 5769,
+    "legal": 8470,
+    "finance": 6627
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T171657Z__case_2_cross_border_digital_therapeutic__c13-c4.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c4",
+   "final_chars": 7549,
+   "seat_chars": {
+    "healthcare": 6899,
+    "legal": 8009,
+    "finance": 7382
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T172414Z__case_2_cross_border_digital_therapeutic__c13-c4.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c4",
+   "final_chars": 7819,
+   "seat_chars": {
+    "healthcare": 6773,
+    "legal": 7277,
+    "finance": 5708
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T173549Z__case_2_cross_border_digital_therapeutic__c13-c4.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c4",
+   "final_chars": 9629,
+   "seat_chars": {
+    "healthcare": 7042,
+    "legal": 8490,
+    "finance": 6807
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T174707Z__case_2_cross_border_digital_therapeutic__c13-c4.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c4",
+   "final_chars": 7148,
+   "seat_chars": {
+    "healthcare": 6550,
+    "legal": 6649,
+    "finance": 6677
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T180435Z__case_2_cross_border_digital_therapeutic__c13-c4.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-c4",
+   "final_chars": 8496,
+   "seat_chars": {
+    "healthcare": 8734,
+    "legal": 9149,
+    "finance": 7903
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T181352Z__case_3_capitated_risk_contract__c13-c4.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c4",
+   "final_chars": 7222,
+   "seat_chars": {
+    "healthcare": 4937,
+    "legal": 5356,
+    "finance": 5923
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T182249Z__case_3_capitated_risk_contract__c13-c4.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c4",
+   "final_chars": 7037,
+   "seat_chars": {
+    "healthcare": 5660,
+    "legal": 7553,
+    "finance": 5470
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T183110Z__case_3_capitated_risk_contract__c13-c4.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c4",
+   "final_chars": 8700,
+   "seat_chars": {
+    "healthcare": 5719,
+    "legal": 6727,
+    "finance": 5892
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T184026Z__case_3_capitated_risk_contract__c13-c4.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c4",
+   "final_chars": 8169,
+   "seat_chars": {
+    "healthcare": 4951,
+    "legal": 9443,
+    "finance": 4289
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T184940Z__case_3_capitated_risk_contract__c13-c4.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-c4",
+   "final_chars": 7236,
+   "seat_chars": {
+    "healthcare": 5743,
+    "legal": 6284,
+    "finance": 3799
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T185853Z__case_4_glp1_employer_coverage__c13-c4.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c4",
+   "final_chars": 6043,
+   "seat_chars": {
+    "healthcare": 5980,
+    "legal": 5065,
+    "finance": 5659
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T190843Z__case_4_glp1_employer_coverage__c13-c4.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c4",
+   "final_chars": 8567,
+   "seat_chars": {
+    "healthcare": 6488,
+    "legal": 6318,
+    "finance": 6319
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T191723Z__case_4_glp1_employer_coverage__c13-c4.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c4",
+   "final_chars": 7387,
+   "seat_chars": {
+    "healthcare": 7056,
+    "legal": 5002,
+    "finance": 5907
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T192542Z__case_4_glp1_employer_coverage__c13-c4.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c4",
+   "final_chars": 7398,
+   "seat_chars": {
+    "healthcare": 6489,
+    "legal": 5979,
+    "finance": 4970
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T193503Z__case_4_glp1_employer_coverage__c13-c4.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-c4",
+   "final_chars": 7080,
+   "seat_chars": {
+    "healthcare": 7273,
+    "legal": 5561,
+    "finance": 6119
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T194344Z__case_5_nonprofit_hospital_pe_conversion__c13-c4.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c4",
+   "final_chars": 8933,
+   "seat_chars": {
+    "healthcare": 8170,
+    "legal": 5569,
+    "finance": 8978
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T195156Z__case_5_nonprofit_hospital_pe_conversion__c13-c4.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c4",
+   "final_chars": 9387,
+   "seat_chars": {
+    "healthcare": 7223,
+    "legal": 6958,
+    "finance": 6531
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T200013Z__case_5_nonprofit_hospital_pe_conversion__c13-c4.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c4",
+   "final_chars": 8789,
+   "seat_chars": {
+    "healthcare": 7894,
+    "legal": 10049,
+    "finance": 7714
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T200842Z__case_5_nonprofit_hospital_pe_conversion__c13-c4.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c4",
+   "final_chars": 7418,
+   "seat_chars": {
+    "healthcare": 6701,
+    "legal": 7352,
+    "finance": 7354
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T201726Z__case_5_nonprofit_hospital_pe_conversion__c13-c4.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-c4",
+   "final_chars": 8967,
+   "seat_chars": {
+    "healthcare": 5542,
+    "legal": 7773,
+    "finance": 7613
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T202458Z__case_6_trigger_heavy_biotech_ma__c13-c4.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c4",
+   "final_chars": 8095,
+   "seat_chars": {
+    "healthcare": 5958,
+    "legal": 7002,
+    "finance": 5255
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T203302Z__case_6_trigger_heavy_biotech_ma__c13-c4.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c4",
+   "final_chars": 9373,
+   "seat_chars": {
+    "healthcare": 7944,
+    "legal": 6370,
+    "finance": 5431
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T204017Z__case_6_trigger_heavy_biotech_ma__c13-c4.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c4",
+   "final_chars": 8140,
+   "seat_chars": {
+    "healthcare": 7426,
+    "legal": 6068,
+    "finance": 6171
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T204843Z__case_6_trigger_heavy_biotech_ma__c13-c4.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c4",
+   "final_chars": 9104,
+   "seat_chars": {
+    "healthcare": 6382,
+    "legal": 8951,
+    "finance": 5198
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T205608Z__case_6_trigger_heavy_biotech_ma__c13-c4.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-c4",
+   "final_chars": 8790,
+   "seat_chars": {
+    "healthcare": 7328,
+    "legal": 6110,
+    "finance": 4557
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T211045Z__case_1_clinical_decision_support__c13-all.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-all",
+   "final_chars": 10783,
+   "seat_chars": {
+    "healthcare": 5251,
+    "legal": 8439,
+    "finance": 6841
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T212024Z__case_1_clinical_decision_support__c13-all.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-all",
+   "final_chars": 9432,
+   "seat_chars": {
+    "healthcare": 6071,
+    "legal": 8073,
+    "finance": 5780
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T213521Z__case_1_clinical_decision_support__c13-all.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-all",
+   "final_chars": 11209,
+   "seat_chars": {
+    "healthcare": 5244,
+    "legal": 7932,
+    "finance": 5236
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T214902Z__case_1_clinical_decision_support__c13-all.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-all",
+   "final_chars": 7943,
+   "seat_chars": {
+    "healthcare": 6131,
+    "legal": 9695,
+    "finance": 5934
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T220310Z__case_1_clinical_decision_support__c13-all.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c13-all",
+   "final_chars": 8726,
+   "seat_chars": {
+    "healthcare": 5928,
+    "legal": 7183,
+    "finance": 4801
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T221616Z__case_2_cross_border_digital_therapeutic__c13-all.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-all",
+   "final_chars": 7243,
+   "seat_chars": {
+    "healthcare": 5808,
+    "legal": 6796,
+    "finance": 5707
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T222853Z__case_2_cross_border_digital_therapeutic__c13-all.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-all",
+   "final_chars": 7118,
+   "seat_chars": {
+    "healthcare": 8444,
+    "legal": 7760,
+    "finance": 5783
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T223715Z__case_2_cross_border_digital_therapeutic__c13-all.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-all",
+   "final_chars": 9852,
+   "seat_chars": {
+    "healthcare": 5918,
+    "legal": 7437,
+    "finance": 5381
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T224544Z__case_2_cross_border_digital_therapeutic__c13-all.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-all",
+   "final_chars": 7494,
+   "seat_chars": {
+    "healthcare": 8373,
+    "legal": 6668,
+    "finance": 8717
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T225428Z__case_2_cross_border_digital_therapeutic__c13-all.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c13-all",
+   "final_chars": 9921,
+   "seat_chars": {
+    "healthcare": 6397,
+    "legal": 7283,
+    "finance": 6442
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T230224Z__case_3_capitated_risk_contract__c13-all.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-all",
+   "final_chars": 9178,
+   "seat_chars": {
+    "healthcare": 5774,
+    "legal": 5891,
+    "finance": 5494
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T230915Z__case_3_capitated_risk_contract__c13-all.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-all",
+   "final_chars": 7806,
+   "seat_chars": {
+    "healthcare": 5291,
+    "legal": 6557,
+    "finance": 4945
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T231629Z__case_3_capitated_risk_contract__c13-all.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-all",
+   "final_chars": 9668,
+   "seat_chars": {
+    "healthcare": 6165,
+    "legal": 5334,
+    "finance": 5934
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T232242Z__case_3_capitated_risk_contract__c13-all.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-all",
+   "final_chars": 6940,
+   "seat_chars": {
+    "healthcare": 5836,
+    "legal": 6382,
+    "finance": 5780
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T232948Z__case_3_capitated_risk_contract__c13-all.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c13-all",
+   "final_chars": 6366,
+   "seat_chars": {
+    "healthcare": 5922,
+    "legal": 6348,
+    "finance": 5605
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T233812Z__case_4_glp1_employer_coverage__c13-all.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-all",
+   "final_chars": 7556,
+   "seat_chars": {
+    "healthcare": 6853,
+    "legal": 5733,
+    "finance": 6929
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260731T234736Z__case_4_glp1_employer_coverage__c13-all.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-all",
+   "final_chars": 8434,
+   "seat_chars": {
+    "healthcare": 6462,
+    "legal": 5342,
+    "finance": 6057
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260731T235741Z__case_4_glp1_employer_coverage__c13-all.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-all",
+   "final_chars": 8917,
+   "seat_chars": {
+    "healthcare": 6083,
+    "legal": 6381,
+    "finance": 6871
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T000503Z__case_4_glp1_employer_coverage__c13-all.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-all",
+   "final_chars": 7332,
+   "seat_chars": {
+    "healthcare": 5795,
+    "legal": 6396,
+    "finance": 5475
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T001248Z__case_4_glp1_employer_coverage__c13-all.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c13-all",
+   "final_chars": 8183,
+   "seat_chars": {
+    "healthcare": 5905,
+    "legal": 4699,
+    "finance": 5540
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T002047Z__case_5_nonprofit_hospital_pe_conversion__c13-all.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-all",
+   "final_chars": 8571,
+   "seat_chars": {
+    "healthcare": 6026,
+    "legal": 9115,
+    "finance": 7609
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T002938Z__case_5_nonprofit_hospital_pe_conversion__c13-all.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-all",
+   "final_chars": 10949,
+   "seat_chars": {
+    "healthcare": 7937,
+    "legal": 9368,
+    "finance": 6724
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T003646Z__case_5_nonprofit_hospital_pe_conversion__c13-all.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-all",
+   "final_chars": 9188,
+   "seat_chars": {
+    "healthcare": 7728,
+    "legal": 5520,
+    "finance": 6248
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T004530Z__case_5_nonprofit_hospital_pe_conversion__c13-all.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-all",
+   "final_chars": 11016,
+   "seat_chars": {
+    "healthcare": 8163,
+    "legal": 6569,
+    "finance": 7709
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T005523Z__case_5_nonprofit_hospital_pe_conversion__c13-all.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c13-all",
+   "final_chars": 9155,
+   "seat_chars": {
+    "healthcare": 6389,
+    "legal": 6398,
+    "finance": 7278
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T010429Z__case_6_trigger_heavy_biotech_ma__c13-all.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-all",
+   "final_chars": 9545,
+   "seat_chars": {
+    "healthcare": 6963,
+    "legal": 6862,
+    "finance": 8364
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T011256Z__case_6_trigger_heavy_biotech_ma__c13-all.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-all",
+   "final_chars": 8827,
+   "seat_chars": {
+    "healthcare": 6256,
+    "legal": 5397,
+    "finance": 7589
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T012046Z__case_6_trigger_heavy_biotech_ma__c13-all.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-all",
+   "final_chars": 9765,
+   "seat_chars": {
+    "healthcare": 7699,
+    "legal": 7218,
+    "finance": 5179
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T012836Z__case_6_trigger_heavy_biotech_ma__c13-all.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-all",
+   "final_chars": 9481,
+   "seat_chars": {
+    "healthcare": 7547,
+    "legal": 6750,
+    "finance": 6539
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260801T013536Z__case_6_trigger_heavy_biotech_ma__c13-all.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c13-all",
+   "final_chars": 9327,
+   "seat_chars": {
+    "healthcare": 6603,
+    "legal": 6439,
+    "finance": 5221
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260803T203905Z__case_1_clinical_decision_support__c17-suppress.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c17-suppress",
+   "final_chars": 7371,
+   "seat_chars": {
+    "healthcare": 5047,
+    "legal": 5667,
+    "finance": 6080
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T205048Z__case_1_clinical_decision_support__c17-suppress.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c17-suppress",
+   "final_chars": 9623,
+   "seat_chars": {
+    "healthcare": 7360,
+    "legal": 8066,
+    "finance": 5591
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260803T210322Z__case_1_clinical_decision_support__c17-suppress.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c17-suppress",
+   "final_chars": 9067,
+   "seat_chars": {
+    "healthcare": 7674,
+    "legal": 6936,
+    "finance": 5576
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T211406Z__case_1_clinical_decision_support__c17-suppress.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c17-suppress",
+   "final_chars": 8928,
+   "seat_chars": {
+    "healthcare": 9375,
+    "legal": 7313,
+    "finance": 5563
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T212246Z__case_1_clinical_decision_support__c17-suppress.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c17-suppress",
+   "final_chars": 9673,
+   "seat_chars": {
+    "healthcare": 7201,
+    "legal": 6087,
+    "finance": 6327
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T213057Z__case_2_cross_border_digital_therapeutic__c17-suppress.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c17-suppress",
+   "final_chars": 7687,
+   "seat_chars": {
+    "healthcare": 5874,
+    "legal": 7705,
+    "finance": 7577
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T213818Z__case_2_cross_border_digital_therapeutic__c17-suppress.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c17-suppress",
+   "final_chars": 7160,
+   "seat_chars": {
+    "healthcare": 6304,
+    "legal": 6586,
+    "finance": 6989
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T214735Z__case_2_cross_border_digital_therapeutic__c17-suppress.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c17-suppress",
+   "final_chars": 9448,
+   "seat_chars": {
+    "healthcare": 6470,
+    "legal": 6666,
+    "finance": 8110
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T215616Z__case_2_cross_border_digital_therapeutic__c17-suppress.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c17-suppress",
+   "final_chars": 8390,
+   "seat_chars": {
+    "healthcare": 6590,
+    "legal": 7953,
+    "finance": 5887
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T220430Z__case_2_cross_border_digital_therapeutic__c17-suppress.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c17-suppress",
+   "final_chars": 7820,
+   "seat_chars": {
+    "healthcare": 6150,
+    "legal": 7627,
+    "finance": 6703
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T221111Z__case_3_capitated_risk_contract__c17-suppress.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c17-suppress",
+   "final_chars": 7547,
+   "seat_chars": {
+    "healthcare": 4662,
+    "legal": 7548,
+    "finance": 5655
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T221833Z__case_3_capitated_risk_contract__c17-suppress.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c17-suppress",
+   "final_chars": 7585,
+   "seat_chars": {
+    "healthcare": 4922,
+    "legal": 7016,
+    "finance": 4815
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T222527Z__case_3_capitated_risk_contract__c17-suppress.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c17-suppress",
+   "final_chars": 7697,
+   "seat_chars": {
+    "healthcare": 6069,
+    "legal": 6413,
+    "finance": 5893
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T223227Z__case_3_capitated_risk_contract__c17-suppress.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c17-suppress",
+   "final_chars": 7474,
+   "seat_chars": {
+    "healthcare": 6115,
+    "legal": 6194,
+    "finance": 6645
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T223938Z__case_3_capitated_risk_contract__c17-suppress.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c17-suppress",
+   "final_chars": 9410,
+   "seat_chars": {
+    "healthcare": 6118,
+    "legal": 5645,
+    "finance": 5909
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T224708Z__case_4_glp1_employer_coverage__c17-suppress.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c17-suppress",
+   "final_chars": 7095,
+   "seat_chars": {
+    "healthcare": 6610,
+    "legal": 5685,
+    "finance": 5698
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T225506Z__case_4_glp1_employer_coverage__c17-suppress.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c17-suppress",
+   "final_chars": 7342,
+   "seat_chars": {
+    "healthcare": 5730,
+    "legal": 6635,
+    "finance": 6464
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T230134Z__case_4_glp1_employer_coverage__c17-suppress.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c17-suppress",
+   "final_chars": 6837,
+   "seat_chars": {
+    "healthcare": 5913,
+    "legal": 4859,
+    "finance": 5420
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T230821Z__case_4_glp1_employer_coverage__c17-suppress.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c17-suppress",
+   "final_chars": 6925,
+   "seat_chars": {
+    "healthcare": 4949,
+    "legal": 5610,
+    "finance": 5723
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T231606Z__case_4_glp1_employer_coverage__c17-suppress.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c17-suppress",
+   "final_chars": 8703,
+   "seat_chars": {
+    "healthcare": 6076,
+    "legal": 6378,
+    "finance": 5293
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T232335Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c17-suppress",
+   "final_chars": 6161,
+   "seat_chars": {
+    "healthcare": 8023,
+    "legal": 6165,
+    "finance": 7744
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T233048Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c17-suppress",
+   "final_chars": 8427,
+   "seat_chars": {
+    "healthcare": 6574,
+    "legal": 6053,
+    "finance": 6875
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T233859Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c17-suppress",
+   "final_chars": 8753,
+   "seat_chars": {
+    "healthcare": 5753,
+    "legal": 8415,
+    "finance": 7767
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T234655Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c17-suppress",
+   "final_chars": 8712,
+   "seat_chars": {
+    "healthcare": 6937,
+    "legal": 6861,
+    "finance": 8068
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260803T235455Z__case_5_nonprofit_hospital_pe_conversion__c17-suppress.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c17-suppress",
+   "final_chars": 10165,
+   "seat_chars": {
+    "healthcare": 6846,
+    "legal": 5469,
+    "finance": 6903
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T000239Z__case_6_trigger_heavy_biotech_ma__c17-suppress.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c17-suppress",
+   "final_chars": 10577,
+   "seat_chars": {
+    "healthcare": 6214,
+    "legal": 6725,
+    "finance": 5948
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T001011Z__case_6_trigger_heavy_biotech_ma__c17-suppress.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c17-suppress",
+   "final_chars": 7682,
+   "seat_chars": {
+    "healthcare": 6634,
+    "legal": 5316,
+    "finance": 6321
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T001752Z__case_6_trigger_heavy_biotech_ma__c17-suppress.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c17-suppress",
+   "final_chars": 6888,
+   "seat_chars": {
+    "healthcare": 7268,
+    "legal": 6590,
+    "finance": 8024
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T002508Z__case_6_trigger_heavy_biotech_ma__c17-suppress.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c17-suppress",
+   "final_chars": 8291,
+   "seat_chars": {
+    "healthcare": 6859,
+    "legal": 5479,
+    "finance": 6976
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T003244Z__case_6_trigger_heavy_biotech_ma__c17-suppress.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c17-suppress",
+   "final_chars": 7594,
+   "seat_chars": {
+    "healthcare": 6894,
+    "legal": 6856,
+    "finance": 6234
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T220707Z__case_1_clinical_decision_support__c19-gated.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c19-gated",
+   "final_chars": 9733,
+   "seat_chars": {
+    "healthcare": 4721,
+    "legal": 6109,
+    "finance": 5859
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T221329Z__case_1_clinical_decision_support__c19-gated.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c19-gated",
+   "final_chars": 9043,
+   "seat_chars": {
+    "healthcare": 5949,
+    "legal": 6525,
+    "finance": 6374
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T222053Z__case_1_clinical_decision_support__c19-gated.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c19-gated",
+   "final_chars": 10617,
+   "seat_chars": {
+    "healthcare": 6723,
+    "legal": 6221,
+    "finance": 6148
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T222811Z__case_1_clinical_decision_support__c19-gated.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c19-gated",
+   "final_chars": 7756,
+   "seat_chars": {
+    "healthcare": 5689,
+    "legal": 5579,
+    "finance": 6763
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T223619Z__case_1_clinical_decision_support__c19-gated.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c19-gated",
+   "final_chars": 7480,
+   "seat_chars": {
+    "healthcare": 6944,
+    "legal": 6140,
+    "finance": 6581
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T224653Z__case_2_cross_border_digital_therapeutic__c19-gated.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c19-gated",
+   "final_chars": 11195,
+   "seat_chars": {
+    "healthcare": 8084,
+    "legal": 8318,
+    "finance": 6831
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260804T225609Z__case_2_cross_border_digital_therapeutic__c19-gated.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c19-gated",
+   "final_chars": 8324,
+   "seat_chars": {
+    "healthcare": 6325,
+    "legal": 5161,
+    "finance": 7272
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T230540Z__case_2_cross_border_digital_therapeutic__c19-gated.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c19-gated",
+   "final_chars": 9726,
+   "seat_chars": {
+    "healthcare": 5391,
+    "legal": 6383,
+    "finance": 8123
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T231603Z__case_2_cross_border_digital_therapeutic__c19-gated.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c19-gated",
+   "final_chars": 9212,
+   "seat_chars": {
+    "healthcare": 8149,
+    "legal": 6392,
+    "finance": 7241
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T232444Z__case_2_cross_border_digital_therapeutic__c19-gated.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c19-gated",
+   "final_chars": 10110,
+   "seat_chars": {
+    "healthcare": 5073,
+    "legal": 6201,
+    "finance": 6664
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T233233Z__case_3_capitated_risk_contract__c19-gated.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c19-gated",
+   "final_chars": 6264,
+   "seat_chars": {
+    "healthcare": 4763,
+    "legal": 4738,
+    "finance": 5441
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T233906Z__case_3_capitated_risk_contract__c19-gated.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c19-gated",
+   "final_chars": 7499,
+   "seat_chars": {
+    "healthcare": 5476,
+    "legal": 5454,
+    "finance": 5583
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T234524Z__case_3_capitated_risk_contract__c19-gated.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c19-gated",
+   "final_chars": 7561,
+   "seat_chars": {
+    "healthcare": 6152,
+    "legal": 5775,
+    "finance": 5107
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T235244Z__case_3_capitated_risk_contract__c19-gated.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c19-gated",
+   "final_chars": 8067,
+   "seat_chars": {
+    "healthcare": 5202,
+    "legal": 5684,
+    "finance": 5492
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260804T235856Z__case_3_capitated_risk_contract__c19-gated.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c19-gated",
+   "final_chars": 7202,
+   "seat_chars": {
+    "healthcare": 5118,
+    "legal": 6072,
+    "finance": 4814
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T000618Z__case_4_glp1_employer_coverage__c19-gated.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c19-gated",
+   "final_chars": 6896,
+   "seat_chars": {
+    "healthcare": 6085,
+    "legal": 5290,
+    "finance": 6020
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T001428Z__case_4_glp1_employer_coverage__c19-gated.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c19-gated",
+   "final_chars": 8805,
+   "seat_chars": {
+    "healthcare": 6769,
+    "legal": 5733,
+    "finance": 6130
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T002207Z__case_4_glp1_employer_coverage__c19-gated.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c19-gated",
+   "final_chars": 8720,
+   "seat_chars": {
+    "healthcare": 6549,
+    "legal": 5458,
+    "finance": 7467
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T003323Z__case_4_glp1_employer_coverage__c19-gated.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c19-gated",
+   "final_chars": 7022,
+   "seat_chars": {
+    "healthcare": 5564,
+    "legal": 6614,
+    "finance": 5996
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T004037Z__case_4_glp1_employer_coverage__c19-gated.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c19-gated",
+   "final_chars": 7560,
+   "seat_chars": {
+    "healthcare": 5786,
+    "legal": 6127,
+    "finance": 6084
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T005011Z__case_5_nonprofit_hospital_pe_conversion__c19-gated.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c19-gated",
+   "final_chars": 6795,
+   "seat_chars": {
+    "healthcare": 5796,
+    "legal": 9048,
+    "finance": 6951
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T005924Z__case_5_nonprofit_hospital_pe_conversion__c19-gated.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c19-gated",
+   "final_chars": 10430,
+   "seat_chars": {
+    "healthcare": 6376,
+    "legal": 6017,
+    "finance": 6563
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260805T010919Z__case_5_nonprofit_hospital_pe_conversion__c19-gated.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c19-gated",
+   "final_chars": 7758,
+   "seat_chars": {
+    "healthcare": 6722,
+    "legal": 6661,
+    "finance": 7415
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T012242Z__case_5_nonprofit_hospital_pe_conversion__c19-gated.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c19-gated",
+   "final_chars": 9018,
+   "seat_chars": {
+    "healthcare": 5965,
+    "legal": 8820,
+    "finance": 7555
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T013144Z__case_5_nonprofit_hospital_pe_conversion__c19-gated.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c19-gated",
+   "final_chars": 6395,
+   "seat_chars": {
+    "healthcare": 7097,
+    "legal": 8992,
+    "finance": 11430
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T014200Z__case_6_trigger_heavy_biotech_ma__c19-gated.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c19-gated",
+   "final_chars": 8338,
+   "seat_chars": {
+    "healthcare": 7728,
+    "legal": 6201,
+    "finance": 6180
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T014929Z__case_6_trigger_heavy_biotech_ma__c19-gated.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c19-gated",
+   "final_chars": 10207,
+   "seat_chars": {
+    "healthcare": 6696,
+    "legal": 6334,
+    "finance": 6270
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T015844Z__case_6_trigger_heavy_biotech_ma__c19-gated.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c19-gated",
+   "final_chars": 7804,
+   "seat_chars": {
+    "healthcare": 7031,
+    "legal": 7344,
+    "finance": 7374
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T020434Z__case_6_trigger_heavy_biotech_ma__c19-gated.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c19-gated",
+   "final_chars": 10027,
+   "seat_chars": {
+    "healthcare": 5387,
+    "legal": 6706,
+    "finance": 5226
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T021023Z__case_6_trigger_heavy_biotech_ma__c19-gated.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c19-gated",
+   "final_chars": 6333,
+   "seat_chars": {
+    "healthcare": 5993,
+    "legal": 6927,
+    "finance": 5283
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T105024Z__case_1_clinical_decision_support__c20-decide.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c20-decide",
+   "final_chars": 8895,
+   "seat_chars": {
+    "healthcare": 5694,
+    "legal": 7572,
+    "finance": 7002
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T105919Z__case_1_clinical_decision_support__c20-decide.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c20-decide",
+   "final_chars": 9826,
+   "seat_chars": {
+    "healthcare": 7152,
+    "legal": 6980,
+    "finance": 7720
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T110753Z__case_1_clinical_decision_support__c20-decide.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c20-decide",
+   "final_chars": 9357,
+   "seat_chars": {
+    "healthcare": 5985,
+    "legal": 7292,
+    "finance": 7081
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T111525Z__case_1_clinical_decision_support__c20-decide.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c20-decide",
+   "final_chars": 7662,
+   "seat_chars": {
+    "healthcare": 6708,
+    "legal": 7693,
+    "finance": 5828
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T112302Z__case_1_clinical_decision_support__c20-decide.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c20-decide",
+   "final_chars": 9050,
+   "seat_chars": {
+    "healthcare": 4795,
+    "legal": 7809,
+    "finance": 7915
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T113134Z__case_2_cross_border_digital_therapeutic__c20-decide.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c20-decide",
+   "final_chars": 7032,
+   "seat_chars": {
+    "healthcare": 6447,
+    "legal": 9276,
+    "finance": 6158
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T113844Z__case_2_cross_border_digital_therapeutic__c20-decide.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c20-decide",
+   "final_chars": 7497,
+   "seat_chars": {
+    "healthcare": 4553,
+    "legal": 7680,
+    "finance": 6036
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T114553Z__case_2_cross_border_digital_therapeutic__c20-decide.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c20-decide",
+   "final_chars": 8188,
+   "seat_chars": {
+    "healthcare": 5649,
+    "legal": 7923,
+    "finance": 5422
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T115426Z__case_2_cross_border_digital_therapeutic__c20-decide.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c20-decide",
+   "final_chars": 7127,
+   "seat_chars": {
+    "healthcare": 5719,
+    "legal": 5410,
+    "finance": 6547
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T120223Z__case_2_cross_border_digital_therapeutic__c20-decide.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c20-decide",
+   "final_chars": 8403,
+   "seat_chars": {
+    "healthcare": 5236,
+    "legal": 7818,
+    "finance": 7088
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T120858Z__case_3_capitated_risk_contract__c20-decide.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c20-decide",
+   "final_chars": 7422,
+   "seat_chars": {
+    "healthcare": 6406,
+    "legal": 5109,
+    "finance": 6071
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T121552Z__case_3_capitated_risk_contract__c20-decide.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c20-decide",
+   "final_chars": 7901,
+   "seat_chars": {
+    "healthcare": 4780,
+    "legal": 6191,
+    "finance": 6698
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T122244Z__case_3_capitated_risk_contract__c20-decide.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c20-decide",
+   "final_chars": 7779,
+   "seat_chars": {
+    "healthcare": 6971,
+    "legal": 5159,
+    "finance": 5188
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T123039Z__case_3_capitated_risk_contract__c20-decide.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c20-decide",
+   "final_chars": 7542,
+   "seat_chars": {
+    "healthcare": 5516,
+    "legal": 5828,
+    "finance": 5866
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T123651Z__case_3_capitated_risk_contract__c20-decide.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c20-decide",
+   "final_chars": 6846,
+   "seat_chars": {
+    "healthcare": 5181,
+    "legal": 5220,
+    "finance": 5271
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T124517Z__case_4_glp1_employer_coverage__c20-decide.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c20-decide",
+   "final_chars": 7332,
+   "seat_chars": {
+    "healthcare": 5547,
+    "legal": 6326,
+    "finance": 6556
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T125419Z__case_4_glp1_employer_coverage__c20-decide.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c20-decide",
+   "final_chars": 7486,
+   "seat_chars": {
+    "healthcare": 5397,
+    "legal": 6072,
+    "finance": 8639
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T130229Z__case_4_glp1_employer_coverage__c20-decide.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c20-decide",
+   "final_chars": 6615,
+   "seat_chars": {
+    "healthcare": 6147,
+    "legal": 5640,
+    "finance": 5393
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T130844Z__case_4_glp1_employer_coverage__c20-decide.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c20-decide",
+   "final_chars": 7438,
+   "seat_chars": {
+    "healthcare": 5645,
+    "legal": 4441,
+    "finance": 4424
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T131532Z__case_4_glp1_employer_coverage__c20-decide.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c20-decide",
+   "final_chars": 7066,
+   "seat_chars": {
+    "healthcare": 5896,
+    "legal": 6870,
+    "finance": 6255
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T132238Z__case_5_nonprofit_hospital_pe_conversion__c20-decide.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c20-decide",
+   "final_chars": 7915,
+   "seat_chars": {
+    "healthcare": 5192,
+    "legal": 6577,
+    "finance": 6263
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T132906Z__case_5_nonprofit_hospital_pe_conversion__c20-decide.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c20-decide",
+   "final_chars": 8061,
+   "seat_chars": {
+    "healthcare": 7106,
+    "legal": 7458,
+    "finance": 7563
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T133734Z__case_5_nonprofit_hospital_pe_conversion__c20-decide.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c20-decide",
+   "final_chars": 8215,
+   "seat_chars": {
+    "healthcare": 6432,
+    "legal": 7623,
+    "finance": 7694
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T134351Z__case_5_nonprofit_hospital_pe_conversion__c20-decide.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c20-decide",
+   "final_chars": 6391,
+   "seat_chars": {
+    "healthcare": 7075,
+    "legal": 7371,
+    "finance": 6503
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T135143Z__case_5_nonprofit_hospital_pe_conversion__c20-decide.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c20-decide",
+   "final_chars": 9766,
+   "seat_chars": {
+    "healthcare": 6156,
+    "legal": 7679,
+    "finance": 6531
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T135916Z__case_6_trigger_heavy_biotech_ma__c20-decide.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c20-decide",
+   "final_chars": 8881,
+   "seat_chars": {
+    "healthcare": 7030,
+    "legal": 6494,
+    "finance": 5882
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T140611Z__case_6_trigger_heavy_biotech_ma__c20-decide.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c20-decide",
+   "final_chars": 8553,
+   "seat_chars": {
+    "healthcare": 6202,
+    "legal": 6416,
+    "finance": 5196
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T141426Z__case_6_trigger_heavy_biotech_ma__c20-decide.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c20-decide",
+   "final_chars": 7333,
+   "seat_chars": {
+    "healthcare": 8359,
+    "legal": 6317,
+    "finance": 4518
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T141930Z__case_6_trigger_heavy_biotech_ma__c20-decide.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c20-decide",
+   "final_chars": 6043,
+   "seat_chars": {
+    "healthcare": 6404,
+    "legal": 5468,
+    "finance": 7320
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260805T142627Z__case_6_trigger_heavy_biotech_ma__c20-decide.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c20-decide",
+   "final_chars": 10345,
+   "seat_chars": {
+    "healthcare": 6578,
+    "legal": 7026,
+    "finance": 6389
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T223650Z__case_1_clinical_decision_support__c27-ledger.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c27-ledger",
+   "final_chars": 6694,
+   "seat_chars": {
+    "healthcare": 5043,
+    "legal": 6964,
+    "finance": 5960
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T224638Z__case_1_clinical_decision_support__c27-ledger.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c27-ledger",
+   "final_chars": 7227,
+   "seat_chars": {
+    "healthcare": 7153,
+    "legal": 6815,
+    "finance": 7336
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T225933Z__case_1_clinical_decision_support__c27-ledger.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c27-ledger",
+   "final_chars": 940,
+   "seat_chars": {
+    "healthcare": 5126,
+    "legal": 6859,
+    "finance": 7095
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T231100Z__case_1_clinical_decision_support__c27-ledger.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c27-ledger",
+   "final_chars": 7028,
+   "seat_chars": {
+    "healthcare": 5470,
+    "legal": 7223,
+    "finance": 5898
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T232331Z__case_2_cross_border_digital_therapeutic__c27-ledger.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c27-ledger",
+   "final_chars": 5672,
+   "seat_chars": {
+    "healthcare": 6180,
+    "legal": 6610,
+    "finance": 5773
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T233657Z__case_2_cross_border_digital_therapeutic__c27-ledger.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c27-ledger",
+   "final_chars": 3022,
+   "seat_chars": {
+    "healthcare": 6399,
+    "legal": 5806,
+    "finance": 7295
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T234825Z__case_2_cross_border_digital_therapeutic__c27-ledger.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c27-ledger",
+   "final_chars": 6061,
+   "seat_chars": {
+    "healthcare": 6076,
+    "legal": 5854,
+    "finance": 6177
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260806T235825Z__case_2_cross_border_digital_therapeutic__c27-ledger.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c27-ledger",
+   "final_chars": 5067,
+   "seat_chars": {
+    "healthcare": 6361,
+    "legal": 6952,
+    "finance": 4853
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T001058Z__case_2_cross_border_digital_therapeutic__c27-ledger.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c27-ledger",
+   "final_chars": 6013,
+   "seat_chars": {
+    "healthcare": 6233,
+    "legal": 8098,
+    "finance": 7736
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T002252Z__case_3_capitated_risk_contract__c27-ledger.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c27-ledger",
+   "final_chars": 1327,
+   "seat_chars": {
+    "healthcare": 6025,
+    "legal": 6494,
+    "finance": 4970
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T003249Z__case_3_capitated_risk_contract__c27-ledger.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c27-ledger",
+   "final_chars": 4584,
+   "seat_chars": {
+    "healthcare": 6079,
+    "legal": 7028,
+    "finance": 5331
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T004223Z__case_3_capitated_risk_contract__c27-ledger.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c27-ledger",
+   "final_chars": 6086,
+   "seat_chars": {
+    "healthcare": 6985,
+    "legal": 6644,
+    "finance": 6308
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260807T005047Z__case_3_capitated_risk_contract__c27-ledger.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c27-ledger",
+   "final_chars": 5721,
+   "seat_chars": {
+    "healthcare": 6084,
+    "legal": 6613,
+    "finance": 5150
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260807T011658Z__case_4_glp1_employer_coverage__c27-ledger.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c27-ledger",
+   "final_chars": 3081,
+   "seat_chars": {
+    "healthcare": 5196,
+    "legal": 6711,
+    "finance": 5887
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T012720Z__case_4_glp1_employer_coverage__c27-ledger.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c27-ledger",
+   "final_chars": 6010,
+   "seat_chars": {
+    "healthcare": 5687,
+    "legal": 5940,
+    "finance": 4955
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T013938Z__case_4_glp1_employer_coverage__c27-ledger.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c27-ledger",
+   "final_chars": 6311,
+   "seat_chars": {
+    "healthcare": 6797,
+    "legal": 4326,
+    "finance": 6198
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T015225Z__case_4_glp1_employer_coverage__c27-ledger.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c27-ledger",
+   "final_chars": 6091,
+   "seat_chars": {
+    "healthcare": 5226,
+    "legal": 6535,
+    "finance": 6681
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T020548Z__case_4_glp1_employer_coverage__c27-ledger.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c27-ledger",
+   "final_chars": 8881,
+   "seat_chars": {
+    "healthcare": 6981,
+    "legal": 5896,
+    "finance": 8353
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T021758Z__case_5_nonprofit_hospital_pe_conversion__c27-ledger.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c27-ledger",
+   "final_chars": 8341,
+   "seat_chars": {
+    "healthcare": 6035,
+    "legal": 5445,
+    "finance": 7440
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T023122Z__case_5_nonprofit_hospital_pe_conversion__c27-ledger.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c27-ledger",
+   "final_chars": 7945,
+   "seat_chars": {
+    "healthcare": 5293,
+    "legal": 6839,
+    "finance": 8196
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T024601Z__case_5_nonprofit_hospital_pe_conversion__c27-ledger.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c27-ledger",
+   "final_chars": 2445,
+   "seat_chars": {
+    "healthcare": 5811,
+    "legal": 5895,
+    "finance": 8752
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T031417Z__case_5_nonprofit_hospital_pe_conversion__c27-ledger.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c27-ledger",
+   "final_chars": 7539,
+   "seat_chars": {
+    "healthcare": 6624,
+    "legal": 6048,
+    "finance": 8797
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T034151Z__case_6_trigger_heavy_biotech_ma__c27-ledger.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c27-ledger",
+   "final_chars": 2223,
+   "seat_chars": {
+    "healthcare": 6604,
+    "legal": 6451,
+    "finance": 6713
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T035200Z__case_6_trigger_heavy_biotech_ma__c27-ledger.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c27-ledger",
+   "final_chars": 5792,
+   "seat_chars": {
+    "healthcare": 6122,
+    "legal": 6474,
+    "finance": 5550
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T112707Z__case_6_trigger_heavy_biotech_ma__c27-ledger.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c27-ledger",
+   "final_chars": 7867,
+   "seat_chars": {
+    "healthcare": 6976,
+    "legal": 7498,
+    "finance": 5645
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T113229Z__case_6_trigger_heavy_biotech_ma__c27-ledger.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c27-ledger",
+   "final_chars": 4399,
+   "seat_chars": {
+    "healthcare": 5983,
+    "legal": 8643,
+    "finance": 5101
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T142336Z__case_1_clinical_decision_support__c28-ledger-rep.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c28-ledger-rep",
+   "final_chars": 1355,
+   "seat_chars": {
+    "healthcare": 6337,
+    "legal": 6635,
+    "finance": 5182
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T143400Z__case_1_clinical_decision_support__c28-ledger-rep.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c28-ledger-rep",
+   "final_chars": 7297,
+   "seat_chars": {
+    "healthcare": 6193,
+    "legal": 5546,
+    "finance": 6892
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T145641Z__case_1_clinical_decision_support__c28-ledger-rep.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c28-ledger-rep",
+   "final_chars": 1388,
+   "seat_chars": {
+    "healthcare": 5974,
+    "legal": 6984,
+    "finance": 6081
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T150829Z__case_1_clinical_decision_support__c28-ledger-rep.json",
+   "case": "case_1_clinical_decision_support",
+   "arm": "c28-ledger-rep",
+   "final_chars": 6257,
+   "seat_chars": {
+    "healthcare": 6363,
+    "legal": 6580,
+    "finance": 8118
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T151823Z__case_2_cross_border_digital_therapeutic__c28-ledger-rep.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c28-ledger-rep",
+   "final_chars": 6729,
+   "seat_chars": {
+    "healthcare": 6347,
+    "legal": 6587,
+    "finance": 5207
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T153511Z__case_2_cross_border_digital_therapeutic__c28-ledger-rep.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4814,
+   "seat_chars": {
+    "healthcare": 7319,
+    "legal": 6910,
+    "finance": 6921
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T154743Z__case_2_cross_border_digital_therapeutic__c28-ledger-rep.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4207,
+   "seat_chars": {
+    "healthcare": 6250,
+    "legal": 8324,
+    "finance": 7604
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T155749Z__case_2_cross_border_digital_therapeutic__c28-ledger-rep.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c28-ledger-rep",
+   "final_chars": 7499,
+   "seat_chars": {
+    "healthcare": 6624,
+    "legal": 7389,
+    "finance": 6049
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T160720Z__case_2_cross_border_digital_therapeutic__c28-ledger-rep.json",
+   "case": "case_2_cross_border_digital_therapeutic",
+   "arm": "c28-ledger-rep",
+   "final_chars": 6943,
+   "seat_chars": {
+    "healthcare": 5785,
+    "legal": 6855,
+    "finance": 6714
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T161608Z__case_3_capitated_risk_contract__c28-ledger-rep.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4559,
+   "seat_chars": {
+    "healthcare": 5385,
+    "legal": 6326,
+    "finance": 4907
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T162436Z__case_3_capitated_risk_contract__c28-ledger-rep.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4902,
+   "seat_chars": {
+    "healthcare": 6200,
+    "legal": 6149,
+    "finance": 5375
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T163215Z__case_3_capitated_risk_contract__c28-ledger-rep.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4682,
+   "seat_chars": {
+    "healthcare": 4563,
+    "legal": 6854,
+    "finance": 5566
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T164354Z__case_3_capitated_risk_contract__c28-ledger-rep.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4432,
+   "seat_chars": {
+    "healthcare": 4490,
+    "legal": 6950,
+    "finance": 5140
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T165129Z__case_3_capitated_risk_contract__c28-ledger-rep.json",
+   "case": "case_3_capitated_risk_contract",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4866,
+   "seat_chars": {
+    "healthcare": 5149,
+    "legal": 6002,
+    "finance": 4748
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T170104Z__case_4_glp1_employer_coverage__c28-ledger-rep.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4795,
+   "seat_chars": {
+    "healthcare": 5658,
+    "legal": 5817,
+    "finance": 5923
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T171059Z__case_4_glp1_employer_coverage__c28-ledger-rep.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c28-ledger-rep",
+   "final_chars": 7084,
+   "seat_chars": {
+    "healthcare": 7893,
+    "legal": 6457,
+    "finance": 6322
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T172245Z__case_4_glp1_employer_coverage__c28-ledger-rep.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c28-ledger-rep",
+   "final_chars": 5374,
+   "seat_chars": {
+    "healthcare": 6718,
+    "legal": 6040,
+    "finance": 6669
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T173331Z__case_4_glp1_employer_coverage__c28-ledger-rep.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c28-ledger-rep",
+   "final_chars": 6552,
+   "seat_chars": {
+    "healthcare": 6348,
+    "legal": 5478,
+    "finance": 6273
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T174356Z__case_4_glp1_employer_coverage__c28-ledger-rep.json",
+   "case": "case_4_glp1_employer_coverage",
+   "arm": "c28-ledger-rep",
+   "final_chars": 1522,
+   "seat_chars": {
+    "healthcare": 6093,
+    "legal": 5158,
+    "finance": 5412
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T180423Z__case_5_nonprofit_hospital_pe_conversion__c28-ledger-rep.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c28-ledger-rep",
+   "final_chars": 4762,
+   "seat_chars": {
+    "healthcare": 4907,
+    "legal": 7000,
+    "finance": 6066
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T181407Z__case_5_nonprofit_hospital_pe_conversion__c28-ledger-rep.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c28-ledger-rep",
+   "final_chars": 5659,
+   "seat_chars": {
+    "healthcare": 5455,
+    "legal": 6275,
+    "finance": 5300
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T182357Z__case_5_nonprofit_hospital_pe_conversion__c28-ledger-rep.json",
+   "case": "case_5_nonprofit_hospital_pe_conversion",
+   "arm": "c28-ledger-rep",
+   "final_chars": 5499,
+   "seat_chars": {
+    "healthcare": 7066,
+    "legal": 7027,
+    "finance": 4985
+   },
+   "gr_sample": true
+  },
+  {
+   "run_id": "20260807T184824Z__case_6_trigger_heavy_biotech_ma__c28-ledger-rep.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c28-ledger-rep",
+   "final_chars": 6045,
+   "seat_chars": {
+    "healthcare": 6460,
+    "legal": 8764,
+    "finance": 6310
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T185709Z__case_6_trigger_heavy_biotech_ma__c28-ledger-rep.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c28-ledger-rep",
+   "final_chars": 7615,
+   "seat_chars": {
+    "healthcare": 7302,
+    "legal": 5432,
+    "finance": 5047
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T190618Z__case_6_trigger_heavy_biotech_ma__c28-ledger-rep.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c28-ledger-rep",
+   "final_chars": 5877,
+   "seat_chars": {
+    "healthcare": 7096,
+    "legal": 5947,
+    "finance": 8284
+   },
+   "gr_sample": false
+  },
+  {
+   "run_id": "20260807T191409Z__case_6_trigger_heavy_biotech_ma__c28-ledger-rep.json",
+   "case": "case_6_trigger_heavy_biotech_ma",
+   "arm": "c28-ledger-rep",
+   "final_chars": 7330,
+   "seat_chars": {
+    "healthcare": 6206,
+    "legal": 6747,
+    "finance": 5824
+   },
+   "gr_sample": true
+  }
+ ]
+}

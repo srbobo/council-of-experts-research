@@ -9398,3 +9398,134 @@ recorded dedup; **organic dispatch rate 46/54 = 0.85** — real
 disagreements between sub-question seats are plentiful, versus the
 0.21–0.58 trigger range on planted tensions; tie rates 55%/86% in line
 with the order-debiased protocol's known behavior.
+
+## CELL 33 EXECUTION REGISTRATION (2026-09-25, before any judge call) — inter-seat disagreement as a triage signal, run on the archive
+
+Cell 33 was registered 2026-08-09 (above) and never ran because gate G-R
+was never attempted. This block freezes how it runs now. Predictions
+P33.1 and P33.2 and the registered consequence carry over VERBATIM; nothing
+below changes them. The cell is OBSERVATIONAL and is reported in
+observational language throughout: no arm is generated, every text judged
+was produced by an earlier cell, and "predicts" means association, never
+cause.
+
+**Population (frozen in bench/analysis/cell33/manifest.json, n = 352).**
+Every archived full-council run (planner → three seats → Tensions-then-
+Synthesis) whose true writer is gpt-oss:20b per
+deliberation.cabinet_backends["synthesis"] (the Cell 22 rule; the
+synthesis turn's ollama_tag is known to be mislabeled), whose three seats
+are the production seats (Llama3-Med42, Saul-Instruct, qwen-finance-r) each
+with ≥ 200 chars of stored output, whose final output is ≥ 500 chars, on
+cases 1–6. Arms: arch-council 30, c13-none/c1/c2/c3/c4/all 30 each,
+c17-suppress 30, c19-gated 30, c20-decide 30, c27-ledger 26,
+c28-ledger-rep 26. Cases: 57–60 runs each.
+Exclusions, stated now: cases 7–10 and the load cases (case 7's rubric is
+disposition-tracking, not coverage, per its own notes; the others have
+≤ 14 council runs); arch-flat and arch-debate (no planner, no tension
+step, seat tags not persisted); every tuned-writer arm (cell6b, cell11,
+cell18) and tuned-seat arm (local-council-*), so that writer and seats are
+constant across the population. Arm is a nuisance covariate, not a factor
+under test; the twelve arms differ in the writer's instruction only.
+
+**Instrument — rubric coverage.** The per-case rubrics committed in
+examples/test_cases.py in May 2026 for human review, months before this
+cell and before any judge existed: must_have + should_have items are the
+coverage items (7–9 per case, 50 in total; rubric hash 6f5de7d4a231 in the
+manifest), judged as closed per-item questions ("does the answer
+substantively do what the item describes"). red_flag_if_present items are
+judged in the same call and reported as a descriptive rate only; they do
+not enter coverage. Coverage of a run = share of its coverage items that
+BOTH judges mark YES (primary); per-judge coverage is a sensitivity. Items
+either judge fails to parse are excluded from that run's denominator; a
+run with more than two unparsed coverage items is excluded and counted.
+No instrument names any phrase; nothing here touches the dictation
+registry's constructs.
+
+**Instrument — disagreement.** Per run, one call per judge presenting the
+three seat texts (fixed order healthcare, legal, finance) and three
+closed pair questions: do the two contributions CONFLICT — one states a
+fact, figure, rule, timeline, or recommendation the other contradicts or
+is incompatible with; differences of emphasis, scope, detail, or topic
+are NOT conflicts. Conflict score of a run = number of pairs BOTH judges
+mark YES (0–3, primary); either-judge count is a sensitivity. Judge
+agreement on conflict items is reported beside the rubric agreement.
+
+**Judges.** gpt-oss:20b (primary; note it is also the writer of every
+text judged, so self-judging is present and symmetric across the whole
+population) and qwen3-vl:30b-a3b-instruct (cross-family). Temperature 0,
+one batched call per (judge, run, task), <think> blocks stripped,
+answers parsed as "N: YES/NO"; a missing or self-contradicting item is
+None and is retried once, never defaulted (finding #2). Judge-major
+execution order (one resident model at a time; 34 GB RAM does not hold
+both).
+
+**Gate G-R, executed first.** Validation sample = 2 runs per case, drawn
+by seeded RNG (seed 33) from the frozen manifest: 12 runs, 100 coverage
+items. Gate = both-parsed judge–judge agreement on those items ≥ 0.75
+(the bar registered 2026-08-09; minimum 60 items met). FAIL → Cell 33 is
+NOT RUNNABLE and is reported as blocked, not as a null. PASS → the
+remaining 340 runs are judged. The 12 validation runs stay in the
+analysis population (same instrument, same judges); P33.1/P33.2 are
+frozen above, so nothing about them is chosen after seeing these labels.
+
+**Attainability, from the same 12 runs before the main run.** Reported:
+conflict-score distribution and modal share, conflict-item agreement,
+coverage mean and SD. Registered rule: if in the FULL population the
+modal conflict score holds ≥ 0.90 of runs, the predictor is degenerate
+and P33.1 and P33.2 are NOT EVALUABLE by construction; that outcome is
+declared now. Cluster count is the binding limit: six case clusters, so
+every interval below is a percentile cluster bootstrap over six clusters
+and is quoted as-is with that coarseness stated; no smaller interval is
+manufactured by clustering on runs.
+
+**Estimators.**
+- P33.1: OLS slope of coverage on conflict score after within case × arm
+  centering (the fixed effects), cluster bootstrap over cases, 5,000
+  draws. SUPPORTED iff the 95% interval's upper bound is below 0. The raw
+  (uncentered) slope and the either-judge sensitivity are reported beside
+  it.
+- P33.2: abstain on the top quartile of conflict score. With an integer
+  0–3 score the rule is fixed in advance: threshold q75 of the
+  population; abstain on score > q75 if that retains 50–95% of runs, else
+  on score ≥ q75 if that retains 50–95%, else NOT EVALUABLE. Gain = mean
+  coverage of the retained set minus mean coverage of all runs, cluster
+  bootstrap over cases; SUPPORTED iff the interval's lower bound is above
+  0. Retention rate is reported alongside in every statement of the
+  result (silence check: a rule that abstains on everything is not a
+  success).
+
+**Alternatives considered and declined.** (i) Using the lead's own
+tension-list length as the disagreement measure: it is the writer's
+artifact, so the association would be writer-to-writer; the judge-scored
+pair conflict is independent of the writer. (ii) Using order-debiased
+preference as the quality outcome: reading-order dominates that
+instrument and its decisive counts are tiny (finding #14). (iii) Adding
+Cell 61's 54 harness pipelines: different architecture and writer prompt,
+not comparable to the archive population; a separate descriptive later if
+warranted.
+
+**Goodhart charter entry.** Conflict score and the abstention rule are
+evaluation devices. Neither may become an optimization target for the
+planner, the seats, or the orchestrator; a pipeline tuned to lower
+inter-seat conflict would manufacture agreement, which Cell 26 already
+showed the writer ignores.
+
+**Cost.** 352 runs × 2 judges × 2 calls = 1,408 judge calls. Timing probe
+(one neutral closed-question call, 12k-char body): 16.6 s qwen3-vl,
+17.6 s gpt-oss. Bodies here run 20–25k chars, so 25–45 s per call is
+assumed: roughly 10–17 hours wall-clock, resumable.
+
+**Checklist items that bite.** #2/#3: instrument is closed per-item
+judging at near-sentence granularity, phrase-free, with its gate run
+first. #6: the population's rubric and conflict labels have never been
+computed; the registration precedes the first call. #8: observational,
+association language only. #11: retention reported with P33.2. #12: the
+degenerate-predictor rule and the six-cluster limit are declared before
+any label exists.
+
+**Consequence (verbatim from 2026-08-09).** Supported → the council
+produces a free triage signal a single model cannot, and its value is in
+routing rather than writing. Falsified → the disagreement structure Cell
+26 showed the writer ignores is also useless to the system, and the
+tension list stays what Cell 61 measured it to be: a dispatch trigger,
+not a quality signal.
