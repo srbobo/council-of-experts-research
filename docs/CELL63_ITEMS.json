@@ -1,0 +1,1638 @@
+{
+ "note": "Cell 63 items. Built by train/run_cell63_checkable.py `items` from the Cell 60 and 60-R engines; re-running must reproduce this file. One integer input per item is altered by a fixed rule and the answers are computed by the engine.",
+ "items": [
+  {
+   "id": "t1_v0",
+   "source": "C60",
+   "template": "t1",
+   "param_index": 0,
+   "right": 67000,
+   "wrong1": 80000,
+   "wrong2": 54000,
+   "tok": {
+    "right": "$67,000",
+    "wrong1": "$80,000",
+    "wrong2": "$54,000"
+   },
+   "case": "A company buys equipment for $67,000 with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 7 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company buys equipment for [figure given in the analysts' passages] with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 7 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company buys equipment for $67,000 with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year.",
+    "wrong1": "A company buys equipment for $80,000 with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year.",
+    "wrong2": "A company buys equipment for $54,000 with an estimated salvage value of $9,000 and a 5-year useful life, and places it in service with 7 months remaining in the fiscal year."
+   },
+   "answer": {
+    "right": 20547,
+    "wrong1": 24533,
+    "wrong2": 16560
+   }
+  },
+  {
+   "id": "t1_v1",
+   "source": "C60",
+   "template": "t1",
+   "param_index": 0,
+   "right": 84000,
+   "wrong1": 101000,
+   "wrong2": 67000,
+   "tok": {
+    "right": "$84,000",
+    "wrong1": "$101,000",
+    "wrong2": "$67,000"
+   },
+   "case": "A company buys equipment for $84,000 with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/7 of beginning book value; the first year's expense is prorated by the 4 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company buys equipment for [figure given in the analysts' passages] with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/7 of beginning book value; the first year's expense is prorated by the 4 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company buys equipment for $84,000 with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year.",
+    "wrong1": "A company buys equipment for $101,000 with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year.",
+    "wrong2": "A company buys equipment for $67,000 with an estimated salvage value of $12,000 and a 7-year useful life, and places it in service with 4 months remaining in the fiscal year."
+   },
+   "answer": {
+    "right": 21714,
+    "wrong1": 26109,
+    "wrong2": 17320
+   }
+  },
+  {
+   "id": "t1_v2",
+   "source": "C60",
+   "template": "t1",
+   "param_index": 0,
+   "right": 53000,
+   "wrong1": 64000,
+   "wrong2": 42000,
+   "tok": {
+    "right": "$53,000",
+    "wrong1": "$64,000",
+    "wrong2": "$42,000"
+   },
+   "case": "A company buys equipment for $53,000 with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 10 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company buys equipment for [figure given in the analysts' passages] with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/5 of beginning book value; the first year's expense is prorated by the 10 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company buys equipment for $53,000 with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year.",
+    "wrong1": "A company buys equipment for $64,000 with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year.",
+    "wrong2": "A company buys equipment for $42,000 with an estimated salvage value of $6,500 and a 5-year useful life, and places it in service with 10 months remaining in the fiscal year."
+   },
+   "answer": {
+    "right": 14133,
+    "wrong1": 17067,
+    "wrong2": 11200
+   }
+  },
+  {
+   "id": "t1_v3",
+   "source": "C60",
+   "template": "t1",
+   "param_index": 0,
+   "right": 128000,
+   "wrong1": 150000,
+   "wrong2": 100000,
+   "tok": {
+    "right": "$128,000",
+    "wrong1": "$150,000",
+    "wrong2": "$100,000"
+   },
+   "case": "A company buys equipment for $128,000 with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/8 of beginning book value; the first year's expense is prorated by the 5 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company buys equipment for [figure given in the analysts' passages] with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/8 of beginning book value; the first year's expense is prorated by the 5 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company buys equipment for $128,000 with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year.",
+    "wrong1": "A company buys equipment for $150,000 with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year.",
+    "wrong2": "A company buys equipment for $100,000 with an estimated salvage value of $15,000 and a 8-year useful life, and places it in service with 5 months remaining in the fiscal year."
+   },
+   "answer": {
+    "right": 28667,
+    "wrong1": 33594,
+    "wrong2": 22396
+   }
+  },
+  {
+   "id": "t1_v4",
+   "source": "C60",
+   "template": "t1",
+   "param_index": 0,
+   "right": 46000,
+   "wrong1": 55000,
+   "wrong2": 37000,
+   "tok": {
+    "right": "$46,000",
+    "wrong1": "$55,000",
+    "wrong2": "$37,000"
+   },
+   "case": "A company buys equipment for $46,000 with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/4 of beginning book value; the first year's expense is prorated by the 8 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company buys equipment for [figure given in the analysts' passages] with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year. Policy: declining-balance depreciation at a rate of 2/4 of beginning book value; the first year's expense is prorated by the 8 months in service; there is no switch to straight-line; book value never falls below salvage. What is the SECOND year's depreciation expense, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company buys equipment for $46,000 with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year.",
+    "wrong1": "A company buys equipment for $55,000 with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year.",
+    "wrong2": "A company buys equipment for $37,000 with an estimated salvage value of $5,000 and a 4-year useful life, and places it in service with 8 months remaining in the fiscal year."
+   },
+   "answer": {
+    "right": 15333,
+    "wrong1": 18333,
+    "wrong2": 12333
+   }
+  },
+  {
+   "id": "t2_v0",
+   "source": "C60",
+   "template": "t2",
+   "param_index": 2,
+   "right": 29,
+   "wrong1": 36,
+   "wrong2": 22,
+   "tok": {
+    "right": "$29",
+    "wrong1": "$36",
+    "wrong2": "$22"
+   },
+   "case": "A distribution centre must pick 1,700 units in one 6-hour evening shift. Each picker sustains 130 units per hour while working, but the shift includes a paid 30-minute meal break during which no picking occurs. The loaded labour rate is $29 per hour, paid for the full 6 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "case_removed": "A distribution centre must pick 1,700 units in one 6-hour evening shift. Each picker sustains 130 units per hour while working, but the shift includes a paid 30-minute meal break during which no picking occurs. The loaded labour rate is [figure given in the analysts' passages] per hour, paid for the full 6 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "passage": {
+    "right": "The loaded labour rate is $29 per hour, paid for the full 6 hours.",
+    "wrong1": "The loaded labour rate is $36 per hour, paid for the full 6 hours.",
+    "wrong2": "The loaded labour rate is $22 per hour, paid for the full 6 hours."
+   },
+   "answer": {
+    "right": 0.31,
+    "wrong1": 0.38,
+    "wrong2": 0.23
+   }
+  },
+  {
+   "id": "t2_v1",
+   "source": "C60",
+   "template": "t2",
+   "param_index": 0,
+   "right": 2300,
+   "wrong1": 2800,
+   "wrong2": 1800,
+   "tok": {
+    "right": "2,300",
+    "wrong1": "2,800",
+    "wrong2": "1,800"
+   },
+   "case": "A distribution centre must pick 2,300 units in one 8-hour evening shift. Each picker sustains 115 units per hour while working, but the shift includes a paid 45-minute meal break during which no picking occurs. The loaded labour rate is $31 per hour, paid for the full 8 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "case_removed": "A distribution centre must pick [figure given in the analysts' passages] units in one 8-hour evening shift. Each picker sustains 115 units per hour while working, but the shift includes a paid 45-minute meal break during which no picking occurs. The loaded labour rate is $31 per hour, paid for the full 8 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "passage": {
+    "right": "A distribution centre must pick 2,300 units in one 8-hour evening shift.",
+    "wrong1": "A distribution centre must pick 2,800 units in one 8-hour evening shift.",
+    "wrong2": "A distribution centre must pick 1,800 units in one 8-hour evening shift."
+   },
+   "answer": {
+    "right": 0.32,
+    "wrong1": 0.35,
+    "wrong2": 0.41
+   }
+  },
+  {
+   "id": "t2_v2",
+   "source": "C60",
+   "template": "t2",
+   "param_index": 0,
+   "right": 1150,
+   "wrong1": 1400,
+   "wrong2": 900,
+   "tok": {
+    "right": "1,150",
+    "wrong1": "1,400",
+    "wrong2": "900"
+   },
+   "case": "A distribution centre must pick 1,150 units in one 5-hour evening shift. Each picker sustains 95 units per hour while working, but the shift includes a paid 20-minute meal break during which no picking occurs. The loaded labour rate is $27 per hour, paid for the full 5 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "case_removed": "A distribution centre must pick [figure given in the analysts' passages] units in one 5-hour evening shift. Each picker sustains 95 units per hour while working, but the shift includes a paid 20-minute meal break during which no picking occurs. The loaded labour rate is $27 per hour, paid for the full 5 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "passage": {
+    "right": "A distribution centre must pick 1,150 units in one 5-hour evening shift.",
+    "wrong1": "A distribution centre must pick 1,400 units in one 5-hour evening shift.",
+    "wrong2": "A distribution centre must pick 900 units in one 5-hour evening shift."
+   },
+   "answer": {
+    "right": 0.35,
+    "wrong1": 0.39,
+    "wrong2": 0.45
+   }
+  },
+  {
+   "id": "t2_v3",
+   "source": "C60",
+   "template": "t2",
+   "param_index": 2,
+   "right": 33,
+   "wrong1": 41,
+   "wrong2": 25,
+   "tok": {
+    "right": "$33",
+    "wrong1": "$41",
+    "wrong2": "$25"
+   },
+   "case": "A distribution centre must pick 3,400 units in one 7-hour evening shift. Each picker sustains 145 units per hour while working, but the shift includes a paid 40-minute meal break during which no picking occurs. The loaded labour rate is $33 per hour, paid for the full 7 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "case_removed": "A distribution centre must pick 3,400 units in one 7-hour evening shift. Each picker sustains 145 units per hour while working, but the shift includes a paid 40-minute meal break during which no picking occurs. The loaded labour rate is [figure given in the analysts' passages] per hour, paid for the full 7 hours. Schedule the minimum whole number of pickers that can clear the volume, then compute the labour cost per unit. What is the labour cost per unit, in dollars rounded to the nearest cent?",
+   "passage": {
+    "right": "The loaded labour rate is $33 per hour, paid for the full 7 hours.",
+    "wrong1": "The loaded labour rate is $41 per hour, paid for the full 7 hours.",
+    "wrong2": "The loaded labour rate is $25 per hour, paid for the full 7 hours."
+   },
+   "answer": {
+    "right": 0.27,
+    "wrong1": 0.34,
+    "wrong2": 0.21
+   }
+  },
+  {
+   "id": "t3_v0",
+   "source": "C60",
+   "template": "t3",
+   "param_index": 1,
+   "right": 52000,
+   "wrong1": 62000,
+   "wrong2": 42000,
+   "tok": {
+    "right": "$52,000",
+    "wrong1": "$62,000",
+    "wrong2": "$42,000"
+   },
+   "case": "A clinic schedules 220 appointments per week and has a measured no-show rate of 17%. A reminder service costs $1,900 per month plus a one-time setup fee of $52,000, and prevents 32% of would-be no-shows. Each prevented no-show is worth $210 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "case_removed": "A clinic schedules 220 appointments per week and has a measured no-show rate of 17%. A reminder service costs $1,900 per month plus a one-time setup fee of [figure given in the analysts' passages], and prevents 32% of would-be no-shows. Each prevented no-show is worth $210 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "passage": {
+    "right": "A reminder service costs $1,900 per month plus a one-time setup fee of $52,000, and prevents 32% of would-be no-shows.",
+    "wrong1": "A reminder service costs $1,900 per month plus a one-time setup fee of $62,000, and prevents 32% of would-be no-shows.",
+    "wrong2": "A reminder service costs $1,900 per month plus a one-time setup fee of $42,000, and prevents 32% of would-be no-shows."
+   },
+   "answer": {
+    "right": 6,
+    "wrong1": 7,
+    "wrong2": 5
+   }
+  },
+  {
+   "id": "t3_v1",
+   "source": "C60",
+   "template": "t3",
+   "param_index": 1,
+   "right": 98000,
+   "wrong1": 118000,
+   "wrong2": 78000,
+   "tok": {
+    "right": "$98,000",
+    "wrong1": "$118,000",
+    "wrong2": "$78,000"
+   },
+   "case": "A clinic schedules 310 appointments per week and has a measured no-show rate of 21%. A reminder service costs $2,400 per month plus a one-time setup fee of $98,000, and prevents 28% of would-be no-shows. Each prevented no-show is worth $185 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "case_removed": "A clinic schedules 310 appointments per week and has a measured no-show rate of 21%. A reminder service costs $2,400 per month plus a one-time setup fee of [figure given in the analysts' passages], and prevents 28% of would-be no-shows. Each prevented no-show is worth $185 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "passage": {
+    "right": "A reminder service costs $2,400 per month plus a one-time setup fee of $98,000, and prevents 28% of would-be no-shows.",
+    "wrong1": "A reminder service costs $2,400 per month plus a one-time setup fee of $118,000, and prevents 28% of would-be no-shows.",
+    "wrong2": "A reminder service costs $2,400 per month plus a one-time setup fee of $78,000, and prevents 28% of would-be no-shows."
+   },
+   "answer": {
+    "right": 9,
+    "wrong1": 10,
+    "wrong2": 7
+   }
+  },
+  {
+   "id": "t3_v2",
+   "source": "C60",
+   "template": "t3",
+   "param_index": 1,
+   "right": 41000,
+   "wrong1": 49000,
+   "wrong2": 33000,
+   "tok": {
+    "right": "$41,000",
+    "wrong1": "$49,000",
+    "wrong2": "$33,000"
+   },
+   "case": "A clinic schedules 180 appointments per week and has a measured no-show rate of 14%. A reminder service costs $1,500 per month plus a one-time setup fee of $41,000, and prevents 41% of would-be no-shows. Each prevented no-show is worth $240 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "case_removed": "A clinic schedules 180 appointments per week and has a measured no-show rate of 14%. A reminder service costs $1,500 per month plus a one-time setup fee of [figure given in the analysts' passages], and prevents 41% of would-be no-shows. Each prevented no-show is worth $240 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "passage": {
+    "right": "A reminder service costs $1,500 per month plus a one-time setup fee of $41,000, and prevents 41% of would-be no-shows.",
+    "wrong1": "A reminder service costs $1,500 per month plus a one-time setup fee of $49,000, and prevents 41% of would-be no-shows.",
+    "wrong2": "A reminder service costs $1,500 per month plus a one-time setup fee of $33,000, and prevents 41% of would-be no-shows."
+   },
+   "answer": {
+    "right": 5,
+    "wrong1": 6,
+    "wrong2": 4
+   }
+  },
+  {
+   "id": "t3_v3",
+   "source": "C60",
+   "template": "t3",
+   "param_index": 1,
+   "right": 125000,
+   "wrong1": 150000,
+   "wrong2": 100000,
+   "tok": {
+    "right": "$125,000",
+    "wrong1": "$150,000",
+    "wrong2": "$100,000"
+   },
+   "case": "A clinic schedules 420 appointments per week and has a measured no-show rate of 19%. A reminder service costs $3,100 per month plus a one-time setup fee of $125,000, and prevents 35% of would-be no-shows. Each prevented no-show is worth $165 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "case_removed": "A clinic schedules 420 appointments per week and has a measured no-show rate of 19%. A reminder service costs $3,100 per month plus a one-time setup fee of [figure given in the analysts' passages], and prevents 35% of would-be no-shows. Each prevented no-show is worth $165 in retained revenue. Using months of exactly 52/12 weeks, compute the monthly net saving (prevented-no-show value minus the monthly fee), then the number of whole months needed for cumulative net savings to cover the setup fee (round up). How many months?",
+   "passage": {
+    "right": "A reminder service costs $3,100 per month plus a one-time setup fee of $125,000, and prevents 35% of would-be no-shows.",
+    "wrong1": "A reminder service costs $3,100 per month plus a one-time setup fee of $150,000, and prevents 35% of would-be no-shows.",
+    "wrong2": "A reminder service costs $3,100 per month plus a one-time setup fee of $100,000, and prevents 35% of would-be no-shows."
+   },
+   "answer": {
+    "right": 8,
+    "wrong1": 9,
+    "wrong2": 6
+   }
+  },
+  {
+   "id": "t4_v0",
+   "source": "C60",
+   "template": "t4",
+   "param_index": 0,
+   "right": 38,
+   "wrong1": 48,
+   "wrong2": 28,
+   "tok": {
+    "right": "38",
+    "wrong1": "48",
+    "wrong2": "28"
+   },
+   "case": "An employee works 38 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours. After exactly 24 weeks of work the employee has used 13 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "case_removed": "An employee works [figure given in the analysts' passages] hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours. After exactly 24 weeks of work the employee has used 13 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "passage": {
+    "right": "An employee works 38 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours.",
+    "wrong1": "An employee works 48 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours.",
+    "wrong2": "An employee works 28 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 56 hours."
+   },
+   "answer": {
+    "right": 17,
+    "wrong1": 25,
+    "wrong2": 9
+   }
+  },
+  {
+   "id": "t4_v1",
+   "source": "C60",
+   "template": "t4",
+   "param_index": 0,
+   "right": 42,
+   "wrong1": 52,
+   "wrong2": 32,
+   "tok": {
+    "right": "42",
+    "wrong1": "52",
+    "wrong2": "32"
+   },
+   "case": "An employee works 42 hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours. After exactly 26 weeks of work the employee has used 24 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "case_removed": "An employee works [figure given in the analysts' passages] hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours. After exactly 26 weeks of work the employee has used 24 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "passage": {
+    "right": "An employee works 42 hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours.",
+    "wrong1": "An employee works 52 hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours.",
+    "wrong2": "An employee works 32 hours per week and accrues 1 hour of paid sick leave for every 35 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 64 hours."
+   },
+   "answer": {
+    "right": 7,
+    "wrong1": 14,
+    "wrong2": -1
+   }
+  },
+  {
+   "id": "t4_v2",
+   "source": "C60",
+   "template": "t4",
+   "param_index": 0,
+   "right": 36,
+   "wrong1": 45,
+   "wrong2": 27,
+   "tok": {
+    "right": "36",
+    "wrong1": "45",
+    "wrong2": "27"
+   },
+   "case": "An employee works 36 hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours. After exactly 15 weeks of work the employee has used 9 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "case_removed": "An employee works [figure given in the analysts' passages] hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours. After exactly 15 weeks of work the employee has used 9 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "passage": {
+    "right": "An employee works 36 hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours.",
+    "wrong1": "An employee works 45 hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours.",
+    "wrong2": "An employee works 27 hours per week and accrues 1 hour of paid sick leave for every 28 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 48 hours."
+   },
+   "answer": {
+    "right": 10,
+    "wrong1": 15,
+    "wrong2": 5
+   }
+  },
+  {
+   "id": "t4_v3",
+   "source": "C60",
+   "template": "t4",
+   "param_index": 0,
+   "right": 40,
+   "wrong1": 50,
+   "wrong2": 30,
+   "tok": {
+    "right": "40",
+    "wrong1": "50",
+    "wrong2": "30"
+   },
+   "case": "An employee works 40 hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours. After exactly 33 weeks of work the employee has used 29 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "case_removed": "An employee works [figure given in the analysts' passages] hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours. After exactly 33 weeks of work the employee has used 29 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "passage": {
+    "right": "An employee works 40 hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours.",
+    "wrong1": "An employee works 50 hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours.",
+    "wrong2": "An employee works 30 hours per week and accrues 1 hour of paid sick leave for every 32 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 72 hours."
+   },
+   "answer": {
+    "right": 12,
+    "wrong1": 22,
+    "wrong2": 1
+   }
+  },
+  {
+   "id": "t4_v4",
+   "source": "C60",
+   "template": "t4",
+   "param_index": 0,
+   "right": 44,
+   "wrong1": 55,
+   "wrong2": 33,
+   "tok": {
+    "right": "44",
+    "wrong1": "55",
+    "wrong2": "33"
+   },
+   "case": "An employee works 44 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours. After exactly 19 weeks of work the employee has used 12 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "case_removed": "An employee works [figure given in the analysts' passages] hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours. After exactly 19 weeks of work the employee has used 12 hours of sick leave. What is the remaining sick-leave balance, in hours?",
+   "passage": {
+    "right": "An employee works 44 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours.",
+    "wrong1": "An employee works 55 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours.",
+    "wrong2": "An employee works 33 hours per week and accrues 1 hour of paid sick leave for every 30 hours worked (fractions do not accrue; round accrued hours down), subject to an annual accrual cap of 80 hours."
+   },
+   "answer": {
+    "right": 15,
+    "wrong1": 22,
+    "wrong2": 8
+   }
+  },
+  {
+   "id": "t5_v0",
+   "source": "C60",
+   "template": "t5",
+   "param_index": 0,
+   "right": 1180,
+   "wrong1": 1400,
+   "wrong2": 900,
+   "tok": {
+    "right": "$1,180",
+    "wrong1": "$1,400",
+    "wrong2": "$900"
+   },
+   "case": "A medical group holds a capitated contract at $1,180 per member per month for 2,400 members. Expected medical cost averages $1,085 per member per month across the panel. The group buys stop-loss insurance for $96 per member per year; the policy reimburses annual spend above $30,000 per member. Exactly 14 members are projected to cost $52,000 each for the year (their cost is already included in the $1,085 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "case_removed": "A medical group holds a capitated contract at [figure given in the analysts' passages] per member per month for 2,400 members. Expected medical cost averages $1,085 per member per month across the panel. The group buys stop-loss insurance for $96 per member per year; the policy reimburses annual spend above $30,000 per member. Exactly 14 members are projected to cost $52,000 each for the year (their cost is already included in the $1,085 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "passage": {
+    "right": "A medical group holds a capitated contract at $1,180 per member per month for 2,400 members.",
+    "wrong1": "A medical group holds a capitated contract at $1,400 per member per month for 2,400 members.",
+    "wrong2": "A medical group holds a capitated contract at $900 per member per month for 2,400 members."
+   },
+   "answer": {
+    "right": 2813600,
+    "wrong1": 9149600,
+    "wrong2": -5250400
+   }
+  },
+  {
+   "id": "t5_v1",
+   "source": "C60",
+   "template": "t5",
+   "param_index": 0,
+   "right": 990,
+   "wrong1": 1238,
+   "wrong2": 742,
+   "tok": {
+    "right": "$990",
+    "wrong1": "$1,238",
+    "wrong2": "$742"
+   },
+   "case": "A medical group holds a capitated contract at $990 per member per month for 5,100 members. Expected medical cost averages $940 per member per month across the panel. The group buys stop-loss insurance for $84 per member per year; the policy reimburses annual spend above $25,000 per member. Exactly 22 members are projected to cost $41,000 each for the year (their cost is already included in the $940 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "case_removed": "A medical group holds a capitated contract at [figure given in the analysts' passages] per member per month for 5,100 members. Expected medical cost averages $940 per member per month across the panel. The group buys stop-loss insurance for $84 per member per year; the policy reimburses annual spend above $25,000 per member. Exactly 22 members are projected to cost $41,000 each for the year (their cost is already included in the $940 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "passage": {
+    "right": "A medical group holds a capitated contract at $990 per member per month for 5,100 members.",
+    "wrong1": "A medical group holds a capitated contract at $1,238 per member per month for 5,100 members.",
+    "wrong2": "A medical group holds a capitated contract at $742 per member per month for 5,100 members."
+   },
+   "answer": {
+    "right": 2983600,
+    "wrong1": 18161200,
+    "wrong2": -12194000
+   }
+  },
+  {
+   "id": "t5_v2",
+   "source": "C60",
+   "template": "t5",
+   "param_index": 0,
+   "right": 1320,
+   "wrong1": 1600,
+   "wrong2": 1100,
+   "tok": {
+    "right": "$1,320",
+    "wrong1": "$1,600",
+    "wrong2": "$1,100"
+   },
+   "case": "A medical group holds a capitated contract at $1,320 per member per month for 1,800 members. Expected medical cost averages $1,210 per member per month across the panel. The group buys stop-loss insurance for $110 per member per year; the policy reimburses annual spend above $35,000 per member. Exactly 9 members are projected to cost $68,000 each for the year (their cost is already included in the $1,210 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "case_removed": "A medical group holds a capitated contract at [figure given in the analysts' passages] per member per month for 1,800 members. Expected medical cost averages $1,210 per member per month across the panel. The group buys stop-loss insurance for $110 per member per year; the policy reimburses annual spend above $35,000 per member. Exactly 9 members are projected to cost $68,000 each for the year (their cost is already included in the $1,210 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "passage": {
+    "right": "A medical group holds a capitated contract at $1,320 per member per month for 1,800 members.",
+    "wrong1": "A medical group holds a capitated contract at $1,600 per member per month for 1,800 members.",
+    "wrong2": "A medical group holds a capitated contract at $1,100 per member per month for 1,800 members."
+   },
+   "answer": {
+    "right": 2475000,
+    "wrong1": 8523000,
+    "wrong2": -2277000
+   }
+  },
+  {
+   "id": "t5_v3",
+   "source": "C60",
+   "template": "t5",
+   "param_index": 0,
+   "right": 1075,
+   "wrong1": 1300,
+   "wrong2": 900,
+   "tok": {
+    "right": "$1,075",
+    "wrong1": "$1,300",
+    "wrong2": "$900"
+   },
+   "case": "A medical group holds a capitated contract at $1,075 per member per month for 3,600 members. Expected medical cost averages $1,010 per member per month across the panel. The group buys stop-loss insurance for $92 per member per year; the policy reimburses annual spend above $28,000 per member. Exactly 19 members are projected to cost $47,500 each for the year (their cost is already included in the $1,010 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "case_removed": "A medical group holds a capitated contract at [figure given in the analysts' passages] per member per month for 3,600 members. Expected medical cost averages $1,010 per member per month across the panel. The group buys stop-loss insurance for $92 per member per year; the policy reimburses annual spend above $28,000 per member. Exactly 19 members are projected to cost $47,500 each for the year (their cost is already included in the $1,010 average). Annual margin = capitation revenue minus expected medical cost minus stop-loss premium plus stop-loss reimbursements. What is the annual margin, in dollars?",
+   "passage": {
+    "right": "A medical group holds a capitated contract at $1,075 per member per month for 3,600 members.",
+    "wrong1": "A medical group holds a capitated contract at $1,300 per member per month for 3,600 members.",
+    "wrong2": "A medical group holds a capitated contract at $900 per member per month for 3,600 members."
+   },
+   "answer": {
+    "right": 2847300,
+    "wrong1": 12567300,
+    "wrong2": -4712700
+   }
+  },
+  {
+   "id": "t6_v0",
+   "source": "C60",
+   "template": "t6",
+   "param_index": 0,
+   "right": 180,
+   "wrong1": 225,
+   "wrong2": 135,
+   "tok": {
+    "right": "180",
+    "wrong1": "225",
+    "wrong2": "135"
+   },
+   "case": "A company must reserve for reclassifying 180 contractor drivers earning $52,000 each per year. Employer-cost uplift (taxes and benefits) adds 24% on top of wages. 35% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company must reserve for reclassifying [figure given in the analysts' passages] contractor drivers earning $52,000 each per year. Employer-cost uplift (taxes and benefits) adds 24% on top of wages. 35% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company must reserve for reclassifying 180 contractor drivers earning $52,000 each per year.",
+    "wrong1": "A company must reserve for reclassifying 225 contractor drivers earning $52,000 each per year.",
+    "wrong2": "A company must reserve for reclassifying 135 contractor drivers earning $52,000 each per year."
+   },
+   "answer": {
+    "right": 19730880,
+    "wrong1": 24663600,
+    "wrong2": 14798160
+   }
+  },
+  {
+   "id": "t6_v1",
+   "source": "C60",
+   "template": "t6",
+   "param_index": 0,
+   "right": 240,
+   "wrong1": 300,
+   "wrong2": 180,
+   "tok": {
+    "right": "240",
+    "wrong1": "300",
+    "wrong2": "180"
+   },
+   "case": "A company must reserve for reclassifying 240 contractor drivers earning $47,500 each per year. Employer-cost uplift (taxes and benefits) adds 21% on top of wages. 45% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company must reserve for reclassifying [figure given in the analysts' passages] contractor drivers earning $47,500 each per year. Employer-cost uplift (taxes and benefits) adds 21% on top of wages. 45% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company must reserve for reclassifying 240 contractor drivers earning $47,500 each per year.",
+    "wrong1": "A company must reserve for reclassifying 300 contractor drivers earning $47,500 each per year.",
+    "wrong2": "A company must reserve for reclassifying 180 contractor drivers earning $47,500 each per year."
+   },
+   "answer": {
+    "right": 26208600,
+    "wrong1": 32760750,
+    "wrong2": 19656450
+   }
+  },
+  {
+   "id": "t6_v2",
+   "source": "C60",
+   "template": "t6",
+   "param_index": 0,
+   "right": 95,
+   "wrong1": 119,
+   "wrong2": 71,
+   "tok": {
+    "right": "95",
+    "wrong1": "119",
+    "wrong2": "71"
+   },
+   "case": "A company must reserve for reclassifying 95 contractor drivers earning $61,000 each per year. Employer-cost uplift (taxes and benefits) adds 27% on top of wages. 30% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company must reserve for reclassifying [figure given in the analysts' passages] contractor drivers earning $61,000 each per year. Employer-cost uplift (taxes and benefits) adds 27% on top of wages. 30% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company must reserve for reclassifying 95 contractor drivers earning $61,000 each per year.",
+    "wrong1": "A company must reserve for reclassifying 119 contractor drivers earning $61,000 each per year.",
+    "wrong2": "A company must reserve for reclassifying 71 contractor drivers earning $61,000 each per year."
+   },
+   "answer": {
+    "right": 11775440,
+    "wrong1": 14750288,
+    "wrong2": 8800592
+   }
+  },
+  {
+   "id": "t6_v3",
+   "source": "C60",
+   "template": "t6",
+   "param_index": 0,
+   "right": 320,
+   "wrong1": 400,
+   "wrong2": 240,
+   "tok": {
+    "right": "320",
+    "wrong1": "400",
+    "wrong2": "240"
+   },
+   "case": "A company must reserve for reclassifying 320 contractor drivers earning $43,800 each per year. Employer-cost uplift (taxes and benefits) adds 22% on top of wages. 40% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "case_removed": "A company must reserve for reclassifying [figure given in the analysts' passages] contractor drivers earning $43,800 each per year. Employer-cost uplift (taxes and benefits) adds 22% on top of wages. 40% of the base exposure is wage-claim exposure subject to mandatory treble damages (multiply that share by 3); the remainder is counted once. Reserve = drivers x wage x (1 + uplift) x [(1 - wage-claim share) + 3 x wage-claim share]. What is the reserve, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A company must reserve for reclassifying 320 contractor drivers earning $43,800 each per year.",
+    "wrong1": "A company must reserve for reclassifying 400 contractor drivers earning $43,800 each per year.",
+    "wrong2": "A company must reserve for reclassifying 240 contractor drivers earning $43,800 each per year."
+   },
+   "answer": {
+    "right": 30779136,
+    "wrong1": 38473920,
+    "wrong2": 23084352
+   }
+  },
+  {
+   "id": "t7_v0",
+   "source": "C60",
+   "template": "t7",
+   "param_index": 0,
+   "right": 4100,
+   "wrong1": 4900,
+   "wrong2": 3300,
+   "tok": {
+    "right": "4,100",
+    "wrong1": "4,900",
+    "wrong2": "3,300"
+   },
+   "case": "A plan with 4,100 covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,050 per member per month. 60% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,200 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "case_removed": "A plan with [figure given in the analysts' passages] covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,050 per member per month. 60% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,200 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "passage": {
+    "right": "A plan with 4,100 covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong1": "A plan with 4,900 covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong2": "A plan with 3,300 covered lives estimates 22% are eligible for a drug programme and 18% of eligible members enrol (round the enrolled count to the nearest whole member)."
+   },
+   "answer": {
+    "right": 1418300,
+    "wrong1": 1697800,
+    "wrong2": 1149200
+   }
+  },
+  {
+   "id": "t7_v1",
+   "source": "C60",
+   "template": "t7",
+   "param_index": 0,
+   "right": 6800,
+   "wrong1": 8200,
+   "wrong2": 5400,
+   "tok": {
+    "right": "6,800",
+    "wrong1": "8,200",
+    "wrong2": "5,400"
+   },
+   "case": "A plan with 6,800 covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $985 per member per month. 55% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $1,800 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "case_removed": "A plan with [figure given in the analysts' passages] covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $985 per member per month. 55% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $1,800 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "passage": {
+    "right": "A plan with 6,800 covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong1": "A plan with 8,200 covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong2": "A plan with 5,400 covered lives estimates 17% are eligible for a drug programme and 23% of eligible members enrol (round the enrolled count to the nearest whole member)."
+   },
+   "answer": {
+    "right": 2172120,
+    "wrong1": 2624580,
+    "wrong2": 1723770
+   }
+  },
+  {
+   "id": "t7_v2",
+   "source": "C60",
+   "template": "t7",
+   "param_index": 0,
+   "right": 2900,
+   "wrong1": 3500,
+   "wrong2": 2300,
+   "tok": {
+    "right": "2,900",
+    "wrong1": "3,500",
+    "wrong2": "2,300"
+   },
+   "case": "A plan with 2,900 covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,140 per member per month. 65% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,600 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "case_removed": "A plan with [figure given in the analysts' passages] covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,140 per member per month. 65% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,600 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "passage": {
+    "right": "A plan with 2,900 covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong1": "A plan with 3,500 covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong2": "A plan with 2,300 covered lives estimates 26% are eligible for a drug programme and 15% of eligible members enrol (round the enrolled count to the nearest whole member)."
+   },
+   "answer": {
+    "right": 1082440,
+    "wrong1": 1303360,
+    "wrong2": 861520
+   }
+  },
+  {
+   "id": "t7_v3",
+   "source": "C60",
+   "template": "t7",
+   "param_index": 0,
+   "right": 5200,
+   "wrong1": 6200,
+   "wrong2": 4200,
+   "tok": {
+    "right": "5,200",
+    "wrong1": "6,200",
+    "wrong2": "4,200"
+   },
+   "case": "A plan with 5,200 covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,015 per member per month. 57% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,050 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "case_removed": "A plan with [figure given in the analysts' passages] covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member). Net drug cost is $1,015 per member per month. 57% of enrolled members persist for 12 months (round to the nearest whole member); the rest persist for exactly 6 months. Each 12-month persister generates a $2,050 annual medical-cost offset. Annual net budget impact = drug spend minus total offsets. What is it, in dollars?",
+   "passage": {
+    "right": "A plan with 5,200 covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong1": "A plan with 6,200 covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member).",
+    "wrong2": "A plan with 4,200 covered lives estimates 20% are eligible for a drug programme and 21% of eligible members enrol (round the enrolled count to the nearest whole member)."
+   },
+   "answer": {
+    "right": 1836660,
+    "wrong1": 2193440,
+    "wrong2": 1483920
+   }
+  },
+  {
+   "id": "t8_v0",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 3100000,
+   "wrong1": 3700000,
+   "wrong2": 2500000,
+   "tok": {
+    "right": "$3,100,000",
+    "wrong1": "$3,700,000",
+    "wrong2": "$2,500,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $3,100,000, escalating 2.5% per year (compounding) starting in year 2, for a 12-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 2.5% per year (compounding) starting in year 2, for a 12-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $3,100,000, escalating 2.5% per year (compounding) starting in year 2, for a 12-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $3,700,000, escalating 2.5% per year (compounding) starting in year 2, for a 12-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $2,500,000, escalating 2.5% per year (compounding) starting in year 2, for a 12-year term."
+   },
+   "answer": {
+    "right": 42766214,
+    "wrong1": 51043546,
+    "wrong2": 34488882
+   }
+  },
+  {
+   "id": "t8_v1",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 2400000,
+   "wrong1": 2900000,
+   "wrong2": 1900000,
+   "tok": {
+    "right": "$2,400,000",
+    "wrong1": "$2,900,000",
+    "wrong2": "$1,900,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $2,400,000, escalating 3% per year (compounding) starting in year 2, for a 15-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 3% per year (compounding) starting in year 2, for a 15-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $2,400,000, escalating 3% per year (compounding) starting in year 2, for a 15-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $2,900,000, escalating 3% per year (compounding) starting in year 2, for a 15-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $1,900,000, escalating 3% per year (compounding) starting in year 2, for a 15-year term."
+   },
+   "answer": {
+    "right": 44637393,
+    "wrong1": 53936850,
+    "wrong2": 35337936
+   }
+  },
+  {
+   "id": "t8_v2",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 4150000,
+   "wrong1": 5000000,
+   "wrong2": 3300000,
+   "tok": {
+    "right": "$4,150,000",
+    "wrong1": "$5,000,000",
+    "wrong2": "$3,300,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $4,150,000, escalating 2% per year (compounding) starting in year 2, for a 10-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 2% per year (compounding) starting in year 2, for a 10-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $4,150,000, escalating 2% per year (compounding) starting in year 2, for a 10-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $5,000,000, escalating 2% per year (compounding) starting in year 2, for a 10-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $3,300,000, escalating 2% per year (compounding) starting in year 2, for a 10-year term."
+   },
+   "answer": {
+    "right": 45441342,
+    "wrong1": 54748605,
+    "wrong2": 36134079
+   }
+  },
+  {
+   "id": "t8_v3",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 1850000,
+   "wrong1": 2200000,
+   "wrong2": 1500000,
+   "tok": {
+    "right": "$1,850,000",
+    "wrong1": "$2,200,000",
+    "wrong2": "$1,500,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $1,850,000, escalating 3.5% per year (compounding) starting in year 2, for a 20-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 3.5% per year (compounding) starting in year 2, for a 20-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $1,850,000, escalating 3.5% per year (compounding) starting in year 2, for a 20-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $2,200,000, escalating 3.5% per year (compounding) starting in year 2, for a 20-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $1,500,000, escalating 3.5% per year (compounding) starting in year 2, for a 20-year term."
+   },
+   "answer": {
+    "right": 52317411,
+    "wrong1": 62215300,
+    "wrong2": 42419523
+   }
+  },
+  {
+   "id": "t8_v4",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 2750000,
+   "wrong1": 3300000,
+   "wrong2": 2200000,
+   "tok": {
+    "right": "$2,750,000",
+    "wrong1": "$3,300,000",
+    "wrong2": "$2,200,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $2,750,000, escalating 2.8% per year (compounding) starting in year 2, for a 14-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 2.8% per year (compounding) starting in year 2, for a 14-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $2,750,000, escalating 2.8% per year (compounding) starting in year 2, for a 14-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $3,300,000, escalating 2.8% per year (compounding) starting in year 2, for a 14-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $2,200,000, escalating 2.8% per year (compounding) starting in year 2, for a 14-year term."
+   },
+   "answer": {
+    "right": 46355743,
+    "wrong1": 55626892,
+    "wrong2": 37084595
+   }
+  },
+  {
+   "id": "t8_v5",
+   "source": "C60",
+   "template": "t8",
+   "param_index": 0,
+   "right": 3600000,
+   "wrong1": 4300000,
+   "wrong2": 2900000,
+   "tok": {
+    "right": "$3,600,000",
+    "wrong1": "$4,300,000",
+    "wrong2": "$2,900,000"
+   },
+   "case": "A sale-leaseback sets the first year's rent at $3,600,000, escalating 2.2% per year (compounding) starting in year 2, for a 18-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "case_removed": "A sale-leaseback sets the first year's rent at [figure given in the analysts' passages], escalating 2.2% per year (compounding) starting in year 2, for a 18-year term. What is the total rent paid over the full term, in dollars rounded to the nearest dollar?",
+   "passage": {
+    "right": "A sale-leaseback sets the first year's rent at $3,600,000, escalating 2.2% per year (compounding) starting in year 2, for a 18-year term.",
+    "wrong1": "A sale-leaseback sets the first year's rent at $4,300,000, escalating 2.2% per year (compounding) starting in year 2, for a 18-year term.",
+    "wrong2": "A sale-leaseback sets the first year's rent at $2,900,000, escalating 2.2% per year (compounding) starting in year 2, for a 18-year term."
+   },
+   "answer": {
+    "right": 78464280,
+    "wrong1": 93721224,
+    "wrong2": 63207337
+   }
+  },
+  {
+   "id": "r1_v0",
+   "source": "C60R",
+   "template": "r1",
+   "param_index": 3,
+   "right": 85,
+   "wrong1": 106,
+   "wrong2": 64,
+   "tok": {
+    "right": "85",
+    "wrong1": "106",
+    "wrong2": "64"
+   },
+   "case": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2012; departure is voluntary; 20 days' notice was given; 85 unused vacation hours; 90 unused sick hours; base rate $31/hour. What is the total payout, in dollars?",
+   "case_removed": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2012; departure is voluntary; 20 days' notice was given; [figure given in the analysts' passages] unused vacation hours; 90 unused sick hours; base rate $31/hour. What is the total payout, in dollars?",
+   "passage": {
+    "right": "Facts: hired in 2012; departure is voluntary; 20 days' notice was given; 85 unused vacation hours; 90 unused sick hours; base rate $31/hour.",
+    "wrong1": "Facts: hired in 2012; departure is voluntary; 20 days' notice was given; 106 unused vacation hours; 90 unused sick hours; base rate $31/hour.",
+    "wrong2": "Facts: hired in 2012; departure is voluntary; 20 days' notice was given; 64 unused vacation hours; 90 unused sick hours; base rate $31/hour."
+   },
+   "answer": {
+    "right": 4995,
+    "wrong1": 5646,
+    "wrong2": 4344
+   }
+  },
+  {
+   "id": "r1_v1",
+   "source": "C60R",
+   "template": "r1",
+   "param_index": 3,
+   "right": 62,
+   "wrong1": 78,
+   "wrong2": 46,
+   "tok": {
+    "right": "62",
+    "wrong1": "78",
+    "wrong2": "46"
+   },
+   "case": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2018; departure is voluntary; 9 days' notice was given; 62 unused vacation hours; 45 unused sick hours; base rate $27/hour. What is the total payout, in dollars?",
+   "case_removed": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2018; departure is voluntary; 9 days' notice was given; [figure given in the analysts' passages] unused vacation hours; 45 unused sick hours; base rate $27/hour. What is the total payout, in dollars?",
+   "passage": {
+    "right": "Facts: hired in 2018; departure is voluntary; 9 days' notice was given; 62 unused vacation hours; 45 unused sick hours; base rate $27/hour.",
+    "wrong1": "Facts: hired in 2018; departure is voluntary; 9 days' notice was given; 78 unused vacation hours; 45 unused sick hours; base rate $27/hour.",
+    "wrong2": "Facts: hired in 2018; departure is voluntary; 9 days' notice was given; 46 unused vacation hours; 45 unused sick hours; base rate $27/hour."
+   },
+   "answer": {
+    "right": 1674,
+    "wrong1": 2106,
+    "wrong2": 1242
+   }
+  },
+  {
+   "id": "r1_v2",
+   "source": "C60R",
+   "template": "r1",
+   "param_index": 4,
+   "right": 30,
+   "wrong1": 38,
+   "wrong2": 22,
+   "tok": {
+    "right": "30",
+    "wrong1": "38",
+    "wrong2": "22"
+   },
+   "case": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; 30 unused sick hours; base rate $29/hour. What is the total payout, in dollars?",
+   "case_removed": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; [figure given in the analysts' passages] unused sick hours; base rate $29/hour. What is the total payout, in dollars?",
+   "passage": {
+    "right": "Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; 30 unused sick hours; base rate $29/hour.",
+    "wrong1": "Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; 38 unused sick hours; base rate $29/hour.",
+    "wrong2": "Facts: hired in 2013; departure is involuntary (for cause); 0 days' notice was given; 70 unused vacation hours; 22 unused sick hours; base rate $29/hour."
+   },
+   "answer": {
+    "right": 2030,
+    "wrong1": 2262,
+    "wrong2": 1798
+   }
+  },
+  {
+   "id": "r1_v3",
+   "source": "C60R",
+   "template": "r1",
+   "param_index": 3,
+   "right": 55,
+   "wrong1": 69,
+   "wrong2": 41,
+   "tok": {
+    "right": "55",
+    "wrong1": "69",
+    "wrong2": "41"
+   },
+   "case": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; 55 unused vacation hours; 80 unused sick hours; base rate $33/hour. What is the total payout, in dollars?",
+   "case_removed": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; [figure given in the analysts' passages] unused vacation hours; 80 unused sick hours; base rate $33/hour. What is the total payout, in dollars?",
+   "passage": {
+    "right": "Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; 55 unused vacation hours; 80 unused sick hours; base rate $33/hour.",
+    "wrong1": "Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; 69 unused vacation hours; 80 unused sick hours; base rate $33/hour.",
+    "wrong2": "Facts: hired in 2016; departure is an involuntary layoff (not for cause); 30 days' notice was given; 41 unused vacation hours; 80 unused sick hours; base rate $33/hour."
+   },
+   "answer": {
+    "right": 1815,
+    "wrong1": 2277,
+    "wrong2": 1353
+   }
+  },
+  {
+   "id": "r1_v4",
+   "source": "C60R",
+   "template": "r1",
+   "param_index": 3,
+   "right": 38,
+   "wrong1": 48,
+   "wrong2": 28,
+   "tok": {
+    "right": "38",
+    "wrong1": "48",
+    "wrong2": "28"
+   },
+   "case": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2011; departure is voluntary; 14 days' notice was given; 38 unused vacation hours; 72 unused sick hours; base rate $26/hour. What is the total payout, in dollars?",
+   "case_removed": "An employee is leaving a company. Payout rules: (1) unused vacation hours are paid at the employee's base rate; (2) unused sick hours are NOT paid, except that employees hired before 2015 are paid for unused sick hours up to a cap of 60 hours; (3) if the termination is for cause, paid vacation hours are capped at 40; (4) a $500 notice bonus is paid only if the departure is voluntary AND the employee gave at least 14 days' notice. Facts: hired in 2011; departure is voluntary; 14 days' notice was given; [figure given in the analysts' passages] unused vacation hours; 72 unused sick hours; base rate $26/hour. What is the total payout, in dollars?",
+   "passage": {
+    "right": "Facts: hired in 2011; departure is voluntary; 14 days' notice was given; 38 unused vacation hours; 72 unused sick hours; base rate $26/hour.",
+    "wrong1": "Facts: hired in 2011; departure is voluntary; 14 days' notice was given; 48 unused vacation hours; 72 unused sick hours; base rate $26/hour.",
+    "wrong2": "Facts: hired in 2011; departure is voluntary; 14 days' notice was given; 28 unused vacation hours; 72 unused sick hours; base rate $26/hour."
+   },
+   "answer": {
+    "right": 3048,
+    "wrong1": 3100,
+    "wrong2": 2788
+   }
+  },
+  {
+   "id": "r2_v0",
+   "source": "C60R",
+   "template": "r2",
+   "param_index": 0,
+   "right": 34,
+   "wrong1": 42,
+   "wrong2": 26,
+   "tok": {
+    "right": "34",
+    "wrong1": "42",
+    "wrong2": "26"
+   },
+   "case": "A supplier delivered 34 days after the contract date. Penalty rules: (1) a penalty of $850 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 9 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $180,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "case_removed": "A supplier delivered [figure given in the analysts' passages] days after the contract date. Penalty rules: (1) a penalty of $850 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 9 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $180,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "passage": {
+    "right": "A supplier delivered 34 days after the contract date.",
+    "wrong1": "A supplier delivered 42 days after the contract date.",
+    "wrong2": "A supplier delivered 26 days after the contract date."
+   },
+   "answer": {
+    "right": 12750,
+    "wrong1": 16000,
+    "wrong2": 5950
+   }
+  },
+  {
+   "id": "r2_v1",
+   "source": "C60R",
+   "template": "r2",
+   "param_index": 3,
+   "right": 120000,
+   "wrong1": 140000,
+   "wrong2": 100000,
+   "tok": {
+    "right": "$120,000",
+    "wrong1": "$140,000",
+    "wrong2": "$100,000"
+   },
+   "case": "A supplier delivered 27 days after the contract date. Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $120,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "case_removed": "A supplier delivered 27 days after the contract date. Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of [figure given in the analysts' passages] minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "passage": {
+    "right": "Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $120,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong1": "Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $140,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong2": "Penalty rules: (1) a penalty of $950 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 6 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $100,000 minus the $2,000 deposit the buyer already retains."
+   },
+   "answer": {
+    "right": 10000,
+    "wrong1": 12000,
+    "wrong2": 8000
+   }
+  },
+  {
+   "id": "r2_v2",
+   "source": "C60R",
+   "template": "r2",
+   "param_index": 3,
+   "right": 90000,
+   "wrong1": 108000,
+   "wrong2": 72000,
+   "tok": {
+    "right": "$90,000",
+    "wrong1": "$108,000",
+    "wrong2": "$72,000"
+   },
+   "case": "A supplier delivered 41 days after the contract date. Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $90,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "case_removed": "A supplier delivered 41 days after the contract date. Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of [figure given in the analysts' passages] minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "passage": {
+    "right": "Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $90,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong1": "Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $108,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong2": "Penalty rules: (1) a penalty of $1,100 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 12 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $72,000 minus the $2,000 deposit the buyer already retains."
+   },
+   "answer": {
+    "right": 7000,
+    "wrong1": 8800,
+    "wrong2": 5200
+   }
+  },
+  {
+   "id": "r2_v3",
+   "source": "C60R",
+   "template": "r2",
+   "param_index": 0,
+   "right": 19,
+   "wrong1": 24,
+   "wrong2": 14,
+   "tok": {
+    "right": "19",
+    "wrong1": "24",
+    "wrong2": "14"
+   },
+   "case": "A supplier delivered 19 days after the contract date. Penalty rules: (1) a penalty of $700 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 0 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $300,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "case_removed": "A supplier delivered [figure given in the analysts' passages] days after the contract date. Penalty rules: (1) a penalty of $700 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — which happened here; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 0 of the late days were force majeure, reported within 3 days; (4) the total penalty is capped at 10% of the contract value of $300,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "passage": {
+    "right": "A supplier delivered 19 days after the contract date.",
+    "wrong1": "A supplier delivered 24 days after the contract date.",
+    "wrong2": "A supplier delivered 14 days after the contract date."
+   },
+   "answer": {
+    "right": 13300,
+    "wrong1": 16800,
+    "wrong2": 9800
+   }
+  },
+  {
+   "id": "r2_v4",
+   "source": "C60R",
+   "template": "r2",
+   "param_index": 3,
+   "right": 150000,
+   "wrong1": 180000,
+   "wrong2": 120000,
+   "tok": {
+    "right": "$150,000",
+    "wrong1": "$180,000",
+    "wrong2": "$120,000"
+   },
+   "case": "A supplier delivered 52 days after the contract date. Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $150,000 minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "case_removed": "A supplier delivered 52 days after the contract date. Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of [figure given in the analysts' passages] minus the $2,000 deposit the buyer already retains. What penalty is owed, in dollars?",
+   "passage": {
+    "right": "Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $150,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong1": "Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $180,000 minus the $2,000 deposit the buyer already retains.",
+    "wrong2": "Penalty rules: (1) a penalty of $800 per day applies after a 10-day grace period; (2) the grace period is forfeited entirely if the supplier notified the buyer of the delay later than 5 days before the contract date — the supplier notified in time, so grace applies; (3) days lost to force majeure are excluded from the delay, but only if the force-majeure event was reported within 3 days — 15 of the late days were force majeure, reported after the 3-day window; (4) the total penalty is capped at 10% of the contract value of $120,000 minus the $2,000 deposit the buyer already retains."
+   },
+   "answer": {
+    "right": 13000,
+    "wrong1": 16000,
+    "wrong2": 10000
+   }
+  },
+  {
+   "id": "r3_v0",
+   "source": "C60R",
+   "template": "r3",
+   "param_index": 1,
+   "right": 1500,
+   "wrong1": 1800,
+   "wrong2": 1200,
+   "tok": {
+    "right": "$1,500",
+    "wrong1": "$1,800",
+    "wrong2": "$1,200"
+   },
+   "case": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,500 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $2,400, in-network; claim 3: $600, in-network preventive. What is the member's total payment, in dollars?",
+   "case_removed": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of [figure given in the analysts' passages] applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $2,400, in-network; claim 3: $600, in-network preventive. What is the member's total payment, in dollars?",
+   "passage": {
+    "right": "Rules: (1) an in-network deductible of $1,500 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong1": "Rules: (1) an in-network deductible of $1,800 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong2": "Rules: (1) an in-network deductible of $1,200 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,000; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum."
+   },
+   "answer": {
+    "right": 1860,
+    "wrong1": 2100,
+    "wrong2": 1620
+   }
+  },
+  {
+   "id": "r3_v1",
+   "source": "C60R",
+   "template": "r3",
+   "param_index": 3,
+   "right": 2200,
+   "wrong1": 2600,
+   "wrong2": 1800,
+   "tok": {
+    "right": "$2,200",
+    "wrong1": "$2,600",
+    "wrong2": "$1,800"
+   },
+   "case": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,200; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $6,800, in-network; claim 3: $1,500, out-of-network. What is the member's total payment, in dollars?",
+   "case_removed": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of [figure given in the analysts' passages]; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $900, in-network; claim 2: $6,800, in-network; claim 3: $1,500, out-of-network. What is the member's total payment, in dollars?",
+   "passage": {
+    "right": "Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,200; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong1": "Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,600; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong2": "Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $1,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum."
+   },
+   "answer": {
+    "right": 3700,
+    "wrong1": 4100,
+    "wrong2": 3300
+   }
+  },
+  {
+   "id": "r3_v2",
+   "source": "C60R",
+   "template": "r3",
+   "param_index": 1,
+   "right": 1200,
+   "wrong1": 1400,
+   "wrong2": 1000,
+   "tok": {
+    "right": "$1,200",
+    "wrong1": "$1,400",
+    "wrong2": "$1,000"
+   },
+   "case": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,200 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $1,800, out-of-network; claim 2: $1,200, in-network; claim 3: $2,600, in-network. What is the member's total payment, in dollars?",
+   "case_removed": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of [figure given in the analysts' passages] applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $1,800, out-of-network; claim 2: $1,200, in-network; claim 3: $2,600, in-network. What is the member's total payment, in dollars?",
+   "passage": {
+    "right": "Rules: (1) an in-network deductible of $1,200 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong1": "Rules: (1) an in-network deductible of $1,400 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong2": "Rules: (1) an in-network deductible of $1,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 30% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $2,800; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum."
+   },
+   "answer": {
+    "right": 3780,
+    "wrong1": 3920,
+    "wrong2": 3640
+   }
+  },
+  {
+   "id": "r3_v3",
+   "source": "C60R",
+   "template": "r3",
+   "param_index": 1,
+   "right": 2000,
+   "wrong1": 2400,
+   "wrong2": 1600,
+   "tok": {
+    "right": "$2,000",
+    "wrong1": "$2,400",
+    "wrong2": "$1,600"
+   },
+   "case": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $2,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $3,100, in-network; claim 2: $450, in-network preventive; claim 3: $2,900, out-of-network. What is the member's total payment, in dollars?",
+   "case_removed": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of [figure given in the analysts' passages] applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $3,100, in-network; claim 2: $450, in-network preventive; claim 3: $2,900, out-of-network. What is the member's total payment, in dollars?",
+   "passage": {
+    "right": "Rules: (1) an in-network deductible of $2,000 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong1": "Rules: (1) an in-network deductible of $2,400 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum.",
+    "wrong2": "Rules: (1) an in-network deductible of $1,600 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 20% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $3,500; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum."
+   },
+   "answer": {
+    "right": 5120,
+    "wrong1": 5440,
+    "wrong2": 4800
+   }
+  },
+  {
+   "id": "r4_v2",
+   "source": "C60R",
+   "template": "r4",
+   "param_index": 3,
+   "right": 400,
+   "wrong1": 500,
+   "wrong2": 300,
+   "tok": {
+    "right": "$400",
+    "wrong1": "$500",
+    "wrong2": "$300"
+   },
+   "case": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $400; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $52,000. What is the total benefit, in dollars?",
+   "case_removed": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of [figure given in the analysts' passages]; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $52,000. What is the total benefit, in dollars?",
+   "passage": {
+    "right": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $400; (5) a $350 state rebate is refundable and stacks with everything above.",
+    "wrong1": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $500; (5) a $350 state rebate is refundable and stacks with everything above.",
+    "wrong2": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $300; (5) a $350 state rebate is refundable and stacks with everything above."
+   },
+   "answer": {
+    "right": 1950,
+    "wrong1": 2050,
+    "wrong2": 1850
+   }
+  },
+  {
+   "id": "r4_v3",
+   "source": "C60R",
+   "template": "r4",
+   "param_index": 3,
+   "right": 2100,
+   "wrong1": 2500,
+   "wrong2": 1700,
+   "tok": {
+    "right": "$2,100",
+    "wrong1": "$2,500",
+    "wrong2": "$1,700"
+   },
+   "case": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $2,100; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $85,000. What is the total benefit, in dollars?",
+   "case_removed": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of [figure given in the analysts' passages]; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $85,000. What is the total benefit, in dollars?",
+   "passage": {
+    "right": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $2,100; (5) a $350 state rebate is refundable and stacks with everything above.",
+    "wrong1": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $2,500; (5) a $350 state rebate is refundable and stacks with everything above.",
+    "wrong2": "Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $1,700; (5) a $350 state rebate is refundable and stacks with everything above."
+   },
+   "answer": {
+    "right": 2450,
+    "wrong1": 2850,
+    "wrong2": 2050
+   }
+  },
+  {
+   "id": "r5_v0",
+   "source": "C60R",
+   "template": "r5",
+   "param_index": 1,
+   "right": 30,
+   "wrong1": 38,
+   "wrong2": 22,
+   "tok": {
+    "right": "$30",
+    "wrong1": "$38",
+    "wrong2": "$22"
+   },
+   "case": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 8, 10, 8, 8, 4, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $30/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "case_removed": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 8, 10, 8, 8, 4, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of [figure given in the analysts' passages]/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "passage": {
+    "right": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $30/hour only, never to the differential.",
+    "wrong1": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $38/hour only, never to the differential.",
+    "wrong2": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $22/hour only, never to the differential."
+   },
+   "answer": {
+    "right": 1605,
+    "wrong1": 2009,
+    "wrong2": 1201
+   }
+  },
+  {
+   "id": "r5_v1",
+   "source": "C60R",
+   "template": "r5",
+   "param_index": 1,
+   "right": 28,
+   "wrong1": 35,
+   "wrong2": 21,
+   "tok": {
+    "right": "$28",
+    "wrong1": "$35",
+    "wrong2": "$21"
+   },
+   "case": "Compute a worker's weekly pay. Hours Monday through Sunday: 8, 8, 8, 8, 8, 8, 6. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of $28/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "case_removed": "Compute a worker's weekly pay. Hours Monday through Sunday: 8, 8, 8, 8, 8, 8, 6. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of [figure given in the analysts' passages]/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "passage": {
+    "right": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of $28/hour only, never to the differential.",
+    "wrong1": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of $35/hour only, never to the differential.",
+    "wrong2": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $12 is paid for each day worked, and overtime multipliers apply to the base rate of $21/hour only, never to the differential."
+   },
+   "answer": {
+    "right": 1792,
+    "wrong1": 2219,
+    "wrong2": 1365
+   }
+  },
+  {
+   "id": "r5_v2",
+   "source": "C60R",
+   "template": "r5",
+   "param_index": 2,
+   "right": 20,
+   "wrong1": 25,
+   "wrong2": 15,
+   "tok": {
+    "right": "$20",
+    "wrong1": "$25",
+    "wrong2": "$15"
+   },
+   "case": "Compute a worker's weekly pay. Hours Monday through Sunday: 10, 9, 9, 8, 8, 0, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $20 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "case_removed": "Compute a worker's weekly pay. Hours Monday through Sunday: 10, 9, 9, 8, 8, 0, 0. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of [figure given in the analysts' passages] is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "passage": {
+    "right": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $20 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential.",
+    "wrong1": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $25 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential.",
+    "wrong2": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $15 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential."
+   },
+   "answer": {
+    "right": 1572,
+    "wrong1": 1597,
+    "wrong2": 1547
+   }
+  },
+  {
+   "id": "r5_v3",
+   "source": "C60R",
+   "template": "r5",
+   "param_index": 1,
+   "right": 26,
+   "wrong1": 32,
+   "wrong2": 20,
+   "tok": {
+    "right": "$26",
+    "wrong1": "$32",
+    "wrong2": "$20"
+   },
+   "case": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 9, 9, 9, 9, 5, 4. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of $26/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "case_removed": "Compute a worker's weekly pay. Hours Monday through Sunday: 9, 9, 9, 9, 9, 5, 4. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of [figure given in the analysts' passages]/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "passage": {
+    "right": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of $26/hour only, never to the differential.",
+    "wrong1": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of $32/hour only, never to the differential.",
+    "wrong2": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $10 is paid for each day worked, and overtime multipliers apply to the base rate of $20/hour only, never to the differential."
+   },
+   "answer": {
+    "right": 1656,
+    "wrong1": 2022,
+    "wrong2": 1290
+   }
+  },
+  {
+   "id": "r5_v4",
+   "source": "C60R",
+   "template": "r5",
+   "param_index": 1,
+   "right": 34,
+   "wrong1": 42,
+   "wrong2": 26,
+   "tok": {
+    "right": "$34",
+    "wrong1": "$42",
+    "wrong2": "$26"
+   },
+   "case": "Compute a worker's weekly pay. Hours Monday through Sunday: 12, 8, 8, 8, 8, 0, 3. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of $34/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "case_removed": "Compute a worker's weekly pay. Hours Monday through Sunday: 12, 8, 8, 8, 8, 0, 3. Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of [figure given in the analysts' passages]/hour only, never to the differential. What is the weekly pay, in dollars?",
+   "passage": {
+    "right": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of $34/hour only, never to the differential.",
+    "wrong1": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of $42/hour only, never to the differential.",
+    "wrong2": "Rules: (1) daily overtime: hours beyond 8 in a day are paid at 1.5x the base rate; (2) weekly overtime: regular (non-overtime) hours beyond 40 in the week are paid at 1.5x — hours already paid as daily overtime do not count toward the 40; (3) if all seven days are worked, the seventh day is special: its first 8 hours are paid at 1.5x and hours beyond 8 at 2x (rules 1-2 do not also apply to that day); (4) a shift differential of $18 is paid for each day worked, and overtime multipliers apply to the base rate of $26/hour only, never to the differential."
+   },
+   "answer": {
+    "right": 1825,
+    "wrong1": 2229,
+    "wrong2": 1421
+   }
+  },
+  {
+   "id": "r6_v1",
+   "source": "C60R",
+   "template": "r6",
+   "param_index": 1,
+   "right": 30,
+   "wrong1": 38,
+   "wrong2": 22,
+   "tok": {
+    "right": "30",
+    "wrong1": "38",
+    "wrong2": "22"
+   },
+   "case": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 4 months after January 2025; the person turns 18 30 months after January 2025; no erasure request was made; there was no litigation hold. What is the deletion deadline, in months after January 2025?",
+   "case_removed": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 4 months after January 2025; the person turns 18 [figure given in the analysts' passages] months after January 2025; no erasure request was made; there was no litigation hold. What is the deletion deadline, in months after January 2025?",
+   "passage": {
+    "right": "Facts: the case closed 4 months after January 2025; the person turns 18 30 months after January 2025; no erasure request was made; there was no litigation hold.",
+    "wrong1": "Facts: the case closed 4 months after January 2025; the person turns 18 38 months after January 2025; no erasure request was made; there was no litigation hold.",
+    "wrong2": "Facts: the case closed 4 months after January 2025; the person turns 18 22 months after January 2025; no erasure request was made; there was no litigation hold."
+   },
+   "answer": {
+    "right": 54,
+    "wrong1": 62,
+    "wrong2": 46
+   }
+  },
+  {
+   "id": "r6_v2",
+   "source": "C60R",
+   "template": "r6",
+   "param_index": 3,
+   "right": 12,
+   "wrong1": 15,
+   "wrong2": 9,
+   "tok": {
+    "right": "12",
+    "wrong1": "15",
+    "wrong2": "9"
+   },
+   "case": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived 12 months after January 2025; a litigation hold ran for 5 months. What is the deletion deadline, in months after January 2025?",
+   "case_removed": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived [figure given in the analysts' passages] months after January 2025; a litigation hold ran for 5 months. What is the deletion deadline, in months after January 2025?",
+   "passage": {
+    "right": "Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived 12 months after January 2025; a litigation hold ran for 5 months.",
+    "wrong1": "Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived 15 months after January 2025; a litigation hold ran for 5 months.",
+    "wrong2": "Facts: the case closed 8 months after January 2025; the person was an adult at closure; a verified erasure request arrived 9 months after January 2025; a litigation hold ran for 5 months."
+   },
+   "answer": {
+    "right": 18,
+    "wrong1": 21,
+    "wrong2": 15
+   }
+  },
+  {
+   "id": "r6_v3",
+   "source": "C60R",
+   "template": "r6",
+   "param_index": 2,
+   "right": 7,
+   "wrong1": 9,
+   "wrong2": 5,
+   "tok": {
+    "right": "7",
+    "wrong1": "9",
+    "wrong2": "5"
+   },
+   "case": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for 7 months. What is the deletion deadline, in months after January 2025?",
+   "case_removed": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for [figure given in the analysts' passages] months. What is the deletion deadline, in months after January 2025?",
+   "passage": {
+    "right": "Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for 7 months.",
+    "wrong1": "Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for 9 months.",
+    "wrong2": "Facts: the case closed 3 months after January 2025; the person turns 18 26 months after January 2025; a verified erasure request arrived 14 months after January 2025; a litigation hold ran for 5 months."
+   },
+   "answer": {
+    "right": 22,
+    "wrong1": 24,
+    "wrong2": 20
+   }
+  },
+  {
+   "id": "r6_v4",
+   "source": "C60R",
+   "template": "r6",
+   "param_index": 0,
+   "right": 10,
+   "wrong1": 12,
+   "wrong2": 8,
+   "tok": {
+    "right": "10",
+    "wrong1": "12",
+    "wrong2": "8"
+   },
+   "case": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 10 months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months. What is the deletion deadline, in months after January 2025?",
+   "case_removed": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed [figure given in the analysts' passages] months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months. What is the deletion deadline, in months after January 2025?",
+   "passage": {
+    "right": "Facts: the case closed 10 months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months.",
+    "wrong1": "Facts: the case closed 12 months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months.",
+    "wrong2": "Facts: the case closed 8 months after January 2025; the person was an adult at closure; no erasure request was made; a litigation hold ran for 6 months."
+   },
+   "answer": {
+    "right": 40,
+    "wrong1": 42,
+    "wrong2": 38
+   }
+  }
+ ],
+ "excluded": [
+  {
+   "id": "r3_v4",
+   "source": "C60R",
+   "template": "r3",
+   "params": "([(2000, 'in'), (900, 'in'), (1200, 'oon')], 1400, 0.25, 1700)",
+   "case": "A health plan member has three claims processed in the order listed. Rules: (1) an in-network deductible of $1,400 applies first — the member pays claim costs until it is met; (2) after the deductible, the member pays 25% coinsurance on in-network claims; (3) the member's in-network payments (deductible and coinsurance) stop at an out-of-pocket maximum of $1,700; (4) preventive in-network care is free — no deductible, no coinsurance; (5) out-of-network claims face a separate deductible of twice the in-network amount, then the same coinsurance, and NONE of those payments count toward the out-of-pocket maximum. Claims: claim 1: $2,000, in-network; claim 2: $900, in-network; claim 3: $1,200, out-of-network. What is the member's total payment, in dollars?",
+   "answer": 2900,
+   "reason": "no integer input that appears once and moves the answer both ways"
+  },
+  {
+   "id": "r4_v0",
+   "source": "C60R",
+   "template": "r4",
+   "params": "(52000, 60000, True, 4000)",
+   "case": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $4,000; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $52,000. What is the total benefit, in dollars?",
+   "answer": 2950,
+   "reason": "no integer input that appears once and moves the answer both ways"
+  },
+  {
+   "id": "r4_v1",
+   "source": "C60R",
+   "template": "r4",
+   "params": "(95000, 60000, True, 5000)",
+   "case": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $5,000; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $95,000. What is the total benefit, in dollars?",
+   "answer": 2200,
+   "reason": "no integer input that appears once and moves the answer both ways"
+  },
+  {
+   "id": "r4_v4",
+   "source": "C60R",
+   "template": "r4",
+   "params": "(40000, 60000, False, 900)",
+   "case": "Compute a taxpayer's total benefit from three credits. Rules: (1) Credit A is $1,200 if income is below $60,000; (2) Credit B is $1,850 if the qualifying property was placed in service in an eligible year — it was not; A and B cannot be combined: if both qualify, take only the larger; (3) Credit C is $750 and stacks with either, but is eliminated entirely when income is $90,000 or more; (4) Credit A is refundable (paid in full regardless of tax owed); Credits B and C are nonrefundable — together they cannot exceed the tax liability of $900; (5) a $350 state rebate is refundable and stacks with everything above. Facts: income $40,000. What is the total benefit, in dollars?",
+   "answer": 2300,
+   "reason": "no integer input that appears once and moves the answer both ways"
+  },
+  {
+   "id": "r6_v0",
+   "source": "C60R",
+   "template": "r6",
+   "params": "(6, None, 0, None)",
+   "case": "Compute a record's deletion deadline, expressed as the number of months after January 2025 (January 2025 = 0). Rules: (1) records are deleted 24 months after case closure; (2) for a person who was a minor at closure, the 24-month clock starts when they turn 18 instead, if that is later; (3) a verified erasure request overrides rules 1-2: the deadline becomes one month after the request; (4) an active litigation hold suspends deletion: add the hold's duration to whatever deadline applies (the hold applies even against an erasure request). Facts: the case closed 6 months after January 2025; the person was an adult at closure; no erasure request was made; there was no litigation hold. What is the deletion deadline, in months after January 2025?",
+   "answer": 30,
+   "reason": "no integer input that appears once and moves the answer both ways"
+  }
+ ]
+}

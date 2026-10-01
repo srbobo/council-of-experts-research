@@ -51,15 +51,15 @@
   "54": {
    "title": "Can a live specialist pass on a fact it holds only in private notes?",
    "description": "We gave a live specialist the deciding fact as private notes. In the 21 runs where a follow-up went out, the final answer took the fact's side 19 times, close to a scripted reply. But 4 of the 21 replies also cited court cases or rulings that do not exist.",
-   "outcome": "held",
+   "outcome": "mixed",
    "size": "36 live runs plus 12 check runs",
    "why": "In the rebuilt system, which we call the harness, the editor lists where the specialists disagree and a follow-up question goes back to the specialist involved. Cell 53 found that a live specialist can state a fact when asked, but hiding the fact in its first draft left the editor rarely flagging the disagreement. This cell kept the first drafts exactly as in Cell 44, with the fact nowhere in them. The specialist instead got the fact as private working notes, not shared with the others, when it wrote its reply. That is closer to real use, where a specialist knows things it did not write down. We reused Cell 44's saved results as the comparison, after a small fresh check that nothing else had changed.",
    "expectations": [
     {
      "id": "P54.1",
      "text": "When the editor flagged the disagreement, a live reply from the specialist with notes would make the final answer take the fact's side more often than no follow-up did in Cell 44.",
-     "outcome": "held",
-     "note": "It did in 19 of 21 runs (90%), against 5 of 15 (33%) with no follow-up, a gain of 57 points (plausibly anywhere from 14 to 91)."
+     "outcome": "unclear",
+     "note": "It did in 19 of 21 runs (90%), against 5 of 15 (33%) in Cell 44's saved runs. Those were made six days earlier and the two batches differ, so the size of the gain is not established."
     },
     {
      "id": "P54.2",
@@ -76,7 +76,7 @@
    ],
    "found": "We ran 36 live runs. The editor flagged the planted disagreement in 21 of them (58%), and each of those sent a follow-up to the live specialist. All 21 replies stated the fact. Two AI judges then decided which side the final answer took. It took the fact's side in 19 of 21 runs (90%), and in the other 2 the judges disagreed. In Cell 44's saved runs, the figure was 5 of 15 (33%) with no follow-up and 7 of 7 with the scripted reply. In a fresh check with no follow-up, the final answer took the fact's side in 2 of 6 flagged runs, in line with the saved runs.\n\nThere was a new problem. 4 of the 21 replies passed the fact on correctly but dressed it up with legal authority that does not exist. On one scenario, three replies cited invented court cases (\"Rosenbaum v. Uber, 2023\" and \"Klein v. Lyft\"), including the one seen in Cell 53. On another, a reply invented regulatory rulings (\"Wright v. ICO\"). The final answer took the fact's side in these runs anyway.\n\nThe editor flagged the disagreement in 58% of runs here against 34% in Cell 44, so the flagging rate varies from batch to batch and should not be quoted as a single number.",
    "means": "The full follow-up loop worked with nothing scripted. A live specialist passed on a fact it held only privately, and the editor used it almost as well as a perfect scripted reply. The cost is a risk the scripted version could not have: live replies can invent authority even when the real fact comes through. The filter we had planned for follow-up replies looks for replies with no real content, so it cannot catch invented content. Measuring how often this happens became Cell 56.",
-   "later": "Cell 56 measured the made-up citations over 120 more replies: 10% to 15% of replies, all on one legal scenario. A later test of reply filters reused these 21 replies. A blocklist of the known invented names worked. A filter meant to catch replies with no real content was not adopted, and one version of it passed only 10 of these 21 real replies.",
+   "later": "Cell 56 measured the made-up citations over 120 more replies: 10% to 15% of replies, all on one legal scenario. A review in October 2026 noted that the comparison runs came from Cell 44, six days earlier, and that the two batches differ. We now report the 21-of-21 and 19-of-21 counts as a description and do not state the size of the gain.",
    "entries": {
     "8299": {
      "label": "Plan",
@@ -87,6 +87,11 @@
      "label": "Result",
      "title": "The live loop works, but some replies invent legal authority",
      "summary": "The final answer took the fact's side in 19 of 21 runs with a live reply, against 5 of 15 with no follow-up and 7 of 7 with the scripted reply. Every reply contained the fact. 4 of 21 replies also cited court cases or rulings that do not exist."
+    },
+    "9935": {
+     "label": "Correction",
+     "title": "The comparison runs were from another day",
+     "summary": "The 19-of-21 result was compared with Cell 44's no-follow-up runs, made six days earlier. The editor named the disagreement in 58% of the new runs against 42% of those older ones, so the batches differ. Over the five questions with data on both sides the difference was too close to call. We keep the 21-of-21 and 19-of-21 counts as a description."
     }
    }
   },
@@ -107,12 +112,12 @@
      "id": "P55.2",
      "text": "We would measure the gap in defect rates between the failing and the passing models taken together, without a pass/fail test.",
      "outcome": "not-graded",
-     "note": "Answers from the failing models were defective 63 points more often (plausibly anywhere from 55 to 72 points)."
+     "note": "Answers from the failing models were defective 63 points more often. The range we first gave was computed over six scenarios, though the comparison is between ten models."
     }
    ],
    "found": "The screen came first. Each model answered 2 test questions 6 times and passed only if every answer reached 800 characters. The results were written down and saved before any real run. Eight models passed. Two medical fine-tunes failed: BioMistral and OpenBioLLM.\n\nEach model then wrote 18 specialist answers, 3 on each of six scenarios. An answer counted as defective if it was empty after 3 tries or under 800 characters. Seven of the passing models had no defects, and Med42 had 1 in 18. OpenBioLLM was defective in 6 of 18 answers and BioMistral in 17 of 18, averaging 422 characters. Ranked by average length, the models fell in the same order in the screen as in real use.\n\nTwo more findings. OpenBioLLM had passed this same screen at the time of Cell 42, averaging 1,514 characters, but failed it now with a shortest answer of 78. Its real answers agreed with the new result. And a second test in the screen, which checks that a model can give a one-line answer in a set format, did not predict defects. The legal model Saul failed all 4 formatting tries but wrote sound answers in all 18 real runs.",
    "means": "The screening test does what it claims. Failing it predicted trouble in real use, and passing it predicted little or none. Two rules followed. Screen a model again whenever it is chosen, rather than trusting an old result, because results go stale. And use the formatting test for roles that must give a short set-format answer, such as the editor or an AI judge, not for specialists. With this cell, every part of the rebuilt system that runs during a question had been tested against expectations written down in advance.",
-   "later": null,
+   "later": "A review in October 2026 noted that the comparison is between ten models, two of which failed. Picking the two worst by luck would happen about 1 time in 45. It also noted that the screening and the outcome both measure short answers, and that in tests of the rebuilt system one model plays every specialist.",
    "entries": {
     "8414": {
      "label": "Plan",
@@ -123,6 +128,11 @@
      "label": "Result",
      "title": "The screen predicts real failures, and old results go stale",
      "summary": "Both failing models broke down in real use, OpenBioLLM in 6 of 18 answers and BioMistral in 17 of 18. Seven passing models had no defects and the eighth had 1 in 18. OpenBioLLM had passed the screen in the past, so models should be screened again when chosen."
+    },
+    "9969": {
+     "label": "Correction",
+     "title": "Ten models, two failures",
+     "summary": "The published range was computed over six scenarios, but the question is about models, and there are ten. The two that failed the screening were the two with the most broken answers, which would happen by luck about 1 time in 45. The screening and the outcome both measure the same thing, answers under 800 characters, on different prompts."
     }
    }
   },

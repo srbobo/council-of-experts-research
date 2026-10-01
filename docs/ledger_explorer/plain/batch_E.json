@@ -159,8 +159,8 @@
     }
    ],
    "found": "On the 'estimate' caveat the editor paid no attention to agreement. It included the caveat in 52% of runs where one specialist raised it (824 runs) and in 49% where two or more did (76 runs), no clear difference. The smaller set of runs from our five-version comparison pointed the same way, if anything lower with agreement.\n\nThe three poorly measured kinds looked different. The more specialists raised them, the more often they appeared. For 'my information may be out of date' the rate rose from 15% with one specialist to 40% with two and 62% with three. 'The rules differ by place' rose from 28% to 65% to 85%, and general hedging from 51% to 70% to 80%. The pooled result over all four kinds came entirely from these three.\n\nOur tools could not tell why. The editor might weigh agreement for these kinds only. Or it may be a side effect of counting: the keyword counter spots these kinds only through particular phrases, so more specialists using a phrase makes it likelier that one copy lands in the answer. The rises were steeper than copying alone would predict, though. Or scenarios where more specialists agree may simply carry more caveats overall.",
-   "means": "The editor ignores the one clue about reliability that only a multi-specialist system can offer, at least on the kind of caveat we could measure well. This extended Cell 20, which found that the council points out disagreements between specialists but does not use them. Now it also gave no extra weight to points they agreed on. The result added support to our working summary that nothing we found makes the editor match its caution to the evidence, and the framework paper's discussion was updated with it. Sorting out the pattern in the other three kinds would need AI judges to label a fresh sample, which we noted as the next step but did not run.",
-   "later": "Later reviews kept this result. A program audit on 2026-08-07 noted that we had seen these saved runs in summary before writing the plan, but kept the result because it went against the idea being tested. An audit on 2026-08-11 judged the test large enough to rule out a gain of more than about 8 percentage points, and the project's list of standing claims still includes it.",
+   "means": "At the time we concluded that the editor ignores agreement between specialists, at least on the kind of caveat we could measure well, and the framework paper's discussion was updated with it. That conclusion was withdrawn in October 2026. Sorting out the pattern in the other three kinds would need AI judges to label a fresh sample, which we noted as the next step but did not run.",
+   "later": "Withdrawn in October 2026. A review found the claim rested on the one kind of caveat whose wording the prompts dictated, counted with a keyword counter the project stopped trusting three days later. The other three kinds showed large gains when specialists agreed. Two earlier audits had kept the result. The question is now open.",
    "entries": {
     "3757": {
      "label": "Plan",
@@ -171,6 +171,11 @@
      "label": "Result",
      "title": "No extra weight for agreement on the well-measured caveat",
      "summary": "Across 1,165 saved runs, the editor kept the 'estimate' caveat about as often whether one specialist or several raised it. The three poorly measured kinds rose steeply with agreement, for reasons our tools could not pin down."
+    },
+    "10010": {
+     "label": "Correction",
+     "title": "The claim built on this result is withdrawn",
+     "summary": "The 'estimate' caveat showed no effect of agreement, but in those runs the prompts told the editor which phrase to use for it, so its wording could not respond to how many specialists raised the point. The other three kinds of caveat showed large gains with agreement. All of it was counted with the keyword counter. We no longer claim the editor ignores agreement."
     }
    }
   },

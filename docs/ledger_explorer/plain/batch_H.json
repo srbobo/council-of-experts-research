@@ -18,7 +18,7 @@
      "id": "P41.2",
      "text": "Even with the named phrase set aside, both instructed versions would flag estimates more often than the comparison version.",
      "outcome": "failed",
-     "note": "They did not: 36.5% and 31.7% of runs against 34.1%, no clear difference, in opposite directions. Effects of 22 points or more are ruled out, smaller ones are not."
+     "note": "They did not: 36.5% and 31.7% of runs against 34.1%, no clear difference, in opposite directions. The judges' labels miss many such sentences, so a change in other wording could go unseen."
     },
     {
      "id": "P41.3",
@@ -35,7 +35,7 @@
    ],
    "found": "The cell produced 378 answers over 18 scenarios, 126 per version, with gpt-oss-20B as the editor. Two AI judges labeled every sentence, using definitions that named no phrase. They agreed on the estimate caveats 91% of the time, the highest the project had recorded. A small share of judge output, about 4% to 5% per version, could not be read, and we checked before looking at the results that this loss did not depend on the version.\n\nEach instruction produced its own phrase. \"Modeled at\" appeared in 67% of runs when named and \"taken to be\" in 70%. Neither appeared anywhere else. Our long-used phrase, dictated in 11 places across 9 prompts, did no better than one chosen the day before.\n\nRuns judged to contain at least one estimate caveat rose from 34% without the instruction to 57% with \"modeled at\" and 43% with \"taken to be\". With sentences containing the named phrase set aside, the rates were 36.5% and 31.7% against 34.1%. Both differences could plausibly be zero, and they pointed in opposite directions. Answer length stayed flat, so no version gained by saying less. The test could rule out an effect beyond the phrase of 22 percentage points or more. PD-13, rescaled to this scoring method, had pointed to about 33.",
    "means": "The measurable effect of the instruction was the phrase it named. Once those words were set aside, an instructed editor could not be told apart from an uninstructed one. So every caution number the project had produced by instruction reflects obedience to a phrase order, at the level of detail this test could see. It does not show that the instruction does nothing at all, since an effect under 22 points would go unseen here. This was the last of three steps on the scripted-wording problem, after the list of scripted phrases and the exact-phrase check. Cell 43 then reused these answers to ask whether AI judges prefer answers that carry the phrase.",
-   "later": null,
+   "later": "A review in October 2026 recomputed both results over the 18 scenarios, and they stand. But the judges' labels found only 66% and 35% of sentences containing the two instructed phrases, so they could miss a rise expressed in other wording. We now say only that the judges saw no change larger than about 13 points.",
    "entries": {
     "6007": {
      "label": "Plan",
@@ -46,6 +46,11 @@
      "label": "Result",
      "title": "Each phrase appeared on cue, and nothing else changed",
      "summary": "Each instruction produced its own phrase, in 67% and 70% of runs, and never the other one. With the named phrase set aside, estimate caveats were no more common than with no instruction: 36.5% and 31.7% against 34.1%. Answer length did not change. An effect of 22 points or more beyond the phrase is ruled out, a smaller one is not."
+    },
+    "10028": {
+     "label": "Correction",
+     "title": "Results stand, but the scoring could miss a change",
+     "summary": "Recomputed over the 18 scenarios, each instruction still produced its own phrase by a clear margin, and the share of answers with an estimate caveat in other wording did not change (within about 13 points either way). The two judges found only 66% and 35% of sentences containing the instructed phrases, so a change in new wording could be missed."
     }
    }
   },

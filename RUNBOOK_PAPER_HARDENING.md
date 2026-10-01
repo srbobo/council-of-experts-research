@@ -10043,3 +10043,715 @@ detectable effect (0.22) does not account for that. The statement is
 reduced to: no change larger than about 0.13 in the share the judges can
 see. An
 equivalence claim needs 60 to 135 scenarios and is not attempted.
+
+## CELL 62 PRE-REGISTRATION (2026-10-01) — do the sentence judges agree with a person?
+
+The two-judge sentence labels sit under the slope, the phrase-swap
+"nothing else changed" result, the invented-caveat rate and the appended
+lists. Their chance-corrected agreement is 0.19 to 0.41 (CELL IV
+CORRECTION) and no label has ever been compared with a person's. This
+experiment compares them, and four more local judges, with blind labels
+from one person.
+
+Runner: `train/run_cell62_instrument.py`. Labelling tool:
+`train/label_blind.py`. No new text is generated.
+
+### Material (drawn before this entry, by a seeded mechanical rule)
+
+Pool: the 10,439 distinct stored sentences (one line, 25 to 400
+characters) that both instrument judges labelled in Cells 30/31, 41 and
+46. Sample: **404 sentences**, seed 62, stratified by the stored labels:
+for each of the three kinds of caveat (modeled, hedging, jurisd; a
+sentence is assigned to the first kind in that order that applies), by
+whether both judges or exactly one flagged it, and by source
+(specialist text or editor answer), 17 per cell (12 cells, 204
+sentences); plus 100 sentences from each source that neither judge
+flagged (200). The sample and its key are in
+`bench/labels/cell62_sentences/`. Estimates are weighted back to the pool
+by stratum.
+
+The stored labels of the two instrument judges on these sentences are
+already known; that is the object of study. What is new: the person's
+labels and the labels of four more judges.
+
+### Labels from a person
+
+The author labels all 404 sentences with the tool, which shows one
+sentence at a time in a fixed random order with the three frozen
+definitions (Cell 23's, word for word) and nothing else: no source, no
+experiment, no judge label. Twenty anchor sentences are available as
+practice. Two passes at least seven days apart (the tool enforces the
+gap and records an override). Each pass is committed before any scoring;
+the measure stage refuses to run on uncommitted labels. Pass 1 is the
+reference. One annotator, who is the author, working blind: that limit is
+stated wherever the result is used.
+
+### Labels from models
+
+Six judges label the same 404 sentences in batches of ten with the frozen
+Cell IV prompt at temperature 0: gpt-oss:20b and qwen2.5:7b-instruct (the
+two instrument judges, judged again in new batches), phi4:14b,
+qwen3-vl:30b-a3b-instruct, llama3:8b-instruct-q4_K_M,
+mistral:7b-instruct-v0.3-q4_K_M. A batch that does not parse is retried
+once, then split in two. A judge with more than 20% of sentences
+unlabelled is left out of the candidate rules.
+
+### Predictions
+
+- **P62.0 (the reference is stable).** For each kind of caveat, the
+  person's two passes agree at kappa of at least 0.60. A kind below 0.60
+  makes P62.1 and P62.2 NOT EVALUABLE for that kind. A kind the person
+  marks in fewer than 15 sampled sentences is NOT EVALUABLE for lack of
+  positives.
+- **P62.1 (the deployed rule).** The stored both-judges rule reaches F1 of
+  at least 0.80 against the person's pass-1 labels, weighted to the pool,
+  for all three kinds. *Falsified if* any evaluable kind is below 0.80.
+  Expected to fail at least for "modeled".
+- **P62.2 (a usable rule exists).** Candidate rules: each judge alone, the
+  instrument pair re-judged (both, either), at least two of the three
+  largest judges, at least two, three or four of all six. The sentence
+  ids are hash-ordered; the rule with the highest mean F1 over the three
+  kinds on the odd-numbered half is tested on the even-numbered half.
+  SUPPORTED iff it reaches F1 of at least 0.80 there for all three kinds.
+  *Falsified if* any evaluable kind is below 0.80.
+- **P62.3 (reported, no pass/fail).** Precision and recall of the
+  deployed rule with stratified-bootstrap intervals, and of every
+  candidate rule; kappa between each pair of judges;
+  agreement of each instrument judge with its own stored label on the
+  same sentence in a new batch; a two-class latent-class estimate across
+  the six judges that uses no human label.
+
+An interim reading on pass 1 alone is labelled interim. The verdict waits
+for pass 2.
+
+### Attainability
+
+Positives are guaranteed by the stratification: at least 68 sentences per
+kind were flagged by one or both stored judges and at least 34 by both. If the person marks a
+kind in about 30 sentences, the interval on F1 is roughly ±0.12, so a true
+F1 of 0.65 or 0.95 is separated from the 0.80 bar and one near 0.80 is
+not; that case is reported with its interval and the point-estimate rule
+above decides the verdict. P62.2 splits the sample, which halves the
+positives; the 15-positive rule applies to each half.
+
+### Consequences, fixed now
+
+- A kind that fails P62.1: every count of that kind made with the
+  both-judges rule (Cells 30, 31, 38, 41's other-wording share, 46) stays
+  PROVISIONAL and the paper says so.
+- P62.2 supported: the stored texts may be re-scored with the chosen rule
+  in a separately registered re-analysis. Nothing is re-scored before
+  that.
+- P62.2 falsified: the program has no validated sentence instrument for
+  that kind at this model scale, and the claims above are reported as
+  untested.
+
+### Cost
+
+About 250 judge calls, under two hours. About 100 minutes of the author's
+time per pass.
+
+### Checklist items that bite
+
+2 and 3 (the definitions name no phrase; the unit is the deployed one, a
+single sentence at natural length). 3 again: agreement among models is not
+validity, so the person's labels are the reference and the latent-class
+figure is reported beside them only. 6 (the stored labels are known;
+nothing about them is predicted). 12 (a simple random sample would hold
+about 20 positives for "modeled"; the sample is stratified, which is why
+weights are needed).
+
+## CELL 63 PRE-REGISTRATION (2026-10-01) — a wrong figure the editor could check
+
+Cells 47 and 59 planted a figure that could not be checked against the
+case and asked for it by name. This experiment uses questions whose answer
+is computed, so that a wrong input figure changes the answer, can be
+caught when the case states the right one, and needs no instruction to
+include it.
+
+Runner: `train/run_cell63_checkable.py`. Items:
+`docs/CELL63_ITEMS.json`, built by the runner's `items` stage before this
+entry and reproducible from it.
+
+### Items (no item written by judgment)
+
+The 66 questions of Cells 60 and 60-R, whose answers are computed by the
+generator scripts. For each, the first integer input that (a) appears
+exactly once in the question, (b) changes the computed answer when raised
+by 20% to 25% and when lowered by the same, and (c) yields three answers
+that differ by more than twice the scoring tolerance, is the planted
+input. Neither altered figure may already occur in the question.
+**61 questions over 14 templates** qualify; 5 are excluded and used only
+for plumbing checks. For every item the file holds the right figure, a
+raised figure ("wrong1"), a lowered figure ("wrong2"), the answers the
+engine computes under each, and the sentence that contains the figure.
+
+### One factor: where the right and the wrong figure sit
+
+The editor (system prompt: Cell 30's one-sentence writer prompt, word for
+word) receives three short scripted analyst contributions and the
+question. An analyst that supplies a figure quotes the sentence of the
+case that contains it.
+
+| layout | the case states | analyst notes | can the error be caught? |
+|---|---|---|---|
+| C0 | the right figure | one quotes the right figure | no error |
+| C1 | the right figure | one quotes wrong1 | yes, against the case |
+| C2 | nothing (figure removed) | one quotes wrong1 | no |
+| C3 | nothing | one quotes wrong1, one the right figure | a disagreement is visible |
+| C4 | nothing | one quotes wrong1, one wrong2 | a disagreement is visible |
+
+Two runs per item and layout; the second swaps which analyst is listed
+first. 61 × 5 × 2 = **610 runs per editor model**. Temperature 0.6, the
+editor's setting throughout the program. Nothing asks the editor to
+include or to check the figure.
+
+### Scoring (by script, no judge)
+
+The final `ANSWER:` line is parsed with Cell 60's parser and tolerance and
+classed as: right; planted (matches the answer under wrong1 or wrong2);
+other; no answer. Separately: whether the reply contains both of the
+conflicting figures as whole numbers (C1, C3, C4). Runs that hit the
+context limit are set aside and counted. Analysis is on item-level paired
+differences averaged within template, with a t-interval and an exact
+sign-flip test over the 14 templates.
+
+### Predictions (primary editor: gpt-oss:20b)
+
+- **P63.0 (check that the task is doable).** C0 is answered right in at
+  least 0.90 of runs. Below that, P63.1 to P63.4 are NOT EVALUABLE.
+- **P63.1 (sole source).** In C2 the answer follows the planted figure in
+  at least 0.80 of runs. *Falsified if* below 0.80.
+- **P63.2 (a checkable error is caught) — PRIMARY.** The planted-figure
+  share is lower in C1 than in C2: difference above 0 with sign-flip
+  p < 0.05. *Falsified if* not. Falsified means the editor follows a
+  quoted figure even when the case in front of it says otherwise.
+- **P63.3 (a second source).** The planted-figure share is lower in C3
+  than in C2: difference above 0 with p < 0.05. *Falsified if* not.
+- **P63.4 (the disagreement is not shown).** In C3 and C4 the reply
+  mentions both figures in fewer than half of runs: SUPPORTED iff the
+  template-level interval is entirely below 0.5, FALSIFIED iff entirely
+  above, otherwise NOT EVALUABLE.
+- **P63.5 (reported, no pass/fail).** In C3, the share of right answers
+  among runs giving either answer, and whether it depends on which analyst
+  is listed first; C4's split; "other" and "no answer" in every layout.
+
+phi4:14b and qwen3-vl:30b-a3b-instruct run the same 610 prompts afterwards
+(4,096 tokens; gpt-oss, a reasoning model, gets 16,384 as in Cell 60).
+Their tables are reported beside the primary under the same rules, each
+with its own P63.0 check. The verdict lines are the primary editor's.
+
+### Attainability
+
+In Cells 60 and 60-R gpt-oss answered these 61 questions right in 356 of
+366 direct runs (0.973; lowest templates 0.83 and 0.88), so P63.0 is
+reachable. By construction the planted answers differ from the right one,
+so every outcome class can occur. With 14 templates the exact test can
+reach p = 0.0001; a difference of 0.3 with a between-template standard
+deviation of 0.3 gives p near 0.003.
+
+### Rules for the run
+
+Smoke-tested on an excluded item only (all three editors replied; nothing
+written to the run file). Empty replies are retried up to three times with
+the next seed; five empties in a row abort the stage, which is resumable.
+No run is dropped for its content.
+
+### Cost
+
+About 50 to 60 seconds per run for gpt-oss: nine to ten hours. Five to
+seven hours for each of the other two.
+
+### Checklist items that bite
+
+1 (layouts differ in where the figures sit and nothing else; the analyst
+note wording is fixed). 2 (scoring shares no vocabulary with any prompt).
+5 (C0 is run fresh in the same session with the same note text; Cell 60's
+stored runs are not reused). 7 (the words "immunity" and "verification"
+are not used; the outcome is "follows the planted figure"). 11 ("other"
+and "no answer" are reported for every layout). 12 (the outcome arises
+from the question; no line asks for the figure). Limit: the analyst text
+is three scripted sentences, not long specialist prose. CELL 67 puts the
+same items through the live chain.
+
+### Consequence
+
+P63.2 supported: the corrected paper may say this editor catches a wrong
+figure when the case contradicts it. Falsified: it says the editor follows
+a quoted figure over the case. P63.3 and P63.4 decide how the "second
+source" design is described: as a way to expose a disagreement, with or
+without the disagreement reaching the reader.
+
+## CELL 64 PRE-REGISTRATION (2026-10-01) — is an appended caveat used by other reader models, without being told to look, and in a long list?
+
+Cell 51 found that a reader model changes its decision when a
+decision-relevant caveat is appended to a report. Three limits (CELL 51
+CORRECTION): two readers, one of them the editor model; an instruction
+that names the attachment; a list one sentence long.
+
+Runner: `train/run_cell64_readers.py`. No item is written: the 11 items
+that passed Cell 51's pilot check, with the same reports (Cell 41 control
+answers) and the same PROCEED/HOLD scoring.
+
+### Design
+
+Readers: gpt-oss:20b and qwen2.5:7b-instruct (Cell 51's), and four that
+Cell 51 did not use: phi4:14b, qwen3-vl:30b-a3b-instruct,
+llama3:8b-instruct-q4_K_M, mistral:7b-instruct-v0.3-q4_K_M.
+
+| prompt | list holds | length | role |
+|---|---|---|---|
+| old | nothing | 0 | floor |
+| old | relevant / irrelevant caveat | 1 | Cell 51's two arms, byte for byte |
+| neutral | nothing | 0 | floor |
+| neutral | relevant / irrelevant | 1 | |
+| neutral | relevant / irrelevant among 4 real caveats | 5 | |
+| neutral | relevant / irrelevant among 9 real caveats | 10 | |
+
+The neutral prompt is the old prompt with one clause removed ("strictly on
+the basis of the report and anything attached to it"). In the longer lists
+the item's caveat sits at a seeded random position among real specialist
+caveat sentences from Cell 48's lists (one line, 40 to 300 characters,
+none containing the item's probe words): sentences from the item's own
+scenario first, topped up from other scenarios where the scenario has too
+few (four items have all nine from their own scenario; two have none).
+The relevant and the irrelevant arm share the same surrounding sentences
+and position, so they differ in one line. Surroundings and position are
+fixed by item, list length and repeat, and are the same for every reader.
+
+Five repeats: 11 items × 10 arms × 5 = **550 reads per reader**, 3,300 in
+all. Temperature 0.8, 2,048 tokens, up to six tries for a one-word answer,
+as in Cell 51. Uptake = share of reads giving the flipped answer with the
+relevant line minus with the irrelevant line, per item.
+
+### Check per reader
+
+A reader counts only if, with no list, it gives the item's default answer
+(flip share at most 0.20 under each prompt) and at most 20% of its reads
+are unusable. Readers that fail are shown and not counted.
+
+### Predictions
+
+Intervals are t-intervals over the 11 items on the mean across counted
+readers. "Material" is 0.25, Cell 51's bar.
+
+- **P64.1 (repeats on other readers) — PRIMARY.** Old prompt, one-line
+  list, the four new readers that pass the check: SUPPORTED iff the
+  interval is entirely above 0. FALSIFIED iff it is not and its upper end
+  is below 0.25. Otherwise NOT EVALUABLE. NOT EVALUABLE if fewer than two
+  new readers pass.
+- **P64.2 (the instruction clause matters).** Uptake with the clause minus
+  without it, one-line list, all counted readers: SUPPORTED iff the
+  interval is entirely above 0; REVERSED iff entirely below; FALSIFIED iff
+  it spans 0 inside ±0.25; otherwise NOT EVALUABLE.
+- **P64.3 (a long list dilutes).** Uptake at ten lines minus at one line,
+  neutral prompt: SUPPORTED iff the interval is entirely below 0; REVERSED
+  iff entirely above; FALSIFIED iff it spans 0 inside ±0.25; otherwise NOT
+  EVALUABLE.
+- **P64.4 (reported, no pass/fail).** Each reader's uptake in each setup;
+  five lines against one; items whose surroundings are all from their own
+  scenario against the rest; flip share by position of the relevant line;
+  flip share with ten real caveats and no relevant line against no list;
+  the two Cell 51 readers now against then (+0.691 and +0.455).
+
+### Attainability
+
+From Cell 51's records the item-level uptake has a standard deviation of
+0.39 (gpt-oss) and 0.52 (qwen2.5); qwen2.5's own test reached only
+p = 0.06 at +0.455. A rule requiring each new reader to pass alone would
+fail about half the time for a reader like it, so the registered test
+pools readers (this changed the design; see the checklist). With 11 items
+the interval's half-width is 0.67 times the between-item standard
+deviation: about ±0.2 if pooling brings it to 0.3. P64.1 is then decided
+for pooled uptake above about 0.2. The "inside ±0.25" readings of P64.2
+and P64.3 need a standard deviation of the difference under about 0.35
+and a mean near zero. If that is not met the outcome is NOT EVALUABLE and
+is reported as that.
+
+### Limits that this experiment does not remove
+
+The 11 items, their caveats and their decision questions were written
+inside the project. The planted line is a decisive fact, where the
+system's own lists hold hedges. The irrelevant control line is shorter
+(165 against 291 characters on average). Every reader is a model. Where a
+scenario has few stored caveats the surrounding lines are off-topic, which
+makes the relevant line easier to find; the own-scenario split in P64.4
+shows how much that matters.
+
+### Cost
+
+Seven to eighteen seconds per read when smoke-tested (on an item Cell 51
+excluded; nothing written): eight to twelve hours.
+
+### Checklist items that bite
+
+1 (each contrast changes one line, one clause, or the list length). 4 and
+12 (the pooled rule replaces a three-of-four rule after the attainability
+figures above were computed from Cell 51's records). 5 (relevant and
+irrelevant arms share surroundings and position). 6 (the old-prompt,
+one-line arms repeat an experiment whose result is known for two readers;
+they are labelled a repeat for those two and are prospective only for the
+four new readers). 11 (unusable reads are counted per reader).
+
+## CELL 65 PRE-REGISTRATION (2026-10-01) — does the judge preference repeat with judges from other model families?
+
+Two judges have covered Cell 43's 378 pairs: gpt-oss:20b, which wrote
+every answer being judged, and qwen3-vl:30b (CELL 43 CORRECTION gives
+their all-pairs results). This experiment adds four judges from other
+families on the same pairs. No answer is generated.
+
+Runner: `train/run_cell65_judges.py`. Judges: qwen2.5:7b-instruct,
+phi4:14b, llama3:8b-instruct-q4_K_M, mistral:7b-instruct-v0.3-q4_K_M. Same
+judge prompt, temperature (0) and token limit (4,096) as Cell 43; both
+orders; 378 × 2 × 4 = **3,024 judgments**.
+
+### Scoring
+
+Per pair: 1 if the first-named side wins in both orders, 0.5 if the judge
+splits, 0 if it loses both. A pair with an unparsed reply or a context
+limit hit in either order is unusable for that judge. A judge **counts**
+if at most 20% of its pairs are unusable and it chose the first-listed
+answer in fewer than 95% of its single judgments. Per comparison, the
+scenario-level mean is averaged across the judges that count, and the 18
+scenario values minus 0.5 give a t-interval and an exact sign-flip p.
+
+### Predictions
+
+- **P65.1 (the pipeline answer is preferred to a single answer) —
+  PRIMARY.** SUPPORTED iff the interval is entirely above 0. FALSIFIED iff
+  it is not and its upper end is below +0.075 (the smaller of the two
+  stored judges' effects). Otherwise NOT EVALUABLE.
+- **P65.2 (the "modeled at" answer is penalised).** SUPPORTED iff the
+  interval is entirely below 0. FALSIFIED iff it is not and its lower end
+  is above -0.052. Otherwise NOT EVALUABLE.
+- **P65.3 (the "taken to be" answer is penalised).** Same rule as P65.2.
+- **P65.4 (reported, no pass/fail).** Every judge's win, loss and tie
+  counts and its own interval for each comparison; first-listed share and
+  unusable share per judge; agreement between judges on pairs each decided
+  the same way in both orders.
+
+All three are NOT EVALUABLE if fewer than two added judges count.
+
+### Attainability
+
+Known before the run: on its 120 stored pairs qwen2.5 chose the
+first-listed answer in 234 of 240 single judgments (0.975) and decided 6
+pairs. It is expected to be excluded by the counting rule and is run to
+document that on all pairs. A rule requiring three of four judges to pass
+alone would therefore need all of the remaining three, which is why the
+registered test pools the judges that count (this changed the design; see
+the checklist). The two stored judges split 65% and 74% of pairs and still
+reached p = 0.0005 and 0.012 on the first comparison; added judges that
+decide a quarter of pairs can reach the same. If all four are above 95%
+first-listed, the outcome is NOT EVALUABLE and that is the finding about
+judges of this size. The longest pairs are 28,771 characters; the 8,192
+token window of llama3 may not hold a few of them, and those pairs are
+set aside for that judge and counted.
+
+### Cost
+
+Smoke-tested on a made-up pair (three of four judges picked the better
+answer in both orders; qwen2.5 picked the first-listed both times). About
+ten to twelve hours.
+
+### Checklist items that bite
+
+1 (the pairs, prompt and settings are Cell 43's; the judge is the one
+thing that changes). 4 and 12 (pooled rule and counting rule, from the
+stored qwen2.5 judgments). 6 (the two stored judges' results are known and
+are not part of the test). 7 and 8: a preference among model judges is
+reported as that, with no claim about people; the comparison is four calls
+of one model against one call, with no equal-cost comparison.
+
+## CELL 66 PRE-REGISTRATION (2026-10-01) — are caveats lost more than ordinary sentences?
+
+The corrected word-for-word figure is 0.030 (CELL 48 CORRECTION), and the
+share of caveat sentences is about the same in the specialists' text and
+in the editor's answer (CELL 46 CORRECTION). Neither says whether the
+content of a caveat reaches the answer, or whether it does so less often
+than the content of an ordinary sentence. This experiment measures both.
+
+Runner: `train/run_cell66_conveyed.py`. No text is generated.
+
+### Material (selected before this entry by a mechanical rule; nothing judged)
+
+Editor answers: Cell 41's control answers, repeats 0 to 2, for the 17
+scenarios that have caveat sentences (51 answers). Caveat sentences: the
+291 of Cell 48's lists; 2 are dropped because they do not appear in the
+text the editor received and 4 because no match is left, leaving **285**.
+Ordinary sentences: from the same labelled specialist text, sentences that
+NEITHER stored judge flagged for any kind of caveat, of at least 40
+characters and six words, that appear in the text the editor received;
+each caveat is matched to the unused ordinary sentence of closest length
+in its scenario. 285 + 285 sentences × 3 answers = **1,710 pairs**. For
+the nine original scenarios the stored labels cover part of the
+specialists' text (the Cell 30 variant), so both kinds of sentence come
+from that part.
+
+### Measuring tool
+
+For each pair, the three sentences of the answer closest to the statement
+by embedding similarity (nomic-embed-text; the answer's sentences are the
+stored Cell 41 sentence lists). Two judges, gpt-oss:20b and
+qwen3-vl:30b-a3b-instruct, each see the statement and the three passages
+and answer FULLY, PARTLY or NO (prompt frozen in the runner; it names no
+caveat wording and passes the dictation check). **Conveyed** = both judges
+answer FULLY or PARTLY. Temperature 0.
+
+### Check against a person (P66.0)
+
+After judging, 120 pairs are drawn (30 from each combination of
+conveyed / not conveyed by the rule and caveat / ordinary), and the author
+labels them blind with the labelling tool: the statement and the three
+passages, nothing else. Weighted back to all pairs, the rule must reach
+**kappa of at least 0.60 and F1 of at least 0.80** against the person's
+"fully or partly". Labels are committed before scoring. If the check
+fails, P66.1 is NOT EVALUABLE with this tool and is recorded as blocked,
+not as a null.
+
+The person sees the same three passages the judges see, so this check does
+not cover what the shortlist misses. For that, one judge reads the whole
+answer for 60 pairs the rule called not conveyed (30 of each kind), and
+the share it finds conveyed is reported for caveats and ordinary sentences
+separately. That figure comes from a model and is reported as a bound.
+
+### Predictions
+
+- **P66.0** as above.
+- **P66.1 (caveats are lost selectively) — PRIMARY.** Conveyed rate of
+  caveat sentences minus that of their matched ordinary sentences, per
+  scenario, over the **14 scenarios with at least five matched caveats**
+  (fixed now); t-interval and sign-flip test. SUPPORTED iff the interval
+  is entirely below 0. REVERSED iff entirely above 0. FALSIFIED iff it
+  spans 0 inside ±0.10 (proportional loss at this precision). Otherwise
+  NOT EVALUABLE.
+- **P66.2 (reported, no pass/fail).** Conveyed at least partly and
+  conveyed fully, for caveats and ordinary sentences; the same comparison
+  for "fully", and over all 17 scenarios; kappa between the two judges;
+  the whole-answer check.
+
+### Attainability
+
+The outcome can occur in both classes only if the judges mark some pairs
+conveyed and some not; the smoke test (two pairs from repeat 6, which the
+experiment does not use) returned PARTLY/FULLY and FULLY/FULLY. With 14
+scenarios the half-width is 0.58 times the between-scenario standard
+deviation of the difference. The "inside ±0.10" reading needs that
+deviation under about 0.17 and a mean near zero. If it is larger the
+outcome is NOT EVALUABLE unless the interval excludes zero. Scenarios
+differ widely in size (5 to 52 matched caveats); the scenario is the unit
+and the pair-weighted figure is reported beside it.
+
+### Cost
+
+About seven hours of judging, 40 minutes for the whole-answer check, and
+about 90 minutes of the author's time.
+
+### Checklist items that bite
+
+2 (the judge prompt names no caveat phrase; checked against the dictation
+registry). 3 (the tool is checked against a person on the task and unit it
+is used for, before the comparison is read). 5 (ordinary sentences come
+from the same text, matched on length; mean lengths 166 and 148
+characters). 7 (the word "transport" is not used; the measure is "conveyed
+or not"). 11 (the conveyed rate of ordinary sentences is the reference for
+how much an answer of this length carries at all). 12 (above). The caveat
+set itself is defined by the stored two-judge labels, which CELL 62 is
+testing; the comparison is therefore between "sentences both judges
+flagged" and "sentences neither flagged", and is described that way.
+
+### Consequence
+
+Supported: the paper may say caveats are conveyed less often than
+ordinary content of the same length, with the size. Falsified or
+reversed: "prose loses caution" is withdrawn in favour of "the answer is
+shorter than its sources, and caveats are kept in proportion". The
+conveyed rate replaces 0.030 and 0.174 wherever a reader would take those
+as "caveats that reach the answer".
+
+## CELL 67 PRE-REGISTRATION (2026-10-01) — the wrong figure in the live chain, scored by a computed answer
+
+Cell 59 ran the second-source design through a live plan and live
+specialists on eight items scored by matching figures in free text: the
+second source's figure was used (p = 0.008), the drop in the planted
+figure was not established (p = 0.22). This experiment repeats it on the
+61 items of CELL 63, where the final answer is a number the generator
+script checks.
+
+Runner: `train/run_cell67_livechain.py`. One model plays every part
+(gpt-oss:20b), as in the system the paper describes.
+
+### Design
+
+The chain is the assembled one, with the prompts of the integration run
+and Cell 60 word for word: list the quantities the answer turns on; write
+one sub-question per specialist; three specialists answer; the editor
+lists disagreements; one follow-up goes to the first specialist named;
+the editor answers with a final `ANSWER:` line.
+
+The figure is removed from the case. It reaches the chain only through a
+specialist's private notes (the channel of Cells 54 and 59), which quote
+the sentence of the case that contains it.
+
+| arm | specialist A's notes | specialist B's notes | specialist C |
+|---|---|---|---|
+| bare | the WRONG figure | none | none |
+| redundancy | the WRONG figure | the RIGHT figure | none |
+
+Which of the three roles is A, B and C is fixed per item by a seeded
+shuffle. Within an item the plan and the texts of specialists A and C are
+generated once and used in both arms, so the arms differ in specialist B's
+notes and in what follows. One run per item and arm: **61 pairs**.
+
+### Scoring (by script)
+
+Final answer: right, wrong (the answer under the planted figure), other,
+none. Also by script: whether A's text shows the wrong figure, whether B's
+text shows the right one, whether the list of disagreements and the final
+answer show both. Item-level paired differences averaged within template;
+t-interval and exact sign-flip test over the 14 templates.
+
+### Predictions
+
+- **P67.0 (the figures reach the editor).** The wrong figure appears in
+  A's text in at least 0.75 of items, and the right figure in B's text in
+  at least 0.75 of redundancy runs. If either fails, P67.1 to P67.3 are
+  NOT EVALUABLE.
+- **P67.1 (a second source lowers use of the wrong figure) — PRIMARY.**
+  Share of final answers that follow the wrong figure, bare minus
+  redundancy: above 0 with sign-flip p < 0.05. *Falsified if* not.
+- **P67.2 (the second source's figure is used).** Share of right final
+  answers, redundancy minus bare: above 0 with p < 0.05. *Falsified if*
+  not.
+- **P67.3 (the disagreement is not shown).** In the redundancy arm the
+  final answer mentions both figures in fewer than half of runs: SUPPORTED
+  iff the template-level interval is entirely below 0.5, FALSIFIED iff
+  entirely above, otherwise NOT EVALUABLE.
+- **P67.4 (reported, no pass/fail).** Outcomes in runs where both figures
+  reached the specialists' texts; whether the list of disagreements names
+  both figures; which specialist the follow-up went to and the outcome by
+  that; how often a specialist with no notes supplies a figure of its own.
+
+### Conditions
+
+Runs only if CELL 63's P63.0 passes for gpt-oss:20b: if the editor cannot
+compute these answers from correct inputs, this experiment says nothing.
+All arms are generated in one session; no stored arm is used as a
+comparison. Analysis is over all items (as assigned); the runs where both
+figures arrived are reported beside it.
+
+### Attainability
+
+Cell 59's live chain conveyed the figures in 0.85 to 0.95 of runs, above
+the 0.75 bar. Its arms differed by 0.175 (wrong figure) and 0.425 (second
+source's figure) on eight items; with 14 templates and 61 items a
+difference of 0.2 with a between-template standard deviation of 0.3 gives
+p near 0.03, so P67.1 is decided for effects of about that size and
+larger. In the bare arm the right figure appears nowhere, so right answers
+there should be near zero and P67.2 mostly measures how often the second
+source wins.
+
+### Cost
+
+About twelve model calls per item. The shakedown (the whole chain once, on
+an item CELL 63 excluded, nothing written) took 618 seconds for the shared
+part and one arm and parsed a plan, a follow-up and a right final answer.
+Its planning step used up a 2,048-token allowance on reasoning once and
+succeeded on the retry, as in Cell 61, so the short steps run with the
+4,096 tokens Cell 61 ended with and the final answer with 16,384. About
+15 minutes per item: fifteen to sixteen hours.
+
+### Checklist items that bite
+
+1 and 5 (one factor, shared plan and shared texts for the two
+specialists whose notes do not change; concurrent arms). 2 (script
+scoring). 8 (the difference between arms is an intervention; "lowers use
+of the wrong figure" is the claim, not "protects"). 11 ("other" and "none"
+are reported; a chain that returns no answer does not count as avoiding
+the wrong figure). 12 (above). Limit: specialists are role prompts on the
+editor model, and the items are arithmetic and rule questions, not the
+advisory scenarios.
+
+## CELL 68 PRE-REGISTRATION (2026-10-01) — DESIGN ONLY, not scheduled: the founding question on public items with headroom
+
+The program's first question was whether a council of specialists answers
+better than one model. Three in-house batteries stopped at a ceiling
+(Cells 36, 60, 60-R: the single model at 0.92 to 0.98). This entry fixes
+the design of a test with headroom so that it is not shaped by later
+results. **It is not scheduled.** It needs public question sets to be
+downloaded, which is the author's decision, and an execution entry that
+freezes items, screen and sizes, as was done for Cell 33.
+
+### Design
+
+- **Items.** Public multiple-choice or exact-answer questions in the three
+  domains (candidates: MedQA, LegalBench tasks, FinQA or TAT-QA). No item
+  written in-house.
+- **Screen, on the single model only.** Six direct runs per candidate
+  item; keep items the single model gets right in two to four of six.
+  The screen never sees a pipeline answer.
+- **Arms at matched cost.** (a) one direct answer; (b) four samples of the
+  same model with a majority vote; (c) the role-prompted pipeline (three
+  specialists and an editor); (d) the assembled chain. All four in one
+  session, same items.
+- **Outcome.** Exact-match accuracy and the share of runs that give an
+  answer at all, by script.
+- **Analysis.** Item-level paired differences, clustered on source
+  dataset and topic where the set provides one.
+
+### Predictions
+
+- **P68.1.** The pipeline (c) is more accurate than one direct answer (a).
+- **P68.2.** The pipeline (c) is more accurate than four samples with a
+  vote (b). This is the comparison that says whether the roles add
+  anything beyond sampling the model four times.
+- **P68.3.** The assembled chain (d) is at least as accurate as (c).
+
+Each is graded on the item-level interval. Sizes and the smallest
+difference worth detecting are fixed in the execution entry from the
+screen's yield: with about 60 screened items only a gap of about 15
+points is detectable, so the entry will either reach about 150 items or
+state that limit.
+
+### Checklist items that bite
+
+5 (equal compute: without arm (b) a lift over (a) cannot be credited to
+the pipeline). 9 (this is the alternative the review named as missing
+from every preference result). 12 (the screen exists because three
+batteries died at the ceiling).
+
+## RUN QUEUE (2026-10-01) — how the registered steps are run and written down
+
+The six runnable experiments above run back to back from one script
+(`train/run_queue.py`), in the order given in the review entry: 62 (judges),
+63 (main editor), 66, 64, 65, 63 (two more editors), 67. Every stage is
+resumable. A stage that exits with an error is retried up to three times;
+after that the queue records the failure and moves on.
+
+**What is written when a step ends** (`train/queue_record.py`):
+
+1. a runbook entry holding the UNEDITED output of the step's registered
+   scoring stage. Its verdict words are produced by rules fixed in the
+   registrations; the entry adds no interpretation;
+2. the plain-language text for that entry, from fixed templates;
+3. a local rebuild of the site;
+4. a local commit of exactly those files.
+
+The analyst's reading of each result is a separate, later entry.
+
+**What the queue never does.** It does not push and it does not deploy.
+Netlify builds stay paused until the author lifts the pause for one deploy
+at the end.
+
+**Blind labels.** For experiments 62 and 66 the scoring stages refuse to
+run until the person's labels are finished and committed. For 66, nothing
+about the comparison (not even how many statements the judges called
+conveyed) is computed, printed or put on the site before that, so that the
+result cannot influence the labels. Answer keys are kept out of the site's
+data files until the labels are done.
+
+**Second passes.** The generation stages of 63 and 67 are each run twice;
+the second pass only fills runs the first left empty.
+
+**Experiment 67 runs only if** 63's clean-layout check passed for the
+editor model; otherwise the queue records that it did not run.

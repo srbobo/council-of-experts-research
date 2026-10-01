@@ -22,8 +22,8 @@
     }
    ],
    "found": "All 80 runs completed, each with a live planning step, three live specialists and the editor. In all 40 plans, the planning step put the named figure into at least two questions. The specialists passed their private figures along in 85% to 95% of runs. A scoring problem with figures written with a space, such as \"37 %\", was caught at the first checkpoint and fixed before the main run.\n\nWithout the second source, the editor repeated the wrong value in 63% of runs and gave the correct value in 5%. With a second specialist holding the correct value, it repeated the wrong value in 45% of runs and gave the correct one in 48%. The rise in using the correct value, 43 percentage points, was a clear difference and close to the 50 points seen in Cell 47.\n\nThe drop in repeating the wrong value, 18 points, went the expected way but was too close to call. It was plausibly anywhere from a 35-point drop to a small rise. Live specialists' answers had already watered the wrong value down: without protection the editor repeated it in 63% of runs, against 90% in Cell 47. The protected level, 45%, matched Cell 47 exactly, so there was less of a drop to detect. In one scenario the result went the other way, with the wrong value repeated in every protected run against 60% unprotected.",
-   "means": "The rebuilt system's protection now has live evidence at every step. The planning step finds about 63% of key figures on its own (Cell 57). Told a figure, it covered it at least twice in 40 of 40 plans. Specialists passed the figures along 85% to 95% of the time, and the editor then used a correct second source far more often. The protection to expect overall is the share of figures found times the gain from a second source. Cell 58's lesson stands too: a specialist passes on a private note only when its question asks for it, which naming the figure guarantees. Why protection works fully on some scenarios and not at all on others is still unexplained.",
-   "later": null,
+   "means": "With every step live, the editor used a second specialist's value when one existed, about as often as in the planted test of Cell 47. The drop in the planted value was too close to call. The planning step finds about 63% of key figures on its own (Cell 57), and told a figure it covered it at least twice in 40 of 40 plans. Cell 58's lesson stands too: a specialist passes on a private note only when its question asks for it. Why the result is complete on some scenarios and absent on others is still unexplained.",
+   "later": "A review in October 2026 recomputed both results over the 8 questions. The rise in the second specialist's value stayed a clear difference. The drop in the planted value stayed too close to call. The paper had reported only the first and now reports both. Cell 67 repeats the live test on 61 questions whose answers a script can check.",
    "entries": {
     "8893": {
      "label": "Plan",
@@ -39,6 +39,11 @@
      "label": "Result",
      "title": "Correct second source used, drop in wrong values too close to call",
      "summary": "All 80 runs completed, and every plan covered the figure at least twice. Use of the correct value rose from 5% to 48% of runs, close to Cell 47. Repeating the wrong value fell from 63% to 45%, too close to call, because live answers had already lowered the unprotected rate from Cell 47's 90%."
+    },
+    "9871": {
+     "label": "Correction",
+     "title": "Both halves of the result, recomputed over 8 questions",
+     "summary": "The second specialist's value appeared in 19 of 40 runs against 2 of 40 without it, a clear difference. The planted value appeared in 18 of 40 against 25 of 40, too close to call. The paper had quoted the earlier planted test for the drop and left this half out."
     }
    }
   },
@@ -102,8 +107,8 @@
     }
    ],
    "found": "All 54 runs of the harness completed once the length allowances were raised. Each of the 108 pairs was judged in both orders by two AI judges, and a pair counted only when the same side won both times.\n\nThe main judge, gpt-oss-20B, picked a consistent winner in 48 pairs: 27 for the harness and 21 for the original design. That is 56% for the harness, not a clear difference from an even split. The second judge, Qwen3-VL, from a different model family, picked a consistent winner only 15 times: 5 for the harness and 10 for the original, leaning the other way on very few matchups. The main judge's results rule out a big win for the harness (77% of matchups or more) and a big loss (37% or less).\n\nWith the caveats section removed, the main judge's share for the harness fell to 49%, so the section moved preference 7 points toward the harness, a measurement without a pass or fail test. Reports were of similar length, 8,725 characters with the caveats section against 7,758, and carried 5 caveats each on average. Follow-up questions went to a specialist in 46 of 54 runs (85%), against 21% to 58% in earlier tests with planted disagreements.",
-   "means": "The judges showed no clear preference between the harness and the original design, and a large difference was ruled out. The harness's standing with AI judges comes from combining several answers in the first place (Cell 43), which both designs share. Its distinctive parts, a second source for key figures, the separate caveats section and follow-up questions to specialists, were never meant to win preference. They rest on their own cells, and adding them cost nothing we could detect. Real disagreements between specialists turned out to be common: follow-up questions went out in 85% of runs, far more often than in earlier tests with planted disagreements. The comparison used one editor model and our 18 scenarios.",
-   "later": null,
+   "means": "The judges showed no clear preference between the harness and the original design, and a large difference was ruled out. The harness's standing with AI judges comes from combining several answers in the first place (Cell 43), which both designs share. Its distinctive parts, a second source for key figures, the separate caveats section and follow-up questions to specialists, were never meant to win preference. They rest on their own cells. Adding them showed no detectable effect on preference, and it costs about 14 model calls per question against 4. Real disagreements between specialists turned out to be common: follow-up questions went out in 85% of runs, far more often than in earlier tests with planted disagreements. The comparison used one editor model and our 18 scenarios.",
+   "later": "A review in October 2026 recounted every pair: 53% for the rebuilt system with the main judge and 48% with the second, both too close to call. The second judge's results could not rule out a large loss. The rebuilt system also builds its caveats section with a simpler method than Cell 48 tested, and the old system's reports were saved three weeks earlier.",
    "entries": {
     "9294": {
      "label": "Plan",
@@ -124,6 +129,11 @@
      "label": "Result",
      "title": "No clear preference either way, and large differences ruled out",
      "summary": "All 54 runs completed. The main judge picked the rebuilt system in 27 of 48 matchups with a consistent winner (56%), the second judge in 5 of 15 (33%). Neither was a clear difference, but the main judge ruled out a large win or loss. Follow-up questions went to a specialist in 46 of 54 runs."
+    },
+    "9985": {
+     "label": "Correction",
+     "title": "One judge, not both, ruled out large differences",
+     "summary": "The result's title said large effects were ruled out in both directions. That holds for the main judge only. The second judge settled 15 pairs, too few to rule out a large loss. Counting every pair, the rebuilt system scored 53% and 48%, both too close to call. One question costs about 14 model calls against 4."
     }
    }
   }

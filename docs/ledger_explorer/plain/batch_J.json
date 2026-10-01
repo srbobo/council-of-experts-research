@@ -3,8 +3,8 @@
  "cells": {
   "47": {
    "title": "Does giving a key number to a second specialist block errors?",
-   "description": "We planted a wrong number with one specialist and, in one version, also had a second specialist state it correctly. The overlap halved how often the error reached the final answer, from 90% to 45%, but it worked completely for some numbers and not at all for others.",
-   "outcome": "held",
+   "description": "We planted a value for a figure with one specialist and, in one version, had a second specialist state a different value. With one source the editor repeated the planted value in 90% of runs. With two, it gave one value or the other about evenly.",
+   "outcome": "mixed",
    "size": "80 runs over 8 scenarios",
    "why": "The rebuilt system, which we call the harness, includes a planning step that gives each key number to more than one specialist. The idea is that if one specialist gets a number wrong, another has it right, and the editor can use the right one. Cells 35 and 37 had seen this protection when overlap happened by chance. With a correct second source, the error reached the final answer in 0 of 27 runs, against 5 of 27 and 12 of 27 runs without one. No cell had yet tested the overlap itself as the only difference between two setups. This cell did, and we wrote down the plan and what we expected before running it.",
    "expectations": [
@@ -12,13 +12,13 @@
      "id": "L2.1",
      "text": "The wrong number would reach the final answer less often when a second specialist had also been given that number and stated it correctly.",
      "outcome": "held",
-     "note": "The wrong number appeared in 90% of runs with one source and 45% of runs with two, a clear difference. The second source halved how often the error got through."
+     "note": "The planted value appeared in 36 of 40 runs with one source and 18 of 40 with two, a clear difference over the 8 questions."
     },
     {
      "id": "L2.2",
      "text": "The correct number would appear more often with two sources. That would show the editor used the second source, rather than the wrong number merely being crowded out.",
-     "outcome": "held",
-     "note": "The correct number appeared in 50% of two-source runs and in none of the one-source runs. There it existed nowhere, and the editor never made it up."
+     "outcome": "unclear",
+     "note": "The second value appeared in 20 of 40 two-source runs and in none with one source. Recomputed over the 8 questions, three of which showed no change, that fell just short of a clear difference."
     },
     {
      "id": "L2.3",
@@ -27,9 +27,9 @@
      "note": "Neither number appeared in 4 one-source and 7 two-source runs, and both appeared in 5 two-source runs. Answers averaged 7,217 characters with one source and 7,780 with two."
     }
    ],
-   "found": "All 80 runs completed. In each of 8 scenarios we added one number, such as a price, a rate or a budget, and one specialist stated it wrongly. The question asked for that figure. In one version that specialist was the only source. In the other, a second specialist also stated the number, with the value we had chosen as correct. The test was about which source the editor followed, not real-world accuracy. Answers were scored by exact match, with no AI judge.\n\nWith one source, the editor repeated the wrong number in 36 of 40 runs (90%), the project's strongest single measurement of the editor passing on an error without checking it. With two sources, the wrong number appeared in 18 of 40 runs (45%) and the correct one in 20 of 40 (50%).\n\nProtection was uneven. Three numbers were fully or almost fully protected, two not at all, and three partly. The two failures differed. For a vendor's price per user, the editor used only the finance specialist's wrong value. For an agency's markup, it stated both values but chose the wrong 42%, calling it \"typical (industry-average)\", a label no specialist had used. Earlier, a first pilot had seemed to fail its checkpoint because our matcher missed numbers written with unusual spacing or hyphens. We fixed the matcher, re-scored the same answers, and replaced one item's values that broke a construction rule.",
-   "means": "The harness's claim that planned overlap protects against errors held up in a test written down before it ran. The harness design document gained a warning: the protection worked completely for some numbers and not at all for others, so the average halving should not be quoted as if it applied to every number. Which numbers get protected became an open question. The close reading suggested the editor chooses by which specialist's field a number seems to belong to and by what it already expects, not by which source is reliable. Cells 49 and 50 followed up on those ideas.",
-   "later": "Cells 49 and 50 tested explanations for the uneven protection and none survived, so the cause is still open. Cell 57 found the planning step names only about 6 in 10 key numbers, which limits the protection in practice. In Cell 59, with every step run live, the correct number was still used almost as often. The drop in the wrong number was too close to call there, because with live specialists the error got through less often even without overlap.",
+   "found": "All 80 runs completed. In each of 8 scenarios we added one number, such as a price, a rate or a budget, and one specialist stated it wrongly. The question asked for that figure. In one version that specialist was the only source. In the other, a second specialist also stated the number, with the value we had chosen as correct. The test was about which source the editor followed, not real-world accuracy. Answers were scored by exact match, with no AI judge.\n\nWith one source, the editor repeated the planted number in 36 of 40 runs (90%). The number could not be checked against anything in the scenario, and the question asked for it. With two sources, the planted number appeared in 18 of 40 runs (45%) and the other one in 20 of 40 (50%).\n\nProtection was uneven. Three numbers were fully or almost fully protected, two not at all, and three partly. The two failures differed. For a vendor's price per user, the editor used only the finance specialist's wrong value. For an agency's markup, it stated both values but chose the wrong 42%, calling it \"typical (industry-average)\", a label no specialist had used. Earlier, a first pilot had seemed to fail its checkpoint because our matcher missed numbers written with unusual spacing or hyphens. We fixed the matcher, re-scored the same answers, and replaced one item's values that broke a construction rule.",
+   "means": "A second source with a different value changed the editor's answer about half the time. We first described this as planned overlap protecting against errors, and the design document said it halved them. A review in October 2026 pointed out that neither value could be checked, so the editor was choosing between two sources it had no way to test, and its answer did not show that two values existed. The change was complete for some figures and absent for others. Cells 49 and 50 followed up on why.",
+   "later": "Cells 49 and 50 tested explanations for the uneven result and none survived. A review in October 2026 recomputed it over the 8 questions: the drop in the planted value stayed a clear difference and the rise in the other value fell just short. We dropped the words halves and causal. Cell 63 tests a wrong figure the editor can check, and Cell 67 the full live system on 61 questions.",
    "entries": {
     "7348": {
      "label": "Plan",
@@ -45,12 +45,17 @@
      "label": "Note",
      "title": "Why protection failed completely on two numbers",
      "summary": "We read 10 runs. For a vendor's price per user, the editor took only the finance specialist's wrong value and never mentioned the correct one. For an agency markup, it stated both values but chose the wrong 42%, calling it \"typical (industry-average)\", a label no specialist used. Our working guess: the editor picks by field and by what it expects, not by which source is reliable."
+    },
+    "9838": {
+     "label": "Correction",
+     "title": "Recomputed over 8 questions, and what repeating the value shows",
+     "summary": "Over the 8 questions, the drop in the planted value stayed a clear difference (36 of 40 runs to 18 of 40). The rise in the second value (20 of 40) fell just short of one. The review also noted that the planted value could not be checked and the question asked for it, so repeating it was following the request. With two sources the editor picked one about evenly."
     }
    }
   },
   "48": {
    "title": "Does a separate caveats section keep caveats without a penalty?",
-   "description": "We attached the specialists' caveat sentences to the editor's unchanged reports as a separate section. It carried every caveat, against 17% in the editor's prose, but whether AI judges penalize the section was too close to call.",
+   "description": "We attached the specialists' caveat sentences to the editor's unchanged reports as a separate section, which holds every caveat by construction. The editor's prose repeated 3% word for word, not the 17% first reported. Whether AI judges penalize the section was too close to call.",
    "outcome": "mixed",
    "size": "No new answers, 159 pairs of reports judged",
    "why": "The rebuilt system, which we call the harness, does not rely on the editor to carry caveats. It copies them into a separate caveats section attached to the end of the report, which the editor never touches. Three earlier findings led to this design. The editor passes along only a small share of the caution it is given, losing 67% to 89%. An instruction to keep caveats mostly produces the exact phrase it names. And caveat phrases written into the prose made AI judges prefer the answer less. This cell tested the design's main bet: that the section keeps the caveats without that preference penalty.",
@@ -59,7 +64,7 @@
      "id": "P48.1",
      "text": "With the section attached, at least 95% of the specialists' caveat sentences would appear in the final report. In the editor's prose alone, at most 35% would.",
      "outcome": "held",
-     "note": "All 2,079 caveat sentences appeared with the section attached. Only 361 of the 2,079 (17%) appeared in the editor's prose alone."
+     "note": "Every caveat sentence appeared with the section attached, which is true by construction. The editor's prose alone repeated 61 of 2,037 word for word (3%). We first reported 361 of 2,079 (17%), a scoring bug."
     },
     {
      "id": "P48.2",
@@ -74,9 +79,9 @@
      "note": "The main judge called 65 of 116 usable pairs a tie. The second judge, Qwen3-VL, answered \"A\" in all 80 of its calls, always picking the report it read first, so it settled nothing."
     }
    ],
-   "found": "No new answers were written. Both versions used the same saved editor reports from Cell 41, so the only difference was the section. No model wrote it. It was built mechanically from specialist sentences that two AI judges had both labeled as caveats in earlier cells. Before judging, we dropped one scenario, a simple hand-hygiene question built to need no caveats, because it had no such sentences to list. That left 17 scenarios and 119 pairs.\n\nThe section carried all 2,079 caveat sentences. The editor's prose alone kept 361 (17%). This new, direct count falls inside the range earlier cells had estimated by a different method, 11% to 33% of the specialists' caution reaching the final answer. It was the third separate estimate to agree.\n\nWe showed each pair to the judges in both orders and counted a win only when a judge picked the same report both times. The main judge, gpt-oss-20B, did so for 51 pairs, called 65 ties and gave 3 unreadable replies. The report with the section won 51% of the 51, plausibly anywhere from 27% to 75%. That is far from the 20% to 32% seen for caveats in the prose, but too uncertain to settle. The second judge always picked the report it read first. We also fixed a printout bug that showed zero ties when a judge settled nothing. The estimates were unaffected.",
-   "means": "Half of the section's design bet was settled. The section carries every caveat, where the editor's prose keeps about one in six. The other half, whether judges penalize it, stayed open. There was no sign of the penalty that caveats in the prose receive, but too few settled matchups to rule it out. A clear answer would need more scenarios, or a judge that calls fewer ties on nearly identical reports. Whether a reader actually uses the section became the question for Cell 51.",
-   "later": "Cell 51 found that a reader does act on what the section says, almost as often as when the same caveat sits in the prose. In Cell 61, removing the section from the harness's reports lowered their share of wins against the old system's reports from 56% to 49%. That small nudge in the section's favor was reported without a pass/fail test, and it fits the no-penalty reading here.",
+   "found": "No new answers were written. Both versions used the same saved editor reports from Cell 41, so the only difference was the section. No model wrote it. It was built mechanically from specialist sentences that two AI judges had both labeled as caveats in earlier cells. Before judging, we dropped one scenario, a simple hand-hygiene question built to need no caveats, because it had no such sentences to list. That left 17 scenarios and 119 pairs.\n\nThe section held every caveat sentence, which is true by construction. The editor's prose alone repeated 61 of 2,037 word for word (3%). We first reported 361 of 2,079 (17%) and called it the third estimate to agree with earlier ones. That figure came from a scoring bug, corrected in October 2026.\n\nWe showed each pair to the judges in both orders and counted a win only when a judge picked the same report both times. The main judge, gpt-oss-20B, did so for 51 pairs, called 65 ties and gave 3 unreadable replies. The report with the section won 51% of the 51, plausibly anywhere from 27% to 75%. That is far from the 20% to 32% seen for caveats in the prose, but too uncertain to settle. The second judge always picked the report it read first. We also fixed a printout bug that showed zero ties when a judge settled nothing. The estimates were unaffected.",
+   "means": "The section holds every caveat because it is built from them. The editor's prose repeats very few word for word, but that does not show how many it conveys in its own words, which Cell 66 measures. Whether judges penalize the section stayed open. There was no sign of the penalty that caveats in the prose receive, but too few settled matchups to rule it out. Whether a reader actually uses the section became the question for Cell 51.",
+   "later": "A review in October 2026 found the 17% figure was a scoring bug. The corrected figure is 3%, and it counts only word-for-word copies. Counting every pair, the judges split almost evenly on the section (50%). Cell 51 found that a reader model acts on a sentence placed in the section. Cell 66 measures whether caveats are conveyed in the editor's own words.",
    "entries": {
     "7513": {
      "label": "Plan",
@@ -87,6 +92,11 @@
      "label": "Result",
      "title": "Every caveat carried, the judges' view too close to call",
      "summary": "The section carried all 2,079 caveat sentences, against 17% for the editor's prose. The main judge preferred the report with the section in 51% of settled matchups, too uncertain to confirm or rule out a penalty. The second judge always picked the report it read first."
+    },
+    "9726": {
+     "label": "Mistake caught",
+     "title": "The 17% figure was a scoring bug",
+     "summary": "The scoring script read the caveats back one line at a time. About a quarter ran over several lines and were cut to their first line, often a single table character found in any report with a table. Scored on the full sentences, the editor's prose repeated 61 of 2,037 caveats word for word, 3%, not 17%. The match with earlier estimates was an accident of the bug."
     }
    }
   },
@@ -195,8 +205,8 @@
     }
    ],
    "found": "We used one saved report per scenario from Cell 41 and wrote 18 test items. Each had a caveat that should change a decision and a question that the reader, gpt-oss-20B, had to answer with one word, PROCEED or HOLD. In some items the caveat should make the reader stop, and in others it should let the reader go ahead. That way, a reader that simply grew more cautious could not pass for one that used the caveat.\n\nA pilot dropped 7 items, all of the stopping kind, because the reader mostly answered HOLD even with no caveat. The plan capped such no-caveat changes at 20% without saying over which items. Over all 18 it was 33%, over the 11 kept items 0%. We applied it to the kept items and recorded both. The main test had 440 reads across two readers, with no unusable replies.\n\nWith no caveat, the reader never changed its decision. An irrelevant caveat in the section changed it in 4% of reads, the relevant caveat in the section in 73%, and the same caveat in the prose in 82%. On items where the caveat should let the reader go ahead, 40% to 100% of reads switched to PROCEED, so the effect was not a general lean towards caution. A smaller second reader, Qwen2.5-7B, showed the same pattern at a lower level (55% against 9%). Where it failed, it failed with the caveat in the prose too. Most items worked completely or not at all.",
-   "means": "The section works as a channel, not a display. A caveat placed there changed a reader's decision almost as often as the same caveat in the prose, and an irrelevant caveat in the same place changed almost nothing. With Cell 48, the section's design had now been tested on all three counts: it carries every caveat, no preference penalty was detected, and readers act on what it says. The limits are one set of saved reports, one main reader, caveats we planted, and the 11 of 18 items that passed the pilot.",
-   "later": null,
+   "means": "The section works as a channel, not a display. A caveat placed there changed a reader's decision almost as often as the same caveat in the prose, and an irrelevant caveat in the same place changed almost nothing. With Cell 48, the section's design had now been tested on three counts: it holds every caveat, no preference penalty was detected, and a reader model acts on what it says. The limits are one set of saved reports, one main reader, caveats we planted, and the 11 of 18 items that passed the pilot.",
+   "later": "A review in October 2026 confirmed the main result over the 11 items and listed its limits. The reader was a model, told to use anything attached, and the section held one sentence placed just before the question. The second reader's result was too close to call. Cell 64 tests six reader models, a neutral instruction and longer sections.",
    "entries": {
     "7856": {
      "label": "Plan",
@@ -212,6 +222,11 @@
      "label": "Result",
      "title": "Readers act on the section almost as much as on the prose",
      "summary": "Across 440 reads, a relevant caveat in the section changed the decision 73% of the time, an irrelevant one 4%, and the same caveat in the prose 82%. The gap between section and prose was small enough to count as no measurable loss. A smaller second reader showed the same pattern at a lower level."
+    },
+    "9948": {
+     "label": "Correction",
+     "title": "Recomputed over 11 items, with the limits stated",
+     "summary": "Over the 11 items the main reader's result stayed a clear difference: 69 points (plausibly 43 to 96). The second reader's 45 points was too close to call. The review listed the limits: a model reader that was told to use anything attached, a section of one sentence placed before the question, and a deciding fact written for each item."
     }
    }
   },

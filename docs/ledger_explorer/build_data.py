@@ -41,6 +41,14 @@ ANALYSIS_DIR_RULES = {
 }
 
 
+# files that reveal which kind each blind-labelling item is -> the labelling task that must finish first
+BLIND_KEYS = {"bench/analysis/cell66/pairs.json": "cell66_conveyed",
+              "bench/analysis/cell66/shortlist.json": "cell66_conveyed",
+              "bench/runs/cell66_conveyed.jsonl": "cell66_conveyed",
+              "bench/runs/cell66_misscheck.jsonl": "cell66_conveyed",
+              "bench/analysis/cell62/judge_labels.json": "cell62_sentences"}
+
+
 def mode_owner(mode):
     for pat, owner in MODE_RULES:
         if re.match(pat, mode):
@@ -196,6 +204,32 @@ BASELINE_ENTRY = {
 }
 
 
+_CHUNK_RE = re.compile(r'^window\.__ledgerChunk\((.*?),"([A-Za-z0-9+/=]*)"\);$', re.S)
+
+
+def write_chunk(fname, eid, raw):
+    """Write one data chunk and return its encoded length. A chunk whose
+    payload is unchanged keeps the bytes of the copy already in site_v3/data
+    (the committed site), and new chunks are compressed without a timestamp,
+    so a rebuild changes only the files whose contents changed."""
+    target = os.path.join(DATA_DIR, fname)
+    for prior in (os.path.join(ROOT, "site_v3", "data", fname), target):
+        try:
+            text = open(prior, encoding="utf-8").read()
+            m = _CHUNK_RE.match(text)
+            if m and gzip.decompress(base64.b64decode(m.group(2))) == raw:
+                if prior != target or not os.path.exists(target):
+                    with open(target, "w", encoding="utf-8") as fh:
+                        fh.write(text)
+                return len(m.group(2))
+        except Exception:  # noqa: BLE001
+            continue
+    b64 = base64.b64encode(gzip.compress(raw, 9, mtime=0)).decode("ascii")
+    with open(target, "w", encoding="utf-8") as fh:
+        fh.write('window.__ledgerChunk(%s,"%s");' % (json.dumps(eid), b64))
+    return len(b64)
+
+
 def build_baseline_entry(program):
     if not any(p["id"] == BASELINE_ENTRY["id"] for p in program):
         program.append(dict(BASELINE_ENTRY))
@@ -232,10 +266,22 @@ def build(ledger):
             return
         e["sources"].append(src)
 
+    def blind_key_held_back(rel):
+        """Answer keys for blind labelling stay off the site until the labels are
+        finished (bench/labels/<task>/labels_pass1.done exists). BLIND_KEYS maps
+        other files that reveal what an item is to the task they belong to."""
+        m = re.match(r"bench/labels/([^/]+)/key\.json$", rel)
+        task = m.group(1) if m else BLIND_KEYS.get(rel)
+        return bool(task) and not os.path.exists(os.path.join(ROOT, "bench", "labels", task, "labels_pass1.done"))
+
     def attach_file(eid, full, role):
         rel = os.path.relpath(full, ROOT)
         key = "file:" + rel
         if any(s["key"] == key for s in ent(eid)["sources"]):
+            return
+        if blind_key_held_back(rel):
+            add_source(eid, key, os.path.basename(full), "skipped", rel, role,
+                       {"n": 0, "note": "held back until the blind labels are finished", "size": os.path.getsize(full)})
             return
         name = os.path.basename(full)
         size = os.path.getsize(full)
@@ -442,12 +488,8 @@ def build(ledger):
         sources.sort(key=lambda s: (order.get(s["kind"], 8), s["path"]))
         chunk = {"entity": eid, "sources": sources, "prompts": e["prompts"], "notes": e["notes"], "strings": T.strings}
         raw = json.dumps(chunk, ensure_ascii=False).encode("utf-8")
-        gz = gzip.compress(raw, 9)
-        b64 = base64.b64encode(gz).decode("ascii")
         fname = "cell_%s.js" % re.sub(r"[^A-Za-z0-9]+", "_", eid)
-        with open(os.path.join(DATA_DIR, fname), "w", encoding="utf-8") as fh:
-            fh.write('window.__ledgerChunk(%s,"%s");' % (json.dumps(eid), b64))
-        size = len(b64) + 40
+        size = write_chunk(fname, eid, raw) + 40
         total += size
         manifest[eid] = {
             "file": "data/" + fname, "bytes": size, "raw_bytes": len(raw),
@@ -459,10 +501,7 @@ def build(ledger):
         print("  %-18s %6.1f MB raw → %5.2f MB chunk  sources=%d prompts=%d" % (eid, len(raw) / 2**20, size / 2**20, len(sources), len(e["prompts"])))
     shared = {"cases": cases, "council_prompts": council_prompts, "mode_counts": mode_counts}
     sraw = json.dumps(shared, ensure_ascii=False).encode("utf-8")
-    sb64 = base64.b64encode(gzip.compress(sraw, 9)).decode("ascii")
-    with open(os.path.join(DATA_DIR, "shared.js"), "w", encoding="utf-8") as fh:
-        fh.write('window.__ledgerChunk("shared","%s");' % sb64)
-    total += len(sb64)
+    total += write_chunk("shared.js", "shared", sraw)
     print("data total: %.1f MB across %d chunks" % (total / 2**20, len(manifest) + 1))
     return manifest
 

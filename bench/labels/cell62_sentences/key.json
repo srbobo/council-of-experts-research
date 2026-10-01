@@ -1,0 +1,6931 @@
+{
+ "seed": 62,
+ "strata": {
+  "hedging|both|editor": {
+   "pool": 570,
+   "sampled": 17
+  },
+  "hedging|both|specialist": {
+   "pool": 55,
+   "sampled": 17
+  },
+  "hedging|one|editor": {
+   "pool": 1351,
+   "sampled": 17
+  },
+  "hedging|one|specialist": {
+   "pool": 143,
+   "sampled": 17
+  },
+  "jurisd|both|editor": {
+   "pool": 872,
+   "sampled": 17
+  },
+  "jurisd|both|specialist": {
+   "pool": 117,
+   "sampled": 17
+  },
+  "jurisd|one|editor": {
+   "pool": 1034,
+   "sampled": 17
+  },
+  "jurisd|one|specialist": {
+   "pool": 211,
+   "sampled": 17
+  },
+  "modeled|both|editor": {
+   "pool": 168,
+   "sampled": 17
+  },
+  "modeled|both|specialist": {
+   "pool": 27,
+   "sampled": 17
+  },
+  "modeled|one|editor": {
+   "pool": 734,
+   "sampled": 17
+  },
+  "modeled|one|specialist": {
+   "pool": 90,
+   "sampled": 17
+  },
+  "none|none|editor": {
+   "pool": 4560,
+   "sampled": 100
+  },
+  "none|none|specialist": {
+   "pool": 507,
+   "sampled": 100
+  }
+ },
+ "items": {
+  "sa7091524": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sf9447b34": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s8e412588": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s30e099d6": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s1f18de6b": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s133d7635": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s757c7a76": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s6ceadfa7": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s44772e41": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sc8b29af3": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "se26a647e": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sf4cdf847": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s89694710": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s32903e0f": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "seb9068b2": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sb033a097": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sd1a35ee1": {
+   "stratum": "hedging|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sd4623c05": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s905fbbf1": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sc2b6cbd6": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "safb7c022": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sd4618994": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sb8415628": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s698e0429": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sb5253025": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s67f91de0": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sf85f30e8": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s8e5d63c3": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s1416d355": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s15201cde": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sf41fedcb": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s4d084cc1": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sb06a6d8b": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sa926c474": {
+   "stratum": "hedging|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s5ca03979": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd963c660": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc0371541": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s0493c559": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb4bcc1a3": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sc8505da9": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1f1c1682": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4bab1266": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sf616a862": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0097288f": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0244f49a": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1491b72b": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf736435c": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s0ecbccde": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s7ad8f853": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s26c248cd": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s96368a66": {
+   "stratum": "hedging|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s32c05444": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    }
+   }
+  },
+  "s8c8c1b03": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sdfede572": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3a92db09": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s7b068470": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s29b7fa29": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    }
+   }
+  },
+  "s43d17b5d": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s65c14829": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sea290058": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8f56e878": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s04f23021": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sb79e4e71": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s5a2edcae": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s1d88462e": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    }
+   }
+  },
+  "sdf98a091": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc21c5314": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2e7d991c": {
+   "stratum": "hedging|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s7afac3c1": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s36a6f1b1": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sae646493": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s37600027": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sf56d1f3f": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sd40ebd1f": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sad7a4357": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sa712ffa0": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s73630062": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sc2fb6d0a": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s13c413a5": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "saa5010e0": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sdd2908cf": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    }
+   }
+  },
+  "s13bc7754": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sfcda8fdb": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sed089c10": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "se73441ef": {
+   "stratum": "jurisd|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s8195c625": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sd0673997": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "se55fd37e": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sdf8af642": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s600747ac": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s1cba0e94": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sb5f8474b": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s71c780ca": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s928f0d99": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s2dbc88ed": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s6de13b66": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s5aa6141d": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sa2ce37a4": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sdaec7252": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s27414af6": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s1fb07ec1": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s5051f146": {
+   "stratum": "jurisd|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sbf403ae1": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sb4ade355": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "se7bc931d": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s48177fa6": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4e79da43": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd1333d7c": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s61ba0d2d": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6415dd91": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "se1c04862": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sa9c2ccc7": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s870cd853": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s30bc06ed": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sbfe9176c": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf977d7c0": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s28cedf36": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s4a757d1b": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6fe54b91": {
+   "stratum": "jurisd|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s935ed132": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s8d1d95a0": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s255f73a8": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s25d0e045": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s75065671": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sb796bcb5": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc2491517": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sc8c6d416": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sa9c68d97": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s8aec4e1d": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s1ccc695d": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd3106663": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s0a2eab79": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sd0e2a639": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa03afb2d": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9053cc09": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se3746bc6": {
+   "stratum": "jurisd|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sd6bfd5d9": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s4d01135e": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8a366d9d": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8b4a8668": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s5b1b19b6": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sab43d894": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb06f6701": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2cbb1a2a": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s64df8156": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4b897ae4": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s1ff80f95": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s20025605": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9ecbcca3": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "scbb08acb": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa35fd36d": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se1efe400": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s28123a1f": {
+   "stratum": "modeled|both|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2f06f773": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "sba7c86d4": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s00ce7987": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s958c110c": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s61d2d279": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0acf97fb": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1520564a": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s70d92669": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4e1e6ee4": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb799fe74": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s482c549f": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s01b31c4a": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s62fe5b17": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0eb926f0": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s01776b6a": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s45c81508": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s054699e6": {
+   "stratum": "modeled|both|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4f010a7b": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd32f7664": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s74e4adfd": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sab67db90": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3b5ecf84": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6d44a685": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "se49cc446": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb3d805e9": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "sa8d7faa5": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s00b03e8d": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7ef66e8b": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6b72d5b4": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s51254a5c": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc7c754b8": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6c704350": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "saa4c6982": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se9dff27f": {
+   "stratum": "modeled|one|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sef2bc33e": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s849fa40c": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": true
+    }
+   }
+  },
+  "s7a9e8ef8": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2b704a8d": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd2b9e8b2": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": true
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf892affe": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf67f8eb0": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s48c7b144": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s224d1660": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9b5a855e": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4ceb0e53": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1cb958fe": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7973041c": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s441d3f15": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9bc53ec2": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": true,
+     "jurisd": false
+    }
+   }
+  },
+  "s438b7f34": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sec87c19e": {
+   "stratum": "modeled|one|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": true,
+     "hedging": true,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s905c74cf": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc0a61d68": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s420c3743": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8bf71e93": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s957d09e0": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sacaad158": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2f736dec": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4e93c2d7": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb7e7cc45": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se368ce89": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9a81c0ee": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sabc07edc": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "scf7e0857": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0615ef6f": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "saf9e3c86": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0a5b66b5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1454ba9b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "scada9f2a": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s64e676a8": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf806b80a": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s03b30074": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3e53d11d": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb125a39e": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9f7873c5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s69cefabd": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sdf688f2b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s40f42379": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6526bef3": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa068b6ce": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9b947ae2": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1b2247a0": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9c8ca289": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s50668fee": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s61cc11c6": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb638abdb": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se65a8b7b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0335ce1c": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8a48254e": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sce7c7999": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s58f000db": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sff81f03d": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se99f1780": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7386a64c": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0c0751c3": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sad8cd4af": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb3a80bbc": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se1944ba8": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3776b400": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf16b7787": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s006639bc": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sfbfab35f": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2edb0ab5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7fd76392": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s940ac5bf": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s138c4ba9": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s573c8ff6": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9b3fd571": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sdfddcfbb": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6055b047": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6840744d": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf89ea43f": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s98de8d32": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa788949c": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sbfd9108f": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9ac99fc6": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6f7da05b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s2fa1eb34": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0bdd5852": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd4e19c12": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1fb95fe5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s211c36e5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa75449e4": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s683518e0": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3b5d1057": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa6189f20": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7c4c6366": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0d51eab4": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sbb2403ef": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s976f3e7b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc38fce89": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s46927c72": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4bfd12d5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sca22b9d5": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0aa1719f": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s23db34ec": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sfe804c28": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sfddda56d": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sce90fe7c": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s54fd0abd": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s90819f81": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "scc63d74b": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "saf3e7da3": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s93455597": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sbd89e62d": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf18f2904": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9df3ed45": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0facf4d7": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sab3eea3c": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sba23d66e": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc92cb439": {
+   "stratum": "none|none|editor",
+   "source": "editor",
+   "cell": "41",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6065455d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0143e475": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s28234a7d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1b5e58c8": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6e71d78f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s45194d04": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd24429ab": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s66c992b6": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf01120aa": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s83cf6b88": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3c712135": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9e9bcf70": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3da02c1c": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1524a001": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s54607b1e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s79497ddb": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1cbe97fd": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s5fe639ce": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6da5dd6e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1561ffaf": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s62b70412": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sac858a8f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf88a695c": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb56ae405": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s03dae473": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0a4ab8c3": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s38edb704": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9609f3e8": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf161bd9f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sda6f97ca": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s22457650": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s5f137384": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s55b66f9b": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s605f186b": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s62435db7": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s558746aa": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6b5590dc": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4b03545c": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb4ced170": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s486f65d5": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8f19a6f2": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0c04b8a8": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd376c89a": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s948a73ed": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6945f8e1": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd016cb75": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s68f13e1b": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s330b6728": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s28eca55c": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s74df894d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0dc8ed8f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf735159f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0de525fa": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6f1013b5": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s9535705d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s229d7a2d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se740064f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s29b3c833": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sbb35865e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s3cc592d4": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s711f1232": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s33526b64": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7e16fc83": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa5523968": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd8bfd9a2": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s10266be0": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se388875e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sf2bf8d07": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "scfc9bc26": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "scaa366e4": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s68bd9aa2": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb8f90fdd": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sa893fd95": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1e62bcec": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s23a46279": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s60272f68": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sb79266ae": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s4a030d8c": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc5ba2d7e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s8809912d": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s78f122ce": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sc37950e9": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s21e5ae2f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s175ecfbc": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s5319b8a2": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s75be44f8": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sec11b3fd": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sd8c39d1b": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s6610c1d3": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s23d55c59": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s90d5929e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s30160396": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s690a33fd": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s0f6ed5a2": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "sfe2a2f9e": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s69db894b": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "se7652d49": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s7573d966": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s1994ab2f": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "30/31",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  },
+  "s78b3a442": {
+   "stratum": "none|none|specialist",
+   "source": "specialist",
+   "cell": "46",
+   "stored": {
+    "gpt-oss:20b": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    },
+    "qwen2.5:7b-instruct": {
+     "modeled": false,
+     "hedging": false,
+     "jurisd": false
+    }
+   }
+  }
+ }
+}

@@ -365,7 +365,7 @@
       {
        "line": 1124,
        "end": 1173,
-       "kind": "verdict",
+       "kind": "amendment",
        "heading": "CELL 8B AMENDMENT — Lead role is not executable for one candidate (2026-07-30, BEFORE any bench runs)"
       },
       {
@@ -1032,6 +1032,12 @@
        "end": 3863,
        "kind": "verdict",
        "heading": "CELL 26 VERDICT — no agreement weighting on the validated channel; the low-validity families show a strong k-response whose mechanism these instruments cannot adjudicate (2026-08-06, 1,165 multi-seat runs, zero model calls)"
+      },
+      {
+       "line": 10010,
+       "end": 10027,
+       "kind": "correction",
+       "heading": "CELL 26 CORRECTION (2026-10-01) — \"agreement between specialists is ignored\" is withdrawn"
       }
      ],
      "matrix_row": null
@@ -1215,6 +1221,12 @@
        "end": 5089,
        "kind": "verdict",
        "heading": "CELL IV VERDICT — BATCHED JUDGING VALIDATES AT B=10. The program has a working instrument again (2026-08-09)"
+      },
+      {
+       "line": 9806,
+       "end": 9837,
+       "kind": "correction",
+       "heading": "CELL IV CORRECTION (2026-10-01) — the two-judge sentence labels agree little beyond chance (kappa 0.19 to 0.41), and miss a third to two thirds of instructed phrases"
       }
      ],
      "matrix_row": null
@@ -1241,8 +1253,8 @@
     {
      "id": "33",
      "current_title": "inter-seat disagreement as a triage signal (gated on G-R)",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "blocked",
+     "never_ran": false,
      "pids": [
       "P33.1",
       "P33.2"
@@ -1253,6 +1265,18 @@
        "end": 4765,
        "kind": "prereg",
        "heading": "CELL 33 — inter-seat disagreement as a triage signal (gated on G-R)"
+      },
+      {
+       "line": 9402,
+       "end": 9532,
+       "kind": "note",
+       "heading": "CELL 33 EXECUTION REGISTRATION (2026-09-25, before any judge call) — inter-seat disagreement as a triage signal, run on the archive"
+      },
+      {
+       "line": 9533,
+       "end": 9591,
+       "kind": "verdict",
+       "heading": "GATE G-R VERDICT (2026-09-25) — FAILED at 0.57 against the 0.75 bar; CELL 33 is NOT RUNNABLE and is recorded as BLOCKED, not null"
       }
      ],
      "matrix_row": null
@@ -1517,6 +1541,12 @@
        "end": 6257,
        "kind": "verdict",
        "heading": "CELL 41 VERDICT (2026-08-11) — the instruction is its phrase"
+      },
+      {
+       "line": 10028,
+       "end": 10046,
+       "kind": "correction",
+       "heading": "CELL 41 CORRECTION (2026-10-01) — scenario-level inference, and what the \"nothing else changed\" result can and cannot carry"
       }
      ],
      "matrix_row": null
@@ -1638,6 +1668,12 @@
        "end": 6661,
        "kind": "verdict",
        "heading": "CELL 43 VERDICT (2026-08-12) — the lift is real; the compliance phrases COST preference"
+      },
+      {
+       "line": 9884,
+       "end": 9910,
+       "kind": "correction",
+       "heading": "CELL 43 CORRECTION (2026-10-01) — preference on all pairs: the direction of every result stands, the sizes shrink"
       }
      ],
      "matrix_row": null
@@ -1696,6 +1732,12 @@
        "end": 6969,
        "kind": "verdict",
        "heading": "CELL 44 VERDICT (2026-08-13) — the loop works at the lead: P44.1 and P44.2 SUPPORTED"
+      },
+      {
+       "line": 9911,
+       "end": 9934,
+       "kind": "correction",
+       "heading": "CELL 44 CORRECTION (2026-10-01) — the follow-up result on all runs, and with an exact test"
       }
      ],
      "matrix_row": null
@@ -1748,6 +1790,12 @@
        "end": 7347,
        "kind": "verdict",
        "heading": "CELL 46 VERDICT (2026-08-21) — P46.1 and P46.2 SUPPORTED: the transport law holds for a SECOND writer"
+      },
+      {
+       "line": 9767,
+       "end": 9805,
+       "kind": "correction",
+       "heading": "CELL 46 CORRECTION (2026-10-01) — the slope intervals were run-level; at the scenario level the second editor model does not exclude zero in either scenario set, and the share of caveat sentences is the same in and out"
       }
      ],
      "matrix_row": null
@@ -1827,6 +1875,12 @@
        "end": 7512,
        "kind": "note",
        "heading": "CELL 47 BIMODALITY READ (2026-08-22; descriptive, 10 runs read)"
+      },
+      {
+       "line": 9838,
+       "end": 9870,
+       "kind": "correction",
+       "heading": "CELL 47 CORRECTION (2026-10-01) — item-level inference on eight items; what \"adoption\" was"
       }
      ],
      "matrix_row": null
@@ -1853,6 +1907,12 @@
        "end": 7617,
        "kind": "verdict",
        "heading": "CELL 48 (L4) VERDICT (2026-08-22) — carriage established; the preference estimand NOT EVALUABLE at this power"
+      },
+      {
+       "line": 9726,
+       "end": 9766,
+       "kind": "correction",
+       "heading": "CELL 48 CORRECTION (2026-10-01) — the 0.174 \"carried in prose\" figure was a parsing error; scored on the full caveat sentences it is 61 of 2,037 = 0.030"
       }
      ],
      "matrix_row": null
@@ -1936,6 +1996,12 @@
        "end": 8028,
        "kind": "verdict",
        "heading": "CELL 51 VERDICT (2026-08-24) — P51.1 SUPPORTED: appendix-carried content moves decisions. P51.2: channel parity at power. §6 is now tested on all three halves."
+      },
+      {
+       "line": 9948,
+       "end": 9968,
+       "kind": "correction",
+       "heading": "CELL 51 CORRECTION (2026-10-01) — item-level inference on eleven items, and the scope of \"uptake\""
       }
      ],
      "matrix_row": null
@@ -2025,6 +2091,12 @@
        "end": 8413,
        "kind": "verdict",
        "heading": "CELL 54 VERDICT (2026-08-25) — P54.1 SUPPORTED: the live loop works end-to-end. §5's production half is established, with one new risk on record."
+      },
+      {
+       "line": 9935,
+       "end": 9947,
+       "kind": "correction",
+       "heading": "CELL 54 CORRECTION (2026-10-01) — the live follow-up compared with a control from six days earlier; exact test"
       }
      ],
      "matrix_row": null
@@ -2050,6 +2122,12 @@
        "end": 8518,
        "kind": "verdict",
        "heading": "CELL 55 VERDICT (2026-08-29) — P55.1 SUPPORTED: the seating gate's verdict at selection predicts defects at pipeline time. The last untested harness component is tested."
+      },
+      {
+       "line": 9969,
+       "end": 9984,
+       "kind": "correction",
+       "heading": "CELL 55 CORRECTION (2026-10-01) — the unit is the model: ten models, two failures"
       }
      ],
      "matrix_row": null
@@ -2169,6 +2247,12 @@
        "end": 8971,
        "kind": "verdict",
        "heading": "CELL 59 VERDICT (2026-08-31) — the live chain preserves SELECTION; suppression is directionally present but not evaluable. §3's last link is measured."
+      },
+      {
+       "line": 9871,
+       "end": 9883,
+       "kind": "correction",
+       "heading": "CELL 59 CORRECTION (2026-10-01) — item-level inference; the half the paper left out"
       }
      ],
      "matrix_row": null
@@ -2247,6 +2331,12 @@
        "end": 9401,
        "kind": "verdict",
        "heading": "CELL 61 VERDICT (2026-09-02) — the bundle A/B: no evaluable preference difference; large effects excluded in both directions; the appendix nudges positive"
+      },
+      {
+       "line": 9985,
+       "end": 10009,
+       "kind": "correction",
+       "heading": "CELL 61 CORRECTION (2026-10-01) — \"large effects excluded in both directions\" holds for one judge, not both; the assembled system's caveat extractor is not the one whose results the paper reports"
       }
      ],
      "matrix_row": null
@@ -2288,6 +2378,181 @@
     }
    ],
    "output": "docs/ledger_explorer/plain/batch_L.json"
+  },
+  "M": {
+   "cells": [
+    {
+     "id": "62",
+     "current_title": "do the sentence judges agree with a person?",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P62.0",
+      "P62.1",
+      "P62.2",
+      "P62.3"
+     ],
+     "entries": [
+      {
+       "line": 10047,
+       "end": 10163,
+       "kind": "prereg",
+       "heading": "CELL 62 PRE-REGISTRATION (2026-10-01) — do the sentence judges agree with a person?"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "63",
+     "current_title": "a wrong figure the editor could check",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P63.0",
+      "P63.1",
+      "P63.2",
+      "P63.3",
+      "P63.4",
+      "P63.5"
+     ],
+     "entries": [
+      {
+       "line": 10164,
+       "end": 10284,
+       "kind": "prereg",
+       "heading": "CELL 63 PRE-REGISTRATION (2026-10-01) — a wrong figure the editor could check"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "64",
+     "current_title": "is an appended caveat used by other reader models, without being told to look, and in a long list?",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P64.1",
+      "P64.2",
+      "P64.3",
+      "P64.4"
+     ],
+     "entries": [
+      {
+       "line": 10285,
+       "end": 10395,
+       "kind": "prereg",
+       "heading": "CELL 64 PRE-REGISTRATION (2026-10-01) — is an appended caveat used by other reader models, without being told to look, and in a long list?"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "65",
+     "current_title": "does the judge preference repeat with judges from other model families?",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P65.1",
+      "P65.2",
+      "P65.3",
+      "P65.4"
+     ],
+     "entries": [
+      {
+       "line": 10396,
+       "end": 10465,
+       "kind": "prereg",
+       "heading": "CELL 65 PRE-REGISTRATION (2026-10-01) — does the judge preference repeat with judges from other model families?"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "66",
+     "current_title": "are caveats lost more than ordinary sentences?",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P66.0",
+      "P66.1",
+      "P66.2"
+     ],
+     "entries": [
+      {
+       "line": 10466,
+       "end": 10571,
+       "kind": "prereg",
+       "heading": "CELL 66 PRE-REGISTRATION (2026-10-01) — are caveats lost more than ordinary sentences?"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "67",
+     "current_title": "the wrong figure in the live chain, scored by a computed answer",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P67.0",
+      "P67.1",
+      "P67.2",
+      "P67.3",
+      "P67.4"
+     ],
+     "entries": [
+      {
+       "line": 10572,
+       "end": 10674,
+       "kind": "prereg",
+       "heading": "CELL 67 PRE-REGISTRATION (2026-10-01) — the wrong figure in the live chain, scored by a computed answer"
+      }
+     ],
+     "matrix_row": null
+    },
+    {
+     "id": "68",
+     "current_title": "DESIGN ONLY, not scheduled: the founding question on public items with headroom",
+     "status_parsed": "registered",
+     "never_ran": true,
+     "pids": [
+      "P68.1",
+      "P68.2",
+      "P68.3"
+     ],
+     "entries": [
+      {
+       "line": 10675,
+       "end": 10722,
+       "kind": "prereg",
+       "heading": "CELL 68 PRE-REGISTRATION (2026-10-01) — DESIGN ONLY, not scheduled: the founding question on public items with headroom"
+      }
+     ],
+     "matrix_row": null
+    }
+   ],
+   "studies": [
+    {
+     "id": "board-review",
+     "kind": "audit",
+     "entries": [
+      {
+       "id": "entry-9592",
+       "line": 9592,
+       "end": 9725,
+       "heading": "BOARD REVIEW AND STAGE 0 CORRECTIONS (2026-10-01) — decision \"major revision\"; one scoring bug fixed, every small-sample interval recomputed at the scenario or item level, preference reported on all pairs; seven new experiments planned for one machine",
+       "parts": []
+      },
+      {
+       "id": "entry-10723",
+       "line": 10723,
+       "end": 10758,
+       "heading": "RUN QUEUE (2026-10-01) — how the registered steps are run and written down",
+       "parts": []
+      }
+     ]
+    }
+   ],
+   "output": "docs/ledger_explorer/plain/batch_M.json"
   }
  },
  "status": {
@@ -2300,7 +2565,9 @@
     "kind": "believe",
     "line": 27,
     "cells": [
-     "14"
+     "8",
+     "14",
+     "31"
     ],
     "header": [
      "claim",
@@ -2320,7 +2587,8 @@
     "kind": "believe",
     "line": 28,
     "cells": [
-     "38"
+     "38",
+     "62"
     ],
     "header": [
      "claim",
@@ -2330,7 +2598,7 @@
     "cols": [
      "Writers invent qualification with no upstream source",
      "**Cell 38: 4/12 = 0.333 [0.138, 0.609]** on upstream CONFIRMED at exactly zero by the validated instrument",
-     "first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded"
+     "first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded **2026-10-01: counted with the two-judge sentence labels, which are under check (finding #16, Cell 62); provisional until then.**"
     ]
    },
    {
@@ -2339,7 +2607,9 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 29,
-    "cells": [],
+    "cells": [
+     "13"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2377,7 +2647,11 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 31,
-    "cells": [],
+    "cells": [
+     "6b",
+     "11",
+     "18"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2425,9 +2699,9 @@
      "why it survives"
     ],
     "cols": [
-     "Corroboration does not increase transport",
-     "Cell 26: 0.487 vs 0.524 on the validated channel, CI spanning zero",
-     "null under a conservative instrument"
+     "~~Corroboration does not increase transport~~ **WITHDRAWN 2026-10-01** (CELL 26 CORRECTION)",
+     "Cell 26's null (0.487 vs 0.524) is one of four kinds of caveat, counted with the keyword instrument on runs whose prompts dictated the counted phrase; the other three kinds in the same analysis showed large positive effects of agreement (+0.388, +0.434, +0.201; composite +0.163 [0.13, 0.20])",
+     "P26.1's registered verdict stands as recorded; the LIVE claim built on it does not. Whether agreement between specialists affects what the editor keeps is OPEN and has no validated instrument (§3, §5)"
     ]
    },
    {
@@ -2436,7 +2710,9 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 34,
-    "cells": [],
+    "cells": [
+     "29"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2454,7 +2730,10 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 35,
-    "cells": [],
+    "cells": [
+     "25",
+     "30"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2473,8 +2752,10 @@
     "kind": "believe",
     "line": 36,
     "cells": [
+     "41",
      "43",
-     "43-R"
+     "43-R",
+     "65"
     ],
     "header": [
      "claim",
@@ -2482,9 +2763,9 @@
      "why it survives"
     ],
     "cols": [
-     "Aggregation wins preference at 20B scale — **now TWO judge families**",
-     "Cell 43: 0.818 [0.718,0.919] (gpt-oss); Cell 43-R: 0.788 [0.645,0.917] (qwen3-vl, judge selected blind to direction); survives length-matching; arm lengths within 1.4%",
-     "replicated across vendor/architecture/generation; self-preference symmetric; NOT explained by length or framework density — composition unidentified"
+     "The pipeline answer is preferred to a single answer by two local AI judges — **all-pairs figures since 2026-10-01**",
+     "Cell 43 (gpt-oss): 36 wins / 8 losses / 82 split pairs, all-pairs score **0.611**, scenario-level +0.111 [+0.065, +0.157], p = 0.0005, 18 scenarios. Cell 43-R (qwen3-vl): 26/7/93, **0.575**, +0.075 [+0.023, +0.128], p = 0.012. The earlier 0.818 and 0.788 were shares of the 35% and 26% of pairs each judge decided the same way in both orders",
+     "Direction holds for both judges; survives length-matching. SCOPE: four calls of one model against one call, with no comparison of equal cost, so the roles are not shown to add anything beyond sampling the model several times; judges are 20B and 30B local models that pick the first-listed answer in 80% to 89% of single judgments; no person judged a pair. Cell 65 adds judges from other families; Cell 68 (design only) is the equal-cost test"
     ]
    },
    {
@@ -2494,8 +2775,10 @@
     "kind": "believe",
     "line": 37,
     "cells": [
+     "41",
      "43",
-     "43-R"
+     "43-R",
+     "65"
     ],
     "header": [
      "claim",
@@ -2503,9 +2786,9 @@
      "why it survives"
     ],
     "cols": [
-     "Dictated qualification phrases COST preference",
-     "Cell 43: 0.261 [0.140,0.388] and 0.317 [0.152,0.480] (gpt-oss, both forms below 0.5); Cell 43-R: form-Y replicates at 0.217 [0.125,0.333]; form-X points the same way (0.276) but spans at n=29 decisive",
-     "causal and counterbalanced; three of four judge-x-form cells exclude 0.5, the fourth agrees in point estimate, none contradicts. Preference pressure is in measured tension with epistemic marking"
+     "An instructed caveat phrase costs preference with the same two judges — **all-pairs figures since 2026-10-01**",
+     "gpt-oss: \"modeled at\" **0.413** (-0.087 [-0.144, -0.031], p = 0.009), \"taken to be\" **0.440** (-0.058 [-0.118, +0.003], p = 0.06). qwen3-vl: 0.448 (p = 0.17) and 0.448 (-0.052 [-0.092, -0.012], p = 0.023). 18 scenarios each. Earlier decided-only shares: 0.261, 0.317, 0.276, 0.217",
+     "Two of four judge-by-phrase comparisons at p < 0.05, all four in the same direction (was stated as three of four excluding 0.5). Counterbalanced phrases. Consistent with published findings that AI judges mark down text that expresses uncertainty. Local model judges only; Cell 65 pending"
     ]
    },
    {
@@ -2523,9 +2806,9 @@
      "why it survives"
     ],
     "cols": [
-     "**The lead uses a routed clarification it asked for** — the first supported positive intervention in the program",
-     "Cell 44: informed 7/7 = 1.000 vs control 0.333 (CI [+0.200,+1.000]) and vs ritual filler 0.200 (CI [+0.545,+0.947]); informed arm unanimous across both judges; adversarial resolution of every judge disagreement still leaves gaps of +0.40/+0.53; literal secondary agrees",
-     "orchestrator-routed re-consultation (design c), lead-side with controlled clarifications; conditioned n=7, agreement 0.703 on the analysis population (0.583 overall, recorded), one writer — scope stated; seat-side realism is design (b), not yet run"
+     "**When the editor named a planted disagreement and got an informative reply, it took the intended position** — restated 2026-10-01",
+     "Cell 44: 7 of 7 named runs with an informative reply, against 5 of 15 (control) and 3 of 15 (filler reply). Over ALL runs: 15 of 36 against 10 of 36 and 8 of 36. Item-level, informed minus control: named runs +0.700 [+0.145, +1.255] on 5 items, all runs +0.139 [+0.007, +0.271] on 6 items; exact sign-flip p = 0.125 for both. Among control runs where the two judges agreed the rate is 5 of 8, not 0.333",
+     "The conditional contrast rests on 7 runs, and the editor named the disagreement in 7, 15 and 15 of 36 runs across arms although that stage is identical. No item goes the other way. With five or six items the result cannot be strong; it is reported as a consistent direction, not as an established effect size. One editor model, six in-house items, AI judges"
     ]
    },
    {
@@ -2546,7 +2829,7 @@
     "cols": [
      "**Re-consultation is recognition-limited, not capability-limited**",
      "Cell 44: lead uses a routed clarification 7/7 but names the tension 0.34; Cell 45: seat routes correctly 10/11 = 0.909 [0.623,0.984] but recognizes the out-of-domain need only 0.306, gap CI [-0.056,+0.528] spanning zero (P45.1 falsified, P45.2 supported)",
-     "both halves of the loop show a working mechanism behind a scarce trigger; design (c), which takes its trigger from the mandated tension list rather than model self-assessment, is the recommended architecture — design (b) does not proceed per its registered consequence"
+     "both halves of the loop show a working mechanism behind a scarce trigger; design (c), which takes its trigger from the mandated tension list rather than model self-assessment, is the recommended architecture — design (b) does not proceed per its registered consequence **2026-10-01: the \"uses 7/7\" half is the conditional figure corrected in the row above; the Cell 45 gap spans zero at six items. Read as two small-sample observations in the same direction, not as an established mechanism.**"
     ]
    },
    {
@@ -2556,7 +2839,8 @@
     "kind": "believe",
     "line": 40,
     "cells": [
-     "47"
+     "47",
+     "63"
     ],
     "header": [
      "claim",
@@ -2564,9 +2848,9 @@
      "why it survives"
     ],
     "cols": [
-     "**Engineered redundancy is causal** — the planner's overlap assignment, isolated as one factor, halves corruption adoption",
-     "Cell 47: corrupted-value adoption 0.900 bare vs 0.450 planned (CI [+0.200,+0.725]); clean-value adoption 0.000 vs 0.500 (CI [+0.175,+0.825]) — the co-source is USED, not merely diluting; exact-match instrument, decisive 0.94",
-     "first prospective test of the harness architecture (§3); bare arm doubles as the sharpest no-verification number on record (0.900 corruption repeat when sole-sourced). Protection is BIMODAL across items — three fully protected, two not at all — so the mean halving must not be quoted as uniform; which quantities the selector protects is OPEN"
+     "**A second source with a different figure changes the answer about half the time** — restated 2026-10-01 (was \"engineered redundancy is causal ... halves corruption adoption\")",
+     "Cell 47, 8 items, item-level: planted figure stated 36/40 with one source, 18/40 with two: **+0.450 [+0.095, +0.805], p = 0.031**. Second source's figure stated 0/40 against 20/40: +0.500 [+0.090, +0.910], p = 0.063. Per item the planted figure went 1.0 to 1.0, 1.0 to 0.8, 1.0 to 0.0, 1.0 to 0.0, 1.0 to 0.2, 1.0 to 0.6, 1.0 to 1.0, 0.2 to 0.0",
+     "The drop holds on eight items. The reading changes: the planted figure appears nowhere in the case and the question asks for it, so repeating it is compliance, and it could not be checked; with two sources the editor states one or the other about evenly, item by item, and nothing in the answer shows that two figures were on the table. \"Halves\", \"is causal\" and \"error immunity\" are retired (§3). Cell 63 tests a wrong figure that can be checked; Cell 67 the live chain on 61 items"
     ]
    },
    {
@@ -2577,7 +2861,9 @@
     "line": 41,
     "cells": [
      "48",
-     "51"
+     "51",
+     "64",
+     "66"
     ],
     "header": [
      "claim",
@@ -2585,9 +2871,9 @@
      "why it survives"
     ],
     "cols": [
-     "**Out-of-band freight carries AND is used** — the harness's §6 channel tested on both halves",
-     "Cell 48: appendix carriage 1.000 vs 0.174 surviving prose transport (third convergent transport measurement); preference cost NOT EVALUABLE at power (0.510 [0.267,0.754], 65/116 ties — no evidence of penalty, no license to claim absence). Cell 51: appendix-carried caveats FLIP a reader's registered two-token decision at +0.691 [+0.455,+0.891] over a matched irrelevant-appendix control (k=11 items, 440 runs, 0 invalid); channel parity with in-prose placement (+0.091 [-0.036,+0.218] under frozen thresholds); bare floor 0.000, caution-priming delta +0.036",
-     "uptake is causal and content-specific (irrelevant appendix moves nothing, 0.036); direction-balanced items rule out caution-as-uptake; replication reader (qwen2.5:7b) shows same structure at lower reader capability (uptake +0.455, with per-item failures shared by prose — reader-limited, not channel-limited). Verdict population is 11 of 18 authored items after the G1 floor gate (deviation recorded); one artifact corpus, one primary reader family"
+     "**An appended caveat list holds every caveat by construction, and a reader model acts on a decisive appended sentence** — corrected 2026-10-01",
+     "Cell 48: list 1.000 (built from the sentences it is scored on); editor's prose **61/2037 = 0.030** word for word. The published 0.174 was a parsing error (CELL 48 CORRECTION). Preference with the list attached, all pairs: 26/25/65 = 0.504, p = 1.0, 17 scenarios: no penalty detected, absence not claimed. Cell 51, 11 items, item-level: relevant minus irrelevant appended sentence **+0.691 [+0.427, +0.955], p = 0.004** (gpt-oss reader); second reader (qwen2.5) +0.455 [+0.104, +0.805], p = 0.06",
+     "0.030 is a word-for-word copy rate, not a rate of caveats lost; whether caveats are conveyed, and less often than ordinary sentences, is untested (Cell 66). \"Third convergent transport measurement\" is withdrawn: the agreement came from the bug. Reader scope: a model reader (the main one wrote the report), told to use \"anything attached\", a list of one sentence placed before the question, a decisive fact written for the item, a shorter control sentence (165 against 291 characters), 11 of 18 items after the pilot check. Cell 64 tests other readers, a neutral prompt and longer lists. No person read anything"
     ]
    },
    {
@@ -2628,9 +2914,9 @@
      "why it survives"
     ],
     "cols": [
-     "**The re-consultation loop works end-to-end with a live seat** — production, conveyance, and use, no controlled inputs",
-     "Cell 54: live-briefed R-adoption 0.905 (19/21) vs archived control 0.333, diff **+0.571 [+0.139, +0.912]**; within −0.095 [−0.227, 0.000] of the scripted ceiling (frozen 0.3 threshold); fact conveyed 21/21 from private working notes (corrected Unicode-folding instrument, replies persisted)",
-     "comparators are Cell 44's archived arms under a passed, never-pooled batch check; 6 item clusters; trigger rate is batch-variable (0.208–0.583 across C44/C53/C54) and remains the loop's binding coverage constraint. NEW RISK on record: 4/21 live replies embellished the true fact with fabricated legal authority and were adopted anyway — the content gate screens absence, not invention; fabrication is unbounded pending its own cell"
+     "**A live specialist conveyed a fact from its private notes and the editor then took the intended position** — restated 2026-10-01 as a description",
+     "Cell 54: fact conveyed in 21 of 21 replies; intended position in 19 of 21 named runs and 23 of 36 runs overall. Against Cell 44's stored control from six days earlier (5 of 15 named, 10 of 36 overall): named runs +0.583 [+0.121, +1.046] on 5 items, all runs +0.361 [-0.029, +0.751] on 6 items, exact p = 0.125 for both",
+     "The comparison arm is from another day and another batch (the editor named the disagreement in 0.583 of new runs against 0.417 of the old control runs), so no causal size is claimed. The specialist was handed the deciding fact; this shows the channel works, not that a specialist finds the fact. Risk on record: 4 of 21 live replies added made-up legal authority and were used anyway"
     ]
    },
    {
@@ -2648,9 +2934,9 @@
      "why it survives"
     ],
     "cols": [
-     "**The seating gate predicts pipeline defects** — verdicts frozen at selection, tested at pipeline time",
-     "Cell 55: strict rank separation SUPPORTED over ten candidates (min fail-rate 0.333 > max pass-rate 0.056, no inversion); pooled contrast **+0.632 [+0.549, +0.722]**; gate verdicts committed before any pipeline run; screen items disjoint from pipeline cases",
-     "fail side has two members (biomistral 17/18 defects; openbiollm 6/18 — a FRESH failure that passed the archive-era screen, so verdicts age and seating must re-gate, not import). Format smoke is a separate axis and does not predict seat defects (saul 0/4 format, 0/18 pipeline) — its target is verdict-emitting roles. Defect = visible text <800 chars; one writer-side outcome family"
+     "**Models that give very short answers on the screen prompts give them in the pipeline** — restated 2026-10-01",
+     "Cell 55, ten models: the two that failed the screen (an output under 800 characters on two screen prompts) are the two with the most short pipeline outputs (17/18 and 6/18; the other eight 0 or 1 of 18). Exact probability under random labelling of two of ten: 1/45 = **0.022**. The published +0.632 [+0.549, +0.722] resampled six scenarios, not ten models",
+     "Screen and outcome are the same property on different prompts. The result says nothing about domain signatures or the format test, and in every experiment on the rebuilt system the screen is applied to the one model that plays every part. Verdicts were frozen before the pipeline runs"
     ]
    },
    {
@@ -2703,7 +2989,8 @@
      "47",
      "54",
      "58",
-     "59"
+     "59",
+     "67"
     ],
     "header": [
      "claim",
@@ -2711,9 +2998,9 @@
      "why it survives"
     ],
     "cols": [
-     "**The §3 chain works end-to-end live: the clean co-source is USED through planner-authored sub-questions**",
-     "Cell 59: clean adoption +0.425 [+0.325,+0.525] (vs Cell 47's planted +0.500), 80 fully-live pipeline runs; assignment 40/40 plans (committed confirmation), conveyance 0.85–0.95; corrupted suppression NE at power (−0.175 [−0.350,+0.025]) with the live bare floor at 0.625 vs planted 0.900 and the protected level replicating at 0.450",
-     "Cell 58's registered halt en route yielded the channel finding: briefed notes convey only into task-relevant assignments (2/8 orthogonal vs 21/21 pointed, C54) — the corrected planner input guarantees relevance by construction. Fourth value-format instrument incident (spaced percent/magnitude) recorded with the cumulative probe-format set; C47 archive rescored under the identical matcher for the like-for-like estimation; 8 item clusters; fifth item-bimodal phenomenon logged"
+     "**In the live chain the second source's figure is used; the drop in the planted figure is not established** — both halves stated since 2026-10-01",
+     "Cell 59, 8 items, item-level: second source's figure stated 2/40 bare against 19/40 planned, **+0.425 [+0.285, +0.565], p = 0.008**. Planted figure stated 25/40 against 18/40, +0.175 [-0.069, +0.419], p = 0.22. Assignment 40/40 plans; conveyance 0.85 to 0.95",
+     "The planner was told which quantity to cover. Figures are scored by matching text, after four format repairs. Cell 67 repeats the live chain on 61 items with a computed answer. Cell 58's halt finding stands: notes are conveyed only into sub-questions that concern them"
     ]
    },
    {
@@ -2722,7 +3009,11 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 48,
-    "cells": [],
+    "cells": [
+     "44",
+     "54",
+     "56"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2731,7 +3022,7 @@
     "cols": [
      "**Gates as code: the blocklist deploys; the content gate honestly does not**",
      "Blocklist gate (gst.gates): 21 true hits / 0 false / 0 missed over the 141-reply archive under the cumulative format folding, seeded only from committed classifications — including one fabricating reply the validation truth-set itself missed. Content gate: two registered attempts against frozen criteria — v1 (two-judge semantic) passes vacuity (filler DROP 3/6); v2 (extract-then-verify) fixes vacuity (6/6) but rejects 52% of genuine live replies (10/21 vs 0.8 floor)",
-     "complementary failure halves recorded; no v3 without purpose-built labeled data (live-format contentless exemplars do not exist in the archive); interim posture is flagged delivery, never silent gating; §5's ritual risk (d≈0.22, unconfirmed) stays open and stated. The matcher precedent holds: instruments that fail their criteria are recorded as failed, not massaged"
+     "complementary failure halves recorded; no v3 without purpose-built labeled data (live-format contentless exemplars do not exist in the archive); interim posture is flagged delivery, never silent gating; §5's ritual risk (d≈0.22, unconfirmed) stays open and stated. The matcher precedent holds: instruments that fail their criteria are recorded as failed, not massaged **2026-10-01: the blocklist figures are in-sample (its three names were taken from the same 141 replies), so they show the filter runs as written, not how it does on new replies.**"
     ]
    },
    {
@@ -2751,9 +3042,9 @@
      "why it survives"
     ],
     "cols": [
-     "**The bundle A/B: the harness ships its differentiators at no detectable preference cost**",
-     "Cell 61: harness vs old architecture on the deployment artifact — primary judge share 0.562 [0.375,0.765] (n=48 decisive, 17 clusters), replication 0.333 [0.083,0.562] (n=15); both span 0.5; large effects excluded both directions. Appendix attribution (prose-only sensitivity): within-pair +0.073 toward the harness — direction mildly positive on the C48 no-penalty bound",
-     "graded NOT EVALUABLE for moderate differences per the frozen registration; the harness's preference standing is inherited from aggregation (C43, shared by both bundles) and its differentiators are justified by their component cells, not by bundle preference. Organic dispatch fired 0.85 (46/54) vs 0.21–0.58 on planted tensions — real inter-seat disagreement is abundant. One writer, 18-case corpus, archived old arm"
+     "**The rebuilt system against the old pipeline: no preference difference detected** — corrected 2026-10-01",
+     "Cell 61, all pairs, scenario-level: gpt-oss 27/21/59 = **0.528**, +0.031 [-0.069, +0.132], p = 0.57; qwen3-vl 5/10/93 = **0.477**, -0.023 [-0.060, +0.014], p = 0.31. Decided-only shares were 0.562 [0.375, 0.765] (48 pairs) and 0.333 [0.083, 0.562] (15 pairs): the second does not exclude a large loss, so \"large effects excluded in both directions\" holds for the first judge only",
+     "No equivalence margin was set in advance, so \"no cost\" is not claimed. One inquiry makes about fourteen model calls against four and took 14 to 18 minutes (§3). The comparison arm was stored three weeks earlier. The system's caveat extractor is a document-level, one-quote-per-kind version (5.0 caveats per report), not the sentence-level lists of Cell 48 (median 11). No outcome other than judge preference was measured on the assembled system; Cell 67 is the first"
     ]
    },
    {
@@ -2762,7 +3053,12 @@
     "section_title": "LIVE claims",
     "kind": "believe",
     "line": 50,
-    "cells": [],
+    "cells": [
+     "24",
+     "25",
+     "27",
+     "28"
+    ],
     "header": [
      "claim",
      "evidence",
@@ -2787,7 +3083,7 @@
      "why it survives"
     ],
     "cols": [
-     "Fourteen instrument-validity findings",
+     "Twenty instrument-validity findings",
      "see §4",
      "these are *about* measurement, so no instrument confound applies"
     ]
@@ -2800,8 +3096,8 @@
     "line": 57,
     "cells": [
      "30",
-     "37",
-     "46"
+     "46",
+     "66"
     ],
     "header": [
      "claim",
@@ -2809,9 +3105,9 @@
      "what is pending"
     ],
     "cols": [
-     "~~The shrinkage form~~ **The transport coefficient** $y = ws + c$ — **now LIVE for TWO writers** (Cell 46)",
-     "gpt-oss w = 0.318 [+0.221,+0.431] (n=82); phi4 w = 0.177 [+0.058,+0.275] (n=62), 18 cases, judge agreement 0.877. Within-corpus: gpt-oss 0.172 old / 0.326 new; **phi4 0.170 [+0.067,+0.265] on the new corpus alone** — replication owing nothing to pooling. Linear form holds (T1); observed w is an attenuated LOWER bound, disattenuated band 0.150-0.217 on Cell 30 (T2)",
-     "**Pooled figures are cross-regime and must NOT be quoted as a within-corpus rate** — new cases carry mean supply 25.3 vs 5.4, and the pooled slope equals the between-cluster line. phi4's realized n_eff was 42.3 against a registered 47, so point estimates carry Type-M inflation risk. Name retired: transport coefficient, not shrinkage (Cell 37 falsified the estimator story)"
+     "~~The shrinkage form~~ **The slope of caveats out on caveats in**, $y = ws + c$ — **holds for gpt-oss; the second-editor repeat is NOT EVALUABLE (corrected 2026-10-01)**",
+     "Within each scenario set, with intervals over the nine scenarios: gpt-oss 0.172 [+0.067, +0.316] (original) and 0.326 [+0.149, +0.477] (newer); phi4 0.105 [-0.013, +0.244] and 0.170 [-0.020, +0.303]. The published intervals resampled runs and showed phi4's newer-set slope excluding zero; at the scenario level it does not. Linear form holds (T1)",
+     "**w tracks the length ratio.** Caveat sentences are 0.183 of the specialists' sentences and 0.193 (gpt-oss) or 0.190 (phi4) of the editor's in the newer scenarios, 0.133 and 0.103 in the original ones; the answer is 18% to 30% as long as its inputs and carries 18% to 31% as many caveat sentences. \"The editor passes on a sixth to a third of the caution\" restates that a summary is shorter than its sources. Selective loss needs Cell 66. All counts use the two-judge labels under check in Cell 62. Pooled figures stay cross-regime and must not be quoted. Name retired earlier: not shrinkage (Cell 37)"
     ]
    },
    {
@@ -2820,7 +3116,9 @@
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
     "line": 58,
-    "cells": [],
+    "cells": [
+     "25"
+    ],
     "header": [
      "claim",
      "current value",
@@ -2838,7 +3136,9 @@
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
     "line": 59,
-    "cells": [],
+    "cells": [
+     "29"
+    ],
     "header": [
      "claim",
      "current value",
@@ -2857,6 +3157,9 @@
     "kind": "tentative",
     "line": 60,
     "cells": [
+     "27",
+     "28",
+     "29",
      "31"
     ],
     "header": [
@@ -2876,7 +3179,9 @@
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
     "line": 61,
-    "cells": [],
+    "cells": [
+     "25"
+    ],
     "header": [
      "claim",
      "current value",
@@ -2894,7 +3199,9 @@
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
     "line": 62,
-    "cells": [],
+    "cells": [
+     "29"
+    ],
     "header": [
      "claim",
      "current value",
@@ -2913,7 +3220,9 @@
     "kind": "withdrawn",
     "line": 68,
     "cells": [
-     "37"
+     "35",
+     "37",
+     "40"
     ],
     "header": [
      "claim",
@@ -2932,7 +3241,10 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 69,
-    "cells": [],
+    "cells": [
+     "13",
+     "25"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -2951,7 +3263,7 @@
     "kind": "withdrawn",
     "line": 70,
     "cells": [
-     "2"
+     "13"
     ],
     "header": [
      "claim",
@@ -2970,7 +3282,10 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 71,
-    "cells": [],
+    "cells": [
+     "13",
+     "25"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -2988,7 +3303,9 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 72,
-    "cells": [],
+    "cells": [
+     "25"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -3007,6 +3324,8 @@
     "kind": "withdrawn",
     "line": 73,
     "cells": [
+     "27",
+     "28",
      "31"
     ],
     "header": [
@@ -3026,7 +3345,9 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 74,
-    "cells": [],
+    "cells": [
+     "28"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -3044,7 +3365,9 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 75,
-    "cells": [],
+    "cells": [
+     "19"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -3082,7 +3405,9 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 77,
-    "cells": [],
+    "cells": [
+     "25"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -3101,6 +3426,7 @@
     "kind": "withdrawn",
     "line": 78,
     "cells": [
+     "8",
      "14"
     ],
     "header": [
@@ -3120,7 +3446,9 @@
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
     "line": 79,
-    "cells": [],
+    "cells": [
+     "8B"
+    ],
     "header": [
      "claim",
      "withdrawn by",
@@ -3133,12 +3461,160 @@
     ]
    },
    {
+    "id": "S3-13",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 80,
+    "cells": [
+     "26"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"Agreement between specialists is ignored\" / corroboration does not increase transport",
+     "CELL 26 CORRECTION 2026-10-01",
+     "open; three of four kinds showed positive effects under the keyword counter; no validated instrument"
+    ]
+   },
+   {
+    "id": "S3-14",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 81,
+    "cells": [
+     "48",
+     "66"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Prose carries 0.174 of caveats; \"third convergent transport measurement\"",
+     "CELL 48 CORRECTION 2026-10-01 (parsing error)",
+     "0.030 word for word; whether caveats are conveyed is Cell 66"
+    ]
+   },
+   {
+    "id": "S3-15",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 82,
+    "cells": [
+     "47"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"Engineered redundancy halves corrupted-value adoption\", \"is causal\", \"error immunity\"",
+     "CELL 47 CORRECTION 2026-10-01",
+     "a second source with a different figure changes the answer about half the time (p = 0.031, 8 items); the figure could not be checked"
+    ]
+   },
+   {
+    "id": "S3-16",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 83,
+    "cells": [
+     "30",
+     "46"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The slope \"replicates for a second writer\"",
+     "CELL 46 CORRECTION 2026-10-01",
+     "not evaluable at nine scenarios per set"
+    ]
+   },
+   {
+    "id": "S3-17",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 84,
+    "cells": [
+     "61"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "The rebuilt system adds its parts \"at no cost\"; \"large effects excluded in both directions\"",
+     "CELL 61 CORRECTION 2026-10-01",
+     "fourteen calls against four; no preference difference detected by one judge, a large loss not excluded by the other"
+    ]
+   },
+   {
+    "id": "S3-18",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 85,
+    "cells": [
+     "45",
+     "49",
+     "50"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "Elicited self-assessment \"predicts behavior at chance\" (paper abstract)",
+     "board review 2026-10-01, section 4.6",
+     "three underpowered tests (Cells 45, 49, 50), one of them in the predicted direction; open"
+    ]
+   },
+   {
+    "id": "S3-19",
+    "section": 3,
+    "section_title": "WITHDRAWN — must not appear as claims",
+    "kind": "withdrawn",
+    "line": 86,
+    "cells": [
+     "46"
+    ],
+    "header": [
+     "claim",
+     "withdrawn by",
+     "replacement"
+    ],
+    "cols": [
+     "\"Every interval is a cluster bootstrap over cases\"; \"temporal ordering is verifiable from version history\" (paper section 5)",
+     "board review 2026-10-01, section 3 items 2 and 4",
+     "the slope intervals were run-level; run records were committed weeks after their verdicts and carry no timestamps"
+    ]
+   },
+   {
     "id": "S4-01",
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 83,
-    "cells": [],
+    "line": 90,
+    "cells": [
+     "8",
+     "13",
+     "14"
+    ],
     "header": null,
     "cols": [
      "Zero-route contamination — 39 runs measured a prompt that never executed"
@@ -3149,8 +3625,11 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 84,
-    "cells": [],
+    "line": 91,
+    "cells": [
+     "20",
+     "21"
+    ],
     "header": null,
     "cols": [
      "Empty judge replies scored as substantive labels"
@@ -3161,8 +3640,11 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 85,
-    "cells": [],
+    "line": 92,
+    "cells": [
+     "7a",
+     "23"
+    ],
     "header": null,
     "cols": [
      "Off-label instrument use — NLI at 0.93 AUC on its calibration task, 0.12–0.55 on the deployed task"
@@ -3173,7 +3655,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 86,
+    "line": 93,
     "cells": [],
     "header": null,
     "cols": [
@@ -3185,8 +3667,12 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 87,
-    "cells": [],
+    "line": 94,
+    "cells": [
+     "8",
+     "14",
+     "15"
+    ],
     "header": null,
     "cols": [
      "Reused arm labels spanning different case batteries"
@@ -3197,8 +3683,10 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 88,
-    "cells": [],
+    "line": 95,
+    "cells": [
+     "8B"
+    ],
     "header": null,
     "cols": [
      "Floor/length artifacts from degenerate outputs"
@@ -3209,8 +3697,10 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 89,
-    "cells": [],
+    "line": 96,
+    "cells": [
+     "19"
+    ],
     "header": null,
     "cols": [
      "Illustrative example presented as observed data"
@@ -3221,8 +3711,11 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 90,
-    "cells": [],
+    "line": 97,
+    "cells": [
+     "13",
+     "30"
+    ],
     "header": null,
     "cols": [
      "**Instrument–scaffold entanglement** — prompts dictate the measured strings"
@@ -3233,8 +3726,11 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 91,
-    "cells": [],
+    "line": 98,
+    "cells": [
+     "30",
+     "IV"
+    ],
     "header": null,
     "cols": [
      "**Granularity-dependent judge reliability** — demonstrated on one corpus: 0.833 per sentence vs 0.622 per document, same judges, same 60 documents"
@@ -3245,8 +3741,13 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 92,
-    "cells": [],
+    "line": 99,
+    "cells": [
+     "25",
+     "27",
+     "30",
+     "31"
+    ],
     "header": null,
     "cols": [
      "**Construction blind spots propagate into the design** — regex-driven ablation left 5.4 qualification-bearing sentences in texts labelled zero-supply; the manipulation never created the condition it was built for"
@@ -3257,7 +3758,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 93,
+    "line": 100,
     "cells": [
      "37",
      "40"
@@ -3272,7 +3773,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 94,
+    "line": 101,
     "cells": [
      "7b"
     ],
@@ -3286,8 +3787,11 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 95,
-    "cells": [],
+    "line": 102,
+    "cells": [
+     "13",
+     "30"
+    ],
     "header": null,
     "cols": [
      "**Registry form essentially never arises without dictation** — 0 of 2907 spans and 0 of 60 de-scaffolded runs (438,797 chars) contain any registry phrase; run-level Wilson upper bound 0.060. The scaffold's phrases are diagnostic OF the scaffold, which is what makes literal-stage partitioning trustworthy, and it corroborates PD-13 from an independent corpus"
@@ -3298,7 +3802,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 96,
+    "line": 103,
     "cells": [
      "43",
      "43-R"
@@ -3309,12 +3813,110 @@
     ]
    },
    {
+    "id": "S4-15",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 104,
+    "cells": [
+     "32",
+     "33"
+    ],
+    "header": null,
+    "cols": [
+     "**Closed coverage items authored for human review do not transfer to two-judge scoring without per-item anchors** — gate G-R measured 2026-09-25 on 100 items (12 archived council runs, 2 per case): judge–judge agreement 0.57 against the 0.75 bar, one-directional (qwen3-vl marks \"addressed\" at 0.79 vs gpt-oss 0.38; 42 of 43 disagreements are the lenient judge saying YES). The judges apply different thresholds for \"substantively addresses\", which the closed-item form does not pin the way the sentence-level construct definitions do (0.910). Cells 32 and 33 stay BLOCKED; no redesign after seeing the labels."
+    ]
+   },
+   {
+    "id": "S4-16",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 105,
+    "cells": [
+     "23",
+     "IV",
+     "41",
+     "46",
+     "62"
+    ],
+    "header": null,
+    "cols": [
+     "**Raw agreement at a skewed base rate is not validity** — the two-judge sentence labels were accepted at raw agreement of 0.83 to 0.91 against a 0.70 bar; chance agreement at those base rates is 0.64 to 0.88 and Cohen's kappa is **0.19 to 0.41** (Cells 41, 46, 30/31; 46,455 + 16,869 + 5,697 decisions). Of the sentences either judge flags, both flag about one in four. The tool was validated on a sample chosen to be rich in positives (kappa 0.51 to 0.66) and deployed at natural prevalence. On sentences that are positives by construction it finds 0.66 (\"modeled at\") and 0.35 (\"taken to be\"). No label has been compared with a person's; Cell 62 does that. Every count made with the both-judges rule is provisional until then."
+    ]
+   },
+   {
+    "id": "S4-17",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 106,
+    "cells": [
+     "48"
+    ],
+    "header": null,
+    "cols": [
+     "**Reading multi-line items back one line at a time manufactures matches** — Cell 48's \"carried in prose\" figure of 0.174 was 0.030: caveats spanning several lines were cut to their first line, often the single character \"|\", which is contained in any answer with a table (273 of 361 matches). The wrong figure fell inside an expected range and was recorded as a convergent estimate, so no one questioned it. Rule: score the objects the list was built from, never a re-parse of rendered text, and assert the count."
+    ]
+   },
+   {
+    "id": "S4-18",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 107,
+    "cells": [
+     "43",
+     "46",
+     "47"
+    ],
+    "header": null,
+    "cols": [
+     "**Percentile intervals over a handful of clusters, intervals over runs, and shares of consistently-decided pairs all overstate** — with 6 to 11 items the percentile bootstrap was too narrow (Cell 47: [+0.200, +0.725] against a t-interval of [+0.095, +0.805]); the slope intervals resampled runs although the paper said scenarios; preference shares over the 5% to 40% of pairs a judge decides the same way in both orders turned 0.611 into 0.818. From 2026-10-01: aggregate to the scenario or item, t-interval and exact sign-flip test, cluster count printed, all pairs scored."
+    ]
+   },
+   {
+    "id": "S4-19",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 108,
+    "cells": [
+     "23",
+     "44",
+     "47",
+     "51",
+     "56",
+     "57",
+     "62",
+     "66"
+    ],
+    "header": null,
+    "cols": [
+     "**Labels the notebook calls analyst-authored were written by the AI assistant that designed the experiments** — the twenty anchor sentences of Cell 23, the fabrication classification of Cell 56, the 41 planner labels and 493 confirmations of Cell 57, and the items, planted facts and decision questions of Cells 44, 47 and 51. Items and outcome labels come from one source, which is the instrument-independence problem (finding #8) one level up. No sentence label, preference or reader decision in the program comes from a person."
+    ]
+   },
+   {
+    "id": "S4-20",
+    "section": 4,
+    "section_title": "Instrument-validity findings (all LIVE)",
+    "kind": "tool-lesson",
+    "line": 109,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Run records before Cell 62 cannot show when they were made or under what settings** — no timestamp, model digest, seed, prompt hash or context length; records for Cells 25 to 60 were first committed on 2026-09-24, weeks after their verdicts. Registration text precedes verdict text in version history, which is weaker than showing that registration preceded data. No script set the context length (the server default of 32,768 tokens fit the prompts when checked, and the July to August server logs show no truncation). Fixed from Cell 62 by `gst.runlog`."
+    ]
+   },
+   {
     "id": "S5-01",
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 100,
-    "cells": [],
+    "line": 113,
+    "cells": [
+     "30"
+    ],
     "header": null,
     "cols": [
      "~~Does the supply→emission slope survive de-scaffolding?~~ **ANSWERED 2026-08-10: yes, w = 0.150 [0.058, 0.252] on gpt-oss.**"
@@ -3325,7 +3927,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 101,
+    "line": 114,
     "cells": [
      "38"
     ],
@@ -3339,8 +3941,11 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 102,
-    "cells": [],
+    "line": 115,
+    "cells": [
+     "30",
+     "38"
+    ],
     "header": null,
     "cols": [
      "Can ablation reach true zero supply at all? **NO** — judge-driven ablation also leaves residue (finding #10 generalised); requires upstream authored to contain no qualification"
@@ -3351,8 +3956,10 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 103,
+    "line": 116,
     "cells": [
+     "27",
+     "28",
      "31"
     ],
     "header": null,
@@ -3365,8 +3972,10 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 104,
-    "cells": [],
+    "line": 117,
+    "cells": [
+     "13"
+    ],
     "header": null,
     "cols": [
      "Do the clause effects survive on non-dictated phrasings for cutoff? (0 events; needs more labels)"
@@ -3377,7 +3986,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 105,
+    "line": 118,
     "cells": [],
     "header": null,
     "cols": [
@@ -3389,7 +3998,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 106,
+    "line": 119,
     "cells": [
      "36"
     ],
@@ -3403,9 +4012,10 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 107,
+    "line": 120,
     "cells": [
-     "36"
+     "36",
+     "60"
     ],
     "header": null,
     "cols": [
@@ -3417,7 +4027,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 108,
+    "line": 121,
     "cells": [
      "40"
     ],
@@ -3431,7 +4041,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 109,
+    "line": 122,
     "cells": [
      "37"
     ],
@@ -3441,12 +4051,122 @@
     ]
    },
    {
+    "id": "S5-11",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 123,
+    "cells": [
+     "62"
+    ],
+    "header": null,
+    "cols": [
+     "**Do the two-judge sentence labels agree with a person?** Cell 62, registered 2026-10-01: 404 sentences, the author's blind labels twice a week apart, six local judges. Until it reports, every count made with the labels is provisional."
+    ]
+   },
+   {
+    "id": "S5-12",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 124,
+    "cells": [
+     "46",
+     "48",
+     "66"
+    ],
+    "header": null,
+    "cols": [
+     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this."
+    ]
+   },
+   {
+    "id": "S5-13",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 125,
+    "cells": [
+     "47",
+     "59",
+     "63",
+     "67"
+    ],
+    "header": null,
+    "cols": [
+     "**Does the editor catch a wrong figure it could check?** Cell 63 (scripted notes) and Cell 67 (live chain), registered 2026-10-01, on 61 questions with computed answers."
+    ]
+   },
+   {
+    "id": "S5-14",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 126,
+    "cells": [
+     "51",
+     "64"
+    ],
+    "header": null,
+    "cols": [
+     "**Does the appended-caveat result hold for other reader models, without the instruction clause, in a list of ten?** Cell 64, registered 2026-10-01. Human readers are not testable by one person and stay open."
+    ]
+   },
+   {
+    "id": "S5-15",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 127,
+    "cells": [
+     "43",
+     "43-R",
+     "65"
+    ],
+    "header": null,
+    "cols": [
+     "**Does the judge preference repeat on judges from other model families?** Cell 65, registered 2026-10-01. Human preference stays open."
+    ]
+   },
+   {
+    "id": "S5-16",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 128,
+    "cells": [
+     "36",
+     "60",
+     "68"
+    ],
+    "header": null,
+    "cols": [
+     "**Is the role-prompted pipeline better than the same model sampled four times?** Cell 68 is a design only; it needs public question sets and is not scheduled."
+    ]
+   },
+   {
+    "id": "S5-17",
+    "section": 5,
+    "section_title": "BLOCKED — open questions awaiting an instrument",
+    "kind": "open",
+    "line": 129,
+    "cells": [
+     "26"
+    ],
+    "header": null,
+    "cols": [
+     "**Does agreement between specialists change what the editor keeps?** Open since the Cell 26 claim was withdrawn (2026-10-01); no validated instrument."
+    ]
+   },
+   {
     "id": "S6-01",
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 113,
-    "cells": [],
+    "line": 133,
+    "cells": [
+     "37"
+    ],
     "header": null,
     "cols": [
      "**No regex as an instrument** (user directive, 2026-08-09). All prior regex measurements are provisional."
@@ -3457,8 +4177,10 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 114,
-    "cells": [],
+    "line": 134,
+    "cells": [
+     "23"
+    ],
     "header": null,
     "cols": [
      "**Cutoff family is unmeasurable** with current labels (3 positives). The program covers three families until more labels exist."
@@ -3469,8 +4191,10 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 115,
-    "cells": [],
+    "line": 135,
+    "cells": [
+     "IV"
+    ],
     "header": null,
     "cols": [
      "**Sentence-level counts, not document-level presence** — \"any sentence positive\" compounds false positives across ~40 sentences."
@@ -3481,7 +4205,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 116,
+    "line": 136,
     "cells": [],
     "header": null,
     "cols": [
@@ -3493,8 +4217,10 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 117,
-    "cells": [],
+    "line": 137,
+    "cells": [
+     "19"
+    ],
     "header": null,
     "cols": [
      "**Parameters are diagnostics, never optimization targets.**"
@@ -3505,7 +4231,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 118,
+    "line": 138,
     "cells": [],
     "header": null,
     "cols": [
@@ -3517,7 +4243,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 119,
+    "line": 139,
     "cells": [],
     "header": null,
     "cols": [
@@ -3529,8 +4255,12 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 120,
-    "cells": [],
+    "line": 140,
+    "cells": [
+     "36",
+     "37",
+     "40"
+    ],
     "header": null,
     "cols": [
      "**Outcome attainability** (item 12, from the attainability audit 2026-08-11): before a cell runs, compute from existing runs the fraction in which the outcome variable can fire, and the CI width the planned n buys against the effect the cell must detect — for every registered prediction, not just the primary. Decisive-fraction is a pre-run check, NEVER a design target (finding #8)."
@@ -3541,11 +4271,91 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 121,
-    "cells": [],
+    "line": 141,
+    "cells": [
+     "31"
+    ],
     "header": null,
     "cols": [
      "**Citation strength follows the audit classes** — a DEGENERATE or UNINFORMATIVE null moves its question to OPEN; it is never cited as evidence of absence (`docs/ATTAINABILITY_AUDIT_2026-08-11.md`)."
+    ]
+   },
+   {
+    "id": "S6-10",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 142,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Small-sample inference** (2026-10-01): aggregate to the scenario or item, then a t-interval on the paired differences and an exact sign-flip test; print the number of clusters beside every estimate. No percentile bootstrap under about twenty clusters and no interval over runs (`gst.smallcluster`)."
+    ]
+   },
+   {
+    "id": "S6-11",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 143,
+    "cells": [
+     "43"
+    ],
+    "header": null,
+    "cols": [
+     "**Preference on all pairs** (2026-10-01): a pair the judge splits by position counts half; win, loss and split counts are printed. A share of consistently-decided pairs is never quoted alone."
+    ]
+   },
+   {
+    "id": "S6-12",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 144,
+    "cells": [
+     "62"
+    ],
+    "header": null,
+    "cols": [
+     "**Agreement corrected for chance, and checked against a person** (2026-10-01): kappa beside raw agreement, and no measuring tool is called validated until it has been compared with blind human labels at the prevalence it is used at."
+    ]
+   },
+   {
+    "id": "S6-13",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 145,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Run records carry their own audit trail** (2026-10-01): UTC time, model digest, seed, context length, prompt hash, token counts, the commit checked out and the runner's hash on every model call (`gst.runlog`). Smoke tests run only on material outside the registered set."
+    ]
+   },
+   {
+    "id": "S6-14",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 146,
+    "cells": [
+     "54"
+    ],
+    "header": null,
+    "cols": [
+     "**Comparison arms are generated in the same session** (2026-10-01): a stored arm from another day is never the control for a causal size."
+    ]
+   },
+   {
+    "id": "S6-15",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 147,
+    "cells": [],
+    "header": null,
+    "cols": [
+     "**Scope words** (2026-10-01): \"specialists\" are role prompts on the editor model unless a separate model is named; judges and readers are local models of 7 to 30B; nothing is claimed about people. The published Mixture-of-Agents recipe is not the pipeline tested here and is not called \"the recipe\"."
     ]
    }
   ]

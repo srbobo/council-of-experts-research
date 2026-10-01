@@ -1,0 +1,1 @@
+window.__ledgerChunk("65","H4sIAKTtvmoC/02P4QqDIBzEXyX8PFvLasNXGHuCEWIlzWFq+q8R0bvPio0+3v3uDm5GQoOECdEIFTk6RcibwdXCB+NZBmmd6Sz8pTawsxn52kkLaxEcl/rsBs1qoVSRs/fQtMLHdloHO9MItXVQawEb72maVCtRinec0FuFpfbghhpwn7E7e2w1GSyu6PVAxyQmh4h9yYxesm2r/widxvkx/rMJHhUlSYU5OcByWf8EIXW731u+GBOIQQ0BAAA=");

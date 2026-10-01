@@ -89,7 +89,7 @@
    ],
    "found": "The first attempt failed at its checkpoint. Judging whole documents of about 5,000 characters, the two AI judges agreed on only 179 of 288 decisions (62%), below the 70% required, so nothing else was scored. One judge flagged general hedging in 71 of 72 texts, and on out-of-date-information caveats the two judges differed elevenfold. The same judges had agreed 86% of the time on single sentences in Cell 23. We also found and fixed a bug in the quote check, which had not caused the failure.\n\nThe second attempt, after Cell IV, had the same judges score one sentence at a time in batches of 10 and counted caveat sentences. Agreement rose to 83% on the same 60 answers. Pooled, w, the share of the specialists' caution that reaches the final answer, was 0.150, plausibly 0.058 to 0.252. It was 0.172 for gpt-oss-20B alone, while Phi-4's 0.105 could not be told apart from zero.\n\nThe test of added caution could not be scored. Deleting caveat sentences by keyword had left an average of 5.4 caveat sentences in drafts labeled as having none, so only 3 runs truly had none. The keyword counter also saw far less caution than the judges, 8% against 63%.",
    "means": "The main pattern held without scripted wording: with no dictated phrases in the prompts and no keyword counting in the scoring, more caution in still meant more caution out. The effect was small and shown for only one editor model. The two attempts together showed that judges who agree on single sentences can disagree on whole documents, so the unit of judging matters. The second attempt also showed that every published rate for drafts with no caveats, in Cells 25, 27, 30 and 31, had been measured on drafts that still contained some. Whether the editor adds caution of its own became an open question again.",
-   "later": "Cell 38 later built drafts confirmed to hold no caveats and found the editor added some in 4 of 12 runs, answering the question this cell could not. Cell 46 showed the pattern for Phi-4 too, on 18 scenarios. A re-analysis of these 60 runs found the share of 0.150 is probably an underestimate, because the measured input is noisy, and put it between 0.150 and 0.217.",
+   "later": "Cell 38 later built drafts confirmed to hold no caveats and found the editor added some in 4 of 12 runs, answering the question this cell could not. Cell 46 repeated it with Phi-4 on 18 scenarios, and a review in October 2026 found that second test too close to call. A re-analysis of these 60 runs found the share of 0.150 is probably an underestimate, because the measured input is noisy, and put it between 0.150 and 0.217.",
    "entries": {
     "4284": {
      "label": "Plan",
@@ -177,7 +177,7 @@
    ],
    "found": "Both batch sizes passed every test. At batches of 10, the batched labels matched the one-at-a-time labels 91% of the time for estimates, 94.5% for rules that differ by place and 83.5% for general hedging. On the test sentences with known answers, gpt-oss-20B scored 90% and Qwen2.5-7B 93.8%, as good as or better than before. Neither judge returned an unreadable reply, including Qwen2.5-7B, which had failed on 38% of whole-document calls in Cell 35.\n\nBatching did not hurt accuracy because each judgment still covered a single sentence. Only the packaging changed. In Cell 30, by contrast, the judges had been asked to judge a whole document at once. General hedging was again the hardest kind to score, as it had been for the keyword counter, the NLI model (a natural-language-inference model) and the judges before.",
    "means": "Batches of 10, the largest size that passed, became the project's measuring tool, at about a tenth of the cost. Re-scoring the roughly 1,800 saved runs became an overnight job, and the waiting measurements for Cells 30 and 31 could go ahead. We also fixed what gets measured: the number of caveat sentences of each kind, not whether any sentence in a document has one. Counting a document as positive when any one of its roughly 40 sentences is flagged piles up false alarms.",
-   "later": "When the method was put to work in Cell 31, 44 of 468 judge calls (9.4%) came back unreadable, more than the zero seen here but within the 20% limit.",
+   "later": "In Cell 31, 9.4% of judge calls came back unreadable, within the 20% limit. A review in October 2026 found a deeper problem. Most sentences carry no caveat, so the two judges agree mostly by luck, and beyond luck their agreement is weak. They also missed a third to two thirds of sentences containing phrases the editor was told to use. Counts made with this method are provisional until Cell 62 compares the labels with a person's.",
    "entries": {
     "5003": {
      "label": "Plan",
@@ -188,6 +188,11 @@
      "label": "Result",
      "title": "Batches of 10 pass every test and become the scoring method",
      "summary": "Both batch sizes passed on agreement, accuracy and readable replies. Batches of 10 were adopted, cutting the cost about tenfold, which made re-scoring the saved runs affordable and unblocked the waiting measurements for Cells 30 and 31."
+    },
+    "9806": {
+     "label": "Correction",
+     "title": "Agreement between the two judges is mostly luck",
+     "summary": "Most sentences carry no caveat, so two judges answering independently would agree 64% to 88% of the time. Measured beyond luck, their agreement is weak. Of the sentences either judge flagged, both flagged about one in four. They found only 66% and 35% of sentences containing two phrases the editor was told to use. No label was ever compared with a person's."
     }
    }
   },
@@ -224,32 +229,42 @@
   },
   "33": {
    "title": "Does disagreement between specialists warn of a weaker answer?",
-   "description": "We planned to measure how much the specialists disagreed in saved council runs and see whether more disagreement meant a weaker final answer. It never ran, because it needed the same checklist scoring tool as Cell 32.",
-   "outcome": "not-run",
-   "size": "Never run",
+   "description": "We planned to relate how much the specialists disagreed in saved council runs to how complete the final answer was. In September 2026 the checklist scoring it depends on failed its checkpoint, so the study stayed blocked.",
+   "outcome": "stopped",
+   "size": "Blocked at a checkpoint after 12 saved runs were scored",
    "why": "Cell 26 had shown that the editor ignores whether the specialists agree or disagree. This cell asked whether their disagreement is still useful to the system. If answers were weaker when specialists disagreed, the council would give a warning sign a single model cannot, and its value might lie in routing questions rather than writing answers. The study would only observe saved runs, with no intervention.",
    "expectations": [
     {
      "id": "P33.1",
      "text": "The more two specialists disagreed, the less of the scenario's checklist the final answer would cover.",
      "outcome": "not-tested",
-     "note": "Never tested, because the cell did not run."
+     "note": "Never tested. The checklist scoring failed its checkpoint, so the study did not run."
     },
     {
      "id": "P33.2",
      "text": "Setting aside the quarter of runs with the most disagreement would raise the average checklist score of the runs kept, with the share of runs kept reported alongside.",
      "outcome": "not-tested",
-     "note": "Never tested. The plan required reporting how many runs were kept, since a rule that sets aside every run would trivially look good."
+     "note": "Never tested. The checklist scoring failed its checkpoint, so the study did not run."
     }
    ],
-   "found": "The cell never ran. It would have used saved council runs with the specialists' texts stored. A judge would rate whether each pair of specialists conflicted on any substantive point, and we would relate that to the final answer's checklist score. Like Cell 32, it had to wait until the checklist scoring tool showed the two judges agreeing on at least 75% of at least 60 items. The notebook records no attempt at that check.",
-   "means": "The project has no evidence either way on whether disagreement between specialists warns of a weaker answer. The plan had said a negative result would mean the project's machinery for tracking disagreements between specialists had no demonstrated use.",
+   "found": "The study needed two AI judges to score each saved answer against its scenario's checklist. The plan required them to agree on at least 75% of at least 60 items first. On 25 September 2026 we wrote down exactly how the study would run on 352 saved council runs, then ran that check on 12 of them, 100 checklist items in all. The judges agreed on 57. Nearly all the disagreement ran one way: qwen3-vl marked an item as addressed 79% of the time and gpt-oss 38%.\n\nThe second measure, whether two specialists conflict, also behaved badly. Both judges marked a conflict in only 1 of 36 pairs, so 11 of the 12 runs scored zero. By a rule set in advance, that alone would have made the question unanswerable. The remaining 340 runs were not scored.",
+   "means": "The project still has no evidence either way on whether disagreement between specialists warns of a weaker answer. The study is recorded as blocked, not as finding nothing. We did not rewrite the checklist, lower the bar or swap judges after seeing the labels. A future attempt would need a one-sentence standard for what counts as addressing each item, written before any scoring, and a fresh check.",
    "later": null,
    "entries": {
     "4743": {
      "label": "Plan",
      "title": "Relate specialist disagreement to the final answer's quality",
      "summary": "An observational study of saved council runs. Judges would rate how much each pair of specialists conflicted, and we would test whether more conflict meant lower checklist coverage and whether holding back the most disputed runs raised the average."
+    },
+    "9402": {
+     "label": "Plan",
+     "title": "How the study would run on 352 saved runs",
+     "summary": "Before any scoring, we fixed which saved runs counted: 352 full council runs on six scenarios. We also fixed how two AI judges would score checklist coverage and conflicts between specialists. The checkpoint came first: the judges had to agree on at least 75% of 100 checklist items from 12 runs."
+    },
+    "9533": {
+     "label": "Stopped",
+     "title": "The checklist scoring failed its checkpoint",
+     "summary": "The two judges agreed on 57 of 100 checklist items, against a bar of 75. One judge marked items as addressed twice as often as the other. Both marked a conflict between specialists in only 1 of 36 pairs. The study did not run and is recorded as blocked. We made no changes to the design after seeing the labels."
     }
    }
   },

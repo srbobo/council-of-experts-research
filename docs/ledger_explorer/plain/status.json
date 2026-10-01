@@ -11,9 +11,10 @@
   },
   "S1-02": {
    "claim": "The editor adds caution that no specialist supplied, even when the specialists' text has been checked and contains none.",
-   "detail": "In Cell 38 we deleted every caveat sentence two AI judges flagged in the specialists' text, then checked the result again. On the scenarios confirmed at exactly zero caveats, the editor still wrote at least one caveat sentence in 4 of 12 runs, 33% (plausibly 14% to 61%). No keyword counter was used anywhere in the system or the scoring. This was the first measurement where the absence of caveats was actually confirmed, and it replaces earlier rates from a keyword counter. Given nothing, the editor also wrote shorter answers, so the rate depends on answer length.",
+   "detail": "In Cell 38 we deleted every caveat sentence two AI judges flagged in the specialists' text, then checked the result again. On the scenarios confirmed at exactly zero caveats, the editor still wrote at least one caveat sentence in 4 of 12 runs, 33% (plausibly 14% to 61%). No keyword counter was used. Given nothing, the editor also wrote shorter answers, so the rate depends on answer length. Added in October 2026: these counts rely on the two judges' sentence labels, which a review found agree little beyond chance. The figure is provisional until Cell 62 checks the labels against a person's.",
    "cells": [
-    "38"
+    "38",
+    "62"
    ]
   },
   "S1-03": {
@@ -48,8 +49,8 @@
    ]
   },
   "S1-07": {
-   "claim": "A caveat raised by several specialists is no more likely to reach the final answer than one raised by a single specialist.",
-   "detail": "Cell 26 re-scored 1,165 saved runs that had more than one specialist, with no new model runs. For the kind of caveat our keyword counter measured well, \"this number is an estimate\", the caveat reached the final answer in 49% of cases when two or more specialists raised it and 52% when only one did. The difference was too close to call (plausibly from 15 points lower to 8 points higher), which rules out any gain larger than 8 points. The editor ignores agreement between specialists, the one reliability cue a design with several specialists provides.",
+   "claim": "Withdrawn in October 2026: we no longer claim that the editor ignores whether several specialists raised the same caveat.",
+   "detail": "Cell 26 re-scored 1,165 saved runs with a keyword counter. For one kind of caveat, \"this number is an estimate\", agreement between specialists made no difference (49% against 52%). A review pointed out three problems. The other three kinds of caveat in the same analysis showed large gains when specialists agreed, and the paper left those out. The prompts in those runs told the editor which phrase to use for the one kind that showed nothing, so its wording could not respond to agreement. And the project stopped trusting the keyword counter three days later. The question is open, and we have no checked way to measure it.",
    "cells": [
     "26"
    ]
@@ -70,51 +71,56 @@
    ]
   },
   "S1-10": {
-   "claim": "AI judges prefer an answer combined from several drafts over a single model's direct answer, with 20-billion-parameter models, and two judge families agree.",
-   "detail": "In Cell 43 the gpt-oss judge preferred the combined answer in 82% of the matchups it decided the same way in both reading orders (plausibly 72% to 92%). In Cell 43-R a judge from another model family, qwen3-vl, chosen without seeing which side it favored, gave 79% (plausibly 65% to 92%). The preference held among pairs of similar length, and the two versions' average lengths differed by only 1.4%. gpt-oss wrote both sides, so any taste a judge has for its own model's writing applies to both. Length and use of specialist terms do not explain the preference, and what does is still unknown.",
+   "claim": "Two AI judges on our machine preferred an answer combined from several drafts over a single direct answer from the same model.",
+   "detail": "We showed each pair in both orders. We counted every pair, with a pair the judge split by position as half a win. The combined answer scored 61% with the gpt-oss judge (Cell 43) and 58% with qwen3-vl (Cell 43-R), a clear preference in both, over 18 scenarios. The 82% and 79% we first reported counted only the 35% and 26% of pairs each judge called the same way in both orders. Limits: the combined answer costs four model calls against one, and we ran no comparison of equal cost. The judges are small models that pick the first answer they read 80% to 89% of the time. No person judged a pair. Cell 65 adds other judges.",
    "cells": [
     "41",
     "43",
-    "43-R"
+    "43-R",
+    "65"
    ]
   },
   "S1-11": {
-   "claim": "Telling the editor to use an exact caveat phrase makes AI judges like its answers less.",
-   "detail": "Cell 41 made answers that differed from a comparison version only in a phrase the editor was told to use. Against that comparison, the gpt-oss judge in Cell 43 preferred the \"modeled at\" version in only 26% of matchups decided the same way in both reading orders (plausibly 14% to 39%). The \"taken to be\" version got 32% (plausibly 15% to 48%). In Cell 43-R a judge from another family gave 22% for \"taken to be\" (plausibly 13% to 33%). For \"modeled at\" it gave 28%, the same direction, but on only 29 matchups its range reached past even. None pointed the other way. Only the phrase differed, so the phrase caused the drop. Seeking judges' preference works against flagging uncertainty.",
+   "claim": "Telling the editor to use an exact caveat phrase made the same two AI judges like its answers a little less.",
+   "detail": "Cell 41 made answers that differed from a comparison version only in a phrase the editor was told to use. Counting every pair, with split pairs as half, the gpt-oss judge scored the \"modeled at\" version 41% and the \"taken to be\" version 44%. The qwen3-vl judge scored both 45%. Two of those four results were clear differences from an even split, and all four leaned the same way. The 22% to 32% we first reported counted only pairs a judge called the same way in both orders. Published studies have also found that AI judges mark down text that expresses uncertainty. These are small local models, and no person judged a pair.",
    "cells": [
     "41",
     "43",
-    "43-R"
+    "43-R",
+    "65"
    ]
   },
   "S1-12": {
-   "claim": "When the editor flags a disagreement and a follow-up reply with the deciding fact comes back, the editor uses it. This was the first change we tested that held up as an improvement.",
-   "detail": "In Cell 44 the editor first wrote a required list of disagreements between specialists. When it named the planted one, the system added a reply from the relevant specialist. With a reply containing the deciding fact, the editor took the right position in 7 of 7 runs. Without a reply it did so in 33% of runs, and with a reply that sounded helpful but added nothing, in 20%. Both gaps were clear (plausibly 20 to 100 points and 55 to 95 points). Both AI judges agreed on all 7, and counting every judge disagreement against us still left gaps of 40 and 53 points. Scope: we wrote the replies, only 7 runs counted, and there was one editor model.",
+   "claim": "When the editor named a planted disagreement and received a reply with the deciding fact, it took the intended position in 7 of 7 runs. Counting all runs, the gain is small.",
+   "detail": "In Cell 44 the editor first listed disagreements between specialists. When it named the planted one, the system added a reply from the relevant specialist. With an informative reply the editor took the intended position in 7 of 7 such runs, against 5 of 15 with no reply and 3 of 15 with an empty-sounding reply. A review noted that this counts only runs where the editor named the disagreement, which happened in 7, 15 and 15 of 36 runs. Over all 36 runs per version the counts were 15, 10 and 8. No question went the other way, but with six questions the difference is too close to call. We wrote the replies ourselves, and there was one editor model.",
    "cells": [
     "44"
    ]
   },
   "S1-13": {
-   "claim": "Follow-up questions are held back by how rarely models notice they need one, not by their ability to route or use one.",
-   "detail": "In Cell 44 the editor used a routed reply 7 of 7 times but named the planted disagreement in only 34% of runs. In Cell 45, when a specialist facing a question outside its field flagged a need for help, it named the right specialist 10 of 11 times (91%, plausibly 62% to 98%). But it flagged the need in only 31% of runs. Whether it flagged more often outside its field than inside was too close to call, so that expectation did not hold, while the routing one did. We therefore recommend sending follow-ups based on the editor's required list of disagreements, not on a model judging its own limits. As planned in advance, the design where specialists decide to defer was dropped.",
+   "claim": "Follow-up questions seem to be held back by how rarely models notice they need one, more than by their ability to route or use one.",
+   "detail": "In Cell 44 the editor used an informative reply in 7 of 7 runs where it had named the planted disagreement, but it named it in only 34% of runs. In Cell 45, when a specialist facing a question outside its field flagged a need for help, it named the right specialist 10 of 11 times (91%, plausibly 62% to 98%). But it flagged the need in only 31% of runs, and whether it flagged more often outside its field than inside was too close to call. Both halves rest on few runs and six questions each, so we now read this as two small observations pointing the same way. We still recommend sending follow-ups based on the editor's required list of disagreements.",
    "cells": [
     "44",
     "45"
    ]
   },
   "S1-14": {
-   "claim": "Giving the same key figure to a second specialist halves how often a planted wrong value reaches the final answer.",
-   "detail": "In Cell 47 one specialist's text carried a wrong value for a key figure. With no other source, the editor repeated the wrong value in 90% of runs. When the planning step also gave the figure to a second specialist holding the correct value, that fell to 45%, and the correct value appeared in 50% of runs, against 0% before. Both changes were clear, so the editor used the second source rather than being diluted. Values were checked by exact match. This was the first planned-in-advance test of the rebuilt system's design. Protection was all or nothing by question: three were fully protected and two not at all, so which figures get protected is open.",
+   "claim": "Giving the same figure to a second specialist, with a different value, changed the editor's answer about half the time.",
+   "detail": "In Cell 47 one specialist's text carried a planted value for a figure, and the question asked for that figure. With no other source the editor repeated it in 36 of 40 runs. When a second specialist held a different value, the planted one appeared in 18 of 40 runs and the other in 20 of 40, a clear drop over 8 questions. We first called this halving a wrong value's spread. A review pointed out that the planted value could not be checked against anything in the scenario, so repeating it was following the request. With two sources the editor picked one or the other about evenly, and nothing in the answer showed that two values existed. Cell 63 tests a wrong figure that can be checked.",
    "cells": [
-    "47"
+    "47",
+    "63"
    ]
   },
   "S1-15": {
-   "claim": "A separate caveats section attached to the end of the report, which the editor never touches, carries every caveat, and readers use it to change their decisions.",
-   "detail": "In Cell 48 the section carried 100% of the specialists' caveats, against 17% surviving in the editor's prose. Whether AI judges penalize it was too close to call: they preferred the report with it in 51% of decided matchups (plausibly 27% to 75%), with 65 of 116 pairs tied. In Cell 51 a reader model read the report and chose to proceed or hold. A relevant caveat in the section changed its choice 69 percentage points more often than an irrelevant one (plausibly 46 to 89), over 11 questions and 440 runs. The same caveat in the prose worked about as well. Some caveats argued for going ahead, so plain caution cannot explain it. A smaller reader showed the same pattern, more weakly.",
+   "claim": "A caveats section attached to the report holds every caveat because it is built from them, and a reader model acted on a deciding sentence placed there.",
+   "detail": "In Cell 48 the editor's prose repeated a specialist's caveat sentence word for word in 3% of cases. We first reported 17%, a scoring bug found in October 2026. Neither number says how many caveats were lost, since a caveat restated in the editor's words counts as missing. Cell 66 measures that. AI judges showed no clear preference for or against the section. In Cell 51 a reader model changed its proceed-or-hold answer 69 points more often for a relevant appended sentence than for an irrelevant one (plausibly 43 to 96), over 11 questions. A second reader's result was too close to call. The reader was told to use anything attached, and the section held one sentence. No person read anything.",
    "cells": [
     "48",
-    "51"
+    "51",
+    "64",
+    "66"
    ]
   },
   "S1-16": {
@@ -126,8 +132,8 @@
    ]
   },
   "S1-17": {
-   "claim": "Sending a follow-up question to a live specialist works from start to finish: the specialist passes on the missing fact and the editor uses it.",
-   "detail": "In Cell 54 the deciding fact existed only in a specialist's private notes. When the editor flagged the disagreement, that specialist got a follow-up question. It passed the fact on in 21 of 21 replies, and the editor took the right position in 19 of 21 runs (90%), against 33% with no follow-up in Cell 44 (a gap plausibly 14 to 91 points). That is about 10 points below a perfect scripted reply, within the margin set in advance. How often the editor flags a disagreement ranged from 21% to 58% across batches (Cells 44, 53 and 54), which limits coverage. New risk: 4 of 21 replies added made-up legal authority, and the editor used it anyway. A filter for empty replies cannot catch that.",
+   "claim": "A live specialist passed on a fact from its private notes in 21 of 21 replies, and the editor then took the intended position in 19 of 21 runs.",
+   "detail": "In Cell 54 the deciding fact existed only in a specialist's private notes. When the editor named the disagreement, that specialist got a follow-up question. It passed the fact on in 21 of 21 replies, and the editor took the intended position in 19 of 21 of those runs, or 23 of 36 runs overall. We first compared this with a no-reply version saved six days earlier in Cell 44 (5 of 15). A review noted the two batches differ, so we no longer state the size of the gain. The specialist was handed the fact, so this shows the route works, not that a specialist finds the fact. Risk: 4 of 21 replies added made-up legal authority, and the editor used it anyway.",
    "cells": [
     "44",
     "53",
@@ -135,8 +141,8 @@
    ]
   },
   "S1-18": {
-   "claim": "The screening test a model must pass before it can serve as a specialist predicts which models will produce broken answers in the real system.",
-   "detail": "In Cell 55 we screened ten candidate models, recorded the results, and only then ran each as a specialist on 18 real tasks. A broken answer meant under 800 characters of visible text. The eight models that passed broke at most 6% of the time. The two that failed broke 33% (OpenBioLLM, 6 of 18) and 94% (BioMistral, 17 of 18) of the time, a gap of 63 points (plausibly 55 to 72). OpenBioLLM had passed an earlier screening, so results go stale and models must be screened again. A separate formatting check did not predict broken answers: Saul passed it 0 of 4 times yet never broke in 18 tasks.",
+   "claim": "Models that gave very short answers on our screening prompts also gave them when serving as specialists.",
+   "detail": "In Cell 55 we screened ten candidate models, recorded the results, and only then ran each as a specialist on 18 real tasks. A broken answer meant under 800 characters of visible text. The two models that failed the screening were the two with the most broken answers, 17 of 18 for BioMistral and 6 of 18 for OpenBioLLM. The other eight had none or one. Picking those two by luck would happen about 1 time in 45. A review noted that the screening and the outcome measure the same thing, short answers, on different prompts. It also noted that in tests of the rebuilt system one model plays every specialist, so the screening is applied to a single model.",
    "cells": [
     "55"
    ]
@@ -156,18 +162,19 @@
    ]
   },
   "S1-21": {
-   "claim": "With every step live, the planning step's assignments still let the editor use a second, correct source for a key figure.",
-   "detail": "In Cell 59 the planning step was told which figure mattered and wrote the specialists' questions. All 40 plans asked at least two specialists about it, and specialists passed on their briefed values 85% to 95% of the time. The correct value appeared 43 points more often than without a second source (plausibly 33 to 53), close to the 50 in Cell 47. Whether the wrong value dropped was too close to call. Live specialists already diluted it to 63% with no second source, against 90% in Cell 47, while the protected level matched at 45%. Cell 58, stopped at a checkpoint, showed a specialist passes on a private note only if asked about it (2 of 8 off-topic, 21 of 21 in Cell 54).",
+   "claim": "With every step live, the editor used a second specialist's value for a figure. Whether the planted value appeared less often was too close to call.",
+   "detail": "In Cell 59 the planning step was told which figure mattered and wrote the specialists' questions. All 40 plans asked at least two specialists about it. The second specialist's value appeared in 19 of 40 runs, against 2 of 40 without a second source, a clear difference over 8 questions. The planted value appeared in 18 of 40 runs against 25 of 40, too close to call. The paper had reported only the first half. Values were matched as text after four fixes to the matching. Cell 58, stopped at a checkpoint, showed a specialist passes on a private note only if asked about it (2 of 8 off-topic, 21 of 21 in Cell 54). Cell 67 repeats the live test on 61 questions with computed answers.",
    "cells": [
     "47",
     "54",
     "58",
-    "59"
+    "59",
+    "67"
    ]
   },
   "S1-22": {
-   "claim": "The filter that blocks known made-up citations is ready to use. The filter meant to catch replies with no real content is not, after two attempts.",
-   "detail": "Over 141 saved replies, the citation filter caught all 21 containing a known invented citation, with no false alarms or misses, including one our own answer key had missed. Its list grows only from citations we have confirmed as invented. The content filter failed both versions against targets set in advance. The first, using two AI judges, dropped only 3 of 6 replies written to sound helpful while adding nothing. The second made the judges quote the new fact, then checked the quote. It dropped all 6 empty replies but passed only 10 of 21 real replies that did add a fact, against a target of 80%. Replies now go out with a warning flag, and this risk stays open.",
+   "claim": "The filter that blocks known made-up citations works on the replies it was built from. The filter meant to catch replies with no real content failed twice.",
+   "detail": "Over 141 saved replies, the citation filter caught all 21 containing a known invented citation, with no false alarms or misses. A review noted that its three names came from those same replies, so this shows the filter runs as written, not how it does on new replies. The content filter failed both versions against targets set in advance. The first, using two AI judges, dropped only 3 of 6 replies written to sound helpful while adding nothing. The second dropped all 6 but passed only 10 of 21 real replies that did add a fact, against a target of 80%. Replies now go out with a warning flag, and this risk stays open.",
    "cells": [
     "44",
     "54",
@@ -175,8 +182,8 @@
    ]
   },
   "S1-23": {
-   "claim": "AI judges showed no clear preference between the rebuilt system's reports and the old system's, so its added protections cost nothing measurable in preference.",
-   "detail": "In Cell 61 we paired full reports from the rebuilt system, which we call the harness, with the old system's, on 18 scenarios. The main judge preferred the harness in 56% of matchups decided the same way in both reading orders (plausibly 38% to 77%, 48 matchups). A second judge leaned the other way, 33% (plausibly 8% to 56%), on only 15. Large wins or losses are ruled out, while moderate ones are too close to call. Judges' liking comes from combining answers, which both systems do (Cell 43). Its other features rest on their own tests. Without its caveats section its share was 49%, so the section helps slightly (Cell 48). Follow-ups fired in 85% of runs, against 21% to 58% on planted ones.",
+   "claim": "AI judges showed no clear preference between the rebuilt system's reports and the old system's. The rebuilt system costs about three times as many model calls.",
+   "detail": "In Cell 61 we paired full reports from the rebuilt system, which we call the harness, with the old system's, on 18 scenarios. Counting every pair, with split pairs as half, the main judge scored the harness 53% and a second judge 48%, both too close to call. We first wrote that large wins and losses were ruled out. That holds for the main judge only. We set no margin in advance for calling the two equal, so we do not claim the added parts cost nothing. One question takes about 14 model calls against 4, and 14 to 18 minutes. The old system's reports were saved three weeks earlier. The harness also builds its caveats section with a simpler method than the one tested in Cell 48.",
    "cells": [
     "43",
     "48",
@@ -194,17 +201,17 @@
    ]
   },
   "S1-25": {
-   "claim": "We stand behind all fourteen lessons about our measuring tools, listed in the section on lessons about our tools.",
+   "claim": "We stand behind all twenty lessons about our measuring tools, listed in the section on lessons about our tools.",
    "detail": "These are findings about how we measured, not about how the models behave. A flaw in a measuring tool therefore cannot undermine them the way it could undermine a result about behavior.",
    "cells": []
   },
   "S2-01": {
-   "claim": "The formula y = w·s + c now holds for two editor models, so we stand behind it. It says the caution in the final answer (y) rises with the caution supplied (s) at a steady share w, plus caution c the editor adds itself.",
-   "detail": "In Cell 46, over 18 scenarios, w (the share of supplied caution passed along) was 0.318 for gpt-oss (82 runs, about 32%) and 0.177 for Phi-4 (62 runs, plausibly 0.058 to 0.275). Phi-4 on the nine new scenarios alone gave 0.170, a second test owing nothing to combined data. A straight line fits, and measured w understates the true share (0.150 to 0.217 on Cell 30's data). The combined figures mix two scenario sets given very different amounts of caution (25.3 caveat sentences on average against 5.4), so they are not a rate for any one set. Phi-4's effective sample fell short of plan (42.3 against 47), so its estimate may run high. After Cell 37 we dropped an older story of how w arises.",
+   "claim": "The formula y = w·s + c describes one editor model, gpt-oss. Here s is the caution supplied, y is the caution in the final answer, w is the share passed along, and c is what the editor adds itself.",
+   "detail": "In Cell 46, within each set of nine scenarios, w was 0.172 and 0.326 for gpt-oss, both above zero by a clear margin. For Phi-4 it was 0.105 and 0.170, and a review found both too close to call once the ranges were computed over scenarios instead of runs. So the second test did not hold up. The review also showed what w mostly reflects. The editor's answer is 18% to 30% as long as the specialists' text and carries 18% to 31% as many caveat sentences. Caveat sentences make up about the same share of the answer as of the input (19% against 18% in the newer scenarios, 10% against 13% in the original ones). Whether caveats are lost more than other content is the question for Cell 66.",
    "cells": [
     "30",
-    "37",
-    "46"
+    "46",
+    "66"
    ]
   },
   "S2-02": {
@@ -572,11 +579,212 @@
   },
   "S6-09": {
    "claim": "How strongly we cite a no-difference result depends on how the audit graded it. A result that could not have detected the effect never counts as evidence the effect is absent.",
-   "detail": "The audit of 11 August 2026 graded each no-difference result. If the outcome almost never or almost always occurred, or if the plausible range still includes the effect we once claimed, the question goes back to open. For example, Cell 31 could not rule out the evidence-list effect originally claimed, so that question is open, not answered no. Other results held up: Cell 26 rules out any gain above 8 points.",
+   "detail": "The audit of 11 August 2026 graded each no-difference result. If the outcome almost never or almost always occurred, or if the plausible range still includes the effect we once claimed, the question goes back to open. For example, Cell 31 could not rule out the evidence-list effect originally claimed, so that question is open, not answered no.",
    "cells": [
-    "26",
     "31"
    ]
+  },
+  "S3-13": {
+   "claim": "We used to claim that the editor ignores whether several specialists raised the same caveat.",
+   "detail": "The claim came from Cell 26. A review in October 2026 found it rested on one of four kinds of caveat, counted with a keyword counter on runs whose prompts told the editor which phrase to use. The other three kinds showed large gains when specialists agreed. The question is now open.",
+   "cells": [
+    "26"
+   ]
+  },
+  "S3-14": {
+   "claim": "We used to report that 17% of the specialists' caveat sentences survived in the editor's prose, and that this matched our earlier estimates.",
+   "detail": "The 17% in Cell 48 came from a scoring bug. Caveats that ran over several lines were cut to their first line, often a single table character that matches almost any report. Scored on the full sentences the figure is 3%, and it counts only word-for-word copies. The match with earlier estimates was an accident of the bug. Cell 66 measures whether caveats are conveyed.",
+   "cells": [
+    "48",
+    "66"
+   ]
+  },
+  "S3-15": {
+   "claim": "We used to say that a second source halves how often a wrong value spreads, and that this protection is causal.",
+   "detail": "In Cell 47 the planted value could not be checked against the scenario, and the question asked for it. A second specialist with a different value changed the editor's answer about half the time, a clear difference over 8 questions. The editor picked one value or the other about evenly and did not show that two existed. We dropped the words halves, causal and immunity.",
+   "cells": [
+    "47"
+   ]
+  },
+  "S3-16": {
+   "claim": "We used to say the formula y = w·s + c held for a second editor model, Phi-4.",
+   "detail": "The ranges we published for Cell 46 were computed over runs. Computed over the nine scenarios in each set, Phi-4's share w is too close to call in both sets (plausibly from just below zero to 0.30). The formula stands as a description of gpt-oss only.",
+   "cells": [
+    "30",
+    "46"
+   ]
+  },
+  "S3-17": {
+   "claim": "We used to say the rebuilt system adds its protections at no cost, and that large wins and losses were both ruled out.",
+   "detail": "In Cell 61 one question takes about 14 model calls in the rebuilt system against 4 in the old one. The main judge showed no clear preference. The second judge's results could not rule out a large loss. We set no margin in advance for calling the two systems equal.",
+   "cells": [
+    "61"
+   ]
+  },
+  "S3-18": {
+   "claim": "The paper said that a model's own assessment of its limits predicts its behavior no better than chance.",
+   "detail": "That sentence rested on three small tests (Cells 45, 49 and 50), each too close to call. One of them leaned in the expected direction: specialists flagged a need for help in 31% of runs outside their field against 8% inside. Our own rule says a result too weak to detect an effect is not evidence the effect is absent, so the sentence is withdrawn and the question is open.",
+   "cells": [
+    "45",
+    "49",
+    "50"
+   ]
+  },
+  "S3-19": {
+   "claim": "The paper said every plausible range was computed over scenarios, and that version history proves each plan came before its runs.",
+   "detail": "A review found the ranges for the formula's share w were computed over runs. It also found that the saved run files for Cells 25 to 60 were first added to version history on 24 September 2026, weeks after their results were written up, and carry no timestamps. The history shows each plan was written before its result, which is a weaker statement. New runs record the time, the model version and the settings.",
+   "cells": [
+    "46"
+   ]
+  },
+  "S4-15": {
+   "claim": "Checklist items written for human reviewers did not work as a scoring method for two AI judges.",
+   "detail": "In September 2026 we tried to score saved council answers against each scenario's checklist, as Cells 32 and 33 required. On 100 checklist items from 12 runs, the two judges agreed on only 57, against a bar of 75 set in advance. Nearly all the disagreement ran one way: qwen3-vl marked an item as addressed 79% of the time and gpt-oss 38%. The judges applied different standards for what counts as addressing an item. Cells 32 and 33 stay blocked, and we did not redesign the check after seeing the labels.",
+   "cells": [
+    "32",
+    "33"
+   ]
+  },
+  "S4-16": {
+   "claim": "Two AI judges agreeing on most sentences does not show they measure anything, when nearly every sentence gets the same answer.",
+   "detail": "Our two-judge sentence labels agreed on 83% to 91% of sentences, and we accepted them against a bar of 70%. But most sentences carry no caveat, so two judges answering independently would agree 64% to 88% of the time by luck. Beyond luck, the agreement is weak. Of the sentences either judge flagged, both flagged about one in four. The judges also found only 66% of sentences containing the phrase \"modeled at\" and 35% of those containing \"taken to be\". No label has been compared with a person's. Cell 62 does that, and every count made with these labels is provisional until then.",
+   "cells": [
+    "IV",
+    "23",
+    "41",
+    "46",
+    "62"
+   ]
+  },
+  "S4-17": {
+   "claim": "A scoring script that read a list back one line at a time created matches that were not there.",
+   "detail": "In Cell 48 the caveats were read back from the attached section line by line. About a quarter of them ran over several lines and were cut to the first one, often a single table character that appears in any report with a table. That produced 273 of the 361 supposed matches. The wrong figure, 17%, fell inside the range we expected, so nobody questioned it. The corrected figure is 3%. The fix scores the full sentences the section was built from and checks their count.",
+   "cells": [
+    "48"
+   ]
+  },
+  "S4-18": {
+   "claim": "With only 6 to 18 scenarios or questions, our plausible ranges were too narrow, and counting only consistently judged pairs made preferences look larger.",
+   "detail": "A review recomputed the affected results. For Cell 47 the range for the drop in the planted value widened from 20 to 73 points to 10 to 81 points. The ranges for the formula's share w had been computed over runs, not scenarios. And preference shares counted only the 5% to 40% of pairs a judge called the same way in both orders, which turned 61% into 82%. From October 2026 we average within each scenario or question first, use a method suited to few of them, and count every pair.",
+   "cells": [
+    "43",
+    "46",
+    "47"
+   ]
+  },
+  "S4-19": {
+   "claim": "Labels our notebook called analyst-written were produced by the AI assistant that also designed the experiments.",
+   "detail": "This covers the 20 practice sentences in Cell 23, the sorting of made-up citations in Cell 56, the 41 key-figure labels in Cell 57, and the questions and planted facts in Cells 44, 47 and 51. When one source writes the questions and labels the outcomes, the labels are not an independent check. No sentence label, preference or reader decision in the project comes from a person. Cells 62 and 66 add blind labels from the author.",
+   "cells": [
+    "23",
+    "44",
+    "47",
+    "51",
+    "56",
+    "57",
+    "62",
+    "66"
+   ]
+  },
+  "S4-20": {
+   "claim": "Our saved run files could not show when a run was made or under what settings.",
+   "detail": "Before Cell 62, a run file held no timestamp, model version, random seed or prompt fingerprint. The files for Cells 25 to 60 entered version history on 24 September 2026, weeks after their results. No script set how much text the model could read at once. We checked that the default was large enough for our prompts, but no file shows it. New runs record all of these on every model call.",
+   "cells": []
+  },
+  "S5-11": {
+   "claim": "Do the two AI judges' sentence labels agree with a person's?",
+   "detail": "Planned as Cell 62 in October 2026. The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. Until this is done, every count made with the judges' labels is provisional.",
+   "cells": [
+    "62"
+   ]
+  },
+  "S5-12": {
+   "claim": "Are caveats conveyed in the final answer less often than ordinary sentences?",
+   "detail": "Planned as Cell 66. The formula's share w and the word-for-word copy rate do not answer this, because the editor shortens everything. The test compares each caveat sentence with an ordinary sentence of similar length from the same specialist text.",
+   "cells": [
+    "46",
+    "48",
+    "66"
+   ]
+  },
+  "S5-13": {
+   "claim": "Does the editor catch a wrong figure when the scenario states the right one?",
+   "detail": "Planned as Cell 63, on 61 questions whose answers are computed, so a wrong input changes the answer and a script can score it. Cell 67 runs the same questions through the full live system.",
+   "cells": [
+    "47",
+    "59",
+    "63",
+    "67"
+   ]
+  },
+  "S5-14": {
+   "claim": "Do other reader models act on an appended caveat, without being told to look, when it is one line among ten?",
+   "detail": "Planned as Cell 64 with six reader models. Whether human readers use the section cannot be tested by one person and stays open.",
+   "cells": [
+    "51",
+    "64"
+   ]
+  },
+  "S5-15": {
+   "claim": "Do AI judges from other model families share the two judges' preferences?",
+   "detail": "Planned as Cell 65, adding four judges on the same 378 pairs. Whether people share those preferences stays open.",
+   "cells": [
+    "43",
+    "43-R",
+    "65"
+   ]
+  },
+  "S5-16": {
+   "claim": "Is the specialist pipeline better than asking the same model four times and taking a vote?",
+   "detail": "Cell 68 fixes a design for this on public questions where a single model is right about half the time. It is not scheduled, because it needs public question sets to be downloaded first.",
+   "cells": [
+    "36",
+    "60",
+    "68"
+   ]
+  },
+  "S5-17": {
+   "claim": "Does agreement between specialists change what the editor keeps?",
+   "detail": "Open since October 2026, when the claim from Cell 26 was withdrawn. We have no checked way to measure it.",
+   "cells": [
+    "26"
+   ]
+  },
+  "S6-10": {
+   "claim": "With few scenarios or questions, average within each one first and use a method suited to small numbers.",
+   "detail": "Adopted in October 2026. We compute the difference for each scenario or question, then a plausible range from those few numbers and an exact test that shuffles their signs. The number of scenarios or questions is printed beside every estimate. We no longer compute ranges over individual runs.",
+   "cells": []
+  },
+  "S6-11": {
+   "claim": "Count every pair when AI judges compare two answers.",
+   "detail": "Adopted in October 2026. Each pair is shown in both orders. A pair the judge calls differently in the two orders counts as half a win for each side. Wins, losses and split pairs are all reported. A share of only the consistently judged pairs is never quoted alone.",
+   "cells": [
+    "43"
+   ]
+  },
+  "S6-12": {
+   "claim": "Report agreement beyond chance, and check a scoring method against a person before trusting it.",
+   "detail": "Adopted in October 2026. When most items get the same answer, two judges agree often by luck, so we report how much they agree beyond that. A scoring method counts as checked only after comparison with a person's blind labels, at the natural mix of cases it will be used on.",
+   "cells": [
+    "62"
+   ]
+  },
+  "S6-13": {
+   "claim": "Every model call records when it ran and under what settings.",
+   "detail": "Adopted in October 2026. Each saved run holds the time, the model version, the random seed, the prompt fingerprint, how much text the model could read, token counts, and the version of the code. Trial runs before an experiment use only material outside the planned set.",
+   "cells": []
+  },
+  "S6-14": {
+   "claim": "Versions being compared are run in the same session.",
+   "detail": "Adopted in October 2026. A version saved on another day is never the comparison for a claim about cause. Cell 54 compared live runs with a version saved six days earlier, and the two batches turned out to differ.",
+   "cells": [
+    "54"
+   ]
+  },
+  "S6-15": {
+   "claim": "Say plainly what was tested: one model in several roles, small local judges and readers, no people.",
+   "detail": "Adopted in October 2026. In most experiments the three specialists are the editor model given a one-sentence role. Judges and readers are local models of 7 to 30 billion parameters. Nothing is claimed about people. The pipeline we tested is also not the published Mixture-of-Agents method, which uses several different large models.",
+   "cells": []
   }
  }
 }

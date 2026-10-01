@@ -1,0 +1,360 @@
+{
+ "batch": "M",
+ "cells": {
+  "62": {
+   "title": "Do the AI judges' sentence labels agree with a person's?",
+   "description": "The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. We then check the judges' method against the person's labels. Planned, with the AI judging queued to run.",
+   "outcome": "not-run",
+   "size": "Planned: 404 sentences, one person, six AI judges",
+   "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
+   "expectations": [
+    {
+     "id": "P62.0",
+     "text": "The person's two rounds of labels, a week apart, would agree well beyond chance for each of the three kinds of caveat.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The second round can start a week after the first is finished."
+    },
+    {
+     "id": "P62.1",
+     "text": "The method used so far, counting a caveat only when both original judges flag it, would match the person's labels well for all three kinds of caveat.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. We expect this to fail for at least one kind, the caveat that marks a number as an estimate."
+    },
+    {
+     "id": "P62.2",
+     "text": "Some rule for combining the six judges, chosen on half of the sentences, would match the person's labels well on the other half.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P62.3",
+     "text": "We would report how each judge and each rule compares with the person, how judges compare with each other, and whether a judge repeats its own earlier label.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. The 404 sentences were drawn on 1 October 2026 by a fixed rule from sentences the two judges had already labeled in Cells 30, 31, 41 and 46. Half were flagged by at least one judge and half by neither. The labeling tool shows one sentence at a time with the three definitions and nothing else.",
+   "means": "If the current method matches the person's labels, the caveat counts in Cells 30, 38, 41 and 46 stand. If it does not but another rule does, the saved answers can be scored again with that rule, as a separately planned step. If no rule does, the project has no checked way to count caveats and says so.",
+   "later": null,
+   "entries": {
+    "10047": {
+     "label": "Plan",
+     "title": "Compare the AI judges with one person's blind labels",
+     "summary": "A sample of 404 saved sentences, half flagged by at least one of the two original judges and half by neither. The author labels each one twice, a week apart, seeing only the sentence. Six AI judges label the same sentences. The current method and twelve other ways of combining judges are then scored against the person's first round."
+    }
+   }
+  },
+  "63": {
+   "title": "Does the editor catch a wrong figure it could check?",
+   "description": "On 61 questions whose answers are computed, we give the editor short analyst notes that quote one input figure correctly, wrongly, or in two conflicting versions. A script checks which figure the final answer follows. Planned and queued to run.",
+   "outcome": "not-run",
+   "size": "Planned: 610 runs per editor model, 3 models",
+   "why": "Cells 47 and 59 planted a value the editor could not check, and asked for it by name, so repeating it showed little. A review in October 2026 asked for a test where checking is possible. Here every question has a computed answer that changes when one input figure changes. In one setup the scenario itself states the right figure while a note quotes a wrong one, so the error can be caught. In others the figure appears only in the notes. Nothing tells the editor to include or check the figure.",
+   "expectations": [
+    {
+     "id": "P63.0",
+     "text": "With the right figure stated and quoted, the editor would answer correctly in at least 90% of runs. Otherwise the other results cannot be read.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. In Cells 60 and 60-R the same model answered these questions correctly in 97% of direct runs."
+    },
+    {
+     "id": "P63.1",
+     "text": "When a wrong figure in one note is the only source, the editor's answer would follow it in at least 80% of runs.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P63.2",
+     "text": "When the scenario states the right figure, the editor would follow a note's wrong figure less often than when the note is the only source.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. This is the main expectation of the cell."
+    },
+    {
+     "id": "P63.3",
+     "text": "When a second note quotes the right figure, the editor would follow the wrong figure less often than when the wrong note is the only source.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P63.4",
+     "text": "When two notes quote different figures, the editor's reply would mention both figures in fewer than half of runs.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P63.5",
+     "text": "We would report which figure wins when two notes disagree, whether the order of the notes matters, and how often the editor gives some other answer or none.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. The 61 questions and their altered figures were built by a script on 1 October 2026 from the 66 questions of Cells 60 and 60-R. One input figure per question is raised or lowered by about a fifth, and the same script computes the answer under each version. A trial run on a question outside the set worked for all three editor models.",
+   "means": "If the editor catches a checkable error, the paper can say so. If it follows a quoted figure even when the scenario says otherwise, the paper says that instead. The results on two conflicting notes decide how the second-source design is described: as a way to expose a disagreement, and whether that disagreement reaches the reader.",
+   "later": null,
+   "entries": {
+    "10164": {
+     "label": "Plan",
+     "title": "Plant a wrong figure where it can and cannot be checked",
+     "summary": "Five setups per question: the right figure stated and quoted, a wrong figure quoted against the scenario, a wrong figure as the only source, a wrong and a right figure in two notes, and two different wrong figures. Two runs each on 61 questions, 610 runs per editor model. A script checks the final number against the computed answers."
+    }
+   }
+  },
+  "64": {
+   "title": "Do other AI readers act on a caveat in the caveats section?",
+   "description": "Six reader models read the reports from Cell 51 with a relevant or an irrelevant caveat in the attached section. We also remove the instruction that pointed at attachments and place the caveat among 4 or 9 real ones. Planned and queued to run.",
+   "outcome": "not-run",
+   "size": "Planned: 3,300 reads by six reader models",
+   "why": "Cell 51 found that a reader model changed its decision when a relevant caveat sat in the attached section. A review in October 2026 named three limits. There were two readers, and one was the model that wrote the report. The reader's instruction told it to use anything attached. And the section held a single sentence, where real ones hold 5 to 53. This cell tests each limit, on the same 11 questions, with four readers that Cell 51 did not use.",
+   "expectations": [
+    {
+     "id": "P64.1",
+     "text": "With Cell 51's own setup, the four new reader models taken together would change their decision more often for the relevant caveat than for the irrelevant one.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. This is the main expectation of the cell."
+    },
+    {
+     "id": "P64.2",
+     "text": "Removing the instruction that points at attachments would reduce how much the relevant caveat changes decisions.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P64.3",
+     "text": "Placing the relevant caveat among nine real caveats would reduce how much it changes decisions, compared with placing it alone.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P64.4",
+     "text": "We would report each reader's results in each setup, the effect of where the caveat sits in the list, and how the two readers from Cell 51 compare with their earlier results.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. No new question was written. The 11 questions, reports and one-word scoring are those of Cell 51. For the longer sections, the surrounding caveats are real specialist sentences from Cell 48, taken from the same scenario where it has enough. A trial run on a question Cell 51 had dropped worked for all six readers.",
+   "means": "The results decide how the paper describes the caveats section: whether model readers in general act on it, whether that depends on being told to look, and whether it survives a section of realistic length. Whether people act on it stays open, since one person cannot run a reader study.",
+   "later": null,
+   "entries": {
+    "10285": {
+     "label": "Plan",
+     "title": "Six readers, a neutral instruction and longer sections",
+     "summary": "Each reader gets the report with no section, with Cell 51's one-sentence section, and, under an instruction that no longer mentions attachments, with sections of 1, 5 and 10 sentences. The relevant and irrelevant versions differ in one line. Five reads per setup on 11 questions, 550 reads per reader."
+    }
+   }
+  },
+  "65": {
+   "title": "Do AI judges from other model families share the preference?",
+   "description": "Four more AI judges compare the same 378 pairs of answers as Cell 43, in both orders, with the same instructions. Every pair counts, with a pair the judge calls differently in the two orders counting as half. Planned and queued to run.",
+   "outcome": "not-run",
+   "size": "Planned: 3,024 judgments by four added judges",
+   "why": "Two judges have compared Cell 43's pairs: gpt-oss, which also wrote every answer, and qwen3-vl. Both preferred combined answers and marked down a scripted caveat phrase. A review in October 2026 asked whether that holds beyond those two. This cell adds Qwen2.5, Phi-4, Llama 3 and Mistral as judges. One of them, Qwen2.5, picked the first answer it read in 234 of its 240 earlier calls, so we set a rule in advance for leaving out a judge that only follows reading order.",
+   "expectations": [
+    {
+     "id": "P65.1",
+     "text": "Taken together, the added judges that count would prefer the combined answer to the single answer.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. This is the main expectation of the cell."
+    },
+    {
+     "id": "P65.2",
+     "text": "Taken together, the added judges that count would score the answer containing 'modeled at' below the plain answer.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P65.3",
+     "text": "Taken together, the added judges that count would score the answer containing 'taken to be' below the plain answer.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P65.4",
+     "text": "We would report each judge's wins, losses and split pairs, how often it picked the first answer it read, and how often judges agree with each other.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. No answer is written for this cell. The pairs, the judge's instructions and the settings are those of Cell 43. A trial run on a made-up pair worked for all four judges. Three picked the better answer in both orders, and Qwen2.5 picked the first one it read both times.",
+   "means": "If the added judges share the preferences, the paper can describe them as common to local AI judges of this size. If they do not, the two earlier results are properties of two particular judges. Either way the results say nothing about what people prefer.",
+   "later": null,
+   "entries": {
+    "10396": {
+     "label": "Plan",
+     "title": "Four more judges on the same 378 pairs",
+     "summary": "The four judges see each pair in both orders. A judge counts only if at most 20% of its pairs are unusable and it picked the first answer it read less than 95% of the time. For each comparison, the judges that count are averaged within each of the 18 scenarios and tested against an even split."
+    }
+   }
+  },
+  "66": {
+   "title": "Are caveats lost more than ordinary sentences?",
+   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length from the same specialist texts, two AI judges decide whether each is conveyed in the editor's answer. A person checks the judges on 120 cases. Planned and queued to run.",
+   "outcome": "not-run",
+   "size": "Planned: 1,710 sentence-and-answer pairs",
+   "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
+   "expectations": [
+    {
+     "id": "P66.0",
+     "text": "The two judges' joint decision would match a person's blind labels well on 120 sampled cases. If not, the comparison is recorded as blocked.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The 120 cases are drawn after the AI judging finishes."
+    },
+    {
+     "id": "P66.1",
+     "text": "Caveat sentences would be conveyed less often than ordinary sentences of similar length from the same text.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. This is the main expectation of the cell, and it could also come out even or the other way."
+    },
+    {
+     "id": "P66.2",
+     "text": "We would report how often caveats and ordinary sentences are conveyed fully or partly, and how often a judge reading the whole answer finds something the shortlist missed.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. The sentences were chosen by a fixed rule on 1 October 2026, before any judging. Each caveat sentence from Cell 48's lists was paired with an ordinary sentence of the closest length from the same specialist text, one that neither of the two original judges had flagged. Each is checked against three saved editor answers per scenario.",
+   "means": "If caveats are conveyed less often, the paper can say the editor drops caution in particular, and by how much. If they are conveyed about as often, the claim that prose loses caution is withdrawn in favor of a plainer one: the answer is shorter than its sources and keeps caveats in proportion.",
+   "later": null,
+   "entries": {
+    "10466": {
+     "label": "Plan",
+     "title": "Compare caveats with ordinary sentences of the same length",
+     "summary": "For each sentence, the three closest sentences in the editor's answer are found automatically, and two AI judges say whether its content is conveyed fully, partly or not. The author then labels 120 cases blind to check the judges. The main comparison is made within each of the 14 scenarios that have at least five caveats."
+    }
+   }
+  },
+  "67": {
+   "title": "Does a second source help in the full live system?",
+   "description": "The 61 computed-answer questions of Cell 63 go through the full live system. One specialist's private notes hold a wrong figure. In one version a second specialist's notes hold the right one. A script checks the final answer. Planned. It runs only if Cell 63's first check passes.",
+   "outcome": "not-run",
+   "size": "Planned: 61 questions, two versions each",
+   "why": "Cell 59 ran this design live on 8 questions and scored answers by matching figures in text. The editor used the second specialist's value, but whether the planted value appeared less often was too close to call. This cell repeats it on 61 questions where the final answer is a number a script can check, with both versions run in the same session. It is the first test of the assembled system on something other than AI judges' preference.",
+   "expectations": [
+    {
+     "id": "P67.0",
+     "text": "The wrong figure would show up in the first specialist's text, and the right one in the second specialist's text, in at least 75% of runs. Otherwise the rest cannot be read.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. In Cell 59 specialists passed on their figures in 85% to 95% of runs."
+    },
+    {
+     "id": "P67.1",
+     "text": "The final answer would follow the wrong figure less often when a second specialist holds the right one.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. This is the main expectation of the cell."
+    },
+    {
+     "id": "P67.2",
+     "text": "The final answer would be correct more often when a second specialist holds the right figure.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P67.3",
+     "text": "When two specialists hold different figures, the final answer would mention both in fewer than half of runs.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. The cell has not run."
+    },
+    {
+     "id": "P67.4",
+     "text": "We would report what happens when both figures reach the specialists' texts, whether the editor's list of disagreements names both, and where the follow-up question goes.",
+     "outcome": "not-tested",
+     "note": "Not tested yet. Reported without a pass/fail test."
+    }
+   ],
+   "found": "Not run yet. A trial of the whole chain on a question outside the set took about ten minutes and returned a correct final answer. The planning step once used up its length allowance while thinking, as in Cell 61, so the short steps were given the larger allowance that Cell 61 ended with.",
+   "means": "The results show whether giving a figure to a second specialist changes what the full system answers, and whether a disagreement between two specialists reaches the reader. The specialists here are the editor model in three roles, and the questions are arithmetic and rule questions, not the advisory scenarios.",
+   "later": null,
+   "entries": {
+    "10572": {
+     "label": "Plan",
+     "title": "The wrong figure through the full live system",
+     "summary": "The figure is removed from the scenario and reaches the system only through a specialist's private notes. Both versions share the same plan and the same texts from the two specialists whose notes do not change. One run per question and version, 61 pairs, scored by a script against the computed answers."
+    }
+   }
+  },
+  "68": {
+   "title": "Is the pipeline better than asking one model four times?",
+   "description": "A design for testing the project's first question on public questions where a single model is right about half the time, with four setups of equal cost. It is written down but not scheduled, because it needs public question sets to be downloaded.",
+   "outcome": "not-run",
+   "size": "Design only, not scheduled",
+   "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
+   "expectations": [
+    {
+     "id": "P68.1",
+     "text": "The specialist pipeline would be more accurate than one direct answer from the same model.",
+     "outcome": "not-tested",
+     "note": "Not tested. The cell is a design only."
+    },
+    {
+     "id": "P68.2",
+     "text": "The specialist pipeline would be more accurate than the same model asked four times with a majority vote.",
+     "outcome": "not-tested",
+     "note": "Not tested. This comparison shows whether the specialist roles add anything."
+    },
+    {
+     "id": "P68.3",
+     "text": "The rebuilt system would be at least as accurate as the plain specialist pipeline.",
+     "outcome": "not-tested",
+     "note": "Not tested. The cell is a design only."
+    }
+   ],
+   "found": "Not run, and not scheduled. The design uses public questions with a single checkable answer in medicine, law and finance. It keeps only those the single model gets right two to four times in six, and compares four setups on the same questions in one session. Sizes would be fixed in a second entry once the questions are in hand.",
+   "means": "Until this runs, the project has no evidence that the specialist roles add accuracy beyond asking one model several times. It needs the author's go-ahead to download public question sets.",
+   "later": null,
+   "entries": {
+    "10675": {
+     "label": "Plan",
+     "title": "A design for the first question, with room to improve",
+     "summary": "Public questions in three fields, screened so the single model is right about half the time. Four setups of equal cost: one answer, four answers with a vote, the specialist pipeline, and the rebuilt system. Scored by exact match. Written down now and not scheduled."
+    }
+   }
+  }
+ },
+ "studies": {
+  "board-review": {
+   "title": "Outside-style review of the whole project",
+   "description": "A review in October 2026 judged the paper not ready: several key numbers were wrong or overstated. We fixed one scoring bug, recomputed the small-sample results, withdrew or restated the affected claims, and planned seven new experiments.",
+   "outcome": "measured",
+   "size": "No new runs, saved results recomputed",
+   "why": "The paper had been drafted and three earlier audits had run. Before publication we asked for a review of everything: the question, the methods, each experiment, the notebook and the paper, set against published research. The reviewer was an AI assistant working from the project's files, as the earlier auditors were, so its report is a list of claims that can be checked, with a script that reproduces every number.",
+   "expectations": [],
+   "found": "The review did not accept the paper. It found a scoring bug behind one widely quoted number (17% of caveats surviving in the editor's prose, which is 3%). It found that ranges computed over 6 to 18 scenarios or questions were too narrow, and that preference results counted only about a third of the pairs. It found that the two AI judges' sentence labels agree little beyond chance. It also pointed out that in most experiments the three specialists are the editor model itself in three roles, that the paper's comparison is four model calls against one, and that no person labeled, judged or read anything.\n\nWithout any new model runs, we recomputed 14 results. Five statements survive with clear support. An instruction produces the phrase it names. AI judges prefer the combined answer and mark down the instructed phrase. A reader model acts on an appended sentence. And a second source changes which figure the editor repeats. One claim was withdrawn, that the editor ignores agreement between specialists.",
+   "means": "The paper is being rewritten to claim only what the corrected numbers support, on one 20-billion-parameter model. Six new experiments are planned to run on one machine, and a seventh is written down as a design. Two of them need the author to label sentences by hand, because the project has no human labels at all. What one person cannot do stays open: a second person checking the analysis, human readers, and a much larger model.",
+   "later": null,
+   "related": [
+    "26",
+    "41",
+    "43",
+    "43-R",
+    "44",
+    "46",
+    "47",
+    "48",
+    "51",
+    "54",
+    "55",
+    "59",
+    "61",
+    "62",
+    "63",
+    "64",
+    "65",
+    "66",
+    "67",
+    "68",
+    "IV"
+   ],
+   "entries": {
+    "entry-9592": {
+     "label": "Correction",
+     "title": "What the review found and what we corrected",
+     "summary": "The review's decision was major revision. This entry lists the corrected numbers in one table and the change of method behind them: averaging within each scenario or question first, and counting every pair. It also lists the five statements that survive and the seven experiments planned next, each with its own entry."
+    },
+    "entry-10723": {
+     "label": "Plan",
+     "title": "How the planned experiments are run and written down",
+     "summary": "The six runnable experiments run back to back from one script. When a step ends, the script copies the scoring output into the notebook unedited, fills in the plain-language text from fixed templates, rebuilds this site and saves the changes locally. It never publishes. Results that could sway the author's blind labels stay hidden until those labels are saved."
+    }
+   }
+  }
+ }
+}

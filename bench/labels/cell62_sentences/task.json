@@ -1,0 +1,1732 @@
+{
+ "task": "cell62_sentences",
+ "kind": "sentence_constructs",
+ "retest_gap_days": 7,
+ "intro": "You will see one sentence at a time, taken from saved specialist texts and editor answers. For each sentence, switch on every property it has. Judge only what the sentence itself does, in any wording. Most sentences have none.",
+ "instructions": "Which of these does the sentence do? Press a number to switch it on or off.",
+ "definitions": {
+  "modeled": "The writer labels a number or estimate as an assumption.",
+  "jurisd": "The writer treats different jurisdictions or regulatory regimes separately.",
+  "hedging": "The writer states conditions under which the claim could change or vary."
+ },
+ "items": [
+  {
+   "id": "s006639bc",
+   "text": "chosen by the driver; this data is critical to defend an independent‑contractor status."
+  },
+  {
+   "id": "s0097288f",
+   "text": "If you can keep high‑cost beneficiaries healthy, you win on both revenue and penalties."
+  },
+  {
+   "id": "s00b03e8d",
+   "text": "- **Regulatory speed:** FDA 510(k)/de novo review typically 6–9 months; DiGA approval 90‑day trial after listing."
+  },
+  {
+   "id": "s00ce7987",
+   "text": "Even if we conservatively trim the productivity estimate to **$1.2 M**, the net gain remains **> $1 M** after tool and change‑mgmt costs."
+  },
+  {
+   "id": "s0143e475",
+   "text": "| 2–4 weeks | A quick spreadsheet or a one‑page report will give you the numbers needed for the break‑even analysis."
+  },
+  {
+   "id": "s01776b6a",
+   "text": "| • Overtime: ~$3,250 /driver/year<br>• Employer payroll taxes (FICA+UI): ~$4,200<br>• Workers’ comp: ~$2,600<br>• Total ≈ **$10,050** per driver | 180 × $10,050 = **≈ $1.81 million** | | **Illinois** | Illinois “Independent Contractor” test (Dept."
+  },
+  {
+   "id": "s01b31c4a",
+   "text": "* **Revenue Projection (USD)** – assuming $300 annual list price per patient: | Year | Patients | Avg."
+  },
+  {
+   "id": "s0244f49a",
+   "text": "**Contracts & Indemnity** – Vendor BAA + addendum that:<br>&nbsp;&nbsp;• Clarifies tool is an adjunct, not a replacement for clinical judgment.<br>&nbsp;&nbsp;• Limits vendor liability to reasonable diligence; hospitals indemnify vendor against third‑party claims (subject to insurance).<br>5."
+  },
+  {
+   "id": "s0335ce1c",
+   "text": "With disciplined project management, early payer engagement, and robust data‑protection compliance, you’ll position “QuitSmart™” for rapid adoption and sustainable growth across the UK and Germany."
+  },
+  {
+   "id": "s03b30074",
+   "text": "IT & Workflow Build** | Month 1–2 | Configure EMR/claims system for BMI tracking; set up prior‑authorization workflow; train clinicians and benefits staff."
+  },
+  {
+   "id": "s03dae473",
+   "text": "4. **Governance** – Board composition includes community representation; fiduciary duties clearly defined."
+  },
+  {
+   "id": "s0493c559",
+   "text": "Those that favor simplicity, predictable earnings, and a more uniform matching of cost to benefit usually choose straight‑line."
+  },
+  {
+   "id": "s04f23021",
+   "text": "If pickers work more than 40 hours in a week, employers must pay overtime unless they qualify as exempt under the FLSA (e.g., executive, administrative, professional)."
+  },
+  {
+   "id": "s054699e6",
+   "text": "| **Projected Cash Burn** - **Year 1:** $5.4 M (incl."
+  },
+  {
+   "id": "s0615ef6f",
+   "text": "Ongoing Monitoring | Quarterly utilization review, adverse event tracking, ROI assessment."
+  },
+  {
+   "id": "s0a2eab79",
+   "text": "Market & Regulatory Scoping** | Months 0–3 | • Map clinical, regulatory and reimbursement landscapes.<br>• Identify local data‑protection requirements (GDPR, UK‑GDPR). | • Market‑analysis report (population size, smoking prevalence, payer mix).<br>• Gap‑analysis matrix (FDA vs."
+  },
+  {
+   "id": "s0a4ab8c3",
+   "text": "Carry‑over & Payout - **Carry‑over:** Unused PSL carries over to the next calendar year, but the total balance **cannot exceed 48 hours** at any time."
+  },
+  {
+   "id": "s0a5b66b5",
+   "text": "Run a 4‑week audit of scheduled vs."
+  },
+  {
+   "id": "s0aa1719f",
+   "text": "| Leverage early revenue to fund German expansion and product improvements."
+  },
+  {
+   "id": "s0acf97fb",
+   "text": "Valuation Analysis ### 2.1 rNPV Framework (U.S."
+  },
+  {
+   "id": "s0bdd5852",
+   "text": "- Minus medical offsets: -$0.14 million."
+  },
+  {
+   "id": "s0c04b8a8",
+   "text": "| | **Allowed reasons for use** | Own or family member’s illness/injury, domestic violence, health‑care visits, etc."
+  },
+  {
+   "id": "s0c0751c3",
+   "text": "This sequence prioritizes the U.S."
+  },
+  {
+   "id": "s0d51eab4",
+   "text": "| • Draft a governance charter: independent board, conflict‑of‑interest policy, reporting requirements.<br>• Define how foundation funds are allocated (grants, community programs)."
+  },
+  {
+   "id": "s0dc8ed8f",
+   "text": "4. **Negotiate stop‑loss terms** and confirm the payer’s willingness to purchase insurance."
+  },
+  {
+   "id": "s0de525fa",
+   "text": "| Include detailed projections for each payer class and the resulting charity‑care percentage relative to baseline."
+  },
+  {
+   "id": "s0eb926f0",
+   "text": "| Model the effect on Medicaid/Medicare vs private‑payer share, ensuring shifts stay within ±4% of baseline for five years."
+  },
+  {
+   "id": "s0ecbccde",
+   "text": "| $200–$350/month, depending on negotiated discount and bundled services."
+  },
+  {
+   "id": "s0f6ed5a2",
+   "text": "9(2)(a) (treatment of special categories). | Explicit, granular consent flow in the app; separate opt‑in for data sharing with payers. | | **Data Minimisation & Purpose Limitation** | GDPR Art."
+  },
+  {
+   "id": "s0facf4d7",
+   "text": "| Increases persistence rates, which drives offset gains."
+  },
+  {
+   "id": "s10266be0",
+   "text": "- **Use of accrued balance:** Employees may use any portion of their accrued sick leave, up to the available balance."
+  },
+  {
+   "id": "s133d7635",
+   "text": "- Once you have your own data, confidence in the recommendation jumps from moderate to high."
+  },
+  {
+   "id": "s138c4ba9",
+   "text": "This approach balances patient benefit, legal compliance, and fiscal responsibility for the employer’s self‑insured plan."
+  },
+  {
+   "id": "s13bc7754",
+   "text": "Written approvals from both PA and NJ AGs are secured."
+  },
+  {
+   "id": "s13c413a5",
+   "text": "This unified policy ensures compliance with both California and New York's requirements without exceeding statutory obligations, providing a balanced approach to employee benefits across different jurisdictions."
+  },
+  {
+   "id": "s1416d355",
+   "text": "| Staffing decisions affect exposure to ergonomic risks; higher staffing may reduce individual load but could increase traffic congestion in the warehouse."
+  },
+  {
+   "id": "s1454ba9b",
+   "text": "* It either returns it to the disclosing party or destroys it, certifying compliance."
+  },
+  {
+   "id": "s1491b72b",
+   "text": "| No reduction in essential services that would jeopardize CA status; readmission rates stay < 15% for CMS‑penalized diagnoses."
+  },
+  {
+   "id": "s15201cde",
+   "text": "If the actual pick‑rate is uncertain, run a short time‑study (e.g., have one picker record picks for 1 h) and plug that figure into the formula above to get an accurate staffing plan."
+  },
+  {
+   "id": "s1520564a",
+   "text": "| Provide a projection that the charity‑care percentage remains ≥7.5% after transaction and over a 5‑year horizon."
+  },
+  {
+   "id": "s1524a001",
+   "text": "**Engagement Tactics** - CME‑accredited webinars on CBT‑I integration with DTx."
+  },
+  {
+   "id": "s1561ffaf",
+   "text": "| | **Quantity Limits / Re‑evaluation** | Prevents overuse; aligns with medical necessity | Limit to 12 months of continuous therapy; require review at 6 months and after year one, using clinical outcomes (BMI change, comorbidity control)."
+  },
+  {
+   "id": "s175ecfbc",
+   "text": "Measure baseline** | Run a 4‑week audit of scheduled vs."
+  },
+  {
+   "id": "s1994ab2f",
+   "text": "5. **Start building payer relationships** through “payer‑on‑prem” workshops—demonstrate clinical ROI and patient adherence metrics. --- ### Bottom Line - **Total first‑year investment:** ~**$2.3 M** (clinical evidence + regulatory & compliance + reimbursement). - **Five‑year ROI:** > **4×** the initial investment with a cumulative gross margin of ~63%."
+  },
+  {
+   "id": "s1b2247a0",
+   "text": "**Requires prior authorization with objective evidence** (BMI trend, comorbidities, lifestyle documentation)."
+  },
+  {
+   "id": "s1b5e58c8",
+   "text": "* Quantify the percentage of drivers who can deviate from software‑assigned routes."
+  },
+  {
+   "id": "s1cb958fe",
+   "text": "For sophisticated commercial entities, the incremental expense of adding (or tightening) these clauses—typically on the order of $10k‑$30k in drafting and compliance costs—is justified by the significant reduction in exposure to litigation, regulatory fines, and loss of competitive advantage."
+  },
+  {
+   "id": "s1cba0e94",
+   "text": "| | **Germany** | MDR CE Marking + DiGA Fast‑Track | • Clinical evidence per MDR Annex II/III.<br>• Risk management system (ISO 14971).<br>• Software development lifecycle documentation (IEC 62304).<br>• Data protection compliant with GDPR & BfArM requirements."
+  },
+  {
+   "id": "s1cbe97fd",
+   "text": "It often includes a “no‑liquidation” language (i.e., damages are not limited). | This clause gives the disclosing party an enforcement lever that can be used at any time, regardless of whether the other clauses have been breached or complied with."
+  },
+  {
+   "id": "s1ccc695d",
+   "text": "<br>• Initiate CMS DHS pilot."
+  },
+  {
+   "id": "s1d88462e",
+   "text": "| | **Private‑equity sponsor withdraws investment** | Med | Uncertainty, potential default on financing, negative signal to other investors."
+  },
+  {
+   "id": "s1e62bcec",
+   "text": "3. **Manufacturing & Quality Control** – EU pharma supplies GMP facilities in the EU; biotech retains US production capacity or outsourcing agreements."
+  },
+  {
+   "id": "s1f18de6b",
+   "text": "Target performance metrics include an AUROC of at least 0.85 and a sensitivity of ≥80 % at a clinically relevant threshold, with calibration slope close to 1.0; these thresholds are intended as benchmarks but should be monitored continuously because real‑world performance can vary."
+  },
+  {
+   "id": "s1f1c1682",
+   "text": "- Monitor adverse event rates and adjust protocols accordingly."
+  },
+  {
+   "id": "s1fb07ec1",
+   "text": "| | **Payer‑Mix Shift** | *N.J."
+  },
+  {
+   "id": "s1fb95fe5",
+   "text": "| Independent consultant validates payer‑mix model and staff forecast."
+  },
+  {
+   "id": "s1ff80f95",
+   "text": "<br>• **Year 3:** ~$7.8 M (U.S.) + $5.0 M (Germany) = $12.8 M (taken to be)."
+  },
+  {
+   "id": "s20025605",
+   "text": "- **Break‑even point:** With a baseline no‑show rate of 15 % and a cost per missed visit of $250, you need to reduce no‑shows by about **3 % absolute** (≈ 33 fewer missed visits) to cover the $1,900 monthly fee."
+  },
+  {
+   "id": "s211c36e5",
+   "text": "* Annual submission of audited 990 + community benefit narrative."
+  },
+  {
+   "id": "s21e5ae2f",
+   "text": "| Keeps upfront cost low, allows quick assessment of real‑world effectiveness."
+  },
+  {
+   "id": "s22457650",
+   "text": "**Slack “Threader” Bot** – Summarizes long threads into concise bullet points, posted automatically to the relevant channel."
+  },
+  {
+   "id": "s224d1660",
+   "text": "Without these numbers you can only guess at whether $1 900/month is justified."
+  },
+  {
+   "id": "s229d7a2d",
+   "text": "<br>• Launch to 5k patients via insurer‑driven opt‑in."
+  },
+  {
+   "id": "s23a46279",
+   "text": "- **Covenant**: Cap the percentage of revenue from low‑margin payers at ≤38 %."
+  },
+  {
+   "id": "s23d55c59",
+   "text": "| | **Eligibility period** | First use permitted after at least 90 days of employment."
+  },
+  {
+   "id": "s23db34ec",
+   "text": "| Ensures transparency, rapid response to emerging issues and continuous contract optimization."
+  },
+  {
+   "id": "s255f73a8",
+   "text": "| | **Affiliate Rules** | IRC § 6033 – affiliates must be “substantially independent.” | Maintain clear governance boundaries; private equity may hold advisory board seats but cannot exercise control over charitable operations."
+  },
+  {
+   "id": "s25d0e045",
+   "text": "Stat.* § 26:1‑12 – prohibits “unreasonable” workforce reductions; AG has issued a 2024 policy requiring a staff‑impact analysis."
+  },
+  {
+   "id": "s26c248cd",
+   "text": "- **Do not proceed** until these conditions are met."
+  },
+  {
+   "id": "s27414af6",
+   "text": "| | **Allowed Reasons** | Includes all categories required by both CA and NY laws."
+  },
+  {
+   "id": "s28123a1f",
+   "text": "A conservative estimate for a mixed‑modality programme (SMS + optional email link) is **≈ 12 % absolute reduction**."
+  },
+  {
+   "id": "s28234a7d",
+   "text": "These figures comfortably exceed the initial $6.2 M runway and support a strategic raise (Series A/B) in Year 2 to scale marketing and international expansion."
+  },
+  {
+   "id": "s28cedf36",
+   "text": "| Submit *Charitable Contribution Analysis* per N.J.S.A."
+  },
+  {
+   "id": "s28eca55c",
+   "text": "**Accrual Rate is Identical** – 1 hr per 30 hrs worked."
+  },
+  {
+   "id": "s29b3c833",
+   "text": "| | **Processor responsibilities** | Art 28 – requires a written contract that includes purpose limitation, confidentiality, security, sub‑processing restrictions, audit rights, assistance with data‑subject requests, and notification of breach."
+  },
+  {
+   "id": "s29b7fa29",
+   "text": "| | **Litigation by community groups or municipalities** | Med | Damages, injunctions, reputational harm."
+  },
+  {
+   "id": "s2b704a8d",
+   "text": "Because the *pick‑rate per worker* is not recorded, management must determine it before making staffing decisions."
+  },
+  {
+   "id": "s2cbb1a2a",
+   "text": "If an internal time‑study later confirms a pick‑rate of ~400 units/h or higher, consider shifting to a single picker—cost per unit would then be modeled at $0.12—but maintain the current staffing until that data is verified."
+  },
+  {
+   "id": "s2dbc88ed",
+   "text": "| | **EU (GDPR Art 44–50)** | • Identify a lawful basis for processing (same categories as UK, plus “public task” if applicable)."
+  },
+  {
+   "id": "s2e7d991c",
+   "text": "Legal & Regulatory Exposure | Issue | Mitigation | |-------|------------| | **FDA SaMD Classification** | Submit a *De Novo* request if the tool is novel; otherwise, provide 510(k) data showing substantial equivalence to predicate devices."
+  },
+  {
+   "id": "s2edb0ab5",
+   "text": "| Upside for quality improvement."
+  },
+  {
+   "id": "s2f06f773",
+   "text": "| If a 30‑day audit occurs, potential: 180 × $200 × 30 = **$1.08 million** (but usually capped and/or mitigated by settlement)."
+  },
+  {
+   "id": "s2f736dec",
+   "text": "| • Lease clauses on building modifications.<br>• Who owns backup generators?"
+  },
+  {
+   "id": "s2fa1eb34",
+   "text": "The resulting NDA offers a clear, enforceable confidentiality regime that protects each party’s proprietary interests while providing practical compliance mechanisms."
+  },
+  {
+   "id": "s30160396",
+   "text": "**Project Handoffs & Status Updates** – All tasks captured in Asana; status updates auto‑post to relevant Slack channels."
+  },
+  {
+   "id": "s30bc06ed",
+   "text": "| ICER < €20–25k/QALY (German threshold)."
+  },
+  {
+   "id": "s30e099d6",
+   "text": "If it rises above $1,400 CPM, the group would need a higher risk‑adjustment or a tighter stop‑loss to stay profitable."
+  },
+  {
+   "id": "s32903e0f",
+   "text": "- **Potential Medical Offsets:** Though modest in initial projections, offsets could increase as more data becomes available on long-term benefits."
+  },
+  {
+   "id": "s32c05444",
+   "text": "| • Create a *monitoring task force* to review CMS/ACA updates quarterly.<br>• Update utilization protocols accordingly—e.g., add new step‑therapy options or adjust prior‑auth criteria."
+  },
+  {
+   "id": "s330b6728",
+   "text": "It has issued guidance and enforcement actions (e.g., “ICO v."
+  },
+  {
+   "id": "s33526b64",
+   "text": "| | **German Reimbursement & Clinician Rollout** | Month 18–24 | • Finalize Kassenärztliche Bundesvereinigung (KBV) and G-BA coverage decision."
+  },
+  {
+   "id": "s36a6f1b1",
+   "text": "**Submit pre‑transaction community benefit reports** to both AGs (deadline: 60 days)."
+  },
+  {
+   "id": "s37600027",
+   "text": "**Manufacturing & Quality Control** – EU pharma supplies GMP facilities in the EU; biotech retains US production capacity or outsourcing agreements."
+  },
+  {
+   "id": "s3776b400",
+   "text": "Evidence Gap Analysis** | Months 0–1 | Map FDA data vs."
+  },
+  {
+   "id": "s38edb704",
+   "text": "| | **AG enforcement action** | Fines, forced divestiture | Submit comprehensive reports; incorporate covenants that meet or exceed AG thresholds."
+  },
+  {
+   "id": "s3a92db09",
+   "text": "- It also complies with New York law, which allows employers to set any lower cap as long as it does not reduce the minimum accrual rate."
+  },
+  {
+   "id": "s3b5d1057",
+   "text": "Lyft* reaffirmed that dispatch software can constitute “control” even when it merely suggests a route."
+  },
+  {
+   "id": "s3b5ecf84",
+   "text": "**Reimbursement Leverage (taken to be)** – Potential CPT 99471 (CDS) or bundled under sepsis care pathways; negotiate value‑based payment contracts with payers to share savings."
+  },
+  {
+   "id": "s3c712135",
+   "text": "| | **Cross‑border transfer mechanisms** | 1) Adequacy decision (Art 45)."
+  },
+  {
+   "id": "s3cc592d4",
+   "text": "Paid out upon termination."
+  },
+  {
+   "id": "s3da02c1c",
+   "text": "Required pickers (\\( n \\)) | \\( n = \\frac{233.\\overline{3}}{r} \\) | – | | 4."
+  },
+  {
+   "id": "s3e53d11d",
+   "text": "<br>• Documented 6–12 months of structured lifestyle therapy with < 5 % weight loss."
+  },
+  {
+   "id": "s40f42379",
+   "text": "| • 2023 CMS policy expanded coverage for DTx that show cost savings in chronic disease management.<br>• “Digital Health Innovation” pilot program offers early reimbursement pathways."
+  },
+  {
+   "id": "s420c3743",
+   "text": "<br>• GLP‑1s lower HbA1c by 0.5–1 % even when used off‑label for weight."
+  },
+  {
+   "id": "s438b7f34",
+   "text": "Transaction Structure Overview 1. **Acquisition Price (Sponsor)** – $60 M (example) funded by debt ($40 M) and equity ($20 M)."
+  },
+  {
+   "id": "s43d17b5d",
+   "text": "Annual vendor performance review; renegotiate subscription if performance falls below target. | ### Detailed Walk‑through #### 1."
+  },
+  {
+   "id": "s441d3f15",
+   "text": "For a biotech: 1. **Up‑front**: $1 M – paid immediately → present value = $1 M."
+  },
+  {
+   "id": "s44772e41",
+   "text": "| • No increase in readmission or infection rates > 1% above baseline.<br>• Sponsor must sign a performance covenant with financial penalties if quality dips."
+  },
+  {
+   "id": "s45194d04",
+   "text": "Does the sponsor preserve or enhance community health needs? <br>2."
+  },
+  {
+   "id": "s45c81508",
+   "text": "2. **Milestones**: e.g., FDA approval payment of $15 M at year 3 if approved (70 % chance)."
+  },
+  {
+   "id": "s46927c72",
+   "text": "- Have quarterly performance reports reviewed by the AGs to ensure ongoing compliance."
+  },
+  {
+   "id": "s48177fa6",
+   "text": "It also keeps PTO separate, provides clear accrual and use procedures, and ensures compliance with both California’s and New York’s paid‑sick‑leave statutes."
+  },
+  {
+   "id": "s482c549f",
+   "text": "| | **Three‑year revenue projection** | • **Year 1:** ~$3.5 M (Germany 55 % of total) <br>• **Year 2:** ~$12.8 M (U.S."
+  },
+  {
+   "id": "s486f65d5",
+   "text": "4. **Tie the return/destroy obligation to the definition and exclusions.**  Make it explicit that only non‑excluded Confidential Information is subject to this rule."
+  },
+  {
+   "id": "s48c7b144",
+   "text": "Secure a *DiGA* listing by proving clinical benefit (ISynergy trial data) and safety."
+  },
+  {
+   "id": "s4a030d8c",
+   "text": "Sick Leave** – The existing 10‑day PTO remains separate and does not affect statutory sick‑leave compliance."
+  },
+  {
+   "id": "s4a757d1b",
+   "text": "To create a defensible go-to-market (GTM) plan for launching an FDA-cleared prescription smoking-cessation digital therapeutic in the UK and Germany within 18 months, it's essential to address three critical pillars: clinical evidence, regulatory and data-protection law, and reimbursement economics."
+  },
+  {
+   "id": "s4b03545c",
+   "text": "Uber* (SJC, 2023) – held gig workers are employees.<br>• Several pending claims under the new “Massachusetts Gig Worker Act” (MWGA), which requires benefits for drivers who meet the control criteria."
+  },
+  {
+   "id": "s4b897ae4",
+   "text": "* The figure is conservative: it assumes that drivers receive no overtime (the $52k already includes all hours) and does not add potential civil damages or state‑specific fines that could arise from enforcement actions."
+  },
+  {
+   "id": "s4bab1266",
+   "text": "| FDA approval + ADA/Obesity Society guidance = clear medical necessity; early adoption positions the plan as a health‑innovation leader and may reduce future claims volatility."
+  },
+  {
+   "id": "s4bfd12d5",
+   "text": "- Workforce retention plans are in place."
+  },
+  {
+   "id": "s4ceb0e53",
+   "text": "6. - Build an Excel model that allows quick recalibration of probabilities, discount rates, and sales assumptions. --- ### Final Thought A well‑structured co‑development deal for a single Phase‑3 oncology asset can deliver **substantial upside to the biotech while giving the pharma secure territorial control and royalty revenue**."
+  },
+  {
+   "id": "s4d01135e",
+   "text": "- **Lean Option (1 Picker)**: If the organization can tolerate higher risk and streamline operations to cover all duties with a single picker, the cost per unit drops to $0.12."
+  },
+  {
+   "id": "s4d084cc1",
+   "text": "Given these risks, the board should **proceed only under stringent conditions** that fully quantify the three critical impacts above, secure AG approvals with robust safeguards, and align the transaction with IRS 501(c)(3) public‑purpose requirements."
+  },
+  {
+   "id": "s4e1e6ee4",
+   "text": "| • Overtime: ~$3,250<br>• Employer payroll taxes: ~$3,900<br>• Workers’ comp (higher rate for drivers): ~$3,200<br>• Total ≈ **$10,350** per driver | 180 × $10,350 = **≈ $1.86 million** | | **Combined exposure** | *Total potential liability if all 180 are re‑classified* | **≈ $3.67 million** (plus any civil damages or penalties that may be imposed by state courts)."
+  },
+  {
+   "id": "s4e79da43",
+   "text": "| DiGA offers a 90‑day “free‑prescribing” period; success in the U.S."
+  },
+  {
+   "id": "s4e93c2d7",
+   "text": "* Identify gaps; propose offsetting initiatives (e.g., free screening days, sliding‑scale clinics)."
+  },
+  {
+   "id": "s4f010a7b",
+   "text": "**Manufacturer Rebates** – Aim for 35–45 % net discount on list price."
+  },
+  {
+   "id": "s5051f146",
+   "text": "Uber* (2021) – court held Uber drivers employees because dispatch software governed routes and schedules.<br>• *Vargas v."
+  },
+  {
+   "id": "s50668fee",
+   "text": "| Targeted education focus."
+  },
+  {
+   "id": "s51254a5c",
+   "text": "Straight‑line would therefore require $1,480 per year."
+  },
+  {
+   "id": "s5319b8a2",
+   "text": "**Obtain legal sign‑off** on new Slack policy & retention schedule."
+  },
+  {
+   "id": "s54607b1e",
+   "text": "Practical steps for the company 1."
+  },
+  {
+   "id": "s54fd0abd",
+   "text": "| Avoids Class III clearance and lengthy review; provides regulatory certainty."
+  },
+  {
+   "id": "s558746aa",
+   "text": "**Weekly Cross‑Functional “Pulse Check”** – 15 min rotating facilitator; agenda shared via Asana task; recordings saved to Loom for later review."
+  },
+  {
+   "id": "s55b66f9b",
+   "text": "| | **Absence > 3 consecutive days** | Employees must provide a written notice to HR within 48 hours of the first day absent or by the next scheduled workday."
+  },
+  {
+   "id": "s573c8ff6",
+   "text": "Provider Education** | Webinars, CME modules, clinical decision‑support alerts."
+  },
+  {
+   "id": "s58f000db",
+   "text": "Full Roll‑out** | Month 6 | Expand to all eligible members; launch patient support program (digital tracking, coaching)."
+  },
+  {
+   "id": "s5a2edcae",
+   "text": "* **2024 AG Guidance** – Adds a “service‑continuity covenant” that mandates no reduction in inpatient beds or outpatient services for at least 5 years post‑transaction."
+  },
+  {
+   "id": "s5aa6141d",
+   "text": "| The ICO guidance echoes the same requirement; UK controllers must add appropriate safeguards when using SCCs with EU processors."
+  },
+  {
+   "id": "s5b1b19b6",
+   "text": "Adding a conservative 10–15 % contingency for back‑tax penalties and legal fees pushes the upper bound to about **$13–14 million**."
+  },
+  {
+   "id": "s5ca03979",
+   "text": "If a party fails to comply, the disclosing party can invoke the equitable‑remedies clause to obtain an injunction ordering destruction or return."
+  },
+  {
+   "id": "s5f137384",
+   "text": "| | Personnel (R&D + Sales) | $0.7 M | 4‑person core team + contractor sales rep."
+  },
+  {
+   "id": "s5fe639ce",
+   "text": "Practical Recommendations | Recommendation | Rationale & Legal Basis | |----------------|-------------------------| | **1."
+  },
+  {
+   "id": "s600747ac",
+   "text": "| Germany’s reimbursement system is more fragmented; a staged rollout mitigates risk of blanket denial."
+  },
+  {
+   "id": "s60272f68",
+   "text": "4. **Incorporate Currency Hedging** - For milestone payments denominated in euros or pounds, lock in rates to mitigate FX risk."
+  },
+  {
+   "id": "s6055b047",
+   "text": "* **Financial Structure** – A per‑seat subscription with integration fees, transparent cost model, and demonstrable ROI make the investment attractive to hospital leadership while providing a scalable revenue stream for the vendor."
+  },
+  {
+   "id": "s605f186b",
+   "text": "| | **Annual Review & Re‑authorization** | Each cycle requires re‑evaluation of clinical benefit, side‑effects, and cost‑effectiveness before renewal."
+  },
+  {
+   "id": "s6065455d",
+   "text": "Run retrospective study; finalize performance metrics.<br>&nbsp;&nbsp;b."
+  },
+  {
+   "id": "s61ba0d2d",
+   "text": "| • Build base case using UK life tables and German disease incidence.<br>• Perform deterministic & probabilistic sensitivity analyses."
+  },
+  {
+   "id": "s61cc11c6",
+   "text": "Depreciation & amortization (adjusted after sale)<br> 3."
+  },
+  {
+   "id": "s61d2d279",
+   "text": "Financial Modeling 1. **Enterprise Value Calculation** - EBITDA: $4–$5 million (typical for 90‑bed rural hospital). - EV/EBITDA multiple: 6× → EV ≈ $24–$30 M."
+  },
+  {
+   "id": "s62435db7",
+   "text": "They either return it to the disclosing party or destroy it, following any destruction procedures (e.g., shredding, de‑gaussing)."
+  },
+  {
+   "id": "s62b70412",
+   "text": "Use CMS “Digital Health” pilot data to negotiate broader coverage."
+  },
+  {
+   "id": "s62fe5b17",
+   "text": "Bottom Line - **Financially:** The three‑year net impact is a savings of roughly **$1.3 million**, driven by higher persistence than most weight‑loss drugs show in practice and the substantial medical offset associated with GLP‑1 therapy."
+  },
+  {
+   "id": "s6415dd91",
+   "text": "| Set up an internal audit team with third‑party verification."
+  },
+  {
+   "id": "s64df8156",
+   "text": "modeled projections; adjust staffing or processes as needed."
+  },
+  {
+   "id": "s64e676a8",
+   "text": "To make an informed decision about implementing a reminder programme for reducing no-shows at your outpatient clinic, several steps need to be taken to gather necessary data and evaluate potential benefits against costs."
+  },
+  {
+   "id": "s6526bef3",
+   "text": "**Reimbursement Potential** – CPT 99471 (CDS) or bundled under sepsis care pathways; explore value‑based contracts with payers to share savings.<br>6."
+  },
+  {
+   "id": "s65c14829",
+   "text": "5. **Plan for Post‑Approval Commitments** - Include clauses covering safety data submission, lifecycle management, and potential price reductions (e.g., due to reimbursement changes)."
+  },
+  {
+   "id": "s6610c1d3",
+   "text": "Require passing a short assessment before clinicians can “activate” the tool on their EHR seat. - **Audit Rights**: Embed in the contract a clause allowing the health system to audit the vendor’s data handling practices (e.g., periodic access logs)."
+  },
+  {
+   "id": "s66c992b6",
+   "text": "| | **Worker Classification** | • “Picker” is typically a non‑exempt hourly employee unless they meet the salary‑basis or duties test for executive/administrative/professional exemption.<br>• Misclassification can trigger back‑pay, penalties, and civil liability."
+  },
+  {
+   "id": "s67f91de0",
+   "text": "For employee data, a DPIA is almost always required unless the processing is low‑risk (e.g., simple contact list)."
+  },
+  {
+   "id": "s683518e0",
+   "text": "Ongoing Reporting & Compliance** | Quarterly updates on charitable care, staffing, and revenue mix; AG reviews annually."
+  },
+  {
+   "id": "s6840744d",
+   "text": "<br>• Return/destroy and equitable‑remedies apply only to material that remains within the definition after all other adjustments."
+  },
+  {
+   "id": "s68bd9aa2",
+   "text": "Use *difference‑in‑differences* analysis to attribute changes to the CDS. - **Human Factors**: Design the EHR UI so that risk scores appear alongside actionable recommendations (e.g., “Order lactate; start broad‑spectrum antibiotics”). #### 2."
+  },
+  {
+   "id": "s68f13e1b",
+   "text": "- The employer can mitigate risk further by negotiating volume discounts or a cost‑sharing tiered model."
+  },
+  {
+   "id": "s690a33fd",
+   "text": "Prepare clinical evidence (RCT or real‑world data; ISI, PSQI outcomes)."
+  },
+  {
+   "id": "s6945f8e1",
+   "text": "**Next step:** Conduct that short audit and set up the pilot."
+  },
+  {
+   "id": "s698e0429",
+   "text": "With a moderate uptake scenario (~10 % of members), the employer should anticipate ~$13 M over three years, with potential offsets that could bring net spend closer to $11–12 M."
+  },
+  {
+   "id": "s69cefabd",
+   "text": "This strategy balances patient benefit, regulatory compliance, and financial prudence while positioning the employer as a leader in employee wellness."
+  },
+  {
+   "id": "s69db894b",
+   "text": "| | **Step Therapy (First‑Line: Lifestyle)** | Ensures that the drug is not used before non‑pharmacologic options; meets “reasonable benefit” | Require at least 6 weeks of structured diet & exercise program with a registered dietitian or certified personal trainer."
+  },
+  {
+   "id": "s6b5590dc",
+   "text": "Track no‑show rates and revenue impact."
+  },
+  {
+   "id": "s6b72d5b4",
+   "text": "<br>• HCC / risk‑score add‑on: +$0.50–$1.00 CPM per score point."
+  },
+  {
+   "id": "s6c704350",
+   "text": "**Financial Viability:** With negotiated rebates (30–60 %) and risk‑sharing contracts, incremental spend (~$2.7 M/yr) is offset by projected savings (~$1.4 M/yr) and productivity gains—leading to a favorable ROI within 2–3 years."
+  },
+  {
+   "id": "s6ceadfa7",
+   "text": "Adjust the picker capacity figure as you collect real data; the same formula can be re‑run quickly if pick rates change."
+  },
+  {
+   "id": "s6d44a685",
+   "text": "A conservative “worst‑case” estimate that adds a **10 % surcharge** for back‑taxes/penalties raises the combined liability to roughly **$13.3 million** per year."
+  },
+  {
+   "id": "s6da5dd6e",
+   "text": "Uber* (2022) – drivers deemed employees; court cited dispatch‑controlled routes.<br>• *State v."
+  },
+  {
+   "id": "s6de13b66",
+   "text": "Divergences After Brexit | Issue | EU Position | UK Position | |-------|-------------|------------| | **Adequacy** | The UK is *not* an adequacy‑approved destination for the EU; an EU controller cannot simply rely on the UK’s “adequacy” status to transfer data out of the UK."
+  },
+  {
+   "id": "s6e71d78f",
+   "text": "| Statutory cap of **120 hours** per calendar year for employers with ≥50 employees (the company qualifies)."
+  },
+  {
+   "id": "s6f1013b5",
+   "text": "This strategy balances fiduciary prudence, anti‑discrimination compliance, and responsiveness to evolving therapeutic evidence."
+  },
+  {
+   "id": "s6f7da05b",
+   "text": "| Valid medical certification covering the dates of absence (doctor’s note, hospital discharge summary, etc.)."
+  },
+  {
+   "id": "s6fe54b91",
+   "text": "| <br>• PE ownership capped at ≤30 % of the nonprofit’s assets.<br>• No board seat or voting rights that influence charitable operations.<br>• All PE‑related decisions require unanimous approval of the hospital’s Board of Trustees."
+  },
+  {
+   "id": "s70d92669",
+   "text": "The projected three‑year cost ranges from roughly **$7 M (low uptake)** to **$20 M (high uptake)** before accounting for downstream savings."
+  },
+  {
+   "id": "s711f1232",
+   "text": "**Negotiate with PE** on covenant terms (especially charity care & staffing) to ensure they are enforceable and realistic."
+  },
+  {
+   "id": "s71c780ca",
+   "text": "| Ongoing | --- ### Bottom Line From a legal standpoint, covering GLP‑1 therapy for weight management is defensible under ERISA, ADA, and current medical‑necessity standards—provided that the employer implements *objective*, *evidence‑based* utilization controls and maintains thorough documentation."
+  },
+  {
+   "id": "s73630062",
+   "text": "Key Statutory Differences (California vs."
+  },
+  {
+   "id": "s7386a64c",
+   "text": "| Schedule pre‑submission meeting, submit CBIS, negotiate any required amendments."
+  },
+  {
+   "id": "s74df894d",
+   "text": "Anti‑Discrimination Obligations** | • ADA (42 U.S.C."
+  },
+  {
+   "id": "s74e4adfd",
+   "text": "Total ~$600 k – comfortably within the $6.2 M runway."
+  },
+  {
+   "id": "s75065671",
+   "text": "The law does not allow PTO to satisfy the statutory sick‑leave requirement unless it is specifically designated as “sick leave.” | Same – PTO is separate; employers cannot use it to meet the statutory sick‑leave accrual or usage requirements."
+  },
+  {
+   "id": "s7573d966",
+   "text": "3. **Foundation Governance** – Charter, board composition, conflict‑of‑interest policies."
+  },
+  {
+   "id": "s757c7a76",
+   "text": "**Expect break‑even within the first month** once the program reaches the required reduction threshold."
+  },
+  {
+   "id": "s75be44f8",
+   "text": "- Compare with cost savings to calculate actual break‑even point."
+  },
+  {
+   "id": "s78b3a442",
+   "text": "Post‑market surveillance plan."
+  },
+  {
+   "id": "s78f122ce",
+   "text": "| 20–22 % body‑weight loss at week 68."
+  },
+  {
+   "id": "s79497ddb",
+   "text": "- **Easier clinician onboarding** through insurer‑driven opt‑in."
+  },
+  {
+   "id": "s7973041c",
+   "text": "If inadequate response (< 5 % weight loss after 12 weeks), switch to tirzepatide."
+  },
+  {
+   "id": "s7a9e8ef8",
+   "text": "Negotiate a *bundled payment* incentive with payors for reduced sepsis mortality/LOS.<br>4. **ROI Modeling**:<br>&nbsp;&nbsp;a."
+  },
+  {
+   "id": "s7ad8f853",
+   "text": "| • BMI ≥ 30 kg/m² or BMI ≥ 27 with ≥1 obesity‑related comorbidity.<br>• Documented 3–6 mo of diet & exercise program or prior prescription for a first‑line anti‑obesity drug.<br>• PA algorithm embedded in the e‑claims system."
+  },
+  {
+   "id": "s7afac3c1",
+   "text": "| Uses the EU version of SCCs (2021‑12 edition)."
+  },
+  {
+   "id": "s7b068470",
+   "text": "<br>• ROPA, privacy notice, rights procedures."
+  },
+  {
+   "id": "s7c4c6366",
+   "text": "4. **Value‑Based Pricing & Contracts** – Tie reimbursement to real‑world quit outcomes; offer performance rebates to payers."
+  },
+  {
+   "id": "s7e16fc83",
+   "text": "Early clinician engagement and payor pilot success are therefore critical levers.* --- ## 7."
+  },
+  {
+   "id": "s7ef66e8b",
+   "text": "Therefore we “switch” to straight‑line for the remaining two years: the remaining depreciable amount ($12.96 – $10 = $2.96 k) is divided by the remaining useful life (two years), giving $1.48 k per year."
+  },
+  {
+   "id": "s7fd76392",
+   "text": "Version history retained for 10 years."
+  },
+  {
+   "id": "s8195c625",
+   "text": "| | **Phase 4: Expansion & Optimization (Year 3 onward)** | • Expand German coverage to additional insurers."
+  },
+  {
+   "id": "s83cf6b88",
+   "text": "<br>• Otherwise: Standard Contractual Clauses (SCCs), binding corporate rules, etc."
+  },
+  {
+   "id": "s849fa40c",
+   "text": "2. **Sale‑Leaseback** – Hospital real estate sold to sponsor for $35 M; lease back at $3.5 M/yr (10 % cap rate)."
+  },
+  {
+   "id": "s870cd853",
+   "text": "**Domestic‑violence or sexual‑harassment circumstances** (both states allow this use)."
+  },
+  {
+   "id": "s8809912d",
+   "text": "No additional mechanism needed."
+  },
+  {
+   "id": "s89694710",
+   "text": "| If PE refuses, hospital can trigger forced buy‑back or renegotiate terms."
+  },
+  {
+   "id": "s8a366d9d",
+   "text": "2. **Phase 2 Completion** – €12 M (conditional on ≥ 70 % efficacy)."
+  },
+  {
+   "id": "s8a48254e",
+   "text": "| PBM workflow auto‑alerts for renewal."
+  },
+  {
+   "id": "s8aec4e1d",
+   "text": "Maintain a minimum of 24‑hour response for urgent visits. | | **Health Information Exchange** | HIPAA mandates secure sharing; cross‑border data transfer must be compliant with state privacy laws. | Sign a Business Associate Agreement (BAA) with the MA payer; use encrypted HL7/FHIR interfaces. | --- ## 3."
+  },
+  {
+   "id": "s8b4a8668",
+   "text": "| • Protocol for 12‑month pragmatic RCT or real‑world cohort in UK/Germany.<br>• Health‑economic model assumptions & baseline inputs."
+  },
+  {
+   "id": "s8bf71e93",
+   "text": "- **Reporting**: Use KPI dashboards that combine overall rates, shift and moment breakdowns, trend lines, and actionable recommendations."
+  },
+  {
+   "id": "s8c8c1b03",
+   "text": "Under best case, ROI > +90 %. --- ## 4."
+  },
+  {
+   "id": "s8d1d95a0",
+   "text": "3. **Pharma Contract Issues:** *Mitigation:* Draft clear performance clauses in rebate agreements; include termination rights if target outcomes not met."
+  },
+  {
+   "id": "s8e412588",
+   "text": "**Post‑deployment monitoring** – Daily AUROC trend, auto‑recalibration if AUROC < 0.80 for > 30 days."
+  },
+  {
+   "id": "s8e5d63c3",
+   "text": "| | **Staffing Levels** | Workforce reductions may reduce service capacity, affect quality metrics, and erode the hospital’s ability to meet community needs."
+  },
+  {
+   "id": "s8f19a6f2",
+   "text": "- **Deliverable:** A written DPIA report with risk assessment, mitigation measures, and justification of lawful basis."
+  },
+  {
+   "id": "s8f56e878",
+   "text": "**Financial Sensitivity & Risk Assessment** * Monte Carlo simulation for revenue volatility."
+  },
+  {
+   "id": "s9053cc09",
+   "text": "**Public‑Benefit Covenant** * The private‑equity sponsor must agree to a covenant guaranteeing: - Maintenance of current charity‑care percentage (≥7.5% PA; ≥7.5% NJ) for at least 5 years."
+  },
+  {
+   "id": "s905c74cf",
+   "text": "However, that lean option removes redundancy for breaks, restocking, and error correction, increasing operational risk."
+  },
+  {
+   "id": "s905fbbf1",
+   "text": "| \\*Risk level reflects how likely an independent‑contractor status will be challenged and reversed *in light of the company’s current data gaps*."
+  },
+  {
+   "id": "s90819f81",
+   "text": "| Line graph with target line (e.g., 95 %)."
+  },
+  {
+   "id": "s90d5929e",
+   "text": "| | Legal & IP | $0.3 M | Patent filing, data‑privacy compliance."
+  },
+  {
+   "id": "s928f0d99",
+   "text": "6. **Use a dual‑licensing approach** – maintain separate UK and EU legal entities or subsidiaries to streamline local compliance, tax & reimbursement negotiations."
+  },
+  {
+   "id": "s93455597",
+   "text": "* Indemnification clause against fraud/abuse investigations."
+  },
+  {
+   "id": "s935ed132",
+   "text": "<br>• Use an adequacy decision or an approved transfer mechanism – SCCs or BCRs."
+  },
+  {
+   "id": "s940ac5bf",
+   "text": "**Track actual pick rates** – run a short time‑motion study (e.g., one picker records picks for an hour) to refine the estimate."
+  },
+  {
+   "id": "s948a73ed",
+   "text": "2. **Lease Review** – Confirm lease classification, rent schedule, escalation caps, subordination clauses."
+  },
+  {
+   "id": "s9535705d",
+   "text": "**Executive Summary** * **Goal:** Launch a digital therapeutic (DTx) for insomnia in the U.S."
+  },
+  {
+   "id": "s957d09e0",
+   "text": "Employees who believe they have been subjected to retaliation for exercising their rights under this policy may contact HR or file a complaint with the Equal Employment Opportunity Commission (EEOC) and/or the appropriate state agency."
+  },
+  {
+   "id": "s958c110c",
+   "text": "- Conservative estimate: 12 % absolute reduction → 16 fewer no‑shows/month → exceeds break‑even."
+  },
+  {
+   "id": "s9609f3e8",
+   "text": "| | **Short‑term illness (<5 hours)** | Notify supervisor immediately upon return to work."
+  },
+  {
+   "id": "s96368a66",
+   "text": "| • Can be invoked whenever any of the other clauses is breached (definition, exclusions, carve‑out misuse, failure to return/destroy).<br>• Does **not** apply if a disclosure was made under the legal‑compulsion carve‑out—because that is expressly exempt.<br>• Enhances deterrence for both parties because they know an injunction can be sought at any time."
+  },
+  {
+   "id": "s976f3e7b",
+   "text": "* Annual audit of PA approvals and medication adherence."
+  },
+  {
+   "id": "s98de8d32",
+   "text": "Providers can “Accept”, “Dismiss”, or “Override” with a brief free‑text reason that is logged.<br>5."
+  },
+  {
+   "id": "s9a81c0ee",
+   "text": "Since you cannot schedule a fraction of a picker, round up: **2 pickers**."
+  },
+  {
+   "id": "s9ac99fc6",
+   "text": "**Select Pilot Squads & Assign Champions** – Identify cross‑functional squads to test the model."
+  },
+  {
+   "id": "s9b3fd571",
+   "text": "- **Monitoring**: Daily performance dashboard (AUROC trend, alert volume)."
+  },
+  {
+   "id": "s9b5a855e",
+   "text": "**Finalize Clinical Evidence Plan** – Secure funding for a multicenter RCT (n=300) that meets both MDR and FDA requirements."
+  },
+  {
+   "id": "s9b947ae2",
+   "text": "| Aligns incentives to keep care efficient without over‑penalizing the group."
+  },
+  {
+   "id": "s9bc53ec2",
+   "text": "The higher debt service (from $6 M to $20 M) consumes the entire EBITDA cushion, leaving only $5 M for operating needs."
+  },
+  {
+   "id": "s9c8ca289",
+   "text": "Lyft*: similar outcome, emphasizing lack of independent control."
+  },
+  {
+   "id": "s9df3ed45",
+   "text": "- Employees must work a standard **40‑hour week** (or a pro‑rated schedule for part‑time workers) to qualify for the accrual rate described below."
+  },
+  {
+   "id": "s9e9bcf70",
+   "text": "- EHR plug‑in that auto‑generates progress notes & risk scores."
+  },
+  {
+   "id": "s9ecbcca3",
+   "text": "When paired with a strict, guideline‑based utilization‑management framework and value‑based contracting, the expected net cost ($≈ $2.16 M annually) is outweighed by measurable savings (~$1.2 M first year) and long‑term productivity gains, yielding a positive ROI within roughly 18 months."
+  },
+  {
+   "id": "s9f7873c5",
+   "text": "- Total drug cost: ~$1.55 million."
+  },
+  {
+   "id": "sa03afb2d",
+   "text": "Bottom‑Line Takeaway - **Valuation**: The rNPV of the partnership hinges on early milestone payments that reflect current risk, coupled with a tiered royalty structure that captures upside while protecting both parties. - **Risk Sharing**: Clinical and regulatory risks are split by territory—US biotech handles FDA pathway; EU pharma manages EMA and local reimbursement hurdles."
+  },
+  {
+   "id": "sa068b6ce",
+   "text": "| • Draft a governance charter (independent board, conflict‑of‑interest policy).<br>• Require that the foundation’s grant‑making be publicly disclosed annually."
+  },
+  {
+   "id": "sa2ce37a4",
+   "text": "Where the regimes diverge | Divergence | Why it matters | |------------|----------------| | **Adequacy decision** | The UK does not have an adequacy decision for transfers *to* the EU, but Germany is an EU state with its own adequacy status (i.e., the UK must still use safeguards)."
+  },
+  {
+   "id": "sa35fd36d",
+   "text": "<br>• **Net cost after savings**: *modeled at* $2.16 million per year."
+  },
+  {
+   "id": "sa5523968",
+   "text": "--- *Prepared by:* [Your Name], Financial Analyst *Date:* 12 August 2026 ---"
+  },
+  {
+   "id": "sa6189f20",
+   "text": "| Return‑or‑destroy obligation (after exclusions and carve‑outs are applied)."
+  },
+  {
+   "id": "sa7091524",
+   "text": "Value‑based contracts that tie rebates or discounts to achieved weight loss can reduce effective costs by 30–60 %, depending on negotiated terms."
+  },
+  {
+   "id": "sa712ffa0",
+   "text": "- *PA & NJ:* Avoid net layoffs beyond a specified threshold, especially in critical specialties like ICU and cardiology."
+  },
+  {
+   "id": "sa75449e4",
+   "text": "Early revenue will fund German regulatory work."
+  },
+  {
+   "id": "sa788949c",
+   "text": "Uber* – drivers found employees because the company controlled routing and pricing.<br>• 2023 *Miller v."
+  },
+  {
+   "id": "sa893fd95",
+   "text": "Legal Foundations |---------|---------------------|--------------------| | **Lawful basis for processing** | Art 6(1)(a) – legitimate interest; Art 6(1)(b) – contract necessity; Art 6(1)(c) – legal obligation; Art 6(1)(f) – vital interests; Art 6(1)(g) – public task."
+  },
+  {
+   "id": "sa8d7faa5",
+   "text": "* \\(r\\) = absolute reduction in no‑shows due to reminders."
+  },
+  {
+   "id": "sa926c474",
+   "text": "| ### Confidence Level - **70 % confident** that a well‑executed pilot will yield a net benefit if the baseline no‑show rate is ≥ 15 %."
+  },
+  {
+   "id": "sa9c2ccc7",
+   "text": "By aligning incentives through milestone calibration, tiered royalties, clear IP ownership, and robust risk‑sharing clauses, both parties can move forward with confidence that the partnership will share risk proportionally and reward success."
+  },
+  {
+   "id": "sa9c68d97",
+   "text": "| | **Illinois** | • Illinois “Independent Contractor Classification Act” (IL 740 ILCS 5/4).<br>• The Dept."
+  },
+  {
+   "id": "saa4c6982",
+   "text": "- Use scenario analysis to assess best-case, moderate reduction, and worst-case scenarios, particularly focusing on how these changes could affect revenue streams and community benefit."
+  },
+  {
+   "id": "saa5010e0",
+   "text": "Reimbursement Engagement** | M9–M15 | • Build cost‑effectiveness dossiers for NICE (UK) and G‑BA (Germany).<br>• Negotiate pricing & HTA outcomes with payers."
+  },
+  {
+   "id": "sab3eea3c",
+   "text": "Annual maintenance/support $50 k."
+  },
+  {
+   "id": "sab43d894",
+   "text": "- **Cost per unit:** $0.24/unit (taken to be)."
+  },
+  {
+   "id": "sab67db90",
+   "text": "- **Lower pick‑rate** → more pickers, higher cost per unit."
+  },
+  {
+   "id": "sabc07edc",
+   "text": "Create Urgency** | Executive briefing on meeting fatigue ROI."
+  },
+  {
+   "id": "sac858a8f",
+   "text": "regulatory clearance (FDA 510(k)/EUA) and a “pilot‑to‑scale” reimbursement strategy with a limited payor basket."
+  },
+  {
+   "id": "sacaad158",
+   "text": "- **Audit Data:** Must contain the 12 fields above; missing any field invalidates the observation."
+  },
+  {
+   "id": "sad7a4357",
+   "text": "| 150 k | Includes DPIA, PIA, staff training; use EU‑based cloud with SCCs/BCRs."
+  },
+  {
+   "id": "sad8cd4af",
+   "text": "- Annual technical file updates."
+  },
+  {
+   "id": "sae646493",
+   "text": "- Adopts the **strictest documentation threshold** (3 days) to satisfy both states."
+  },
+  {
+   "id": "saf3e7da3",
+   "text": "<br>• Robust reductions in incident T2D (~50 %) and major adverse cardiovascular events (~9 % relative risk reduction)."
+  },
+  {
+   "id": "saf9e3c86",
+   "text": "<br>• **Updated processor agreement** that incorporates Article 28 clauses: purpose limitation, confidentiality, security measures, sub‑processing restrictions, audit rights, assistance with data‑subject requests, breach notification."
+  },
+  {
+   "id": "safb7c022",
+   "text": "> Confidence: **moderate‑high** once you have a measured baseline; **low** if you rely solely on published averages."
+  },
+  {
+   "id": "sb033a097",
+   "text": "Even in the worst‑case scenario (5 % uptake, 40 % persistence) the program remains a net saver (~$0.8 M)."
+  },
+  {
+   "id": "sb06a6d8b",
+   "text": "Bottom‑Line Recommendation | Decision | Condition | |----------|-----------| | **Proceed** | Only if the board adopts and enforces all conditions listed above, secures independent audits, and obtains AG approvals with clear performance metrics."
+  },
+  {
+   "id": "sb06f6701",
+   "text": "<br>• Budget‑impact model (10 % eligible, 80 % uptake) predicts incremental annual spend ≈ $2.7–$3.4 M; modeled at $0.6–$0.8 M net savings in diabetes/CVD claims over five years."
+  },
+  {
+   "id": "sb125a39e",
+   "text": "**Human Oversight** – Providers can “accept”, “dismiss” or “override”; each action logged with a brief narrative if >10 % of alerts are overridden in a shift.<br>5."
+  },
+  {
+   "id": "sb3a80bbc",
+   "text": "| Keeps therapy on the benefit schedule and encourages adherence."
+  },
+  {
+   "id": "sb3d805e9",
+   "text": "* ICO can issue fines up to £17.5 m or 4 % of turnover for non‑compliance with data‑transfer safeguards."
+  },
+  {
+   "id": "sb4ade355",
+   "text": "* Predicate: Epic Sepsis Prediction or similar commercial CDS."
+  },
+  {
+   "id": "sb4bcc1a3",
+   "text": "This is usually achieved by: <br>• SCCs (EU version).<br>• Binding Corporate Rules (if applicable).<br>• Adequacy decision (none for UK).<br>• Additional technical safeguards such as encryption, access controls."
+  },
+  {
+   "id": "sb4ced170",
+   "text": "Compile technical file (risk analysis, clinical evidence)."
+  },
+  {
+   "id": "sb5253025",
+   "text": "**Maintain a flexible budget**: Allocate sufficient funds for data privacy compliance and potential contingency funding (e.g., bridge loan) to cover any regulatory or reimbursement delays."
+  },
+  {
+   "id": "sb56ae405",
+   "text": "of Labor’s multi‑factor test: *control over work*, *financial risk and investment*, *relationship* (e.g., benefit packages, training)."
+  },
+  {
+   "id": "sb5f8474b",
+   "text": "| Same, but the UK cannot rely on an EU adequacy decision for outbound transfers; it must use its own SCCs/BCRs or explicit consent."
+  },
+  {
+   "id": "sb638abdb",
+   "text": "| • 2023 Digital Health Act streamlined DiGA approval, increased emphasis on RWE.<br>• G‑BA now considers real‑world evidence for coverage decisions."
+  },
+  {
+   "id": "sb79266ae",
+   "text": "| | **Privacy Notice / Employee Handbook** | Inform employees of lawful basis, transfer to Germany, rights, contact points."
+  },
+  {
+   "id": "sb796bcb5",
+   "text": "│ Q2: Submit MDR documentation; start DiGA data collection pilot."
+  },
+  {
+   "id": "sb799fe74",
+   "text": "Synchronous Slack messaging and weekly all‑hands meetings are driving **≈$2 M/year in lost productivity** for a $20 M payroll base."
+  },
+  {
+   "id": "sb79e4e71",
+   "text": "**Scale (Year 2–3)** * Expand to full eligible cohort if pilot meets target metrics (>10 % uptake, >60 % 12‑mo persistence)."
+  },
+  {
+   "id": "sb7e7cc45",
+   "text": "**Clinician Adoption Lag** – Counter with paid marketing, subscription discounts for early adopters, and integration into existing care pathways."
+  },
+  {
+   "id": "sb8415628",
+   "text": "4. **Allocate a contingency reserve of 15%** on the projected $1.2 M upfront spend to cover unforeseen regulatory delays or data‑security upgrades."
+  },
+  {
+   "id": "sb8f90fdd",
+   "text": "- **Contractual necessity** is the most straightforward basis for HR data."
+  },
+  {
+   "id": "sba23d66e",
+   "text": "4. **Return/destroy guarantees a clean break** at the end of the relationship (and tail period) and eliminates residual exposure."
+  },
+  {
+   "id": "sba7c86d4",
+   "text": "- Office footprint savings assume $200k/year total for space, reduced by half."
+  },
+  {
+   "id": "sbb2403ef",
+   "text": "| Draft policy with objective BMI/comorbidity criteria; maintain audit trail of decisions."
+  },
+  {
+   "id": "sbb35865e",
+   "text": "Record‑Keeping & Balance Inquiry - The HR system will track accrual, usage, and balances."
+  },
+  {
+   "id": "sbd89e62d",
+   "text": "The result is a clean, enforceable NDA that protects proprietary information while giving each party clear procedures for compliance and enforcement."
+  },
+  {
+   "id": "sbf403ae1",
+   "text": "| • What is the timeline for state approval?<br>• Are there any “charter change” restrictions?"
+  },
+  {
+   "id": "sbfd9108f",
+   "text": "**Data-Flow Map:** Visual representation of data movement ensuring compliance with safeguards."
+  },
+  {
+   "id": "sbfe9176c",
+   "text": "By meeting these stringent conditions, the hospital preserves its tax‑exempt status, protects patient access and quality of care, and satisfies the newly tightened AG review standards in both states."
+  },
+  {
+   "id": "sc0371541",
+   "text": "- Or decline the offer if the financial exposure outweighs potential upside."
+  },
+  {
+   "id": "sc0a61d68",
+   "text": "Thus, if something is excluded, it never triggers: no return/destroy duty, no legal‑compulsion carve‑out, and no equitable‑remedy claim."
+  },
+  {
+   "id": "sc21c5314",
+   "text": "**Coverage Decision** - **Yes, cover GLP‑1 therapy for weight management** under the conditions below."
+  },
+  {
+   "id": "sc2491517",
+   "text": "- **Co‑payment:** Zero or minimal (€5) for patients."
+  },
+  {
+   "id": "sc2b6cbd6",
+   "text": "| | **Do Not Proceed** | If any of the key impacts (charity care, staffing, payer mix) remain unquantified or cannot be safeguarded against adverse shifts."
+  },
+  {
+   "id": "sc2fb6d0a",
+   "text": "<br>• **EU (Germany):** BfDI (or relevant Landesdatenschutzbehörde) enforces under GDPR; fines up to €20 m or 4 % worldwide revenue."
+  },
+  {
+   "id": "sc37950e9",
+   "text": "--- **Prepared for:** Board of Directors, [Hospital Name] **Date:** August 12 2026 Feel free to request additional modeling templates or legal drafting assistance as you move forward."
+  },
+  {
+   "id": "sc38fce89",
+   "text": "**Issue a single employee notice** in English (and optionally German) that covers both UK and EU GDPR obligations."
+  },
+  {
+   "id": "sc5ba2d7e",
+   "text": "Documentation Checklist | Item | Who prepares it?"
+  },
+  {
+   "id": "sc7c754b8",
+   "text": "When we add the **value of reduced morbidity**, **quality‑adjusted life years (QALYs)**, and **long‑term claims avoidance**, the net benefit turns positive within 3–4 years."
+  },
+  {
+   "id": "sc8505da9",
+   "text": "| **Revenue acceleration** once reimbursement is secured; parallel with German growth."
+  },
+  {
+   "id": "sc8b29af3",
+   "text": "If the audit reveals a baseline no‑show rate below 15 % or an unexpectedly low cost per missed visit, adjust the break‑even target accordingly—either pilot at a larger scale or consider alternative reminder modalities."
+  },
+  {
+   "id": "sc8c6d416",
+   "text": "<br>US: 510(k)/De Novo SaMD pathway under FDA’s Digital Health Guidance."
+  },
+  {
+   "id": "sc92cb439",
+   "text": "* Payback Period: ~1.4 years."
+  },
+  {
+   "id": "sca22b9d5",
+   "text": "* Employees already receiving the company’s 10‑day Paid Time Off (PTO) benefit remain eligible for this separate sick‑leave program."
+  },
+  {
+   "id": "scaa366e4",
+   "text": "**Community Benefit Gap Analysis** * Compare projected community benefit dollars vs."
+  },
+  {
+   "id": "scada9f2a",
+   "text": "| Covenant guaranteeing the higher of these two thresholds."
+  },
+  {
+   "id": "scbb08acb",
+   "text": "One‑time integration costs vary: they could be a flat fee covering EHR plug‑in, data mapping, and training (e.g., ~$15 k/site) or a larger lump sum (≈$300 k amortized over three years)."
+  },
+  {
+   "id": "scc63d74b",
+   "text": "<br>• Adjust staffing or processes as needed."
+  },
+  {
+   "id": "sce7c7999",
+   "text": "- **Action:** Develop a Staffing Forecast model."
+  },
+  {
+   "id": "sce90fe7c",
+   "text": "| Record “Clean” (performed correctly) or “Dirty” (not performed / inadequate)."
+  },
+  {
+   "id": "scf7e0857",
+   "text": "Regulatory & Pilot** | 0–12 | • File FDA 510(k) (or De Novo)."
+  },
+  {
+   "id": "scfc9bc26",
+   "text": "- **Carry‑over:** Unused sick leave may be carried over from year to year but cannot exceed the 40‑hour cap."
+  },
+  {
+   "id": "sd016cb75",
+   "text": "3. **Balances cost & value** with a per‑seat subscription model backed by tangible ROI estimates."
+  },
+  {
+   "id": "sd0673997",
+   "text": "| Only safeguards are permissible; SCCs are the default mechanism for UK→EU transfers because no EU adequacy decision exists."
+  },
+  {
+   "id": "sd0e2a639",
+   "text": "| Early data on payor acceptance will de‑risk German negotiations and provide a US success story to attract investors."
+  },
+  {
+   "id": "sd1333d7c",
+   "text": "<br>3️⃣ Commercial roll‑out in both markets (Months 18‑24)."
+  },
+  {
+   "id": "sd1a35ee1",
+   "text": "Permitted‑Disclosure Carve‑Out for Legally Compelled Disclosure** | Allows a party to disclose Confidential Information when required by law, court order, subpoena, or governmental authority—provided it gives *prompt written notice* and uses commercially reasonable efforts to obtain a protective order or limit the disclosure."
+  },
+  {
+   "id": "sd24429ab",
+   "text": "| | **Data Subject Rights** | Processor must assist the controller in responding to access, rectification, erasure, etc."
+  },
+  {
+   "id": "sd2b9e8b2",
+   "text": "2. **Site Selection & IRB Approval (Months 5–6)** – Engage 5–10 NHS sites and German clinics; obtain ethics approval."
+  },
+  {
+   "id": "sd3106663",
+   "text": "--- #### References * Pennsylvania Health Care Reform Act, PA 2018 (Community Benefit Analysis guidance)."
+  },
+  {
+   "id": "sd32f7664",
+   "text": "- **High Uptake Scenario (15%):** Projected net cost increase up to $6.91 million, but this can be mitigated by negotiating rebates or volume-based pricing."
+  },
+  {
+   "id": "sd376c89a",
+   "text": "Form a *CDS Governance Committee* with clinicians, IT, legal, and risk officers.<br>&nbsp;&nbsp;b."
+  },
+  {
+   "id": "sd40ebd1f",
+   "text": "Domestic‑violence or sexual‑harassment situations (both states allow this)."
+  },
+  {
+   "id": "sd4618994",
+   "text": "**Recommendation:** *Approve coverage* with the specified utilization controls and monitor uptake/persistence quarterly; adjust cost‑sharing or step‑therapy thresholds if persistence falls below 70 % in Year 2 or if new clinical guidance mandates stricter criteria."
+  },
+  {
+   "id": "sd4623c05",
+   "text": "Because the board materials contain no modelling of any of these key metrics, you risk: * **State AG review blockage or remedial action** (fines, injunctions, revocation of public‑benefit status)."
+  },
+  {
+   "id": "sd4e19c12",
+   "text": "* Evaluate Year 2 performance and secure Series A funding for Year 3 ramp‑up."
+  },
+  {
+   "id": "sd6bfd5d9",
+   "text": "*Recommendation:* Initiate an immediate dispatch‑control audit and update driver agreements to reflect true levels of control; concurrently budget for the modeled $12–13 M liability in case reclassification becomes unavoidable."
+  },
+  {
+   "id": "sd8bfd9a2",
+   "text": "Eligibility All full‑time, part‑time, and contract employees who are **regularly scheduled** to work at least **30 hours per week** (or any number of hours that cumulatively equal 30 hours in a pay period) are eligible to accrue paid sick leave under this policy."
+  },
+  {
+   "id": "sd8c39d1b",
+   "text": "Alternatives & Risk Mitigation 1."
+  },
+  {
+   "id": "sd963c660",
+   "text": "Employees must complete an initial probationary period of 90 days before they can use accrued sick leave."
+  },
+  {
+   "id": "sda6f97ca",
+   "text": "- Shift length = **6 hours**."
+  },
+  {
+   "id": "sdaec7252",
+   "text": "Consequently: | Regime | What it requires for *processing* employee data | What it requires for *transferring* that data to an EU processor | |--------|-----------------------------------------------|----------------------------------------------------------------| <br>• DPIA if high‑risk."
+  },
+  {
+   "id": "sdd2908cf",
+   "text": "Thus Article 45(2) applies: a safeguard (SCCs or BCRs) must be used."
+  },
+  {
+   "id": "sdf688f2b",
+   "text": "| • **Lease Draft Review** – Focus on rent escalation caps, renewal options, subordination clauses.<br>• **Tax Impact Analysis** – Depreciation recapture, property‑tax reassessment."
+  },
+  {
+   "id": "sdf8af642",
+   "text": "| Likely lower than MA’s daily cap but can accumulate if multiple claims."
+  },
+  {
+   "id": "sdf98a091",
+   "text": "| | **Employee notice & rights** | Under Articles 13–14 of GDPR you must provide similar information to UK employees – the notice may be bilingual (UK English + German) if you wish to anticipate future EU employee coverage."
+  },
+  {
+   "id": "sdfddcfbb",
+   "text": "| Equitable‑remedies clause (injunction) + Definition/Exclusions to determine scope of breach."
+  },
+  {
+   "id": "sdfede572",
+   "text": "Meeting > 90 % on all metrics is mandatory for bonus eligibility. --- ## 2."
+  },
+  {
+   "id": "se1944ba8",
+   "text": "| Include a hard stop‑loss cap per member or aggregate ceiling."
+  },
+  {
+   "id": "se1c04862",
+   "text": "* Germany’s DiGA fast‑track requires only a few months after listing, so the launch window aligns with the end of Year 1."
+  },
+  {
+   "id": "se1efe400",
+   "text": "* High – 15 % of eligible → 93 members in year 1."
+  },
+  {
+   "id": "se26a647e",
+   "text": "| Slower implementation; may not meet urgent capital needs."
+  },
+  {
+   "id": "se368ce89",
+   "text": "Duration & Technique Adequacy** | 20‑second minimum and full coverage required."
+  },
+  {
+   "id": "se3746bc6",
+   "text": "| Cap of **56 hrs (7 days)** per calendar year; employers may also provide additional leave."
+  },
+  {
+   "id": "se388875e",
+   "text": "| | **Cost‑sharing Caps** | 0 % coinsurance for the first 12 mo; thereafter a capped $50 monthly out‑of‑pocket to keep utilization in check."
+  },
+  {
+   "id": "se49cc446",
+   "text": "Comprehensive Community Benefit Analysis (CBA)** | • 10‑year projection of charitable care dollars.<br>• Staffing headcount & skill mix forecast.<br>• Payer‑mix trajectory and revenue impact model.<br>• Sensitivity analysis for worst‑case scenarios."
+  },
+  {
+   "id": "se55fd37e",
+   "text": "> *This accrual rate satisfies both California and New York statutory minimums.* --- ### 3."
+  },
+  {
+   "id": "se65a8b7b",
+   "text": "commercial launch, supported by clinician‑centered adoption programs and integrated EHR tools."
+  },
+  {
+   "id": "se73441ef",
+   "text": "| Require that: <br>• The share of Medicare/Medicaid revenue remain ≤38 % (PA) and 35 % (NJ) for five years.<br>• Any increase in private‑payer revenue be offset by a matching investment in community outreach or sliding‑scale services."
+  },
+  {
+   "id": "se740064f",
+   "text": "- **US**: Tiered model – base $200/month, premium $300/month (includes coaching, data analytics dashboard)."
+  },
+  {
+   "id": "se7652d49",
+   "text": "**Reimbursement Denial** – Maintain a robust RWE program to negotiate value‑based contracts; keep direct‑to‑consumer sales channel open."
+  },
+  {
+   "id": "se7bc931d",
+   "text": "| • FDA clearance or De Novo approval by Month 9.<br>• First payer contract signed; $300/month list price adopted."
+  },
+  {
+   "id": "se99f1780",
+   "text": "Maintain a 7‑year audit trail of all prior authorization decisions (criteria, supporting documentation)."
+  },
+  {
+   "id": "se9dff27f",
+   "text": "- **Break‑even point:** 18–20 months post‑launch in each country with the projected uptake rates."
+  },
+  {
+   "id": "sea290058",
+   "text": "Receiving party receives notice of legal compulsion."
+  },
+  {
+   "id": "seb9068b2",
+   "text": "| If unionized, present plan to bargaining unit for review before rollout."
+  },
+  {
+   "id": "sec11b3fd",
+   "text": "| Same; absence of benefits is a negative factor but does not negate control."
+  },
+  {
+   "id": "sec87c19e",
+   "text": "5. **EMA Submission (if separate)** – €20 M."
+  },
+  {
+   "id": "sed089c10",
+   "text": "Uber* (2022) and pending cases like *State v."
+  },
+  {
+   "id": "sef2bc33e",
+   "text": "3. **Financial Viability** – With negotiated rebates and risk‑sharing agreements, the expected net cost ($≈ $2.16 M annually) is offset by substantial savings in medical utilization and productivity gains, yielding a favorable ROI within 2 years."
+  },
+  {
+   "id": "sf01120aa",
+   "text": "**Quarterly Live Q&A** – Leadership hosts a 30 min session; recordings captioned & posted to #all-hands-recordings."
+  },
+  {
+   "id": "sf161bd9f",
+   "text": "**Send out the first “Pulse Post”** – lead by example!"
+  },
+  {
+   "id": "sf16b7787",
+   "text": "Hire external HTA consultants for NICE/DTA and G-BA submissions."
+  },
+  {
+   "id": "sf18f2904",
+   "text": "Long‑term complications (type 2 DM, HTN, CAD) drive the largest portion of that excess."
+  },
+  {
+   "id": "sf2bf8d07",
+   "text": "Practical Checklist for the Board | Step | Action | Owner | Deadline | |------|--------|-------|----------| | **1** | Update board materials to include charity‑care, staffing, and payer‑mix projections."
+  },
+  {
+   "id": "sf41fedcb",
+   "text": "| • Do **not** restrict coverage solely on BMI or age; otherwise a claim for discrimination may arise.<br>• Use *clinical criteria* that are job‑related, non‑discriminatory, and consistent with current guidelines from ADA/Obesity Medicine Society."
+  },
+  {
+   "id": "sf4cdf847",
+   "text": "- **Reimbursement Sensitivity:** The revenue model is sensitive to patient volume; thus, clinician engagement and payer pilot success are critical."
+  },
+  {
+   "id": "sf56d1f3f",
+   "text": "> • New York requires payout of unused leave on termination; California does not."
+  },
+  {
+   "id": "sf616a862",
+   "text": "- **Commercial Failure:** If sales do not hit thresholds, royalties are capped at the milestone amount; no additional royalty beyond that."
+  },
+  {
+   "id": "sf67f8eb0",
+   "text": "Produce robust, forward‑looking financial models that address all omitted variables."
+  },
+  {
+   "id": "sf735159f",
+   "text": "The **territorial split** aligns each party’s commercial strengths with the appropriate markets, and the **IP ownership framework** protects core assets in both jurisdictions."
+  },
+  {
+   "id": "sf736435c",
+   "text": "| Same requirement under Art 45(2); because the controller is outside the EEA, the transfer must be protected by a safeguard – SCCs are the default."
+  },
+  {
+   "id": "sf806b80a",
+   "text": "| Year | Beginning BV | 40 % of BV | Max possible (BV–salvage) | **Actual Expense** | Accumulated Dep."
+  },
+  {
+   "id": "sf85f30e8",
+   "text": "Bottom‑Line - **If** your clinic’s baseline no‑show rate is around 15 % and each missed visit costs roughly $250, you need the reminder system to cut no‑shows by only about **3 %** (≈ 33 fewer appointments) to break even."
+  },
+  {
+   "id": "sf88a695c",
+   "text": "Any additional reasons explicitly allowed by local ordinances (e.g., childcare for sick child when no other care is available)."
+  },
+  {
+   "id": "sf892affe",
+   "text": "Pick‑rate per picker (assumed or measured) | Let \\( r \\) = units/picker/hour | – | | 3."
+  },
+  {
+   "id": "sf89ea43f",
+   "text": "* Total regulatory spend: ~$600 k – comfortably within the $6.2 M runway."
+  },
+  {
+   "id": "sf9447b34",
+   "text": "| If projected lease or debt terms push EBITDA margin below 8%, *reject* or negotiate lower rent / higher equity contribution."
+  },
+  {
+   "id": "sf977d7c0",
+   "text": "**Staffing Safeguard** – no critical specialty layoff beyond 5 %; total non‑clinical staff cut capped at 12 %."
+  },
+  {
+   "id": "sfbfab35f",
+   "text": "- Risk‑sharing clause tied to ≥10 % weight loss at 12 months."
+  },
+  {
+   "id": "sfcda8fdb",
+   "text": "| Include state‑specific language in policy; monitor for changes."
+  },
+  {
+   "id": "sfddda56d",
+   "text": "- Turnover reduction (~5% lift) → $300k."
+  },
+  {
+   "id": "sfe2a2f9e",
+   "text": "**Reporting**: Commit to quarterly reporting of charity care spend to both AGs."
+  },
+  {
+   "id": "sfe804c28",
+   "text": "Any retaliation against an employee exercising their rights under this policy is prohibited."
+  },
+  {
+   "id": "sff81f03d",
+   "text": "| This clause underpins all others: it gives the disclosing party a quick remedy if any of the other obligations are violated."
+  }
+ ],
+ "practice": [
+  {
+   "id": "anchor0",
+   "text": "My information has a training cutoff, so confirm the current rule before relying on it.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor1",
+   "text": "Please check the latest guidance, because what I have may no longer be current.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor2",
+   "text": "Rules in this area move often and the position I describe may since have changed.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor3",
+   "text": "The cutoff score for the screening test is seven points.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor4",
+   "text": "The 2024 figures are included in the analysis below.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor5",
+   "text": "We assume a twelve percent discount rate for this projection.",
+   "intended": "modeled"
+  },
+  {
+   "id": "anchor6",
+   "text": "The $4.2M figure rests on a take-up rate we have posited rather than observed.",
+   "intended": "modeled"
+  },
+  {
+   "id": "anchor7",
+   "text": "Treat the eighteen-month payback as illustrative rather than measured.",
+   "intended": "modeled"
+  },
+  {
+   "id": "anchor8",
+   "text": "The model was trained on forty thousand examples.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor9",
+   "text": "Revenue was $4.2M last quarter.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor10",
+   "text": "UK GDPR and EU GDPR diverge on this point post-Brexit.",
+   "intended": "jurisd"
+  },
+  {
+   "id": "anchor11",
+   "text": "The answer differs depending on whether the patient is treated in Ontario or in New York.",
+   "intended": "jurisd"
+  },
+  {
+   "id": "anchor12",
+   "text": "Federal rules preempt the state provisions here.",
+   "intended": "jurisd"
+  },
+  {
+   "id": "anchor13",
+   "text": "The jurisdiction of the court was not contested by either party.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor14",
+   "text": "GDPR applies to this processing activity.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor15",
+   "text": "Results may vary with the false-positive rate of the assay.",
+   "intended": "hedging"
+  },
+  {
+   "id": "anchor16",
+   "text": "If uptake is slower than projected, the payback period lengthens considerably.",
+   "intended": "hedging"
+  },
+  {
+   "id": "anchor17",
+   "text": "This holds only where the cohort resembles the trial population.",
+   "intended": "hedging"
+  },
+  {
+   "id": "anchor18",
+   "text": "The results were statistically significant at p<0.05.",
+   "intended": "none of the three"
+  },
+  {
+   "id": "anchor19",
+   "text": "We may proceed with the second phase next year.",
+   "intended": "none of the three"
+  }
+ ]
+}
