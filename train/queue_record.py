@@ -167,7 +167,9 @@ def record(step: str, state: str, output: str, info: dict) -> str | None:
         line = _append_runbook(heading, body)
         c["outcome"], c["size"] = "stopped", "Not run: a checkpoint set in advance was not passed"
         c["found"] = (f"This cell did not run. Its plan said it would run only if an earlier check passed, and on {long} "
-                      "that check had not passed. No runs were made and nothing was scored.")
+                      "that check had not passed. No runs were made and nothing was scored. The check exists because the "
+                      "test is only meaningful if the editor can work out these answers when it is given the right figures. "
+                      "The notebook entry below records the reason the queue gave for skipping it.")
         c["entries"][str(line)] = {"label": "Stopped", "title": "Not run: a checkpoint set in advance was not passed",
                                    "summary": (f"The plan for this cell said it would run only if an earlier check passed. "
                                                f"On {long} that check had not passed, so the queue skipped the cell and made no runs.")}
