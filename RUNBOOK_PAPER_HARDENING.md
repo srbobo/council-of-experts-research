@@ -9586,3 +9586,460 @@ dispatch rate (0.85 of pipelines carry a role-named tension in the
 lead's list) is the writer's artifact and is not evidence about
 judge-scored inter-seat conflict; the two measures are not reconciled by
 this attempt.
+
+---
+
+## BOARD REVIEW AND STAGE 0 CORRECTIONS (2026-10-01) — decision "major revision"; one scoring bug fixed, every small-sample interval recomputed at the scenario or item level, preference reported on all pairs; seven new experiments planned for one machine
+
+An outside-style review of the whole program was written on 2026-10-01
+(`docs/BOARD_REVIEW_2026-10-01.md`; every recomputed number is produced by
+`bench/analysis/board_review/checks.py`, which calls no model). The review
+was written by an AI assistant working from the repository, as the three
+earlier audits were; it is a list of checkable claims and does not replace
+a human statistician. Its decision: the paper is not accepted as drafted;
+major revision and re-examination.
+
+This entry records what was corrected WITHOUT any model call ("Stage 0"),
+and what is planned next. The per-experiment corrections follow as their
+own entries so that each appears with the experiment it changes. The
+recomputation is `train/run_stage0_corrections.py`; its printed report is
+`bench/analysis/stage0/report.txt` and the numbers are in
+`bench/analysis/stage0/corrected.json`. New small-sample helpers are in
+`gst/src/gst/smallcluster.py` (10 known-answer tests).
+
+### What changed in method
+
+1. **Unit of analysis.** Intervals in the affected experiments were
+   percentile bootstraps over 6 to 18 clusters, or over runs. They are
+   replaced by: aggregate to the scenario or item, then a t-interval on the
+   paired differences and an exact sign-flip (randomization) test. The
+   number of clusters is printed beside every estimate.
+2. **Preference.** A pair the judge decides differently in the two orders
+   is no longer discarded. Every pair is scored (first-named side wins both
+   orders = 1, splits = 0.5, loses both = 0) and the scenario-level mean is
+   tested against 0.5. Win, loss and tie counts are printed.
+3. **Caveats in and out.** Reported as the share of sentences that carry a
+   caveat in the specialists' text and in the editor's answer, beside the
+   slope.
+4. **Follow-up to a specialist.** Reported over all runs as well as over
+   the runs in which the editor named the planted disagreement.
+5. **Chance-corrected agreement.** Cohen's kappa is reported beside raw
+   agreement for the two-judge sentence labels.
+6. **Run records.** From this entry on every model call stores UTC time,
+   model digest, seed, context length, prompt hash, prompt and output token
+   counts, the commit checked out and the runner's hash
+   (`gst/src/gst/runlog.py`). Earlier records carry none of these. No script
+   before this date set the context length; the server default was 32,768
+   tokens when checked and in the July to August server logs, which the
+   prompts fit, but no record shows it.
+
+### The corrected numbers in one table
+
+| experiment | was | now | entry |
+|---|---|---|---|
+| 48 caveat sentences found word for word in the editor's prose | 361/2079 = 0.174 | **61/2037 = 0.030** (parse bug) | CELL 48 CORRECTION |
+| 46 / 30 slope of caveats out on caveats in, second editor model | [+0.067, +0.265] and [-0.031, +0.273], run level | **[-0.020, +0.303] and [-0.013, +0.244]**, scenario level: zero not excluded | CELL 46 CORRECTION |
+| IV / 41 / 46 two-judge sentence labels | agreement 0.91 | **kappa 0.19 to 0.41**; chance agreement 0.64 to 0.88 | CELL IV CORRECTION |
+| 47 second source, drop in the planted figure | 0.450 [+0.200, +0.725] | +0.450 **[+0.095, +0.805]**, p = 0.031, 8 items | CELL 47 CORRECTION |
+| 59 live chain, drop in the planted figure | not in the paper | +0.175 **[-0.069, +0.419]**, p = 0.22 | CELL 59 CORRECTION |
+| 43 pipeline preferred to a single answer | 0.818 of 44 decided pairs | **0.611 of all 126 pairs**, p = 0.0005, 18 scenarios | CELL 43 CORRECTION |
+| 43 instructed phrase penalised | 0.261 and 0.317 of decided pairs | **0.413 and 0.440 of all pairs**, p = 0.009 and 0.06 | CELL 43 CORRECTION |
+| 44 follow-up used | 7/7 against 5/15 | all runs **15/36 against 10/36**; exact p = 0.125 | CELL 44 CORRECTION |
+| 54 live follow-up | +0.571 [+0.139, +0.912] | named runs +0.583 **[+0.121, +1.046]**, exact p = 0.125, 5 items | CELL 54 CORRECTION |
+| 51 reader acts on an appended caveat | +0.691 [+0.455, +0.891] | +0.691 **[+0.427, +0.955]**, p = 0.004, 11 items; second reader p = 0.06 | CELL 51 CORRECTION |
+| 55 screening test | +0.632 [+0.549, +0.722] over 6 scenarios | **2 of 10 models**; exact p = 1/45 = 0.022 | CELL 55 CORRECTION |
+| 61 rebuilt system against the old one | "large effects excluded in both directions" | true for one judge only; all pairs **0.528 and 0.477**, p = 0.57 and 0.31 | CELL 61 CORRECTION |
+| 26 agreement between specialists is ignored | LIVE claim | **withdrawn** | CELL 26 CORRECTION |
+| 41 nothing beyond the named phrase | [-0.079, +0.111] and [-0.103, +0.087] | +0.024 **[-0.080, +0.128]** and -0.024 **[-0.131, +0.083]**; the measuring tool misses 34% to 65% of instructed phrases | CELL 41 CORRECTION |
+
+### Five statements the corrected paper keeps, adjusted for being five
+
+Chosen AFTER the results were known, so this is a retrospective summary and
+not a registered family. Holm-adjusted across the five:
+
+| statement | p | adjusted |
+|---|---|---|
+| an instructed phrase appears (41, "modeled at") | 0.0002 | 0.0012 |
+| the judge prefers the pipeline answer to a single answer (43, all pairs) | 0.0005 | 0.0020 |
+| a reader model acts on an appended sentence (51) | 0.0039 | 0.0117 |
+| the judge prefers the answer without the phrase (43, "modeled at", all pairs) | 0.0088 | 0.0176 |
+| a second source lowers use of the first source's figure (47) | 0.0312 | 0.0312 |
+
+### What the review says the measures mean (recorded, not re-litigated here)
+
+- The slope w is close to the ratio of answer length to input length. In
+  the nine newer scenarios caveat sentences are 0.183 of the specialists'
+  sentences and 0.193 (gpt-oss) or 0.190 (phi4) of the editor's; in the
+  nine original scenarios 0.133 and 0.103. Whether a caveat is less likely
+  to be conveyed than an ordinary sentence was never measured.
+- "Adoption" in the second-source experiments is a model repeating the only
+  figure it was given after being asked to include it; with two sources it
+  picks one about evenly, item by item. The figure could not be checked
+  against anything in the case.
+- "Carriage of 1.000" is true by construction: the appended list is built
+  from the sentences that define the numerator.
+- In every experiment that carries a claim about the rebuilt system, the
+  three specialists are the editor model (gpt-oss:20b) under one-sentence
+  role prompts.
+- No sentence label, preference or reader decision in the program comes
+  from a person.
+
+### What is planned (each has its own entry below)
+
+The author works alone on one machine (32 GB), so each step the review
+asked for is redesigned for that (review, Addendum A).
+
+| new experiment | question | human time | machine time |
+|---|---|---|---|
+| 62 | do the sentence judges agree with a person's blind labels? | about 100 minutes, twice, a week apart | about 1.5 hours |
+| 63 | does the editor catch a wrong figure it could check? | none | about 9 hours per editor model |
+| 64 | do other reader models act on an appended caveat, unprompted, in a long list? | none | about 10 hours |
+| 65 | does the judge preference repeat with judges from other families? | none | about 12 hours |
+| 66 | are caveats lost more than ordinary sentences? | about 90 minutes | about 8 hours |
+| 67 | does a second source help in the live chain, scored by a computed answer? | none | about 13 hours |
+| 68 | the founding question on public items (design only, not scheduled) | none | not scheduled |
+
+**Primary predictions and adjustment.** One primary prediction per
+experiment is named now: P63.2, P64.1, P65.1, P66.1, P67.1. When all five
+are in, the paper reports their p-values with a Holm adjustment across the
+five. Each experiment's own entry states its result unadjusted at the time
+it is recorded. Experiment 62 is a validity check with fixed bars and is
+outside the family. Everything else in these experiments is reported
+without a pass/fail claim unless its entry says otherwise.
+
+**Order and dependence.** 62 (judges), 63 (main editor), 66, 64, 65, 63
+(two more editors), 67. Experiment 67 runs only if 63's clean-layout check
+passes for gpt-oss:20b. The person's labels for 62 and 66 can be made at
+any time after the sample files exist; scoring against them waits for the
+labels to be committed.
+
+**Timestamps.** Each run record stores the commit that was checked out
+(`audit.head`). The registration commit is in local git history. A public
+timestamp needs a push to the remote, which is the author's decision; the
+private site artifact is republished after this entry is committed, which
+gives the plan a dated copy outside this machine before the first run.
+
+**What cannot be done alone** is unchanged from the review: a rerun of the
+analysis by a second person, a second annotator, human readers, experts
+scoring the advisory answers, and a much larger model.
+
+## CELL 48 CORRECTION (2026-10-01) — the 0.174 "carried in prose" figure was a parsing error; scored on the full caveat sentences it is 61 of 2,037 = 0.030
+
+**The error.** The measure stage read the caveat sentences back from the
+appended list one LINE at a time. 72 of the 291 caveat sentences (24.7%)
+span several lines (markdown table rows, bullets). Those were cut to their
+first line, often the single character "|", which is "contained" in any
+answer that has a table. 273 of the 361 "carried" items were that
+character.
+
+**The fix.** `train/run_cell48_freight.py` now scores the full sentences
+the list was built from (and asserts the count per scenario equals the
+stored `n_caveats`). Same rule as before: literal containment after
+whitespace and asterisk normalisation.
+
+| | appended list | editor's prose |
+|---|---|---|
+| as published (line parse) | 2079/2079 = 1.000 | 361/2079 = 0.174 |
+| corrected (full sentences) | 2037/2037 = 1.000 | **61/2037 = 0.030** |
+
+`bench/analysis/cell48/measured.json` stores both, the superseded figure
+under `carriage_superseded_line_parse`.
+
+**Consequences.**
+1. P48.1 still reads SUPPORTED as registered (list at least 0.95, prose at
+   most 0.35); the list figure is true by construction and was always a
+   manipulation check.
+2. The verdict's sentence that 0.174 "is the third convergent estimate" of
+   the 0.11 to 0.33 slope is withdrawn. The agreement was produced by the
+   bug.
+3. 0.030 is the rate at which the editor copies a specialist's caveat
+   sentence word for word. It is not a rate of caveats lost: a caveat
+   restated in the editor's words counts as missing under this rule.
+   Whether caveats are conveyed, and whether they are conveyed less often
+   than ordinary sentences, is CELL 66 below.
+4. The preference half of the experiment is unchanged by the bug. On all
+   pairs it is 26 wins, 25 losses, 65 ties: 0.504, scenario-level
+   difference from 0.5 of +0.002 [-0.120, +0.124], p = 1.0, 17 scenarios.
+5. Not caught by any of the three audits or by the consistency checker;
+   found by the review when it recomputed the figure with a different
+   parser.
+
+## CELL 46 CORRECTION (2026-10-01) — the slope intervals were run-level; at the scenario level the second editor model does not exclude zero in either scenario set, and the share of caveat sentences is the same in and out
+
+Applies to the within-set slopes reported for Cell 46 and, for the
+original scenarios, Cell 30.
+
+**Intervals.** The published intervals resample runs
+(`gst.stats.bootstrap_ols`), although the paper says every interval is
+clustered on scenarios. Resampling the nine scenarios in each set:
+
+| editor | scenarios | n | w | run level (published) | scenario level (9 clusters) |
+|---|---|---|---|---|---|
+| gpt-oss:20b | original | 40 | 0.172 | [+0.052, +0.297] | [+0.067, +0.316] |
+| gpt-oss:20b | newer | 42 | 0.326 | [+0.207, +0.434] | [+0.149, +0.477] |
+| phi4:14b | original | 20 | 0.105 | [-0.031, +0.273] | [-0.013, +0.244] |
+| phi4:14b | newer | 42 | 0.170 | [+0.067, +0.265] | **[-0.020, +0.303]** |
+
+Two of four exclude zero, both for gpt-oss. "Replicates for a second
+writer" rested on the phi4 newer-set interval, which no longer excludes
+zero, and on the pooled fit, which the Cell 46 verdict already said is the
+between-set line and must not be quoted.
+
+**Shares.** From the stored two-judge labels:
+
+| scenarios, editor | caveat sentences in | caveat sentences out | answer length / input length | caveat sentences out / in |
+|---|---|---|---|---|
+| newer, gpt-oss | 1064/5800 = 0.183 | 327/1691 = 0.193 | 0.292 | 0.307 |
+| newer, phi4 | 1064/5800 = 0.183 | 196/1032 = 0.190 | 0.178 | 0.184 |
+| original, both | 324/2430 = 0.133 | 75/728 = 0.103 | 0.300 | 0.231 |
+
+The editor writes an answer 18% to 30% as long as what it read, carrying
+18% to 31% as many caveat sentences. w tracks the length ratio. "The
+editor passes on a sixth to a third of the caution it is given" is the
+statement that a summary is shorter than its sources. A claim of selective
+loss needs the comparison in CELL 66.
+
+**Status.** The formula y = w·s + c stays as a description for gpt-oss.
+The second-editor replication is NOT EVALUABLE at nine scenarios per set.
+All of it rests on the two-judge labels corrected in the next entry.
+
+## CELL IV CORRECTION (2026-10-01) — the two-judge sentence labels agree little beyond chance (kappa 0.19 to 0.41), and miss a third to two thirds of instructed phrases
+
+Cell IV accepted the batched two-judge sentence instrument on raw
+agreement against a 0.70 bar. Raw agreement is uninformative when one
+answer dominates. On the stored labels:
+
+| saved labels | kind of caveat | n | raw | chance | kappa | both flag / either flags |
+|---|---|---|---|---|---|---|
+| Cell 41 | modeled | 15485 | 0.910 | 0.878 | 0.259 | 0.178 |
+| Cell 41 | jurisd | 15485 | 0.833 | 0.717 | 0.408 | 0.339 |
+| Cell 41 | hedging | 15485 | 0.828 | 0.763 | 0.276 | 0.220 |
+| Cell 46 | all three | 16869 | 0.838 | 0.752 | 0.346 | 0.282 |
+| Cell 30/31 | all three | 5697 | 0.833 | 0.772 | 0.268 | 0.220 |
+
+Two judges answering independently at their own base rates would pass the
+0.70 bar. The validation that licensed the instrument (Cell 23) was on a
+sample chosen to be rich in positives, where kappa was 0.51 to 0.66, and
+on twenty anchor sentences written inside the project.
+
+**Recall on positives by construction.** In Cell 41, sentences containing
+the instructed phrase "modeled at" were labelled as assumption-marking by
+both judges 73 of 110 times (0.664); sentences containing the synonym
+"taken to be", 35 of 101 (0.347).
+
+**Consequences.**
+1. Finding #16 is added to the instrument-validity list in STATUS.md.
+2. Every count made with the both-judges rule (Cells 30, 31, 38, 41's
+   other-wording measure, 46, 48's list) is PROVISIONAL until the
+   instrument is checked against a person's labels: CELL 62 below.
+3. No label has been changed. Nothing is re-scored until CELL 62 says
+   which rule, if any, to use.
+
+## CELL 47 CORRECTION (2026-10-01) — item-level inference on eight items; what "adoption" was
+
+**Inference.** The published intervals were percentile bootstraps over
+eight items. Item-level paired differences with a t-interval and an exact
+sign-flip test:
+
+| | one source | two sources | difference | p |
+|---|---|---|---|---|
+| planted figure stated | 36/40 | 18/40 | +0.450 [+0.095, +0.805] | 0.031 |
+| second source's figure stated | 0/40 | 20/40 | +0.500 [+0.090, +0.910] | 0.063 |
+
+The drop holds at p = 0.031. The rise does not reach 0.05 on eight items.
+
+**Reading.** The planted figure appears nowhere in the case, and the
+question ends by asking for that figure. Repeating it is compliance with
+the request; verification was not possible. With two sources the editor
+stated one in 20 of 40 runs and the other in 18 of 40, decided item by
+item (planted figure stated, one source to two sources, per item: 1.0 to
+1.0, 1.0 to 0.8, 1.0 to 0.0, 1.0 to 0.0, 1.0 to 0.2, 1.0 to 0.6, 1.0 to
+1.0, 0.2 to 0.0). The words "halves corrupted-value adoption" and "error
+immunity" are retired. What the experiment shows: a second source with a
+different figure changes the answer about half the time, and nothing in
+the answer tells the reader that two figures were on the table.
+
+**Provenance note.** The flags stored in
+`bench/runs/cell47_redundancy.jsonl` give 30 of 40 for the one-source arm;
+the analysis file gives 36 of 40 because the matcher was repaired after
+generation. The analysis file is the result; the run file's flags are
+stale.
+
+**Next.** CELL 63 repeats the question on items whose answer is computed,
+where a wrong figure can be caught, with no instruction to include it.
+
+## CELL 59 CORRECTION (2026-10-01) — item-level inference; the half the paper left out
+
+| live chain, 8 items | bare | planned | difference | p |
+|---|---|---|---|---|
+| planted figure stated | 25/40 | 18/40 | +0.175 [-0.069, +0.419] | 0.22 |
+| second source's figure stated | 2/40 | 19/40 | +0.425 [+0.285, +0.565] | 0.008 |
+
+The rise in the second source's figure holds. The drop in the planted
+figure does not: it was recorded as not evaluable in the verdict and is
+missing from the paper, which quotes Cell 47's drop as "causal". Both
+halves go in the corrected paper. CELL 67 repeats the live chain on 61
+items with a computed answer.
+
+## CELL 43 CORRECTION (2026-10-01) — preference on all pairs: the direction of every result stands, the sizes shrink
+
+The published shares use only pairs the judge decided the same way in both
+orders (35% of pairs for gpt-oss, 22% for qwen3-vl). Scoring every pair,
+with a split pair as half, and testing the scenario-level mean against 0.5
+(18 scenarios):
+
+| comparison | judge | win/loss/tie | decided only | all pairs | minus 0.5 | p |
+|---|---|---|---|---|---|---|
+| pipeline answer vs single answer | gpt-oss | 36/8/82 | 0.818 | 0.611 | +0.111 [+0.065, +0.157] | 0.0005 |
+| "modeled at" vs plain | gpt-oss | 12/34/80 | 0.261 | 0.413 | -0.087 [-0.144, -0.031] | 0.009 |
+| "taken to be" vs plain | gpt-oss | 13/28/84 | 0.317 | 0.440 | -0.058 [-0.118, +0.003] | 0.06 |
+| pipeline answer vs single answer | qwen3-vl | 26/7/93 | 0.788 | 0.575 | +0.075 [+0.023, +0.128] | 0.012 |
+| "modeled at" vs plain | qwen3-vl | 8/21/97 | 0.276 | 0.448 | -0.052 [-0.119, +0.016] | 0.17 |
+| "taken to be" vs plain | qwen3-vl | 5/18/103 | 0.217 | 0.448 | -0.052 [-0.092, -0.012] | 0.023 |
+
+(The qwen3-vl rows are Cell 43-R.) Both judges prefer the pipeline answer;
+each judge penalises one of the two phrases at p < 0.05 and leans the same
+way on the other. "Three of four exclude 0.5" becomes "two of four at
+p < 0.05, all four in the same direction".
+
+**Scope, restated.** The pipeline is four calls of one model against one
+call; no comparison of equal cost was run. The judges are 20B and 30B
+local models that chose the first-listed answer in 80% to 89% of single
+judgments. No person judged a pair. CELL 65 adds judges from other
+families.
+
+## CELL 44 CORRECTION (2026-10-01) — the follow-up result on all runs, and with an exact test
+
+The published contrast (7/7 against 5/15) conditions on the editor having
+named the planted disagreement, which happened in 7, 15 and 15 of 36 runs
+in the three arms although that stage is identical across them.
+
+| arm | named | intended resolution among named | among named, judges agreeing | over all 36 runs |
+|---|---|---|---|---|
+| control | 15 | 5/15 = 0.333 | 5/8 = 0.625 | 10 |
+| filler reply | 15 | 3/15 = 0.200 | 3/11 = 0.273 | 8 |
+| informed reply | 7 | 7/7 = 1.000 | 7/7 | 15 |
+
+Item-level, informed minus control: among named runs +0.700
+[+0.145, +1.255] on the 5 items that have both, exact p = 0.125; over all
+runs +0.139 [+0.007, +0.271] on 6 items, exact p = 0.125. With five or six
+items the smallest attainable two-sided p is 0.0625 or 0.031, so no
+contrast here could have reached conventional strength by much. No item
+goes the other way; one of the five items shows no difference among named
+runs (control was already 4 of 4) and two of six over all runs. The claim
+is restated as: in the
+runs where the editor named the disagreement and received an informative
+reply, it took the intended position in 7 of 7; over all runs, 15 of 36
+against 10 of 36.
+
+## CELL 54 CORRECTION (2026-10-01) — the live follow-up compared with a control from six days earlier; exact test
+
+Live arm (2026-08-25) against Cell 44's stored control (2026-08-19): among
+named runs 19/21 against 5/15, item-level +0.583 [+0.121, +1.046] on 5
+items, exact p = 0.125; over all runs 23/36 against 10/36, +0.361
+[-0.029, +0.751] on 6 items, exact p = 0.125. The editor named the
+disagreement in 0.583 of the new runs against 0.417 of the old control
+runs, which shows the two batches differ. The mini-control run alongside
+(12 runs) gave 2 of 6 named. The result is restated as descriptive: the
+live specialist conveyed the fact in 21 of 21 replies and the editor took
+the intended position in 19 of 21 named runs; the comparison with the
+archived control does not support a causal size.
+
+## CELL 51 CORRECTION (2026-10-01) — item-level inference on eleven items, and the scope of "uptake"
+
+| reader | relevant minus irrelevant appended sentence | p | items |
+|---|---|---|---|
+| gpt-oss:20b | +0.691 [+0.427, +0.955] | 0.004 | 11 |
+| qwen2.5:7b | +0.455 [+0.104, +0.805] | 0.06 | 11 |
+
+The result holds for the main reader. The second reader's test does not
+reach 0.05.
+
+**Scope, restated.** The reader is a language model, and the main reader
+is the model that wrote the report. Its instruction says to answer "on the
+basis of the report and anything attached to it". The appended list is one
+sentence placed just before the question; lists in this program hold 5
+(Cell 61) to a median of 11 and up to 53 sentences (Cell 48). The planted
+sentence is a decisive fact written for the item; the system's own lists
+hold hedges and assumption labels. The irrelevant control sentence
+averages 165 characters against 291. Seven of eighteen items were removed
+at the pilot check. No person read anything. CELL 64 tests the first three
+limits.
+
+## CELL 55 CORRECTION (2026-10-01) — the unit is the model: ten models, two failures
+
+The published interval [+0.549, +0.722] resamples six scenarios. The
+question is about models, and there are ten. The two models that failed
+the screen (at least one output under 800 characters on two screen
+prompts) are exactly the two with the most short outputs in the pipeline
+(17/18 and 6/18; the other eight have 0 or 1 of 18). Under random
+labelling of two of ten models that has probability 1/45 = 0.022.
+
+**Reading.** Screen and outcome are the same property (output under 800
+characters) measured on different prompts. The experiment shows that
+models which give very short answers on some prompts give them on others.
+It does not test the domain-signature probe or the format test, and in
+every experiment on the rebuilt system the screen is applied to the one
+model that plays every part.
+
+## CELL 61 CORRECTION (2026-10-01) — "large effects excluded in both directions" holds for one judge, not both; the assembled system's caveat extractor is not the one whose results the paper reports
+
+1. The second judge's interval is [0.083, 0.562] on 15 decided pairs in 9
+   of 18 scenarios (5 for the rebuilt system, 10 against). It does not
+   exclude a large loss. The verdict heading and the paper sentence are
+   corrected to apply to the main judge only.
+2. All pairs, split pairs as half, scenario level: gpt-oss 27/21/59 =
+   0.528, +0.031 [-0.069, +0.132], p = 0.57; qwen3-vl 5/10/93 = 0.477,
+   -0.023 [-0.060, +0.014], p = 0.31. No preference either way was
+   detected; no equivalence margin was registered, so "no difference" is
+   not claimed.
+3. The rebuilt system's outputs (2026-09-01 and 02) were compared with
+   outputs stored on 2026-08-12 and 13.
+4. `extract_caveats()` in `train/run_integration_demo.py`, which this
+   experiment imports, uses the document-level judge prompt that Cell IV
+   rejected at 0.622 agreement, returns at most one quoted sentence per
+   kind of caveat per specialist, and takes the quote from one judge. Its
+   lists hold 5.0 sentences on average; the sentence-level labels used in
+   Cell 48 give a median of 11 and a mean of 17.1. The paper's description
+   ("a two-judge extraction retains only sentences both judges agree
+   carry qualification") describes Cell 48's lists, not this system's.
+5. One inquiry in the rebuilt system makes about fourteen model calls
+   against four, and took 14 to 18 minutes in the integration run. "At no
+   cost" is withdrawn.
+
+## CELL 26 CORRECTION (2026-10-01) — "agreement between specialists is ignored" is withdrawn
+
+The claim (STATUS section 1) rested on one of four kinds of caveat in an
+analysis made with the keyword counter, three days before the program
+stopped using keyword counts as an instrument, on archived runs whose
+prompts dictated the phrase being counted. For that kind ("modeled"),
+PD-13 later showed the output wording is produced by the instruction (0 of
+30 without the clause, 28 of 30 with it); an output driven by the
+instruction cannot respond much to how many specialists raised the point.
+The other three kinds in the same analysis showed large positive effects
+of agreement (+0.388, +0.434, +0.201; composite +0.163 [0.13, 0.20]),
+which the verdict reported and the paper omitted. Published work finds
+that models follow the majority of the evidence they are given.
+
+**Status.** P26.1's registered verdict (FALSIFIED on the "modeled" channel)
+stands as recorded. The LIVE claim built on it is moved to WITHDRAWN. The
+question is open and has no validated instrument.
+
+## CELL 41 CORRECTION (2026-10-01) — scenario-level inference, and what the "nothing else changed" result can and cannot carry
+
+| | "modeled at" | "taken to be" |
+|---|---|---|
+| instructed phrase appears (share of answers), minus control (published: [+0.468, +0.857] and [+0.524, +0.865]) | +0.667 [+0.450, +0.883], p = 0.0002 | +0.698 [+0.504, +0.893], p < 0.0001 |
+| share of answers with an assumption-labelled sentence in other wording, minus control (published: [-0.079, +0.111] and [-0.103, +0.087]) | +0.024 [-0.080, +0.128], p = 0.75 | -0.024 [-0.131, +0.083], p = 0.81 |
+
+18 scenarios. P41.1 stands: the instruction produces the phrase it names,
+and a synonym chosen the day before behaves the same.
+
+The second row was read as "nothing beyond the named phrase changed". It
+is measured with the two-judge labels, which found only 66% and 35% of
+the sentences that contain the instructed phrases (CELL IV CORRECTION). A
+rise expressed in new wording could be missed. The registered minimum
+detectable effect (0.22) does not account for that. The statement is
+reduced to: no change larger than about 0.13 in the share the judges can
+see. An
+equivalence claim needs 60 to 135 scenarios and is not attempted.

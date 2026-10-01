@@ -1,0 +1,122 @@
+STAGE 0 CORRECTIONS — re-analysis of stored results (no model calls)
+
+==============================================================================
+1. Caveat carriage (Cell 48), after the parse fix
+==============================================================================
+  full caveat sentences found word-for-word in the editor's prose: 61/2037 = 0.030
+  superseded figure (caveats cut to their first line): 0.174
+  appendix: 1.000 by construction
+
+==============================================================================
+2. Second source for a figure (Cells 47 and 59): item-level, 8 items
+==============================================================================
+  cell47  drop in the planted wrong value    +0.450 [+0.095, +0.805]  sign-flip p = 0.0312  (k = 8 items)
+  cell47  rise in the second source's value  +0.500 [+0.090, +0.910]  sign-flip p = 0.0625  (k = 8 items)
+          counts: one source 36/40 wrong; two sources 18/40 wrong, 20/40 the other value
+  cell59  drop in the planted wrong value    +0.175 [-0.069, +0.419]  sign-flip p = 0.2188  (k = 8 items)
+  cell59  rise in the second source's value  +0.425 [+0.285, +0.565]  sign-flip p = 0.0078  (k = 8 items)
+          counts: one source 25/40 wrong; two sources 18/40 wrong, 19/40 the other value
+
+==============================================================================
+3. Reader model and an appended caveat (Cell 51): item-level, 11 items
+==============================================================================
+  gpt-oss:20b            relevant minus irrelevant appendix +0.691 [+0.427, +0.955]  sign-flip p = 0.0039  (k = 11)
+  qwen2.5:7b-instruct    relevant minus irrelevant appendix +0.455 [+0.104, +0.805]  sign-flip p = 0.0625  (k = 11)
+  scope: a model reader, an appendix of ONE sentence placed just before the question
+
+==============================================================================
+4. Follow-up to a specialist (Cells 44 and 54): conditional and all-run
+==============================================================================
+  cell44 control       named 15/36  R  5  anti 3  judges split 7  | R/named 0.333  R/agreed 0.625  | R over all runs 10/36
+  cell44 filler        named 15/36  R  3  anti 8  judges split 4  | R/named 0.200  R/agreed 0.273  | R over all runs 8/36
+  cell44 informed      named  7/36  R  7  anti 0  judges split 0  | R/named 1.000  R/agreed 1.000  | R over all runs 15/36
+  cell54 live          named 21/36  R 19  anti 0  judges split 2  | R/named 0.905  R/agreed 1.000  | R over all runs 23/36
+  cell54 mini-control  named  6/12  R  2  anti 3  judges split 1  | R/named 0.333  R/agreed 0.400  | R over all runs 5/12
+  C44 informed - control             named runs +0.700 [+0.145, +1.255]  sign-flip p = 0.1250  (k = 5 items with both)
+  C44 informed - control             all runs   +0.139 [+0.007, +0.271]  sign-flip p = 0.1250  (k = 6 items with both)
+  C54 live - C44 archived control    named runs +0.583 [+0.121, +1.046]  sign-flip p = 0.1250  (k = 5 items with both)
+  C54 live - C44 archived control    all runs   +0.361 [-0.029, +0.751]  sign-flip p = 0.1250  (k = 6 items with both)
+  note: the C54 comparison uses a control arm run six days earlier
+
+==============================================================================
+5. Screening test for specialists (Cell 55): the unit is the model, n = 10
+==============================================================================
+  qwen2.5     pass  short outputs in the pipeline 0/18
+  llama3      pass  short outputs in the pipeline 0/18
+  mistral     pass  short outputs in the pipeline 0/18
+  deepseek    pass  short outputs in the pipeline 0/18
+  phi4        pass  short outputs in the pipeline 0/18
+  meditron3   pass  short outputs in the pipeline 0/18
+  med42       pass  short outputs in the pipeline 1/18
+  openbiollm  FAIL  short outputs in the pipeline 6/18
+  biomistral  FAIL  short outputs in the pipeline 17/18
+  saul        pass  short outputs in the pipeline 0/18
+  the 2 screen-fail models are exactly the 2 with the most short outputs; under random labels that has probability 1/45 = 0.022
+  note: the screen and the outcome are the same thing (output under 800 characters) on different prompts
+
+==============================================================================
+6. Caveats in and out (Cells 30 and 46)
+==============================================================================
+  writer       scenarios    n       w   run-level interval    case-level interval (9 cases)
+  gpt-oss:20b  old         40   0.172   [+0.052, +0.297]      [+0.067, +0.316]
+  gpt-oss:20b  new         42   0.326   [+0.207, +0.434]      [+0.149, +0.477]
+  phi4:14b     old         20   0.105   [-0.031, +0.273]      [-0.013, +0.244]
+  phi4:14b     new         42   0.170   [+0.067, +0.265]      [-0.020, +0.303]
+  the run-level column is what the paper's transport figure printed
+
+  share of sentences that carry a caveat, specialists' text vs the editor's answer:
+    new scenarios       gpt-oss:20b    in 1064/5800 = 0.183   out 327/1691 = 0.193   answer length / input length 0.292   caveat sentences out / in 0.307
+    new scenarios       phi4:14b       in 1064/5800 = 0.183   out 196/1032 = 0.190   answer length / input length 0.178   caveat sentences out / in 0.184
+    original scenarios  both writers   in 324/2430 = 0.133   out 75/728 = 0.103   answer length / input length 0.300   caveat sentences out / in 0.231
+
+==============================================================================
+7. AI-judge preference on ALL pairs (Cells 43, 43-R, 48, 61)
+==============================================================================
+  comparison                                  judge         win/loss/tie  decided-only  all pairs   case-level all-pairs minus 0.5
+  C43 pipeline vs single answer               gpt-oss        36/8/82         0.818      0.611   +0.111 [+0.065, +0.157]  p = 0.0005  (k = 18)
+  C43 phrase 'modeled at' vs none             gpt-oss        12/34/80         0.261      0.413   -0.087 [-0.144, -0.031]  p = 0.0088  (k = 18)
+  C43 phrase 'taken to be' vs none            gpt-oss        13/28/84         0.317      0.440   -0.058 [-0.118, +0.003]  p = 0.0615  (k = 18)
+  C43 pipeline vs single answer               qwen3-vl       26/7/93         0.788      0.575   +0.075 [+0.023, +0.128]  p = 0.0116  (k = 18)
+  C43 phrase 'modeled at' vs none             qwen3-vl        8/21/97         0.276      0.448   -0.052 [-0.119, +0.016]  p = 0.1719  (k = 18)
+  C43 phrase 'taken to be' vs none            qwen3-vl        5/18/103        0.217      0.448   -0.052 [-0.092, -0.012]  p = 0.0234  (k = 18)
+  C48 report with caveat section vs without   gpt-oss        26/25/65         0.510      0.504   +0.002 [-0.120, +0.124]  p = 1.0000  (k = 17)
+  C61 rebuilt system vs old pipeline          gpt-oss        27/21/59         0.562      0.528   +0.031 [-0.069, +0.132]  p = 0.5693  (k = 18)
+  C61 rebuilt system vs old pipeline          qwen3-vl        5/10/93         0.333      0.477   -0.023 [-0.060, +0.014]  p = 0.3125  (k = 18)
+  'all pairs' is the share of single judgments won by the first-named side; a tie counts half
+
+==============================================================================
+8. Agreement between the two sentence judges, corrected for chance
+==============================================================================
+  saved answers           kind of caveat        n    raw  chance  kappa  overlap
+  Cell 41                 modeled           15485  0.910   0.878  0.259    0.178
+  Cell 41                 jurisd            15485  0.833   0.717  0.408    0.339
+  Cell 41                 hedging           15485  0.828   0.763  0.276    0.220
+  Cell 41                 all three         46455  0.857   0.784  0.337    0.264
+  Cell 46                 modeled            5623  0.906   0.876  0.247    0.170
+  Cell 46                 jurisd             5623  0.777   0.641  0.379    0.348
+  Cell 46                 hedging            5623  0.830   0.755  0.305    0.240
+  Cell 46                 all three         16869  0.838   0.752  0.346    0.282
+  Cell 30/31              modeled            1899  0.865   0.835  0.185    0.147
+  Cell 30/31              jurisd             1899  0.815   0.726  0.323    0.277
+  Cell 30/31              hedging            1899  0.819   0.757  0.255    0.206
+  Cell 30/31              all three          5697  0.833   0.772  0.268    0.220
+  sentences containing the instructed phrase 'modeled at': both judges label them 73/110 = 0.664
+  sentences containing the instructed phrase 'taken to be': both judges label them 35/101 = 0.347
+
+==============================================================================
+9. Phrase instruction (Cell 41): case-level, 18 scenarios
+==============================================================================
+  form-X  own phrase appears         +0.667 [+0.450, +0.883]  sign-flip p = 0.0002  (k = 18)
+  form-X  caveats in other wording   +0.024 [-0.080, +0.128]  sign-flip p = 0.7515  (k = 18)
+  form-Y  own phrase appears         +0.698 [+0.504, +0.893]  sign-flip p = 0.0000  (k = 18)
+  form-Y  caveats in other wording   -0.024 [-0.131, +0.083]  sign-flip p = 0.8086  (k = 18)
+
+==============================================================================
+10. Five statements the corrected paper keeps, adjusted for being five (Holm)
+==============================================================================
+  instructed phrase appears (C41, 'modeled at')                                  p = 0.0002   Holm-adjusted 0.0012
+  judge prefers the answer without the phrase (C43, 'modeled at', all pairs)     p = 0.0088   Holm-adjusted 0.0176
+  judge prefers the pipeline to a single answer (C43, all pairs)                 p = 0.0005   Holm-adjusted 0.0020
+  a second source lowers use of the first source's figure (C47)                  p = 0.0312   Holm-adjusted 0.0312
+  reader model acts on an appended sentence (C51)                                p = 0.0039   Holm-adjusted 0.0117
+  retrospective: these five were chosen after the results were known

@@ -187,19 +187,33 @@ def stage_measure() -> None:
     # P48.1 carriage (manipulation check) — literal containment
     def norm(t):
         return re.sub(r"\s+", " ", t.replace("*", "")).lower()
+
+    # CORRECTED 2026-10-01 (board review, runbook "CELL 48 CORRECTION").
+    # The first version read the caveats back from the appendix one LINE at a
+    # time. A quarter of the caveat sentences span several lines (markdown
+    # table rows, bullets), so they were cut to their first line, often a bare
+    # "|", which is "contained" in any prose that has a table. That produced
+    # bare-prose carriage of 361/2079 = 0.174. Scoring the full sentences the
+    # appendix was built from gives 61/2037 = 0.030. The line-parsed figure is
+    # still computed below and stored as superseded, so the change is visible.
+    cav = old_case_caveats()
+    cav.update({k: v for k, v in new_case_caveats().items() if k not in cav})
     carr_f, carr_b, tot = 0, 0, 0
-    cav_map = {}
     for a in arts:
-        key = a["case"]
-        if key not in cav_map:
-            app = a["freight"][len(a["bare"]):]
-            cav_map[key] = [l[2:].strip() for l in app.splitlines()
-                            if l.startswith("- ")]
-        for c in cav_map[key]:
+        full = [s.strip() for s in cav[a["case"]]]
+        assert len(full) == a["n_caveats"], (a["case"], len(full), a["n_caveats"])
+        for c in full:
             tot += 1
             carr_f += norm(c) in norm(a["freight"])
             carr_b += norm(c) in norm(a["bare"])
     tot = max(tot, 1)
+    old_f, old_b, old_tot = 0, 0, 0
+    for a in arts:
+        app = a["freight"][len(a["bare"]):]
+        for c in [l[2:].strip() for l in app.splitlines() if l.startswith("- ")]:
+            old_tot += 1
+            old_f += norm(c) in norm(a["freight"])
+            old_b += norm(c) in norm(a["bare"])
 
     def share(judge, pairs):
         by = {}
@@ -244,6 +258,11 @@ def stage_measure() -> None:
     print("P48.1 CARRIAGE (manipulation check)")
     print(f"  freight {carr_f}/{tot} = {carr_f/tot:.3f} (gate >= 0.95)   "
           f"bare {carr_b}/{tot} = {carr_b/tot:.3f} (gate <= 0.35)")
+    print(f"  [superseded line-by-line parse: freight {old_f}/{old_tot} = "
+          f"{old_f/old_tot:.3f}, bare {old_b}/{old_tot} = {old_b/old_tot:.3f}]")
+    print("  note: the appendix is built from these sentences, so its figure "
+          "is 1.000 by construction; the bare figure is a VERBATIM-copy rate "
+          "(a caveat restated in other words counts as not carried)")
     ok1 = carr_f / tot >= 0.95 and carr_b / tot <= 0.35
     print(f"  P48.1: {'PASS' if ok1 else 'FAIL — estimand premise not established'}")
 
@@ -268,6 +287,9 @@ def stage_measure() -> None:
           f"never pooled)")
     (OUT / "measured.json").write_text(json.dumps(
         {"carriage": [carr_f / tot, carr_b / tot],
+         "carriage_counts": {"freight": carr_f, "bare": carr_b, "n": tot},
+         "carriage_superseded_line_parse": [old_f / old_tot, old_b / old_tot],
+         "corrected": "2026-10-01",
          "primary": [pt, ci, n], "repl": [pt2, ci2, n2]}))
 
 
