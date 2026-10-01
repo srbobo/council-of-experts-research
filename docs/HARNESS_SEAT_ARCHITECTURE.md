@@ -8,6 +8,20 @@ killed is listed as deliberately absent.** Claims here inherit the scope of
 their cells (7–20B local models, advisory-domain English); the harness is
 the instrument for testing whether they hold elsewhere.
 
+> **Status after the board review (2026-10-01).** This note describes a
+> DESIGN. A review of the whole program (`docs/BOARD_REVIEW_2026-10-01.md`)
+> found several of the results cited here smaller, narrower or
+> mis-measured. The corrections are recorded in `STATUS.md` and in the
+> runbook entries dated 2026-10-01, and the passages below now carry them
+> (each marked "corrected 2026-10-01"). Three facts apply to every section:
+> (1) in every experiment that tests this design, the three seats are the
+> lead model itself (gpt-oss:20b) under one-sentence role prompts;
+> (2) every judge and every reader is a local model of 7 to 30B, and no
+> person labelled a sentence, judged a pair or read a report; (3) the
+> assembled system has been compared with the plain pipeline on judge
+> preference only. Cells 62 to 67 (registered 2026-10-01) test the parts
+> marked "under test".
+
 ## 0. When NOT to build this
 
 A council is not an accuracy device — and as of Cells 60/60-R this is
@@ -16,24 +30,29 @@ on well-specified advisory items across both constructible difficulty
 dimensions, so no accuracy advantage is testable for lack of headroom.
 If the deployment's value is correctness on well-specified items, the
 single writer already delivers it, and this harness must beat it on the
-gains below or not be used. The council is justified by exactly three
-measured gains and nothing else — and the assembled harness ships its
-additional machinery at no detectable preference cost against the
-plain pipeline (Cell 61: bundle A/B spans 0.5 with large effects
-excluded both ways; the appendix's within-pair attribution is mildly
-positive):
+gains below or not be used. The council rests on three measured results
+and nothing else, each given here as corrected on 2026-10-01:
 
-| gain | evidence |
+| result | evidence |
 |---|---|
-| preference lift from aggregation (0.79–0.82, two judge families, not length) | Cells 43/43-R |
-| error immunity where coverage overlaps (0/27 propagation with a clean co-source) | Cells 35/37 |
-| routed re-consultation resolving contested quantities (7/7 when informed; live end-to-end 0.905 vs 0.333, Cell 54) | Cells 44/54 |
+| two local judges prefer the aggregated answer to a single answer (all pairs: 0.611 and 0.575, p = 0.0005 and 0.012, 18 scenarios; not explained by length). Four calls against one, with no comparison of equal cost | Cells 43/43-R; Cell 65 under test |
+| a second source with a different figure changes which figure the lead repeats (planted figure 36/40 with one source, 18/40 with two; p = 0.031, 8 items). The figure could not be checked against the case. The earlier "0/27 with a clean co-source" came from runs in which 23 of 27 stated neither value | Cells 47, 59; Cells 63 and 67 under test |
+| a routed follow-up is used when it is informative (7 of 7 runs in which the lead named the planted tension; over all runs 15/36 against 10/36, exact p = 0.125; a live seat conveyed its fact 21/21) | Cells 44/54 |
+
+Against the plain pipeline, the assembled harness shows no detected
+difference in judge preference (Cell 61, all pairs: 0.528 and 0.477,
+p = 0.57 and 0.31). "Large effects excluded both ways" holds for the
+primary judge only; no equivalence margin was set in advance; and one
+inquiry costs about fourteen model calls against four (14 to 18 minutes).
+"At no cost" is withdrawn.
 
 ## 1. Seat selection is empirical, never categorical
 
-Cell 42: the domain signature is **per-model, not per-domain-training** —
-two medical fine-tunes of one base disagreed, and a third pointed the
-other way. A fine-tune's category label predicts nothing.
+Cell 42: a fine-tune's category label is no guarantee of a domain
+signature. (Corrected 2026-10-01: the two medical fine-tunes of one base
+measured +0.232 [+0.072, +0.412] and +0.109 [−0.056, +0.300]. The
+intervals overlap almost entirely, so this does not show that the two
+differ; it shows that a label cannot stand in for a measurement.)
 
 **Gate S1 (seating gate).** A candidate seat earns its chair by
 measurement, before any pipeline run:
@@ -50,11 +69,18 @@ measurement, before any pipeline run:
 A seat that fails S1 is not seated. A generalist under a role prompt is a
 legitimate seat if it passes; Cells 30/41 ran on exactly that.
 
-**The gate's predictive validity is tested (Cell 55):** verdicts frozen
-before any pipeline run, ten candidates, strict rank separation
-SUPPORTED — both gate-fail candidates defected in the pipeline (0.333,
-0.944) while every gate-pass candidate ran at 0.000–0.056; pooled
-contrast +0.632 [+0.549, +0.722]. Two refinements from the same cell:
+**The gate was tested on ten candidates (Cell 55; corrected
+2026-10-01):** verdicts frozen before any pipeline run. The two
+candidates that failed the screen are the two with the most short
+outputs in the pipeline (17/18 and 6/18; the other eight 0 or 1 of 18).
+Under random labelling of two of ten that has probability 1/45 = 0.022.
+The published pooled interval [+0.549, +0.722] resampled six cases, not
+ten models. Screen and outcome are the same property (output under 800
+characters) on different prompts, so this shows that models which answer
+very briefly on some prompts do so on others; it does not validate the
+signature probe or the format test. In the experiments on this design
+the screen is applied to the one model that plays every seat. Two
+refinements from the same cell:
 verdicts AGE (a model that passed the archive-era screen failed the
 fresh re-gate and then defected in-pipeline at 0.333 — always re-gate,
 never import), and the format smoke is a separate axis whose proper
@@ -79,16 +105,26 @@ either direction.
 
 ## 3. Redundancy is engineered, not hoped for
 
-Cells 35/37: the writer is a source selector. It prefers an uncorrupted
-source when one covers the contested quantity (0/27 propagation) and
-propagates the error when none does (5/27 all-corrupt, 12/27 stripped).
-Protection = overlap, and overlap is a design variable — **prospectively
-tested as Cell 47**: assigning the quantity to a second seat halved
-corrupted-value adoption (0.900 -> 0.450, CI [+0.200, +0.725]) with the
-clean value actually adopted (0.000 -> 0.500), not merely suppressed.
-Caveat from the same cell: protection was bimodal across items (three
-fully protected, two not at all), so the planner reduces expected
-corruption; it does not guarantee per-quantity immunity. Two candidate
+The writer is a source selector: given two sources for a figure it
+states one of them. **Corrected 2026-10-01.** The early "0/27 propagation
+with a clean co-source" (Cells 35/37) does not show protection: in Cell
+37's version 23 of 27 runs stated neither value and on several items the
+planted numbers contradicted the case text, which the writer used
+instead (finding #11); in Cells 35 and 39 no single model was given the
+same corrupted text. The prospective test is **Cell 47** (8 items): with
+a second seat holding a different figure, the planted figure was stated
+in 18/40 runs against 36/40 (+0.450 [+0.095, +0.805], exact p = 0.031)
+and the second figure in 20/40 (p = 0.063). Two limits on the reading.
+The planted figure appears nowhere in the case and the question asks for
+it, so repeating it is compliance, and it could not have been checked.
+And with two sources the writer states one or the other about evenly,
+item by item (three items fully switched, two not at all), without
+showing the reader that two figures were on the table. "Halves corrupted
+adoption", "error immunity" and "causal" are retired. What redundancy
+reliably creates is a DISAGREEMENT; the design's job is to make that
+disagreement reach the reader, which is what the tension list and the
+follow-up are for. Cells 63 and 67 measure both things on items whose
+answer can be checked. Two candidate
 mechanisms for the bimodality have since been tested and killed —
 prior-plausibility (Cell 49: 0.544) and an elicited ownership map (Cell
 50: prospective prediction at exactly 0.500 despite a near-unanimous,
@@ -104,8 +140,8 @@ resampling one seat). **Planner competence is measured (Cell 57):**
 confirmed recall of load-bearing quantities 0.633 [0.506, 0.758] from
 the case prompt alone, unchanged by seeing round-1 contributions
 (−0.017 [−0.100, +0.064]) — so the planner runs at decomposition time
-with no coverage penalty, and the error-immunity claim is BOUNDED BY
-COVERAGE: redundancy halves corruption on the ~60% of quantities the
+with no coverage penalty, and the effect is BOUNDED BY COVERAGE: a
+second source can only be assigned for the ~60% of quantities the
 planner lists. Its best class is the right one: MISSING quantities
 (unmeasured rates, untracked inputs) are recalled at 0.813 vs 0.531 for
 stated figures. **Sub-question writing is measured (Cells 58/59):**
@@ -113,13 +149,13 @@ given the identified quantity, the planner puts it into ≥2 sub-questions
 in 40/40 plans, live seats convey briefed values into their answers at
 0.85–0.95 (but ONLY when the sub-question is task-relevant — Cell 58's
 halt finding: notes orthogonal to the assigned task are ignored 6/8),
-and the writer USES the clean co-source end-to-end (+0.425
-[+0.325, +0.525] clean adoption vs Cell 47's planted +0.500).
-Corruption suppression is directionally present but not evaluable live
-(−0.175 [−0.350, +0.025]): the live bare floor is 0.625 vs the planted
-0.900 — live prose already dilutes corrupted adoption — while the
-protected level replicates at 0.450 exactly. Expected end-to-end
-protection = identification coverage (~0.63) × selection effect.
+and the writer USES the second source end-to-end (corrected 2026-10-01:
+second figure stated 19/40 against 2/40, +0.425 [+0.285, +0.565], exact
+p = 0.008, 8 items). The drop in the planted figure is NOT established
+live (25/40 against 18/40, +0.175 [−0.069, +0.419], p = 0.22): the live
+bare level is 0.625 against the planted 0.900, while the two-source
+level repeats at 0.450. The planner was told which quantity to cover.
+Cell 67 repeats the live chain on 61 items with a computed answer.
 
 ## 4. Two-stage lead with mandated artifacts
 
@@ -134,9 +170,13 @@ Cells 44/45's joint finding: both halves of the re-consultation loop are
 clarification 7/7 but names the tension 0.34; a seat routes correctly
 0.909 but recognizes the need 0.306. Triggers must therefore come from
 mandated artifacts the model already produces reliably, never from any
-model's assessment of its own competence (the one faculty the program
-never found evidence for — including a legal seat deferring legal
-questions to finance, 3/3 of its false flags). A third, pilot-grade
+model's assessment of its own competence. (Corrected 2026-10-01: the
+program's tests of self-assessment were each too small to settle it.
+Deferral was 0.306 out of domain against 0.083 in domain, the predicted
+direction, with a six-item interval that spans zero; the plausibility
+and ownership tests of Cells 49 and 50 were not evaluable. The design
+choice stands on reliability of the artifact, not on self-assessment
+being shown useless.) A third, pilot-grade
 observation (Cell 53, halted at its registered gate): with the deciding
 fact visibly present in the pile, the lead named the planted tension only
 0.208 [~0.09, 0.40] — while the live seat, when dispatched, surfaced its
@@ -146,18 +186,26 @@ the use of the reply.
 
 ## 5. Orchestrator-routed re-consultation
 
-The one intervention that survived its registered test (Cell 44: informed
-7/7 vs control 0.333 vs ritual filler 0.200 — the information does the
-work, not the ceremony). The orchestrator — never the lead's disposition —
+The intervention with the most consistent result (Cell 44: informed 7/7
+vs control 5/15 vs ritual filler 3/15 among runs in which the lead named
+the planted tension — the information does the work, not the ceremony.
+Corrected 2026-10-01: that contrast conditions on naming, which happened
+in 7, 15 and 15 of 36 runs; over all runs the counts are 15, 10 and 8 of
+36, and at six items the exact test gives p = 0.125. No item goes the
+other way). The orchestrator — never the lead's disposition —
 parses the stage-1 tension list, dispatches a follow-up to the implicated
 seat, and appends the reply before stage 2.
 
 **The loop is now tested end-to-end with a live seat (Cell 54):** a
 seat holding the deciding fact only in private working notes conveyed it
-21/21 when dispatched, and the lead adopted the resolution 0.905 vs
-0.333 archived control (+0.571 [+0.139, +0.912]), within −0.095
-[−0.227, 0.000] of the scripted ceiling. Production, conveyance, and
-use all work with no controlled inputs. One new risk from the same
+21/21 when dispatched, and the lead adopted the resolution in 19 of 21
+named runs (23 of 36 overall). Corrected 2026-10-01: the comparison arm
+was Cell 44's control, stored six days earlier (5/15; 10/36), and the
+batches differ (the lead named the tension in 0.583 of new runs against
+0.417 of the old ones), so no causal size is claimed; item-level the
+difference is +0.583 [+0.121, +1.046] on 5 items, exact p = 0.125. The
+seat was handed the deciding fact. What this shows is that production,
+conveyance and use all work when the fact exists in the seat's notes. One new risk from the same
 cell: 4/21 live replies embellished the true fact with FABRICATED
 authority (invented case law, invented regulatory rulings) and the lead
 adopted anyway — the content gate below screens for absence, not
@@ -185,35 +233,51 @@ replies. No third attempt without purpose-built labeled data
 delivered FLAGGED, never silently gated; the ritual risk stays open and
 stated. **The fabrication blocklist gate IS deployable**
 (gst.gates.blocklist_gate: 21 true hits, 0 false, 0 missed over the
-141-reply archive; grows only by committed classification; delivery
+141-reply archive — in-sample, since its three names were taken from
+those same replies; grows only by committed classification; delivery
 filter only, per Cell 19 and instrument rule 2 nothing feeds back).
 
 ## 6. Epistemic freight travels out-of-band
 
 Three findings converge on one design decision:
-- transport through prose loses 67–89% (w = 0.11–0.33, two writers, two
-  corpora, Cells 30/46);
+- the lead's answer is 18–30% as long as its inputs and carries 18–31%
+  as many caveat sentences (Cells 30/46; corrected 2026-10-01). The share
+  of sentences that carry a caveat is about the same in and out (0.183 in,
+  0.193 and 0.190 out on the newer scenarios; 0.133 in, 0.103 out on the
+  original ones), so w (0.17–0.33 for gpt-oss) tracks the length ratio.
+  For the second writer the slope does not exclude zero at the scenario
+  level. Whether caveats are lost MORE than other content has not been
+  measured; Cell 66 is under test;
 - instructing the writer to carry it produces only the instruction's
   phrase (Cells 41, PD-13);
-- what does get carried in-band is then penalized by preference judges
-  (Cell 43: phrase arms lose at 0.20–0.32), so preference-optimized
-  deployment strips it.
+- what does get carried in-band as an instructed phrase is marked down by
+  the two local preference judges (Cell 43, all pairs: 0.413 to 0.448; two
+  of four judge-by-phrase comparisons at p < 0.05, all four in the same
+  direction), so preference-optimized deployment would tend to strip it.
 
 Therefore: **caveats, assumptions, and confidence never route through the
-writer.** (Cell 48 tested this: the appendix carries 100% of caveats vs
-17.4% surviving prose transport — the carriage half is established. The
-preference-survival half came back NOT EVALUABLE at available power:
-share 0.510 [0.267, 0.754], point at indifference and far above the
-in-prose penalty band, 65/116 pairs tied — no evidence of an appendix
-penalty, and no license yet to claim its absence. **Cell 51 then tested
-uptake**: a decision-relevant caveat delivered appendix-only flips a
-reader's registered decision at +0.691 [+0.455, +0.891] over a matched
-irrelevant-appendix control, with a 0.000 bare floor, a 0.036
-caution-priming delta, and channel parity with in-prose placement
-(+0.091 [−0.036, +0.218]) — the appendix is read, its content is used,
-and nothing is lost relative to prose placement.) Seats emit them as
+writer.** (Cell 48, corrected 2026-10-01: the appendix holds 100% of the
+listed caveats BY CONSTRUCTION; the lead's prose repeats 3.0% of them
+word for word (61/2037). The published 17.4% was a parsing error. 3.0% is
+a verbatim-copy rate, not a loss rate: a caveat restated in the lead's
+words counts as missing. On preference, all pairs: 26 wins, 25 losses, 65
+ties, 0.504, p = 1.0 — no evidence of an appendix penalty, and no license
+to claim its absence. **Cell 51 then tested uptake**: a decision-relevant
+sentence delivered appendix-only flips a reader model's registered
+decision at +0.691 [+0.427, +0.955] over a matched irrelevant-appendix
+control (exact p = 0.004, 11 items), with a 0.000 bare floor and about the
+same effect as in-prose placement; a second reader gave +0.455, p = 0.06.
+Scope: the reader is a model, told to use "anything attached"; the
+appendix was one sentence placed before the question; the sentence was a
+decisive fact written for the item. Cell 64 tests other readers, a
+neutral instruction and longer lists.) Seats emit them as
 structured fields; the harness carries them
-directly to the final artifact (appendix, metadata, UI panel). The writer
+directly to the final artifact (appendix, metadata, UI panel).
+(As built for Cell 61 and the integration run this is not yet true:
+seats write prose, and `extract_caveats()` pulls at most one quoted
+sentence per kind per seat with a document-level judge prompt, about 5
+caveats per report against a median of 11 with the sentence-level labels
+Cell 48 used. The structured-field version has not been built.) The writer
 writes prose; the harness carries epistemics. No disposition instructions
 are sent to the writer at all — the evidence says they buy nothing and
 their surface costs preference.
@@ -227,7 +291,14 @@ paid for:
   same phrases as our writers; found mechanically in under a second).
 - **Two-judge, order-debiased, sentence-level protocols** (findings 9, 14:
   document-level judging failed at 0.622; raw pairwise preference is
-  85–88% reading-order across four judge families).
+  85–88% reading-order across four judge families). Finding 16
+  (2026-10-01): at deployed prevalence the two sentence judges agree at
+  kappa 0.19–0.41 and their labels have never been compared with a
+  person's; every caveat count is provisional until Cell 62 reports.
+- **Small-sample inference and all-pairs preference** (directives 10–11,
+  2026-10-01): scenario- or item-level t-intervals and exact sign-flip
+  tests with the cluster count shown; a pair the judge splits by position
+  counts half.
 - **Verdict discipline**: raw table printed before any verdict line;
   verdict lines fire only on their registered conditions (three
   verdict-logic bugs in one program, all in printing, none in
@@ -266,8 +337,8 @@ or diagnostic (watched, never chased).
 | omitted | killed by |
 |---|---|
 | disposition/carefulness instructions to any model | Cells 41, PD-13, 13/14 |
-| confidence self-scores as routing signals | Cells 26, 40, 45; retracted calibration paper |
-| seat-initiated deferral | Cell 45 (P45.1 falsified; discrimination 0.306 vs 0.083, spans zero) |
+| confidence self-scores as routing signals | no supporting evidence: Cells 40, 45, 49, 50 were each too small to settle it; retracted calibration paper (the Cell 26 claim cited here before was withdrawn 2026-10-01) |
+| seat-initiated deferral | Cell 45 (P45.1 falsified as registered; 0.306 vs 0.083 is the predicted direction but spans zero at six items, and the rate is too low to rely on) |
 | detector-fed self-correction loops | Cell 19 (rewording, not removal) |
 | "specialist because it's a specialist" seating | Cell 42 (per-model, not per-category) |
 | pooled cross-regime parameter quoting | Cell 46's heterogeneity record |
