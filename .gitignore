@@ -84,3 +84,6 @@ venv/
 #     published "Cell Ledger Technical Edition" artifact is the durable copy)
 /archive/poc_2026-05/runs/
 /archive/sites/ledger_technical_edition_2026-09-15/
+
+# run queue: the pid file is machine state, not a record
+/bench/queue/queue.pid
