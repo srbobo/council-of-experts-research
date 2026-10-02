@@ -2417,8 +2417,8 @@
     {
      "id": "63",
      "current_title": "a wrong figure the editor could check",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "supported",
+     "never_ran": false,
      "pids": [
       "P63.0",
       "P63.1",
@@ -2433,6 +2433,12 @@
        "end": 10284,
        "kind": "prereg",
        "heading": "CELL 63 PRE-REGISTRATION (2026-10-01) — a wrong figure the editor could check"
+      },
+      {
+       "line": 10825,
+       "end": 10855,
+       "kind": "verdict",
+       "heading": "CELL 63 VERDICT (2026-10-02) — main editor model, 610 runs; verdict lines as printed by the registered script, reading to follow"
       }
      ],
      "matrix_row": null

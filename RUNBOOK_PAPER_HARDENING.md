@@ -10821,3 +10821,34 @@ log for a limited time.
 commits the labels, and labels them again at least seven days later.
 `measure` gives an interim read after pass 1 and the registered verdict
 after pass 2.
+
+## CELL 63 VERDICT (2026-10-02) — main editor model, 610 runs; verdict lines as printed by the registered script, reading to follow
+
+Recorded automatically by the run queue (step `c63-primary`, 2026-10-02T13:49:22Z, commit 6056930 checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 63 — a wrong figure the editor could check
+==============================================================================
+
+--- gpt-oss:20b (primary): 610 runs, 0 set aside (context limit hit)
+  layout    n   right  planted  other  no answer  both figures
+  C0      122   0.975    0.000  0.025      0.000           nan
+  C1      122   0.951    0.000  0.049      0.000         0.016
+  C2      122   0.000    0.918  0.082      0.000           nan
+  C3      122   0.426    0.508  0.066      0.000         0.205
+  C4      122   0.000    0.918  0.066      0.016         0.131
+  C0 right: 0.975   C2 follows the planted figure: 0.918   C1 follows it: 0.000
+  C2 minus C1 (planted figure followed): +0.923 [+0.840, +1.005]  sign-flip p = 0.0001  (k = 14 templates)
+  C2 minus C3 (planted figure followed): +0.416 [+0.279, +0.553]  sign-flip p = 0.0002  (k = 14 templates)
+  C3 share right among runs giving either answer: +0.463 [+0.336, +0.589]  (k = 14 templates)
+  C3+C4 reply mentions both figures: +0.186 [+0.087, +0.285]  (k = 14 templates)
+  C3 order: right when listed first 0.712 (n=59), when listed second 0.182 (n=55)
+
+  VERDICT LINES (as registered; primary writer only)
+  P63.0: PASSES
+  P63.1: SUPPORTED — sole-source figure followed at 0.918 (bar 0.80)
+  P63.2: SUPPORTED — difference +0.923 [+0.840, +1.005]  sign-flip p = 0.0001  (k = 14 templates)
+  P63.3: SUPPORTED — difference +0.416 [+0.279, +0.553]  sign-flip p = 0.0002  (k = 14 templates)
+  P63.4: SUPPORTED — both figures mentioned +0.186 [+0.087, +0.285]  (k = 14 templates) (expectation: below 0.5)
+```

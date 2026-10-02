@@ -56,49 +56,49 @@
   },
   "63": {
    "title": "Does the editor catch a wrong figure it could check?",
-   "description": "On 61 questions whose answers are computed, we give the editor short analyst notes that quote one input figure correctly, wrongly, or in two conflicting versions. A script checks which figure the final answer follows. Planned and queued to run.",
-   "outcome": "not-run",
-   "size": "Planned: 610 runs per editor model, 3 models",
+   "description": "On 61 questions whose answers are computed, we give the editor short analyst notes that quote one input figure correctly, wrongly, or in two conflicting versions. A script checks which figure the final answer follows. The runs finished on 2 October 2026.",
+   "outcome": "held",
+   "size": "610 runs with the main editor model",
    "why": "Cells 47 and 59 planted a value the editor could not check, and asked for it by name, so repeating it showed little. A review in October 2026 asked for a test where checking is possible. Here every question has a computed answer that changes when one input figure changes. In one setup the scenario itself states the right figure while a note quotes a wrong one, so the error can be caught. In others the figure appears only in the notes. Nothing tells the editor to include or check the figure.",
    "expectations": [
     {
      "id": "P63.0",
      "text": "With the right figure stated and quoted, the editor would answer correctly in at least 90% of runs. Otherwise the other results cannot be read.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. In Cells 60 and 60-R the same model answered these questions correctly in 97% of direct runs."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P63.1",
      "text": "When a wrong figure in one note is the only source, the editor's answer would follow it in at least 80% of runs.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P63.2",
      "text": "When the scenario states the right figure, the editor would follow a note's wrong figure less often than when the note is the only source.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. This is the main expectation of the cell."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P63.3",
      "text": "When a second note quotes the right figure, the editor would follow the wrong figure less often than when the wrong note is the only source.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P63.4",
      "text": "When two notes quote different figures, the editor's reply would mention both figures in fewer than half of runs.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P63.5",
      "text": "We would report which figure wins when two notes disagree, whether the order of the notes matters, and how often the editor gives some other answer or none.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "Not run yet. The 61 questions and their altered figures were built by a script on 1 October 2026 from the 66 questions of Cells 60 and 60-R. One input figure per question is raised or lowered by about a fifth, and the same script computes the answer under each version. A trial run on a question outside the set worked for all three editor models.",
+   "found": "The main editor model finished its 610 runs on 2 October 2026. By the rules written down in advance, 4 of the 4 graded expectations held up, 0 did not, and 0 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "If the editor catches a checkable error, the paper can say so. If it follows a quoted figure even when the scenario says otherwise, the paper says that instead. The results on two conflicting notes decide how the second-source design is described: as a way to expose a disagreement, and whether that disagreement reaches the reader.",
    "later": null,
    "entries": {
@@ -106,6 +106,11 @@
      "label": "Plan",
      "title": "Plant a wrong figure where it can and cannot be checked",
      "summary": "Five setups per question: the right figure stated and quoted, a wrong figure quoted against the scenario, a wrong figure as the only source, a wrong and a right figure in two notes, and two different wrong figures. Two runs each on 61 questions, 610 runs per editor model. A script checks the final number against the computed answers."
+    },
+    "10825": {
+     "label": "Result",
+     "title": "Runs finished: results by the rules set in advance",
+     "summary": "The main editor model finished its 610 runs on 2 October 2026. Of the 4 graded expectations, 4 held up, 0 did not and 0 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   },

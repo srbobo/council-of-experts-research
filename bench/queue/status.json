@@ -1,8 +1,15 @@
 {
  "steps": {
   "c62-judges": {
+   "state": "done",
+   "started_utc": "2026-10-01T23:43:19Z",
+   "finished_utc": "2026-10-02T01:43:18Z",
+   "attempts": 1,
+   "commit": "b89c771"
+  },
+  "c63-primary": {
    "state": "running",
-   "started_utc": "2026-10-01T23:43:19Z"
+   "started_utc": "2026-10-02T01:43:21Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"
