@@ -2,7 +2,7 @@
 
 ## A plain-language companion to the two papers
 
-This document walks through the same ground as the project's paper (now one combined draft, *Hardening Mixture-of-Agents*, which merged an audit paper and a harness paper), in the order the paper uses, but without the scientific vocabulary. Where the paper gives a statistic, this document gives the number and says what it means. Nothing here is a new claim.
+This document walks through the same ground as the project's two earlier papers (an audit paper and a harness paper, since merged into one draft and rewritten in October 2026 as *What a Small Role-Prompted Aggregation Pipeline Does with Instructed Phrases, Planted Figures and Caveats*), in the order the earlier papers used, but without the scientific vocabulary. Where the paper gives a statistic, this document gives the number and says what it means. Nothing here is a new claim.
 
 > **Corrected on 1 October 2026.** A review of the whole project found that several numbers in the paper and in this companion were wrong or overstated. One came from a scoring bug. Others were ranges that were too narrow for so few scenarios, or shares that counted only part of the data. One claim was withdrawn. The passages below now give the corrected versions, each marked "Corrected". Three limits apply throughout and were understated before: in most experiments the three specialists were the editor model itself, given three one-sentence roles. Every judge and reader was a small AI model. And no person labeled a sentence, judged an answer or read a report. Six new experiments are running to test the parts that could not be fixed by recomputing (Cells 62 to 67). The review is in `docs/BOARD_REVIEW_2026-10-01.md`.
 

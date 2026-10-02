@@ -1,6 +1,8 @@
 \documentclass[10pt,twocolumn]{article}
 \usepackage[letterpaper,margin=0.75in,top=1in,bottom=1in,columnsep=0.25in]{geometry}
-\usepackage{times}
+\usepackage{fontspec}
+\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{lmmono10-regular}[Extension=.otf,Scale=0.92]
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{colortbl}
@@ -16,7 +18,6 @@
 \definecolor{accent}{RGB}{42,101,175}
 \definecolor{corrupt}{RGB}{201,109,44}
 \definecolor{inkmut}{RGB}{110,118,126}
-\definecolor{best}{RGB}{214,238,214}
 
 % ICML-style typography approximations
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
@@ -27,17 +28,17 @@
 \captionsetup{font=small,labelfont=bf,skip=4pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{\small Hardening Mixture-of-Agents: An Evidence-Bound Harness for Specialist Aggregation Pipelines}
+\fancyhead[C]{\small A Registered Component Study of a Small Role-Prompted Aggregation Pipeline}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \setlength{\abovedisplayskip}{4pt}
 \setlength{\belowdisplayskip}{4pt}
+\raggedbottom
 
 \newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
-\newcommand{\bestcell}{\cellcolor{best}}
 
-\title{\LARGE\bfseries Hardening Mixture-of-Agents:\\ An Evidence-Bound Harness for Specialist Aggregation Pipelines}
-\author{\textbf{Sam Bobo}\\ \small Draft v0.2, September 2026}
+\title{\LARGE\bfseries What a Small Role-Prompted Aggregation Pipeline Does with Instructed Phrases, Planted Figures and Caveats:\\ A Registered Component Study on One 20B Model}
+\author{\textbf{Sam Bobo}\\ \small Draft v0.3, October 2026. Corrected after an internal review; supersedes v0.2.\\ \small Six registered experiments are in progress (Section~\ref{sec:planned}).}
 \date{}
 
 \begin{document}
@@ -50,39 +51,31 @@
 \begin{minipage}{0.9\textwidth}
 \begin{center}\textbf{Abstract}\end{center}
 \small
-Mixture-of-Agents (MoA) pipelines route a task through several
-proposer models and synthesize their outputs through an aggregator,
-and report state-of-the-art results on preference-judged benchmarks.
-Every published gain, however, is measured by a preference judge, and
-nothing in that evaluation tests whether the aggregator verifies what
-it is given, whether proposer caution reaches the reader, or whether a
-corrupted proposer corrupts the answer. This paper presents an
-evidence-bound harness that hardens the MoA recipe against exactly
-those failures. The harness keeps the recipe's proposer-aggregator
-structure and its measured preference lift, and adds five mechanisms:
-an empirical seating gate, engineered redundancy across proposers,
-re-consultation triggered by a mandated artifact rather than by any
-model's self-assessment, an out-of-band channel that carries proposer
-qualification around the aggregator, and a charter of diagnostics that
-may never be optimized. Each mechanism is licensed by a pre-registered
-experiment on an auditable MoA instance (7 to 20B local models, more
-than fifty registered experiments) that falsified a premise the recipe
-depends on: the aggregator adopts a sole-sourced corrupted value at
-$0.90$, an instruction to mark uncertainty installs only its named
-phrase, order-debiased judges penalize that phrase while rewarding
-aggregation, prose transports $0.11$ to $0.33$ of supplied
-qualification, and elicited self-assessment predicts behavior at
-chance. Under prospective single-factor re-tests, engineered redundancy
-halves corrupted-value adoption ($0.900$ to $0.450$), the out-of-band
-channel carries $1.000$ of proposer caveats against $0.174$ through
-prose and changes reader decisions ($+0.691$ over a matched control),
-live re-consultation resolves contested quantities at $0.905$ against
-$0.333$, and the seating gate predicts in-pipeline defects ($+0.632$).
-Two of the harness's own rationales were demoted by registered tests
-and one gate failed twice. Judged head-to-head against the unmodified
-pipeline under a two-family order-debiased protocol, the assembled
-harness shows no evaluable preference difference: it fixes what the
-recipe's evaluation cannot measure at no cost on what it can.
+Mixture-of-Agents pipelines send a task to several proposer models and
+have an aggregator write the final answer. We study a much smaller
+relative of that design on local hardware: one 20B model writes the
+answer from three contributions that, in most experiments, come from
+the same model under one-sentence role prompts. Across 61 numbered
+experiments registered before they ran, on 18 in-house advisory
+scenarios, four results hold after correction for small samples.
+(1)~An instruction to label estimates with a named phrase produces the
+phrase in two thirds of answers (378 runs), and a synonym chosen the
+day before behaves the same. (2)~Two local LLM judges prefer the
+pipeline's answer to a single answer from the same model (all-pairs
+scores $0.61$ and $0.58$ over 126 pairs judged in both orders) and
+mark down the instructed phrase ($0.41$ to $0.45$). (3)~Given two
+contributions with different values for a figure, the aggregator states
+one or the other about evenly, so a second source changes the answer in
+about half of runs (8 items). (4)~A reader model changes its decision
+when a decisive sentence is appended to the report (11 items). A design
+assembled from these observations showed no detectable difference in
+judge preference from the plain pipeline, at about three and a half
+times the model calls. An earlier draft stated several of these results
+more strongly. One figure came from a scoring error, several intervals
+were not computed over scenarios, and the sentence-level judge used
+throughout agrees little beyond chance (kappa $0.19$ to $0.41$). No
+person labelled, judged or read anything. We list the corrections, the
+limits, and six registered experiments now running.
 \end{minipage}
 \end{center}
 \vspace{1.2em}
@@ -91,6 +84,73 @@ recipe's evaluation cannot measure at no cost on what it can.
 
 \section{Introduction}
 \label{sec:intro}
+
+Pipelines that combine several language-model outputs into one answer
+are widely used. Mixture-of-Agents (MoA) \cite{wang2024moa} reports
+that a stack of six open proposer models and an aggregator outperforms
+GPT-4o on AlpacaEval~2.0, and attributes the gain to
+``collaborativeness'': a model shown other models' drafts writes a
+better response. In advisory settings (healthcare, legal and financial
+analysis) a common variant gives the proposers specialist roles, on the
+expectation that specialists contribute knowledge and caution a single
+generalist would lack.
+
+This project began with one question: does such a council of
+specialists answer better than one model? At the scale we could run,
+the answer was no on every measure available to us. On a 60-item
+battery with checkable answers a single 20B model answered $57$ of $59$
+items correctly and a specialist-plus-aggregator pipeline $56$ of $60$;
+two harder batteries stopped at a ceiling
+(Section~\ref{sec:smaller}). The work then turned to narrower questions
+about what the aggregation step does with what it is given:
+
+\begin{enumerate}\itemsep0pt
+\item Does an instruction to the aggregator change what it does, or
+only the words it uses?
+\item What do LLM preference judges reward in the aggregated answer?
+\item What happens to a figure when one contribution, or two
+contributions, supply it?
+\item How much of the proposers' qualification reaches the answer?
+\item Can a follow-up question to a proposer, or a list of caveats
+appended to the report, change the outcome?
+\end{enumerate}
+
+Prior work has answered parts of these at larger scale. Aggregation
+pipelines have been evaluated on accuracy as well as preference
+\cite{wang2024moa,li2025selfmoa}, a single deceptive agent has been
+shown to damage MoA \cite{wolf2025doge}, models are known to adopt
+supplied content over a correct prior \cite{wu2024clasheval,
+xie2024chameleon}, LLM judges are known to penalize expressions of
+uncertainty \cite{lee2025judges}, and summarization is known to drop
+scope-limiting detail \cite{peters2025generalization,belem2026may}.
+What this study adds is small-scale, registered, component-level
+measurement on one pipeline, together with a record of what went wrong
+in measuring it.
+
+\textbf{What this draft claims.} Four statements, each scoped to one
+20B model, 18 in-house scenarios and local LLM judges: an instruction
+produces the phrase it names (Section~\ref{sec:phrase}); two local
+judges prefer the aggregated answer and mark down the instructed phrase
+(Section~\ref{sec:pref}); with two sources for a figure the aggregator
+states one of them about evenly (Section~\ref{sec:select}); and a
+reader model acts on a decisive appended sentence
+(Section~\ref{sec:res-channel}). We also describe a design assembled
+from these observations (Section~\ref{sec:harness}) and report that, as
+a whole, it has been compared with the plain pipeline on judge
+preference only, with no difference detected
+(Section~\ref{sec:headtohead}).
+
+\textbf{What changed from v0.2.} An internal review found errors in the
+earlier draft that the repository itself exposes. They are listed in
+Appendix~\ref{app:corrections}. The three with the largest effect: the
+reported share of caveats ``carried through prose'' ($0.174$) came from
+a parsing error and is $0.030$ under the paper's own rule; the slope
+relating caveats in to caveats out was reported with run-level
+intervals and is close to the ratio of answer length to input length;
+and the preference shares counted only the minority of pairs each judge
+decided consistently. The earlier title and abstract described the
+assembled design as a method that ``hardens'' MoA. The evidence does
+not support that description, and it has been removed.
 
 \begin{figure*}[t]
 \centering
@@ -102,354 +162,368 @@ recipe's evaluation cannot measure at no cost on what it can.
   edf/.style={-{Stealth[length=5pt]},thick,accent,densely dashed},
   edl/.style={-{Stealth[length=5pt]},thick,corrupt},
   lab/.style={font=\scriptsize,text=inkmut,align=center}]
-\node[st] (a) at (0,0) {\textbf{Gate seats}\\[1pt]{\scriptsize admit by measured behavior on a frozen screen, never by domain label}};
-\node[st] (b) at (118,0) {\textbf{Plan with redundancy}\\[1pt]{\scriptsize identify load-bearing quantities; assign each to $\ge 2$ seats}};
-\node[st] (c) at (236,0) {\textbf{Seats answer}\\[1pt]{\scriptsize sub-question plus roster; caveats emitted as structured fields}};
-\node[st] (d) at (354,0) {\textbf{List tensions, route}\\[1pt]{\scriptsize lead emits a mandated tension list; orchestrator dispatches follow-ups}};
-\node[st] (e) at (472,0) {\textbf{Synthesize, assemble}\\[1pt]{\scriptsize lead writes with no disposition instructions; appendix attached mechanically}};
-\foreach \n/\i in {a/1,b/2,c/3,d/4,e/5} {\node[num] at ($(\n.north west)+(6,-6)$) {\i};}
+\node[st] (a) at (0,0) {\textbf{Screen proposers}\\[1pt]{\scriptsize admit a model only if it returns full answers on screen prompts}};
+\node[st] (b) at (118,0) {\textbf{Plan with redundancy}\\[1pt]{\scriptsize list the quantities the answer turns on; give each to $\ge 2$ proposers}};
+\node[st] (c) at (236,0) {\textbf{Proposers answer}\\[1pt]{\scriptsize own sub-question plus a roster of the other roles}};
+\node[st] (d) at (354,0) {\textbf{List disagreements}\\[1pt]{\scriptsize aggregator writes a required list; software sends one follow-up}};
+\node[st] (e) at (472,0) {\textbf{Write, assemble}\\[1pt]{\scriptsize aggregator writes with no caution instructions; caveat list appended}};
+\foreach \n/\i in {a/1,b/2,c/3,d/4,e/5} {\node[num] at ($(\n.north west)+(0,0)$) {\i};}
 \draw[ed] (a) -- (b); \draw[ed] (b) -- (c); \draw[ed] (c) -- (d); \draw[ed] (d) -- (e);
-\draw[edf] (c.south) to[out=-90,in=-90] node[lab,below,pos=.5]{out-of-band channel: caveats bypass the lead\quad carriage 1.000 vs.\ 0.174} (e.south);
-\draw[edl] (d.north) to[out=90,in=90] node[lab,above,pos=.5]{re-consultation loop: follow-up to the implicated seat\quad adoption 0.905 vs.\ 0.333} (c.north);
+\draw[edf] (c.south) to[out=-90,in=-90] node[lab,below,pos=.5]{appended list: caveat sentences extracted from proposer text, attached without passing through the aggregator} (e.south);
+\draw[edl] (d.north) to[out=90,in=90] node[lab,above,pos=.5]{follow-up: a question to the proposer named in the list of disagreements} (c.north);
 \end{tikzpicture}}
-\caption{Overview of the harness. Steps 1 through 5 retain the
-proposer-aggregator structure of Mixture-of-Agents and add the five
-mechanisms of Section~\ref{sec:harness}. The dashed blue lane carries
-proposer qualification to the final artifact without passing through
-the lead; the orange loop routes follow-up questions from the lead's
-mandated tension list back to the implicated seat. Every edge in the
-full diagram (Figure~\ref{fig:arch}) is labeled by its registered
-measurement.}
+\caption{The design described in Section~\ref{sec:harness}. It keeps
+the proposer and aggregator structure and adds five parts. The dashed
+blue lane attaches extracted caveats to the final document; the orange
+loop sends one follow-up question. Section~\ref{sec:results} reports
+which parts have been tested and how.}
 \label{fig:overview}
 \end{figure*}
 
-Multi-agent pipelines that aggregate several language models into one
-answer have become an accepted recipe. Mixture-of-Agents (MoA)
-\cite{wang2024moa} reports that a stack of open proposers plus an
-aggregator surpasses GPT-4o on AlpacaEval~2.0 (65.1\% against 57.5\%
-length-controlled win rate), and explains the result as
-collaborativeness: an aggregator shown several drafts produces a
-better response than any of them, even when some drafts are weak.
-Production variants cast the proposers as domain specialists and the
-aggregator as a lead writer that decomposes the problem, dispatches
-sub-questions, weighs the specialists' contributions, and synthesizes a
-recommendation. In advisory settings, healthcare, legal, and financial
-analysis among them, the recipe is attractive precisely because
-specialists are expected to contribute knowledge and caution that a
-single generalist would lack.
+\section{Setup and Methods}
+\label{sec:setup}
 
-The recipe's evaluation does not test the story that motivates it.
-Every published MoA number is produced by an LLM preference judge
-shown two answers and asked which is better. No published evaluation
-measures whether the aggregator checks what it is given, whether a
-corrupted proposer corrupts the final answer, whether the specialists'
-caveats survive synthesis, or whether an instruction to the aggregator
-changes what it does rather than what it says. Established
-instruction-following and preference-optimization practice assumes
-that a system prompt asking the aggregator to be critical makes it
-critical, and that a preference judge rewards the result. Neither
-assumption had been tested at the pipeline level.
+\textbf{The system as tested.} The aggregator is
+\texttt{gpt-oss:20b}, a 20B reasoning model served locally, with the
+one-sentence prompt ``You are the lead analyst. Several specialists
+have written the contributions below. Write the final answer to the
+decision-maker's question.'' Three proposers supply contributions. In
+the early experiments (numbered below 30, scored with a keyword
+counter that the project later abandoned) the proposers were separate
+fine-tuned 7 to 8B domain models. In the experiments this paper
+reports, the proposers are \emph{the aggregator model itself} under
+prompts of the form ``You are a healthcare analyst advising a
+decision-maker\ldots'', one each for healthcare, legal and finance; in
+several experiments one stored contribution per role per scenario is
+reused across runs. Fine-tuned models appear only in the comparison of
+Section~\ref{sec:smaller} and the screening test of
+Section~\ref{sec:res-gate}. The pipeline is therefore a role-prompted
+self-ensemble with one aggregation layer. It is not MoA as published,
+which uses six different proposers of 70B and above over several
+layers, and results here should not be read as results about that
+system.
 
-This paper presents an evidence-bound harness that hardens the MoA
-recipe against the failures its evaluation cannot see
-(Figure~\ref{fig:overview}). The harness keeps the recipe's structure,
-a set of proposer seats feeding a synthesizing lead, and keeps its one
-demonstrated gain, a preference lift from aggregation that replicates
-at auditable scale under an order-debiased protocol. It adds five
-mechanisms: an empirical seating gate that admits proposers by measured
-behavior, a planner that assigns every load-bearing quantity to at
-least two proposers, a re-consultation loop triggered by a mandated
-artifact rather than by any model's judgment of its own competence, an
-out-of-band channel that carries proposer caveats, assumptions, and
-confidence to the final artifact without passing through the lead, and
-a charter of diagnostics that may never become optimization targets.
-No mechanism is included on rationale. Each is licensed by a
-pre-registered experiment, run on an auditable MoA instance of three
-specialist seats and one 20B aggregator across eighteen advisory
-scenarios, that falsified a premise the recipe depends on
-(Section~\ref{sec:failures}).
+\textbf{Comparisons.} The \emph{plain pipeline} is three role-prompted
+contributions and the aggregator prompt above. The \emph{single answer}
+is the same model answering the scenario with the same prompt minus the
+sentence that mentions contributions. The pipeline costs four model
+calls and the single answer one. No comparison of equal cost
+(for example several samples of the single model with a vote
+\cite{wang2023selfconsistency,li2024moreagents}) was run.
 
-The falsifications are specific. The aggregator selects among sources
-and never recomputes: a planted corrupted value reaches the answer
-$0/27$ times when a clean co-source exists and is adopted at $0.900$
-when sole-sourced. An instruction to label estimates installs only its
-named phrase, in two thirds of outputs, with the behavior beyond the
-phrase unchanged under a synonym swap. Order-debiased preference judges
-reward aggregation ($0.818$ of decisive pairs against the same writer
-answering directly) and penalize the instructed phrase ($0.261$ and
-$0.317$ against control), a two-link causal chain that places
-instruction tuning and preference optimization in direct tension at
-the surface where instructions act. Prose transports only $0.11$ to
-$0.33$ of the qualification supplied to it. Fine-tuned specialists
-carry per-model rather than per-domain signatures. And every elicited
-form of self-assessment, deferral, prior plausibility, and ownership,
-predicts behavior at chance.
+\textbf{Scenarios and items.} Eighteen advisory scenarios were written
+for the project, spanning healthcare, legal and finance content.
+Experiments use 6 to 18 of them. Three item sets were written for
+specific tests: 6 planted disagreements, 8 planted figures and 11
+decision questions. Scenarios, items, planted facts and the labels the
+project notebook calls analyst-authored were produced with an AI
+assistant (see the statement before the references). No public
+benchmark is used.
 
-Each harness mechanism was then submitted to a prospective
-single-factor test with its kill condition registered in advance
-(Section~\ref{sec:results}). Engineered redundancy halves
-corrupted-value adoption ($0.900$ to $0.450$) and is causal. The
-out-of-band channel carries $1.000$ of both-judge proposer caveats
-against $0.174$ through prose, and a delivered caveat flips a reader's
-registered decision at $0.727$ against $0.036$ for a matched irrelevant
-control. Live re-consultation conveys the deciding fact in $21/21$
-dispatched replies and the lead adopts it at $0.905$ against $0.333$.
-The seating gate separates defecting from non-defecting seats with
-strict rank separation ($+0.632$). Two of the harness's own rationales
-were demoted by informative nulls, one candidate routing rule was
-rejected by its confirmation experiment, and one delivery gate failed
-its frozen criteria twice and is recorded as not deployable. Judged
-head-to-head against the unmodified pipeline under a two-family
-order-debiased protocol, the assembled harness shows no evaluable
-preference difference ($0.562$ \ci{0.375}{0.765}; $0.333$
-\ci{0.083}{0.562}). That null is the paper's central result: the
-harness fixes what the recipe's evaluation cannot measure at no cost on
-what it can.
+\textbf{Registration.} Each experiment has a written entry made before
+it ran, with predictions, the result that would count as failure, and a
+computation from existing runs of whether the outcome could occur
+often enough to measure. There are 58 such entries for the 61 numbered
+experiments. The entries are in the project's version history ahead of
+the corresponding results. They are self-registered, and the run
+records for experiments 25 to 60 were added to the history weeks after
+their results and carry no timestamps, so the order of registration and
+data collection cannot be verified from the records. Records made since
+October 2026 carry time, model digest, seed and settings. Deviations
+from the registrations are listed in Appendix~\ref{app:deviations}.
 
-\section{Problem Formulation}
-\label{sec:problem}
+\textbf{Instruments.} \emph{Exact phrase}: containment of an instructed
+phrase. In 2{,}907 text spans from runs without any instruction, no
+phrase from the project's registry of instructed phrases occurred.
+\emph{Sentence labels}: two judges (\texttt{gpt-oss:20b} and
+\texttt{qwen2.5:7b}) label each sentence, in batches of ten, for three
+kinds of qualification (a number labelled as an assumption; different
+jurisdictions treated separately; a stated condition under which the
+claim changes), with definitions that name no wording. A sentence
+counts when both judges flag it. Raw agreement is $0.83$ to $0.91$, but
+most sentences carry no qualification: agreement expected by chance is
+$0.64$ to $0.88$ and Cohen's kappa \cite{cohen1960kappa} is $0.19$ to
+$0.41$ (Appendix~\ref{app:instruments}). The labels have not been
+compared with human labels. Every count that depends on them is
+provisional and marked~$\dagger$. \emph{Preference}: a judge model sees
+the question and two answers and names the better one; every pair is
+judged in both orders. \emph{Exact match} on planted values, after
+normalisation of number formats. \emph{Reader decision}: a one-word
+PROCEED or HOLD answer from a reader model.
 
-\textbf{The aggregation recipe.} A task $q$ is dispatched to $n$
-proposer seats $P_1,\dots,P_n$, each returning a contribution $c_i =
-P_i(q_i)$ on a sub-question $q_i$. An aggregator $A$ receives the
-concatenation and returns the final artifact $a = A(q, c_1,\dots,c_n)$.
-The recipe's published metric is the share of pairwise comparisons in
-which a judge $J$ prefers $a$ to a baseline $b$. With the judge's
-verdict $J(x,y)\in\{x,y\}$ and $D$ the set of pairs on which the
-verdict is stable under reversal, the order-debiased preference share
-is
+\textbf{Preference score.} For a pair judged in both orders let $s=1$
+if the first-named side wins both, $s=0$ if it loses both and
+$s=\tfrac12$ if the judge's choice follows position. The all-pairs
+score of a comparison is
 \begin{equation}
-\mathrm{pref}(a,b) = \frac{|\{(a,b)\in D : J(a,b)=J(b,a)=a\}|}{|D|}.
+\mathrm{pref} = \frac{1}{|P|}\sum_{p\in P} s_p ,
 \label{eq:pref}
 \end{equation}
-Section~\ref{sec:setup} shows that at auditable scale $|D|$ is a small
-minority of pairs, because raw first-position preference is $0.85$ to
-$0.88$ regardless of judge.
+over all pairs $P$ with two parsed judgments. The judges used here
+choose the first-listed answer in $0.80$ to $0.89$ of single
+judgments, so most pairs score $\tfrac12$. The earlier draft reported
+the share of wins among the pairs with $s\in\{0,1\}$ only, which
+discards 63 to 82\% of pairs and overstates differences.
 
-\textbf{Outcomes the recipe does not measure.} Three quantities bear on
-whether the recipe delivers what it promises, and none appears in its
-evaluation. \emph{Adoption} is the share of runs in which a value
-planted in some $c_i$ appears in $a$; the recipe assumes $A$ verifies,
-so corrupted values should not be adopted. \emph{Transport} is the
-relation between the count $s$ of qualified sentences supplied across
-the $c_i$ and the count $y$ emitted in $a$, fitted within a corpus as
-\begin{equation}
-y = w\,s + c ,
-\label{eq:transport}
-\end{equation}
-where the recipe assumes $w$ near one. \emph{Trigger rate} is the
-share of runs in which the pipeline recognizes that a contested
-quantity requires re-consultation; the recipe, where it re-consults at
-all, draws the trigger from a model's report of its own confidence.
+\textbf{Statistics.} The unit of analysis is the scenario or the item.
+For each comparison we average within the unit, take paired
+differences, and report the mean, a 95\% $t$-interval and the $p$-value
+of an exact sign-flip test, with the number of units $k$. Percentile
+bootstrap intervals over 6 to 18 clusters, used in the earlier draft,
+are too narrow \cite{cameron2008bootstrap,miller2024errorbars}. A few
+intervals are quoted as originally computed and are marked ``as first
+reported''. Table~\ref{tab:claims} lists the five statements we treat
+as the paper's main claims, with Holm-adjusted $p$-values
+\cite{holm1979}; they were chosen after the results were known, so the
+adjustment describes rather than protects. Everything else is
+descriptive.
 
-\textbf{Compliance and behavior.} An instruction to $A$ is evaluated by
-an instrument that counts a construct in $a$. If the instruction
-dictates strings the instrument detects, the measurement $M$ confounds
-compliance $C$ with behavior $B$,
-\begin{equation}
-M = C + B ,
-\label{eq:entangle}
-\end{equation}
-and a perfect detector still counts an echoed phrase. Separating $C$
-from $B$ requires a design in which the dictated string varies while
-everything else is held fixed; Section~\ref{sec:failures} supplies one.
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{p{0.44\textwidth}lcccc}
+\toprule
+Statement & Experiment & Difference \ci{\text{lo}}{\text{hi}} & $k$ & $p$ & Holm \\
+\midrule
+The instructed phrase ``modeled at'' appears (share of answers, minus control) & 41 & $+0.667$ \ci{+0.450}{+0.883} & 18 scenarios & $0.0002$ & $0.0012$ \\
+The primary judge prefers the pipeline answer to a single answer (all-pairs score minus $0.5$) & 43 & $+0.111$ \ci{+0.065}{+0.157} & 18 scenarios & $0.0005$ & $0.0020$ \\
+A reader model acts on a decisive appended sentence (flip share, relevant minus irrelevant) & 51 & $+0.691$ \ci{+0.427}{+0.955} & 11 items & $0.0039$ & $0.0117$ \\
+The primary judge marks down the answer containing ``modeled at'' (all-pairs score minus $0.5$) & 43 & $-0.087$ \ci{-0.144}{-0.031} & 18 scenarios & $0.0088$ & $0.0176$ \\
+A second source lowers how often the first source's figure is stated & 47 & $+0.450$ \ci{+0.095}{+0.805} & 8 items & $0.0312$ & $0.0312$ \\
+\bottomrule
+\end{tabular}
+\caption{The five statements this draft treats as its main claims.
+Differences are means of scenario- or item-level paired differences
+with 95\% $t$-intervals; $p$ is from an exact sign-flip test; Holm is
+the adjusted value across the five. The five were selected after the
+results were known.}
+\label{tab:claims}
+\end{table*}
 
-\textbf{What a hardening must show.} A harness that modifies the recipe
-should reduce corrupted adoption, raise transport of qualification to
-the reader, and draw its trigger from something that fires, while
-leaving Equation~\ref{eq:pref} no worse. Each claim must survive a
-registered test with the failure condition stated first.
-
-\section{Failure Modes of the Aggregation Recipe}
+\section{What the Plain Pipeline Does}
 \label{sec:failures}
 
-The recipe rests on premises its evaluation never tests. Each was
-tested on the auditable instance of Section~\ref{sec:setup}. This
-section reports the measurements; Table~\ref{tab:map} maps each
-failure to the harness mechanism it licenses.
-
-\subsection{Instructions Install Only Their Named Phrase}
+\subsection{An Instruction Produces the Phrase It Names}
 \label{sec:phrase}
 
 \begin{figure*}[t]
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=0.46\textwidth,height=4.8cm,ybar,bar width=13pt,
-  ymin=0,ymax=1.0,ylabel={rate of runs},title={\small named-phrase rate},
+  ymin=0,ymax=1.0,ylabel={share of answers},title={\small instructed phrase present},
   symbolic x coords={control,form X,form Y},xtick=data,
   axis line style={inkmut},tick label style={font=\small},
   ylabel style={font=\small},ymajorgrids,grid style={inkmut!22},
   error bars/y dir=both,error bars/y explicit]
 \addplot+[fill=accent!85,draw=accent] coordinates {
-  (control,0.000) +- (0,0)
-  (form X,0.667) +- (0.207,0.182)
-  (form Y,0.698) +- (0.174,0.167)};
+  (control,0.000) += (0,0) -= (0,0)
+  (form X,0.667) += (0,0.216) -= (0,0.217)
+  (form Y,0.698) += (0,0.195) -= (0,0.194)};
 \end{axis}
 \end{tikzpicture}\hfill
 \begin{tikzpicture}
 \begin{axis}[width=0.46\textwidth,height=4.8cm,ybar,bar width=13pt,
-  ymin=0,ymax=1.0,title={\small construct outside the named phrase},
+  ymin=0,ymax=1.0,title={\small assumption-labelled sentence in other wording$^\dagger$},
   symbolic x coords={control,form X,form Y},xtick=data,
   axis line style={inkmut},tick label style={font=\small},
   ymajorgrids,grid style={inkmut!22},
   error bars/y dir=both,error bars/y explicit]
 \addplot+[fill=accent!35,draw=accent] coordinates {
-  (control,0.341) +- (0.119,0.127)
-  (form X,0.365) +- (0.111,0.111)
-  (form Y,0.317) +- (0.119,0.127)};
+  (control,0.341) += (0,0.136) -= (0,0.136)
+  (form X,0.365) += (0,0.127) -= (0,0.127)
+  (form Y,0.317) += (0,0.135) -= (0,0.134)};
 \end{axis}
 \end{tikzpicture}
-\caption{The phrase-swap experiment (378 runs, cluster-bootstrap 95\%
-CIs over 18 cases). \textbf{Left}: each instructed arm produces its own
-named phrase in about two thirds of runs; control never produces
-either, and cross-form leakage is $0/252$. \textbf{Right}: the
-validated-judge construct rate outside the named phrase is
-statistically indistinguishable across all three arms. The
-instruction's entire measurable effect is the phrase it names.}
+\caption{The phrase-swap experiment (378 runs; 95\% $t$-intervals over
+18 scenarios). \textbf{Left}: each instructed arm produces its own
+phrase in about two thirds of answers; the control arm produces
+neither, and neither arm produces the other's phrase ($0/252$).
+\textbf{Right}: the share of answers with an assumption-labelled
+sentence in other wording does not differ detectably across arms. This
+panel is scored with the two-judge sentence labels, which find only
+$0.66$ and $0.35$ of sentences containing the two instructed phrases,
+so a change expressed in new wording could be missed.}
 \label{fig:swap}
 \end{figure*}
 
-The recipe's aggregate-and-synthesize prompt asks the aggregator to be
-critical, preserve accuracy, and weigh its sources. Whether such
-instructions change behavior or only wording was tested by
-Equation~\ref{eq:entangle}'s required design. Three arms were run on 18
-cases with 7 repeats (378 runs): a minimal writer prompt as control,
-and two treated arms appending a byte-identical clause differing in
-exactly three words, instructing the writer to label estimates with
-the phrase ``modeled at'' (form X) or ``taken to be'' (form Y). Form X
-had been dictated through months of the program's prompts; form Y was
-chosen the day before the run and appears nowhere in 2M characters of
-archive. Each instructed arm produced its own phrase in about two
-thirds of outputs ($0.667$, $0.698$); control produced neither;
-cross-form leakage was $0/252$ (Figure~\ref{fig:swap}, left). With each
-arm's own phrase subtracted, the validated-judge construct rate was
-unchanged: form X moved from $0.341$ to $0.365$ (\ci{-0.079}{+0.111}),
-form Y from $0.341$ to $0.317$ (\ci{-0.103}{+0.087}), with emission
-flat across arms (Figure~\ref{fig:swap}, right). The registered
-minimum detectable effect was $+0.224$, so the result licenses ``no
-form-independent effect of at least $0.22$'' rather than zero. A
-months-old house phrase and a day-old synonym performed identically:
-whatever the instruction engages, it is not a learned disposition.
+A measurement of an instructed behavior can count compliance with the
+instruction instead of the behavior. If the instrument detects strings
+the prompt dictated, the measured quantity $M$ is the sum of compliance
+$C$ and behavior $B$,
+\begin{equation}
+M = C + B ,
+\label{eq:entangle}
+\end{equation}
+and separating them needs a design in which the dictated string varies
+while everything else is held fixed. Three arms were run on 18
+scenarios with 7 repeats each (378 runs): the aggregator prompt alone
+as control, and two arms adding the sentence ``When you state a number
+that is an estimate rather than an established fact, label it using the
+phrase `modeled at'\,'' (form X) or the same sentence with ``taken to
+be'' (form Y). Form X had appeared in the project's prompts for months.
+Form Y was chosen the day before and appears nowhere in the project's
+earlier outputs.
 
-\subsection{Preference Rewards Aggregation and Penalizes the Phrase}
+Each instructed arm produced its own phrase in about two thirds of
+answers: $+0.667$ \ci{+0.450}{+0.883} for form X and $+0.698$
+\ci{+0.504}{+0.893} for form Y over control, which produced neither
+(Figure~\ref{fig:swap}, left). Neither arm produced the other's phrase
+in 252 runs. A phrase used for months and one chosen the day before
+behaved alike.
+
+The share of answers containing an assumption-labelled sentence in
+\emph{other} wording was $0.341$ in control, $0.365$ under form X
+(difference $+0.024$ \ci{-0.080}{+0.128}, $p=0.75$) and $0.317$ under
+form Y ($-0.024$ \ci{-0.131}{+0.083}, $p=0.81$)$^\dagger$. Answer
+length was flat across arms. This second result is weaker than the
+earlier draft said. It is measured with the two-judge labels, which
+flagged $73$ of $110$ sentences containing ``modeled at'' and $35$ of
+$101$ containing ``taken to be''. An instrument that misses a third to
+two thirds of the instructed phrases could miss an increase expressed
+in new wording. The supported statement is that the judges saw no
+change larger than about $0.13$; the experiment was registered to
+detect $0.22$ and cannot support a claim of equivalence.
+
+\subsection{Local Judges Prefer the Aggregated Answer and Mark Down the Phrase}
 \label{sec:pref}
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.86\columnwidth,height=4.2cm,xmin=0,xmax=1,
-  ytick={1,2,3},yticklabels={form Y (n=41),
-  form X (n=46), MoA vs.\ direct (n=44)},
-  ymin=0.4,ymax=3.6,xlabel={share of decisive pairs won (95\% CI)},
+\begin{axis}[width=0.74\columnwidth,height=5.2cm,xmin=0.3,xmax=0.7,
+  ytick={1,2,3,4,5,6},
+  yticklabels={{``taken to be'', judge 2},{``taken to be'', judge 1},
+  {``modeled at'', judge 2},{``modeled at'', judge 1},
+  {pipeline, judge 2},{pipeline, judge 1}},
+  ymin=0.4,ymax=6.6,xlabel={all-pairs score (95\% interval)},
   tick label style={font=\scriptsize},xlabel style={font=\small},
   axis line style={inkmut},xmajorgrids,grid style={inkmut!22}]
-\addplot+[only marks,mark=*,mark size=2.4pt,color=accent,
-  error bars/.cd,x dir=both,x explicit,error bar style={line width=1pt}]
+\addplot+[only marks,mark=*,mark size=2.2pt,color=accent,
+  error bars/.cd,x dir=both,x explicit,error bar style={line width=0.9pt}]
   coordinates {
-  (0.818,3) +- (0.100,0.101)
-  (0.261,2) +- (0.121,0.127)
-  (0.317,1) +- (0.165,0.163)};
-\addplot[dashed,inkmut] coordinates {(0.5,0.4) (0.5,3.6)};
-\node[font=\scriptsize,anchor=south] at (axis cs:0.818,3.12) {0.818};
-\node[font=\scriptsize,anchor=south] at (axis cs:0.261,2.12) {0.261};
-\node[font=\scriptsize,anchor=south] at (axis cs:0.317,1.12) {0.317};
+  (0.611,6) += (0.046,0) -= (0.046,0)
+  (0.575,5) += (0.053,0) -= (0.052,0)
+  (0.413,4) += (0.056,0) -= (0.057,0)
+  (0.448,3) += (0.068,0) -= (0.067,0)
+  (0.442,2) += (0.061,0) -= (0.060,0)
+  (0.448,1) += (0.040,0) -= (0.040,0)};
+\addplot[dashed,inkmut] coordinates {(0.5,0.4) (0.5,6.6)};
 \end{axis}
 \end{tikzpicture}
-\caption{The preference experiment under Equation~\ref{eq:pref}. The
-aggregated pipeline beats the matched-length direct baseline; both
-phrase-instructed arms lose to their own control, in counterbalanced
-forms whose only difference from control is the phrase. The dashed
-line is indifference.}
+\caption{Preference on all pairs (Equation~\ref{eq:pref}; 126 pairs per
+comparison, both orders; $t$-intervals over 18 scenarios). Judge 1 is \texttt{gpt-oss:20b}, which also
+wrote every answer; judge 2 is a 30B model from another family. Top two
+rows: pipeline answer against a single answer. Lower rows: the answer
+containing the instructed phrase against the control answer. The dashed
+line is no preference.}
 \label{fig:pref}
 \end{figure}
 
-Three pairwise comparisons were run on the same 18 cases (126 pairs
-each; both orderings; primary judge \texttt{gpt-oss:20b}, which also
-wrote both sides of every pair, making self-preference symmetric). The
-aggregated pipeline beat the same writer answering directly in $0.818$
-\ci{0.718}{0.919} of 44 decisive pairs. Arm lengths differed by
-$1.4\%$, the share among near-length-matched pairs was $0.815$, and the
-winner had more domain frameworks per kilocharacter in only $0.409$ of
-decisive pairs, so the lift is neither length nor framework density;
-its composition is unidentified by the available feature set. The
-phrase-instructed arms, which differ from control only in the phrase,
-lost to control at $0.261$ \ci{0.140}{0.388} (form X) and $0.317$
-\ci{0.152}{0.480} (form Y), against a registered prediction of the
-opposite (Figure~\ref{fig:pref}). A second judge from a disjoint
-family (a 30B Qwen3 MoE, selected blind to direction) replicated the
-lift ($0.788$ \ci{0.645}{0.917}) and the form-Y penalty ($0.217$
-\ci{0.125}{0.333}); the form-X penalty agreed in point estimate
-($0.276$) with an interval spanning $0.5$ at $n{=}29$ and is reported
-as not replicated at that power. Chained with
-Section~\ref{sec:phrase}, both links causal: an epistemic instruction
-installs only a surface form, and a preference judge penalizes that
-form. A pipeline tuned toward judge preference will shed exactly the
-marking that instructions install while the underlying disposition,
-untouched by the instruction, stays where it was.
+Three comparisons were judged on the 18 scenarios, 126 pairs each, in
+both orders. Judge 1 is \texttt{gpt-oss:20b}, which wrote both sides of
+every pair. Judge 2 is a 30B model from another vendor, chosen from
+three candidates on whether it returned parseable and consistent
+judgments, without looking at which side it favored.
 
-\subsection{The Aggregator Selects Sources and Never Verifies}
+\emph{Pipeline answer against single answer.} Judge 1 gave 36 wins, 8
+losses and 82 position-driven splits, an all-pairs score of $0.611$
+($+0.111$ \ci{+0.065}{+0.157} from $0.5$, $p=0.0005$). Judge 2 gave
+26, 7 and 93: $0.575$ ($+0.075$ \ci{+0.023}{+0.128}, $p=0.012$). The
+two sides' answers differ in length by $1.4\%$, and restricting to
+pairs of near-equal length leaves judge 1's share of consistently
+decided pairs unchanged ($0.815$ against $0.818$). Which property of the
+pipeline answer the judges respond to is not identified.
+
+\emph{Instructed phrase against control.} The arms of
+Section~\ref{sec:phrase} differ from control only in the instruction.
+Judge 1 scored the ``modeled at'' answers $0.413$ ($-0.087$
+\ci{-0.144}{-0.031}, $p=0.009$) and the ``taken to be'' answers $0.440$
+($-0.058$ \ci{-0.118}{+0.003}, $p=0.06$). Judge 2 scored them $0.448$
+($p=0.17$) and $0.448$ ($-0.052$ \ci{-0.092}{-0.012}, $p=0.023$). Two
+of the four comparisons reach $p<0.05$ and all four lean the same way
+(Figure~\ref{fig:pref}). The registration had predicted the opposite.
+
+This agrees with larger studies: LLM judges including GPT-4o are biased
+against epistemic markers \cite{lee2025judges}, and human preference
+data used in alignment are biased against text that expresses
+uncertainty \cite{zhou2024relying}. Our contribution is a small
+replication with a counterbalanced phrase on local judges. Read with
+Section~\ref{sec:phrase}, it suggests a tension for systems tuned
+toward such judges: the instruction adds a phrase, and the judges
+prefer the answer without it.
+
+Two limits apply. The pipeline answer costs four calls and the single
+answer one; sampling one model several times and aggregating is known
+to help \cite{li2025selfmoa,li2024moreagents}, so the role structure
+has not been shown to add anything. And both judges are local models
+whose single judgments mostly follow position; no person judged a pair.
+
+\subsection{With Two Sources for a Figure, the Aggregator States One of Them}
 \label{sec:select}
 
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[width=\columnwidth,height=4.8cm,ybar,bar width=9pt,
-  ymin=0,ymax=15,ylabel={runs (of 27)},
-  symbolic x coords={clean,one corrupt,all corrupt,stripped},xtick=data,
-  axis line style={inkmut},tick label style={font=\scriptsize},
-  ylabel style={font=\small},ymajorgrids,grid style={inkmut!22},
-  legend style={font=\scriptsize,draw=none,at={(0.03,0.97)},anchor=north west},
-  nodes near coords,nodes near coords style={font=\scriptsize,text=black}]
-\addplot+[fill=accent!85,draw=accent] coordinates {
-  (clean,6) (one corrupt,4) (all corrupt,2) (stripped,0)};
-\addplot+[fill=corrupt!85,draw=corrupt] coordinates {
-  (clean,1) (one corrupt,0) (all corrupt,5) (stripped,12)};
-\legend{correct value in answer,planted corrupted value}
-\end{axis}
-\end{tikzpicture}
-\caption{The source-selector gradient (planted arithmetic errors; exact
-match on known values). As clean sources are removed, adoption of the
-planted wrong value rises monotonically through $1$, $0$, $5$, and $12$
-runs while correct values vanish.}
-\label{fig:grad}
-\end{figure}
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{lcccccccc}
+\toprule
+Item & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\midrule
+one source & $1.0$ & $1.0$ & $1.0$ & $1.0$ & $1.0$ & $1.0$ & $1.0$ & $0.2$ \\
+two sources & $1.0$ & $0.8$ & $0.0$ & $0.0$ & $0.2$ & $0.6$ & $1.0$ & $0.0$ \\
+\bottomrule
+\end{tabular}
+\caption{Share of five runs in which the planted figure is stated in
+the answer, per item, with one source and with a second source that
+gives a different figure (experiment 47).}
+\label{tab:items}
+\end{table}
 
-With arithmetic claims planted in proposer texts, a corrupted value
-reached the answer $0/27$ times when one proposer was corrupted and a
-clean one remained, $5/27$ when every proposer was corrupted, and
-$12/27$ when the working was also stripped (Figure~\ref{fig:grad}). A
-later single-factor experiment sharpened the bare case: a sole-sourced
-corrupted value is adopted at $0.900$. The aggregator prefers
-uncorrupted sources when they exist and has no independent hold on the
-content when they do not. MoA's observation that the aggregator's
-output overlaps most with the best proposals \cite{wang2024moa} is the
-same phenomenon from the benign side; the planted-error view adds the
-failure boundary, and the claim of improvement even from worse inputs
-fails at the fact level.
+Eight scenarios each received one added figure (a price, a rate, a
+budget) that appears nowhere in the scenario. One proposer's text
+states a value for it, and the question asks for that figure. In the
+second arm another proposer states a different value. Answers are
+scored by exact match.
 
-\subsection{Corroboration Is Ignored and Transport Is Weak}
+With one source, the aggregator stated the planted value in $36$ of
+$40$ runs. With two, it stated the planted value in $18$ of $40$ and
+the second value in $20$ of $40$. At the item level the drop is
+$+0.450$ \ci{+0.095}{+0.805} ($p=0.031$, 8 items) and the rise in the
+second value $+0.500$ \ci{+0.090}{+0.910} ($p=0.063$). The change is
+all-or-nothing by item (Table~\ref{tab:items}), and two attempts to
+predict which source wins, from the model's own plausibility rating and
+from an elicited map of which role ``owns'' each quantity, were not
+evaluable at their sample sizes.
+
+Three points limit the reading. First, repeating the single value is
+compliance with the question; nothing in the scenario allowed the value
+to be checked, so the $0.90$ rate is not evidence of a failure to
+verify. That models adopt supplied content readily is established
+\cite{wu2024clasheval,xie2024chameleon}. Second, with two sources the
+aggregator did not report that two values existed; it stated one. A
+second source therefore changes the answer in about half of runs
+without the reader being told there was a choice. Third, when the same
+design was run with a live planning step and live proposers
+(experiment 59), the second value was used ($2/40$ against $19/40$,
+$+0.425$ \ci{+0.285}{+0.565}, $p=0.008$) but the drop in the planted
+value was not established ($25/40$ against $18/40$, $+0.175$
+\ci{-0.069}{+0.419}, $p=0.22$). The earlier draft described this
+design as ``engineered redundancy'' that ``halves corrupted-value
+adoption'' and ``is causal''. Those descriptions are withdrawn. A
+figure from an early experiment, $0/27$ planted values adopted when a
+clean source remained, is also withdrawn: in that condition 23 of 27
+answers stated neither value, and on several items the planted numbers
+contradicted the scenario text, which the aggregator followed instead.
+
+\subsection{Caveats In and Caveats Out}
 \label{sec:transport}
-
-Claims advanced by two or more independent proposers transport to the
-final answer no more often than single-proposer claims ($0.487$
-against $0.524$; difference CI \ci{-0.153}{+0.080}). Epistemic
-qualification fares worse. Across 144 runs, two writers, and two
-corpora, the within-corpus slope $w$ of Equation~\ref{eq:transport}
-runs from $0.105$ to $0.326$, three of four fits excluding zero, with
-the extension-corpus fit replicating on nine cases the original corpus
-never contained (Figure~\ref{fig:transport}). The writer emits roughly
-one sixth to one third of the caution it is given, the fraction is a
-property of the writing step rather than of one model, and the writer
-also invents qualification at $0.333$ \ci{0.138}{0.609} on inputs
-confirmed to contain none.
 
 \begin{figure*}[t]
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=0.47\textwidth,height=5.2cm,
   xmin=-1,xmax=12,ymin=-0.8,ymax=7,
-  xlabel={upstream qualification supplied $s$},ylabel={emitted $y$},
-  title={\small original corpus (9 cases)},
+  xlabel={caveat sentences supplied $s$},ylabel={caveat sentences in the answer $y$},
+  title={\small original scenarios (9)},
   axis line style={inkmut},tick label style={font=\small},
   xlabel style={font=\small},ylabel style={font=\small},
   ymajorgrids,xmajorgrids,grid style={inkmut!20},legend style={font=\scriptsize,draw=none,at={(0.03,0.97)},anchor=north west,fill=none},]
@@ -465,8 +539,8 @@ confirmed to contain none.
 \begin{tikzpicture}
 \begin{axis}[width=0.47\textwidth,height=5.2cm,
   xmin=-1,xmax=56,ymin=-0.8,ymax=24,
-  xlabel={upstream qualification supplied $s$},
-  title={\small extension corpus (9 new cases)},
+  xlabel={caveat sentences supplied $s$},
+  title={\small newer scenarios (9)},
   axis line style={inkmut},tick label style={font=\small},
   xlabel style={font=\small},ylabel style={font=\small},
   ymajorgrids,xmajorgrids,grid style={inkmut!20},]
@@ -478,88 +552,207 @@ confirmed to contain none.
 \addplot[corrupt,line width=1.4pt,dashed] coordinates {(5,1.20) (53,9.38)};
 \end{axis}
 \end{tikzpicture}
-\caption{The transport coefficient of Equation~\ref{eq:transport}, 144
-runs over 18 cases and two writers; each point is one run, both
-quantities counted by the validated two-judge sentence protocol, lines
-are within-panel least-squares fits. Within-panel slopes:
-\mbox{gpt-oss} $0.172$ \ci{+0.052}{+0.297} and $0.326$
-\ci{+0.207}{+0.434}; phi4 $0.105$ \ci{-0.031}{+0.273} and $0.170$
-\ci{+0.067}{+0.265}. Panels are separated because the corpora occupy
-different supply regimes (mean $s$ of $5.4$ against $25.3$).}
+\caption{Caveat sentences in the proposers' text against caveat
+sentences in the aggregator's answer$^\dagger$ (144 runs, 18 scenarios,
+two aggregator models; each point is one run; lines are least-squares
+fits within each panel). Slopes with intervals over the nine scenarios
+of each panel: \texttt{gpt-oss} $0.172$ \ci{+0.067}{+0.316} and
+$0.326$ \ci{+0.149}{+0.477}; \texttt{phi4} $0.105$
+\ci{-0.013}{+0.244} and $0.170$ \ci{-0.020}{+0.303}. The panels are
+separate because the two scenario sets supply very different amounts
+(mean $s$ of $5.4$ against $25.3$).}
 \label{fig:transport}
 \end{figure*}
 
-\subsection{Specialists Carry Per-Model Signatures}
-\label{sec:signature}
-
-Two medical fine-tunes of the same base model do not share a domain
-signature: one shifts in-domain framework density $+0.232$
-\ci{+0.072}{+0.412} over the base, the other $+0.109$
-\ci{-0.056}{+0.300}, and a second lineage shows $-0.041$
-\ci{-0.099}{+0.025}. A descriptive check found two same-domain seats
-no more distant from each other than one seat is from itself across
-samples, consistent with the Self-MoA result \cite{li2025selfmoa} at
-benchmark scale. Seating a model for its domain label has no measured
-warrant.
-
-\subsection{Self-Assessment Predicts Behavior at Chance}
-\label{sec:selfassess}
-
-Seats given a roster and a structured deferral token route to the
-correct colleague when they defer ($10/11$, $0.909$
-\ci{0.623}{0.984}) but defer about as often in-domain as out-of-domain
-($0.083$ against $0.306$; difference CI \ci{-0.056}{+0.528}). A model's
-own plausibility rating predicted which planted values it would adopt
-at $0.544$. A stable, near-unanimous elicited map of which seat owns
-each quantity predicted arbitration on fresh items at exactly $0.500$
-against a descriptive $0.895$. In every consultation design measured,
-the mechanism worked when fired and the firing was rare: the lead used
-a routed clarification in $7/7$ runs but named the tension warranting
-it at $0.34$, and across three experiments the trigger rate ranged
-from $0.208$ to $0.583$ by batch. Self-assessment, the faculty that
-escalation designs rely on, was the one faculty the program never
-found.
-
-\subsection{Accuracy Is Untestable at This Scale}
-\label{sec:accuracy}
-
-On a 60-item self-verifying battery the aggregated pipeline and the
-bare writer were indistinguishable at a $0.92$ to $0.97$ ceiling. Two
-registered follow-up batteries (36 multi-step computation items and 30
-rule-interaction items with script-computed answers, under
-baseline-only difficulty screens) placed the direct writer at $0.977$
-and $0.983$. Under the pre-registered two-strikes rule the question is
-resolved as untestable for lack of headroom. The harness claims no
-accuracy gain and is not designed to produce one.
-
 \begin{table}[t]
-\centering\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{p{0.36\columnwidth}p{0.20\columnwidth}p{0.34\columnwidth}}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}
 \toprule
-Failure of the recipe & Measurement & Mechanism licensed \\
+Scenarios, aggregator & in & out & length & count \\
 \midrule
-Instructions install only their phrase (\S\ref{sec:phrase}) & construct unchanged, MDE $0.22$ & no disposition instructions to the lead \\
-Judges penalize the phrase (\S\ref{sec:pref}) & $0.261$, $0.317$ vs.\ control & out-of-band channel; charter \\
-Aggregator selects, never verifies (\S\ref{sec:select}) & $0.900$ sole-sourced; $0/27$ with co-source & engineered redundancy \\
-Corroboration ignored; transport weak (\S\ref{sec:transport}) & $w = 0.11$ to $0.33$ & out-of-band channel \\
-Per-model signatures (\S\ref{sec:signature}) & $+0.232$, $+0.109$, $-0.041$ & empirical seating gate \\
-Self-assessment at chance (\S\ref{sec:selfassess}) & $0.544$; $0.500$ & artifact-triggered re-consultation \\
-Accuracy at ceiling (\S\ref{sec:accuracy}) & $0.92$ to $0.98$ direct & no accuracy claim \\
+newer, \texttt{gpt-oss} & $0.183$ & $0.193$ & $0.292$ & $0.307$ \\
+newer, \texttt{phi4} & $0.183$ & $0.190$ & $0.178$ & $0.184$ \\
+original, both & $0.133$ & $0.103$ & $0.300$ & $0.231$ \\
 \bottomrule
 \end{tabular}
-\caption{Each failure mode of the recipe, its measurement, and the
-harness mechanism it licenses.}
-\label{tab:map}
+\caption{Share of sentences that carry a caveat in the proposers' text
+(in) and in the answer (out)$^\dagger$; answer length as a fraction of
+input length; and caveat sentences out as a fraction of caveat
+sentences in.}
+\label{tab:shares}
 \end{table}
 
-\section{Evidence-Bound Harness}
+Let $s$ be the number of caveat sentences in the proposers' text and
+$y$ the number in the answer, both counted with the two-judge
+labels$^\dagger$. Within a scenario set they are related by
+\begin{equation}
+y = w\,s + c .
+\label{eq:transport}
+\end{equation}
+For \texttt{gpt-oss:20b} the slope $w$ is $0.172$ and $0.326$ in the
+two scenario sets, both with scenario-level intervals above zero
+(Figure~\ref{fig:transport}). For a second aggregator model,
+\texttt{phi4:14b}, it is $0.105$ and $0.170$, and neither interval
+excludes zero. The earlier draft reported intervals that resampled
+runs, under which the second model's slope on the newer scenarios
+appeared to exclude zero; the claim that the slope ``replicates for a
+second writer'' is withdrawn.
+
+The earlier draft also read $w$ as a loss: ``prose transports $0.11$ to
+$0.33$ of supplied qualification.'' Table~\ref{tab:shares} shows what
+the slope mostly reflects. The answer is 18 to 30\% as long as its
+inputs and contains 18 to 31\% as many caveat sentences. The share of
+sentences that carry a caveat is about the same in the answer as in the
+inputs. A summary is shorter than its sources, and on this evidence
+caveats are kept roughly in proportion. Whether a caveat is less likely
+to be conveyed than an ordinary sentence was not measured; a registered
+experiment now does that (Section~\ref{sec:planned}). Published work
+finds that summarization and rewriting do lose scope and certainty
+information \cite{peters2025generalization,belem2026may,wang2026facts},
+so the question is open here, not answered.
+
+On inputs from which every flagged caveat sentence had been removed and
+the removal confirmed, the aggregator still wrote at least one caveat
+sentence in $4$ of $12$ runs$^\dagger$.
+
+\subsection{A Follow-Up Reply Is Used When It Is Informative}
+\label{sec:followup}
+
+The aggregator was run in two stages: it first wrote a required list of
+disagreements among the contributions, then the answer. Six items were
+built in which two proposers take conflicting positions and a fact
+neither stated settles the question. Between the stages one of three
+things was added: nothing; a reply in the right style that restates
+the proposer's position without the fact; or the same reply with the
+fact. Two judge models classified which side each answer took (their
+agreement was $0.70$ on the runs analysed and $0.58$ overall).
+
+In the runs where the aggregator had named the planted disagreement,
+it took the fact's side in $7$ of $7$ runs with the informative reply,
+$5$ of $15$ with no reply and $3$ of $15$ with the uninformative reply.
+That contrast conditions on naming, which happened in $7$, $15$ and
+$15$ of $36$ runs although the first stage is identical across arms.
+Over all $36$ runs per arm the counts are $15$, $10$ and $8$. At the
+item level, informative against none is $+0.700$ \ci{+0.145}{+1.255}
+among named runs (5 items) and $+0.139$ \ci{+0.007}{+0.271} over all
+runs (6 items), with exact $p=0.125$ in both cases; no item goes the
+other way. With five or six items no contrast here could be strong.
+We report it as a consistent direction: when the fact arrives, the
+aggregator uses it. Naming was the scarce step, at $0.21$ to $0.58$ of
+runs across three experiments.
+
+\subsection{Smaller Observations}
+\label{sec:smaller}
+
+\textbf{Accuracy.} On a 60-item battery with checkable answers the
+single model answered $57$ of $59$ items correctly and a pipeline of
+the matching fine-tuned specialist plus the aggregator $56$ of $60$
+(paired difference \ci{-0.085}{+0.034}, as first reported). Two further
+batteries with script-computed answers (36
+multi-step computations, 30 rule-interaction items) put the single
+model at $0.977$ and $0.983$, and were stopped before any pipeline run
+because there was no headroom. We have no evidence that the pipeline
+gives more correct answers than one model; on the one battery where
+both ran, the difference was indistinguishable from zero and nominally
+against the pipeline.
+
+\textbf{Fine-tuned proposers.} Two medical fine-tunes of one base model
+shifted in-domain framework vocabulary by $+0.232$
+\ci{+0.072}{+0.412} and $+0.109$ \ci{-0.056}{+0.300} over the base (as
+first reported). The intervals overlap almost entirely, so the data do
+not show that the two differ, as the earlier draft claimed. Stronger
+evidence for the practical point exists: medical adaptations outperform
+their base models in $12.1\%$ of comparisons and are worse in $38.2\%$
+\cite{jeong2024medical}.
+
+\textbf{Self-assessment.} Proposers given a way to defer named the
+right colleague in $10$ of $11$ deferrals, and deferred in $0.306$ of
+runs outside their field against $0.083$ inside it; the six-item
+interval for the difference spans zero. A model's plausibility rating
+predicted which value it would state at $0.544$, recorded as not
+evaluable, and an elicited map of which role owns each quantity at
+$0.500$ \ci{0.323}{0.739} on 28 runs, recorded as a failed prediction;
+both tests could detect only a value of $0.68$ or more. The earlier
+draft summarized these as self-assessment that ``predicts behavior at
+chance''. Three underpowered tests do not support that, and the
+project's own rule forbids citing an uninformative null as evidence of
+absence. The question is open; a pre-registered study of small open
+models finds verbal confidence uninformative for a different reason,
+saturation at the ceiling \cite{cacioli2026verbal}.
+
+\textbf{Agreement between proposers.} The earlier draft said that
+claims made by two or more proposers reach the answer no more often
+than claims made by one. That rested on one of four kinds of
+qualification in an analysis made with the abandoned keyword counter;
+the other three kinds showed large positive effects of agreement. The
+claim is withdrawn. Published work finds that models follow the
+majority of the evidence they are given \cite{xie2024chameleon}.
+
+\textbf{Showing proposers each other's text.} With stored sibling
+contributions made visible, off-domain vocabulary moved by $-0.009$
+\ci{-0.048}{+0.028} (as first reported, 18 scenarios), against a
+registered threshold of $+0.05$. Keeping proposers apart is therefore a
+cost choice: sibling text adds about 10k input characters per proposer.
+
+\section{A Design Assembled from These Observations}
 \label{sec:harness}
 
-The harness retains the recipe's structure and preference lift and
-adds the five mechanisms of Table~\ref{tab:map}.
-Figure~\ref{fig:arch} shows the assembled pipeline with every edge
-labeled by its registered measurement.
+The observations above suggest a design with five parts
+(Figure~\ref{fig:overview}, Figure~\ref{fig:arch}). We describe it as a
+proposal. Section~\ref{sec:results} reports what has been tested, and
+Table~\ref{tab:built} states where the system that was actually
+assembled differs from the parts that were tested.
+
+\textbf{Screen proposers.} A candidate model is admitted only if every
+answer on a set of screen prompts reaches 800 visible characters. The
+earlier draft also listed a probe of domain vocabulary and a format
+test; neither was validated, and the format test failed to predict
+anything.
+
+\textbf{Assign each key quantity to two proposers.} A planning step
+lists the quantities the answer turns on and writes each into at least
+two proposers' sub-questions. Given Section~\ref{sec:select}, the
+purpose is to create a visible disagreement when the proposers differ.
+It does not make the answer immune to a wrong figure, since the
+aggregator states one of the two about evenly.
+
+\textbf{Trigger a follow-up from a required list.} The aggregator
+writes a list of disagreements before it writes the answer. Software
+reads the list and sends one follow-up question to the first proposer
+named. A list the aggregator produces whenever asked ($391$ of $396$
+stored runs) is a more reliable trigger than a model's report of its
+own uncertainty, whatever that report is worth.
+
+\textbf{Append the caveats.} Caveat sentences are taken from the
+proposers' text and attached to the final document as a list the
+aggregator does not rewrite. The aggregator receives no instruction
+about caution, since Section~\ref{sec:phrase} suggests such an
+instruction adds a phrase and Section~\ref{sec:pref} that judges mark
+the phrase down.
+
+\textbf{Do not tune toward the diagnostics.} Phrase counts, the slope
+$w$, how often disagreements are named, and judge preference on
+qualified text are recorded and never optimized
+(Appendix~\ref{app:charter}).
+
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{p{0.13\textwidth}p{0.38\textwidth}p{0.40\textwidth}}
+\toprule
+Part & What was tested & What the assembled system runs \\
+\midrule
+Caveat list & sentence-level two-judge labels, a median of 11 caveats per document (experiment 48) & a document-level prompt, at most one quoted sentence per kind per proposer, about 5 per document \\
+Planning step & told which single quantity to cover (experiment 59) & covers its own list of quantities; coverage checked by a rough word match \\
+Follow-up & item-specific questions; the proposer is handed the deciding fact as private notes (experiment 54) & a generic follow-up for the first listed disagreement that names a role; the proposer holds no private information \\
+Screen & 800-character screen on ten models (experiment 55) & the same screen on the one model that plays every role \\
+Reply filter & failed twice & off; replies delivered with a flag \\
+\bottomrule
+\end{tabular}
+\caption{The assembled system differs from its tested parts.}
+\label{tab:built}
+\end{table*}
 
 \begin{figure*}[t]
 \centering
@@ -574,360 +767,141 @@ labeled by its registered measurement.
   ng/.style={font=\scriptsize\ttfamily,text=black!30!green!60!black},
   nr/.style={font=\scriptsize\ttfamily,text=corrupt},
   s/.style={font=\scriptsize,text=inkmut}]
-\node[box] (q) at (170,395) {\textbf{INQUIRY}};
+\node[box] (q) at (170,395) {\textbf{QUESTION}};
 \node[gate,text width=118pt] (sg) at (30,390)
-  {\textbf{Seating gate}\\[-1pt]{\scriptsize re-gate, never import}\\[-1pt]
-   {\scriptsize\ttfamily predicts defects +0.63 [C55]}};
+  {\textbf{Screen}\\[-1pt]{\scriptsize repeat before each use}\\[-1pt]
+   {\scriptsize\ttfamily 2 of 10 failed [55]}};
 \node[box,text width=170pt] (pl) at (170,340)
-  {\textbf{Orchestrator (planner)}\\[-1pt]
-   {\scriptsize identify quantities \ttfamily 0.63; missing 0.81 [C57]}\\[-1pt]
-   {\scriptsize assign each to $\ge2$ seats \ttfamily 40/40 [C59]}};
-\node[box,text width=62pt] (s1) at (55,275) {\textbf{Seat}\\{\scriptsize roster only}};
-\node[box,text width=62pt] (s2) at (170,275) {\textbf{Seat}\\{\scriptsize roster only}};
-\node[box,text width=62pt] (s3) at (285,275) {\textbf{Seat}\\{\scriptsize roster only}};
+  {\textbf{Planning step}\\[-1pt]
+   {\scriptsize lists key quantities \ttfamily 0.63 [57]}\\[-1pt]
+   {\scriptsize each to $\ge2$ proposers \ttfamily 40/40 [59]}};
+\node[box,text width=62pt] (s1) at (55,275) {\textbf{Proposer}\\{\scriptsize role prompt}};
+\node[box,text width=62pt] (s2) at (170,275) {\textbf{Proposer}\\{\scriptsize role prompt}};
+\node[box,text width=62pt] (s3) at (285,275) {\textbf{Proposer}\\{\scriptsize role prompt}};
 \node[frt,text width=100pt] (cv) at (300,205)
-  {\textbf{Caveat extraction}\\{\scriptsize two judges, agreed only}};
+  {\textbf{Caveat extraction}\\{\scriptsize judge models, see Table~\ref{tab:built}}};
 \node[box,text width=132pt] (l1) at (140,195)
-  {\textbf{Lead, stage 1}\\{\scriptsize mandated tension list \ttfamily 391/396}};
+  {\textbf{Aggregator, stage 1}\\{\scriptsize required list \ttfamily 391/396}};
 \node[box,text width=118pt] (rt) at (38,140)
-  {\textbf{Orchestrator (router)}\\{\scriptsize never self-assessment [C45]}};
+  {\textbf{Router (software)}\\{\scriptsize reads the list}};
 \node[box,text width=118pt] (gt) at (38,85)
-  {\textbf{Delivery gates}\\[-1pt]
-   {\scriptsize\ttfamily blocklist 21/0/0}\\[-1pt]
-   {\scriptsize content gate open: flagged}};
+  {\textbf{Reply filters}\\[-1pt]
+   {\scriptsize citation blocklist (in-sample)}\\[-1pt]
+   {\scriptsize content filter failed: flag}};
 \node[box,text width=134pt] (l2) at (176,120)
-  {\textbf{Lead, stage 2}\\{\scriptsize no disposition instructions [C41/43]}};
+  {\textbf{Aggregator, stage 2}\\{\scriptsize no caution instructions [41/43]}};
 \node[frt,text width=120pt] (asm) at (170,70)
-  {\textbf{Mechanical assembly}\\{\scriptsize prose + appendix}};
+  {\textbf{Mechanical assembly}\\{\scriptsize answer + caveat list}};
 \node[box,text width=140pt] (fin) at (170,22)
-  {\textbf{Final artifact}\\[-1pt]{\scriptsize recommendation}\\[-1pt]
+  {\textbf{Final document}\\[-1pt]{\scriptsize recommendation}\\[-1pt]
    {\color{accent}\scriptsize ASSUMPTIONS \& CAVEATS}};
 \node[gate,text width=104pt] (rd) at (312,40)
-  {\textbf{Reader}\\[-1pt]{\scriptsize\ttfamily uptake +0.69 [C51]}\\[-1pt]
-   {\scriptsize parity with prose}};
+  {\textbf{Reader model}\\[-1pt]{\scriptsize\ttfamily +0.69 [51]}\\[-1pt]
+   {\scriptsize one sentence, told to look}};
 \draw[ed] (q) -- (pl);
-\draw[ed,densely dashed] (sg.south) to[out=-90,in=170] node[s,left,pos=.6]{if PASS} (s1.west);
+\draw[ed,densely dashed] (sg.south) to[out=-90,in=170] node[s,left,pos=.6]{if passed} (s1.west);
 \draw[ed] (pl) -- (s1); \draw[ed] (pl) -- (s2); \draw[ed] (pl) -- (s3);
 \draw[ed] (s1) -- (l1); \draw[ed] (s2) -- (l1);
 \draw[ed] (s3.south) to[out=-90,in=30] (l1.north east);
 \draw[edf] (s3.east) to[out=-40,in=90] (cv.north);
 \draw[edf] (cv.south) to[out=-90,in=20]
-  node[n,right,pos=.45,align=left]{carriage 1.000\\vs 0.174 prose [C48]} (asm.east);
+  node[n,right,pos=.45,align=left]{list holds every\\extracted caveat [48]} (asm.east);
 \draw[edl] (l1.west) to[out=180,in=90]
-  node[nr,left,pos=.7,align=right]{trigger\\0.21 to 0.58} (rt.north);
+  node[nr,left,pos=.7,align=right]{named\\0.21 to 0.58} (rt.north);
 \draw[edl] (rt.west) to[out=180,in=180,looseness=1.4]
   node[nr,left,pos=.5,align=right]{follow-up} (s1.west);
-\draw[ed] (rt) -- node[s,left=2pt]{reply \ttfamily 21/21 [C54]} (gt);
+\draw[ed] (rt) -- node[s,left=2pt]{reply \ttfamily 21/21 [54]} (gt);
 \draw[ed] (gt.east) to[out=0,in=180] (l2.west);
-\node[ng] at (44,52) {adoption 0.905 vs 0.333 [C54]};
+\node[ng] at (44,52) {fact used 19/21 [54]};
 \draw[ed] (l1) -- (l2);
-\draw[ed] (l2) -- node[s,right]{prose \ttfamily w=0.11 to 0.33} (asm);
+\draw[ed] (l2) -- node[s,right]{answer \ttfamily about 0.3 of input length} (asm);
 \draw[ed] (asm) -- (fin);
 \draw[ed] (fin.east) -- (rd.west);
 \end{tikzpicture}
-\caption{The harness on one inquiry, with every edge labeled by its
-registered measurement (bracketed codes are ledger entries). Dashed
-blue: the out-of-band channel for epistemic qualification, which the
-writer never sees. Orange: the orchestrator-routed re-consultation
-loop, bounded by its measured trigger rate. Chairs are earned by the
-gate, never by category label, and engineered overlap between seats is
-where error immunity resides.}
+\caption{The design on one question. Labels give the measurement and
+the experiment number in brackets. Dashed blue: the caveat list, which
+the aggregator does not rewrite. Orange: the follow-up loop. The
+measurements are from separate experiments on separate parts
+(Section~\ref{sec:results}); they are not outcomes of the assembled
+system, which has been evaluated on judge preference only.}
 \label{fig:arch}
 \end{figure*}
 
-\subsection{Empirical Seating Gate}
-
-Because signatures are per-model (Section~\ref{sec:signature}), no
-seat is chaired for its category label. A candidate passes a frozen
-gate consisting of a degeneracy screen (at least $800$ visible
-characters on screen items; one archive fine-tune produced $12/12$
-degenerate probe runs), a tuned-minus-own-base signature probe, and a
-format smoke test at production token budgets. A generalist under a
-role prompt is a legitimate seat if it passes. Verdicts are
-re-computed at seating time, never imported from the archive
-(Section~\ref{sec:res-gate}).
-
-\subsection{Isolation on Cost Grounds}
-
-Seats receive a self-contained sub-question and a one-line roster;
-sibling outputs are not forwarded. The rule was adopted on a
-contamination rationale that a registered test later withdrew
-(Section~\ref{sec:ablations}); it stands because sibling context costs
-approximately $10$k input characters and $14\%$ longer outputs per
-seat while purchasing no measured change in lane discipline.
-
-\subsection{Engineered Redundancy}
-
-Because the lead selects among sources and never verifies
-(Section~\ref{sec:select}), protection is coverage. The planner
-identifies the load-bearing quantities in the decomposition and
-writes each into the sub-questions of at least two seats. Expected
-protection is the product of identification coverage and the
-selection effect,
-\begin{equation}
-\begin{aligned}
-\Pr[\text{clean adopted}] \approx{} & \Pr[\text{identified}] \\
-& \times \Pr[\text{clean selected} \mid \text{covered}],
-\end{aligned}
-\label{eq:protection}
-\end{equation}
-and is stated as expected value only (Section~\ref{sec:res-planner}).
-
-\subsection{Artifact-Triggered Re-consultation}
-
-Because self-assessment predicts behavior at chance
-(Section~\ref{sec:selfassess}), no model decides whether it needs
-help. The lead runs in two stages: a mandated tension list first
-($391/396$ archived runs produce one when required), then synthesis.
-The orchestrator parses the list and dispatches a follow-up
-sub-question to the implicated seat. Replies pass through a
-fabrication blocklist seeded from committed classifications and a
-content flag for replies adding nothing beyond the seat's first
-contribution; flagged replies are delivered with the flag rather than
-dropped, because the content gate did not meet its frozen criteria
-(Section~\ref{sec:ablations}).
-
-\subsection{Out-of-Band Epistemic Channel}
-
-Because prose transports a small fraction of supplied qualification
-(Section~\ref{sec:transport}) and preference judges penalize the
-visible marking that instructions install (Section~\ref{sec:pref}),
-caveats, assumptions, and confidence never route through the writer.
-Seats emit them as structured fields; a two-judge extraction retains
-only sentences both judges agree carry qualification; and the harness
-assembles them mechanically into an appendix of the final artifact.
-The writer receives no disposition instructions at all.
-
-\subsection{Goodhart Charter}
-
-Trigger rates, hedge counts, compliance shares, transport slopes, and
-preference scores on epistemic content are diagnostics and may never
-be optimization targets; the optimizable signal must live outside the
-pipeline's own text. Each forbidden entry cites the experiment that
-showed what optimizing it would manufacture (Appendix~\ref{app:charter}).
-
-\section{Experimental Setup}
-\label{sec:setup}
-
-\textbf{Pipeline and cases.} The auditable instance is a two-layer MoA:
-three proposer seats (prompted or domain-fine-tuned 7 to 8B models, or
-role-prompted samples of the writer) whose contributions are
-concatenated for a 20B mixture-of-experts writer
-(\texttt{gpt-oss:20b}). A lead planner performs step-back
-decomposition and dispatches a self-contained sub-question to each
-seat. The case battery is eighteen strategic advisory scenarios
-spanning healthcare, legal, and finance content; individual
-experiments use subsets of 6 to 18 cases, and every confidence
-interval is a cluster bootstrap over cases.
-
-\textbf{Registration.} Every experiment is registered before it runs
-with its hypotheses, falsification conditions, attainability
-computation (the fraction of runs in which the outcome variable can
-fire, computed from existing data), and consequences. Verdicts enter a
-ledger distinguishing live, provisional, withdrawn, and blocked
-claims; three program-level audits re-classified earlier results, and
-nulls are cited only at the strength their audit class permits.
-Registrations are committed before first runs, so temporal ordering
-is verifiable from version history.
-
-\textbf{Instruments.} Construct presence is scored by a two-judge,
-batched, sentence-level protocol whose definitions name no phrase;
-agreement on the deployed corpus is $0.910$ (14{,}088/15{,}485
-decisions). A frozen dictation registry of every phrase any prompt
-places in a model's mouth (125 entries) gates all prompts, with a
-measured over-attribution of zero across 2{,}907 clean-provenance
-spans. Preference is judged in both orders with agreement required
-(Equation~\ref{eq:pref}); raw first-position preference is $0.85$ to
-$0.88$ across four judge families, and debiasing converts $60$ to
-$95\%$ of pairs to ties (Appendix~\ref{app:instruments}).
-
-\textbf{Baselines.} The unmodified pipeline (the recipe as published,
-with the MoA aggregate-and-synthesize prompt or a minimal lead
-prompt), the direct writer (same model, same cases, prompt minus the
-sentence referencing contributions), and, for re-consultation, a
-scripted-reply ceiling and a length-matched contentless-reply control.
-
-\textbf{Metrics.} Corrupted and clean \emph{adoption} (exact match on
-planted values); \emph{carriage} (share of both-judge caveat sentences
-reaching the final artifact); \emph{uptake} (share of a reader model's
-registered two-token decisions flipped by a delivered caveat, with
-direction-balanced items); \emph{defect rate} (share of a seat's
-contributions violating its lane); \emph{trigger rate}; and the
-order-debiased \emph{preference share} of Equation~\ref{eq:pref}.
-
-\section{Results}
+\section{Component Tests}
 \label{sec:results}
 
-Each mechanism received its own registered single-factor experiment
-with kill conditions stated in advance. Table~\ref{tab:main} collects
-the main results against the unmodified pipeline and
-Figure~\ref{fig:prepost} plots them; the subsections give the
-measurements.
-
-\begin{figure*}[t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[width=0.68\textwidth,height=7.2cm,
-  xmin=-0.02,xmax=1.04,ymin=0.4,ymax=7.6,
-  xlabel={share of runs (or of decisive pairs, last row)},
-  ytick={1,...,7},
-  yticklabels={
-    {preference share vs.\ unmodified pipeline (whole system)},
-    {contested quantity resolved, live seat},
-    {contested quantity resolved, scripted},
-    {reader decision flipped by delivered caveat},
-    {caveat carriage to final artifact},
-    {clean value adopted},
-    {corrupted value adopted (lower is better)}},
-  yticklabel style={font=\scriptsize,align=right},
-  tick label style={font=\scriptsize},xlabel style={font=\small},
-  axis line style={inkmut},xmajorgrids,grid style={inkmut!22},
-  legend style={font=\scriptsize,draw=none,at={(0.5,-0.22)},anchor=north,fill=none},
-  legend columns=2,legend cell align=left,clip=false]
-% connectors
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.900,7) -- (axis cs:0.450,7);
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.000,6) -- (axis cs:0.500,6);
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.174,5) -- (axis cs:1.000,5);
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.036,4) -- (axis cs:0.727,4);
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.333,3) -- (axis cs:1.000,3);
-\draw[inkmut!60,line width=1.6pt] (axis cs:0.333,2) -- (axis cs:0.905,2);
-\draw[inkmut!60,line width=1.6pt,densely dotted] (axis cs:0.500,1) -- (axis cs:0.562,1);
-% CI on the head-to-head row
-\draw[accent,line width=1pt] (axis cs:0.375,1) -- (axis cs:0.765,1);
-\draw[accent,line width=1pt] (axis cs:0.375,0.85) -- (axis cs:0.375,1.15);
-\draw[accent,line width=1pt] (axis cs:0.765,0.85) -- (axis cs:0.765,1.15);
-\addplot[only marks,mark=*,mark size=3pt,color=corrupt,mark options={fill=corrupt}]
-  coordinates {(0.900,7) (0.000,6) (0.174,5) (0.036,4) (0.333,3) (0.333,2) (0.500,1)};
-\addlegendentry{unmodified pipeline}
-\addplot[only marks,mark=*,mark size=3pt,color=accent,mark options={fill=accent}]
-  coordinates {(0.450,7) (0.500,6) (1.000,5) (0.727,4) (1.000,3) (0.905,2) (0.562,1)};
-\addlegendentry{harness}
-\addplot[dashed,inkmut] coordinates {(0.5,0.4) (0.5,1.6)};
-% direct labels
-\node[font=\tiny,anchor=south] at (axis cs:0.900,7.12) {0.900};
-\node[font=\tiny,anchor=south] at (axis cs:0.450,7.12) {0.450};
-\node[font=\tiny,anchor=south] at (axis cs:0.000,6.12) {0.000};
-\node[font=\tiny,anchor=south] at (axis cs:0.500,6.12) {0.500};
-\node[font=\tiny,anchor=south] at (axis cs:0.174,5.12) {0.174};
-\node[font=\tiny,anchor=south] at (axis cs:1.000,5.12) {1.000};
-\node[font=\tiny,anchor=south] at (axis cs:0.036,4.12) {0.036};
-\node[font=\tiny,anchor=south] at (axis cs:0.727,4.12) {0.727};
-\node[font=\tiny,anchor=south] at (axis cs:0.333,3.12) {0.333};
-\node[font=\tiny,anchor=south] at (axis cs:1.000,3.12) {1.000};
-\node[font=\tiny,anchor=south] at (axis cs:0.333,2.12) {0.333};
-\node[font=\tiny,anchor=south] at (axis cs:0.905,2.12) {0.905};
-\node[font=\tiny,anchor=south] at (axis cs:0.562,1.22) {0.562 \ci{0.375}{0.765}};
-\end{axis}
-\end{tikzpicture}
-\caption{Outcomes before and after the harness. Each of the first six
-rows is one registered single-factor experiment in which the
-unmodified pipeline (orange) and the harness mechanism (blue) were
-measured on the same outcome; the rows are separate experiments, not
-one before-and-after run of the whole system. The last row is the only
-whole-system comparison, the order-debiased head-to-head of
-Section~\ref{sec:headtohead}, with its 95\% interval spanning the
-dashed indifference line. Corrupted-value adoption is the one row where
-lower is better. Values and intervals are those of Table~\ref{tab:main}.}
-\label{fig:prepost}
-\end{figure*}
+Each part was tested in its own experiment with the failure condition
+written first. Table~\ref{tab:main} collects the results. The rows are
+separate experiments on separate item sets.
 
 \begin{table*}[t]
 \centering\footnotesize
 \setlength{\tabcolsep}{4pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{p{0.30\textwidth}lccl}
+\begin{tabular}{p{0.33\textwidth}lccc}
 \toprule
-Outcome & Mechanism under test & Unmodified pipeline & Harness & Verdict \\
+Test (experiment) & Counts, comparison $\rightarrow$ treatment & Difference \ci{\text{lo}}{\text{hi}} & $p$ & $k$ \\
 \midrule
-Corrupted value adopted (sole-sourced) $\downarrow$ & engineered redundancy & $0.900$ & \bestcell $0.450$ \ci{+0.200}{+0.725} & survived (causal) \\
-Clean value adopted $\uparrow$ & engineered redundancy & $0.000$ & \bestcell $0.500$ \ci{+0.175}{+0.825} & survived \\
-Clean co-source used end-to-end $\uparrow$ & planner, live & planted $+0.500$ & \bestcell $+0.425$ \ci{+0.325}{+0.525} & survived \\
-Caveat carriage to artifact $\uparrow$ & out-of-band channel & $0.174$ & \bestcell $1.000$ & survived \\
-Reader decision flipped by caveat $\uparrow$ & out-of-band channel & $0.036$ (irrelevant ctrl.) & \bestcell $0.727$ & survived \\
-Contested quantity resolved (scripted) $\uparrow$ & re-consultation & $0.333$ & \bestcell $1.000$ ($7/7$) & survived \\
-Contested quantity resolved (live seat) $\uparrow$ & re-consultation & $0.333$ & \bestcell $0.905$ & survived, one halt \\
-Seat defect rate, gate-pass vs.\ gate-fail $\downarrow$ & seating gate & $0.333$, $0.944$ (fail) & \bestcell $0.000$ to $0.056$ (pass) & survived \\
-Preference share vs.\ unmodified pipeline & assembled harness & $0.500$ (reference) & $0.562$ \ci{0.375}{0.765} & no evaluable difference \\
+Second source, planted: first figure stated (47) & $36/40 \rightarrow 18/40$ & $+0.450$ \ci{+0.095}{+0.805} (drop) & $0.031$ & 8 items \\
+Second source, planted: second figure stated (47) & $0/40 \rightarrow 20/40$ & $+0.500$ \ci{+0.090}{+0.910} & $0.063$ & 8 items \\
+Second source, live chain: first figure stated (59) & $25/40 \rightarrow 18/40$ & $+0.175$ \ci{-0.069}{+0.419} (drop) & $0.22$ & 8 items \\
+Second source, live chain: second figure stated (59) & $2/40 \rightarrow 19/40$ & $+0.425$ \ci{+0.285}{+0.565} & $0.008$ & 8 items \\
+Follow-up, scripted reply, runs that named the disagreement (44) & $5/15 \rightarrow 7/7$ & $+0.700$ \ci{+0.145}{+1.255} & $0.125$ & 5 items \\
+Follow-up, scripted reply, all runs (44) & $10/36 \rightarrow 15/36$ & $+0.139$ \ci{+0.007}{+0.271} & $0.125$ & 6 items \\
+Follow-up, live proposer, named runs; control stored six days earlier (54) & $5/15 \rightarrow 19/21$ & $+0.583$ \ci{+0.121}{+1.046} & $0.125$ & 5 items \\
+Reader acts on an appended sentence, reader 1 (51) & $0.036 \rightarrow 0.727$ & $+0.691$ \ci{+0.427}{+0.955} & $0.004$ & 11 items \\
+Reader acts on an appended sentence, reader 2 (51) & $0.091 \rightarrow 0.545$ & $+0.455$ \ci{+0.104}{+0.805} & $0.063$ & 11 items \\
+Document with caveat list against without, judge preference (48) & 26 wins, 25 losses, 65 splits & $+0.002$ \ci{-0.120}{+0.124} & $1.0$ & 17 scenarios \\
+Screen: the two models that fail are the two with most short outputs (55) & 2 of 10 fail & exact, under random labelling & $0.022$ & 10 models \\
+Assembled system against plain pipeline, preference, judge 1 (61) & 27 wins, 21 losses, 59 splits & $+0.031$ \ci{-0.069}{+0.132} & $0.57$ & 18 scenarios \\
+Assembled system against plain pipeline, preference, judge 2 (61) & 5 wins, 10 losses, 93 splits & $-0.023$ \ci{-0.060}{+0.014} & $0.31$ & 18 scenarios \\
 \bottomrule
-\end{tabular}}
-\caption{Main results. Each row is one registered single-factor
-experiment; shaded cells mark the harness where its interval excludes
-the baseline. The final row is the head-to-head of
-Section~\ref{sec:headtohead}, in which no difference is evaluable and
-no cell is shaded.}
+\end{tabular}
+\caption{Component tests. Differences are means of item- or
+scenario-level paired differences with 95\% $t$-intervals and exact
+sign-flip $p$-values. For preference rows the difference is the
+all-pairs score minus $0.5$.}
 \label{tab:main}
 \end{table*}
 
-\subsection{Seating Gate}
+\subsection{Screening}
 \label{sec:res-gate}
 
-Ten local candidates were gated on the frozen degeneracy screen using
-two screen items disjoint from the pipeline case set, with verdicts
-committed before any pipeline run, and every candidate was then seated
-on the pipeline cases. Both gate-fail candidates defected in the
-pipeline ($0.333$ and $0.944$ of contributions) while all eight
-gate-pass candidates ran at $0.000$ to $0.056$; the pooled contrast is
-$+0.632$ \ci{+0.549}{+0.722}. Gate verdicts age: one model that
-passed the archive-era screen failed the fresh re-gate and then
-defected in-pipeline at $0.333$. Format compliance is a separate axis:
-the legal fine-tune failed the format smoke test $0/4$ yet seated
-defect-free.
+Ten local models were screened on two prompts, with the pass or fail
+recorded before any pipeline run, and each then wrote 18 proposer
+contributions. The two that failed the screen are the two with the most
+contributions under 800 characters in the pipeline ($17/18$ and
+$6/18$; the other eight had 0 or 1 of 18). Under random labelling of
+two of ten models that has probability $1/45 = 0.022$. The earlier
+draft reported a pooled contrast with an interval that resampled six
+scenarios; the unit that matters is the model. The screen and the
+outcome are the same property, short output, measured on different
+prompts, so this shows that models which answer very briefly on some
+prompts do so on others. One model that had passed the screen weeks
+earlier failed it when repeated, so a stored pass should not be reused.
 
-\subsection{Planner Chain}
+\subsection{Planning Step}
 \label{sec:res-planner}
 
-The planner was the one mechanism never exercised before the re-test
-campaign; every prior redundancy result used human-planted
-assignments. The orchestrator recalls load-bearing quantities at
-$0.633$ \ci{0.506}{0.758} against analyst-authored labels (a
-thirty-fold specificity separation over a mismatched-case control),
-unchanged by seeing the specialists' contributions, and best on
-missing quantities ($0.813$ against $0.531$ for stated figures). Given
-the identified quantity, the planner writes it into at least two
-sub-questions in $40/40$ plans, live seats convey briefed values at
-$0.85$ to $0.95$, and the writer uses the clean co-source end-to-end
-($+0.425$ \ci{+0.325}{+0.525} against the planted $+0.500$). A halted
-first attempt yielded a channel constraint: privately briefed facts
-convey only into task-relevant assignments ($2/8$ orthogonal against
-$21/21$ pointed), which the corrected planner input satisfies by
-construction. Equation~\ref{eq:protection} therefore evaluates to
-approximately $0.63$ times the selection effect.
+Against 41 labels of key quantities written with the AI assistant, the
+planning step recalled $0.633$ \ci{0.506}{0.758} (as first reported),
+and did better on quantities that were missing from the scenario
+($0.813$) than on stated ones ($0.531$). Told which quantity mattered,
+it wrote that quantity into at least two sub-questions in $40$ of $40$
+plans, and proposers passed privately supplied values into their
+contributions in $0.85$ to $0.95$ of runs. A first attempt stopped at
+its registered checkpoint with a useful finding: a proposer conveys a
+privately supplied fact only when its sub-question concerns that fact
+($2$ of $8$ otherwise). The downstream result is the live-chain rows of
+Table~\ref{tab:main}.
 
-\subsection{Engineered Redundancy}
-\label{sec:res-redundancy}
-
-Assigning the contested quantity to a second seat, as the sole factor,
-halved corrupted-value adoption from $0.900$ to $0.450$
-(\ci{+0.200}{+0.725}) and raised clean-value adoption from $0.000$ to
-$0.500$ (\ci{+0.175}{+0.825}). This is selection rather than dilution.
-Protection is bimodal across items; two candidate boundary mechanisms
-were registered and rejected (Section~\ref{sec:ablations}), and the
-boundary is recorded as open.
-
-\begin{figure*}[t]
-\centering
-\begin{minipage}{0.42\textwidth}
+\begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=\textwidth,height=4.4cm,ybar,bar width=16pt,
-  ymin=0,ymax=1.12,xtick={1,2},xticklabels={prose,appendix},
-  ylabel={caveats carried},xmin=0.4,xmax=2.6,
-  tick label style={font=\small},ylabel style={font=\small},
-  axis line style={inkmut},ymajorgrids,grid style={inkmut!22}]
-\addplot+[fill=accent!70,draw=accent] coordinates {(1,0.174) (2,1.000)};
-\node[font=\scriptsize,anchor=south] at (axis cs:1,0.19) {0.174};
-\node[font=\scriptsize,anchor=south] at (axis cs:2,1.005) {1.000};
-\end{axis}
-\end{tikzpicture}
-\end{minipage}\hfill
-\begin{minipage}{0.52\textwidth}
-\centering
-\begin{tikzpicture}
-\begin{axis}[width=\textwidth,height=4.4cm,ybar,bar width=13pt,
+\begin{axis}[width=\columnwidth,height=4.6cm,ybar,bar width=13pt,
   ymin=0,ymax=1.0,xtick={1,2,3,4},
-  xticklabels={bare,{irrelevant\\appendix},{relevant\\appendix},
-  {relevant\\prose}},xticklabel style={font=\scriptsize,align=center},
-  ylabel={decisions flipped},xmin=0.4,xmax=4.6,
+  xticklabels={no list,{irrelevant\\in list},{relevant\\in list},
+  {relevant\\in prose}},xticklabel style={font=\scriptsize,align=center},
+  ylabel={decisions changed},xmin=0.4,xmax=4.6,
   tick label style={font=\small},ylabel style={font=\small},
   axis line style={inkmut},ymajorgrids,grid style={inkmut!22}]
 \addplot+[fill=accent!70,draw=accent] coordinates
@@ -937,227 +911,365 @@ boundary is recorded as open.
 \node[font=\scriptsize,anchor=south] at (axis cs:4,0.823) {0.818};
 \end{axis}
 \end{tikzpicture}
-\end{minipage}
-\caption{The out-of-band channel, both halves. \textbf{Left}: share of
-both-judge caveat sentences reaching the final artifact through writer
-prose against the mechanically assembled appendix (byte-identical
-prose in both arms). \textbf{Right}: share of registered two-token
-reader decisions flipped by a planted decision-relevant caveat, by
-delivery arm (11 items, 440 reads). Uptake is $+0.691$
-\ci{+0.455}{+0.891} over the irrelevant-appendix control and at parity
-with in-prose placement ($+0.091$ \ci{-0.036}{+0.218}).}
+\caption{Share of a reader model's one-word decisions changed by a
+planted decision-relevant sentence, by where it is placed (reader 1,
+11 items, 55 reads per bar). The list in this experiment is one
+sentence long and the reader is told to use ``anything attached''.}
 \label{fig:freight}
-\end{figure*}
+\end{figure}
 
-\subsection{Out-of-Band Channel}
+\subsection{Appended Caveat List}
 \label{sec:res-channel}
 
-The appendix delivers $1.000$ of both-judge caveat sentences against
-the $0.174$ that survives prose transport, with the preference cost
-not evaluable at power ($0.510$ \ci{0.267}{0.754}, $65/116$ ties). A
-decision-relevant caveat delivered appendix-only flips a reader
-model's registered two-token decision in $0.727$ of reads against
-$0.036$ for the identical appendix block carrying an irrelevant caveat,
-with direction-balanced items so that generic caution cannot
-masquerade as uptake, and at parity with weaving the same sentence
-into prose (Figure~\ref{fig:freight}). The channel that preference
-judging cannot see changes decisions.
+\textbf{What the list holds.} The list is built from the proposer
+sentences that both judges flag$^\dagger$, so it contains all of them by
+construction; the earlier draft reported this ``carriage of $1.000$''
+as a result. Across 119 documents, the aggregator's own prose contains $61$ of
+the $2{,}037$ listed sentence instances word for word ($0.030$). The earlier draft's $0.174$
+came from a parsing error: caveats were read back from the list one
+line at a time, and the quarter of them that span several lines were
+cut to a first line that is often a single table character. The
+corrected figure is a verbatim-copy rate. A caveat restated in the
+aggregator's words counts as missing, so it does not measure how many
+caveats reach the reader. No validated measure of that exists yet.
 
-\subsection{Routed Re-consultation}
+\textbf{Judge preference.} With the list attached to otherwise
+identical documents, judge 1 gave 26 wins, 25 losses and 65 splits. No
+penalty was detected and its absence cannot be claimed.
+
+\textbf{A reader model uses a decisive sentence.} Eleven decision
+questions were paired with a sentence that should change the decision
+and a sentence that should not; some sentences argue for holding and
+some for proceeding. A reader model answered PROCEED or HOLD. With the
+relevant sentence as the list, reader 1 (\texttt{gpt-oss:20b}) changed
+its decision in $0.727$ of reads against $0.036$ for the irrelevant
+sentence: $+0.691$ \ci{+0.427}{+0.955}, $p=0.004$
+(Figure~\ref{fig:freight}). Placing the same sentence in the prose gave
+$0.818$ (prose minus list $+0.091$ \ci{-0.061}{+0.242}). Reader 2
+(\texttt{qwen2.5:7b}) gave $+0.455$ \ci{+0.104}{+0.805}, $p=0.063$.
+
+This shows that a model reader uses appended text. It does not yet show
+that the design's list changes a reader's decision: the reader was the
+model that wrote the report and was instructed to answer ``on the basis
+of the report and anything attached to it''; the list was one sentence
+placed directly before the question, where the system's lists hold 5 to
+53; the planted sentence was a decisive fact written for the item,
+where the system extracts hedges and assumption labels; the control
+sentence was shorter (165 against 291 characters on average); and seven
+of eighteen items were removed at the pilot check. No person read
+anything.
+
+\subsection{Follow-Up with a Live Proposer}
 \label{sec:res-loop}
 
-\textbf{Scripted replies.} Three arms over six planted tensions whose
-deciding fact was withheld from round one: no clarification; a
-length-matched clarification responsive in style but containing no
-deciding fact; and the same clarification containing it. On runs where
-the tension was named, the lead adopted the fact-implied resolution in
-$7/7$ informed runs against $0.333$ in control (difference CI
-\ci{+0.200}{+1.000}) and $0.200$ under the contentless clarification
-(\ci{+0.545}{+0.947}). The information does the work rather than the
-ritual, and the mechanism operates through the one capability the lead
-demonstrably has, preference among overlapping sources, by
-manufacturing an uncorrupted source at the contested quantity.
+Section~\ref{sec:followup} used replies we wrote. Two experiments used
+a live proposer. In the first the deciding fact sat in the proposer's
+own first contribution; the aggregator named the disagreement in
+$0.21$ of runs and the experiment stopped at its registered checkpoint.
+In the second the proposer was given the fact as private notes at reply
+time. It conveyed the fact in $21$ of $21$ replies, and the aggregator
+took the fact's side in $19$ of those $21$ runs ($23$ of $36$ runs
+overall). The earlier draft compared this with the no-reply arm of the
+scripted experiment, stored six days earlier ($5/15$; $10/36$). The
+aggregator named the disagreement in $0.583$ of the new runs against
+$0.417$ of the old ones, so the batches differ, and the item-level
+contrast has exact $p=0.125$. We report the counts and claim no effect
+size. The proposer was handed the fact, so the result shows that the
+route works when the fact exists in the proposer's notes.
 
-\textbf{Live seat.} Two further experiments replaced the scripted
-reply with a real seat. The first buried the deciding fact in the
-seat's own round-one contribution and halted at its registered pilot
-gate, with the tension named in only $0.208$ of runs. The second
-restored the original round-one bytes and supplied the fact only as
-the seat's private working notes at reply time. The live seat conveyed
-the fact in $21/21$ dispatched replies, and the lead adopted the
-fact-implied resolution at $0.905$ against the archived control's
-$0.333$ ($+0.571$ \ci{+0.139}{+0.912}), within $-0.095$
-\ci{-0.227}{0.000} of the scripted ceiling. In $4/21$ live replies the
-seat embellished the correctly conveyed fact with fabricated legal
-authority and the lead adopted regardless; a registered follow-up
-bounded the rate at $0.100$ \ci{0.047}{0.201} with the fact in hand
-and $0.150$ \ci{0.081}{0.261} without it, concentrated on one trigger
-topic ($15/20$ there, $0/100$ elsewhere) and name-stable across
-samples, which licenses the blocklist filter.
+In $4$ of the $21$ live replies the proposer added invented legal
+authority to the correct fact, and the aggregator used the reply
+anyway. A follow-up experiment found invented citations in $0.100$ and
+$0.150$ of replies (120 replies; all on one item, where the same two
+invented decisions recurred). A blocklist of those names caught every
+case in 141 stored replies, which shows only that the filter runs as
+written, since its names were taken from those replies.
 
-\textbf{The trigger.} Table~\ref{tab:trigger} collects the three
-consultation designs: each works when fired and fires rarely on
-planted tensions. On organic inquiries the picture differs: in the
-head-to-head experiment's 54 live pipelines, the orchestrator found a
-role-named tension and dispatched on $0.85$ of runs.
+In 54 runs of the assembled system on the scenarios themselves, with
+no planted disagreement, the list named a role and a follow-up went out
+in $46$ ($0.85$).
 
-\begin{table}[t]
-\centering\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lcc}
-\toprule
- & When triggered & Trigger rate \\
-\midrule
-lead uses a clarification & $7/7$ & $0.34$ \\
-seat routes a deferral & $0.909$ correct & $0.306$ \\
-briefed seat conveys, live & $21/21$ conveyed & $0.208$ to $0.583$ \\
-\bottomrule
-\end{tabular}
-\caption{Re-consultation is recognition-limited rather than
-capability-limited, which is why the trigger is drawn from a mandated
-artifact and never from self-assessment.}
-\label{tab:trigger}
-\end{table}
-
-\subsection{Ablations and Rejected Components}
+\subsection{Parts That Failed or Were Dropped}
 \label{sec:ablations}
 
-\textbf{Isolation.} Making byte-fixed sibling contributions visible
-under production prompts moved off-domain framework density by
-$-0.009$ \ci{-0.048}{+0.028} against a pre-registered minimum
-detectable difference of $+0.05$ to $+0.08$, with in-domain density
-unchanged. The contamination rationale is withdrawn and the rule
-stands on cost. A registered secondary measure pointed the other way
-($-0.033$ \ci{-0.053}{-0.013} off-domain terms when siblings were
-visible) and is recorded as a candidate mechanism, not claimed.
+A filter meant to drop replies that add nothing failed its registered
+criteria twice: a two-judge version dropped $3$ of $6$ uninformative
+replies, and a stricter version dropped all six but also rejected
+$52\%$ of genuine replies. Replies are delivered with a flag instead.
+The ownership map and the plausibility rating
+(Section~\ref{sec:smaller}) were not adopted. The rule that proposers
+do not see each other's text lost its original rationale
+(Section~\ref{sec:smaller}) and stands on cost.
 
-\textbf{Ownership routing map.} A stable, near-unanimous elicited map
-of which seat owns each quantity, exactly the pattern a framework
-would ship as a routing table, predicted arbitration at $0.500$ on
-fresh items against $0.895$ descriptive, with a minimum detectable
-difference of $0.68$. It is not in the harness.
-
-\textbf{Prior plausibility.} A model's own plausibility rating
-predicted which planted values it would adopt at $0.544$ and was
-rejected as a boundary mechanism for redundancy.
-
-\textbf{Content gate.} The rule that follow-up replies adding nothing
-should be dropped failed two registered attempts on complementary
-halves: a two-judge semantic gate passed vacuous fillers ($3/6$
-dropped), and an extract-then-verify gate that fixed vacuity ($6/6$)
-rejected $52\%$ of genuine live replies. Under the frozen commitment
-there is no third attempt without purpose-built labeled data; the
-deployed posture is flagged delivery. The fabrication blocklist, by
-contrast, validated at $21$ true hits, $0$ false positives, and $0$
-misses over the $141$-reply archive and is deployed.
-
-\subsection{Generalization}
-\label{sec:generalization}
-
-Three results extend beyond the conditions that produced them. The
-preference lift and the form-Y penalty replicate under a judge from a
-disjoint model family (Section~\ref{sec:pref}). The transport slope
-replicates on an extension corpus of nine cases the original corpus
-never contained, for both writers (Figure~\ref{fig:transport}). And
-the trigger scarcity measured on planted tensions ($0.208$ to $0.583$)
-gives way to $0.85$ dispatch on organic inquiries, so the harness's
-coverage bound on natural problems is set by the identification rate
-of Equation~\ref{eq:protection} rather than by the trigger.
-
-\section{Head-to-Head Preference Evaluation}
+\section{The Assembled System Against the Plain Pipeline}
 \label{sec:headtohead}
 
-With every mechanism separately verdicted, the remaining question was
-whether the assembled harness costs anything on the recipe's own
-metric. The harness's final artifact was judged against the unmodified
-pipeline's under Equation~\ref{eq:pref} with two judge families ($108$
-pairs). The result is no evaluable difference: primary-judge share
-$0.562$ \ci{0.375}{0.765}, replication $0.333$ \ci{0.083}{0.562}, both
-spanning $0.5$, with large effects excluded in both directions. The
-harness's preference standing is inherited from aggregation, which
-both artifacts share; its mechanisms were never preference plays, and
-shipping them (five caveats per artifact, a follow-up round,
-restructured seats) costs nothing detectable. The appendix's
-within-pair attribution is mildly positive ($+0.073$ toward the
-harness).
+The assembled system was run three times on each of the 18 scenarios
+and its documents were paired with stored answers from the plain
+pipeline (108 pairs, both orders, two judges). On all pairs judge 1
+scored the assembled system $0.528$ ($+0.031$ \ci{-0.069}{+0.132},
+$p=0.57$) and judge 2 scored it $0.477$ ($-0.023$
+\ci{-0.060}{+0.014}, $p=0.31$). No difference was detected.
 
-The null is the correct outcome rather than a shortfall. Preference
-judging at this scale is majority reading-order, penalizes visible
-caution, and cannot see whether a caveat reached the reader or whether
-a corrupted value was adopted. The failures the harness fixes are, by
-construction, invisible to the metric the recipe reports.
+Four things limit this result. No equivalence margin was registered,
+so it does not show that the two are equally preferred. Judge 2 decided
+only 15 pairs consistently (5 for the assembled system, 10 against), in
+9 of 18 scenarios, and its earlier reported interval of
+\ci{0.083}{0.562} does not exclude a large loss; the earlier draft's
+statement that large effects were excluded in both directions holds for
+judge 1 only. The plain pipeline's answers had been stored three weeks
+earlier. And the comparison is a bundle: several parts change at once.
+
+\textbf{Cost.} One question takes about fourteen model calls in the
+assembled system against four in the plain pipeline, and 14 to 18
+minutes on the hardware used. The earlier draft's phrase ``at no cost''
+is withdrawn.
+
+\textbf{What has not been measured.} The assembled system's effect on
+wrong figures, on caveats reaching a reader, or on resolving
+disagreements has not been measured as a system. A registered
+experiment on wrong figures is in progress
+(Section~\ref{sec:planned}).
+
+\section{Limitations}
+\label{sec:limits}
+
+\textbf{One model in every role.} Proposers and aggregator are the same
+20B model in the experiments that carry the paper's claims. Results may
+not hold for different or larger models, or for proposers that differ
+from the aggregator.
+
+\textbf{The baseline is not the published method and is not matched for
+cost.} See Section~\ref{sec:setup}.
+
+\textbf{No human measurement.} Every judge is a local model of 7 to
+30B and every reader is a model. No sentence label, preference or
+decision comes from a person, and the items and several label sets were
+written with the same AI assistant that designed the experiments, which
+is the instrument-independence problem of Equation~\ref{eq:entangle} at
+one remove.
+
+\textbf{The sentence instrument is not validated.} Its chance-corrected
+agreement is low and it misses a third to two thirds of the instructed
+phrases. Results marked~$\dagger$ depend on it.
+
+\textbf{Few units.} Claims rest on 5 to 18 items or scenarios, all
+written in-house. Several effects are all-or-nothing by item.
+
+\textbf{Constructed outcomes.} In several component tests the outcome
+was close to guaranteed by the design: a question that asks for the
+planted figure; a list scored against the sentences it was built from;
+a decisive sentence placed before the question; a proposer handed the
+deciding fact. These tests show that a route works. They do not show
+how the pipeline behaves on inputs nobody arranged.
+
+\textbf{Registration.} The registrations are the author's own, in the
+author's repository, and until October 2026 the run records could not
+show when they were made. Deviations occurred
+(Appendix~\ref{app:deviations}).
+
+\textbf{Many tests.} About ninety registered predictions were made over
+the program, of which about 35 were recorded as failed. The five
+claims of Table~\ref{tab:claims} were selected afterwards.
+
+\textbf{Error rate of the record.} The project notebook logs four
+errors in code that printed verdicts, three text-matching errors, five
+token-budget failures, one illustrative quotation in an early draft
+that was not real data, and one experiment run on the wrong condition.
+The review behind this revision found two more defects in headline
+numbers. Others may remain.
 
 \section{Related Work}
 \label{sec:related}
 
-\textbf{Aggregation pipelines.} MoA \cite{wang2024moa} is the recipe
-this paper hardens. Li et al.\ \cite{li2025selfmoa} showed that
-aggregating repeated samples of the single best model outperforms
-mixed MoA on AlpacaEval, converging from the benchmark side with the
-per-model signature result of Section~\ref{sec:signature}. Wang et
-al.\ \cite{wang2024rebuttal} report that a single strongly prompted
-agent can match multi-agent discussion, consistent with the finding
-that the one retained intervention routes information rather than
-deliberation.
+\textbf{Aggregation pipelines.} MoA \cite{wang2024moa} reports
+preference-judged results on AlpacaEval, MT-Bench and FLASK and, in an
+appendix, accuracy on MATH by layer. Self-MoA \cite{li2025selfmoa}
+shows that aggregating repeated samples of the single best model
+outperforms mixing different models, on AlpacaEval and on MMLU, CRUX
+and MATH, and sampling one model many times with a vote scales with the
+number of samples \cite{li2024moreagents,wang2023selfconsistency}.
+These are the missing baselines of Section~\ref{sec:pref}. A single
+strongly prompted agent can match multi-agent discussion
+\cite{wang2024rebuttal}. The earlier draft said that every published
+MoA number came from a preference judge; that was wrong.
 
-\textbf{Judge pathologies.} Position and verbosity bias in LLM judges
+\textbf{Wrong inputs.} Wolf et al.\ \cite{wolf2025doge} insert one
+deceptive agent into a three-layer MoA and measure the damage on
+AlpacaEval~2.0 (win rate $49.2\%$ to $37.9\%$) and on QuALITY accuracy,
+with voting-style defenses that recover most of it. Models adopt
+incorrect supplied content over a correct prior more than $60\%$ of the
+time \cite{wu2024clasheval} and are highly receptive to coherent
+external evidence \cite{xie2024chameleon}. The earlier draft said no
+published evaluation measures whether a corrupted proposer corrupts the
+answer; that was also wrong. Section~\ref{sec:select} is a small
+numeric-value variant with a second-source control.
+
+\textbf{Judges and uncertainty.} LLM judges including GPT-4o are biased
+against epistemic markers \cite{lee2025judges}; human preference data
+are biased against text that expresses uncertainty
+\cite{zhou2024relying}; judges show position bias that varies by model
 \cite{zheng2023judging}, length correlations under preference
-optimization \cite{singhal2023length}, and sycophancy under preference
-pressure \cite{sharma2023sycophancy} motivate the order-debiased
-two-family protocol and sharpen into the measured phrase penalty of
-Section~\ref{sec:pref}.
+optimization \cite{singhal2023length}, and sycophancy
+\cite{sharma2023sycophancy}. Our judges' position bias should be read
+as a property of the small local judges tested.
 
-\textbf{Instruction following and pre-registration.} The phrase-swap
-design is, to the author's knowledge, the first to test an epistemic
-instruction by swapping its named surface form under otherwise
-byte-identical prompts. No prior work is known that pre-registers each
-component of a multi-agent architecture and reports the failures
-alongside the survivals. The complete registration ledger, every
-deviation and verdict, and the measurement kit are released with the
-project repository (Appendix~\ref{app:details}).
+\textbf{Loss of qualification.} LLM summaries overgeneralize scientific
+findings in 26 to 73\% of cases \cite{peters2025generalization},
+rewriting raises expressed certainty more often than it lowers it
+\cite{belem2026may}, and handoff summaries between agents keep facts
+while weakening the conditions on their use \cite{wang2026facts}.
+Section~\ref{sec:transport} does not yet add a comparable measurement.
+
+\textbf{Specialist models and confidence.} Medical adaptations rarely
+outperform their base models \cite{jeong2024medical}. Verbal confidence
+in small open models fails a pre-registered validity screen
+\cite{cacioli2026verbal}.
+
+\textbf{Registration.} Pre-registration of experiments with AI agents
+has a proposed template that lists outcome-contingent redesign among
+the main risks \cite{vaccaro2026prereg}; the deviations in
+Appendix~\ref{app:deviations} are instances. We are not aware of an
+earlier experiment that swaps the phrase named by an instruction under
+otherwise identical prompts, or of one that tests an appended caveat
+list with a matched irrelevant control.
+
+\section{Registered Experiments in Progress}
+\label{sec:planned}
+
+Six experiments were registered on 1 October 2026 and are running; a
+seventh is registered as a design only. Each was redesigned for one
+person on one machine, and each addresses a limitation above.
+
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lp{0.40\textwidth}p{0.42\textwidth}}
+\toprule
+No. & Question & Design in one line \\
+\midrule
+62 & Do the sentence judges agree with a person? & 404 stored sentences labelled blind by the author twice, a week apart, and by six local judges; bars: retest kappa $0.60$, F1 $0.80$ \\
+63 & Does the aggregator catch a wrong figure it could check? & 61 questions with computed answers; a wrong input placed where the case contradicts it, where it is the only source, and beside a right or a second wrong one; scored by script \\
+64 & Do other reader models act on an appended caveat, without the instruction, in a long list? & six reader models, the 11 items of experiment 51, lists of 1, 5 and 10 sentences, a prompt with the attachment clause removed \\
+65 & Does the judge preference repeat with judges from other families? & four more local judges on the 378 stored pairs, all-pairs scoring, judges that only follow position excluded by a rule fixed in advance \\
+66 & Are caveats conveyed less often than ordinary sentences? & 285 caveat sentences and 285 length-matched ordinary sentences, two judges rate whether each is conveyed; checked against 120 pairs labelled blind by the author \\
+67 & Does a second source help in the assembled chain? & the 61 questions of experiment 63 through the full chain, wrong figure in one proposer's notes, right figure in a second's; scored by the computed answer \\
+68 & Is the pipeline more accurate than the same model sampled four times? & design only: public items screened for headroom, four arms of equal cost \\
+\bottomrule
+\end{tabular}
+\caption{Experiments registered on 1 October 2026. Results will be
+reported in the next revision whatever their direction.}
+\label{tab:planned}
+\end{table*}
+
+Experiment 62 decides whether the results marked~$\dagger$ stand.
+Experiments 63 and 67 replace the reading of
+Section~\ref{sec:select} with a test in which checking is possible and
+the outcome is a computed number. Experiment 66 supplies the comparison
+Section~\ref{sec:transport} lacks. Human readers, a second annotator,
+an independent rerun of the analysis and a much larger model are beyond
+what one person can do and remain open.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-The Mixture-of-Agents recipe delivers a preference lift and rests on a
-mechanism story its evaluation never tests. Tested under
-pre-registration at auditable scale, the story fails: the aggregator
-selects rather than verifies, instructions install phrases that judges
-penalize, prose loses most of the qualification it is given, and
-self-assessment predicts behavior at chance. The harness presented here
-accepts the recipe's structure and lift, adds five mechanisms each
-licensed by one of those failures, and submits every mechanism to a
-prospective test with the kill condition written first. The mechanisms
-that survived did so with causal or predictive effect sizes; two
-rationales were demoted, one candidate rule was rejected, one gate is
-recorded as not deployable, and the assembled harness is
-indistinguishable from the recipe on the recipe's own metric. That is
-the hardening the paper proposes: not a better score, but a pipeline
-whose every component can say which experiment it survived.
+On one 20B model and eighteen in-house scenarios, four behaviors of a
+role-prompted aggregation pipeline were observed under registered
+tests: an instruction to mark estimates produces the phrase it names;
+two local judges prefer the aggregated answer to a single answer and
+mark the instructed phrase down; given two sources for a figure, the
+aggregator states one of them without saying there were two; and a
+reader model acts on a decisive sentence appended to the report. A
+design assembled from these observations was indistinguishable from the
+plain pipeline on a weak preference test and has not been tested on any
+other outcome. Whether any of it helps a person making a decision is
+unknown. The measurement lessons may be the more durable result: an
+instrument that counts strings the prompt dictated measures compliance;
+raw agreement between judges says little when one answer dominates;
+intervals over a handful of scenarios need methods built for few
+clusters; and a number that lands inside the expected range still needs
+checking.
+
+\section*{Use of AI Assistance}
+
+An AI assistant (Claude, Anthropic) was used throughout this project.
+It proposed and drafted most of the registrations and the experiment
+code, wrote the scenarios, test items, planted facts and the labels the
+project notebook calls analyst-authored, ran the analyses, conducted
+the three internal audits and the October 2026 review that led to this
+revision, and drafted this text. The author directed the work, decided
+what was run and what is claimed, and takes responsibility for the
+content. Because one source wrote the items and labelled several
+outcomes, results that depend on those labels should be read with that
+in mind.
+
+\section*{Data and Code}
+
+All registrations, run records, analysis code and the project notebook
+are in the project repository. The corrected figures in this draft are
+produced by \url{train/run_stage0_corrections.py} (output in
+\url{bench/analysis/stage0/}) at commit \texttt{bb7fcab}. The review
+and its reproduction script are \url{docs/BOARD_REVIEW_2026-10-01.md}
+and \url{bench/analysis/board_review/checks.py}. The experiments of
+Section~\ref{sec:planned} are registered at commit \texttt{6402fc0}.
+Neither script calls a model.
 
 \section*{Impact Statement}
 
-This work concerns the reliability of multi-agent language model
-pipelines in advisory settings, where a corrupted input adopted without
-verification or a caveat lost in synthesis can reach a decision maker.
-The harness is intended to reduce both failure modes and to make their
-residual rates measurable in deployment. The findings on preference
-judging carry a caution for evaluation practice: single-ordering
-LLM-judge comparisons at the studied scale predominantly measure
-reading order, and preference-trained pipelines can be expected to
-shed visible epistemic marking. All experiments used open models on
-local hardware with synthetic advisory scenarios; no human subjects or
-personal data were involved. Results are bounded to 7 to 20B models,
-advisory-domain English, and small case counts, and should be retested
-at larger scale before being relied on in deployment.
+This work concerns language-model pipelines in advisory settings. Its
+findings are limited to 7 to 30B local models, English advisory
+scenarios written for the project, and small numbers of items, and they
+involve no human participants. They should not be used to justify
+deploying such a pipeline for real advice. The observation that an
+aggregator given two different figures states one without flagging the
+conflict is a reason for caution wherever such pipelines are used.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem{wang2024moa} J.~Wang, J.~Wang, B.~Athiwaratkun, C.~Zhang,
 J.~Zou. Mixture-of-Agents enhances large language model capabilities.
 \emph{arXiv:2406.04692}, 2024.
-\bibitem{li2025selfmoa} W.~Li et al. Rethinking Mixture-of-Agents: is
-mixing different large language models beneficial?
-\emph{arXiv:2502.00674}, 2025.
+\bibitem{li2025selfmoa} W.~Li, Y.~Lin, M.~Xia, C.~Jin. Rethinking
+Mixture-of-Agents: is mixing different large language models
+beneficial? \emph{arXiv:2502.00674}, 2025.
+\bibitem{wolf2025doge} L.~Wolf, S.~Yoon, I.~Bogunovic. This is your
+Doge, if it please you: exploring deception and robustness in mixture
+of LLMs. \emph{arXiv:2503.05856}, 2025.
+\bibitem{wu2024clasheval} K.~Wu, E.~Wu, J.~Zou. ClashEval: quantifying
+the tug-of-war between an LLM's internal prior and external evidence.
+\emph{arXiv:2404.10198}, 2024.
+\bibitem{xie2024chameleon} J.~Xie, K.~Zhang, J.~Chen, R.~Lou, Y.~Su.
+Adaptive chameleon or stubborn sloth: revealing the behavior of large
+language models in knowledge conflicts. \emph{ICLR}, 2024.
+\bibitem{lee2025judges} D.~Lee, Y.~Hwang, Y.~Kim, J.~Park, K.~Jung. Are
+LLM-judges robust to expressions of uncertainty? Investigating the
+effect of epistemic markers on LLM-based evaluation. \emph{NAACL}, 2025.
+\bibitem{zhou2024relying} K.~Zhou, J.~D.~Hwang, X.~Ren, M.~Sap. Relying
+on the unreliable: the impact of language models' reluctance to express
+uncertainty. \emph{ACL}, 2024.
+\bibitem{peters2025generalization} U.~Peters, B.~Chin-Yee.
+Generalization bias in large language model summarization of scientific
+research. \emph{arXiv:2504.00025}, 2025.
+\bibitem{belem2026may} C.~G.~Belem, S.~Wu, H.~Yao, M.~Steyvers,
+S.~Singh, P.~Smyth. From `may' to `is': certainty distortion in
+language model rewriting. \emph{EMNLP}, 2026.
+\bibitem{wang2026facts} Y.~Wang, A.~Goyal, E.~Chandrasekharan,
+H.~Sundaram. Facts without rules: boundary metadata collapse in
+multi-agent LLM handoffs. \emph{arXiv:2608.29028}, 2026.
+\bibitem{cacioli2026verbal} J.-P.~Cacioli. Verbal confidence saturation
+in 3--9B open-weight instruction-tuned LLMs: a pre-registered
+psychometric validity screen. \emph{arXiv:2604.22215}, 2026.
+\bibitem{jeong2024medical} D.~P.~Jeong, S.~Garg, Z.~C.~Lipton,
+M.~Oberst. Medical adaptation of large language and vision-language
+models: are we making progress? \emph{EMNLP}, 2024.
+\bibitem{vaccaro2026prereg} M.~Vaccaro. Preregistration for experiments
+with AI agents. \emph{ICML}, 2026.
+\bibitem{li2024moreagents} J.~Li, Q.~Zhang, Y.~Yu, Q.~Fu, D.~Ye. More
+agents is all you need. \emph{Transactions on Machine Learning
+Research}, 2024.
+\bibitem{wang2023selfconsistency} X.~Wang, J.~Wei, D.~Schuurmans,
+Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, D.~Zhou. Self-consistency
+improves chain of thought reasoning in language models. \emph{ICLR},
+2023.
 \bibitem{zheng2023judging} L.~Zheng et al. Judging LLM-as-a-judge with
 MT-Bench and Chatbot Arena. \emph{NeurIPS Datasets and Benchmarks},
 2023.
@@ -1169,119 +1281,215 @@ sycophancy in language models. \emph{arXiv:2310.13548}, 2023.
 \bibitem{wang2024rebuttal} Q.~Wang et al. Rethinking the bounds of LLM
 reasoning: are multi-agent discussions the key?
 \emph{arXiv:2402.18272}, 2024.
+\bibitem{miller2024errorbars} E.~Miller. Adding error bars to evals: a
+statistical approach to language model evaluations.
+\emph{arXiv:2411.00640}, 2024.
+\bibitem{cameron2008bootstrap} A.~C.~Cameron, J.~B.~Gelbach,
+D.~L.~Miller. Bootstrap-based improvements for inference with clustered
+errors. \emph{Review of Economics and Statistics}, 90(3):414--427, 2008.
+\bibitem{holm1979} S.~Holm. A simple sequentially rejective multiple
+test procedure. \emph{Scandinavian Journal of Statistics}, 6(2):65--70,
+1979.
+\bibitem{cohen1960kappa} J.~Cohen. A coefficient of agreement for
+nominal scales. \emph{Educational and Psychological Measurement},
+20(1):37--46, 1960.
 \end{thebibliography}
 
 \appendix
 
-\section{Supplementary Discussion}
-\label{app:charter}
+\section{Corrections from Draft v0.2}
+\label{app:corrections}
 
-\textbf{The Goodhart charter.} The following quantities are
-diagnostics and may not be optimization targets. \emph{Trigger rate}:
-raising it blindly manufactures the contentless-consultation condition
-of Section~\ref{sec:res-loop}, in which a length-matched reply with no
-deciding fact moved adoption to $0.200$. \emph{Hedge counts and
-compliance shares}: raising them produces the dictated phrase of
-Section~\ref{sec:phrase}, which Section~\ref{sec:pref} shows judges
-penalize. \emph{Transport slope}: optimizing it against the writer's
-own text rewards invented qualification, which the writer already
-produces at $0.333$ on inputs containing none. \emph{Preference score on
-epistemic content}: the instrument is majority reading-order and
-penalizes visible caution. The optimizable signal must live outside
-the pipeline's own text, in verified outcomes where ground truth
-exists.
+Each item gives the earlier statement and what the repository shows.
 
-\textbf{Operating economics.} Everything downstream of the trigger is
-measured and works. On planted tensions the trigger fires at $0.208$
-to $0.583$ by batch; on organic inquiries dispatch fired on $0.85$ of
-pipelines. Sibling isolation saves approximately $10$k input
-characters and $14\%$ output length per seat. The harness's telemetry
-doubles as a replication battery: every deployment yields transport
-estimates, trigger telemetry, phrase-swap slots for proposed
-instructions, and preference-versus-verified divergence wherever
-ground truth exists, each with its attainability gate.
+\textbf{1. Caveats carried through prose.} Earlier: the appendix
+``carries $1.000$ of proposer caveats against $0.174$ through prose.''
+The $0.174$ was a parsing error (Section~\ref{sec:res-channel}); the
+verbatim rate is $61/2{,}037 = 0.030$, and $1.000$ is true by
+construction.
 
-\textbf{Open risks.} Per-item protection is bimodal with the boundary
-mechanism unknown after two rejected candidates. The fabrication bound
-covers adversarial case citations on one trigger topic only, and the
-seat never admits the gap ($0/20$ sampled), so the bound is a floor
-rather than a ceiling on confabulation. The preference cost of the
-appendix is bounded but not evaluable at current power. The pipeline
-used no tool calling or retrieval, and the paper makes no claim about
-how those would interact with the harness.
+\textbf{2. Intervals.} Earlier: ``every confidence interval is a
+cluster bootstrap over cases.'' The slope intervals resampled runs.
+Over scenarios, two of four exclude zero and the second aggregator
+model excludes zero in neither scenario set
+(Figure~\ref{fig:transport}).
+
+\textbf{3. Head-to-head.} Earlier: both judges' shares span $0.5$
+``with large effects excluded in both directions.'' The second judge's
+interval was \ci{0.083}{0.562} from 15 pairs and does not exclude a
+large loss.
+
+\textbf{4. Order of registration and runs.} Earlier: ``temporal
+ordering is verifiable from version history.'' Run records for
+experiments 25 to 60 were first committed on 24 September 2026, weeks
+after their results, and carry no timestamps.
+
+\textbf{5. Prior work.} Earlier: ``Every published MoA number is
+produced by an LLM preference judge'' and ``No published evaluation
+measures \ldots\ whether a corrupted proposer corrupts the final
+answer.'' Both are false (Section~\ref{sec:related}).
+
+\textbf{6. The caveat extractor.} Earlier: proposers ``emit them as
+structured fields; a two-judge extraction retains only sentences both
+judges agree carry qualification.'' Proposers write prose, and the
+assembled system uses a document-level prompt that returns at most one
+quoted sentence per kind per proposer (Table~\ref{tab:built}).
+
+\textbf{7. The live second-source test.} Earlier: only the rise in the
+second value was reported. The drop in the first value was not
+established ($p=0.22$; Table~\ref{tab:main}).
+
+\textbf{8. Table of main results.} Earlier: intervals for differences
+were printed beside levels, and cells were shaded by a rule applied to
+rows without intervals. Table~\ref{tab:main} replaces it.
+
+\textbf{9. The ``source-selector gradient'' figure.} Earlier: counts
+from an early experiment were plotted without the answers that stated
+neither value (15 to 23 of 27 per arm). The figure is removed.
+
+\textbf{10. Judge agreement.} Earlier: ``agreement on the deployed
+corpus is $0.910$.'' True as raw agreement; chance agreement there is
+$0.878$ and kappa is $0.26$.
+
+\textbf{11. Counts.} Earlier: ``more than fifty registered
+experiments'' and ``fourteen instrument-validity findings.'' There are
+58 registration entries for 61 numbered experiments, and the project's
+list of measurement findings now has twenty.
+
+\textbf{12. Readings withdrawn or restated.} ``Transport of $0.11$ to
+$0.33$'' as a loss (Section~\ref{sec:transport}); ``halves
+corrupted-value adoption'', ``is causal'' and ``$0/27$ with a clean
+co-source'' (Section~\ref{sec:select}); ``self-assessment predicts
+behavior at chance'' and ``corroboration is ignored''
+(Section~\ref{sec:smaller}); preference shares of $0.818$, $0.261$ and
+$0.317$ over consistently decided pairs (Section~\ref{sec:pref});
+``at no cost'' (Section~\ref{sec:headtohead}); the before-and-after
+figure, which drew separate experiments as one system.
+
+\section{Deviations from Registrations}
+\label{app:deviations}
+
+The project notebook records each of these at the time it happened.
+
+\begin{itemize}\itemsep0pt
+\item Experiments 30 and 31: the registered instrument failed its
+check and was replaced; the registered thresholds were then read as
+sign tests.
+\item Experiment 44: the registration did not say over which runs
+judge agreement was to be computed; the reading that let the result
+stand was used ($0.70$ on analysed runs, $0.58$ overall; both are
+reported here).
+\item Experiment 47: one item's values were replaced after the pilot,
+and the pilot check was re-evaluated after the value matcher was
+repaired.
+\item Experiment 51: the registration did not say over which items the
+floor check applied; it was applied to the 11 retained items ($0.00$)
+and not to all 18 ($0.33$).
+\item Experiment 53: a pilot threshold was lowered from $0.5$ to
+$0.25$ after it failed; the experiment then stopped at its checkpoint.
+\item Experiment 59: the check was re-evaluated after a fourth repair
+to the value matcher.
+\item Experiments 60 and 61: token budgets were raised during the
+experiment after reasoning exhausted them.
+\item Timing: one registration was committed two minutes before its
+first run and one amendment 33 seconds after; some notebook dates
+precede the commits that introduced them by up to six days.
+\end{itemize}
 
 \section{Experimental Details}
 \label{app:details}
 
-\textbf{Phrase-swap.} 18 cases, 7 repeats, 378 runs. Treated clause:
-``When you state a number that is an estimate rather than an
-established fact, label it using the phrase `modeled at' '' (form X)
-or ``\ldots `taken to be' '' (form Y). Form X: 11 registry entries
-across 9 prompt symbols. Form Y: zero archive occurrences; spontaneous
-rate $0/249$ clean-provenance runs for both forms. Emission $43.7$ to
-$46.6$ sentences per run across arms. A harness gate refused to run
-unless each arm contained exactly its own form and no other registry
-phrase.
+\textbf{Phrase-swap (41).} 18 scenarios, 7 repeats, 3 arms, 378 runs.
+Answers averaged $43.7$ to $46.6$ sentences across arms. A check
+refused to run an arm whose prompt contained any registry phrase other
+than its own.
 
-\textbf{Preference.} 126 pairs per comparison, both orderings, decisive
-only when the same side wins both. Primary judge \texttt{gpt-oss:20b};
-replication judge a 30B Qwen3 MoE selected from three candidates on
-parse and decisive rates only. Decisive counts: 44, 46, 41 (primary);
-33, 29, 23 (replication). Arm mean lengths 7{,}757 against 7{,}649
-characters for the lift comparison.
+\textbf{Preference (43, 43-R).} 126 pairs per comparison, both orders.
+Judge 1 \texttt{gpt-oss:20b}; judge 2 a 30B model selected from three
+candidates on parse rate and consistency only. Pairs decided
+consistently: 44, 46, 41 (judge 1) and 33, 29, 23 (judge 2).
+First-listed answer chosen in $0.80$ to $0.83$ (judge 1) and $0.87$ to
+$0.89$ (judge 2) of single judgments. Mean answer lengths $7{,}757$ and
+$7{,}649$ characters for the pipeline and single answers.
 
-\textbf{Source selection.} 27 runs per arm; planted arithmetic errors;
-exact match on known values. Single-factor redundancy experiment:
-corrupted adoption $0.900$ (sole-sourced) against $0.450$ (second seat
-assigned); clean adoption $0.000$ against $0.500$.
+\textbf{Second source (47, 59).} 8 items, 5 repeats, 2 arms. Exact
+match on values after number-format normalisation. In experiment 59 the
+planning step was told which quantity to cover.
 
-\textbf{Transport.} 144 runs, 18 cases, two writers
-(\texttt{gpt-oss:20b}, \texttt{phi4:14b}), two corpora (original, 9
-cases; extension, 9 new cases). Supply is judge-measured with
-inter-judge $r = 0.528$; correcting for attenuation on the original
-corpus moves $0.150$ to $0.217$.
+\textbf{Caveats in and out (30, 46).} 144 runs, 18 scenarios, two
+aggregator models, two scenario sets. Supply was varied by removing
+flagged sentences from proposer text.
 
-\textbf{Seating gate.} Ten candidates; two screen items disjoint from
-the pipeline case set; $800$ visible-character degeneracy threshold;
-verdicts committed before any pipeline run.
+\textbf{Follow-up (44, 54, 56).} 6 items, 36 runs per arm. Named runs:
+7 (informative), 15 (none), 15 (uninformative); 21 of 36 in the live
+experiment. Fabrication follow-up: 120 replies.
 
-\textbf{Planner.} Identification against analyst-authored labels on
-the case battery; assignment over 40 plans; live conveyance across
-briefed seats; end-to-end clean adoption on the pipeline cases.
+\textbf{Appended list (48).} 17 scenarios with at least one flagged
+sentence, 7 stored answers each, 119 documents, lists of 1 to 53
+sentences (median 11). \textbf{Reader (51).} 18 items written, 11
+retained after the pilot check; 2 readers, 4 arms, 5 repeats, 440
+reads.
 
-\textbf{Out-of-band channel.} Carriage: byte-identical prose in both
-arms, appendix assembled from both-judge caveat sentences; preference
-$65/116$ ties. Uptake: 18 authored items, 11 retained after a
-registered floor gate, 440 reads, direction-balanced (blocking and
-enabling caveats), two-token reader decisions.
+\textbf{Screen (55).} Ten models, two screen prompts, six answers each;
+18 pipeline contributions per model.
 
-\textbf{Re-consultation.} Six planted tensions; conditioned $n$ of
-seven in the scripted decisive cell; judge agreement $0.703$ on the
-analysis population and $0.583$ overall, both reported. Live cells
-compare against archived arms under a registered, never-pooled
-fresh-batch check. Fabrication follow-up: 20 replies with the fact in
-hand, 100 elsewhere.
+\textbf{Assembled system (61).} 54 runs; 108 pairs against stored
+plain-pipeline answers; lists of about 5 sentences.
 
-\textbf{Head-to-head.} 108 pairs; 54 live harness pipelines; two judge
-families; order-debiased.
-
-\section{Instrument Validation}
+\section{The Sentence Instrument}
 \label{app:instruments}
 
-Fourteen instrument-validity findings are recorded in the ledger. The
-three that bear on this paper: (i) entanglement, exposed by a
-pattern-level decomposition in which an instruction moved dictated
-phrasings from $0/30$ to $28/30$ and non-dictated phrasings of the same
-construct from $1/30$ to $4/30$ (difference-in-differences $+0.83$
-\ci{+0.67}{+1.00}); (ii) the dictation registry, 125 entries from 35
-prompt symbols by AST parsing and quote scanning, which on its first
-run found an earlier judge prompt enumerating the seven phrases the
-writing prompts dictated, and whose measured over-attribution is zero
-across 2{,}907 spans (438{,}797 characters) and 60 de-scaffolded runs;
-and (iii) reading-order dominance, with raw first-position preference
-of $0.85$ to $0.88$ across a 20B MoE, a 30B MoE, a 14B dense model, and
-a 7B dense model, and decisive rates of $0.05$ to $0.40$ after
-debiasing. Document-level construct judging scored $0.622$ agreement
-against $0.910$ for the sentence-level protocol and was rejected.
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llcccc}
+\toprule
+Labels from & Kind & $n$ & raw & chance & kappa \\
+\midrule
+exp.\ 41 & assumption & 15{,}485 & $0.910$ & $0.878$ & $0.26$ \\
+exp.\ 41 & jurisdiction & 15{,}485 & $0.833$ & $0.717$ & $0.41$ \\
+exp.\ 41 & hedging & 15{,}485 & $0.828$ & $0.763$ & $0.28$ \\
+exp.\ 46 & all three & 16{,}869 & $0.838$ & $0.752$ & $0.35$ \\
+exp.\ 30/31 & all three & 5{,}697 & $0.833$ & $0.772$ & $0.27$ \\
+\bottomrule
+\end{tabular}
+\caption{Agreement between the two sentence judges at the prevalence
+they are used at. ``Chance'' is the agreement two judges would reach
+answering independently at their own base rates.}
+\label{tab:kappa}
+\end{table}
+
+The instrument was accepted on raw agreement against a bar of $0.70$,
+which independent judges would pass at these base rates. It had been
+checked on a sample chosen to be rich in positives, where kappa was
+$0.51$ to $0.66$, and on twenty anchor sentences written within the
+project. Of the sentences either judge flags, both flag about one in
+four. On sentences that are positives by construction, both judges
+flag $0.66$ (``modeled at'') and $0.35$ (``taken to be''). An earlier
+version that judged whole documents agreed at $0.62$ and was dropped.
+
+Other measurement findings recorded by the project and relevant here:
+an early judge prompt listed the same seven phrases the writing prompts
+dictated, found by a registry of every instructed phrase (125 entries);
+an instruction moved the dictated phrasing from $0/30$ to $28/30$
+answers while other phrasings of the same idea moved from $1/30$ to
+$4/30$; and empty judge replies had at one point been scored as
+negative labels.
+
+\section{Diagnostics That Are Not Optimized}
+\label{app:charter}
+
+The design records the following and does not tune toward them.
+\emph{How often a disagreement is named or a follow-up sent}: raising
+it without new information reproduces the uninformative-reply arm of
+Section~\ref{sec:followup}. \emph{Counts of hedges or instructed
+phrases}: an instruction raises the phrase
+(Section~\ref{sec:phrase}), and the judges mark it down
+(Section~\ref{sec:pref}). \emph{The slope $w$}: it tracks answer
+length, and tuning it against the aggregator's own text would reward
+caveats the aggregator adds itself. \emph{Judge preference on qualified
+text}: the judges mostly follow position and mark qualification down.
+The quantities worth optimizing are checked outside the pipeline's own
+text, such as exact-match correctness on items with known answers.
 
 \end{document}

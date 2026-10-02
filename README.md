@@ -15,7 +15,8 @@ experiments ("cells"), each with its expectations written down before it ran:
 accept the paper as drafted. One widely quoted number came from a scoring bug,
 several ranges were too narrow, and in most experiments the three "specialists"
 were the editor model in three roles. The corrections are in STATUS.md and the
-runbook, and the paper is being revised. Cells 62 to 67 are running to test what
+runbook, and the paper has been rewritten as draft v0.3 with a new title and
+scope. Cells 62 to 67 are running to test what
 recomputing could not fix. Two of them need blind labels from a person (see
 "Blind labelling" below).
 
@@ -27,7 +28,7 @@ language, the claims, a glossary, the harness, and the saved run data.
 | If you want… | Read |
 |---|---|
 | The findings, in plain language | [docs/PLAIN_LANGUAGE_COMPANION.md](docs/PLAIN_LANGUAGE_COMPANION.md) or the public site |
-| The paper (draft v0.2 carries uncorrected numbers and is under revision) | [docs/paper_combined.pdf](docs/paper_combined.pdf) (source: [paper_combined.tex](docs/paper_combined.tex)) |
+| The paper (draft v0.3, rewritten after the October 2026 review; results of Cells 62 to 67 still to come) | [docs/paper_combined.pdf](docs/paper_combined.pdf) (source: [paper_combined.tex](docs/paper_combined.tex)) |
 | The review and what it changed | [docs/BOARD_REVIEW_2026-10-01.md](docs/BOARD_REVIEW_2026-10-01.md); corrected figures in [bench/analysis/stage0/report.txt](bench/analysis/stage0/report.txt) |
 | What the program claims today, and how sure it is | [docs/STATUS.md](docs/STATUS.md), the authoritative claims record |
 | Every experiment, in order, with its full reasoning | [RUNBOOK_PAPER_HARDENING.md](RUNBOOK_PAPER_HARDENING.md), the lab notebook the site is built from |
@@ -110,5 +111,5 @@ Commit each finished labels file before any scoring (the tool prints the command
 
 ## Status
 
-Personal research, not a product. Paper draft v0.2 (September 2026) is under
-revision after the October 2026 review.
+Personal research, not a product. Current paper draft: v0.3, October 2026
+(corrected after the review; six planned experiments still running).

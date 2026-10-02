@@ -150,7 +150,7 @@ and its status.
 
 | artifact | status |
 |---|---|
-| `docs/paper_combined.tex` | **draft v0.2 (September 2026) carries the uncorrected numbers and is under revision** to v0.3 after the board review (decision 2026-10-01: major revision). Do not circulate v0.2 |
+| `docs/paper_combined.tex` | **draft v0.3 (October 2026)**: *What a Small Role-Prompted Aggregation Pipeline Does with Instructed Phrases, Planted Figures and Caveats: A Registered Component Study on One 20B Model*. Rewritten after the board review (decision 2026-10-01: major revision): corrected numbers, new scope and title, limitations, deviations, a statement of the AI assistant's role. Supersedes v0.2 (*Hardening Mixture-of-Agents*), which carries the uncorrected numbers and must not be circulated. The results of Cells 62 to 67 are not in it yet |
 | `docs/PLAIN_LANGUAGE_COMPANION.md` | active; plain-language walk-through of the audit and harness material that the combined paper now carries |
 | `docs/HARNESS_SEAT_ARCHITECTURE.md` | active; runtime architecture, and the source text for the ledger site's harness page |
 | `site_v3/` | **the public site** (the Paper-Hardening Cell Ledger), built by `docs/ledger_explorer/build.py` from the runbook and this file. Netlify builds stay paused between deliberate deploys |
