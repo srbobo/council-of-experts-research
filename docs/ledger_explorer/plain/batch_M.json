@@ -207,7 +207,7 @@
   },
   "66": {
    "title": "Are caveats lost more than ordinary sentences?",
-   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length from the same specialist texts, two AI judges decide whether each is conveyed in the editor's answer. A person checks the judges on 120 cases. Planned and queued to run.",
+   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length from the same specialist texts, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. The comparison waits for the author's 120 blind labels.",
    "outcome": "not-run",
    "size": "AI judging done, the person's 120 labels pending",
    "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
@@ -244,6 +244,11 @@
      "label": "Note",
      "title": "AI judging finished, the comparison waits for labels",
      "summary": "The two AI judges finished all 1,710 cases on 2 October 2026, and 120 of them were drawn for the author to label blind. No result of the comparison is computed or shown until those labels are finished and saved."
+    },
+    "11097": {
+     "label": "Note",
+     "title": "The judging ran cleanly, and the 120 cases are ready to label",
+     "summary": "Both AI judges gave a readable answer for every one of the 1,710 cases, and the whole-answer check on 60 cases also finished. The 120 cases for the author were drawn by the rule written down in advance, and the answer key is kept apart from them. We have read nothing from the judges' answers. The step took 8.6 hours instead of the 7.7 planned."
     }
    }
   },

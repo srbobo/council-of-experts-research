@@ -11093,3 +11093,49 @@ pairs 1710; with both judges' verdicts 1710
 P66.0 PENDING — the blind labels are not finished (.venv/bin/python train/label_blind.py bench/labels/cell66_conveyed).
 Nothing about the comparison is computed or shown until those labels are committed.
 ```
+
+## CELL 66 READING (2026-10-02) — both judges returned a parsed answer for all 1,710 pairs and the whole-answer check for all 60; the 120-pair label task is drawn; nothing from the judges is read until the labels are committed
+
+This is the analyst's reading of the entry above. It reports the run and
+nothing else: no judge verdict, no agreement figure, no count by kind. All
+of that waits for the person's labels (P66.0) and is printed by
+`train/run_cell66_conveyed.py measure` only after they are committed.
+The figures below are audit fields read by a script that printed no
+verdict.
+
+### The run
+
+- Shortlist: 1,710 pairs, embedding model digest 0a109f422b47, finished
+  at 2026-10-02T13:50Z.
+- Judging: 3,420 calls, 1,710 per judge, temperature 0, 2,048-token
+  allowance. gpt-oss:20b (digest 17052f91a42e) ran from 13:50:12Z to
+  21:25:29Z, 7.6 hours, about 16 seconds per pair; qwen3-vl:30b-a3b-instruct
+  (digest c871fc73fabc) from 21:25:53Z to 22:00:32Z, 35 minutes. Every
+  call ended with `stop`, none hit the context limit, none exhausted its
+  allowance, and every reply parsed: the scoring stage counts 1,710 pairs
+  with both judges' verdicts, and no record has a missing verdict.
+- Every record carries registration commit 6402fc0 and one runner hash
+  (c880478206c6fb5d). The `head` field changes once, from 5af21d9 to
+  1df7265: the CELL 63 READING was committed while the first judge ran.
+  The runner file did not change.
+- Sample: `bench/labels/cell66_conveyed/task.json`, 120 pairs, drawn at
+  22:00:33Z by the registered rule (30 from each combination of
+  conveyed or not by the rule and caveat or ordinary). The stage printed
+  no stratum and no key. The key is in the same directory, committed with
+  the task so the draw is on record, and held back from the site until
+  the labels are done. The person labelling must not open it.
+- Whole-answer check: 60 pairs the rule called not conveyed, read by
+  gpt-oss:20b against the whole answer, 22:00:33Z to 22:24:48Z, all 60
+  parsed. Its result is reported with P66.2 after the labels.
+- The step took 8.6 hours against the registration's estimate of about
+  seven hours and 40 minutes; the first judge was slower per pair than the
+  smoke test suggested.
+
+### What happens next
+
+- The author labels the 120 pairs with
+  `.venv/bin/python train/label_blind.py bench/labels/cell66_conveyed`
+  (pass 1 any time; pass 2 at least 7 days later), seeing the statement
+  and three passages only. The labels are committed, then `measure` is
+  run and its output recorded as the CELL 66 verdict entry.
+- Until then P66.0 is PENDING and the queue has moved on to CELL 64.

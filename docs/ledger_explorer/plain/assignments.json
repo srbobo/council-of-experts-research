@@ -2513,6 +2513,12 @@
        "end": 11096,
        "kind": "note",
        "heading": "CELL 66 RUN RECORD (2026-10-02) — judging finished; the comparison waits for the person's 120 labels"
+      },
+      {
+       "line": 11097,
+       "end": 11142,
+       "kind": "note",
+       "heading": "CELL 66 READING (2026-10-02) — both judges returned a parsed answer for all 1,710 pairs and the whole-answer check for all 60; the 120-pair label task is drawn; nothing from the judges is read until the labels are committed"
       }
      ],
      "matrix_row": null
@@ -4107,7 +4113,7 @@
     ],
     "header": null,
     "cols": [
-     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this."
+     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this. Judging finished 2026-10-02 (3,420 calls, all parsed); the 120-pair label task is drawn. Nothing from the judges is read until the author's labels are committed."
     ]
    },
    {

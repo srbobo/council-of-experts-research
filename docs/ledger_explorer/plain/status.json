@@ -700,7 +700,7 @@
   },
   "S5-12": {
    "claim": "Are caveats conveyed in the final answer less often than ordinary sentences?",
-   "detail": "Planned as Cell 66. The formula's share w and the word-for-word copy rate do not answer this, because the editor shortens everything. The test compares each caveat sentence with an ordinary sentence of similar length from the same specialist text.",
+   "detail": "Cell 66's two AI judges finished all 1,710 cases on 2 October 2026, and the 120 cases for the author to label blind are drawn. Nothing from the judges' answers is read until those labels are saved. The formula's share w and the word-for-word copy rate do not answer this question, because the editor shortens everything. The test compares each caveat sentence with an ordinary sentence of similar length from the same specialist text.",
    "cells": [
     "46",
     "48",
