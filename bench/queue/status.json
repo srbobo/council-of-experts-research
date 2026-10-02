@@ -8,8 +8,15 @@
    "commit": "b89c771"
   },
   "c63-primary": {
+   "state": "done",
+   "started_utc": "2026-10-02T01:43:21Z",
+   "finished_utc": "2026-10-02T13:49:22Z",
+   "attempts": 1,
+   "commit": "5af21d9"
+  },
+  "c66-conveyed": {
    "state": "running",
-   "started_utc": "2026-10-02T01:43:21Z"
+   "started_utc": "2026-10-02T13:49:26Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

@@ -209,7 +209,7 @@
    "title": "Are caveats lost more than ordinary sentences?",
    "description": "For 285 caveat sentences and 285 ordinary sentences of similar length from the same specialist texts, two AI judges decide whether each is conveyed in the editor's answer. A person checks the judges on 120 cases. Planned and queued to run.",
    "outcome": "not-run",
-   "size": "Planned: 1,710 sentence-and-answer pairs",
+   "size": "AI judging done, the person's 120 labels pending",
    "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
    "expectations": [
     {
@@ -231,7 +231,7 @@
      "note": "Not tested yet. Reported without a pass/fail test."
     }
    ],
-   "found": "Not run yet. The sentences were chosen by a fixed rule on 1 October 2026, before any judging. Each caveat sentence from Cell 48's lists was paired with an ordinary sentence of the closest length from the same specialist text, one that neither of the two original judges had flagged. Each is checked against three saved editor answers per scenario.",
+   "found": "The two AI judges finished all 1,710 cases on 2 October 2026. A sample of 120 cases was then drawn for the author to label blind. Nothing about the comparison between caveats and ordinary sentences is computed or shown until those labels are finished and saved, so that knowing the result cannot influence the labels.",
    "means": "If caveats are conveyed less often, the paper can say the editor drops caution in particular, and by how much. If they are conveyed about as often, the claim that prose loses caution is withdrawn in favor of a plainer one: the answer is shorter than its sources and keeps caveats in proportion.",
    "later": null,
    "entries": {
@@ -239,6 +239,11 @@
      "label": "Plan",
      "title": "Compare caveats with ordinary sentences of the same length",
      "summary": "For each sentence, the three closest sentences in the editor's answer are found automatically, and two AI judges say whether its content is conveyed fully, partly or not. The author then labels 120 cases blind to check the judges. The main comparison is made within each of the 14 scenarios that have at least five caveats."
+    },
+    "11083": {
+     "label": "Note",
+     "title": "AI judging finished, the comparison waits for labels",
+     "summary": "The two AI judges finished all 1,710 cases on 2 October 2026, and 120 of them were drawn for the author to label blind. No result of the comparison is computed or shown until those labels are finished and saved."
     }
    }
   },

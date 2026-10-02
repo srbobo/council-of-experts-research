@@ -11079,3 +11079,17 @@ or "verifies"). 8 (layouts were assigned, so "the answer changes with the
 layout" is interventional; "because it noticed the conflict" is not
 supported). 11 ("other", "no answer", second tries and answer-line-only
 replies are reported for every layout).
+
+## CELL 66 RUN RECORD (2026-10-02) — judging finished; the comparison waits for the person's 120 labels
+
+Recorded automatically by the run queue (step `c66-conveyed`, 2026-10-02T22:25:20Z, commit 1df7265 checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 66 — are caveats lost more than ordinary content?
+==============================================================================
+pairs 1710; with both judges' verdicts 1710
+
+P66.0 PENDING — the blind labels are not finished (.venv/bin/python train/label_blind.py bench/labels/cell66_conveyed).
+Nothing about the comparison is computed or shown until those labels are committed.
+```

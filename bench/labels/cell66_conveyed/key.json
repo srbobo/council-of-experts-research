@@ -1,0 +1,1103 @@
+{
+ "seed": 66,
+ "strata": {
+  "conveyed|caveat": {
+   "pool": 595,
+   "sampled": 30
+  },
+  "conveyed|ordinary": {
+   "pool": 595,
+   "sampled": 30
+  },
+  "not|caveat": {
+   "pool": 260,
+   "sampled": 30
+  },
+  "not|ordinary": {
+   "pool": 260,
+   "sampled": 30
+  }
+ },
+ "items": {
+  "p9c771944": {
+   "pair": "case_l4_l4b|c34|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p9f2f5ed8": {
+   "pair": "case_l4_l4b|c27|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p238d7eef": {
+   "pair": "case_l4_l4b|c9|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pc7b92e55": {
+   "pair": "case_l2_l2a|c0|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p322d4b0f": {
+   "pair": "case_l2_l2a|c1|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pa1cdff97": {
+   "pair": "case_l2_l2b|c23|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pf1dbd553": {
+   "pair": "case_l4_l4b|c30|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p1db2ba5c": {
+   "pair": "case_10_trigger_light_depreciation|c0|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p3394ac02": {
+   "pair": "case_l2_l2a|c14|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p604a068c": {
+   "pair": "case_l4_l4a|c36|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pbd1dae3b": {
+   "pair": "case_l2_l2b|c2|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "ped9bd987": {
+   "pair": "case_l2_l2b|c7|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p13f4d854": {
+   "pair": "case_l2_l2b|c42|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pe43f2901": {
+   "pair": "case_l2_l2b|c26|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p6a002c22": {
+   "pair": "case_l1_l1b|c5|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pc869705a": {
+   "pair": "case_l4_l4b|c16|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pdb759b3f": {
+   "pair": "case_l4_l4b|c0|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p5b2bf647": {
+   "pair": "case_6_trigger_heavy_biotech_ma|c7|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p3c34b3b0": {
+   "pair": "case_l3_l3b|c19|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pa281a0f7": {
+   "pair": "case_l1_l1b|c13|r2",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pfe02361c": {
+   "pair": "case_l4_l4a|c18|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p34b680d1": {
+   "pair": "case_l1_l1b|c16|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p1e7531a6": {
+   "pair": "case_l4_l4b|c41|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p7e20a41c": {
+   "pair": "case_3_capitated_risk_contract|c5|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pf4e65ddb": {
+   "pair": "case_l4_l4b|c11|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p9c46ef80": {
+   "pair": "case_l4_l4a|c18|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p3f0fc74d": {
+   "pair": "case_l1_l1b|c11|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pc36cf32a": {
+   "pair": "case_l2_l2a|c18|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p0c5fd7dc": {
+   "pair": "case_1_clinical_decision_support|c0|r0",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p1ac21708": {
+   "pair": "case_l3_l3b|c7|r1",
+   "stratum": "conveyed|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pcccd6b79": {
+   "pair": "case_l2_l2b|o1|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pdfce7cd7": {
+   "pair": "case_l2_l2b|o52|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pfeb007b6": {
+   "pair": "case_l4_l4b|o24|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pddf553c9": {
+   "pair": "case_l3_l3a|o0|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p3dbd6039": {
+   "pair": "case_l4_l4b|o40|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p6e462ddb": {
+   "pair": "case_l2_l2b|o18|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p1c5132a8": {
+   "pair": "case_7_trigger_light_baseline|o2|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pad603c7f": {
+   "pair": "case_5_nonprofit_hospital_pe_conversion|o6|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p6cb415b4": {
+   "pair": "case_l4_l4a|o28|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p36aab11f": {
+   "pair": "case_l4_l4b|o15|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pa71311aa": {
+   "pair": "case_l2_l2a|o21|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p804087ab": {
+   "pair": "case_l3_l3b|o2|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pedec191e": {
+   "pair": "case_l3_l3b|o19|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p1eaf5b2f": {
+   "pair": "case_l4_l4b|o13|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p26ae7231": {
+   "pair": "case_l2_l2b|o37|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p6e572322": {
+   "pair": "case_l2_l2b|o0|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p8b44e809": {
+   "pair": "case_l1_l1b|o10|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p444092da": {
+   "pair": "case_1_clinical_decision_support|o0|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p9d543045": {
+   "pair": "case_l2_l2a|o13|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p2f3f4250": {
+   "pair": "case_l2_l2b|o14|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pa2fcab33": {
+   "pair": "case_5_nonprofit_hospital_pe_conversion|o6|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pcaf4607b": {
+   "pair": "case_l2_l2b|o40|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p83f43957": {
+   "pair": "case_l3_l3a|o14|r0",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p0927a0a0": {
+   "pair": "case_l1_l1b|o17|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p377c28bb": {
+   "pair": "case_l4_l4b|o2|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p98b0d968": {
+   "pair": "case_3_capitated_risk_contract|o5|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p3609cee9": {
+   "pair": "case_l3_l3b|o10|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p6663eee9": {
+   "pair": "case_l1_l1b|o6|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p53916f39": {
+   "pair": "case_10_trigger_light_depreciation|o0|r2",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "fully",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p026c7715": {
+   "pair": "case_5_nonprofit_hospital_pe_conversion|o3|r1",
+   "stratum": "conveyed|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "paf63be43": {
+   "pair": "case_l3_l3b|c2|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p6731d569": {
+   "pair": "case_l2_l2b|c13|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p5102e65d": {
+   "pair": "case_l2_l2a|c2|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pf54b9c62": {
+   "pair": "case_l1_l1a|c8|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pfe146ba2": {
+   "pair": "case_7_trigger_light_baseline|c3|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p112cba16": {
+   "pair": "case_l4_l4a|c32|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p19800035": {
+   "pair": "case_l4_l4a|c27|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pb867ce20": {
+   "pair": "case_l4_l4a|c33|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pab612de0": {
+   "pair": "case_l2_l2b|c30|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pc3b14551": {
+   "pair": "case_l4_l4a|c16|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pf985cbb0": {
+   "pair": "case_l2_l2b|c28|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pc113bfb3": {
+   "pair": "case_l3_l3b|c12|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p76b5712e": {
+   "pair": "case_l4_l4a|c35|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "paf3b1347": {
+   "pair": "case_l2_l2a|c10|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p9aa04e0f": {
+   "pair": "case_l3_l3b|c23|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pe1a3f5d0": {
+   "pair": "case_l4_l4a|c31|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p3bdb54f0": {
+   "pair": "case_l3_l3a|c13|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p0ab727dd": {
+   "pair": "case_l3_l3a|c6|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p76c859ca": {
+   "pair": "case_l2_l2a|c10|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p0261d1ce": {
+   "pair": "case_l2_l2b|c46|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p68f9ea83": {
+   "pair": "case_l4_l4a|c1|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pba0389af": {
+   "pair": "case_l4_l4a|c7|r2",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pa446c5a6": {
+   "pair": "case_4_glp1_employer_coverage|c3|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p0500ebcb": {
+   "pair": "case_4_glp1_employer_coverage|c2|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p8c83883b": {
+   "pair": "case_l4_l4b|c37|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p7e84d4c4": {
+   "pair": "case_l4_l4a|c13|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p6a581f5f": {
+   "pair": "case_l4_l4a|c20|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p84eaba7e": {
+   "pair": "case_l2_l2a|c7|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pd0cbd9c3": {
+   "pair": "case_5_nonprofit_hospital_pe_conversion|c0|r0",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p6f230066": {
+   "pair": "case_l3_l3a|c13|r1",
+   "stratum": "not|caveat",
+   "kind": "caveat",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p88ac81ed": {
+   "pair": "case_l4_l4a|o7|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p7b868eb5": {
+   "pair": "case_l2_l2a|o4|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pd7c483a1": {
+   "pair": "case_l4_l4b|o29|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p968d05e6": {
+   "pair": "case_l2_l2a|o7|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pbf6604b5": {
+   "pair": "case_7_trigger_light_baseline|o0|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p6cd77454": {
+   "pair": "case_l4_l4b|o11|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pe1236ccb": {
+   "pair": "case_l4_l4a|o13|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p1d34074a": {
+   "pair": "case_3_capitated_risk_contract|o2|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pd29d3f88": {
+   "pair": "case_l2_l2a|o19|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "partly",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p5bbfa41d": {
+   "pair": "case_2_cross_border_digital_therapeutic|o5|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p30422129": {
+   "pair": "case_l1_l1b|o14|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pd01fb6f9": {
+   "pair": "case_l4_l4a|o7|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p0c7549a4": {
+   "pair": "case_l3_l3a|o1|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p534ab415": {
+   "pair": "case_l4_l4a|o46|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p48d3abce": {
+   "pair": "case_l4_l4a|o28|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pa0fb628e": {
+   "pair": "case_l3_l3a|o14|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pf76b21fc": {
+   "pair": "case_2_cross_border_digital_therapeutic|o3|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p0ff810de": {
+   "pair": "case_4_glp1_employer_coverage|o1|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p48bfb586": {
+   "pair": "case_l3_l3b|o1|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "paaf754ec": {
+   "pair": "case_l2_l2b|o5|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "p62b48fec": {
+   "pair": "case_l4_l4a|o42|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p7045653d": {
+   "pair": "case_l2_l2a|o0|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p373d5bcd": {
+   "pair": "case_l2_l2a|o20|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pf27d2de6": {
+   "pair": "case_l2_l2b|o45|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "p0e66efc5": {
+   "pair": "case_l3_l3a|o7|r2",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "partly"
+   }
+  },
+  "pcf220b38": {
+   "pair": "case_l1_l1b|o13|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "p30fdfafe": {
+   "pair": "case_6_trigger_heavy_biotech_ma|o3|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pbbfd095e": {
+   "pair": "case_l4_l4b|o34|r0",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  },
+  "pc6ba398b": {
+   "pair": "case_l3_l3b|o2|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "fully"
+   }
+  },
+  "pc83f1be1": {
+   "pair": "case_l3_l3b|o9|r1",
+   "stratum": "not|ordinary",
+   "kind": "ordinary",
+   "judges": {
+    "gpt-oss:20b": "no",
+    "qwen3-vl:30b-a3b-instruct": "no"
+   }
+  }
+ }
+}

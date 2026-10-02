@@ -1,0 +1,7 @@
+==============================================================================
+CELL 66 — are caveats lost more than ordinary content?
+==============================================================================
+pairs 1710; with both judges' verdicts 1710
+
+P66.0 PENDING — the blind labels are not finished (.venv/bin/python train/label_blind.py bench/labels/cell66_conveyed).
+Nothing about the comparison is computed or shown until those labels are committed.
