@@ -2398,6 +2398,12 @@
        "end": 10163,
        "kind": "prereg",
        "heading": "CELL 62 PRE-REGISTRATION (2026-10-01) — do the sentence judges agree with a person?"
+      },
+      {
+       "line": 10759,
+       "end": 10774,
+       "kind": "note",
+       "heading": "CELL 62 RUN RECORD (2026-10-01) — the six judges have labelled the 404 sentences; scoring waits for the person's labels"
       }
      ],
      "matrix_row": null

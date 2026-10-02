@@ -5,7 +5,7 @@
    "title": "Do the AI judges' sentence labels agree with a person's?",
    "description": "The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. We then check the judges' method against the person's labels. Planned, with the AI judging queued to run.",
    "outcome": "not-run",
-   "size": "Planned: 404 sentences, one person, six AI judges",
+   "size": "AI judging done, the person's labels pending",
    "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
    "expectations": [
     {
@@ -33,7 +33,7 @@
      "note": "Not tested yet. Reported without a pass/fail test."
     }
    ],
-   "found": "Not run yet. The 404 sentences were drawn on 1 October 2026 by a fixed rule from sentences the two judges had already labeled in Cells 30, 31, 41 and 46. Half were flagged by at least one judge and half by neither. The labeling tool shows one sentence at a time with the three definitions and nothing else.",
+   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Scoring has not started. It waits for the author's blind labels, two rounds a week apart, and the first round must be saved before any comparison is computed. The sentences were drawn by a fixed rule from sentences the two original judges had already labeled in Cells 30, 31, 41 and 46.",
    "means": "If the current method matches the person's labels, the caveat counts in Cells 30, 38, 41 and 46 stand. If it does not but another rule does, the saved answers can be scored again with that rule, as a separately planned step. If no rule does, the project has no checked way to count caveats and says so.",
    "later": null,
    "entries": {
@@ -41,6 +41,11 @@
      "label": "Plan",
      "title": "Compare the AI judges with one person's blind labels",
      "summary": "A sample of 404 saved sentences, half flagged by at least one of the two original judges and half by neither. The author labels each one twice, a week apart, seeing only the sentence. Six AI judges label the same sentences. The current method and twelve other ways of combining judges are then scored against the person's first round."
+    },
+    "10759": {
+     "label": "Note",
+     "title": "The six AI judges have labeled the sentences",
+     "summary": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Nothing is scored until the author's blind labels are finished and saved. The second round of labels can start a week after the first."
     }
    }
   },

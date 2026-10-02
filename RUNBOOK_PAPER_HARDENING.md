@@ -10755,3 +10755,19 @@ the second pass only fills runs the first left empty.
 
 **Experiment 67 runs only if** 63's clean-layout check passed for the
 editor model; otherwise the queue records that it did not run.
+
+## CELL 62 RUN RECORD (2026-10-01) — the six judges have labelled the 404 sentences; scoring waits for the person's labels
+
+Recorded automatically by the run queue (step `c62-judges`, 2026-10-02T01:43:18Z, commit a63b7f9 checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+
+===== 2026-10-01T23:43:19Z $ train/run_cell62_instrument.py judge
+cell62 judge gpt-oss:20b: 404/404 labelled, 0 unparsed, 2772s
+cell62 judge qwen2.5:7b-instruct: 404/404 labelled, 0 unparsed, 706s
+cell62 judge phi4:14b: 404/404 labelled, 0 unparsed, 1748s
+cell62 judge qwen3-vl:30b-a3b-instruct: 404/404 labelled, 0 unparsed, 424s
+cell62 judge llama3:8b-instruct-q4_K_M: 404/404 labelled, 0 unparsed, 755s
+cell62 judge mistral:7b-instruct-v0.3-q4_K_M: 404/404 labelled, 0 unparsed, 795s
+cell62 judging complete
+```
