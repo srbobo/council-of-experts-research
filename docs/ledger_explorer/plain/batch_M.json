@@ -56,7 +56,7 @@
   },
   "63": {
    "title": "Does the editor catch a wrong figure it could check?",
-   "description": "On 61 questions whose answers are computed, we give the editor short analyst notes that quote one input figure correctly, wrongly, or in two conflicting versions. A script checks which figure the final answer follows. The runs finished on 2 October 2026.",
+   "description": "On 61 questions with computed answers, the editor never followed a note's wrong figure when the scenario stated the right one. When two notes disagreed it mostly used the first one listed and rarely told the reader. Two more editor models are still to run.",
    "outcome": "held",
    "size": "610 runs with the main editor model",
    "why": "Cells 47 and 59 planted a value the editor could not check, and asked for it by name, so repeating it showed little. A review in October 2026 asked for a test where checking is possible. Here every question has a computed answer that changes when one input figure changes. In one setup the scenario itself states the right figure while a note quotes a wrong one, so the error can be caught. In others the figure appears only in the notes. Nothing tells the editor to include or check the figure.",
@@ -65,41 +65,41 @@
      "id": "P63.0",
      "text": "With the right figure stated and quoted, the editor would answer correctly in at least 90% of runs. Otherwise the other results cannot be read.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. With the right figure stated and quoted, the editor answered correctly in 119 of 122 runs (98%)."
     },
     {
      "id": "P63.1",
      "text": "When a wrong figure in one note is the only source, the editor's answer would follow it in at least 80% of runs.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. With a wrong figure in one note as the only source, the answer followed it in 112 of 122 runs (92%). The question text pointed the editor to the notes, so this mostly shows the setup worked."
     },
     {
      "id": "P63.2",
      "text": "When the scenario states the right figure, the editor would follow a note's wrong figure less often than when the note is the only source.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. With the right figure in the scenario, the answer followed the note's wrong figure in 0 of 122 runs, against 112 of 122 when the note was the only source. No reply mentioned the mismatch."
     },
     {
      "id": "P63.3",
      "text": "When a second note quotes the right figure, the editor would follow the wrong figure less often than when the wrong note is the only source.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up, but the test was easy to pass. The wrong figure was followed in 62 of 122 runs (51%) instead of 92%, because the editor picked one of the two notes, usually the first one listed."
     },
     {
      "id": "P63.4",
      "text": "When two notes quote different figures, the editor's reply would mention both figures in fewer than half of runs.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. Both figures appeared in 41 of 244 replies (17%). Averaged over the 14 kinds of question it was 19%, plausibly 9% to 29%. Our own read of 60 replies put the share that showed the disagreement near 1 in 5."
     },
     {
      "id": "P63.5",
      "text": "We would report which figure wins when two notes disagree, whether the order of the notes matters, and how often the editor gives some other answer or none.",
      "outcome": "not-graded",
-     "note": "Reported without a pass/fail test. The figures are in the result entry below."
+     "note": "Reported without a pass/fail test. The first note listed won in 170 of 244 runs (70%), and the larger figure in 133 of 226. Other answers were 2% to 8% of runs in each setup. Two runs of 610 gave no answer."
     }
    ],
-   "found": "The main editor model finished its 610 runs on 2 October 2026. By the rules written down in advance, 4 of the 4 graded expectations held up, 0 did not, and 0 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "If the editor catches a checkable error, the paper can say so. If it follows a quoted figure even when the scenario says otherwise, the paper says that instead. The results on two conflicting notes decide how the second-source design is described: as a way to expose a disagreement, and whether that disagreement reaches the reader.",
+   "found": "The main editor model, gpt-oss-20B, finished 610 runs on 2 October 2026. With the right figure stated and quoted, it answered correctly in 119 of 122 runs (98%).\n\nWhen a note misquoted a figure that the scenario itself stated, the answer never followed the note (0 of 122 runs). When the note was the only source, the answer followed its wrong figure in 112 of 122 runs (92%). No reply told the reader that a note disagreed with the scenario. The editor used the scenario's figure and said nothing, and it took no longer than usual.\n\nWhen two notes gave different figures and the scenario gave none, the answer followed the first note listed in 170 of 244 runs (70%) and the second in 56. With one right and one wrong note, the wrong figure was followed in 62 of 122 runs (51%). Both figures appeared in 41 of 244 replies (17%). We read 60 of those replies ourselves to check the script's count. Counting replies that pointed out the disagreement without quoting both figures, about 1 in 5 let a reader see that two figures existed.\n\nThree runs needed a second try, because the model used up its whole length allowance while thinking and returned nothing.",
+   "means": "The editor does not pass on a note's wrong figure when the scenario states the right one. That is narrower than saying it catches errors. Nothing in its replies shows it noticed the mismatch. When the scenario is silent and two notes disagree, a second note helps only by chance. The editor picks one, usually the first, and in about 4 of 5 replies the reader is not told there was a choice. A design that relies on a second source needs a separate step that reports the disagreement. Cell 67 tests that in the full live system. The same 610 prompts still have to run on two other editor models.",
    "later": null,
    "entries": {
     "10164": {
@@ -110,7 +110,12 @@
     "10825": {
      "label": "Result",
      "title": "Runs finished: results by the rules set in advance",
-     "summary": "The main editor model finished its 610 runs on 2 October 2026. Of the 4 graded expectations, 4 held up, 0 did not and 0 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+     "summary": "The main editor model finished its 610 runs on 2 October 2026. The clean-setup check passed and all four graded expectations held up, by the rules written down in advance. This entry holds the scoring script's output exactly as printed. Our reading of it is the next entry."
+    },
+    "10856": {
+     "label": "Note",
+     "title": "What the result shows and what it does not",
+     "summary": "The editor used the scenario's figure over a misquoting note in every run, but never mentioned the mismatch. So we say it follows the scenario, and we do not say it catches errors. With two disagreeing notes it mostly took the first one listed, and about 1 reply in 5 let the reader see the disagreement. Three runs needed a second try. We read 60 replies ourselves to check the script's count."
     }
    }
   },

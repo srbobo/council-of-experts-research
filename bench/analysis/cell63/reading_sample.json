@@ -1,0 +1,265 @@
+{
+ "what": "Cell 63, main editor (gpt-oss:20b). A manual read of 60 replies from layouts C3 and C4, made for the analyst's reading entry of 2026-10-02. Not a registered measure and not blind: the reader (the AI assistant drafting the entry) saw the layout, the figures and the outcome of each reply. Samples were drawn with random.Random(63) from the replies sorted by run id: 40 of the 203 the registered detector marked as not showing both figures, then 20 of the 41 it marked as showing both.",
+ "labels": {
+  "D": "the reply lets a reader see that two different figures were on offer (it says so, or works with both)",
+  "H": "the reply names one analyst as the source of its figure and says nothing of a second figure",
+  "N": "the reply gives no sign that a choice was made",
+  "C": "the detector's match is a coincidence: the second figure appears only as a computed value"
+ },
+ "not_both_sample": [
+  {
+   "run_id": "t3_v0__C4__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t8_v5__C4__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r6_v3__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r5_v3__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t3_v3__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t7_v0__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r2_v1__C3__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t2_v0__C3__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t8_v2__C4__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "r2_v0__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r2_v0__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t8_v4__C4__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r4_v3__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "r6_v3__C3__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r2_v0__C3__r0__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t6_v2__C3__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t1_v0__C3__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t6_v1__C3__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r1_v4__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "r5_v0__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t7_v1__C3__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r2_v3__C4__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t1_v1__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r5_v2__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "r6_v1__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t6_v0__C3__r0__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t7_v1__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r1_v2__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r1_v2__C4__r0__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t5_v3__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r3_v1__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "r5_v1__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t8_v1__C3__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t5_v1__C3__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t2_v3__C3__r1__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "t2_v3__C4__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t6_v3__C3__r0__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t1_v3__C4__r1__gpt-oss:20b",
+   "label": "N"
+  },
+  {
+   "run_id": "t3_v3__C4__r0__gpt-oss:20b",
+   "label": "H"
+  },
+  {
+   "run_id": "r4_v3__C4__r0__gpt-oss:20b",
+   "label": "H"
+  }
+ ],
+ "both_sample": [
+  {
+   "run_id": "r3_v3__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r2_v0__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t7_v3__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r6_v4__C4__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t6_v3__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r4_v2__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r1_v2__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r4_v3__C4__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r1_v1__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t3_v0__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t4_v0__C3__r0__gpt-oss:20b",
+   "label": "C"
+  },
+  {
+   "run_id": "r6_v1__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t4_v4__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r5_v1__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t4_v0__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t4_v1__C4__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t3_v3__C4__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t4_v2__C3__r0__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "r5_v3__C3__r1__gpt-oss:20b",
+   "label": "D"
+  },
+  {
+   "run_id": "t6_v3__C4__r1__gpt-oss:20b",
+   "label": "D"
+  }
+ ],
+ "counts": {
+  "not_both_sample": {
+   "H": 14,
+   "D": 3,
+   "N": 23
+  },
+  "both_sample": {
+   "D": 19,
+   "C": 1
+  }
+ },
+ "C1_check": "All 122 C1 replies were searched for any word that could refer to the notes or to a mismatch (analyst, specialist, contribut, passage, note, quoted, discrepan, conflict, inconsisten, typo, misquot, misstat, mismatch, differs, 'different figure', 'another figure', 'other figure', 'instead of', 'rather than'). The search was used only to find replies to read. It matched one reply, where the word is a table column header. Twelve C1 replies drawn with random.Random(631) were also read in full; none refers to the notes. The two C1 replies the detector marks as showing both figures (r3_v0, both runs) contain the planted figure 1800 only as the computed value 2400 - 600."
+}

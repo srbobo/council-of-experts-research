@@ -2439,6 +2439,12 @@
        "end": 10855,
        "kind": "verdict",
        "heading": "CELL 63 VERDICT (2026-10-02) — main editor model, 610 runs; verdict lines as printed by the registered script, reading to follow"
+      },
+      {
+       "line": 10856,
+       "end": 11082,
+       "kind": "note",
+       "heading": "CELL 63 READING (2026-10-02) — main editor: when the case states the figure the answer follows the case in all 122 runs and no reply mentions the misquoting note; when two notes conflict the answer follows the first-listed one in 170 of 244 runs and 41 replies show both figures"
       }
      ],
      "matrix_row": null
@@ -4112,7 +4118,7 @@
     ],
     "header": null,
     "cols": [
-     "**Does the editor catch a wrong figure it could check?** Cell 63 (scripted notes) and Cell 67 (live chain), registered 2026-10-01, on 61 questions with computed answers."
+     "**Does the editor catch a wrong figure it could check?** PARTLY ANSWERED 2026-10-02 (Cell 63, main editor gpt-oss:20b, scripted notes, 610 runs on 61 questions with computed answers; registered 2026-10-01). When the case states the figure, the answer follows the case: a note's wrong figure is followed in 0/122 runs against 112/122 when the note is the only source (**+0.923 [+0.840, +1.005], p = 0.0001**, 14 templates), and no reply mentions the misquote (0/122). That is \"follows the case\", not \"catches\": nothing observed shows the conflict was noticed. When two notes conflict and the case is silent, the answer follows the first-listed note in 170/244 runs, and both figures appear in 41/244 replies (0.186 [0.087, 0.285] by template), so the disagreement mostly does not reach the reader. **Still open:** the same prompts on phi4 and qwen3-vl (queued), and the live chain (Cell 67). The result moves to §1 when those are in."
     ]
    },
    {

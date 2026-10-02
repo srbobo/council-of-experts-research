@@ -10852,3 +10852,230 @@ CELL 63 — a wrong figure the editor could check
   P63.3: SUPPORTED — difference +0.416 [+0.279, +0.553]  sign-flip p = 0.0002  (k = 14 templates)
   P63.4: SUPPORTED — both figures mentioned +0.186 [+0.087, +0.285]  (k = 14 templates) (expectation: below 0.5)
 ```
+
+## CELL 63 READING (2026-10-02) — main editor: when the case states the figure the answer follows the case in all 122 runs and no reply mentions the misquoting note; when two notes conflict the answer follows the first-listed one in 170 of 244 runs and 41 replies show both figures
+
+This is the analyst's reading of the entry above. The verdict words are the
+ones the registered script printed and nothing here changes them. Figures
+the script does not print come from
+`bench/analysis/cell63/reading_checks.py`, written after the runs. It calls
+no model and writes `bench/analysis/cell63/reading_checks.json`. Those
+figures are marked *not registered*. A manual read of 60 replies is on file
+in `bench/analysis/cell63/reading_sample.json`.
+
+### The run
+
+- 610 runs of gpt-oss:20b, 122 per layout, two per item and layout on all
+  61 items, from 2026-10-02T01:43:21Z to 13:49:22Z. That is 12.1 hours; the
+  registration estimated nine to ten.
+- Every record carries registration commit 6402fc0, one runner hash
+  (9242098ae47432a8) and one model build (17052f91a42e), temperature 0.6,
+  a 16,384-token allowance and a 32,768-token context. The `head` field
+  changes once, from b89c771 to 6056930: the CELL 62 NOTE was committed
+  while this cell ran. The runner file did not change.
+- No run hit the context limit, none was set aside or dropped, and the
+  queue's second pass found nothing to fill.
+- **Second tries** (the retry rule is registered; the count is not a
+  registered outcome). Three recorded runs are a second try: t8_v0 in C0,
+  t8_v3 in C2, t8_v4 in C3. Each follows 740 to 768 seconds with no record,
+  which is the time 16,384 tokens take at this model's median speed of 23.4
+  tokens per second, so the first reply was empty because the whole
+  allowance went on reasoning. One each in C0, C2 and C3 and none in C1 or
+  C4: this follows the template, not the layout. Template t8, a compounding
+  rent series, has a median of 3,516 output tokens against 1,132 for the
+  other thirteen. Eight of its 60 recorded runs used more than 8,000 and
+  one used 16,368 and still answered right. The "no answer" column below is
+  counted after retries; before them, 3 more of 610 runs (0.5%) had no
+  reply.
+
+### What the script printed, as counts
+
+| layout | the case states | notes quote | n | right | planted | other | no answer | both figures |
+|---|---|---|---|---|---|---|---|---|
+| C0 | right figure | right | 122 | 119 | 0 | 3 | 0 | n/a |
+| C1 | right figure | wrong | 122 | 116 | 0 | 6 | 0 | 2 |
+| C2 | nothing | wrong | 122 | 0 | 112 | 10 | 0 | n/a |
+| C3 | nothing | wrong and right | 122 | 52 | 62 | 8 | 0 | 25 |
+| C4 | nothing | two wrong | 122 | 0 | 112 | 8 | 2 | 16 |
+
+### Reading, prediction by prediction
+
+**P63.0 passes.** 119 of 122 (0.975). The three misses are arithmetic
+slips.
+
+**P63.1 supported, and close to guaranteed by the layout.** In C2 the case
+replaces the figure with the words "[figure given in the analysts'
+passages]", so the question itself sends the editor to the notes, and one
+note holds the only figure. 112 of 122 answers (0.918) follow it. The other
+10 are "other" answers and none is right, as it must be: the right figure
+is nowhere in the prompt. This shows the planting works. It says nothing
+about how far the editor trusts an analyst.
+
+**P63.2 supported: the answer follows the case and never the note.
+"Catches" is not shown.**
+
+- The planted answer appears in 0 of 122 C1 runs against 112 of 122 in C2.
+  By template the difference is +0.923 [+0.840, +1.005], p = 0.0001, the
+  smallest value the exact test can give with 14 templates: all 14 point
+  the same way. The interval's upper end passes 1 because C1 is 0 in every
+  template. No item follows the note in either of its two runs (0 of 61).
+- All six "other" answers in C1 contain the case's figure and none
+  contains the note's. They slip elsewhere: the three on template t7 charge
+  twelve months of drug cost to members who stay six.
+- No C1 reply mentions the note (*not registered*). The detector's two
+  "both figures" hits are one item, r3_v0, in both runs, where the planted
+  figure 1,800 is also a computed value (2,400 − 600). All 122 replies were
+  searched for any word that could refer to the notes or to a mismatch,
+  only to find replies to read; the one match is a table header. Twelve
+  replies drawn at random were read in full and none refers to the notes.
+- The editor does not work longer on these runs (*not registered*). Median
+  output tokens, reasoning included, are 1,006 in C1 against 978 in C0;
+  item by item, C1 minus C0 has a mean of +10 and a median of +30 tokens.
+  Two conflicting notes do lengthen the work: C3 minus C2 has a median of
+  +678 tokens and is higher on 53 of 61 items.
+- Right answers are 116 of 122 against 119 in C0, a gap of three runs. No
+  test was registered for that contrast.
+
+The sentence the data support: *when the case states the figure, this
+editor's answer follows the case and not a note that misquotes it (0 of
+122 runs), and no reply tells the reader about the misquote (0 of 122).*
+The registration's consequence line allows "catches a wrong figure when the
+case contradicts it". That wording says the conflict was noticed. Nothing
+observed shows that: an editor that never read the notes would produce the
+same C1 column, the replies are silent, the token counts match the clean
+layout, and the reasoning text is not stored. The paper should use the
+narrower sentence. This narrows the registered consequence. It does not
+change the verdict.
+
+**P63.3 supported, by a rule that any editor choosing between the two
+notes would pass.** With a second note that quotes the right figure, the
+wrong figure is followed in 62 of 122 runs (0.508), down from 0.918:
++0.416 [+0.279, +0.553], p = 0.0002. In C3 the case gives no way to tell
+which note is right. The split by listing order, registered under P63.5,
+shows what the editor does:
+
+| C3 | follows the right figure | follows the wrong figure | other |
+|---|---|---|---|
+| right note listed first (61 runs) | 42 | 17 | 2 |
+| wrong note listed first (61 runs) | 10 | 45 | 6 |
+
+The answer follows the first-listed note in 87 of 122 runs. An editor that
+always took the first note would score exactly 0.50 in this balanced
+layout, and the observed share is 0.508. The drop from C2 is what picking
+one of two notes produces. It is not evidence that the editor weighs its
+sources. By template the wrong-figure share runs from 0.12 (t5) to 1.00
+(t6, a reserve calculation, where all eight runs take the larger driver
+count whichever note comes first).
+
+**P63.4 supported: the disagreement mostly does not reach the reader.**
+Both figures appear in 41 of the 244 C3 and C4 replies (25 and 16). By
+template that is 0.186 [0.087, 0.285], entirely below 0.5. Three checks on
+the detector, all *not registered*:
+
+- *Chance matches.* In layouts where a figure is nowhere in the prompt its
+  digits still turn up in 1 to 5 of 122 replies (wrong figures in C0: 2 and
+  1; the right figure in C2: 5; in C4: 4). One of the 20 "both" replies
+  read below is such a coincidence.
+- *Format misses.* The detector does not match a figure typeset as 5{,}200
+  or 2\,300. In C0 it finds the right figure in 94 of 122 replies; with
+  those separators removed, in 111. Of the other 11, eight are the answer
+  line alone and three do not restate the figure. The both-figures counts
+  hardly move: 25 and 17 instead of 25 and 16, by template 0.189
+  [0.091, 0.287].
+- *Disagreement stated without both numbers.* A manual read of 60 replies
+  drawn with a fixed seed. Of 40 from the 203 that the detector marks as
+  not showing both figures, 3 tell the reader that two figures were on
+  offer, 14 name one analyst as the source of the figure and say nothing of
+  a second one, and 23 give no sign that a choice was made. Of 20 from the
+  41 it marks as showing both, 19 do let the reader see two figures and 1
+  is the coincidence above. Scaled to all 244 replies that is about 54
+  (22%). Taking the first sample's rate at the top of its 95% range gives
+  about a third. Both are below one half, so the reading of P63.4 does not
+  rest on the detector.
+
+One reply in 244 declines to choose: t4_v2 in C4 ends with an answer for
+each figure, and the parser scores it "no answer".
+
+**P63.5, reported without a pass or fail.**
+
+- C3, share right among runs giving either answer: 52 of 114; by template
+  0.463 [0.336, 0.589]. Right when the right note is listed first 42 of 59
+  (0.712), when listed second 10 of 55 (0.182).
+- C4's split, which the script does not print: 71 runs follow the raised
+  figure and 41 the lowered one; 83 follow the first-listed note and 29 the
+  second (by template 0.719 [0.584, 0.855] of those following either).
+
+| C4 | follows the raised figure | follows the lowered figure | other | no answer |
+|---|---|---|---|---|
+| raised figure listed first (61 runs) | 49 | 7 | 4 | 1 |
+| lowered figure listed first (61 runs) | 22 | 34 | 4 | 1 |
+
+- "Other" answers are 3, 6, 10, 8 and 8 of 122 in C0 to C4 and "no
+  answer" is 0, 0, 0, 0 and 2. Of these 37 runs, 14 are on template t7 and
+  8 on t8. Forty of the 610 replies (7 to 10 per layout) are the answer
+  line alone.
+
+### Not registered: which note wins when two disagree
+
+Over C3 and C4 together the answer follows the first-listed note in 170 of
+244 runs, the second-listed in 56 and neither in 18. Among runs following
+either, the first-listed share by template is 0.745 [0.664, 0.826]; an
+exact sign-flip test against one half gives p = 0.0002. That test was
+chosen after seeing the data. The larger of the two figures is followed in
+133 runs and the smaller in 93, so order is not the only influence.
+
+Of the 22 sampled replies that acknowledge two figures, 8 work the answer
+out under both, 4 say they take the first one mentioned, 4 choose by size
+or caution ("worst case", "to be conservative", "the later of the two"),
+and 6 assert that one figure is more common, more realistic, a typo or
+inconsistent. Some fall in two groups. Nothing in the prompt supports the
+last kind; in one of them (r1_v2, C3) the figure dismissed as "a typo" is
+the right one.
+
+### Limits
+
+- One editor model. phi4:14b and qwen3-vl:30b-a3b-instruct run the same
+  610 prompts in queue step c63-repeat.
+- The notes are scripted single sentences that quote the case, not
+  specialist prose. CELL 67 puts the same items through the live chain.
+- Listing order and the label "Analyst A" are the same thing here: the
+  first-listed note is always Analyst A's.
+- In C2 to C4 the case text points the editor to the notes. A real case
+  would not.
+- The reply must end in one number. The working is free to show a
+  conflict, but the format asks for a single answer.
+- Two runs per item and layout at temperature 0.6. The 14 templates are
+  the unit of analysis, and p = 0.0001 is the floor of the test, not a
+  measure of size.
+- The manual read is by one reader, the AI assistant drafting this entry.
+  It was not blind to layout and its categories were fixed while reading.
+  It is a check on the detector, not a measurement.
+
+### Consequences
+
+- **Paper.** Planted figures: with the case as a source, a note's wrong
+  figure is not followed (the narrower sentence above). Second source: it
+  changes the answer about half the time, mostly by which note comes
+  first, and the reader is told in roughly one reply in five. It does not
+  by itself expose a disagreement. Whether the live chain's required list
+  of disagreements changes that is CELL 67's question.
+- **Ledger.** The open question in `docs/STATUS.md` §5 is updated in
+  place. The result moves to the claims tables when the two repeat editors
+  and CELL 67 are in.
+- **Queue.** CELL 67's condition is met (P63.0 passes for the editor
+  model), so its step will run.
+- No new experiment is proposed here. Separating listing order from the
+  analyst label, or asking the editor to report conflicts, would each need
+  its own registration.
+
+### Checklist items that bite on this reading
+
+2 (the detector matches digits and shares no wording with any prompt). 3
+(checked at this task: chance matches counted where the figure is absent,
+format misses counted, 60 replies read in both directions). 6 (everything
+marked *not registered* was computed after seeing the data and is
+descriptive). 7 (the outcome is named "follows", not "catches", "trusts"
+or "verifies"). 8 (layouts were assigned, so "the answer changes with the
+layout" is interventional; "because it noticed the conflict" is not
+supported). 11 ("other", "no answer", second tries and answer-line-only
+replies are reported for every layout).

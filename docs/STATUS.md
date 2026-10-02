@@ -1,6 +1,6 @@
 # Claim status ledger — the authoritative record
 
-**Claims current through Cell 61 (2026-09-02). Corrected 2026-10-01 after the board review (`docs/BOARD_REVIEW_2026-10-01.md`): no new runs, one scoring bug fixed, small-sample intervals recomputed at the scenario or item level, preference reported on all pairs. Rows changed that day say so. Artifact table refreshed 2026-10-01.** Framework set 2026-08-09, after program audits #1 and #2, PD-13, Cell 30's
+**Claims current through Cell 61 (2026-09-02). Corrected 2026-10-01 after the board review (`docs/BOARD_REVIEW_2026-10-01.md`): no new runs, one scoring bug fixed, small-sample intervals recomputed at the scenario or item level, preference reported on all pairs. Rows changed that day say so. Artifact table refreshed 2026-10-01. The first result of the cells registered after the review (Cell 63, main editor, 2026-10-02) is recorded in §5 and is not yet a row in §1.** Framework set 2026-08-09, after program audits #1 and #2, PD-13, Cell 30's
 instrument failure, the ledger-baseline confound, and the standing
 directive that regex not be used as an instrument in this program.
 
@@ -122,7 +122,7 @@ and its status.
 - Is the writer's use of a prior distinguishable from computation? (Cell 37's P37.2 downgraded to NOT EVALUABLE — both arms at floor, no attainability check was registered for it)
 - **Do the two-judge sentence labels agree with a person?** Cell 62, registered 2026-10-01: 404 sentences, the author's blind labels twice a week apart, six local judges. Until it reports, every count made with the labels is provisional.
 - **Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this.
-- **Does the editor catch a wrong figure it could check?** Cell 63 (scripted notes) and Cell 67 (live chain), registered 2026-10-01, on 61 questions with computed answers.
+- **Does the editor catch a wrong figure it could check?** PARTLY ANSWERED 2026-10-02 (Cell 63, main editor gpt-oss:20b, scripted notes, 610 runs on 61 questions with computed answers; registered 2026-10-01). When the case states the figure, the answer follows the case: a note's wrong figure is followed in 0/122 runs against 112/122 when the note is the only source (**+0.923 [+0.840, +1.005], p = 0.0001**, 14 templates), and no reply mentions the misquote (0/122). That is "follows the case", not "catches": nothing observed shows the conflict was noticed. When two notes conflict and the case is silent, the answer follows the first-listed note in 170/244 runs, and both figures appear in 41/244 replies (0.186 [0.087, 0.285] by template), so the disagreement mostly does not reach the reader. **Still open:** the same prompts on phi4 and qwen3-vl (queued), and the live chain (Cell 67). The result moves to §1 when those are in.
 - **Does the appended-caveat result hold for other reader models, without the instruction clause, in a list of ten?** Cell 64, registered 2026-10-01. Human readers are not testable by one person and stay open.
 - **Does the judge preference repeat on judges from other model families?** Cell 65, registered 2026-10-01. Human preference stays open.
 - **Is the role-prompted pipeline better than the same model sampled four times?** Cell 68 is a design only; it needs public question sets and is not scheduled.
