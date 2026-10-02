@@ -10771,3 +10771,53 @@ cell62 judge llama3:8b-instruct-q4_K_M: 404/404 labelled, 0 unparsed, 755s
 cell62 judge mistral:7b-instruct-v0.3-q4_K_M: 404/404 labelled, 0 unparsed, 795s
 cell62 judging complete
 ```
+
+## CELL 62 NOTE (2026-10-01) — judging complete with nothing unparsed; no label statistics are read until the person's labels are committed; when the registrations became public
+
+**What ran.** Six judges labelled the 404 sampled sentences in batches of
+ten: 41 batches per judge, 246 calls. Every batch parsed on the first
+attempt: no retry, no split batch, no context-limit hit, 404 of 404
+sentences labelled by each judge. Wall time: gpt-oss:20b 2,772 s,
+phi4:14b 1,748 s, mistral:7b 795 s, llama3:8b 755 s, qwen2.5:7b 706 s,
+qwen3-vl:30b 424 s; two hours in all (23:43:19Z to 01:43:18Z). Every call
+record carries its UTC time, model digest, seed, context length, token
+counts, the registration commit (6402fc0) and the runner's hash
+(`bench/runs/cell62_judge_calls.jsonl`). No judge is excluded by the
+20% rule.
+
+**What was not done, on purpose.** No count, rate or agreement figure
+has been computed from the judges' labels, and none will be until the
+person's pass-1 labels are committed: the scoring stage refuses to run
+before that. `bench/analysis/cell62/judge_labels.json` and the sample's
+key are in the repository and are held back from the site's data files.
+The person labelling should not open either.
+
+**One wording slip in the automatic entry above.** It describes its
+block as "the unedited output of the registered scoring stage". This
+step has no scoring stage yet; the block is the log of the judging
+stage. The queue's wording is accurate for the steps that do score.
+
+**When the registrations became public.** The order of events, in UTC:
+
+| event | time |
+|---|---|
+| registration commit 6402fc0 (local) | 2026-10-01 23:41:15 |
+| private site artifact republished with the registrations (version id 1790898171) | 2026-10-01 23:42:51 |
+| queue started; first judge call of this cell | 2026-10-01 23:43:19 |
+| commits pushed to the public repository (GitHub `pushed_at`), remote head a63b7f9 | 2026-10-02 00:33:52 |
+| first run of Cell 63 | 2026-10-02 01:43:21 |
+
+So the registrations were public 70 minutes before any run of Cells 63
+to 67. For this cell the public push came 50 minutes after the judge
+calls began; what precedes them is the local commit and the private
+artifact copy. The person's labels, which are the reference this cell
+scores against, had not been started when the push was made (no labels
+file existed). GitHub overwrites `pushed_at` on the next push, so this
+table is the record of it; the push event itself stays in GitHub's event
+log for a limited time.
+
+**What happens next.** The author labels the 404 sentences blind
+(`.venv/bin/python train/label_blind.py bench/labels/cell62_sentences`),
+commits the labels, and labels them again at least seven days later.
+`measure` gives an interim read after pass 1 and the registered verdict
+after pass 2.

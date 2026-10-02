@@ -3,7 +3,7 @@
  "cells": {
   "62": {
    "title": "Do the AI judges' sentence labels agree with a person's?",
-   "description": "The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. We then check the judges' method against the person's labels. Planned, with the AI judging queued to run.",
+   "description": "The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges have labeled the same sentences. Their method will be checked against the person's labels once those are saved.",
    "outcome": "not-run",
    "size": "AI judging done, the person's labels pending",
    "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
@@ -33,7 +33,7 @@
      "note": "Not tested yet. Reported without a pass/fail test."
     }
    ],
-   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Scoring has not started. It waits for the author's blind labels, two rounds a week apart, and the first round must be saved before any comparison is computed. The sentences were drawn by a fixed rule from sentences the two original judges had already labeled in Cells 30, 31, 41 and 46.",
+   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Every batch came back readable, so no judge had to be left out. Scoring has not started, and no figure has been computed from the judges' labels. It waits for the author's blind labels, two rounds a week apart, and the first round must be saved before any comparison is made. The sentences were drawn by a fixed rule from sentences the two original judges had already labeled in Cells 30, 31, 41 and 46.",
    "means": "If the current method matches the person's labels, the caveat counts in Cells 30, 38, 41 and 46 stand. If it does not but another rule does, the saved answers can be scored again with that rule, as a separately planned step. If no rule does, the project has no checked way to count caveats and says so.",
    "later": null,
    "entries": {
@@ -46,6 +46,11 @@
      "label": "Note",
      "title": "The six AI judges have labeled the sentences",
      "summary": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Nothing is scored until the author's blind labels are finished and saved. The second round of labels can start a week after the first."
+    },
+    "10775": {
+     "label": "Note",
+     "title": "Judging went cleanly, and when the plans became public",
+     "summary": "All six judges labeled all 404 sentences, with no unreadable replies. Nothing is counted from their labels until the author's own labels are saved. The plans for the new experiments were saved locally before any run and posted to the public repository 70 minutes before Cell 63 began. For this cell, the public posting came 50 minutes after the judging had started."
     }
    }
   },
