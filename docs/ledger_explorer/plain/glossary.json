@@ -91,7 +91,7 @@
    "also": [
     "harness"
    ],
-   "definition": "The redesigned council, built only from parts that held up in testing and tested piece by piece from Cell 47 onward. It gives key numbers to two specialists on purpose, carries caveats in a separate section, and sends follow-up questions back to specialists. In early August the lab notes also use \"harness\" for an earlier package of measuring and checking tools, which is a different thing."
+   "definition": "A redesign of the council, assembled from what the project observed and tested piece by piece from Cell 47 onward. It gives key numbers to two specialists on purpose, carries caveats in a separate section, and sends follow-up questions back to specialists. A review in October 2026 found several of those test results weaker than first reported. In early August the lab notes also use \"harness\" for an earlier package of measuring and checking tools, which is a different thing."
   },
   {
    "group": "Caveats and caution",
@@ -129,7 +129,7 @@
     "shrinkage law",
     "transport coefficient"
    ],
-   "definition": "The formula for how caveats move from the specialists into the final answer. Here s is how much caution the specialists handed over and y is how much reaches the final answer. The early cells count kinds of caveat, and the later cells scored by AI judges (Cell 30 onward) count sentences that carry a caveat. The share passed along is w, and c is how much the editor adds on its own when handed none."
+   "definition": "The formula for how caveats move from the specialists into the final answer. Here s is how much caution the specialists handed over and y is how much reaches the final answer. The early cells count kinds of caveat, and the later cells scored by AI judges (Cell 30 onward) count sentences that carry a caveat. The share passed along is w, and c is how much the editor adds on its own when handed none. A review in October 2026 found that w mostly reflects how much shorter the final answer is than the specialists' text."
   },
   {
    "group": "Caveats and caution",
@@ -302,7 +302,7 @@
    "also": [
     "reading order"
    ],
-   "definition": "An AI judge's habit of preferring whichever answer it reads first. Our judges picked the first answer 85% to 88% of the time, so every comparison was shown in both orders."
+   "definition": "An AI judge's habit of preferring whichever answer it reads first. Our judges picked the first answer 80% to 89% of the time, so every comparison was shown in both orders."
   },
   {
    "group": "How we measured",
@@ -310,7 +310,7 @@
    "also": [
     "decisive pair"
    ],
-   "definition": "A comparison where the judge picked the same answer in both orders. Everything else counts as a tie."
+   "definition": "A comparison where the judge picked the same answer in both orders. Everything else counts as a tie. Since October 2026 we count every pair, with a tie as half a win for each side."
   },
   {
    "group": "How we measured",
@@ -336,7 +336,7 @@
     "validated judge instrument",
     "batched judging"
    ],
-   "definition": "Two AI judges labeling each sentence of an answer separately. It became the project's main measuring tool after Cell 23, and Cell IV checked that judging sentences in batches of 10 keeps its accuracy."
+   "definition": "Two AI judges labeling each sentence of an answer separately. It became the project's main measuring tool after Cell 23, and Cell IV checked that judging sentences in batches of 10 keeps its accuracy. A review in October 2026 found the two judges agree little beyond chance, and Cell 62 checks them against a person's labels."
   },
   {
    "group": "How we measured",
@@ -345,7 +345,7 @@
     "confidence interval",
     "CI"
    ],
-   "definition": "The range the true value could reasonably fall in, given how few runs there were. When the range for a head-to-head test includes 50%, the result is too close to call."
+   "definition": "The range the true value could reasonably fall in, given how few runs there were. When the range for a head-to-head test includes 50%, the result is too close to call. Since October 2026 the ranges are computed over scenarios or questions, not individual runs."
   },
   {
    "group": "How we measured",
@@ -383,7 +383,7 @@
     "appendix",
     "out-of-band channel"
    ],
-   "definition": "A section attached to the end of the final report that carries the specialists' caveats directly. The editor never rewrites it, so nothing is lost on the way."
+   "definition": "A section attached to the end of the final report that lists the specialists' caveats directly. The editor never rewrites it, so every listed caveat is there by construction."
   },
   {
    "group": "The rebuilt system",
