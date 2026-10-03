@@ -105,6 +105,32 @@ STEPS = {
                     "entry. The pass or fail results stay those of the main editor model."),
         "paths": ["bench/analysis/cell63", "bench/runs/cell63_checkable.jsonl"],
     },
+    "c66-check": {
+        "cell": "66", "kind": "note",
+        "heading": "CELL 66 CHECK RECORD ({date}) — the amended P66.0 scored against public human labels and known values; output of the registered check script",
+        "label": "Note", "title": "The AI judges were checked against public human labels and known values",
+        "summary": ("Instead of the author's labels, the two AI judges were checked on {long} against 300 human-labeled "
+                    "summary sentences from a public benchmark and 260 cases built with a known answer. The pass or fail "
+                    "of that check decides whether the caveat comparison may be read."),
+        "paths": ["bench/analysis/cell66", "bench/runs/cell66_check.jsonl"],
+    },
+    "c66-measure": {
+        "cell": "66", "kind": "verdict", "reported": ["P66.2"], "gate": "P66.0",
+        "heading": "CELL 66 VERDICT ({date}) — 1,710 pairs; verdict lines as printed by the registered script after the amended check, reading to follow",
+        "label": "Result", "title": "The comparison scored: results by the rules set in advance",
+        "size": "1,710 pairs judged by two AI judges, checked on public labels",
+        "what": "The comparison between caveats and ordinary sentences was scored on {long}.",
+        "paths": ["bench/analysis/cell66"],
+    },
+    "c62-check": {
+        "cell": "62", "kind": "note",
+        "heading": "CELL 62 CHECK RECORD ({date}) — no person's labels: judge-only statistics and the public speculation-label figure; output of the registered check script",
+        "label": "Note", "title": "What the judges show without a person's labels",
+        "summary": ("Because no person could label the sentences, on {long} we recorded how far the six AI judges agree with "
+                    "each other and how they respond to 400 review sentences with human-marked uncertainty cues from a "
+                    "public corpus. No pass or fail is possible without a reference, so the caveat counts stay provisional."),
+        "paths": ["bench/analysis/cell62", "bench/runs/cell62_check_calls.jsonl"],
+    },
     "c67-livechain": {
         "cell": "67", "kind": "verdict", "reported": ["P67.4"], "gate": "P67.0",
         "heading": "CELL 67 VERDICT ({date}) — the live chain on 61 items; verdict lines as printed by the registered script, reading to follow",

@@ -87,3 +87,4 @@ venv/
 
 # run queue: the pid file is machine state, not a record
 /bench/queue/queue.pid
+/bench/external/

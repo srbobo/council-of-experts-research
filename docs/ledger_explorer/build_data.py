@@ -272,7 +272,15 @@ def build(ledger):
         other files that reveal what an item is to the task they belong to."""
         m = re.match(r"bench/labels/([^/]+)/key\.json$", rel)
         task = m.group(1) if m else BLIND_KEYS.get(rel)
-        return bool(task) and not os.path.exists(os.path.join(ROOT, "bench", "labels", task, "labels_pass1.done"))
+        if not task:
+            return False
+        if os.path.exists(os.path.join(ROOT, "bench", "labels", task, "labels_pass1.done")):
+            return False
+        # CELL 66 and CELL 62 AMENDMENTS (2026-10-02): no person labels; the hold-back ends
+        # when the registered substitute check has been scored and recorded
+        released = {"cell66_conveyed": "bench/analysis/cell66/measured.json",
+                    "cell62_sentences": "bench/analysis/cell62/check_measured.json"}
+        return task not in released or not os.path.exists(os.path.join(ROOT, released[task]))
 
     def attach_file(eid, full, role):
         rel = os.path.relpath(full, ROOT)

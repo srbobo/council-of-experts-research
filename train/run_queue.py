@@ -52,6 +52,14 @@ STEPS = [
      ["train/run_cell63_checkable.py", "measure"]),
     ("c67-livechain", [["train/run_cell67_livechain.py", "runs"], ["train/run_cell67_livechain.py", "runs"]],
      ["train/run_cell67_livechain.py", "measure"]),
+    # CELL 66 and CELL 62 AMENDMENTS (2026-10-02): the person's labels replaced by registered checks
+    ("c66-check", [["train/run_cell66_check.py", "frank"], ["train/run_cell66_check.py", "known"],
+                   ["train/run_cell66_check.py", "smoke"], ["train/run_cell66_check.py", "judge"]],
+     ["train/run_cell66_check.py", "measure"]),
+    ("c66-measure", [], ["train/run_cell66_conveyed.py", "measure"]),        # after the check is committed
+    ("c62-check", [["train/run_cell62_check.py", "build"], ["train/run_cell62_check.py", "smoke"],
+                   ["train/run_cell62_check.py", "judge"]],
+     ["train/run_cell62_check.py", "measure"]),
 ]
 MODELS = ["gpt-oss:20b", "qwen2.5:7b-instruct", "phi4:14b", "qwen3-vl:30b-a3b-instruct",
           "llama3:8b-instruct-q4_K_M", "mistral:7b-instruct-v0.3-q4_K_M", "nomic-embed-text"]

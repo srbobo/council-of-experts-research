@@ -11139,3 +11139,195 @@ verdict.
   and three passages only. The labels are committed, then `measure` is
   run and its output recorded as the CELL 66 verdict entry.
 - Until then P66.0 is PENDING and the queue has moved on to CELL 64.
+
+## CELL 66 AMENDMENT (2026-10-02) — the person's labels are replaced by a check against public human labels (FRANK) and a known-value check on unused material; registered before any judge answer is read
+
+The author cannot provide the 120 blind labels that P66.0 needs (stated
+2026-10-02). Nothing from the judges has been read: the scoring stage has
+printed only `P66.0 PENDING` (CELL 66 RUN RECORD, CELL 66 READING). This
+amendment replaces the check in P66.0 before anything else is computed.
+Everything else in the registration stands: the 1,710 pairs, the two
+judges, the conveyed rule (both judges FULLY or PARTLY), P66.1's rule and
+bars, and P66.2.
+
+Runner: `train/run_cell66_check.py` (stages `frank`, `known`, `smoke`,
+`judge`, `measure`). It reuses the frozen judge prompt, the shortlist
+method (top three sentences by nomic-embed-text) and the parser of
+`train/run_cell66_conveyed.py` by import, and writes its own records to
+`bench/runs/cell66_check.jsonl`. The `measure` stage of
+`train/run_cell66_conveyed.py` is amended in the same commit to take
+P66.0 from `bench/analysis/cell66/check_measured.json` when no labels
+exist; its comparison code is unchanged (the diff is the commit's).
+
+### Part A — borrowed human labels (the FULLY boundary)
+
+FRANK (Pagnoni, Balachandran and Tsvetkov, 2021; MIT licence;
+`human_annotations_sentence.json` and `benchmark_data.json` from
+github.com/artidoro/frank, SHA-256 a17c6fb1… and 37b2871c…) holds 4,942
+summary sentences from nine systems on CNN/DailyMail and XSum, each
+labelled by three annotators as having no error or one or more error
+types. The question the annotators answered — is this sentence supported
+by the article — is the judge prompt's question with the article as the
+source. The judges see the sentence as the STATEMENT and the three article
+sentences closest to it as the PASSAGES, exactly as in the experiment.
+
+- Pool: sentences where all three annotators agree: no error (2,280), or
+  an error that at least two annotators place in a content category
+  (EntE, OutE, CircE, RelE, CorefE, LinkE), not grammar alone. Sentences
+  under six words are excluded.
+- Sample: 150 no-error and 150 error sentences, drawn with seed 66 from
+  the ids in sorted order, from the test split. Figures are weighted back
+  to the pool's two class sizes.
+- Truth: no error = conveyed FULLY. Error = not FULLY.
+- Rule under test: both judges say FULLY. **Bars: kappa at least 0.60 and
+  F1 at least 0.80**, the bars of the original P66.0, on the weighted
+  sample. Reported beside it, no bar: each judge alone, and the
+  experiment's conveyed rule (FULLY or PARTLY) against the same truth,
+  which is not expected to match it, since an entity or circumstance error
+  is PARTLY by the prompt's definition.
+- What it does not cover: news summaries are not advisory answers, and the
+  passages come from an article, not an editor's answer. It tests whether
+  the judges can tell a supported statement from a distorted one at this
+  passage length, which is what the FULLY call requires.
+
+### Part B — known values on unused material (the PARTLY boundary and specificity)
+
+Built from repeat 6 of CELL 41's control answers, which the experiment
+does not use (its pairs are repeats 0 to 2), and the specialist texts of
+the same scenarios (`bench/analysis/cell41/seats.json`). No label from
+anyone.
+
+- K1, verbatim: 50 sentences taken from the answers themselves, judged
+  against their own answer. Must be FULLY by both judges in **at least
+  0.90**.
+- K2, altered number: 80 specialist sentences that contain one integer
+  the Cell 63 perturbation rule can change (raised or lowered by 20 to
+  25%, no collision with another figure in the sentence), each judged in
+  its original and altered form against the repeat-6 answer, with its own
+  shortlist. Among originals that both judges call FULLY, the altered
+  form must be called FULLY by both in **at most 0.10**. If fewer than 15
+  originals are FULLY, K2 is NOT EVALUABLE and the verdict rests on A, K1
+  and K3.
+- K3, wrong scenario: 50 specialist sentences from one scenario judged
+  against another scenario's answer. Conveyed (FULLY or PARTLY) by the
+  rule in **at most 0.05**.
+
+### Verdict rule for the amended P66.0
+
+PASSES iff Part A meets both bars and K1, K3 and (when evaluable) K2 meet
+theirs. Otherwise FAILS, and P66.1 is NOT EVALUABLE with this tool and
+recorded as blocked, as the registration already says. The parts are
+printed separately; a FAILS names the part.
+
+### Attainability
+
+Part A: 150 per class gives a half-width of about 0.09 on kappa. Zero-shot
+judges of this size on FRANK-like data have been reported near balanced
+accuracy 0.7 to 0.8, which puts kappa near the bar; the outcome is open
+in both directions. K1 and K3 are easy by construction and serve as
+floors. K2 depends on how many specialist figures the answers carry; the
+15-positive rule guards it.
+
+### Cost
+
+About 560 statements, 1,120 judge calls: about five hours of gpt-oss:20b
+and half an hour of qwen3-vl, after the current queue. Shortlisting is a
+few minutes. No text is generated.
+
+### Checklist items that bite
+
+2 (the FRANK labels and the perturbation share no wording with the judge
+prompt). 3 (Part A is a neighbouring task, said so; Part B is this task
+and this material but artificial). 4 and 12 (bars are the original ones;
+the 15-positive rule covers K2). 6 (registered before any verdict is read;
+the smoke stage uses two FRANK validation-split sentences and one repeat-6
+item outside the samples). 11 (K3 reports what the rule says of statements
+that cannot be conveyed).
+
+### Queue and files
+
+Two steps appended to `train/run_queue.py` after CELL 67: `c66-check`
+(stages frank, known, smoke, judge; scoring `measure`) and `c66-measure`
+(the amended `train/run_cell66_conveyed.py measure`, which runs only after
+`check_measured.json` is committed). Items and their shortlists:
+`bench/analysis/cell66/check_items.json`. The sources, licences and
+checksums of the downloaded files are in `docs/EXTERNAL_DATA.md`; the files
+themselves stay out of git. The site's hold-back of the Cell 66 files ends
+when `measured.json` exists (`docs/ledger_explorer/build_data.py`).
+
+### Consequences
+
+PASSES: P66.1 and P66.2 are scored and read as registered; the paper says
+the conveyed judge was checked against public human labels and known
+values, not against a person on this material. FAILS: P66.1 is blocked and
+the paper says the program has no validated conveyed judge.
+
+## CELL 62 AMENDMENT (2026-10-02) — no person's labels: P62.0 to P62.2 are NOT EVALUABLE; the judge-only parts of P62.3 are reported, with a neighbouring-construct check against public speculation labels (SFU Review Corpus) added as a reported figure
+
+The author cannot provide the 404 blind labels in two passes (stated
+2026-10-02). The six judges' labels exist (CELL 62 RUN RECORD) and have
+not been scored. Without a human reference P62.0, P62.1 and P62.2 cannot
+be scored and are recorded NOT EVALUABLE; the consequence already fixed in
+the registration applies: every count made with the both-judges rule
+stays PROVISIONAL and the paper says so. This amendment adds what can be
+measured without a person.
+
+Runner: `train/run_cell62_check.py` (stages `build`, `smoke`, `judge`,
+`measure`). The judge prompt and batch size are those of
+`train/run_cell62_instrument.py`, by import; records go to
+`bench/runs/cell62_check_calls.jsonl`. `train/run_cell62_instrument.py`
+is not changed.
+
+### Reported (no pass or fail)
+
+1. The judge-only parts of P62.3 on the 404 sampled sentences: kappa
+   between each pair of judges per kind; each stored judge's agreement
+   with its own stored label; the two-class latent-class estimate across
+   the six judges.
+2. A neighbouring-construct check. The SFU Review Corpus annotated for
+   negation and speculation (Konstantinova et al., 2012; GPL-3;
+   `SFU_Review_Corpus_Negation_Speculation.zip` from sfu.ca/~mtaboada,
+   SHA-256 a976bc42…) holds 400 product reviews with human-marked
+   speculation cues. Its "speculation" is modality — possibility,
+   belief, hearsay — and excludes conditionals; the program's "hedging"
+   kind is "conditions under which the claim could change or vary". The
+   constructs overlap but are not the same, so this is reported as the
+   share of human-marked speculation sentences each judge and each
+   candidate rule marks as hedging, and the share of unmarked sentences
+   they mark, with no bar. Sample: 200 sentences with at least one
+   speculation cue and 200 with none, at least six words, drawn with seed
+   62 from the sentence ids in sorted order; the six judges label them in
+   batches of ten with the frozen prompt. Weighted back to the corpus.
+
+### Why not a pass or fail
+
+A failure against the SFU labels could come from the construct
+difference as easily as from the judges, so no bar is attainable in a
+form that would mean anything (checklist 3 and 4). The figure shows
+whether the judges respond to uncertainty language at all, and how far
+the candidate rules differ from the deployed one on text none of them
+was tuned on.
+
+### Cost
+
+About 240 judge calls, about two hours after the current queue.
+
+### Checklist items that bite
+
+2 (the SFU cues are human-marked and the prompt names no phrase). 3 (the
+construct difference is stated and the figure is reported, not tested).
+6 (the judge labels are unread; registered before scoring).
+
+### Queue and files
+
+One step appended to `train/run_queue.py` after the Cell 66 steps:
+`c62-check` (stages build, smoke, judge; scoring `measure`). Sample:
+`bench/analysis/cell62/check_items.json`; judge labels:
+`bench/analysis/cell62/check_judge_labels.json`; sources and checksums in
+`docs/EXTERNAL_DATA.md`.
+
+### Consequences
+
+The caveat counts of Cells 30, 31, 38, 41 and 46 stay PROVISIONAL. The
+blind hold-back of `bench/analysis/cell62/judge_labels.json` on the site
+is lifted once this check is recorded, since no person will label.

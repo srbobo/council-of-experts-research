@@ -2410,6 +2410,12 @@
        "end": 10824,
        "kind": "note",
        "heading": "CELL 62 NOTE (2026-10-01) — judging complete with nothing unparsed; no label statistics are read until the person's labels are committed; when the registrations became public"
+      },
+      {
+       "line": 11265,
+       "end": 11334,
+       "kind": "amendment",
+       "heading": "CELL 62 AMENDMENT (2026-10-02) — no person's labels: P62.0 to P62.2 are NOT EVALUABLE; the judge-only parts of P62.3 are reported, with a neighbouring-construct check against public speculation labels (SFU Review Corpus) added as a reported figure"
       }
      ],
      "matrix_row": null
@@ -2494,8 +2500,8 @@
     {
      "id": "66",
      "current_title": "are caveats lost more than ordinary sentences?",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P66.0",
       "P66.1",
@@ -2519,6 +2525,12 @@
        "end": 11142,
        "kind": "note",
        "heading": "CELL 66 READING (2026-10-02) — both judges returned a parsed answer for all 1,710 pairs and the whole-answer check for all 60; the 120-pair label task is drawn; nothing from the judges is read until the labels are committed"
+      },
+      {
+       "line": 11143,
+       "end": 11264,
+       "kind": "verdict",
+       "heading": "CELL 66 AMENDMENT (2026-10-02) — the person's labels are replaced by a check against public human labels (FRANK) and a known-value check on unused material; registered before any judge verdict is read"
       }
      ],
      "matrix_row": null
@@ -4097,7 +4109,7 @@
     ],
     "header": null,
     "cols": [
-     "**Do the two-judge sentence labels agree with a person?** Cell 62, registered 2026-10-01: 404 sentences, the author's blind labels twice a week apart, six local judges. Until it reports, every count made with the labels is provisional."
+     "**Do the two-judge sentence labels agree with a person?** Cell 62, registered 2026-10-01: 404 sentences, the author's blind labels twice a week apart, six local judges. Until it reports, every count made with the labels is provisional. **Amended 2026-10-02:** the author cannot label; P62.0 to P62.2 are NOT EVALUABLE and the counts stay PROVISIONAL. Judge-only agreement and a public-corpus check (SFU speculation cues) are reported instead."
     ]
    },
    {
@@ -4113,7 +4125,7 @@
     ],
     "header": null,
     "cols": [
-     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this. Judging finished 2026-10-02 (3,420 calls, all parsed); the 120-pair label task is drawn. Nothing from the judges is read until the author's labels are committed."
+     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this. Judging finished 2026-10-02 (3,420 calls, all parsed); the 120-pair label task is drawn. Nothing from the judges has been read. **Amended 2026-10-02:** the author cannot label; P66.0 is replaced, before any verdict was read, by a check against public human labels (FRANK, 300 sentences, same bars) and 260 known-value items; the comparison is read only if it passes."
     ]
    },
    {

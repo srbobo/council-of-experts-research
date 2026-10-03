@@ -417,37 +417,49 @@ def stage_measure(allow_uncommitted: bool = False) -> None:
     usable = [p for p in pairs if _rule(ver.get(p["id"], {})) is not None]
     print(f"pairs {len(pairs)}; with both judges' verdicts {len(usable)}")
     result = {"n_pairs": len(pairs), "n_usable": len(usable)}
-    if not ((TASK / "task.json").exists() and done_info(TASK, 1)):
-        print("\nP66.0 PENDING — the blind labels are not finished "
-              "(.venv/bin/python train/label_blind.py bench/labels/cell66_conveyed).")
-        print("Nothing about the comparison is computed or shown until those labels are committed.")
+    check = OUT / "check_measured.json"                 # CELL 66 AMENDMENT (2026-10-02): the person's
+    labels_done = (TASK / "task.json").exists() and done_info(TASK, 1)   # labels replaced by a registered check
+    if not labels_done and not check.exists():
+        print("\nP66.0 PENDING — neither the blind labels nor the amended check "
+              "(train/run_cell66_check.py measure) is done.")
+        print("Nothing about the comparison is computed or shown until one of them is committed.")
         return
-    if not allow_uncommitted and not _committed(TASK / "labels_pass1.jsonl"):
+    if labels_done and not allow_uncommitted and not _committed(TASK / "labels_pass1.jsonl"):
         raise SystemExit("Commit the pass-1 labels before scoring (the labelling tool printed the command).")
+    if not labels_done and not allow_uncommitted and not _committed(check):
+        raise SystemExit("Commit bench/analysis/cell66/check_measured.json before scoring.")
 
     k = kappa([(ver[p["id"]][JUDGES[0]] != "no", ver[p["id"]][JUDGES[1]] != "no") for p in usable])
     print(f"the two judges against each other (conveyed at all): raw {k['raw']:.3f}  kappa {k['kappa']:.3f}")
     result["judge_kappa"] = k["kappa"]
 
-    print("\nthe rule against one person's blind labels")
-    human = {i: v["label"]["choice"] for i, v in read_labels(TASK / "labels_pass1.jsonl").items()}
-    key = json.loads((TASK / "key.json").read_text())
-    rows = []
-    for iid, kk in key["items"].items():
-        s_ = key["strata"][kk["stratum"]]
-        rows.append((s_["pool"] / s_["sampled"], human[iid] != "no", kk["stratum"].startswith("conveyed")))
-    g = _weighted(rows)
-    gate = g["kappa"] >= 0.60 and g["f1"] >= 0.80
-    print(f"  {len(rows)} labelled pairs, weighted back to all pairs: raw {g['raw']:.3f}  kappa {g['kappa']:.3f}  "
-          f"precision {g['precision']:.3f}  recall {g['recall']:.3f}  F1 {g['f1']:.3f}")
-    print(f"  share conveyed: the person {g['truth_share']:.3f}, the rule {g['rule_share']:.3f}")
-    print(f"P66.0 {'PASSES' if gate else 'FAILS'} — bars: kappa 0.60 and F1 0.80")
-    result["P66.0"] = {**g, "pass": gate}
-    if done_info(TASK, 2):
-        h2 = {i: v["label"]["choice"] for i, v in read_labels(TASK / "labels_pass2.jsonl").items()}
-        kk = kappa([(human[i] != "no", h2[i] != "no") for i in human if i in h2])
-        print(f"  the person against themself a week apart: raw {kk['raw']:.3f}  kappa {kk['kappa']:.3f}")
-        result["retest_kappa"] = kk["kappa"]
+    if not labels_done:
+        chk = json.loads(check.read_text())
+        gate = bool(chk["pass"])
+        parts = ", ".join(f"{k_} {'passes' if v else 'not evaluable' if v is None else 'fails'}" for k_, v in chk["parts"].items())
+        print(f"\nthe rule against public human labels and known values (CELL 66 AMENDMENT): {parts}")
+        print(f"P66.0 {'PASSES' if gate else 'FAILS'} — amended check; bars as registered")
+        result["P66.0"] = {"amended_check": chk["parts"], "pass": gate}
+    else:
+        print("\nthe rule against one person's blind labels")
+        human = {i: v["label"]["choice"] for i, v in read_labels(TASK / "labels_pass1.jsonl").items()}
+        key = json.loads((TASK / "key.json").read_text())
+        rows = []
+        for iid, kk in key["items"].items():
+            s_ = key["strata"][kk["stratum"]]
+            rows.append((s_["pool"] / s_["sampled"], human[iid] != "no", kk["stratum"].startswith("conveyed")))
+        g = _weighted(rows)
+        gate = g["kappa"] >= 0.60 and g["f1"] >= 0.80
+        print(f"  {len(rows)} labelled pairs, weighted back to all pairs: raw {g['raw']:.3f}  kappa {g['kappa']:.3f}  "
+              f"precision {g['precision']:.3f}  recall {g['recall']:.3f}  F1 {g['f1']:.3f}")
+        print(f"  share conveyed: the person {g['truth_share']:.3f}, the rule {g['rule_share']:.3f}")
+        print(f"P66.0 {'PASSES' if gate else 'FAILS'} — bars: kappa 0.60 and F1 0.80")
+        result["P66.0"] = {**g, "pass": gate}
+        if done_info(TASK, 2):
+            h2 = {i: v["label"]["choice"] for i, v in read_labels(TASK / "labels_pass2.jsonl").items()}
+            kk = kappa([(human[i] != "no", h2[i] != "no") for i in human if i in h2])
+            print(f"  the person against themself a week apart: raw {kk['raw']:.3f}  kappa {kk['kappa']:.3f}")
+            result["retest_kappa"] = kk["kappa"]
 
     def rate(rows, level="any"):
         v = [(_rule(ver[p["id"]]) if level == "any" else all(ver[p["id"]][j] == "fully" for j in JUDGES)) for p in rows]
@@ -479,7 +491,7 @@ def stage_measure(allow_uncommitted: bool = False) -> None:
     s = result.get("P66.1_any_main")
     if s:
         if not gate:
-            word = "P66.1 NOT EVALUABLE — the rule failed its check against the person's labels; recorded as blocked, not as a null"
+            word = "P66.1 NOT EVALUABLE — the rule failed its check (P66.0); recorded as blocked, not as a null"
         elif s["hi"] < 0:
             word = "P66.1 SUPPORTED — caveats are conveyed less often than matched ordinary sentences"
         elif s["lo"] > 0:

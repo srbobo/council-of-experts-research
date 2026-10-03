@@ -3,38 +3,38 @@
  "cells": {
   "62": {
    "title": "Do the AI judges' sentence labels agree with a person's?",
-   "description": "The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges have labeled the same sentences. Their method will be checked against the person's labels once those are saved.",
+   "description": "The author was to label 404 saved sentences blind, twice, to check six AI judges. That is not possible, so no pass or fail can be given. We report what the judges show without a reference, and how they respond to human-marked uncertainty words.",
    "outcome": "not-run",
-   "size": "AI judging done, the person's labels pending",
+   "size": "AI judging done, no person's labels, judge-only figures to come",
    "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
    "expectations": [
     {
      "id": "P62.0",
      "text": "The person's two rounds of labels, a week apart, would agree well beyond chance for each of the three kinds of caveat.",
      "outcome": "not-tested",
-     "note": "Not tested yet. The second round can start a week after the first is finished."
+     "note": "Cannot be tested: the author's labels, the reference this needed, are not available (noted 2 October 2026)."
     },
     {
      "id": "P62.1",
      "text": "The method used so far, counting a caveat only when both original judges flag it, would match the person's labels well for all three kinds of caveat.",
      "outcome": "not-tested",
-     "note": "Not tested yet. We expect this to fail for at least one kind, the caveat that marks a number as an estimate."
+     "note": "Cannot be tested: the author's labels, the reference this needed, are not available (noted 2 October 2026)."
     },
     {
      "id": "P62.2",
      "text": "Some rule for combining the six judges, chosen on half of the sentences, would match the person's labels well on the other half.",
      "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "note": "Cannot be tested: the author's labels, the reference this needed, are not available (noted 2 October 2026)."
     },
     {
      "id": "P62.3",
      "text": "We would report how each judge and each rule compares with the person, how judges compare with each other, and whether a judge repeats its own earlier label.",
      "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "note": "Reported without a pass/fail test, in the parts that need no person's labels, plus a public-collection check."
     }
    ],
-   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. Every batch came back readable, so no judge had to be left out. Scoring has not started, and no figure has been computed from the judges' labels. It waits for the author's blind labels, two rounds a week apart, and the first round must be saved before any comparison is made. The sentences were drawn by a fixed rule from sentences the two original judges had already labeled in Cells 30, 31, 41 and 46.",
-   "means": "If the current method matches the person's labels, the caveat counts in Cells 30, 38, 41 and 46 stand. If it does not but another rule does, the saved answers can be scored again with that rule, as a separately planned step. If no rule does, the project has no checked way to count caveats and says so.",
+   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. The plan needed the author's own labels, twice a week apart, as the reference. On 2 October 2026 that turned out not to be possible, so we wrote down what can still be measured. That is how far the six judges agree with each other on each kind of caveat, and how far the two original judges agree with their own earlier labels. We also estimate each judge's accuracy in a way that assumes they err independently. We also check them on 400 product-review sentences from a public collection where people marked words of uncertainty. That last check is reported without a pass mark, because that collection marks uncertainty in general and our judges look for stated conditions, which is not the same thing. None of this can validate the caveat counts, which stay provisional.",
+   "means": "Without a person's labels, the project cannot say whether its caveat counts are right, and the paper says so. The counts in Cells 30, 38, 41 and 46 stay provisional. The judge-only figures show how much the judges disagree among themselves, which bounds how far any count can be trusted.",
    "later": null,
    "entries": {
     "10047": {
@@ -51,6 +51,11 @@
      "label": "Note",
      "title": "Judging went cleanly, and when the plans became public",
      "summary": "All six judges labeled all 404 sentences, with no unreadable replies. Nothing is counted from their labels until the author's own labels are saved. The plans for the new experiments were saved locally before any run and posted to the public repository 70 minutes before Cell 63 began. For this cell, the public posting came 50 minutes after the judging had started."
+    },
+    "11265": {
+     "label": "Change to the plan",
+     "title": "No person's labels: what can still be measured",
+     "summary": "Written down on 2 October 2026 before the judges' labels were scored. The three expectations that needed the author's labels cannot be tested. Instead we report how far the six judges agree with each other and an estimate of their accuracy that needs no reference, plus how they respond to 400 review sentences with human-marked uncertainty cues from a public collection of reviews. The caveat counts stay provisional."
     }
    }
   },
@@ -207,16 +212,16 @@
   },
   "66": {
    "title": "Are caveats lost more than ordinary sentences?",
-   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length from the same specialist texts, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. The comparison waits for the author's 120 blind labels.",
+   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. Since the author cannot label 120 cases, the judges will be checked on public human labels instead.",
    "outcome": "not-run",
-   "size": "AI judging done, the person's 120 labels pending",
+   "size": "AI judging done, a check on public labels queued",
    "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
    "expectations": [
     {
      "id": "P66.0",
-     "text": "The two judges' joint decision would match a person's blind labels well on 120 sampled cases. If not, the comparison is recorded as blocked.",
+     "text": "The judges' rule would pass a check against human labels: at first the author's 120 blind labels, now 300 public human-labeled sentences plus 260 cases with a known answer.",
      "outcome": "not-tested",
-     "note": "Not tested yet. The 120 cases are drawn after the AI judging finishes."
+     "note": "Not tested yet. The replacement check was written down on 2 October 2026 and runs after the current queue."
     },
     {
      "id": "P66.1",
@@ -231,7 +236,7 @@
      "note": "Not tested yet. Reported without a pass/fail test."
     }
    ],
-   "found": "The two AI judges finished all 1,710 cases on 2 October 2026. A sample of 120 cases was then drawn for the author to label blind. Nothing about the comparison between caveats and ordinary sentences is computed or shown until those labels are finished and saved, so that knowing the result cannot influence the labels.",
+   "found": "The two AI judges finished all 1,710 cases on 2 October 2026. The plan had the author label 120 cases blind to check the judges before the comparison could be read. That turned out not to be possible, so on the same day, before anything from the judges was read, we wrote down a replacement check and queued it. The judges will be scored on 300 human-labeled summary sentences from a public benchmark (FRANK), where people marked whether a sentence is supported by its article, with the same pass marks as before. They will also be scored on 260 cases with a known answer, built from answers the experiment does not use. Those are sentences copied from the answer itself, sentences with one figure changed by a fixed rule, and sentences from a different scenario. Only if that check passes will the comparison be read. Nothing about the comparison has been computed or shown.",
    "means": "If caveats are conveyed less often, the paper can say the editor drops caution in particular, and by how much. If they are conveyed about as often, the claim that prose loses caution is withdrawn in favor of a plainer one: the answer is shorter than its sources and keeps caveats in proportion.",
    "later": null,
    "entries": {
@@ -249,6 +254,11 @@
      "label": "Note",
      "title": "The judging ran cleanly, and the 120 cases are ready to label",
      "summary": "Both AI judges gave a readable answer for every one of the 1,710 cases, and the whole-answer check on 60 cases also finished. The 120 cases for the author were drawn by the rule written down in advance, and the answer key is kept apart from them. We have read nothing from the judges' answers. The step took 8.6 hours instead of the 7.7 planned."
+    },
+    "11143": {
+     "label": "Change to the plan",
+     "title": "The author's labels replaced by public human labels and known answers",
+     "summary": "Written down on 2 October 2026 before anything from the judges was read. The 120 blind labels the author could not provide are replaced by two checks with the same pass marks. One uses 300 human-labeled summary sentences from the public FRANK benchmark, the other 260 cases with a known answer built from unused material. The comparison is read only if that check passes."
     }
    }
   },

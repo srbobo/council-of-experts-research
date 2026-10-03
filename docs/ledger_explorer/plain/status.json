@@ -693,14 +693,14 @@
   },
   "S5-11": {
    "claim": "Do the two AI judges' sentence labels agree with a person's?",
-   "detail": "Planned as Cell 62 in October 2026. The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. Until this is done, every count made with the judges' labels is provisional.",
+   "detail": "Planned as Cell 62 in October 2026. The author labels 404 saved sentences without seeing where they came from, twice, a week apart. Six AI judges label the same sentences. Until this is done, every count made with the judges' labels is provisional. On 2 October 2026 the author's labels turned out not to be possible, so the check cannot be scored and the counts stay provisional. How far the six judges agree with each other, and how they respond to a public collection of reviews with human-marked uncertainty words, will be reported instead.",
    "cells": [
     "62"
    ]
   },
   "S5-12": {
    "claim": "Are caveats conveyed in the final answer less often than ordinary sentences?",
-   "detail": "Cell 66's two AI judges finished all 1,710 cases on 2 October 2026, and the 120 cases for the author to label blind are drawn. Nothing from the judges' answers is read until those labels are saved. The formula's share w and the word-for-word copy rate do not answer this question, because the editor shortens everything. The test compares each caveat sentence with an ordinary sentence of similar length from the same specialist text.",
+   "detail": "Cell 66's two AI judges finished all 1,710 cases on 2 October 2026. The author's 120 blind labels, which were to check the judges first, are not possible. So, before anything from the judges was read, the check was replaced by one against 300 human-labeled sentences from a public benchmark and 260 cases with a known answer. The comparison is read only if that check passes. The formula's share w and the word-for-word copy rate do not answer this question, because the editor shortens everything.",
    "cells": [
     "46",
     "48",
