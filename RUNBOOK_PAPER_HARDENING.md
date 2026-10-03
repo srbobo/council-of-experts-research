@@ -11402,3 +11402,145 @@ descriptive
   repeat of Cell 51 on gpt-oss:20b: +0.691 now, +0.691 then
   repeat of Cell 51 on qwen2.5:7b-instruct: +0.455 now, +0.455 then
 ```
+
+## CELL 64 READING (2026-10-03) — six readers, 3,300 reads: the appended caveat is used by four readers Cell 51 never tried, the instruction clause makes no difference, and nine other lines cost about a tenth of the uptake
+
+This is the analyst's reading of the entry above. The verdict words are
+the ones the registered script printed and nothing here changes them.
+Figures the script does not print come from
+`bench/analysis/cell64/reading_checks.py`, written after the runs; it
+calls no model and writes `reading_checks.json`. Those are marked *not
+registered*.
+
+### The run
+
+- 3,300 reads, 550 per reader, 330 per arm, on the 11 items of Cell 51's
+  pilot check; from 2026-10-02T22:25:24Z to 2026-10-03T07:56:16Z, 9.5
+  hours (the registration estimated eight to twelve). gpt-oss:20b took
+  1.9 hours, phi4:14b 6.9 hours, the other four about ten minutes each.
+- Every record carries registration commit 6402fc0 and one runner hash
+  (f1d489ee5a129794); one model build per reader; temperature 0.8 and
+  2,048 output tokens throughout. The `head` field changes twice
+  (c0348d7, 74aa863, ecd566e): the Cell 66 reading and the Cell 66 and 62
+  amendments were committed while this cell ran. The runner did not
+  change. The context window follows the program's per-model setting
+  (8,192 to 32,768 tokens); the longest prompt was 4,038 tokens and no
+  read hit the limit.
+- **One-word answers.** Five readers gave a usable PROCEED or HOLD at the
+  first try in every read (mistral:7b once at the second). phi4:14b
+  needed a second to sixth try in 137 of 550 reads and gave no usable
+  answer in 14 (2.5%, under the 20% limit). Thirteen of those 14 are in
+  arms with no relevant line (six with no list, seven with the irrelevant
+  line; one with the relevant line among four), so phi4's "irrelevant"
+  flip shares rest on slightly fewer reads than its "relevant" ones; at 14
+  of 550 this cannot move a verdict.
+
+### Reading, prediction by prediction
+
+**Every reader passes its check.** With no list, the flip share is 0.036
+to 0.145 under either prompt (limit 0.20), and unusable reads are 0 to
+2.5% (limit 20%). All six are counted.
+
+**P64.1 supported: the four new readers use the appended line.** Old
+prompt, one line, pooled over phi4, qwen3-vl, llama3 and mistral: +0.515
+[+0.277, +0.753], p = 0.0039 over 11 items. Reader by reader (the
+registration pools them; these are the script's own lines): phi4 +0.605,
+qwen3-vl +0.673, mistral +0.455, llama3 +0.327 [−0.040, +0.694]. The
+smallest reader alone does not clear zero; the pooled rule was registered
+because Cell 51's own qwen2.5 did not either (+0.455, p = 0.06), and
+qwen2.5 repeats that figure exactly here.
+
+The flip-share table (*not registered*; the uptake figures are its
+differences):
+
+| reader | no list | irrelevant line | relevant line | relevant among 4 | relevant among 9 |
+|---|---|---|---|---|---|
+| gpt-oss:20b | 0.04 / 0.09 | 0.07 / 0.09 | 0.76 / 0.85 | 0.76 | 0.75 |
+| qwen2.5:7b | 0.09 / 0.09 | 0.09 / 0.16 | 0.55 / 0.55 | 0.53 | 0.49 |
+| phi4:14b | 0.12 / 0.11 | 0.15 / 0.11 | 0.76 / 0.85 | 0.80 | 0.69 |
+| qwen3-vl:30b | 0.07 / 0.09 | 0.09 / 0.09 | 0.76 / 0.64 | 0.65 | 0.65 |
+| llama3:8b | 0.09 / 0.09 | 0.13 / 0.13 | 0.45 / 0.53 | 0.29 | 0.36 |
+| mistral:7b | 0.11 / 0.15 | 0.09 / 0.09 | 0.55 / 0.56 | 0.40 | 0.36 |
+
+(old prompt / neutral prompt; the last two columns are the neutral
+prompt.) The irrelevant line sits at the no-list floor for every reader.
+
+**P64.2 falsified: the clause naming the attachment makes no difference.**
+Uptake with the clause minus without it, one line, all six readers:
+−0.017 [−0.087, +0.054], inside the ±0.25 band. The readers act on the
+appended line whether or not the system prompt tells them to read what is
+attached. Cell 51's second limit is removed.
+
+**P64.3 supported: nine other lines dilute, by about a tenth.** Ten lines
+minus one, neutral prompt: −0.118 [−0.206, −0.031], p = 0.0137; five
+minus one: −0.099 [−0.192, −0.006], p = 0.055. Uptake pooled over six
+readers is +0.55 at one line, +0.45 at five and +0.43 at ten. The loss
+falls mostly on the two smallest readers (llama3 0.53 to 0.36, mistral
+0.56 to 0.36 from one line to ten; gpt-oss 0.85 to 0.75; qwen3-vl 0.64
+to 0.66).
+
+**P64.4, reported.**
+
+- Where the surrounding lines all come from the item's own scenario, the
+  relevant line is harder to find at ten lines (uptake 0.37 on 4 items
+  against 0.47 on 7) and not at five (0.45 against 0.45). The registration
+  named this: off-topic surroundings make the relevant line stand out.
+  With all 11 items' surroundings drawn from their own scenario the
+  ten-line figure would be nearer 0.37 than 0.43.
+- Position of the relevant line among ten: flip share 0.54 in the first
+  three slots, 0.54 in the middle, 0.58 in the last three. No position
+  effect.
+- Ten real caveats and no relevant line: flip share 0.116, against 0.103
+  with no list. A long list of true caveats does not by itself change the
+  decision.
+- The repeat of Cell 51: +0.691 (gpt-oss) and +0.455 (qwen2.5), the same
+  figures as then to three decimals. Cell 51 drew without a fixed seed
+  and this cell with one, so these are independent draws (*not
+  registered*): of the 330 old-prompt reads that share a reader, item,
+  line and repeat with Cell 51, 316 gave the same answer (qwen2.5 165 of
+  165, gpt-oss 151 of 165). On these items the readers are close to
+  deterministic at temperature 0.8.
+
+### Not registered: the item level
+
+Pooled over the four new readers (old prompt, one line), 9 of 11 items
+have uptake above 0.25 and two have none: item 4 (a stop-loss exclusion
+that undercuts a savings projection) is used by no reader, and item 12 (a
+baseline the vendor's price can be checked against) only by gpt-oss
+(+0.2). For the smaller readers uptake per item is 0 or 1: a reader either
+acts on the line in every repeat or never. The 11 items are too few to
+say what makes a line usable.
+
+### Limits (as registered, with what the run adds)
+
+The items, their caveats and their decision questions were written inside
+the project; the planted line is a decisive fact where the system's own
+lists hold hedges; the irrelevant control line is shorter; every reader is
+a model. The run adds: the two smallest readers carry most of the
+dilution, and uptake is item-bimodal, so the pooled figures average over
+items that work completely and items that do not work at all.
+
+### Consequences
+
+- **Paper and ledger.** The appended-caveats result holds for six readers
+  from four model families (7B to 30B), without the instruction clause,
+  and survives a list of ten with a loss of about 0.12. The Cell 51 row
+  in `docs/STATUS.md` §1 gains a dated note and the §5 question is
+  answered for model readers; human readers stay open, as registered.
+- **Harness.** The separate caveats section is a working channel to model
+  readers: a decisive line placed there changes the decision in about
+  half of reads across readers, and in three quarters for the larger
+  ones. What it carries is still the system's own caveat sentences, whose
+  usefulness this cell does not measure (CELL 66 asks whether they are
+  conveyed; nothing asks whether they are decisive).
+- No new experiment is proposed here.
+
+### Checklist items that bite on this reading
+
+1 (each verdict rests on a one-line, one-clause or one-length contrast).
+6 (the Cell 51 comparison and the item-level figures were computed after
+the data were seen; they are descriptive). 8 (arms were assigned, so "the
+line changes the decision" is interventional; "the reader understood it"
+is not claimed). 11 (unusable reads and tries are reported per reader and
+arm; the ten-real-caveats arm reports what the list does with no relevant
+line in it).

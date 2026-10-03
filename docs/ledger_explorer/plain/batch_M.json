@@ -5,7 +5,7 @@
    "title": "Do the AI judges' sentence labels agree with a person's?",
    "description": "The author was to label 404 saved sentences blind, twice, to check six AI judges. That is not possible, so no pass or fail can be given. We report what the judges show without a reference, and how they respond to human-marked uncertainty words.",
    "outcome": "not-run",
-   "size": "AI judging done, no person's labels, judge-only figures to come",
+   "size": "AI judging done, no person's labels, judge figures to come",
    "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
    "expectations": [
     {
@@ -55,7 +55,7 @@
     "11265": {
      "label": "Change to the plan",
      "title": "No person's labels: what can still be measured",
-     "summary": "Written down on 2 October 2026 before the judges' labels were scored. The three expectations that needed the author's labels cannot be tested. Instead we report how far the six judges agree with each other and an estimate of their accuracy that needs no reference, plus how they respond to 400 review sentences with human-marked uncertainty cues from a public collection of reviews. The caveat counts stay provisional."
+     "summary": "Written down on 2 October 2026 before the judges' labels were scored. The three expectations that needed the author's labels cannot be tested. Instead we report how far the six judges agree with each other and an accuracy estimate that needs no reference. We also report how they respond to 400 review sentences with human-marked uncertainty words. The caveat counts stay provisional."
     }
    }
   },
@@ -126,7 +126,7 @@
   },
   "64": {
    "title": "Do other AI readers act on a caveat in the caveats section?",
-   "description": "Six reader models read the reports from Cell 51 with a relevant or an irrelevant caveat in the attached section. We also remove the instruction that pointed at attachments and place the caveat among 4 or 9 real ones. The runs finished on 3 October 2026.",
+   "description": "Six reader models read Cell 51's reports with a relevant or an irrelevant caveat in the attached section, with and without the instruction that pointed at attachments, and among 4 or 9 real caveats. All six acted on the relevant caveat. The instruction made no difference.",
    "outcome": "mixed",
    "size": "3,300 reads by six reader models",
    "why": "Cell 51 found that a reader model changed its decision when a relevant caveat sat in the attached section. A review in October 2026 named three limits. There were two readers, and one was the model that wrote the report. The reader's instruction told it to use anything attached. And the section held a single sentence, where real ones hold 5 to 53. This cell tests each limit, on the same 11 questions, with four readers that Cell 51 did not use.",
@@ -135,29 +135,29 @@
      "id": "P64.1",
      "text": "With Cell 51's own setup, the four new reader models taken together would change their decision more often for the relevant caveat than for the irrelevant one.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. Pooled over the four new readers, the relevant caveat raised the share of changed decisions by 52 points (plausibly 28 to 75) over 11 questions. One reader alone, the 8B Llama, was too close to call."
     },
     {
      "id": "P64.2",
      "text": "Removing the instruction that points at attachments would reduce how much the relevant caveat changes decisions.",
      "outcome": "failed",
-     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
+     "note": "Did not hold up, which is good news for the design. Removing the instruction changed uptake by 2 points (plausibly minus 9 to plus 5). Readers use the attached line without being told to look."
     },
     {
      "id": "P64.3",
      "text": "Placing the relevant caveat among nine real caveats would reduce how much it changes decisions, compared with placing it alone.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up, with a small effect. Among nine other caveats the relevant one changed decisions 12 points less often than alone (plausibly 3 to 21). Uptake stayed at 43 points. The two smallest readers lost the most."
     },
     {
      "id": "P64.4",
      "text": "We would report each reader's results in each setup, the effect of where the caveat sits in the list, and how the two readers from Cell 51 compare with their earlier results.",
      "outcome": "not-graded",
-     "note": "Reported without a pass/fail test. The figures are in the result entry below."
+     "note": "Reported without a pass/fail test. Where the caveat sat in the list made no difference. Ten real caveats with no relevant one did not change decisions. The two Cell 51 readers repeated their earlier figures exactly."
     }
    ],
-   "found": "The six reader models finished their 3,300 reads on 3 October 2026. By the rules written down in advance, 2 of the 3 graded expectations held up, 1 did not, and 0 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "The results decide how the paper describes the caveats section: whether model readers in general act on it, whether that depends on being told to look, and whether it survives a section of realistic length. Whether people act on it stays open, since one person cannot run a reader study.",
+   "found": "The six reader models, from four model families and 7 to 30 billion parameters, finished 3,300 reads on 3 October 2026. All six passed the check that they give the expected default answer when no section is attached.\n\nWith Cell 51's own setup, the four readers it had not used changed their decision 52 points more often with the relevant caveat than with the irrelevant one (plausibly 28 to 75 points, over 11 questions). The irrelevant caveat sat at the same level as no section at all for every reader. Removing the sentence that told readers to use anything attached changed nothing: a difference of 2 points, plausibly minus 9 to plus 5. Among nine real caveats the relevant one still changed decisions 43 points more often than the irrelevant one, 12 points less than when it stood alone. The two smallest readers accounted for most of that loss. Where the caveat sat in the list made no difference, and a list of ten real caveats with no relevant one did not change decisions.\n\nThe two readers from Cell 51 repeated their earlier figures exactly, in independent runs. One reader, phi4, needed more than one try for a one-word answer in a quarter of its reads and gave none in 14 of 550. Two of the 11 questions drew no response from any new reader, and for the smaller readers each question worked either always or never.",
+   "means": "A deciding sentence placed in the attached caveats section changes a model reader's decision, across six readers, without any instruction to read it, and in a list of realistic length with a small loss. The paper can describe the section as a working channel to model readers, and the Cell 51 claim loses two of its three limits. What it does not show is whether the system's own caveats, which are hedges rather than deciding facts, would change anything, or whether people read the section. Both stay open.",
    "later": null,
    "entries": {
     "10285": {
@@ -168,7 +168,12 @@
     "11335": {
      "label": "Result",
      "title": "Reads finished: results by the rules set in advance",
-     "summary": "The six reader models finished their 3,300 reads on 3 October 2026. Of the 3 graded expectations, 2 held up, 1 did not and 0 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+     "summary": "The six reader models finished their 3,300 reads on 3 October 2026. Two of the three graded expectations held up and one did not, by the rules written down in advance. The one that failed expected the instruction to matter, and it did not. This entry holds the scoring script's output exactly as printed. Our reading of it is the next entry."
+    },
+    "11406": {
+     "label": "Note",
+     "title": "What the six readers show, reader by reader",
+     "summary": "All six readers acted on the relevant caveat, the irrelevant one sat at the no-section level, and the instruction made no difference. Nine other lines cost about a tenth of the effect, mostly for the two smallest readers. The Cell 51 readers repeated their figures exactly in independent runs. Two questions worked for no new reader."
     }
    }
   },

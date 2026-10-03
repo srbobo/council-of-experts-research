@@ -420,8 +420,8 @@ def stage_measure(allow_uncommitted: bool = False) -> None:
     check = OUT / "check_measured.json"                 # CELL 66 AMENDMENT (2026-10-02): the person's
     labels_done = (TASK / "task.json").exists() and done_info(TASK, 1)   # labels replaced by a registered check
     if not labels_done and not check.exists():
-        print("\nP66.0 PENDING — neither the blind labels nor the amended check "
-              "(train/run_cell66_check.py measure) is done.")
+        print("\nP66.0 PENDING — neither the blind labels (.venv/bin/python train/label_blind.py "
+              "bench/labels/cell66_conveyed) nor the amended check (train/run_cell66_check.py measure) is done.")
         print("Nothing about the comparison is computed or shown until one of them is committed.")
         return
     if labels_done and not allow_uncommitted and not _committed(TASK / "labels_pass1.jsonl"):

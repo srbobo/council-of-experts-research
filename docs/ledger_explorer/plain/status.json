@@ -115,7 +115,7 @@
   },
   "S1-15": {
    "claim": "A caveats section attached to the report holds every caveat because it is built from them, and a reader model acted on a deciding sentence placed there.",
-   "detail": "In Cell 48 the editor's prose repeated a specialist's caveat sentence word for word in 3% of cases. We first reported 17%, a scoring bug found in October 2026. Neither number says how many caveats were lost, since a caveat restated in the editor's words counts as missing. Cell 66 measures that. AI judges showed no clear preference for or against the section. In Cell 51 a reader model changed its proceed-or-hold answer 69 points more often for a relevant appended sentence than for an irrelevant one (plausibly 43 to 96), over 11 questions. A second reader's result was too close to call. The reader was told to use anything attached, and the section held one sentence. No person read anything.",
+   "detail": "In Cell 48 the editor's prose repeated a specialist's caveat sentence word for word in 3% of cases. We first reported 17%, a scoring bug found in October 2026. Neither number says how many caveats were lost, since a caveat restated in the editor's words counts as missing. Cell 66 measures that. In Cell 51 a reader model changed its proceed-or-hold answer 69 points more often for a relevant appended sentence than for an irrelevant one, over 11 questions. In Cell 64 four more readers from other model families did the same, with or without an instruction to read attachments, and a list of ten cost about a tenth of the effect. No person read anything.",
    "cells": [
     "48",
     "51",
@@ -719,7 +719,7 @@
   },
   "S5-14": {
    "claim": "Do other reader models act on an appended caveat, without being told to look, when it is one line among ten?",
-   "detail": "Planned as Cell 64 with six reader models. Whether human readers use the section cannot be tested by one person and stays open.",
+   "detail": "Answered on 3 October 2026 by Cell 64, for model readers. Four readers Cell 51 had not used changed their decision 52 points more often with the relevant caveat than with an irrelevant one, plausibly 28 to 75. Removing the instruction that pointed at attachments made no difference. Placing the caveat among nine others cost about 12 points. Whether human readers use the section cannot be tested by one person and stays open.",
    "cells": [
     "51",
     "64"

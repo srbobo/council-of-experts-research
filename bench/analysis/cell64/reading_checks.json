@@ -1,0 +1,296 @@
+{
+ "integrity": {
+  "reads": 3300,
+  "unique_run_ids": 3300,
+  "per_reader": {
+   "gpt-oss:20b": 550,
+   "qwen2.5:7b-instruct": 550,
+   "phi4:14b": 550,
+   "qwen3-vl:30b-a3b-instruct": 550,
+   "llama3:8b-instruct-q4_K_M": 550,
+   "mistral:7b-instruct-v0.3-q4_K_M": 550
+  },
+  "arms": 10,
+  "reads_per_arm": [
+   330
+  ],
+  "items": [
+   "10",
+   "12",
+   "13",
+   "14",
+   "16",
+   "17",
+   "3",
+   "4",
+   "5",
+   "8",
+   "9"
+  ],
+  "registration": [
+   "6402fc0"
+  ],
+  "script_sha": [
+   "f1d489ee5a129794"
+  ],
+  "head_commits": [
+   "74aa863",
+   "c0348d7",
+   "ecd566e"
+  ],
+  "digests": {
+   "gpt-oss:20b": [
+    "17052f91a42e"
+   ],
+   "qwen2.5:7b-instruct": [
+    "845dbda0ea48"
+   ],
+   "phi4:14b": [
+    "ac896e5b8b34"
+   ],
+   "qwen3-vl:30b-a3b-instruct": [
+    "c871fc73fabc"
+   ],
+   "llama3:8b-instruct-q4_K_M": [
+    "9b8f3f3385bf"
+   ],
+   "mistral:7b-instruct-v0.3-q4_K_M": [
+    "6577803aa9a0"
+   ]
+  },
+  "ctx_hit": 0,
+  "done_reason": {
+   "stop": 3300
+  },
+  "temperature": [
+   0.8
+  ],
+  "max_tokens": [
+   2048
+  ],
+  "num_ctx": [
+   8192,
+   16384,
+   32768
+  ],
+  "max_prompt_tokens": 4038,
+  "first_utc": "2026-10-02T22:25:24Z",
+  "last_utc": "2026-10-03T07:56:16Z",
+  "span_by_reader": {
+   "gpt-oss:20b": [
+    "2026-10-02T22:25:24Z",
+    "2026-10-03T00:21:17Z"
+   ],
+   "qwen2.5:7b-instruct": [
+    "2026-10-03T00:21:23Z",
+    "2026-10-03T00:31:30Z"
+   ],
+   "phi4:14b": [
+    "2026-10-03T00:32:39Z",
+    "2026-10-03T07:27:13Z"
+   ],
+   "qwen3-vl:30b-a3b-instruct": [
+    "2026-10-03T07:27:24Z",
+    "2026-10-03T07:35:39Z"
+   ],
+   "llama3:8b-instruct-q4_K_M": [
+    "2026-10-03T07:35:40Z",
+    "2026-10-03T07:44:52Z"
+   ],
+   "mistral:7b-instruct-v0.3-q4_K_M": [
+    "2026-10-03T07:44:54Z",
+    "2026-10-03T07:56:16Z"
+   ]
+  }
+ },
+ "tries": {
+  "gpt-oss:20b": {
+   "tries": {
+    "1": 550
+   },
+   "unusable": 0,
+   "unusable_by_arm": {},
+   "retried_by_arm": {}
+  },
+  "qwen2.5:7b-instruct": {
+   "tries": {
+    "1": 550
+   },
+   "unusable": 0,
+   "unusable_by_arm": {},
+   "retried_by_arm": {}
+  },
+  "phi4:14b": {
+   "tries": {
+    "2": 69,
+    "1": 413,
+    "6": 21,
+    "5": 5,
+    "4": 7,
+    "3": 35
+   },
+   "unusable": 14,
+   "unusable_by_arm": {
+    "old|bare|0": 5,
+    "old|irr|1": 1,
+    "neutral|bare|0": 1,
+    "neutral|irr|5": 2,
+    "neutral|irr|10": 2,
+    "neutral|irr|1": 2,
+    "neutral|rel|5": 1
+   },
+   "retried_by_arm": {
+    "old|bare|0": 19,
+    "old|irr|1": 12,
+    "neutral|bare|0": 17,
+    "neutral|rel|1": 11,
+    "neutral|irr|1": 17,
+    "neutral|rel|5": 9,
+    "neutral|irr|5": 16,
+    "neutral|rel|10": 18,
+    "neutral|irr|10": 13,
+    "old|rel|1": 5
+   }
+  },
+  "qwen3-vl:30b-a3b-instruct": {
+   "tries": {
+    "1": 550
+   },
+   "unusable": 0,
+   "unusable_by_arm": {},
+   "retried_by_arm": {}
+  },
+  "llama3:8b-instruct-q4_K_M": {
+   "tries": {
+    "1": 550
+   },
+   "unusable": 0,
+   "unusable_by_arm": {},
+   "retried_by_arm": {}
+  },
+  "mistral:7b-instruct-v0.3-q4_K_M": {
+   "tries": {
+    "1": 549,
+    "2": 1
+   },
+   "unusable": 0,
+   "unusable_by_arm": {},
+   "retried_by_arm": {
+    "old|irr|1": 1
+   }
+  }
+ },
+ "flip": {
+  "gpt-oss:20b": {
+   "old|bare|0": 0.03636363636363636,
+   "old|irr|1": 0.07272727272727272,
+   "old|rel|1": 0.7636363636363637,
+   "neutral|bare|0": 0.09090909090909091,
+   "neutral|irr|1": 0.09090909090909091,
+   "neutral|rel|1": 0.8545454545454545,
+   "neutral|irr|5": 0.03636363636363636,
+   "neutral|rel|5": 0.7636363636363637,
+   "neutral|irr|10": 0.10909090909090909,
+   "neutral|rel|10": 0.7454545454545455
+  },
+  "qwen2.5:7b-instruct": {
+   "old|bare|0": 0.09090909090909091,
+   "old|irr|1": 0.09090909090909091,
+   "old|rel|1": 0.5454545454545454,
+   "neutral|bare|0": 0.09090909090909091,
+   "neutral|irr|1": 0.16363636363636364,
+   "neutral|rel|1": 0.5454545454545454,
+   "neutral|irr|5": 0.18181818181818182,
+   "neutral|rel|5": 0.5272727272727272,
+   "neutral|irr|10": 0.14545454545454545,
+   "neutral|rel|10": 0.4909090909090909
+  },
+  "phi4:14b": {
+   "old|bare|0": 0.12,
+   "old|irr|1": 0.14814814814814814,
+   "old|rel|1": 0.7636363636363637,
+   "neutral|bare|0": 0.1111111111111111,
+   "neutral|irr|1": 0.11320754716981132,
+   "neutral|rel|1": 0.8545454545454545,
+   "neutral|irr|5": 0.20754716981132076,
+   "neutral|rel|5": 0.7962962962962963,
+   "neutral|irr|10": 0.09433962264150944,
+   "neutral|rel|10": 0.6909090909090909
+  },
+  "qwen3-vl:30b-a3b-instruct": {
+   "old|bare|0": 0.07272727272727272,
+   "old|irr|1": 0.09090909090909091,
+   "old|rel|1": 0.7636363636363637,
+   "neutral|bare|0": 0.09090909090909091,
+   "neutral|irr|1": 0.09090909090909091,
+   "neutral|rel|1": 0.6363636363636364,
+   "neutral|irr|5": 0.09090909090909091,
+   "neutral|rel|5": 0.6545454545454545,
+   "neutral|irr|10": 0.09090909090909091,
+   "neutral|rel|10": 0.6545454545454545
+  },
+  "llama3:8b-instruct-q4_K_M": {
+   "old|bare|0": 0.09090909090909091,
+   "old|irr|1": 0.12727272727272726,
+   "old|rel|1": 0.45454545454545453,
+   "neutral|bare|0": 0.09090909090909091,
+   "neutral|irr|1": 0.12727272727272726,
+   "neutral|rel|1": 0.5272727272727272,
+   "neutral|irr|5": 0.10909090909090909,
+   "neutral|rel|5": 0.2909090909090909,
+   "neutral|irr|10": 0.10909090909090909,
+   "neutral|rel|10": 0.36363636363636365
+  },
+  "mistral:7b-instruct-v0.3-q4_K_M": {
+   "old|bare|0": 0.10909090909090909,
+   "old|irr|1": 0.09090909090909091,
+   "old|rel|1": 0.5454545454545454,
+   "neutral|bare|0": 0.14545454545454545,
+   "neutral|irr|1": 0.09090909090909091,
+   "neutral|rel|1": 0.5636363636363636,
+   "neutral|irr|5": 0.09090909090909091,
+   "neutral|rel|5": 0.4,
+   "neutral|irr|10": 0.14545454545454545,
+   "neutral|rel|10": 0.36363636363636365
+  }
+ },
+ "cell51_repeat": {
+  "gpt-oss:20b|bare": {
+   "same": 53,
+   "different": 2
+  },
+  "gpt-oss:20b|rel": {
+   "same": 49,
+   "different": 6
+  },
+  "gpt-oss:20b|irr": {
+   "same": 49,
+   "different": 6
+  },
+  "qwen2.5:7b-instruct|bare": {
+   "same": 55,
+   "different": 0
+  },
+  "qwen2.5:7b-instruct|rel": {
+   "same": 55,
+   "different": 0
+  },
+  "qwen2.5:7b-instruct|irr": {
+   "same": 55,
+   "different": 0
+  }
+ },
+ "item_uptake_new_readers_old_1": {
+  "3": 0.2625,
+  "4": 0.0,
+  "5": 0.95,
+  "8": 0.95,
+  "9": 0.5,
+  "10": 0.9,
+  "12": -0.1,
+  "13": 0.55,
+  "14": 0.5,
+  "16": 0.5,
+  "17": 0.65
+ }
+}

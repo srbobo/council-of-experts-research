@@ -2478,6 +2478,12 @@
        "end": 11405,
        "kind": "verdict",
        "heading": "CELL 64 VERDICT (2026-10-03) — six reader models, 3,300 reads; verdict lines as printed by the registered script, reading to follow"
+      },
+      {
+       "line": 11406,
+       "end": 11547,
+       "kind": "note",
+       "heading": "CELL 64 READING (2026-10-03) — six readers, 3,300 reads: the appended caveat is used by four readers Cell 51 never tried, the instruction clause makes no difference, and nine other lines cost about a tenth of the uptake"
       }
      ],
      "matrix_row": null
@@ -2927,7 +2933,7 @@
     "cols": [
      "**An appended caveat list holds every caveat by construction, and a reader model acts on a decisive appended sentence** — corrected 2026-10-01",
      "Cell 48: list 1.000 (built from the sentences it is scored on); editor's prose **61/2037 = 0.030** word for word. The published 0.174 was a parsing error (CELL 48 CORRECTION). Preference with the list attached, all pairs: 26/25/65 = 0.504, p = 1.0, 17 scenarios: no penalty detected, absence not claimed. Cell 51, 11 items, item-level: relevant minus irrelevant appended sentence **+0.691 [+0.427, +0.955], p = 0.004** (gpt-oss reader); second reader (qwen2.5) +0.455 [+0.104, +0.805], p = 0.06",
-     "0.030 is a word-for-word copy rate, not a rate of caveats lost; whether caveats are conveyed, and less often than ordinary sentences, is untested (Cell 66). \"Third convergent transport measurement\" is withdrawn: the agreement came from the bug. Reader scope: a model reader (the main one wrote the report), told to use \"anything attached\", a list of one sentence placed before the question, a decisive fact written for the item, a shorter control sentence (165 against 291 characters), 11 of 18 items after the pilot check. Cell 64 tests other readers, a neutral prompt and longer lists. No person read anything"
+     "0.030 is a word-for-word copy rate, not a rate of caveats lost; whether caveats are conveyed, and less often than ordinary sentences, is untested (Cell 66). \"Third convergent transport measurement\" is withdrawn: the agreement came from the bug. Reader scope: a model reader (the main one wrote the report), told to use \"anything attached\", a list of one sentence placed before the question, a decisive fact written for the item, a shorter control sentence (165 against 291 characters), 11 of 18 items after the pilot check. Cell 64 (2026-10-03) repeated it on four readers Cell 51 did not use, pooled **+0.515 [+0.277, +0.753], p = 0.004**; removing the \"anything attached\" clause changed uptake by −0.017 [−0.087, +0.054]; ten lines instead of one cost −0.118 [−0.206, −0.031]. Six readers from four families now; still a decisive planted fact, a shorter control sentence, and no person read anything"
     ]
    },
    {
@@ -4163,7 +4169,7 @@
     ],
     "header": null,
     "cols": [
-     "**Does the appended-caveat result hold for other reader models, without the instruction clause, in a list of ten?** Cell 64, registered 2026-10-01. Human readers are not testable by one person and stay open."
+     "~~Does the appended-caveat result hold for other reader models, without the instruction clause, in a list of ten?~~ **ANSWERED 2026-10-03 (Cell 64): yes on all three.** Four new readers pooled +0.515 [+0.277, +0.753]; the clause −0.017 [−0.087, +0.054] (no material difference); ten lines −0.118 [−0.206, −0.031]. Human readers are not testable by one person and stay open."
     ]
    },
    {
