@@ -126,37 +126,37 @@
   },
   "64": {
    "title": "Do other AI readers act on a caveat in the caveats section?",
-   "description": "Six reader models read the reports from Cell 51 with a relevant or an irrelevant caveat in the attached section. We also remove the instruction that pointed at attachments and place the caveat among 4 or 9 real ones. Planned and queued to run.",
-   "outcome": "not-run",
-   "size": "Planned: 3,300 reads by six reader models",
+   "description": "Six reader models read the reports from Cell 51 with a relevant or an irrelevant caveat in the attached section. We also remove the instruction that pointed at attachments and place the caveat among 4 or 9 real ones. The runs finished on 3 October 2026.",
+   "outcome": "mixed",
+   "size": "3,300 reads by six reader models",
    "why": "Cell 51 found that a reader model changed its decision when a relevant caveat sat in the attached section. A review in October 2026 named three limits. There were two readers, and one was the model that wrote the report. The reader's instruction told it to use anything attached. And the section held a single sentence, where real ones hold 5 to 53. This cell tests each limit, on the same 11 questions, with four readers that Cell 51 did not use.",
    "expectations": [
     {
      "id": "P64.1",
      "text": "With Cell 51's own setup, the four new reader models taken together would change their decision more often for the relevant caveat than for the irrelevant one.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. This is the main expectation of the cell."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P64.2",
      "text": "Removing the instruction that points at attachments would reduce how much the relevant caveat changes decisions.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "failed",
+     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P64.3",
      "text": "Placing the relevant caveat among nine real caveats would reduce how much it changes decisions, compared with placing it alone.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P64.4",
      "text": "We would report each reader's results in each setup, the effect of where the caveat sits in the list, and how the two readers from Cell 51 compare with their earlier results.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "Not run yet. No new question was written. The 11 questions, reports and one-word scoring are those of Cell 51. For the longer sections, the surrounding caveats are real specialist sentences from Cell 48, taken from the same scenario where it has enough. A trial run on a question Cell 51 had dropped worked for all six readers.",
+   "found": "The six reader models finished their 3,300 reads on 3 October 2026. By the rules written down in advance, 2 of the 3 graded expectations held up, 1 did not, and 0 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "The results decide how the paper describes the caveats section: whether model readers in general act on it, whether that depends on being told to look, and whether it survives a section of realistic length. Whether people act on it stays open, since one person cannot run a reader study.",
    "later": null,
    "entries": {
@@ -164,6 +164,11 @@
      "label": "Plan",
      "title": "Six readers, a neutral instruction and longer sections",
      "summary": "Each reader gets the report with no section, with Cell 51's one-sentence section, and, under an instruction that no longer mentions attachments, with sections of 1, 5 and 10 sentences. The relevant and irrelevant versions differ in one line. Five reads per setup on 11 questions, 550 reads per reader."
+    },
+    "11335": {
+     "label": "Result",
+     "title": "Reads finished: results by the rules set in advance",
+     "summary": "The six reader models finished their 3,300 reads on 3 October 2026. Of the 3 graded expectations, 2 held up, 1 did not and 0 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   },

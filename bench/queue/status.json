@@ -15,8 +15,15 @@
    "commit": "5af21d9"
   },
   "c66-conveyed": {
+   "state": "done",
+   "started_utc": "2026-10-02T13:49:26Z",
+   "finished_utc": "2026-10-02T22:25:20Z",
+   "attempts": 1,
+   "commit": "c0348d7"
+  },
+  "c64-readers": {
    "state": "running",
-   "started_utc": "2026-10-02T13:49:26Z"
+   "started_utc": "2026-10-02T22:25:23Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

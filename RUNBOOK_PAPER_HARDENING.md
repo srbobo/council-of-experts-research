@@ -11331,3 +11331,74 @@ One step appended to `train/run_queue.py` after the Cell 66 steps:
 The caveat counts of Cells 30, 31, 38, 41 and 46 stay PROVISIONAL. The
 blind hold-back of `bench/analysis/cell62/judge_labels.json` on the site
 is lifted once this check is recorded, since no person will label.
+
+## CELL 64 VERDICT (2026-10-03) — six reader models, 3,300 reads; verdict lines as printed by the registered script, reading to follow
+
+Recorded automatically by the run queue (step `c64-readers`, 2026-10-03T07:56:18Z, commit ecd566e checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 64 — is the appended caveat used by other readers?
+==============================================================================
+reads: 3300; set aside for a context-limit hit: 0
+
+CHECK per reader: bare documents must give the default answer (flip share at most 0.20 under each prompt) and at most 20% of reads may be unusable
+  gpt-oss:20b                        reads  550  unusable 0.000  bare flip old 0.036  neutral 0.091  -> PASS
+  qwen2.5:7b-instruct                reads  550  unusable 0.000  bare flip old 0.091  neutral 0.091  -> PASS
+  phi4:14b                           reads  550  unusable 0.025  bare flip old 0.120  neutral 0.111  -> PASS
+  qwen3-vl:30b-a3b-instruct          reads  550  unusable 0.000  bare flip old 0.073  neutral 0.091  -> PASS
+  llama3:8b-instruct-q4_K_M          reads  550  unusable 0.000  bare flip old 0.091  neutral 0.091  -> PASS
+  mistral:7b-instruct-v0.3-q4_K_M    reads  550  unusable 0.000  bare flip old 0.109  neutral 0.145  -> PASS
+
+uptake per reader (flip share with the relevant line minus with the irrelevant line; item level)
+  gpt-oss:20b
+    old      list of 1   +0.691 [+0.463, +0.919]  sign-flip p = 0.0020  (11 items)
+    neutral  list of 1   +0.764 [+0.540, +0.987]  sign-flip p = 0.0020  (11 items)
+    neutral  list of 5   +0.727 [+0.492, +0.962]  sign-flip p = 0.0020  (11 items)
+    neutral  list of 10  +0.636 [+0.405, +0.868]  sign-flip p = 0.0020  (11 items)
+  qwen2.5:7b-instruct
+    old      list of 1   +0.455 [+0.104, +0.805]  sign-flip p = 0.0625  (11 items)
+    neutral  list of 1   +0.382 [+0.067, +0.697]  sign-flip p = 0.0625  (11 items)
+    neutral  list of 5   +0.345 [+0.057, +0.634]  sign-flip p = 0.0625  (11 items)
+    neutral  list of 10  +0.345 [+0.070, +0.621]  sign-flip p = 0.0625  (11 items)
+  phi4:14b
+    old      list of 1   +0.605 [+0.302, +0.907]  sign-flip p = 0.0039  (11 items)
+    neutral  list of 1   +0.741 [+0.465, +1.017]  sign-flip p = 0.0039  (11 items)
+    neutral  list of 5   +0.582 [+0.297, +0.867]  sign-flip p = 0.0078  (11 items)
+    neutral  list of 10  +0.576 [+0.345, +0.807]  sign-flip p = 0.0020  (11 items)
+  qwen3-vl:30b-a3b-instruct
+    old      list of 1   +0.673 [+0.359, +0.987]  sign-flip p = 0.0078  (11 items)
+    neutral  list of 1   +0.545 [+0.195, +0.896]  sign-flip p = 0.0312  (11 items)
+    neutral  list of 5   +0.564 [+0.225, +0.903]  sign-flip p = 0.0156  (11 items)
+    neutral  list of 10  +0.564 [+0.225, +0.903]  sign-flip p = 0.0156  (11 items)
+  llama3:8b-instruct-q4_K_M
+    old      list of 1   +0.327 [-0.040, +0.694]  sign-flip p = 0.1250  (11 items)
+    neutral  list of 1   +0.400 [+0.071, +0.729]  sign-flip p = 0.0625  (11 items)
+    neutral  list of 5   +0.182 [+0.007, +0.357]  sign-flip p = 0.0625  (11 items)
+    neutral  list of 10  +0.255 [+0.084, +0.425]  sign-flip p = 0.0156  (11 items)
+  mistral:7b-instruct-v0.3-q4_K_M
+    old      list of 1   +0.455 [+0.148, +0.761]  sign-flip p = 0.0312  (11 items)
+    neutral  list of 1   +0.473 [+0.159, +0.787]  sign-flip p = 0.0312  (11 items)
+    neutral  list of 5   +0.309 [+0.074, +0.545]  sign-flip p = 0.0156  (11 items)
+    neutral  list of 10  +0.218 [+0.054, +0.382]  sign-flip p = 0.0156  (11 items)
+
+pooled over the 6 readers that passed the check (item level):
+  uptake old|1        +0.534 [+0.309, +0.759]  sign-flip p = 0.0039  (11 items)
+  uptake neutral|1    +0.551 [+0.339, +0.762]  sign-flip p = 0.0020  (11 items)
+  uptake neutral|5    +0.452 [+0.314, +0.589]  sign-flip p = 0.0020  (11 items)
+  uptake neutral|10   +0.432 [+0.277, +0.588]  sign-flip p = 0.0020  (11 items)
+
+VERDICT LINES (as registered)
+  P64.1 SUPPORTED — old prompt, one-line list, pooled over the 4 new readers that passed: +0.515 [+0.277, +0.753]  sign-flip p = 0.0039  (11 items)
+  P64.2 FALSIFIED (the interval spans zero inside ±0.25: no material difference) — uptake with the instruction clause minus without it (one-line list): -0.017 [-0.087, +0.054]  sign-flip p = 0.6484  (11 items)
+  P64.3 SUPPORTED — uptake at 10 lines minus at 1 line (neutral prompt): -0.118 [-0.206, -0.031]  sign-flip p = 0.0137  (11 items)
+  (5 lines minus 1 line, shown beside: -0.099 [-0.192, -0.006]  sign-flip p = 0.0547  (11 items))
+
+descriptive
+  list of 5: uptake where every surrounding line is from the item's own case +0.450 (6 items); elsewhere +0.453 (5 items)
+  list of 10: uptake where every surrounding line is from the item's own case +0.367 (4 items); elsewhere +0.470 (7 items)
+  list of 10, flip share by where the relevant line sits: first three 0.538 (n=78), last three 0.583 (n=108), middle 0.535 (n=144)
+  flip share with ten real caveats and no relevant line 0.116; with no list 0.103
+  repeat of Cell 51 on gpt-oss:20b: +0.691 now, +0.691 then
+  repeat of Cell 51 on qwen2.5:7b-instruct: +0.455 now, +0.455 then
+```

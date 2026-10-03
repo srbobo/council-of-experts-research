@@ -2458,8 +2458,8 @@
     {
      "id": "64",
      "current_title": "is an appended caveat used by other reader models, without being told to look, and in a long list?",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P64.1",
       "P64.2",
@@ -2472,6 +2472,12 @@
        "end": 10395,
        "kind": "prereg",
        "heading": "CELL 64 PRE-REGISTRATION (2026-10-01) — is an appended caveat used by other reader models, without being told to look, and in a long list?"
+      },
+      {
+       "line": 11335,
+       "end": 11405,
+       "kind": "verdict",
+       "heading": "CELL 64 VERDICT (2026-10-03) — six reader models, 3,300 reads; verdict lines as printed by the registered script, reading to follow"
       }
      ],
      "matrix_row": null
@@ -2500,8 +2506,8 @@
     {
      "id": "66",
      "current_title": "are caveats lost more than ordinary sentences?",
-     "status_parsed": "mixed",
-     "never_ran": false,
+     "status_parsed": "registered",
+     "never_ran": true,
      "pids": [
       "P66.0",
       "P66.1",
@@ -2529,8 +2535,8 @@
       {
        "line": 11143,
        "end": 11264,
-       "kind": "verdict",
-       "heading": "CELL 66 AMENDMENT (2026-10-02) — the person's labels are replaced by a check against public human labels (FRANK) and a known-value check on unused material; registered before any judge verdict is read"
+       "kind": "amendment",
+       "heading": "CELL 66 AMENDMENT (2026-10-02) — the person's labels are replaced by a check against public human labels (FRANK) and a known-value check on unused material; registered before any judge answer is read"
       }
      ],
      "matrix_row": null
