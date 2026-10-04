@@ -22,8 +22,15 @@
    "commit": "c0348d7"
   },
   "c64-readers": {
+   "state": "done",
+   "started_utc": "2026-10-02T22:25:23Z",
+   "finished_utc": "2026-10-03T07:56:18Z",
+   "attempts": 1,
+   "commit": "ffc28be"
+  },
+  "c65-judges": {
    "state": "running",
-   "started_utc": "2026-10-02T22:25:23Z"
+   "started_utc": "2026-10-03T07:56:22Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

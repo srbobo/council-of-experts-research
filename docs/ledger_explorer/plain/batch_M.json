@@ -179,37 +179,37 @@
   },
   "65": {
    "title": "Do AI judges from other model families share the preference?",
-   "description": "Four more AI judges compare the same 378 pairs of answers as Cell 43, in both orders, with the same instructions. Every pair counts, with a pair the judge calls differently in the two orders counting as half. Planned and queued to run.",
-   "outcome": "not-run",
-   "size": "Planned: 3,024 judgments by four added judges",
+   "description": "Four more AI judges compare the same 378 pairs of answers as Cell 43, in both orders, with the same instructions. Every pair counts, with a pair the judge calls differently in the two orders counting as half. The runs finished on 4 October 2026.",
+   "outcome": "unclear",
+   "size": "3,024 judgments by four added judges",
    "why": "Two judges have compared Cell 43's pairs: gpt-oss, which also wrote every answer, and qwen3-vl. Both preferred combined answers and marked down a scripted caveat phrase. A review in October 2026 asked whether that holds beyond those two. This cell adds Qwen2.5, Phi-4, Llama 3 and Mistral as judges. One of them, Qwen2.5, picked the first answer it read in 234 of its 240 earlier calls, so we set a rule in advance for leaving out a judge that only follows reading order.",
    "expectations": [
     {
      "id": "P65.1",
      "text": "Taken together, the added judges that count would prefer the combined answer to the single answer.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. This is the main expectation of the cell."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P65.2",
      "text": "Taken together, the added judges that count would score the answer containing 'modeled at' below the plain answer.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P65.3",
      "text": "Taken together, the added judges that count would score the answer containing 'taken to be' below the plain answer.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P65.4",
      "text": "We would report each judge's wins, losses and split pairs, how often it picked the first answer it read, and how often judges agree with each other.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "Not run yet. No answer is written for this cell. The pairs, the judge's instructions and the settings are those of Cell 43. A trial run on a made-up pair worked for all four judges. Three picked the better answer in both orders, and Qwen2.5 picked the first one it read both times.",
+   "found": "The four added judges finished their 3,024 judgments on 4 October 2026. By the rules written down in advance, 0 of the 3 graded expectations held up, 0 did not, and 3 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "If the added judges share the preferences, the paper can describe them as common to local AI judges of this size. If they do not, the two earlier results are properties of two particular judges. Either way the results say nothing about what people prefer.",
    "later": null,
    "entries": {
@@ -217,6 +217,11 @@
      "label": "Plan",
      "title": "Four more judges on the same 378 pairs",
      "summary": "The four judges see each pair in both orders. A judge counts only if at most 20% of its pairs are unusable and it picked the first answer it read less than 95% of the time. For each comparison, the judges that count are averaged within each of the 18 scenarios and tested against an even split."
+    },
+    "11548": {
+     "label": "Result",
+     "title": "Judging finished: results by the rules set in advance",
+     "summary": "The four added judges finished their 3,024 judgments on 4 October 2026. Of the 3 graded expectations, 0 held up, 0 did not and 3 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   },

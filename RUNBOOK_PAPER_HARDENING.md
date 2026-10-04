@@ -11544,3 +11544,51 @@ line changes the decision" is interventional; "the reader understood it"
 is not claimed). 11 (unusable reads and tries are reported per reader and
 arm; the ten-real-caveats arm reports what the list does with no relevant
 line in it).
+
+## CELL 65 VERDICT (2026-10-04) — four added judges, 3,024 judgments; verdict lines as printed by the registered script, reading to follow
+
+Recorded automatically by the run queue (step `c65-judges`, 2026-10-04T06:30:47Z, commit 27a563b checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 65 — judge preference with four added judges (all pairs; a split pair counts half)
+==============================================================================
+
+  judge       comparison                            win/loss/tie  all pairs   scenario-level, minus 0.5
+  gpt-oss     pipeline answer vs single answer       36/8/82       0.611   +0.111 [+0.065, +0.157]  p = 0.0005  (k = 18)
+  gpt-oss     'modeled at' answer vs plain           12/34/80       0.413   -0.087 [-0.144, -0.031]  p = 0.0088  (k = 18)
+  gpt-oss     'taken to be' answer vs plain          13/28/84       0.440   -0.058 [-0.118, +0.003]  p = 0.0615  (k = 18)
+  qwen3-vl    pipeline answer vs single answer       26/7/93       0.575   +0.075 [+0.023, +0.128]  p = 0.0116  (k = 18)
+  qwen3-vl    'modeled at' answer vs plain            8/21/97       0.448   -0.052 [-0.119, +0.016]  p = 0.1719  (k = 18)
+  qwen3-vl    'taken to be' answer vs plain           5/18/103      0.448   -0.052 [-0.092, -0.012]  p = 0.0234  (k = 18)
+  qwen2.5     pipeline answer vs single answer        5/3/118      0.508   +0.008 [-0.013, +0.029]  p = 0.6875  (k = 18)   [does not count: shown only]
+  qwen2.5     'modeled at' answer vs plain            0/4/122      0.484   -0.016 [-0.035, +0.004]  p = 0.2500  (k = 18)   [does not count: shown only]
+  qwen2.5     'taken to be' answer vs plain           3/1/122      0.508   +0.008 [-0.009, +0.025]  p = 1.0000  (k = 18)   [does not count: shown only]
+  phi4        pipeline answer vs single answer       25/10/91       0.560   +0.060 [+0.005, +0.114]  p = 0.0504  (k = 18)
+  phi4        'modeled at' answer vs plain           11/13/102      0.492   -0.008 [-0.052, +0.036]  p = 0.8516  (k = 18)
+  phi4        'taken to be' answer vs plain           3/8/115      0.480   -0.020 [-0.049, +0.010]  p = 0.2812  (k = 18)
+  llama3      pipeline answer vs single answer        0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+  llama3      'modeled at' answer vs plain            0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+  llama3      'taken to be' answer vs plain           0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+  mistral     pipeline answer vs single answer        0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+  mistral     'modeled at' answer vs plain            0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+  mistral     'taken to be' answer vs plain           0/0/126      0.500   +0.000 [+0.000, +0.000]  p = 1.0000  (k = 18)   [does not count: shown only]
+
+  share of single judgments that chose the first-listed answer, and unusable pairs:
+    gpt-oss:20b                        first-listed 0.816   unusable 0.003
+    qwen3-vl:30b-a3b-instruct          first-listed 0.877   unusable 0.000
+    qwen2.5:7b-instruct                first-listed 0.979   unusable 0.000   does not count
+    phi4:14b                           first-listed 0.886   unusable 0.000   counts
+    llama3:8b-instruct-q4_K_M          first-listed 1.000   unusable 0.000   does not count
+    mistral:7b-instruct-v0.3-q4_K_M    first-listed 1.000   unusable 0.000   does not count
+
+VERDICT LINES (as registered; pooled over the 1 added judges that count)
+  P65.1 NOT EVALUABLE — fewer than two added judges count
+  P65.2 NOT EVALUABLE — fewer than two added judges count
+  P65.3 NOT EVALUABLE — fewer than two added judges count
+
+reported without a pass/fail: agreement between judges on which side wins a pair (split pairs left out)
+    gpt-oss    and qwen3-vl   n =  45  raw 0.933  kappa 0.865
+    gpt-oss    and phi4       n =  29  raw 0.862  kappa 0.709
+    qwen3-vl   and phi4       n =  27  raw 0.815  kappa 0.628
+```

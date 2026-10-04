@@ -2491,8 +2491,8 @@
     {
      "id": "65",
      "current_title": "does the judge preference repeat with judges from other model families?",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P65.1",
       "P65.2",
@@ -2505,6 +2505,12 @@
        "end": 10465,
        "kind": "prereg",
        "heading": "CELL 65 PRE-REGISTRATION (2026-10-01) — does the judge preference repeat with judges from other model families?"
+      },
+      {
+       "line": 11548,
+       "end": 11595,
+       "kind": "verdict",
+       "heading": "CELL 65 VERDICT (2026-10-04) — four added judges, 3,024 judgments; verdict lines as printed by the registered script, reading to follow"
       }
      ],
      "matrix_row": null
