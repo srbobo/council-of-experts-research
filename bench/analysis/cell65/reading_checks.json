@@ -1,0 +1,344 @@
+{
+ "integrity": {
+  "qwen2.5:7b-instruct": {
+   "judgments": 756,
+   "unique_keys": 756,
+   "digest": [
+    "845dbda0ea48"
+   ],
+   "registration": [
+    "6402fc0"
+   ],
+   "script_sha": [
+    "3bd8378842950c41"
+   ],
+   "head_commits": [
+    "27a563b",
+    "ffc28be"
+   ],
+   "num_ctx": [
+    32768
+   ],
+   "prompt_tokens_max": 7705,
+   "prompt_tokens_median": 4184.0,
+   "ctx_hit": 0,
+   "done_reason": {
+    "stop": 756
+   },
+   "unparsed": 0,
+   "output_tokens_median": 5.0,
+   "temperature": [
+    0.0
+   ],
+   "max_tokens": [
+    4096
+   ],
+   "first_utc": "2026-10-03T07:56:22Z",
+   "last_utc": "2026-10-03T11:21:56Z",
+   "wall_hours": 3.43
+  },
+  "phi4:14b": {
+   "judgments": 756,
+   "unique_keys": 756,
+   "digest": [
+    "ac896e5b8b34"
+   ],
+   "registration": [
+    "6402fc0"
+   ],
+   "script_sha": [
+    "3bd8378842950c41"
+   ],
+   "head_commits": [
+    "27a563b"
+   ],
+   "num_ctx": [
+    16384
+   ],
+   "prompt_tokens_max": 7476,
+   "prompt_tokens_median": 4052.5,
+   "ctx_hit": 0,
+   "done_reason": {
+    "stop": 756
+   },
+   "unparsed": 0,
+   "output_tokens_median": 113.0,
+   "temperature": [
+    0.0
+   ],
+   "max_tokens": [
+    4096
+   ],
+   "first_utc": "2026-10-03T11:22:12Z",
+   "last_utc": "2026-10-03T21:37:16Z",
+   "wall_hours": 10.26
+  },
+  "llama3:8b-instruct-q4_K_M": {
+   "judgments": 756,
+   "unique_keys": 756,
+   "digest": [
+    "9b8f3f3385bf"
+   ],
+   "registration": [
+    "6402fc0"
+   ],
+   "script_sha": [
+    "3bd8378842950c41"
+   ],
+   "head_commits": [
+    "27a563b"
+   ],
+   "num_ctx": [
+    8192
+   ],
+   "prompt_tokens_max": 7264,
+   "prompt_tokens_median": 3955.0,
+   "ctx_hit": 0,
+   "done_reason": {
+    "stop": 756
+   },
+   "unparsed": 0,
+   "output_tokens_median": 5.0,
+   "temperature": [
+    0.0
+   ],
+   "max_tokens": [
+    4096
+   ],
+   "first_utc": "2026-10-03T21:38:15Z",
+   "last_utc": "2026-10-04T01:26:06Z",
+   "wall_hours": 3.8
+  },
+  "mistral:7b-instruct-v0.3-q4_K_M": {
+   "judgments": 756,
+   "unique_keys": 756,
+   "digest": [
+    "6577803aa9a0"
+   ],
+   "registration": [
+    "6402fc0"
+   ],
+   "script_sha": [
+    "3bd8378842950c41"
+   ],
+   "head_commits": [
+    "27a563b"
+   ],
+   "num_ctx": [
+    32768
+   ],
+   "prompt_tokens_max": 9350,
+   "prompt_tokens_median": 4985.5,
+   "ctx_hit": 0,
+   "done_reason": {
+    "stop": 756
+   },
+   "unparsed": 0,
+   "output_tokens_median": 5.0,
+   "temperature": [
+    0.0
+   ],
+   "max_tokens": [
+    4096
+   ],
+   "first_utc": "2026-10-04T01:26:23Z",
+   "last_utc": "2026-10-04T06:30:22Z",
+   "wall_hours": 5.07
+  }
+ },
+ "position": {
+  "gpt-oss:20b": {
+   "fwd": {
+    "B": 75,
+    "A": 303
+   },
+   "rev": {
+    "A": 312,
+    "B": 65,
+    "null": 1
+   },
+   "decided_pairs": 131,
+   "split_pairs": 246
+  },
+  "qwen3-vl:30b-a3b-instruct": {
+   "fwd": {
+    "B": 50,
+    "A": 328
+   },
+   "rev": {
+    "A": 335,
+    "B": 43
+   },
+   "decided_pairs": 85,
+   "split_pairs": 293
+  },
+  "qwen2.5:7b-instruct": {
+   "fwd": {
+    "A": 370,
+    "B": 8
+   },
+   "rev": {
+    "B": 8,
+    "A": 370
+   },
+   "decided_pairs": 16,
+   "split_pairs": 362
+  },
+  "phi4:14b": {
+   "fwd": {
+    "B": 39,
+    "A": 339
+   },
+   "rev": {
+    "A": 331,
+    "B": 47
+   },
+   "decided_pairs": 70,
+   "split_pairs": 308
+  },
+  "llama3:8b-instruct-q4_K_M": {
+   "fwd": {
+    "A": 378
+   },
+   "rev": {
+    "A": 378
+   },
+   "decided_pairs": 0,
+   "split_pairs": 378
+  },
+  "mistral:7b-instruct-v0.3-q4_K_M": {
+   "fwd": {
+    "A": 378
+   },
+   "rev": {
+    "A": 378
+   },
+   "decided_pairs": 0,
+   "split_pairs": 378
+  }
+ },
+ "length": {
+  "C1": {
+   "side1_over_side2_median": 1.049622728783861,
+   "side1_longer_share": 0.5714285714285714
+  },
+  "C2": {
+   "side1_over_side2_median": 0.9718795244714449,
+   "side1_longer_share": 0.3968253968253968
+  },
+  "C3": {
+   "side1_over_side2_median": 0.9528917670868391,
+   "side1_longer_share": 0.373015873015873
+  },
+  "gpt-oss:20b": {
+   "C1": {
+    "decided": 44,
+    "longer_wins": 32
+   },
+   "C2": {
+    "decided": 46,
+    "longer_wins": 37
+   },
+   "C3": {
+    "decided": 41,
+    "longer_wins": 31
+   }
+  },
+  "qwen3-vl:30b-a3b-instruct": {
+   "C1": {
+    "decided": 33,
+    "longer_wins": 27
+   },
+   "C2": {
+    "decided": 29,
+    "longer_wins": 21
+   },
+   "C3": {
+    "decided": 23,
+    "longer_wins": 22
+   }
+  },
+  "qwen2.5:7b-instruct": {
+   "C1": {
+    "decided": 8,
+    "longer_wins": 2
+   },
+   "C2": {
+    "decided": 4,
+    "longer_wins": 2
+   },
+   "C3": {
+    "decided": 4,
+    "longer_wins": 1
+   }
+  },
+  "phi4:14b": {
+   "C1": {
+    "decided": 35,
+    "longer_wins": 24
+   },
+   "C2": {
+    "decided": 24,
+    "longer_wins": 10
+   },
+   "C3": {
+    "decided": 11,
+    "longer_wins": 8
+   }
+  },
+  "llama3:8b-instruct-q4_K_M": {
+   "C1": {
+    "decided": 0,
+    "longer_wins": 0
+   },
+   "C2": {
+    "decided": 0,
+    "longer_wins": 0
+   },
+   "C3": {
+    "decided": 0,
+    "longer_wins": 0
+   }
+  },
+  "mistral:7b-instruct-v0.3-q4_K_M": {
+   "C1": {
+    "decided": 0,
+    "longer_wins": 0
+   },
+   "C2": {
+    "decided": 0,
+    "longer_wins": 0
+   },
+   "C3": {
+    "decided": 0,
+    "longer_wins": 0
+   }
+  }
+ },
+ "phi4_agreement": {
+  "gpt-oss:20b|C1": {
+   "both_decided": 16,
+   "same_winner": 14
+  },
+  "gpt-oss:20b|C2": {
+   "both_decided": 8,
+   "same_winner": 7
+  },
+  "gpt-oss:20b|C3": {
+   "both_decided": 5,
+   "same_winner": 4
+  },
+  "qwen3-vl:30b-a3b-instruct|C1": {
+   "both_decided": 16,
+   "same_winner": 14
+  },
+  "qwen3-vl:30b-a3b-instruct|C2": {
+   "both_decided": 8,
+   "same_winner": 5
+  },
+  "qwen3-vl:30b-a3b-instruct|C3": {
+   "both_decided": 3,
+   "same_winner": 3
+  }
+ }
+}

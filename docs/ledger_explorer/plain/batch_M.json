@@ -179,38 +179,38 @@
   },
   "65": {
    "title": "Do AI judges from other model families share the preference?",
-   "description": "Four more AI judges compare the same 378 pairs of answers as Cell 43, in both orders, with the same instructions. Every pair counts, with a pair the judge calls differently in the two orders counting as half. The runs finished on 4 October 2026.",
-   "outcome": "unclear",
-   "size": "3,024 judgments by four added judges",
+   "description": "Four more AI judges compared the same 378 pairs of answers as Cell 43, in both orders. Three picked the first answer they read 98% to 100% of the time, so they could not be counted and the planned test could not be run. The fourth leaned the same way as the earlier judges.",
+   "outcome": "stopped",
+   "size": "3,024 judgments by four added judges, one of them counted",
    "why": "Two judges have compared Cell 43's pairs: gpt-oss, which also wrote every answer, and qwen3-vl. Both preferred combined answers and marked down a scripted caveat phrase. A review in October 2026 asked whether that holds beyond those two. This cell adds Qwen2.5, Phi-4, Llama 3 and Mistral as judges. One of them, Qwen2.5, picked the first answer it read in 234 of its 240 earlier calls, so we set a rule in advance for leaving out a judge that only follows reading order.",
    "expectations": [
     {
      "id": "P65.1",
      "text": "Taken together, the added judges that count would prefer the combined answer to the single answer.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be tested. The plan needed at least two added judges that do not pick by position, and only one, phi4, qualified. Alone it leaned the same way: 56% for the combined answer, plausibly 50% to 61%."
     },
     {
      "id": "P65.2",
      "text": "Taken together, the added judges that count would score the answer containing 'modeled at' below the plain answer.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be tested, for the same reason. The one judge that qualified showed no preference either way on this pair: 11 wins, 13 losses, 102 split."
     },
     {
      "id": "P65.3",
      "text": "Taken together, the added judges that count would score the answer containing 'taken to be' below the plain answer.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be tested, for the same reason. The one judge that qualified showed no clear preference: 3 wins, 8 losses, 115 split."
     },
     {
      "id": "P65.4",
      "text": "We would report each judge's wins, losses and split pairs, how often it picked the first answer it read, and how often judges agree with each other.",
      "outcome": "not-graded",
-     "note": "Reported without a pass/fail test. The figures are in the result entry below."
+     "note": "Reported without a pass/fail test. Llama and Mistral picked the first answer in all 756 judgments each, qwen2.5 in 740. Where phi4 and an earlier judge both decided a pair, they agreed on 25 of 29 and 22 of 27."
     }
    ],
-   "found": "The four added judges finished their 3,024 judgments on 4 October 2026. By the rules written down in advance, 0 of the 3 graded expectations held up, 0 did not, and 3 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "If the added judges share the preferences, the paper can describe them as common to local AI judges of this size. If they do not, the two earlier results are properties of two particular judges. Either way the results say nothing about what people prefer.",
+   "found": "The four added judges finished their 3,024 judgments on 4 October 2026, in 22.6 hours instead of the 10 to 12 planned. Every reply could be read and none ran out of room.\n\nThe plan said a judge counts only if it picks the first answer it reads in fewer than 95% of judgments. Llama 3 (8B) and Mistral (7B) picked the first answer in every one of their 756 judgments, so they split every pair. Qwen2.5 (7B) picked it in 740 of 756. Only phi4 (14B), at 89%, qualified, and the plan needed two. So the three expectations could not be tested, an outcome the plan had named for this case.\n\nOn its own, phi4 decided 70 of the 378 pairs. It preferred the combined answer to the single answer, 25 wins to 10 losses, a score of 56% with every pair counted, which leans the same way as the two earlier judges at about half their margin. On the two pairs that test a planted phrase it showed nothing. Where phi4 and an earlier judge both decided a pair, they agreed on 25 of 29 and 22 of 27 pairs. When these judges decide at all, the longer answer wins most of the time, and the combined answer is the longer one in 72 of 126 pairs.",
+   "means": "Judges of 7 to 8 billion parameters cannot be used for this comparison: given two long answers, they choose the first one every time. The preference for the combined answer therefore still rests on the two earlier judges, one of which wrote the answers, with a third judge leaning the same way without reaching the test. The claims file records a new finding about the tool: pairwise judging of these answers is decided by reading order for small judges. Whether people share any of these preferences stays open.",
    "later": null,
    "entries": {
     "10396": {
@@ -220,8 +220,13 @@
     },
     "11548": {
      "label": "Result",
-     "title": "Judging finished: results by the rules set in advance",
-     "summary": "The four added judges finished their 3,024 judgments on 4 October 2026. Of the 3 graded expectations, 0 held up, 0 did not and 3 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+     "title": "Judging finished: the planned test could not be run",
+     "summary": "The four added judges finished on 4 October 2026. Three picked the first answer they read 98% to 100% of the time and so could not be counted under the rule written down in advance. With only one judge counting, the three expectations could not be tested. This entry holds the scoring script's output exactly as printed."
+    },
+    "11596": {
+     "label": "Note",
+     "title": "Why the test could not run, and what the one counting judge showed",
+     "summary": "Llama and Mistral chose the first answer in all 756 judgments each, qwen2.5 in 740. The 14B judge phi4 qualified alone and leaned toward the combined answer at about half the earlier judges' margin, agreeing with them on most pairs both decided. The claims file gains a finding: small judges decide these pairs by reading order."
     }
    }
   },

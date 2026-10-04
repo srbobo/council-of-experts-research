@@ -72,7 +72,7 @@
   },
   "S1-10": {
    "claim": "Two AI judges on our machine preferred an answer combined from several drafts over a single direct answer from the same model.",
-   "detail": "We showed each pair in both orders. We counted every pair, with a pair the judge split by position as half a win. The combined answer scored 61% with the gpt-oss judge (Cell 43) and 58% with qwen3-vl (Cell 43-R), a clear preference in both, over 18 scenarios. The 82% and 79% we first reported counted only the 35% and 26% of pairs each judge called the same way in both orders. Limits: the combined answer costs four model calls against one, and we ran no comparison of equal cost. The judges are small models that pick the first answer they read 80% to 89% of the time. No person judged a pair. Cell 65 adds other judges.",
+   "detail": "We showed each pair in both orders and counted every pair, with a pair the judge split by position as half a win. The combined answer scored 61% with the gpt-oss judge (Cell 43) and 58% with qwen3-vl (Cell 43-R), a clear preference in both. We first reported 82% and 79%, counting only the pairs each judge called the same way in both orders. Limits: four model calls against one, with no comparison of equal cost. The judges pick the first answer they read 80% to 89% of the time. No person judged a pair. In Cell 65 three added small judges chose by reading order alone and could not be counted, and a fourth, phi4, leaned the same way at about half the margin. The claim keeps its two judges.",
    "cells": [
     "41",
     "43",
@@ -727,7 +727,7 @@
   },
   "S5-15": {
    "claim": "Do AI judges from other model families share the two judges' preferences?",
-   "detail": "Planned as Cell 65, adding four judges on the same 378 pairs. Whether people share those preferences stays open.",
+   "detail": "Not answered. In Cell 65 (October 2026) three of the four added judges picked the first answer they read 98% to 100% of the time. Under the rule written down in advance fewer than two judges counted, so the test could not be run. The one that counted, phi4, leaned the same way as the earlier judges on the combined-versus-single comparison. Answering this needs judges of 14B and above from other model families. Whether people share these preferences stays open.",
    "cells": [
     "43",
     "43-R",
@@ -785,6 +785,15 @@
    "claim": "Say plainly what was tested: one model in several roles, small local judges and readers, no people.",
    "detail": "Adopted in October 2026. In most experiments the three specialists are the editor model given a one-sentence role. Judges and readers are local models of 7 to 30 billion parameters. Nothing is claimed about people. The pipeline we tested is also not the published Mixture-of-Agents method, which uses several different large models.",
    "cells": []
+  },
+  "S4-21": {
+   "claim": "Given two long answers, our 7B and 8B judges picked the first one they read every time, so they cannot measure a preference.",
+   "detail": "In Cell 65 (October 2026) we gave four more AI judges the same 378 pairs of answers as Cell 43, in both orders. Llama 3 (8B) and Mistral (7B) chose the first answer in all 756 judgments each, and Qwen2.5 (7B) in 740 of 756. A judge that always picks the first answer splits every pair and says nothing about which is better. The 14B judge phi4 and the earlier 20B and 30B judges pick the first answer 82% to 89% of the time and decide a fifth to a third of pairs. The instructions were written for a 20B judge. We do not know whether another format would work for small judges.",
+   "cells": [
+    "43",
+    "43-R",
+    "65"
+   ]
   }
  }
 }

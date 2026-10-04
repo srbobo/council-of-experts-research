@@ -11592,3 +11592,109 @@ reported without a pass/fail: agreement between judges on which side wins a pair
     gpt-oss    and phi4       n =  29  raw 0.862  kappa 0.709
     qwen3-vl   and phi4       n =  27  raw 0.815  kappa 0.628
 ```
+
+## CELL 65 READING (2026-10-04) — four added judges, 3,024 judgments: three choose the first-listed answer in 98 to 100% of judgments and do not count, so the question is not answered; the one that counts, phi4, leans the stored judges' way on the pipeline comparison
+
+This is the analyst's reading of the entry above. The verdict words are
+the ones the registered script printed and nothing here changes them.
+Figures the script does not print come from
+`bench/analysis/cell65/reading_checks.py`, written after the runs; it
+calls no model and writes `reading_checks.json`. Those are marked *not
+registered*.
+
+### The run
+
+- 3,024 judgments, 756 per judge (378 pairs in both orders), from
+  2026-10-03T07:56:22Z to 2026-10-04T06:30:22Z: 22.6 hours against the
+  registration's ten to twelve. phi4:14b alone took 10.3 hours (it writes
+  about 110 tokens of reasoning per judgment; the three 7B to 8B judges
+  write about five, the letter and little else), and the two-answer
+  prompts run to 4,000 to 9,000 tokens.
+- Every record carries registration commit 6402fc0 and one runner hash
+  (3bd8378842950c41); one model build per judge; temperature 0 and a
+  4,096-token allowance throughout. The `head` field changes once
+  (ffc28be to 27a563b: the Cell 64 reading was committed during the first
+  judge). The runner did not change.
+- Every reply parsed. No judgment hit the context limit: llama3's 8,192-
+  token window held its longest prompt (7,264 tokens), so the set-aside
+  the registration provided for was not needed.
+
+### The counting rule, judge by judge
+
+| judge | first-listed chosen | unusable | pairs decided (of 378) | counts? |
+|---|---|---|---|---|
+| qwen2.5:7b-instruct | 0.979 | 0.000 | 16 | no |
+| phi4:14b | 0.886 | 0.000 | 70 | yes |
+| llama3:8b-instruct-q4_K_M | 1.000 | 0.000 | 0 | no |
+| mistral:7b-instruct-v0.3-q4_K_M | 1.000 | 0.000 | 0 | no |
+| (stored) gpt-oss:20b | 0.816 | 0.003 | 131 | — |
+| (stored) qwen3-vl:30b-a3b-instruct | 0.877 | 0.000 | 85 | — |
+
+llama3 and mistral answered "A" in all 756 judgments each, in both orders
+of every pair; qwen2.5 in 740 of 756, as its 120 stored pairs had
+predicted (0.975). Only phi4 clears the 0.95 line. Fewer than two added
+judges count, so **P65.1, P65.2 and P65.3 are NOT EVALUABLE**, the outcome
+the registration named for this case: it is the finding about judges of
+this size on this task.
+
+### What the one counting judge shows (reported; a single judge decides nothing under the registration)
+
+phi4 decided 70 of 378 pairs. Pipeline answer against single answer: 25
+wins, 10 losses, 91 split; all-pairs score 0.560; scenario level +0.060
+[+0.005, +0.114], p = 0.050. "Modeled at" against plain: 11/13/102,
+−0.008 [−0.052, +0.036]. "Taken to be" against plain: 3/8/115, −0.020
+[−0.049, +0.010]. The first leans the stored judges' way at about half
+their size (+0.111 and +0.075); the other two show nothing.
+
+On the pairs that both phi4 and a stored judge decided (*not registered*,
+by comparison): with gpt-oss 14 of 16, 7 of 8 and 4 of 5 the same winner;
+with qwen3-vl 14 of 16, 5 of 8 and 3 of 3. The script's pooled figures
+are kappa 0.71 (29 pairs) and 0.63 (27 pairs). Where a decision is made,
+the judges mostly agree; they differ in how often they decide at all.
+
+### Not registered: length
+
+Among the pairs each judge decided, the longer answer won 100 of 131 for
+gpt-oss, 70 of 85 for qwen3-vl and 42 of 70 for phi4. In the pipeline
+comparison the pipeline answer is the longer one in 72 of 126 pairs
+(median length ratio 1.05); in the other two the planted-phrase answer is
+slightly shorter (0.97 and 0.95). The §1 row says the preference survives
+length-matching; the figures here are a reminder that these judges prefer
+longer answers when they decide, and that the pipeline side is more often
+the longer one.
+
+### Limits
+
+- The 7B to 8B judges did not fail to parse or to read: they read both
+  answers and chose the first every time. A prompt built for a 20B judge
+  does not transfer down, and this cell did not try other prompt formats
+  (a single-answer rating, a shorter excerpt), which would be a new
+  registration.
+- phi4's 0.886 is below the line but still means it decided fewer than a
+  fifth of pairs; its intervals rest on 70 decisions.
+- Everything here is a preference among model judges; no person judged a
+  pair, and the comparison remains four calls of one model against one
+  call.
+
+### Consequences
+
+- **Ledger.** `docs/STATUS.md` §4 gains finding 21: pairwise preference
+  judging of these answers is entirely position-determined for 7B to 8B
+  judges (0.98 to 1.00 first-listed), with finding 14's 0.85 to 0.88 for
+  14B to 30B judges. The §1 row on the pipeline preference keeps its two
+  stored judges and notes that a third, phi4, leans the same way without
+  reaching the registered test. The §5 question stays open: it cannot be
+  answered with judges of this size.
+- **Paper.** The judge-preference claim rests on gpt-oss (which wrote the
+  answers) and qwen3-vl, as before; the attempt to widen the judge pool
+  is reported with its outcome. A judge pool from other families at 14B
+  and above would need models the machine does not hold.
+- No new experiment is proposed here.
+
+### Checklist items that bite on this reading
+
+3 (a judge that never decides measures nothing; the counting rule did its
+job). 6 (the length and agreement figures were computed after the data
+were seen; descriptive). 7 and 8 (preference among models, no claim about
+people or about what the roles add). 11 (unusable and undecided pairs are
+reported for every judge).
