@@ -15,12 +15,13 @@
   publish = "site_v3"
   command = ""
 
-# BUILDS PAUSED (re-applied 2026-09-24 after the one-time deploy that made
-# site_v3 the public site). Netlify runs `ignore` before every build; exit 0 =
-# skip, so this unconditionally skips all deploys until lifted. To resume:
-# delete this [build.ignore] block and push.
-[build.ignore]
-  command = "exit 0"
+# BUILDS RESUMED FOR ONE DEPLOY (2026-10-05): the pause that had been in
+# place since 2026-09-24 is lifted in this commit so that the site with the
+# October 2026 corrections and the results of Cells 62 to 67 is published.
+# The pause is restored in the next commit. To pause, add:
+#
+#     [build.ignore]
+#       command = "exit 0"
 
 [[headers]]
   for = "/data/*"
