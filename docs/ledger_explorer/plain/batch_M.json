@@ -294,44 +294,44 @@
   },
   "67": {
    "title": "Does a second source help in the full live system?",
-   "description": "The 61 computed-answer questions of Cell 63 go through the full live system. One specialist's private notes hold a wrong figure. In one version a second specialist's notes hold the right one. A script checks the final answer. The runs finished on 5 October 2026.",
+   "description": "The 61 computed-answer questions of Cell 63 went through the full live system, with a wrong figure in one specialist's notes and, in one version, the right figure in a second specialist's. A checkpoint failed by two questions, so the results are reported without a pass or fail.",
    "outcome": "stopped",
-   "size": "61 questions, two versions each",
+   "size": "61 questions, two versions each, 710 model calls",
    "why": "Cell 59 ran this design live on 8 questions and scored answers by matching figures in text. The editor used the second specialist's value, but whether the planted value appeared less often was too close to call. This cell repeats it on 61 questions where the final answer is a number a script can check, with both versions run in the same session. It is the first test of the assembled system on something other than AI judges' preference.",
    "expectations": [
     {
      "id": "P67.0",
      "text": "The wrong figure would show up in the first specialist's text, and the right one in the second specialist's text, in at least 75% of runs. Otherwise the rest cannot be read.",
      "outcome": "failed",
-     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
+     "note": "Did not hold up, by a hair. The wrong figure showed in the first specialist's text for 44 of 61 questions, 2 short of the mark. Both missing cases were our counting script failing to read a figure written in typeset form."
     },
     {
      "id": "P67.1",
      "text": "The final answer would follow the wrong figure less often when a second specialist holds the right one.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be graded because the checkpoint failed. The wrong figure was followed in 31 of 61 runs with one source and 24 of 61 with two, a difference that would not have met the rule set in advance."
     },
     {
      "id": "P67.2",
      "text": "The final answer would be correct more often when a second specialist holds the right figure.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be graded because the checkpoint failed. Right answers rose from 2 of 61 with one source to 19 of 61 with two, a difference that would have met the rule."
     },
     {
      "id": "P67.3",
      "text": "When two specialists hold different figures, the final answer would mention both in fewer than half of runs.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be graded because the checkpoint failed. The final answer showed both figures in 2 of 61 runs, far below half."
     },
     {
      "id": "P67.4",
      "text": "We would report what happens when both figures reach the specialists' texts, whether the editor's list of disagreements names both, and where the follow-up question goes.",
      "outcome": "not-graded",
-     "note": "Reported without a pass/fail test. The figures are in the result entry below."
+     "note": "Reported without a pass/fail test. The editor's own list of disagreements named both figures in 31 of 61 runs. Of 43 answers that followed one of the two specialists, 35 followed the one listed first."
     }
    ],
-   "found": "The full live system finished both versions of the 61 questions on 5 October 2026. By the rules written down in advance, 0 of the 3 graded expectations held up, 0 did not, and 3 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "The results show whether giving a figure to a second specialist changes what the full system answers, and whether a disagreement between two specialists reaches the reader. The specialists here are the editor model in three roles, and the questions are arithmetic and rule questions, not the advisory scenarios.",
+   "found": "The full live system finished both versions of the 61 questions on 5 October 2026. The plan had a checkpoint: the wrong figure had to show up in the first specialist's text for at least 75% of questions. Our counting script found it in 44 of 61, two short, so by the rules written down in advance the three main expectations could not be graded. Both missing cases were the script failing to read a figure the model had written in typeset form, a fault we had noted three days earlier. Counting those, the checkpoint would have passed with one to spare. We left the result as the plan's rules give it.\n\nReported without a pass or fail: with one wrong source, the final answer followed the wrong figure in 31 of 61 runs and was right in 2. With a second specialist holding the right figure, it was right in 19 and wrong in 24. Which figure won depended on the order the specialists were listed in. Of 43 answers that followed one of the two, 35 followed the one listed first, because the follow-up question went to that specialist.\n\nThe editor's own list of disagreements named both figures in 31 of 61 runs, but the final answer showed both in only 2. And when the figure reached no specialist's text, the system still gave a number in every run, never saying the figure was missing.",
+   "means": "In the full system a second source helps the right figure get used, about as Cell 59 found on 8 questions. It does not reliably push the wrong one out, and the reader almost never learns that two figures existed. The step that lists disagreements sees the conflict half the time and still does not pass it on. Which specialist is listed first decides the outcome more than anything else, here and in Cell 63. The figure-counting script needs repair before it is used again, and whether to re-score this cell with the repaired version is the author's decision.",
    "later": null,
    "entries": {
     "10572": {
@@ -341,8 +341,13 @@
     },
     "11893": {
      "label": "Result",
-     "title": "Runs finished: results by the rules set in advance",
-     "summary": "The full live system finished both versions of the 61 questions on 5 October 2026. Of the 3 graded expectations, 0 held up, 0 did not and 3 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+     "title": "Runs finished: a checkpoint failed by two questions",
+     "summary": "The live system finished on 5 October 2026. The checkpoint that the wrong figure reach the first specialist's text failed, 44 of 61 against the 46 needed, so the three main expectations could not be graded under the rules written down in advance. This entry holds the scoring script's output exactly as printed."
+    },
+    "11927": {
+     "label": "Note",
+     "title": "Why the checkpoint failed, and what the runs show anyway",
+     "summary": "Both questions that sank the checkpoint were our counting script misreading a typeset figure. We kept the result as the rules give it and report the rest without a pass or fail. A second source raised right answers from 2 to 19 of 61. The specialist listed first usually won. The editor's list of disagreements named both figures in half of runs, the final answer in 2."
     }
    }
   },

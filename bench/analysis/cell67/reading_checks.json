@@ -1,0 +1,173 @@
+{
+ "integrity": {
+  "runs": 122,
+  "items": 61,
+  "per_arm": {
+   "bare": 61,
+   "redundancy": 61
+  },
+  "calls_by_step": {
+   "identify": 61,
+   "plan0": 61,
+   "seatA": 61,
+   "seatC": 62,
+   "seatB": 123,
+   "tensions": 123,
+   "followup": 97,
+   "answer": 122
+  },
+  "calls": 710,
+  "extra_tries_by_step": {
+   "seatC": 1,
+   "seatB": 1,
+   "tensions": 1
+  },
+  "cut_at_allowance_by_step": {
+   "seatA": 1,
+   "seatC": 1,
+   "seatB": 1,
+   "tensions": 1
+  },
+  "empty_replies_by_step": {
+   "seatC": 1,
+   "seatB": 1,
+   "tensions": 1
+  },
+  "registration": [
+   "6402fc0"
+  ],
+  "script_sha": [
+   "964a54748091d5a3"
+  ],
+  "head_commits": [
+   "f697a1d"
+  ],
+  "ctx_hit": 0,
+  "plan_attempts": {
+   "1": 61
+  },
+  "first_utc": "2026-10-05T03:13:19Z",
+  "last_utc": "2026-10-05T15:27:17Z",
+  "followup_blocked": 0
+ },
+ "delivery": {
+  "A_wrong_registered": 44,
+  "A_wrong_separators_removed": 46,
+  "B_right_registered": 48,
+  "B_right_separators_removed": 51,
+  "n": 61,
+  "bar": 0.75,
+  "missed_by_registered_detector": [
+   "t5_v0",
+   "t8_v0"
+  ]
+ },
+ "outcomes": {
+  "bare, wrong figure reached A": {
+   "n": 46,
+   "other": 14,
+   "wrong": 31,
+   "right": 1
+  },
+  "bare, it did not": {
+   "n": 15,
+   "other": 14,
+   "right": 1
+  },
+  "redundancy, both reached": {
+   "n": 42,
+   "right": 14,
+   "other": 5,
+   "wrong": 23
+  },
+  "redundancy, only the wrong one reached A": {
+   "n": 4,
+   "other": 3,
+   "wrong": 1
+  },
+  "redundancy, only the right one reached B": {
+   "n": 9,
+   "other": 4,
+   "right": 5
+  },
+  "redundancy, neither reached": {
+   "n": 6,
+   "other": 6
+  }
+ },
+ "disagreement": {
+  "list_both_registered": 31,
+  "list_both_separators_removed": 31,
+  "final_both_registered": 2,
+  "final_both_separators_removed": 2,
+  "n": 61,
+  "when_listed": {
+   "n": 31,
+   "right": 12,
+   "wrong": 17,
+   "other": 2,
+   "final_shows_both": 2
+  },
+  "final_chars_median": 659
+ },
+ "followup": {
+  "bare|A": {
+   "n": 19,
+   "wrong": 12,
+   "other": 6,
+   "right": 1
+  },
+  "bare|B": {
+   "n": 11,
+   "other": 7,
+   "wrong": 3,
+   "right": 1
+  },
+  "bare|C": {
+   "n": 16,
+   "other": 7,
+   "wrong": 9
+  },
+  "bare|None": {
+   "n": 15,
+   "other": 8,
+   "wrong": 7
+  },
+  "redundancy|A": {
+   "n": 23,
+   "other": 6,
+   "right": 3,
+   "wrong": 14
+  },
+  "redundancy|B": {
+   "n": 16,
+   "right": 12,
+   "other": 3,
+   "wrong": 1
+  },
+  "redundancy|C": {
+   "n": 12,
+   "wrong": 5,
+   "other": 4,
+   "right": 3
+  },
+  "redundancy|None": {
+   "n": 10,
+   "other": 5,
+   "wrong": 4,
+   "right": 1
+  }
+ },
+ "nowhere": {
+  "C_text_wrong": 2,
+  "C_text_right": 5,
+  "bare_B_text_wrong": 4,
+  "bare_B_text_right": 4,
+  "A_text_right": 5,
+  "answer_lines": {
+   "bare|1": 61,
+   "redundancy|1": 60,
+   "redundancy|0": 1
+  }
+ }
+}

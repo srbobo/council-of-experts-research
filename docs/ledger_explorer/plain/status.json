@@ -163,7 +163,7 @@
   },
   "S1-21": {
    "claim": "With every step live, the editor used a second specialist's value for a figure. Whether the planted value appeared less often was too close to call.",
-   "detail": "In Cell 59 the planning step was told which figure mattered and wrote the specialists' questions. All 40 plans asked at least two specialists about it. The second specialist's value appeared in 19 of 40 runs, against 2 of 40 without a second source, a clear difference over 8 questions. The planted value appeared in 18 of 40 runs against 25 of 40, too close to call. The paper had reported only the first half. Values were matched as text after four fixes to the matching. Cell 58, stopped at a checkpoint, showed a specialist passes on a private note only if asked about it (2 of 8 off-topic, 21 of 21 in Cell 54). Cell 67 repeats the live test on 61 questions with computed answers.",
+   "detail": "In Cell 59 the planning step was told which figure mattered, and all 40 plans asked at least two specialists about it. The second specialist's value appeared in 19 of 40 runs, against 2 of 40 without a second source, a clear difference over 8 questions. The planted value appeared in 18 of 40 runs against 25 of 40, too close to call. Cell 67 repeated the test on 61 questions with computed answers. A checkpoint failed by two questions, so its figures carry no pass or fail. Right answers rose from 2 to 19 of 61 with a second source, the wrong figure was followed 24 times against 31, and the final answer showed both figures in 2 runs. The specialist listed first usually won.",
    "cells": [
     "47",
     "54",
@@ -709,7 +709,7 @@
   },
   "S5-13": {
    "claim": "Does the editor catch a wrong figure when the scenario states the right one?",
-   "detail": "Partly answered by Cell 63 in October 2026. When the scenario stated the figure, three editor models almost never followed a note that misquoted it (0, 1 and 0 of 122 runs), though two of them were too weak at the arithmetic for a formal test. None mentioned the mismatch, so we say the editors follow the scenario, not that they catch errors. When two notes disagreed, each mostly took the first one listed. Only the main editor hid the disagreement. Still to come: Cell 67, which runs the questions through the full live system.",
+   "detail": "Partly answered in October 2026. When the scenario stated the figure, three editor models almost never followed a note that misquoted it (0, 1 and 0 of 122 runs in Cell 63). Two of them were too weak at the arithmetic for a formal test. None mentioned the mismatch, so we say the editors follow the scenario, not that they catch errors. When two sources disagreed, the one listed first usually won, in Cell 63 and in the full live system (Cell 67). Cell 67's checkpoint failed by two questions that our counting script misread, so its results carry no pass or fail.",
    "cells": [
     "47",
     "59",
@@ -793,6 +793,14 @@
     "43",
     "43-R",
     "65"
+   ]
+  },
+  "S4-22": {
+   "claim": "Our script for spotting a figure in a text missed figures written in typeset form, and that decided a checkpoint by two questions.",
+   "detail": "The script looks for a figure's digits. The editor model sometimes writes thousands in a typeset form that the script does not read. In Cell 63 it found a stated figure in 94 of 122 replies when 111 contained it. We noted that on 2 October 2026 but did not repair the script before Cell 67 ran. There a checkpoint needed the figure in 46 of 61 specialist texts. The script counted 44, and the two it missed were typeset figures. A pass mark that close to the line is decided by the counting tool. Such a tool has to be tried on the writing habits of the model whose text it will read, before the pass mark is set.",
+   "cells": [
+    "63",
+    "67"
    ]
   }
  }

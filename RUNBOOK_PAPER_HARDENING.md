@@ -11923,3 +11923,163 @@ descriptive
   redundancy, follow-up to A (n = 23): right 0.130, wrong 0.609
   redundancy, follow-up to B (n = 16): right 0.750, wrong 0.062
 ```
+
+## CELL 67 READING (2026-10-05) — the live chain on 61 items: the delivery check fails by two items that the figure detector misreads, so the three predictions stay NOT EVALUABLE as registered; reported beside them, a second source lifts right answers from 2 to 19 of 61, and which figure wins follows the order the specialists are listed in
+
+This is the analyst's reading of the entry above. The verdict words are
+the ones the registered script printed and nothing here changes them.
+Figures the script does not print come from
+`bench/analysis/cell67/reading_checks.py`, written after the runs; it
+calls no model and writes `reading_checks.json`. Those are marked *not
+registered*.
+
+### The run
+
+- 122 runs (61 items, two arms), 710 model calls, all gpt-oss:20b, from
+  2026-10-05T03:13:19Z to 15:27:17Z: 12.2 hours against the fifteen to
+  sixteen estimated.
+- Every run carries registration commit 6402fc0 and one runner hash
+  (964a54748091d5a3). Every plan parsed at the first attempt. No call hit
+  the context limit and no follow-up was blocked.
+- Three calls came back empty after spending the 4,096-token allowance on
+  reasoning (one specialist text in each of C and B, one list of
+  disagreements) and were drawn again under the registered retry. One A
+  text was cut at the allowance and kept. Every run ends in a number: "no
+  answer" is 0 of 122.
+
+### P67.0 as registered, and what decided it
+
+The wrong figure appears in specialist A's text in 44 of 61 items (0.721)
+and the right figure in specialist B's text in 48 of 61 redundancy runs
+(0.787). The bar is 0.75 each, so **P67.0 FAILS and P67.1 to P67.3 are
+NOT EVALUABLE**. That is the verdict of record.
+
+It fails by two items, and both are the detector's (*not registered*).
+In t5_v0 and t8_v0 the planted figure is in A's text, typeset with LaTeX
+thousands separators, a form the registered detector does not match. The
+miss was recorded in the CELL 63 READING of 2026-10-02, three days before
+this cell ran, with a separators-removed variant of the same check in
+`bench/analysis/cell63/reading_checks.py`. Counted that way the figures
+are 46 of 61 (0.754) and 51 of 61 (0.836), both at or above the bar. A
+third A text gives the figure as "$150 k", which neither count matches.
+
+The verdict lines stay as printed. The detector was the registered one,
+the repaired count clears the bar by a single item, and applying it now
+is a choice made knowing which way it moves the check, even though the
+variant predates the data. Whether to record a formal re-scoring is the
+author's decision and is not taken here. Below, the predictions'
+statistics are given as reported figures.
+
+### The statistics the predictions would have used (reported)
+
+| arm | right | follows the wrong figure | other | no answer |
+|---|---|---|---|---|
+| bare (61) | 2 | 31 | 28 | 0 |
+| redundancy (61) | 19 | 24 | 18 | 0 |
+
+- P67.1's statistic: wrong-figure share, bare minus redundancy, +0.130
+  [+0.010, +0.250], p = 0.0547 over 14 templates. On the registered rule
+  (above 0 with p < 0.05) this would not have been met.
+- P67.2's: right answers, redundancy minus bare, +0.290 [+0.188, +0.393],
+  p = 0.0002. It would have been met.
+- P67.3's: the final answer shows both figures in 2 of 61 redundancy runs,
+  0.032 [−0.015, 0.080], entirely below 0.5. It would have been met.
+
+This is Cell 59's pattern again on 61 scored items: the second source's
+figure is used; the fall in the planted figure is smaller and not
+established.
+
+### P67.4, reported
+
+**By whether the figures arrived** (*separators removed*):
+
+| | n | right | wrong | other |
+|---|---|---|---|---|
+| bare, wrong figure reached A's text | 46 | 1 | 31 | 14 |
+| bare, it did not | 15 | 1 | 0 | 14 |
+| redundancy, both arrived | 42 | 14 | 23 | 5 |
+| redundancy, only the right figure arrived | 9 | 5 | 0 | 4 |
+| redundancy, only the wrong figure arrived | 4 | 0 | 1 | 3 |
+| redundancy, neither arrived | 6 | 0 | 0 | 6 |
+
+When no figure arrives, the chain still answers with a number: 20 of 21
+such runs are "other" and none is "no answer". The case says the figure
+is "given in the analysts' passages"; when it is in nobody's text, a
+figure is supplied from somewhere. Specialists with no notes write the
+planted figure in 2 (C) and 4 (B, bare arm) of 61 texts and the right one
+in 5 and 4, by coincidence of round numbers.
+
+**The disagreement is seen inside the chain and not shown outside it.**
+The editor's list of disagreements names both figures in 31 of 61
+redundancy runs (1 of 61 in the bare arm). The final answer shows both in
+2 of 61. In the 31 runs where the list names both, the final answer is
+right in 12, wrong in 17, other in 2, and shows both figures in 2.
+
+**The follow-up goes to whoever is listed first, and the answer follows
+it.** The contributions are always listed in the order healthcare, legal,
+finance, and the roles of A and B are shuffled per item.
+
+| redundancy arm | n | right | wrong | other | follow-up went to A / B / C / nobody |
+|---|---|---|---|---|---|
+| right-figure holder listed before the wrong-figure holder | 28 | 16 | 5 | 7 | 1 / 16 / 7 / 4 |
+| wrong-figure holder listed first | 33 | 3 | 19 | 11 | 22 / 0 / 5 / 6 |
+
+Of the 43 runs whose answer follows one of the two figures, 35 follow the
+holder listed first. By follow-up target (the script's own lines): to A,
+23 runs, right 3 and wrong 14; to B, 16 runs, right 12 and wrong 1. This
+is the listing-order result of CELL 63 (first-listed share 0.75) in the
+live chain: the list of disagreements names the first-listed specialist
+first, the follow-up goes there, and the answer keeps that specialist's
+figure. The shuffle was registered; the split by order was not.
+
+### Against the scripted version of the same items, same editor
+
+| | scripted notes (Cell 63) | live chain (Cell 67) |
+|---|---|---|
+| one wrong source: answer follows it | 0.92 | 0.51 (0.67 where it arrived) |
+| wrong and right source: right / wrong | 0.43 / 0.51 | 0.31 / 0.39 (0.33 / 0.55 where both arrived) |
+| both figures shown in the final reply | 0.20 | 0.03 |
+
+The live chain loses the figure on the way in about a quarter of items,
+answers anyway, and shows the conflict less often than the bare editor
+did, although its own intermediate list holds the conflict in half of
+runs.
+
+### Limits
+
+- One model plays every part. The items are arithmetic and rule
+  questions. One run per item and arm.
+- The figure detector's format miss decided P67.0; every count that uses
+  it (delivery, the list, the final answer) is given with the
+  separators-removed variant, which changes delivery and nothing else
+  (the list 31 and 31, the final answer 2 and 2).
+- Listing order and role are tied (healthcare is always first), so "first
+  listed" cannot be separated from "healthcare" here.
+
+### Consequences
+
+- **Ledger and paper.** The live-chain row (Cell 59) keeps its reading and
+  gains the 61-item figures as reported, not tested: the second source's
+  figure is used (+0.290), the fall in the wrong figure is not
+  established (+0.130, p = 0.055), and the conflict reaches the final
+  answer in 2 of 61 runs. The required list of disagreements does not
+  carry a disagreement to the reader. New for the paper: when two sources
+  conflict, order decides, in the bare editor (CELL 63) and in the live
+  chain; and a figure missing from every text is replaced, not reported
+  missing.
+- **Tooling.** `_has_figure` should be repaired before it is registered
+  for anything else. Any re-scoring of this cell with it is the author's
+  call.
+- No new experiment is proposed here.
+
+### Checklist items that bite on this reading
+
+3 (the detector was validated on plain figures and deployed on text that
+typesets them; the miss was on record and was not carried into this
+cell's registration, which predates the finding by a day). 4 (a bar met
+or missed by one item is decided by the detector, not the chain). 6 (the
+order split, the delivery split and the comparison with Cell 63 were
+computed after the data were seen). 8 (arms were assigned; the order
+split is observational across items, since order came with the shuffle).
+11 (no run gives "no answer"; a chain that always answers is reported as
+that, not as success).
