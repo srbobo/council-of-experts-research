@@ -336,7 +336,7 @@
     "validated judge instrument",
     "batched judging"
    ],
-   "definition": "Two AI judges labeling each sentence of an answer separately. It became the project's main measuring tool after Cell 23, and Cell IV checked that judging sentences in batches of 10 keeps its accuracy. A review in October 2026 found the two judges agree little beyond chance, and Cell 62 checks them against a person's labels."
+   "definition": "Two AI judges labeling each sentence of an answer separately. It became the project's main measuring tool after Cell 23, and Cell IV checked that judging sentences in batches of 10 keeps its accuracy. A review in October 2026 found the two judges agree little beyond chance, and Cell 62 could not check them against a person's labels, which were not available."
   },
   {
    "group": "How we measured",

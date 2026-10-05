@@ -114,7 +114,7 @@
     }
    ],
    "found": "The main editor, gpt-oss-20B, finished 610 runs on 2 October 2026, and two more editors, Phi-4 and qwen3-vl, ran the same prompts by 4 October. The main editor answered correctly in 119 of 122 runs when the right figure was stated and quoted. The other two managed 91 and 107 of 122, below the 90% mark set in advance, so their results are reported without a pass or fail.\n\nWhen a note misquoted a figure that the scenario itself stated, almost no answer followed the note: 0, 1 and 0 of 122 runs for the three editors. When the note was the only source, the answer followed its wrong figure in 112, 89 and 104 runs. None of the editors told the reader about the misquote.\n\nWhen two notes gave different figures and the scenario gave none, the editors differed. The main editor picked one, usually the first listed, and showed both figures in only 41 of 244 replies (17%). Phi-4 showed both figures in 97% of replies and in a quarter of them gave an answer for each. Qwen3-vl showed both in 67%, but in 148 of 244 replies it kept weighing the two until it ran out of its length allowance and gave no answer. Where an editor did choose, the first note listed won about three times in four for all three.\n\nFor the main editor, three runs needed a second try because the model used up its allowance while thinking.",
-   "means": "An editor does not pass on a note's wrong figure when the scenario states the right one. That held for three editors, though two of them were too weak at the arithmetic for a formal test. It is narrower than saying they catch errors, since none mentioned the mismatch. When the scenario is silent and two notes disagree, no editor can tell which is right, and the first one listed usually wins. Whether the reader learns of the disagreement depends on the editor: ours hid it, the other two showed it. A design that relies on a second source needs a step that reports the disagreement, which Cell 67 tests in the full live system.",
+   "means": "An editor does not pass on a note's wrong figure when the scenario states the right one. That held for three editors, though two of them were too weak at the arithmetic for a formal test. It is narrower than saying they catch errors, since none mentioned the mismatch. When the scenario is silent and two notes disagree, no editor can tell which is right, and the first one listed usually wins. Whether the reader learns of the disagreement depends on the editor: ours hid it, the other two showed it. A design that relies on a second source needs a step that reports the disagreement. Cell 67 tested one in the full live system, and it did not pass the disagreement on.",
    "later": null,
    "entries": {
     "10164": {
@@ -141,6 +141,11 @@
      "label": "Note",
      "title": "What carried over to the other two editors and what did not",
      "summary": "Neither of the two added editors followed a misquoting note when the scenario stated the figure, 1 run in 244. Both fell short of the 90% mark on the clean setup, so their tables are reported without a pass or fail. With two disagreeing notes, Phi-4 showed both figures in 97% of replies, and qwen3-vl ran out of its length allowance in 61% of them."
+    },
+    "12490": {
+     "label": "Note",
+     "title": "The narrower wording is accepted",
+     "summary": "On 5 October 2026 the author accepted the narrower wording for this cell's main result. We say the editor's answer follows the figure the scenario states. We do not say the editor catches a wrong figure, because nothing it wrote shows it noticed one. The results of this cell now appear in the list of current claims."
     }
    }
   },
@@ -176,7 +181,7 @@
      "note": "Reported without a pass/fail test. Where the caveat sat in the list made no difference. Ten real caveats with no relevant one did not change decisions. The two Cell 51 readers repeated their earlier figures exactly."
     }
    ],
-   "found": "The six reader models, from four model families and 7 to 30 billion parameters, finished 3,300 reads on 3 October 2026. All six passed the check that they give the expected default answer when no section is attached.\n\nWith Cell 51's own setup, the four readers it had not used changed their decision 52 points more often with the relevant caveat than with the irrelevant one (plausibly 28 to 75 points, over 11 questions). The irrelevant caveat sat at the same level as no section at all for every reader. Removing the sentence that told readers to use anything attached changed nothing: a difference of 2 points, plausibly minus 9 to plus 5. Among nine real caveats the relevant one still changed decisions 43 points more often than the irrelevant one, 12 points less than when it stood alone. The two smallest readers accounted for most of that loss. Where the caveat sat in the list made no difference, and a list of ten real caveats with no relevant one did not change decisions.\n\nThe two readers from Cell 51 repeated their earlier figures exactly, in independent runs. One reader, phi4, needed more than one try for a one-word answer in a quarter of its reads and gave none in 14 of 550. Two of the 11 questions drew no response from any new reader, and for the smaller readers each question worked either always or never.",
+   "found": "The six reader models, from five developers and 7 to 30 billion parameters, finished 3,300 reads on 3 October 2026. All six passed the check that they give the expected default answer when no section is attached.\n\nWith Cell 51's own setup, the four readers it had not used changed their decision 52 points more often with the relevant caveat than with the irrelevant one (plausibly 28 to 75 points, over 11 questions). The irrelevant caveat sat at the same level as no section at all for every reader. Removing the sentence that told readers to use anything attached changed nothing: a difference of 2 points, plausibly minus 9 to plus 5. Among nine real caveats the relevant one still changed decisions 43 points more often than the irrelevant one, 12 points less than when it stood alone. The two smallest readers accounted for most of that loss. Where the caveat sat in the list made no difference, and a list of ten real caveats with no relevant one did not change decisions.\n\nThe two readers from Cell 51 repeated their earlier figures exactly, in independent runs. One reader, phi4, needed more than one try for a one-word answer in a quarter of its reads and gave none in 14 of 550. Two of the 11 questions drew no response from any new reader, and for the smaller readers each question worked either always or never.",
    "means": "A deciding sentence placed in the attached caveats section changes a model reader's decision, across six readers, without any instruction to read it, and in a list of realistic length with a small loss. The paper can describe the section as a working channel to model readers, and the Cell 51 claim loses two of its three limits. What it does not show is whether the system's own caveats, which are hedges rather than deciding facts, would change anything, or whether people read the section. Both stay open.",
    "later": null,
    "entries": {
@@ -194,6 +199,11 @@
      "label": "Note",
      "title": "What the six readers show, reader by reader",
      "summary": "All six readers acted on the relevant caveat, the irrelevant one sat at the no-section level, and the instruction made no difference. Nine other lines cost about a tenth of the effect, mostly for the two smallest readers. The Cell 51 readers repeated their figures exactly in independent runs. Two questions worked for no new reader."
+    },
+    "12552": {
+     "label": "Correction",
+     "title": "Five developers, not four model families",
+     "summary": "Our reading of this cell said the six reader models came from four model families. They come from five developers. Four is the number of readers that Cell 51 had not used. No number or result changes."
     }
    }
   },
@@ -422,13 +432,13 @@
  "studies": {
   "board-review": {
    "title": "Outside-style review of the whole project",
-   "description": "A review in October 2026 judged the paper not ready: several key numbers were wrong or overstated. We fixed one scoring bug, recomputed the small-sample results, withdrew or restated the affected claims, and planned seven new experiments.",
+   "description": "A review in October 2026 judged the paper not ready: several key numbers were wrong or overstated. We fixed one scoring bug, recomputed the small-sample results, withdrew or restated the affected claims, and ran six new experiments, finished on 5 October 2026.",
    "outcome": "measured",
-   "size": "No new runs, saved results recomputed",
+   "size": "14 results recomputed, then 6 new experiments",
    "why": "The paper had been drafted and three earlier audits had run. Before publication we asked for a review of everything: the question, the methods, each experiment, the notebook and the paper, set against published research. The reviewer was an AI assistant working from the project's files, as the earlier auditors were, so its report is a list of claims that can be checked, with a script that reproduces every number.",
    "expectations": [],
-   "found": "The review did not accept the paper. It found a scoring bug behind one widely quoted number (17% of caveats surviving in the editor's prose, which is 3%). It found that ranges computed over 6 to 18 scenarios or questions were too narrow, and that preference results counted only about a third of the pairs. It found that the two AI judges' sentence labels agree little beyond chance. It also pointed out that in most experiments the three specialists are the editor model itself in three roles, that the paper's comparison is four model calls against one, and that no person labeled, judged or read anything.\n\nWithout any new model runs, we recomputed 14 results. Five statements survive with clear support. An instruction produces the phrase it names. AI judges prefer the combined answer and mark down the instructed phrase. A reader model acts on an appended sentence. And a second source changes which figure the editor repeats. One claim was withdrawn, that the editor ignores agreement between specialists.",
-   "means": "The paper is being rewritten to claim only what the corrected numbers support, on one 20-billion-parameter model. Six new experiments are planned to run on one machine, and a seventh is written down as a design. Two of them need the author to label sentences by hand, because the project has no human labels at all. What one person cannot do stays open: a second person checking the analysis, human readers, and a much larger model.",
+   "found": "The review did not accept the paper. It found a scoring bug behind one widely quoted number (17% of caveats surviving in the editor's prose, which is 3%). It found that ranges computed over 6 to 18 scenarios or questions were too narrow, and that preference results counted only about a third of the pairs. It found that the two AI judges' sentence labels agree little beyond chance. It also pointed out that the three specialists are usually the editor model in three roles, that the comparison is four model calls against one, and that no person labeled, judged or read anything.\n\nWithout any new model runs, we recomputed 14 results. Five statements survive with clear support. An instruction produces the phrase it names. AI judges prefer the combined answer and mark down the instructed phrase. A reader model acts on an appended sentence. And a second source changes which figure the editor repeats. One claim was withdrawn.\n\nThe six new experiments ran from 1 to 5 October 2026. Two results were added to what we claim: the editor's answer follows a figure the scenario states over a note that misquotes it, and when two sources disagree the one listed first usually wins. The appended-caveat result repeated on four more reader models. Three questions could not be settled: whether the AI judges' caveat labels match a person's, whether caveats are conveyed less often than other sentences, and whether judges from other model families share the two judges' preferences.",
+   "means": "The paper claims only what the corrected numbers and the six new experiments support, on one 20-billion-parameter model. The author could not label sentences by hand, so the two experiments that needed it were changed before any result was read, and the caveat counts stay provisional. What one person cannot do stays open: a human check of the judges, human readers, a second person checking the analysis, and a much larger model.",
    "later": null,
    "related": [
     "26",
@@ -463,6 +473,11 @@
      "label": "Plan",
      "title": "How the planned experiments are run and written down",
      "summary": "The six runnable experiments run back to back from one script. When a step ends, the script copies the scoring output into the notebook unedited, fills in the plain-language text from fixed templates, rebuilds this site and saves the changes locally. It never publishes. Results that could sway the author's blind labels stay hidden until those labels are saved."
+    },
+    "entry-12508": {
+     "label": "Note",
+     "title": "The six new experiments are finished",
+     "summary": "All ten steps of the run finished on 5 October 2026 after about 93 hours of machine time. This entry lists what each step returned, the three changes made after the plans were written down, and when each batch was posted to the public repository. It also lists what the experiments leave open."
     }
    }
   }

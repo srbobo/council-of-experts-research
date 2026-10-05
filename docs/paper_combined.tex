@@ -38,7 +38,7 @@
 \newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
 
 \title{\LARGE\bfseries What a Small Role-Prompted Aggregation Pipeline Does with Instructed Phrases, Planted Figures and Caveats:\\ A Registered Component Study on One 20B Model}
-\author{\textbf{Sam Bobo}\\ \small Draft v0.3, October 2026. Corrected after an internal review; supersedes v0.2.\\ \small Six registered experiments are in progress (Section~\ref{sec:planned}).}
+\author{\textbf{Sam Bobo}\\ \small Draft v0.4, October 2026. Adds the six experiments registered after an internal review; supersedes v0.3.}
 \date{}
 
 \begin{document}
@@ -55,27 +55,37 @@ Mixture-of-Agents pipelines send a task to several proposer models and
 have an aggregator write the final answer. We study a much smaller
 relative of that design on local hardware: one 20B model writes the
 answer from three contributions that, in most experiments, come from
-the same model under one-sentence role prompts. Across 61 numbered
-experiments registered before they ran, on 18 in-house advisory
-scenarios, four results hold after correction for small samples.
-(1)~An instruction to label estimates with a named phrase produces the
-phrase in two thirds of answers (378 runs), and a synonym chosen the
-day before behaves the same. (2)~Two local LLM judges prefer the
-pipeline's answer to a single answer from the same model (all-pairs
-scores $0.61$ and $0.58$ over 126 pairs judged in both orders) and
-mark down the instructed phrase ($0.41$ to $0.45$). (3)~Given two
-contributions with different values for a figure, the aggregator states
-one or the other about evenly, so a second source changes the answer in
-about half of runs (8 items). (4)~A reader model changes its decision
-when a decisive sentence is appended to the report (11 items). A design
-assembled from these observations showed no detectable difference in
-judge preference from the plain pipeline, at about three and a half
-times the model calls. An earlier draft stated several of these results
-more strongly. One figure came from a scoring error, several intervals
-were not computed over scenarios, and the sentence-level judge used
-throughout agrees little beyond chance (kappa $0.19$ to $0.41$). No
-person labelled, judged or read anything. We list the corrections, the
-limits, and six registered experiments now running.
+the same model under one-sentence role prompts. Across 67 numbered
+experiments registered before they ran, the last six after an internal
+review, four groups of results hold. (1)~An instruction to label
+estimates with a named phrase produces the phrase in two thirds of
+answers (378 runs), and a synonym chosen the day before behaves the
+same. (2)~Two local LLM judges prefer the pipeline's answer to a single
+answer from the same model (all-pairs scores $0.61$ and $0.58$) and
+mark down the instructed phrase; an attempt to add judges from other
+model families failed, because three of four chose the first-listed
+answer in at least 98\% of judgments. (3)~On 61 questions with computed
+answers, the aggregator's answer follows a figure stated in the
+question over a contribution that misquotes it ($0$ of $122$ runs
+against $112$ of $122$ when the contribution is the only source) and
+does not mention the misquote; when two contributions give different
+figures and the question gives none, the answer follows the one listed
+first about three times in four. (4)~Six reader models from five
+developers change their decision when a decisive sentence is appended to
+a report ($+0.52$ pooled over four new readers, 11 items), without
+being told to read attachments, and with a loss of about $0.12$ when it
+is one line among ten. A design assembled from these observations
+showed no detectable difference in judge preference from the plain
+pipeline at about three and a half times the model calls; in its live
+chain, scored a second time after a tool fault was repaired, a second
+source raised right answers from $2$ to $19$ of $61$ and the conflict
+appeared in $2$ of $61$ final answers. Two questions
+stayed unanswered: the sentence-level judge used throughout agrees
+little beyond chance and could not be compared with a person, and a
+test of whether caveats are conveyed less often than other sentences
+was blocked when its judges failed one of four checks. No person
+labelled, judged or read anything. We list the corrections, the
+amendments and the limits.
 \end{minipage}
 \end{center}
 \vspace{1.2em}
@@ -127,17 +137,21 @@ What this study adds is small-scale, registered, component-level
 measurement on one pipeline, together with a record of what went wrong
 in measuring it.
 
-\textbf{What this draft claims.} Four statements, each scoped to one
-20B model, 18 in-house scenarios and local LLM judges: an instruction
-produces the phrase it names (Section~\ref{sec:phrase}); two local
-judges prefer the aggregated answer and mark down the instructed phrase
-(Section~\ref{sec:pref}); with two sources for a figure the aggregator
-states one of them about evenly (Section~\ref{sec:select}); and a
-reader model acts on a decisive appended sentence
-(Section~\ref{sec:res-channel}). We also describe a design assembled
-from these observations (Section~\ref{sec:harness}) and report that, as
-a whole, it has been compared with the plain pipeline on judge
-preference only, with no difference detected
+\textbf{What this draft claims.} Statements scoped to one 20B model,
+in-house scenarios and items, and local LLM judges and readers: an
+instruction produces the phrase it names (Section~\ref{sec:phrase}); two
+local judges prefer the aggregated answer and mark down the instructed
+phrase (Section~\ref{sec:pref}); the aggregator's answer follows a
+figure stated in the question over a contribution that misquotes it,
+and with two conflicting contributions it follows the one listed first
+about three times in four (Sections~\ref{sec:select}
+and~\ref{sec:checkable}); and reader models act on a decisive appended
+sentence (Section~\ref{sec:res-channel}). We also describe a design
+assembled from these observations (Section~\ref{sec:harness}) and
+report that it showed no difference from the plain pipeline in judge
+preference, and that in its live chain a second source got the right
+figure used more often without reliably displacing the wrong one and
+without the conflict reaching the final answer
 (Section~\ref{sec:headtohead}).
 
 \textbf{What changed from v0.2.} An internal review found errors in the
@@ -151,6 +165,17 @@ and the preference shares counted only the minority of pairs each judge
 decided consistently. The earlier title and abstract described the
 assembled design as a method that ``hardens'' MoA. The evidence does
 not support that description, and it has been removed.
+
+\textbf{What changed from v0.3.} Draft v0.3 announced six registered
+experiments. They ran between 1 and 5 October 2026 and are reported
+here; Section~\ref{sec:planned} gives each one's outcome by its
+registered rules. Two of them needed labels from the author that could
+not be provided and were amended before any of their results was read.
+One was scored a second time after a fault in a text-matching check was
+repaired. One result is worded more narrowly than its registration
+allowed. All four changes are in Appendix~\ref{app:deviations}, and
+Appendix~\ref{app:v03} lists the statements of v0.3 that this draft
+alters.
 
 \begin{figure*}[t]
 \centering
@@ -215,22 +240,32 @@ calls and the single answer one. No comparison of equal cost
 for the project, spanning healthcare, legal and finance content.
 Experiments use 6 to 18 of them. Three item sets were written for
 specific tests: 6 planted disagreements, 8 planted figures and 11
-decision questions. Scenarios, items, planted facts and the labels the
-project notebook calls analyst-authored were produced with an AI
-assistant (see the statement before the references). No public
-benchmark is used.
+decision questions. A fourth set was built by script for experiments 63
+and 67: 61 arithmetic and rule questions over 14 templates whose
+answers a generator computes, each with one input figure that can be
+raised or lowered so that the computed answer changes. Scenarios,
+items, planted facts and the labels the project notebook calls
+analyst-authored were produced with an AI assistant (see the statement
+before the references). No public benchmark is used to evaluate the
+pipeline. Two public datasets with human labels are used only to check
+judges: FRANK \cite{pagnoni2021frank} and the SFU Review Corpus
+annotated for speculation \cite{konstantinova2012sfu}.
 
 \textbf{Registration.} Each experiment has a written entry made before
 it ran, with predictions, the result that would count as failure, and a
 computation from existing runs of whether the outcome could occur
-often enough to measure. There are 58 such entries for the 61 numbered
-experiments. The entries are in the project's version history ahead of
+often enough to measure. There are 65 such entries for the 68 numbered
+experiments (experiment 68 is a design that has not run). The entries are in the project's version history ahead of
 the corresponding results. They are self-registered, and the run
 records for experiments 25 to 60 were added to the history weeks after
 their results and carry no timestamps, so the order of registration and
 data collection cannot be verified from the records. Records made since
-October 2026 carry time, model digest, seed and settings. Deviations
-from the registrations are listed in Appendix~\ref{app:deviations}.
+October 2026 carry time, model digest, seed and settings. The
+registrations of experiments 62 to 67 were committed before any of
+their runs and pushed to the public repository 70 minutes before the
+first run of experiment 63; for experiment 62 the push came 50 minutes
+after its judge calls had begun. Deviations from the registrations are
+listed in Appendix~\ref{app:deviations}.
 
 \textbf{Instruments.} \emph{Exact phrase}: containment of an instructed
 phrase. In 2{,}907 text spans from runs without any instruction, no
@@ -244,12 +279,20 @@ counts when both judges flag it. Raw agreement is $0.83$ to $0.91$, but
 most sentences carry no qualification: agreement expected by chance is
 $0.64$ to $0.88$ and Cohen's kappa \cite{cohen1960kappa} is $0.19$ to
 $0.41$ (Appendix~\ref{app:instruments}). The labels have not been
-compared with human labels. Every count that depends on them is
+compared with human labels: experiment 62 was registered to do that and
+could not, because the author was unable to provide the labels
+(Section~\ref{sec:planned}). Every count that depends on them is
 provisional and marked~$\dagger$. \emph{Preference}: a judge model sees
 the question and two answers and names the better one; every pair is
 judged in both orders. \emph{Exact match} on planted values, after
 normalisation of number formats. \emph{Reader decision}: a one-word
-PROCEED or HOLD answer from a reader model.
+PROCEED or HOLD answer from a reader model. \emph{Computed answer}
+(experiments 63 and 67): the number on the answer's final line is
+compared with the answers a generator script computes under the right
+and under the altered input. \emph{Figure present}: whether a figure's
+digits occur in a text. As registered, this check does not match a
+figure typeset with LaTeX thousands separators, which decided one
+registered check by two items (Section~\ref{sec:headtohead}).
 
 \textbf{Preference score.} For a pair judged in both orders let $s=1$
 if the first-named side wins both, $s=0$ if it loses both and
@@ -275,8 +318,10 @@ intervals are quoted as originally computed and are marked ``as first
 reported''. Table~\ref{tab:claims} lists the five statements we treat
 as the paper's main claims, with Holm-adjusted $p$-values
 \cite{holm1979}; they were chosen after the results were known, so the
-adjustment describes rather than protects. Everything else is
-descriptive.
+adjustment describes rather than protects. The primary predictions of
+experiments 62 to 67 were named before the runs;
+Table~\ref{tab:planned} gives their outcomes by the registered rules.
+Everything else is descriptive.
 
 \begin{table*}[t]
 \centering\footnotesize
@@ -292,7 +337,7 @@ The primary judge marks down the answer containing ``modeled at'' (all-pairs sco
 A second source lowers how often the first source's figure is stated & 47 & $+0.450$ \ci{+0.095}{+0.805} & 8 items & $0.0312$ & $0.0312$ \\
 \bottomrule
 \end{tabular}
-\caption{The five statements this draft treats as its main claims.
+\caption{The five statements from the experiments before the review that this draft treats as main claims.
 Differences are means of scenario- or item-level paired differences
 with 95\% $t$-intervals; $p$ is from an exact sign-flip test; Holm is
 the adjusted value across the five. The five were selected after the
@@ -452,11 +497,32 @@ Section~\ref{sec:phrase}, it suggests a tension for systems tuned
 toward such judges: the instruction adds a phrase, and the judges
 prefer the answer without it.
 
-Two limits apply. The pipeline answer costs four calls and the single
+\emph{Judges from other families.} Experiment 65 gave the same 378
+pairs to four more local judges, under a rule fixed in advance: a judge
+counts only if it chooses the first-listed answer in fewer than 95\% of
+its single judgments. Two judges of 7 and 8B chose the first-listed
+answer in all 756 of their judgments, and a third 7B judge in 740. Only
+\texttt{phi4:14b} counted (first-listed in $0.886$), the registered
+test needed two, and its three predictions are not evaluable. Alone,
+that judge scored the pipeline answer $0.560$ ($+0.060$
+\ci{+0.005}{+0.114}, $p=0.050$; 25 wins, 10 losses, 91 splits) and
+showed nothing on the two phrase comparisons. On the pairs that it and
+one of the two earlier judges both decided, they chose the same side in
+25 of 29 and 22 of 27. The preference therefore still rests on two
+judges, one of which wrote the answers. Among the pairs each judge
+decided, the longer answer won 100 of 131 (judge 1), 70 of 85 (judge 2)
+and 42 of 70 (\texttt{phi4}), and the pipeline answer is the longer one
+in 72 of 126 pairs; this was computed after the data were seen, and the
+restriction to near-equal lengths above left judge 1's result
+unchanged.
+
+Three limits apply. The pipeline answer costs four calls and the single
 answer one; sampling one model several times and aggregating is known
 to help \cite{li2025selfmoa,li2024moreagents}, so the role structure
-has not been shown to add anything. And both judges are local models
-whose single judgments mostly follow position; no person judged a pair.
+has not been shown to add anything. The judges are local models whose
+single judgments mostly follow position, and at 7 to 8B follow it
+entirely, so a pool of judges at this scale cannot widen the evidence.
+And no person judged a pair.
 
 \subsection{With Two Sources for a Figure, the Aggregator States One of Them}
 \label{sec:select}
@@ -513,6 +579,110 @@ figure from an early experiment, $0/27$ planted values adopted when a
 clean source remained, is also withdrawn: in that condition 23 of 27
 answers stated neither value, and on several items the planted numbers
 contradicted the scenario text, which the aggregator followed instead.
+Section~\ref{sec:checkable} repeats the design with a figure the
+aggregator could check and a scored answer.
+
+\subsection{A Figure the Aggregator Could Check}
+\label{sec:checkable}
+
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.30\textwidth}cccccccccccc}
+\toprule
+ & \multicolumn{4}{c}{\texttt{gpt-oss:20b}} & \multicolumn{4}{c}{\texttt{phi4:14b}} & \multicolumn{4}{c}{\texttt{qwen3-vl:30b}} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-13}
+Question states; contributions quote & right & wrong & other & both & right & wrong & other & both & right & wrong & other & both \\
+\midrule
+right figure; one quotes the right figure & 119 & 0 & 3 & -- & 91 & 0 & 31 & -- & 107 & 0 & 15 & -- \\
+right figure; one quotes a wrong figure & 116 & 0 & 6 & 2 & 96 & 1 & 25 & 2 & 109 & 0 & 13 & 9 \\
+nothing; one quotes a wrong figure & 0 & 112 & 10 & -- & 0 & 89 & 33 & -- & 0 & 104 & 18 & -- \\
+nothing; one wrong, one right & 52 & 62 & 8 & 25 & 44 & 37 & 41 & 116 & 14 & 25 & 83 & 87 \\
+nothing; two different wrong figures & 0 & 112 & 10 & 16 & 1 & 80 & 41 & 120 & 1 & 45 & 76 & 77 \\
+\bottomrule
+\end{tabular}
+\caption{Experiment 63: 61 questions with computed answers, five
+layouts, two runs each (122 runs per layout and model). ``Right'' and
+``wrong'': the final number equals the answer computed from the right or
+from a wrong figure. ``Other'' includes replies with no parseable final
+number. ``Both'': the reply contains both of the conflicting figures.
+The registered tests are those of \texttt{gpt-oss:20b}. The other two
+models fell below the registered check on the first row ($0.90$ right)
+and are reported, not tested; 148 of the 30B model's 244 replies in the
+last two rows were cut at its 4{,}096-token allowance before a final
+number.}
+\label{tab:checkable}
+\end{table*}
+
+Experiment 63 replaces the planted figure with one that matters to a
+computed answer. Each of 61 arithmetic and rule questions has one input
+figure that, raised or lowered by 20 to 25\%, changes the answer a
+generator script computes. The aggregator, with its usual prompt,
+receives the question and three one-sentence contributions; a
+contribution that supplies a figure quotes the sentence of the question
+that contains it. Five layouts differ only in where the right and the
+wrong figure sit (Table~\ref{tab:checkable}). Nothing asks the
+aggregator to check or to report anything. Each layout was run twice
+per question; where two contributions carry a figure, the second run
+swaps their order. The final number was scored by script.
+
+\emph{When the question states the figure.} With a contribution
+misquoting a figure that the question itself states, the answer
+followed the misquote in $0$ of $122$ runs, against $112$ of $122$ when
+the contribution was the only source: by template $+0.923$
+\ci{+0.840}{+1.005}, exact $p=0.0001$, the smallest value 14 templates
+allow. This was the registered primary prediction. No reply mentioned
+the misquote, and the model's output, hidden reasoning included, was no
+longer than in the layout without a misquote (median $1{,}006$ against
+$978$ tokens). The supported statement is that the answer follows the
+question's figure. The registration would have allowed ``catches a
+wrong figure''. We do not use that wording: an aggregator that ignored
+the contributions entirely would produce the same row. The $112$ of
+$122$ is close to guaranteed by the layout, in which the question says
+the figure is given in the contributions.
+
+\emph{When two contributions conflict.} With the figure removed from
+the question and two contributions quoting different figures, one right
+and one wrong, the answer was right in $52$ of $122$ runs and followed
+the wrong figure in $62$, down from $112$ with one source ($+0.416$
+\ci{+0.279}{+0.553}, $p=0.0002$). Nothing in this layout lets the
+aggregator tell which figure is right, and the split by listing order
+shows what it does: the right figure was followed in $42$ of $61$ runs
+when its contribution was listed first and in $10$ of $61$ when it was
+listed second. Over the two conflict layouts the answer followed the
+first-listed contribution in $170$ of $244$ runs and the second in
+$56$; among runs following either, the first-listed share by template
+is $0.745$ \ci{0.664}{0.826}. The drop from one source to two is what
+choosing one of two produces, and a second source helps only in that
+the right figure gets a chance of being chosen. The order statistics
+were computed after the data were seen, and the first-listed
+contribution is always labelled ``Analyst A'', so position and label
+cannot be separated.
+
+\emph{Whether the reader is told.} Both conflicting figures appeared in
+the reply in $41$ of the $244$ conflict runs ($0.186$
+\ci{0.087}{0.285} by template; registered as below one half). The AI
+assistant read 60 of these replies to check the count: three of 40
+replies without both figures still said that two figures were on offer,
+and one of 20 with both was a coincidence of digits, which puts the
+share that let a reader see the conflict near one in five. When the
+conflict was acknowledged, the stated reason for the choice was the
+order of mention, caution (``to be conservative''), or an unsupported
+judgment that one figure was more common, more realistic or a typo.
+
+\emph{Two other aggregator models.} \texttt{phi4:14b} and the 30B model
+used as judge 2 ran the same 610 prompts with a 4{,}096-token
+allowance. Neither followed the misquote ($1$ and $0$ of $122$). With
+conflicting contributions they behaved differently from the main model
+and from each other. \texttt{phi4} showed both figures in $236$ of
+$244$ replies and in $62$ of them gave an answer for each; the parser,
+written for single answers, scored $32$ of those by their last answer
+line. The 30B model showed both figures in $164$ replies, and $148$ of
+its replies ran to the end of the allowance without a final number.
+Where one contribution
+was followed, it was the first-listed one in $0.79$ and $0.74$ of runs.
+Whether a reader learns of a conflict thus depended on the aggregator
+model. That the first-listed contribution usually wins did not.
 
 \subsection{Caveats In and Caveats Out}
 \label{sec:transport}
@@ -605,12 +775,46 @@ the slope mostly reflects. The answer is 18 to 30\% as long as its
 inputs and contains 18 to 31\% as many caveat sentences. The share of
 sentences that carry a caveat is about the same in the answer as in the
 inputs. A summary is shorter than its sources, and on this evidence
-caveats are kept roughly in proportion. Whether a caveat is less likely
-to be conveyed than an ordinary sentence was not measured; a registered
-experiment now does that (Section~\ref{sec:planned}). Published work
-finds that summarization and rewriting do lose scope and certainty
-information \cite{peters2025generalization,belem2026may,wang2026facts},
-so the question is open here, not answered.
+caveats are kept roughly in proportion.
+
+Whether a caveat is less likely to be conveyed than an ordinary
+sentence was the subject of experiment 66. Each of 285 caveat
+sentences$^\dagger$ was matched with an ordinary sentence of similar
+length from the same proposer text, and each sentence was rated
+against three stored answers ($1{,}710$ sentence--answer pairs): two
+judges said whether its content is conveyed, fully, partly or not, in
+the three answer sentences closest to it. The registration required the judges to be checked against 120
+pairs labelled blind by the author before the comparison was read.
+Those labels could not be provided. Before any judge answer was read,
+the check was replaced by four others with bars fixed in advance
+(Appendix~\ref{app:deviations}): agreement with human labels on 300
+summary sentences from the FRANK benchmark \cite{pagnoni2021frank}, and
+three sets of items with a known answer built from stored material the
+experiment does not use. The judges passed three. Against the human
+labels the two-judge rule reached kappa $0.742$ and F1 $0.906$ (bars
+$0.60$ and $0.80$); all 50 sentences copied from an answer were rated
+fully conveyed; and 2 of 50 statements from a different scenario were
+rated conveyed. They failed the fourth: when a figure was altered in a
+statement both judges had rated fully conveyed, they still rated it
+fully conveyed in 5 of 25 cases, against a bar of one in ten. One of
+the five was a malformed test item and one a statement whose figure was
+never in the passages; no way of counting reaches the bar.
+
+By the registered rule the comparison is therefore not evaluable. For
+the record it came out even: $0.696$ of caveat sentences and $0.696$ of
+ordinary sentences were rated conveyed at least partly ($0.270$ and
+$0.260$ fully), a scenario-level difference of $+0.004$
+\ci{-0.128}{+0.135} over the 14 scenarios with at least five caveats.
+That interval is wider than the $\pm0.10$ band registered for calling
+the two rates equal, so the comparison would not have been evaluable
+with a passing check either. A judge given the whole answer found the
+content of about half of the sentences that the three-sentence check
+had rated absent (13 of 30 caveats, 17 of 30 ordinary sentences).
+Nothing here suggests that caveats are lost more than other content,
+and nothing establishes that they are not. Published work finds that
+summarization and rewriting do lose scope and certainty information
+\cite{peters2025generalization,belem2026may,wang2026facts}, so the
+question remains open here.
 
 On inputs from which every flagged caveat sentence had been removed and
 the removal confirmed, the aggregator still wrote at least one caveat
@@ -714,8 +918,11 @@ anything.
 lists the quantities the answer turns on and writes each into at least
 two proposers' sub-questions. Given Section~\ref{sec:select}, the
 purpose is to create a visible disagreement when the proposers differ.
-It does not make the answer immune to a wrong figure, since the
-aggregator states one of the two about evenly.
+It does not make the answer immune to a wrong figure: the aggregator
+follows one of the two, usually the one listed first
+(Section~\ref{sec:checkable}), and when this part was tested in the
+live chain the disagreement was listed and not passed on
+(Section~\ref{sec:headtohead}).
 
 \textbf{Trigger a follow-up from a required list.} The aggregator
 writes a list of disagreements before it writes the answer. Software
@@ -796,8 +1003,8 @@ Reply filter & failed twice & off; replies delivered with a flag \\
   {\textbf{Final document}\\[-1pt]{\scriptsize recommendation}\\[-1pt]
    {\color{accent}\scriptsize ASSUMPTIONS \& CAVEATS}};
 \node[gate,text width=104pt] (rd) at (312,40)
-  {\textbf{Reader model}\\[-1pt]{\scriptsize\ttfamily +0.69 [51]}\\[-1pt]
-   {\scriptsize one sentence, told to look}};
+  {\textbf{Reader models}\\[-1pt]{\scriptsize\ttfamily +0.69 [51] +0.52 [64]}\\[-1pt]
+   {\scriptsize six readers; ten lines $-0.12$}};
 \draw[ed] (q) -- (pl);
 \draw[ed,densely dashed] (sg.south) to[out=-90,in=170] node[s,left,pos=.6]{if passed} (s1.west);
 \draw[ed] (pl) -- (s1); \draw[ed] (pl) -- (s2); \draw[ed] (pl) -- (s3);
@@ -823,7 +1030,8 @@ the experiment number in brackets. Dashed blue: the caveat list, which
 the aggregator does not rewrite. Orange: the follow-up loop. The
 measurements are from separate experiments on separate parts
 (Section~\ref{sec:results}); they are not outcomes of the assembled
-system, which has been evaluated on judge preference only.}
+system, which has been evaluated on judge preference and, for its live
+chain, on a planted wrong figure (Section~\ref{sec:headtohead}).}
 \label{fig:arch}
 \end{figure*}
 
@@ -845,11 +1053,19 @@ Second source, planted: first figure stated (47) & $36/40 \rightarrow 18/40$ & $
 Second source, planted: second figure stated (47) & $0/40 \rightarrow 20/40$ & $+0.500$ \ci{+0.090}{+0.910} & $0.063$ & 8 items \\
 Second source, live chain: first figure stated (59) & $25/40 \rightarrow 18/40$ & $+0.175$ \ci{-0.069}{+0.419} (drop) & $0.22$ & 8 items \\
 Second source, live chain: second figure stated (59) & $2/40 \rightarrow 19/40$ & $+0.425$ \ci{+0.285}{+0.565} & $0.008$ & 8 items \\
+Misquoted figure followed: only source $\rightarrow$ question states the figure (63) & $112/122 \rightarrow 0/122$ & $+0.923$ \ci{+0.840}{+1.005} (drop) & $0.0001$ & 14 templates \\
+Wrong figure followed: one contribution $\rightarrow$ a second with the right figure (63) & $112/122 \rightarrow 62/122$ & $+0.416$ \ci{+0.279}{+0.553} (drop) & $0.0002$ & 14 templates \\
+Live chain, computed answers: wrong figure followed (67, re-scored) & $31/61 \rightarrow 24/61$ & $+0.130$ \ci{+0.010}{+0.250} (drop) & $0.055$ & 14 templates \\
+Live chain, computed answers: right answer (67, re-scored) & $2/61 \rightarrow 19/61$ & $+0.290$ \ci{+0.188}{+0.393} & $0.0002$ & 14 templates \\
 Follow-up, scripted reply, runs that named the disagreement (44) & $5/15 \rightarrow 7/7$ & $+0.700$ \ci{+0.145}{+1.255} & $0.125$ & 5 items \\
 Follow-up, scripted reply, all runs (44) & $10/36 \rightarrow 15/36$ & $+0.139$ \ci{+0.007}{+0.271} & $0.125$ & 6 items \\
 Follow-up, live proposer, named runs; control stored six days earlier (54) & $5/15 \rightarrow 19/21$ & $+0.583$ \ci{+0.121}{+1.046} & $0.125$ & 5 items \\
 Reader acts on an appended sentence, reader 1 (51) & $0.036 \rightarrow 0.727$ & $+0.691$ \ci{+0.427}{+0.955} & $0.004$ & 11 items \\
 Reader acts on an appended sentence, reader 2 (51) & $0.091 \rightarrow 0.545$ & $+0.455$ \ci{+0.104}{+0.805} & $0.063$ & 11 items \\
+Reader acts on an appended sentence, four new readers pooled (64) & $0.11 \rightarrow 0.63$ & $+0.515$ \ci{+0.277}{+0.753} & $0.004$ & 11 items \\
+Uptake with the instruction clause minus without it, six readers (64) & $0.534$ against $0.551$ & $-0.017$ \ci{-0.087}{+0.054} & $0.65$ & 11 items \\
+Uptake in a list of ten minus alone, six readers (64) & $0.432$ against $0.551$ & $-0.118$ \ci{-0.206}{-0.031} & $0.014$ & 11 items \\
+Caveat minus matched ordinary sentence, rated conveyed (66; judges failed a check) & $0.696$ against $0.696$ & $+0.004$ \ci{-0.128}{+0.135} & $0.95$ & 14 scenarios \\
 Document with caveat list against without, judge preference (48) & 26 wins, 25 losses, 65 splits & $+0.002$ \ci{-0.120}{+0.124} & $1.0$ & 17 scenarios \\
 Screen: the two models that fail are the two with most short outputs (55) & 2 of 10 fail & exact, under random labelling & $0.022$ & 10 models \\
 Assembled system against plain pipeline, preference, judge 1 (61) & 27 wins, 21 losses, 59 splits & $+0.031$ \ci{-0.069}{+0.132} & $0.57$ & 18 scenarios \\
@@ -931,7 +1147,9 @@ line at a time, and the quarter of them that span several lines were
 cut to a first line that is often a single table character. The
 corrected figure is a verbatim-copy rate. A caveat restated in the
 aggregator's words counts as missing, so it does not measure how many
-caveats reach the reader. No validated measure of that exists yet.
+caveats reach the reader. Experiment 66 attempted that measurement and
+its judges failed a check (Section~\ref{sec:transport}); no validated
+measure exists.
 
 \textbf{Judge preference.} With the list attached to otherwise
 identical documents, judge 1 gave 26 wins, 25 losses and 65 splits. No
@@ -948,16 +1166,58 @@ sentence: $+0.691$ \ci{+0.427}{+0.955}, $p=0.004$
 $0.818$ (prose minus list $+0.091$ \ci{-0.061}{+0.242}). Reader 2
 (\texttt{qwen2.5:7b}) gave $+0.455$ \ci{+0.104}{+0.805}, $p=0.063$.
 
-This shows that a model reader uses appended text. It does not yet show
-that the design's list changes a reader's decision: the reader was the
-model that wrote the report and was instructed to answer ``on the basis
-of the report and anything attached to it''; the list was one sentence
-placed directly before the question, where the system's lists hold 5 to
-53; the planted sentence was a decisive fact written for the item,
-where the system extracts hedges and assumption labels; the control
-sentence was shorter (165 against 291 characters on average); and seven
-of eighteen items were removed at the pilot check. No person read
-anything.
+Experiment 64 repeated this with six reader models from five
+developers (7 to 30B), four of which experiment 51 had not used, on the
+same 11 items ($3{,}300$ reads). Each reader first had to give the
+item's default answer when nothing was appended, and all six did.
+Pooled over the four new readers, with experiment 51's prompt and a
+one-sentence list, the relevant sentence raised the share of changed
+decisions by $+0.515$ \ci{+0.277}{+0.753} ($p=0.004$, 11 items) over
+the irrelevant one, which sat at the level of no list for every reader.
+Removing the clause that told the reader to use anything attached
+changed uptake by $-0.017$ \ci{-0.087}{+0.054}; the registered
+prediction that the clause mattered failed. Placing the relevant
+sentence at a random position among nine real caveat sentences lowered
+uptake by $0.118$ \ci{0.031}{0.206} ($p=0.014$), from $0.55$ to $0.43$
+pooled over the six readers, with most of the loss in the two smallest
+(Table~\ref{tab:readers}). Position in the list made no difference, and
+ten real caveats with no relevant sentence did not change decisions
+($0.116$ against $0.103$ with no list). The two readers of experiment
+51 reproduced their earlier figures in fresh draws. For the smaller
+readers uptake is all-or-nothing by item, and two of the 11 items moved
+no new reader.
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+ & irrelevant & \multicolumn{3}{c}{relevant sentence in a list of} \\
+\cmidrule(lr){3-5}
+Reader & 1 & 1 & 5 & 10 \\
+\midrule
+\texttt{gpt-oss:20b} & $0.09$ & $0.85$ & $0.76$ & $0.75$ \\
+\texttt{phi4:14b} & $0.11$ & $0.85$ & $0.80$ & $0.69$ \\
+\texttt{qwen3-vl:30b} & $0.09$ & $0.64$ & $0.65$ & $0.65$ \\
+\texttt{qwen2.5:7b} & $0.16$ & $0.55$ & $0.53$ & $0.49$ \\
+\texttt{mistral:7b} & $0.09$ & $0.56$ & $0.40$ & $0.36$ \\
+\texttt{llama3:8b} & $0.13$ & $0.53$ & $0.29$ & $0.36$ \\
+\bottomrule
+\end{tabular}
+\caption{Experiment 64: share of one-word decisions changed, by reader
+and list length, with the prompt that does not mention attachments (55
+reads per cell). With no list the share is $0.09$ to $0.15$.}
+\label{tab:readers}
+\end{table}
+
+This removes two limits of experiment 51 (two readers, one of which
+had written the report while the other fell short of the registered
+threshold; an instruction naming the attachment) and reduces a third (a
+one-sentence list). What remains: the planted sentence is a decisive fact written
+for the item, where the system's own lists hold hedges and assumption
+labels; the control sentence is shorter (165 against 291 characters on
+average); seven of eighteen items were removed at the pilot check; and
+every reader is a model. No person read anything.
 
 \subsection{Follow-Up with a Live Proposer}
 \label{sec:res-loop}
@@ -1025,11 +1285,56 @@ assembled system against four in the plain pipeline, and 14 to 18
 minutes on the hardware used. The earlier draft's phrase ``at no cost''
 is withdrawn.
 
+\textbf{A wrong figure in the live chain.} Experiment 67 put the 61
+questions of Section~\ref{sec:checkable} through the chain with one
+model in every role: a planning step, three role-prompted proposers,
+the required list of disagreements, one follow-up and the final answer.
+The figure was removed from the question and reached the chain only
+through a proposer's private notes: the wrong figure in one proposer's
+notes and, in the second arm, the right figure in another's. The plan
+and the texts of the two proposers whose notes do not change were
+generated once and shared between the arms (122 runs, 710 model calls).
+
+The registration required each figure to appear in its proposer's text
+in at least $0.75$ of items before the predictions could be read. As
+first scored, the wrong figure appeared in $44$ of $61$ texts and the
+check failed. Both missing texts contain the figure typeset with LaTeX
+separators, which the registered text-matching check does not
+recognise; the fault had been recorded three days earlier, in the
+reading of experiment 63, and not repaired. At the author's decision
+the experiment was scored again with that one repair, giving $46$ of
+$61$ and, for the right figure, $51$ of $61$. Both scorings are on
+record (Appendix~\ref{app:deviations}). The check then passes by one
+item, and what follows should be read with that history.
+
+With a second source, right final answers rose from $2$ of $61$ to
+$19$ of $61$ ($+0.290$ \ci{+0.188}{+0.393}, $p=0.0002$, 14 templates).
+The share following the wrong figure fell from $31$ to $24$ of $61$
+($+0.130$ \ci{+0.010}{+0.250}); the exact test gives $p=0.055$, so the
+registered primary prediction, which required $p<0.05$, was not met.
+This is the pattern of experiment 59 on 61 scored items: the second
+source's figure is used, and the fall in the wrong figure is not
+established. The final answer showed both figures in $2$ of $61$ runs,
+although the aggregator's own list of disagreements named both in $31$.
+The step meant to expose a disagreement recorded it and did not pass it
+on.
+
+Three further observations were not registered tests. Of the $43$
+answers that followed one of the two proposers, $35$ followed the one
+whose contribution was listed first: the list of disagreements names
+that proposer first, the follow-up goes there (to the holder of the
+wrong figure in $22$ of $33$ runs when it was listed first; to the
+holder of the right figure in $16$ of $28$ when that one was), and the
+answer keeps that proposer's figure. When the figure reached no
+proposer's text ($21$ runs), the chain still returned a number every
+time, and in $20$ of them it was neither the right nor the planted
+answer. And the live chain showed the conflict in fewer final answers
+than the aggregator alone did in Section~\ref{sec:checkable} ($0.03$
+against $0.20$).
+
 \textbf{What has not been measured.} The assembled system's effect on
-wrong figures, on caveats reaching a reader, or on resolving
-disagreements has not been measured as a system. A registered
-experiment on wrong figures is in progress
-(Section~\ref{sec:planned}).
+caveats reaching a reader has not been measured as a system, and its
+appended list and its screen played no part in experiment 67.
 
 \section{Limitations}
 \label{sec:limits}
@@ -1044,40 +1349,67 @@ cost.} See Section~\ref{sec:setup}.
 
 \textbf{No human measurement.} Every judge is a local model of 7 to
 30B and every reader is a model. No sentence label, preference or
-decision comes from a person, and the items and several label sets were
+decision comes from a person. Experiments 62 and 66 were registered to
+obtain labels from the author; the labels could not be provided.
+Public human labels on neighbouring tasks were used instead, as a check
+with registered bars for one experiment and as a reported figure for
+the other. The items and several label sets were
 written with the same AI assistant that designed the experiments, which
 is the instrument-independence problem of Equation~\ref{eq:entangle} at
 one remove.
 
 \textbf{The sentence instrument is not validated.} Its chance-corrected
-agreement is low and it misses a third to two thirds of the instructed
-phrases. Results marked~$\dagger$ depend on it.
+agreement is low, it misses a third to two thirds of the instructed
+phrases, a judge shown the same sentence in a different batch agrees
+with its own earlier label at kappa $0.42$ to $0.71$, and the
+registered comparison with a person could not be made
+(Appendix~\ref{app:instruments}). Results marked~$\dagger$ depend on it
+and stay provisional.
 
-\textbf{Few units.} Claims rest on 5 to 18 items or scenarios, all
-written in-house. Several effects are all-or-nothing by item.
+\textbf{The conveyed judge failed a check.} The two-judge rating of
+whether a sentence's content reaches the answer agreed with public
+human labels and failed on statements with an altered figure. The
+comparison of caveats with ordinary sentences is not evaluable
+(Section~\ref{sec:transport}).
+
+\textbf{Few units.} Claims rest on 5 to 18 items or scenarios written
+in-house, or on 14 templates of scripted questions. Several effects are
+all-or-nothing by item. The results on figures that can be checked come
+from arithmetic and rule questions with one-sentence contributions, not
+from the advisory scenarios.
 
 \textbf{Constructed outcomes.} In several component tests the outcome
 was close to guaranteed by the design: a question that asks for the
 planted figure; a list scored against the sentences it was built from;
 a decisive sentence placed before the question; a proposer handed the
-deciding fact. These tests show that a route works. They do not show
+deciding fact; a question that points to the contributions for a figure
+only they contain. These tests show that a route works. They do not show
 how the pipeline behaves on inputs nobody arranged.
 
 \textbf{Registration.} The registrations are the author's own, in the
 author's repository, and until October 2026 the run records could not
-show when they were made. Deviations occurred
-(Appendix~\ref{app:deviations}).
+show when they were made. Deviations occurred, among them two
+registrations amended before their data were read and one experiment
+scored a second time (Appendix~\ref{app:deviations}).
 
 \textbf{Many tests.} About ninety registered predictions were made over
 the program, of which about 35 were recorded as failed. The five
-claims of Table~\ref{tab:claims} were selected afterwards.
+claims of Table~\ref{tab:claims} were selected afterwards. The six
+experiments added in this draft made 26 more: 10 were supported or
+passed (three of them only after the second scoring of experiment 67),
+2 failed, 1 check failed, 7 could not be evaluated and 6 were reported
+without a test.
 
 \textbf{Error rate of the record.} The project notebook logs four
 errors in code that printed verdicts, three text-matching errors, five
 token-budget failures, one illustrative quotation in an early draft
 that was not real data, and one experiment run on the wrong condition.
-The review behind this revision found two more defects in headline
-numbers. Others may remain.
+The review behind draft v0.3 found two more defects in headline
+numbers. In the six experiments added here, a text-matching check
+missed typeset figures and decided one registered check by two items,
+the answer parser mis-scored replies that gave two answers, and a set
+of test items built to check a judge contained a malformed item. Others
+may remain.
 
 \section{Related Work}
 \label{sec:related}
@@ -1102,8 +1434,10 @@ incorrect supplied content over a correct prior more than $60\%$ of the
 time \cite{wu2024clasheval} and are highly receptive to coherent
 external evidence \cite{xie2024chameleon}. The earlier draft said no
 published evaluation measures whether a corrupted proposer corrupts the
-answer; that was also wrong. Section~\ref{sec:select} is a small
-numeric-value variant with a second-source control.
+answer; that was also wrong. Sections~\ref{sec:select}
+and~\ref{sec:checkable} are small numeric-value variants, with a
+second-source control and with a control in which the question itself
+states the figure.
 
 \textbf{Judges and uncertainty.} LLM judges including GPT-4o are biased
 against epistemic markers \cite{lee2025judges}; human preference data
@@ -1119,7 +1453,8 @@ findings in 26 to 73\% of cases \cite{peters2025generalization},
 rewriting raises expressed certainty more often than it lowers it
 \cite{belem2026may}, and handoff summaries between agents keep facts
 while weakening the conditions on their use \cite{wang2026facts}.
-Section~\ref{sec:transport} does not yet add a comparable measurement.
+Section~\ref{sec:transport} attempted a comparable measurement and
+could not validate its judges.
 
 \textbf{Specialist models and confidence.} Medical adaptations rarely
 outperform their base models \cite{jeong2024medical}. Verbal confidence
@@ -1134,61 +1469,88 @@ earlier experiment that swaps the phrase named by an instruction under
 otherwise identical prompts, or of one that tests an appended caveat
 list with a matched irrelevant control.
 
-\section{Registered Experiments in Progress}
+\section{The Six Experiments Registered After the Review}
 \label{sec:planned}
 
-Six experiments were registered on 1 October 2026 and are running; a
-seventh is registered as a design only. Each was redesigned for one
-person on one machine, and each addresses a limitation above.
+Six experiments were registered on 1 October 2026, each redesigned for
+one person on one machine and each addressing a limitation of draft
+v0.3. They ran back to back between 1 and 5 October in about 93 hours
+of machine time. Table~\ref{tab:planned} gives each outcome by the
+rules written before the runs. A seventh experiment is registered as a
+design only.
 
 \begin{table*}[t]
 \centering\footnotesize
 \setlength{\tabcolsep}{5pt}
-\begin{tabular}{lp{0.40\textwidth}p{0.42\textwidth}}
+\begin{tabular}{lp{0.27\textwidth}p{0.60\textwidth}}
 \toprule
-No. & Question & Design in one line \\
+No. & Question & Outcome by the registered rules \\
 \midrule
-62 & Do the sentence judges agree with a person? & 404 stored sentences labelled blind by the author twice, a week apart, and by six local judges; bars: retest kappa $0.60$, F1 $0.80$ \\
-63 & Does the aggregator catch a wrong figure it could check? & 61 questions with computed answers; a wrong input placed where the case contradicts it, where it is the only source, and beside a right or a second wrong one; scored by script \\
-64 & Do other reader models act on an appended caveat, without the instruction, in a long list? & six reader models, the 11 items of experiment 51, lists of 1, 5 and 10 sentences, a prompt with the attachment clause removed \\
-65 & Does the judge preference repeat with judges from other families? & four more local judges on the 378 stored pairs, all-pairs scoring, judges that only follow position excluded by a rule fixed in advance \\
-66 & Are caveats conveyed less often than ordinary sentences? & 285 caveat sentences and 285 length-matched ordinary sentences, two judges rate whether each is conveyed; checked against 120 pairs labelled blind by the author \\
-67 & Does a second source help in the assembled chain? & the 61 questions of experiment 63 through the full chain, wrong figure in one proposer's notes, right figure in a second's; scored by the computed answer \\
-68 & Is the pipeline more accurate than the same model sampled four times? & design only: public items screened for headroom, four arms of equal cost \\
+62 & Do the sentence judges agree with a person? & \textbf{Not evaluable.} The author's blind labels, the registered reference, could not be provided. Reported instead: agreement between pairs of six judges and of each judge with itself (Appendix~\ref{app:instruments}). Counts marked $\dagger$ stay provisional. \\
+63 & Does the aggregator's answer follow a wrong figure it could check? & \textbf{Check passed, four predictions supported.} Primary: the misquoted figure is followed in $0/122$ runs when the question states the right one, against $112/122$ when it is the only source ($+0.923$, $p=0.0001$). Two other aggregator models failed their own check and are reported (Section~\ref{sec:checkable}). \\
+64 & Do other reader models act on an appended caveat, without the instruction, in a long list? & \textbf{Primary supported} on four new readers ($+0.515$, $p=0.004$). The prediction that the instruction matters \textbf{failed} ($-0.017$). The prediction that a list of ten dilutes was \textbf{supported} ($-0.118$, $p=0.014$) (Section~\ref{sec:res-channel}). \\
+65 & Does the judge preference repeat with judges from other families? & \textbf{Not evaluable.} Three of four added judges chose the first-listed answer in at least 98\% of judgments and did not count; the fourth leaned the same way as the earlier judges ($+0.060$) (Section~\ref{sec:pref}). \\
+66 & Are caveats conveyed less often than ordinary sentences? & \textbf{Not evaluable.} After an amendment, the judges passed three of four checks and failed the fourth. The rates were equal ($0.696$ each), with an interval wider than the registered band (Section~\ref{sec:transport}). \\
+67 & Does a second source help in the assembled chain? & First scored: \textbf{check failed} ($44/61$), predictions not evaluable. Re-scored after a repair to the text-matching check: check passes ($46/61$); primary \textbf{not met} (wrong figure followed $31/61$ against $24/61$, $p=0.055$); the second source's figure is used (\textbf{supported}, $+0.290$); the conflict is in $2/61$ final answers (\textbf{supported}) (Section~\ref{sec:headtohead}). \\
+68 & Is the pipeline more accurate than the same model sampled four times? & Design only; not run. It needs public items screened for headroom and four arms of equal cost. \\
 \bottomrule
 \end{tabular}
-\caption{Experiments registered on 1 October 2026. Results will be
-reported in the next revision whatever their direction.}
+\caption{The experiments registered on 1 October 2026 and their
+outcomes. The primary predictions were named in the registrations.
+Experiments 62 and 66 were amended on 2 October, before any of their
+judge answers was read; experiment 67 was scored a second time on 5
+October (Appendix~\ref{app:deviations}).}
 \label{tab:planned}
 \end{table*}
 
-Experiment 62 decides whether the results marked~$\dagger$ stand.
-Experiments 63 and 67 replace the reading of
-Section~\ref{sec:select} with a test in which checking is possible and
-the outcome is a computed number. Experiment 66 supplies the comparison
-Section~\ref{sec:transport} lacks. Human readers, a second annotator,
-an independent rerun of the analysis and a much larger model are beyond
-what one person can do and remain open.
+Two of the six added to what the paper claims (63 and 64). One
+qualified the assembled design (67). Three could not answer their
+question (62, 65 and 66), and in each case the reason is a property of
+the measuring tools available to one person with local models: no human
+labels, judges of 7 to 8B that choose by position, and a conveyed judge
+that misses an altered figure one time in five.
+
+What remains open is therefore much of what draft v0.3 listed: a human
+check of the sentence judges and of the conveyed judge; preference
+judges of 14B and above from other model families, and human judges;
+human readers; an aggregator other than \texttt{gpt-oss:20b} that
+passes the clean-layout check of experiment 63; the equal-cost accuracy
+comparison of experiment 68; a second annotator, an independent rerun
+of the analysis and a much larger model.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-On one 20B model and eighteen in-house scenarios, four behaviors of a
-role-prompted aggregation pipeline were observed under registered
-tests: an instruction to mark estimates produces the phrase it names;
-two local judges prefer the aggregated answer to a single answer and
-mark the instructed phrase down; given two sources for a figure, the
-aggregator states one of them without saying there were two; and a
-reader model acts on a decisive sentence appended to the report. A
-design assembled from these observations was indistinguishable from the
-plain pipeline on a weak preference test and has not been tested on any
-other outcome. Whether any of it helps a person making a decision is
-unknown. The measurement lessons may be the more durable result: an
-instrument that counts strings the prompt dictated measures compliance;
-raw agreement between judges says little when one answer dominates;
-intervals over a handful of scenarios need methods built for few
-clusters; and a number that lands inside the expected range still needs
-checking.
+On one 20B model, eighteen in-house scenarios and a scripted set of 61
+questions with computed answers, these behaviors of a role-prompted
+aggregation pipeline were observed under registered tests. An
+instruction to mark estimates produces the phrase it names. Two local
+judges prefer the aggregated answer to a single answer and mark the
+instructed phrase down. The aggregator's answer follows a figure stated
+in the question over a contribution that misquotes it, without
+mentioning the misquote. Given two contributions that conflict, it
+follows one of them, usually the first listed, and the model studied
+most rarely says there were two. And reader models from five
+developers act on a decisive sentence appended to the report.
+
+A design assembled from these observations was indistinguishable from
+the plain pipeline on a weak preference test. In its live chain a
+second source got the right figure used more often, and the step meant
+to expose disagreements listed them without passing them on. Three
+questions the review raised could not be answered by one person with
+local models: whether the sentence judges match a person, whether
+caveats are conveyed less often than other content, and whether the
+judges' preference extends beyond two models. Whether any of this helps
+a person making a decision is unknown.
+
+The measurement lessons may be the more durable result. An instrument
+that counts strings the prompt dictated measures compliance. Raw
+agreement between judges says little when one answer dominates.
+Intervals over a handful of scenarios need methods built for few
+clusters. A text-matching check has to be tried on the writing habits
+of the model whose text it will read. Small judges given two long
+answers choose the first. And a number that lands inside the expected
+range still needs checking.
 
 \section*{Use of AI Assistance}
 
@@ -1196,23 +1558,33 @@ An AI assistant (Claude, Anthropic) was used throughout this project.
 It proposed and drafted most of the registrations and the experiment
 code, wrote the scenarios, test items, planted facts and the labels the
 project notebook calls analyst-authored, ran the analyses, conducted
-the three internal audits and the October 2026 review that led to this
-revision, and drafted this text. The author directed the work, decided
-what was run and what is claimed, and takes responsibility for the
-content. Because one source wrote the items and labelled several
+the three internal audits and the October 2026 review, ran and
+monitored the six experiments that followed, wrote the readings of
+their results, proposed the two amendments and the checks that replaced
+the author's labels, and drafted this text. The author directed the
+work, decided what was run and what is claimed, decided the amendments,
+the second scoring of experiment 67 and the wording of the result of
+experiment 63, and takes responsibility for the content. Because one source wrote the items and labelled several
 outcomes, results that depend on those labels should be read with that
 in mind.
 
 \section*{Data and Code}
 
 All registrations, run records, analysis code and the project notebook
-are in the project repository. The corrected figures in this draft are
+are in the project repository. The corrected figures of draft v0.3 are
 produced by \url{train/run_stage0_corrections.py} (output in
 \url{bench/analysis/stage0/}) at commit \texttt{bb7fcab}. The review
 and its reproduction script are \url{docs/BOARD_REVIEW_2026-10-01.md}
-and \url{bench/analysis/board_review/checks.py}. The experiments of
-Section~\ref{sec:planned} are registered at commit \texttt{6402fc0}.
-Neither script calls a model.
+and \url{bench/analysis/board_review/checks.py}. Experiments 62 to 67
+are registered at commit \texttt{6402fc0} and the two amendments at
+\texttt{29f491f}; each of their run records carries its registration
+commit, the hash of the script that made it, the model digest, the seed
+and the time. Figures quoted beyond the registered outputs come from
+the \url{reading_checks.py} script in each experiment's analysis
+directory, and the second scoring of experiment 67 from
+\url{bench/analysis/cell67/rescore.py}. The sources, licences and
+checksums of the two public datasets are in
+\url{docs/EXTERNAL_DATA.md}. None of these scripts calls a model.
 
 \section*{Impact Statement}
 
@@ -1221,8 +1593,9 @@ findings are limited to 7 to 30B local models, English advisory
 scenarios written for the project, and small numbers of items, and they
 involve no human participants. They should not be used to justify
 deploying such a pipeline for real advice. The observation that an
-aggregator given two different figures states one without flagging the
-conflict is a reason for caution wherever such pipelines are used.
+aggregator given two different figures follows the one listed first,
+and that the model studied most does so without flagging the conflict,
+is a reason for caution wherever such pipelines are used.
 
 \begin{thebibliography}{99}
 \bibitem{wang2024moa} J.~Wang, J.~Wang, B.~Athiwaratkun, C.~Zhang,
@@ -1293,6 +1666,12 @@ test procedure. \emph{Scandinavian Journal of Statistics}, 6(2):65--70,
 \bibitem{cohen1960kappa} J.~Cohen. A coefficient of agreement for
 nominal scales. \emph{Educational and Psychological Measurement},
 20(1):37--46, 1960.
+\bibitem{pagnoni2021frank} A.~Pagnoni, V.~Balachandran, Y.~Tsvetkov.
+Understanding factuality in abstractive summarization with FRANK: a
+benchmark for factuality metrics. \emph{NAACL}, 2021.
+\bibitem{konstantinova2012sfu} N.~Konstantinova, S.~C.~M.~de~Sousa,
+N.~P.~Cruz, M.~J.~Ma\~na, M.~Taboada, R.~Mitkov. A review corpus
+annotated for negation, speculation and their scope. \emph{LREC}, 2012.
 \end{thebibliography}
 
 \appendix
@@ -1354,7 +1733,8 @@ $0.878$ and kappa is $0.26$.
 \textbf{11. Counts.} Earlier: ``more than fifty registered
 experiments'' and ``fourteen instrument-validity findings.'' There are
 58 registration entries for 61 numbered experiments, and the project's
-list of measurement findings now has twenty.
+list of measurement findings had twenty (twenty-two after the
+experiments added in v0.4).
 
 \textbf{12. Readings withdrawn or restated.} ``Transport of $0.11$ to
 $0.33$'' as a loss (Section~\ref{sec:transport}); ``halves
@@ -1365,6 +1745,41 @@ behavior at chance'' and ``corroboration is ignored''
 $0.317$ over consistently decided pairs (Section~\ref{sec:pref});
 ``at no cost'' (Section~\ref{sec:headtohead}); the before-and-after
 figure, which drew separate experiments as one system.
+
+\section{Changes from Draft v0.3}
+\label{app:v03}
+
+\textbf{1. Experiments in progress.} The section that listed six
+registered experiments now reports their outcomes
+(Table~\ref{tab:planned}).
+
+\textbf{2. Two sources for a figure.} Earlier: with two sources ``the
+aggregator states one or the other about evenly.'' That described 8
+items, each all-or-nothing. On 61 scored questions the answer follows
+the first-listed contribution about three times in four
+(Section~\ref{sec:checkable}).
+
+\textbf{3. Whether the reader is told.} Earlier: with two sources the
+aggregator ``did not report that two values existed.'' That holds for
+\texttt{gpt-oss:20b} (both figures in 17\% of replies). Two other
+aggregator models showed both figures in 97\% and 67\% of replies.
+
+\textbf{4. Reader models.} Earlier: two readers, one of which wrote the
+report and the other short of the registered threshold; an instruction
+naming the attachment; a one-sentence list. Experiment 64 removes the
+first two limits and reduces the third (Section~\ref{sec:res-channel}).
+
+\textbf{5. The assembled system.} Earlier: its effect on wrong figures
+``has not been measured as a system.'' Experiment 67 measured it for
+the live chain, with a correction (Section~\ref{sec:headtohead}).
+
+\textbf{6. The comparison of caveats with ordinary sentences.} Earlier:
+``a registered experiment now does that.'' It ran and is not evaluable
+(Section~\ref{sec:transport}).
+
+\textbf{7. Wording.} The registration of experiment 63 allowed
+``catches a wrong figure when the case contradicts it.'' This draft
+says the answer follows the question's figure.
 
 \section{Deviations from Registrations}
 \label{app:deviations}
@@ -1394,6 +1809,33 @@ experiment after reasoning exhausted them.
 \item Timing: one registration was committed two minutes before its
 first run and one amendment 33 seconds after; some notebook dates
 precede the commits that introduced them by up to six days.
+\item Experiment 62 (amended 2 October 2026, before its judge labels
+were scored): the author could not provide the 404 blind labels. The
+three predictions that needed them are not evaluable; judge-only
+statistics and a check against public speculation labels are reported
+without a bar.
+\item Experiment 66 (amended 2 October 2026, before any judge answer
+was read): the check against 120 pairs labelled by the author was
+replaced by a check against public human labels with the same bars and
+three known-value checks with bars fixed in the amendment. One of the
+25 known-value pairs that decided the failed part was malformed by the
+script that built it; it is counted as registered, and leaving it out
+gives 4 of 24.
+\item Experiment 67 (5 October 2026): scored a second time, at the
+author's decision, with the text-matching check repaired to recognise
+figures typeset with LaTeX separators. The repair had been written and
+committed three days before the experiment ran and was not carried into
+it. First scoring: check fails at $44/61$. Second: passes at $46/61$.
+The statistics of the three predictions are the same in both.
+\item Experiment 63: the registered consequence, that the paper may say
+the aggregator ``catches'' a wrong figure, is not used. Two further
+aggregator models ran with a 4{,}096-token allowance fixed from a smoke
+test on an easy item; it proved too small for one of them when
+contributions conflict.
+\item Experiments 62 to 67, timing: the registrations were pushed to
+the public repository 50 minutes after experiment 62's judge calls had
+begun and before any run of the other five. Two steps took about twice
+their estimated time; no design was changed for that.
 \end{itemize}
 
 \section{Experimental Details}
@@ -1436,6 +1878,49 @@ reads.
 \textbf{Assembled system (61).} 54 runs; 108 pairs against stored
 plain-pipeline answers; lists of about 5 sentences.
 
+\textbf{Checkable figure (63).} 61 questions kept from 66 (one integer
+input that occurs once and whose raised and lowered values give three
+answers further apart than twice the scoring tolerance), 14 templates,
+5 layouts, 2 runs: 610 runs per model, temperature $0.6$.
+\texttt{gpt-oss:20b} had a 16{,}384-token allowance and the two other
+models 4{,}096. No run hit the context limit. Three of the main model's
+runs returned an empty reply at first, after spending the whole
+allowance on reasoning, and were drawn again under the registered retry
+rule; all three are on one template. Its first-layout misses are
+arithmetic slips.
+
+\textbf{Readers (64).} 6 readers, 11 items, 10 arms, 5 repeats: 550
+reads per reader, temperature $0.8$. Surrounding caveat sentences come
+from the item's own scenario where it has enough (four items for the
+list of ten) and are topped up from other scenarios elsewhere; the relevant and irrelevant
+arms share surroundings and position. One reader (\texttt{phi4:14b})
+needed more than one try for a one-word answer in 137 of 550 reads and
+gave none in 14; the others answered at the first try.
+
+\textbf{Added judges (65).} 378 pairs, both orders, 4 judges, $3{,}024$
+judgments at temperature $0$. Every reply parsed and none hit a context
+limit. Pairs decided: 16 (\texttt{qwen2.5:7b}), 70 (\texttt{phi4:14b}),
+0 and 0.
+
+\textbf{Conveyed (66).} 285 caveat sentences matched to ordinary
+sentences by length within the same proposer text; 3 stored answers
+each; the three answer sentences closest by embedding shown to the
+judges; $3{,}420$ judge calls, all parsed. The two judges agree with
+each other on ``conveyed at all'' at kappa $0.572$. Check: 300 FRANK
+summary sentences with unanimous labels (150 without error, 150 with a
+content error), weighted to the pool; 50 verbatim answer sentences; 80
+statements in original and altered-figure form; 50 statements from
+another scenario; $1{,}120$ judge calls. Alone, judge 1 reached kappa
+$0.705$ against the human labels and judge 2 $0.480$.
+
+\textbf{Live chain (67).} 61 items, 2 arms, one run each; roles
+shuffled per item; plan and two proposer texts shared between arms;
+710 model calls. Three calls returned an empty reply after exhausting a
+4{,}096-token allowance and were drawn again. Every plan parsed at the
+first attempt. The follow-up went to the holder of the wrong figure in
+23 of 61 redundancy runs, to the holder of the right figure in 16, to
+the third proposer in 12 and to nobody in 10.
+
 \section{The Sentence Instrument}
 \label{app:instruments}
 
@@ -1468,13 +1953,36 @@ four. On sentences that are positives by construction, both judges
 flag $0.66$ (``modeled at'') and $0.35$ (``taken to be''). An earlier
 version that judged whole documents agreed at $0.62$ and was dropped.
 
+\textbf{Experiment 62.} A sample of 404 stored sentences was drawn,
+stratified so that about one in six carries each kind, and labelled by
+six local judges. The registered reference, blind labels from the
+author made twice a week apart, could not be provided, so the
+instrument remains uncompared with a person. On that sample, kappa
+between pairs of judges runs from $0.27$ to $0.71$ with a median near
+$0.5$. The deployed pair agrees at $0.54$ to $0.61$, higher than in
+Table~\ref{tab:kappa} only because the kinds are several times more
+frequent in the stratified sample. Each deployed judge, shown the same
+sentence again in a different batch of ten, agrees with its own stored
+label at kappa $0.42$ to $0.71$, so part of the disagreement between
+judges is a label that moves with the batch. On 400 sentences from the
+SFU Review Corpus \cite{konstantinova2012sfu}, where annotators marked
+speculation cues (modality such as ``could'' or ``I think'', which is
+a neighbouring construct and not the same one), the deployed rule
+marked $0.090$ of cue sentences and $0.010$ of cue-free sentences as
+hedging; single judges ranged from $0.155$ to $0.470$ and from $0.010$
+to $0.190$. None of this is validity.
+
 Other measurement findings recorded by the project and relevant here:
 an early judge prompt listed the same seven phrases the writing prompts
 dictated, found by a registry of every instructed phrase (125 entries);
 an instruction moved the dictated phrasing from $0/30$ to $28/30$
 answers while other phrasings of the same idea moved from $1/30$ to
-$4/30$; and empty judge replies had at one point been scored as
-negative labels.
+$4/30$; empty judge replies had at one point been scored as negative
+labels; pairwise judging of two long answers is decided entirely by
+position for the 7 to 8B judges tried (experiment 65); and a check that
+looks for a figure's digits misses figures the model typesets, finding
+the stated figure in 94 of 122 replies of experiment 63 where 111 hold
+it.
 
 \section{Diagnostics That Are Not Optimized}
 \label{app:charter}

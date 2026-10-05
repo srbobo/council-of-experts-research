@@ -19,8 +19,17 @@ the instrument for testing whether they hold elsewhere.
 > (2) every judge and every reader is a local model of 7 to 30B, and no
 > person labelled a sentence, judged a pair or read a report; (3) the
 > assembled system has been compared with the plain pipeline on judge
-> preference only. Cells 62 to 67 (registered 2026-10-01) test the parts
-> marked "under test".
+> preference only. Cells 62 to 67 (registered 2026-10-01, run 2026-10-01 to
+> 2026-10-05) tested the parts marked "under test"; each such mark below now
+> carries a dated note. In short: the lead follows a figure the case states
+> over a note that misquotes it and does not mention the misquote (Cell 63);
+> between two conflicting sources the first-listed usually wins, and in the
+> live chain the tension list names the conflict in half of runs while the
+> final answer shows it in 2 of 61 (Cell 67, scored twice after a detector
+> repair); the appended-caveat result repeats on six reader models without
+> the instruction clause (Cell 64); the caveat counts stay provisional (Cell
+> 62 not evaluable); whether caveats are lost more than other content could
+> not be settled (Cell 66); the judge pool could not be widened (Cell 65).
 
 ## 0. When NOT to build this
 
@@ -123,8 +132,13 @@ showing the reader that two figures were on the table. "Halves corrupted
 adoption", "error immunity" and "causal" are retired. What redundancy
 reliably creates is a DISAGREEMENT; the design's job is to make that
 disagreement reach the reader, which is what the tension list and the
-follow-up are for. Cells 63 and 67 measure both things on items whose
-answer can be checked. Two candidate
+follow-up are for. Cells 63 and 67 measured both things on items whose
+answer can be checked (2026-10-05): with the figure in the case the lead
+follows the case; with two conflicting sources it follows the first-listed
+one about three times in four; and in the live chain the tension list
+named both figures in 31 of 61 runs while the final answer showed both in
+2, so the list and the follow-up did not carry the disagreement to the
+reader. Two candidate
 mechanisms for the bimodality have since been tested and killed —
 prior-plausibility (Cell 49: 0.544) and an elicited ownership map (Cell
 50: prospective prediction at exactly 0.500 despite a near-unanimous,
@@ -155,7 +169,11 @@ p = 0.008, 8 items). The drop in the planted figure is NOT established
 live (25/40 against 18/40, +0.175 [−0.069, +0.419], p = 0.22): the live
 bare level is 0.625 against the planted 0.900, while the two-source
 level repeats at 0.450. The planner was told which quantity to cover.
-Cell 67 repeats the live chain on 61 items with a computed answer.
+Cell 67 repeated the live chain on 61 items with a computed answer
+(2026-10-05, re-scored after a detector repair): right answers 2/61 bare
+against 19/61 with redundancy (+0.290 [+0.188, +0.393], p = 0.0002); the
+wrong figure followed 31/61 against 24/61 (+0.130 [+0.010, +0.250],
+p = 0.055, so its fall is again not established).
 
 ## 4. Two-stage lead with mandated artifacts
 
@@ -247,7 +265,8 @@ Three findings converge on one design decision:
   original ones), so w (0.17–0.33 for gpt-oss) tracks the length ratio.
   For the second writer the slope does not exclude zero at the scenario
   level. Whether caveats are lost MORE than other content has not been
-  measured; Cell 66 is under test;
+  measured; Cell 66 tried (2026-10-05) and is not evaluable: its judges
+  failed one of four checks, and the two rates were equal at 0.696;
 - instructing the writer to carry it produces only the instruction's
   phrase (Cells 41, PD-13);
 - what does get carried in-band as an instructed phrase is marked down by
@@ -269,8 +288,10 @@ control (exact p = 0.004, 11 items), with a 0.000 bare floor and about the
 same effect as in-prose placement; a second reader gave +0.455, p = 0.06.
 Scope: the reader is a model, told to use "anything attached"; the
 appendix was one sentence placed before the question; the sentence was a
-decisive fact written for the item. Cell 64 tests other readers, a
-neutral instruction and longer lists.) Seats emit them as
+decisive fact written for the item. Cell 64 (2026-10-03) repeated it on six
+reader models: four new readers pooled +0.515 [+0.277, +0.753]; removing
+the instruction clause changed uptake by -0.017; a list of ten cost
+-0.118.) Seats emit them as
 structured fields; the harness carries them
 directly to the final artifact (appendix, metadata, UI panel).
 (As built for Cell 61 and the integration run this is not yet true:
@@ -294,7 +315,8 @@ paid for:
   85–88% reading-order across four judge families). Finding 16
   (2026-10-01): at deployed prevalence the two sentence judges agree at
   kappa 0.19–0.41 and their labels have never been compared with a
-  person's; every caveat count is provisional until Cell 62 reports.
+  person's; Cell 62 could not make that comparison (the labels were not
+  available), so every caveat count stays provisional.
 - **Small-sample inference and all-pairs preference** (directives 10–11,
   2026-10-01): scenario- or item-level t-intervals and exact sign-flip
   tests with the cluster count shown; a pair the judge splits by position

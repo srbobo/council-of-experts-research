@@ -11,7 +11,7 @@
   },
   "S1-02": {
    "claim": "The editor adds caution that no specialist supplied, even when the specialists' text has been checked and contains none.",
-   "detail": "In Cell 38 we deleted every caveat sentence two AI judges flagged in the specialists' text, then checked the result again. On the scenarios confirmed at exactly zero caveats, the editor still wrote at least one caveat sentence in 4 of 12 runs, 33% (plausibly 14% to 61%). No keyword counter was used. Given nothing, the editor also wrote shorter answers, so the rate depends on answer length. Added in October 2026: these counts rely on the two judges' sentence labels, which a review found agree little beyond chance. The figure is provisional until Cell 62 checks the labels against a person's.",
+   "detail": "In Cell 38 we deleted every caveat sentence two AI judges flagged in the specialists' text, then checked the result again. On the scenarios confirmed at exactly zero caveats, the editor still wrote at least one caveat sentence in 4 of 12 runs, 33% (plausibly 14% to 61%). No keyword counter was used. Given nothing, the editor also wrote shorter answers, so the rate depends on answer length. Added in October 2026: these counts rely on the two judges' sentence labels, which a review found agree little beyond chance. The figure is provisional, since Cell 62 could not check the labels against a person's.",
    "cells": [
     "38",
     "62"
@@ -107,7 +107,7 @@
   },
   "S1-14": {
    "claim": "Giving the same figure to a second specialist, with a different value, changed the editor's answer about half the time.",
-   "detail": "In Cell 47 one specialist's text carried a planted value for a figure, and the question asked for that figure. With no other source the editor repeated it in 36 of 40 runs. When a second specialist held a different value, the planted one appeared in 18 of 40 runs and the other in 20 of 40, a clear drop over 8 questions. We first called this halving a wrong value's spread. A review pointed out that the planted value could not be checked against anything in the scenario, so repeating it was following the request. With two sources the editor picked one or the other about evenly, and nothing in the answer showed that two values existed. Cell 63 tests a wrong figure that can be checked.",
+   "detail": "In Cell 47 one specialist's text carried a planted value for a figure, and the question asked for that figure. With no other source the editor repeated it in 36 of 40 runs. When a second specialist held a different value, the planted one appeared in 18 of 40 runs and the other in 20 of 40, a clear drop over 8 questions. We first called this halving a wrong value's spread. A review pointed out that the planted value could not be checked against anything in the scenario, so repeating it was following the request. With two sources the editor picked one or the other about evenly, and nothing in the answer showed that two values existed. Cell 63 then tested a wrong figure that can be checked.",
    "cells": [
     "47",
     "63"
@@ -115,7 +115,7 @@
   },
   "S1-15": {
    "claim": "A caveats section attached to the report holds every caveat because it is built from them, and a reader model acted on a deciding sentence placed there.",
-   "detail": "In Cell 48 the editor's prose repeated a specialist's caveat sentence word for word in 3% of cases. We first reported 17%, a scoring bug found in October 2026. Neither number says how many caveats were lost, since a caveat restated in the editor's words counts as missing. Cell 66 measures that. In Cell 51 a reader model changed its proceed-or-hold answer 69 points more often for a relevant appended sentence than for an irrelevant one, over 11 questions. In Cell 64 four more readers from other model families did the same, with or without an instruction to read attachments, and a list of ten cost about a tenth of the effect. No person read anything.",
+   "detail": "In Cell 48 the editor's prose repeated a specialist's caveat sentence word for word in 3% of cases. We first reported 17%, a scoring bug found in October 2026. Neither number says how many caveats were lost, since a caveat restated in the editor's words counts as missing. Cell 66 tried to measure that and could not settle it. In Cell 51 a reader model changed its proceed-or-hold answer 69 points more often for a relevant appended sentence than for an irrelevant one, over 11 questions. In Cell 64 four more reader models did the same, with or without an instruction to read attachments, and a list of ten cost about a tenth of the effect. No person read anything.",
    "cells": [
     "48",
     "51",
@@ -201,13 +201,13 @@
    ]
   },
   "S1-25": {
-   "claim": "We stand behind all twenty lessons about our measuring tools, listed in the section on lessons about our tools.",
+   "claim": "We stand behind all twenty-two lessons about our measuring tools, listed in the section on lessons about our tools.",
    "detail": "These are findings about how we measured, not about how the models behave. A flaw in a measuring tool therefore cannot undermine them the way it could undermine a result about behavior.",
    "cells": []
   },
   "S2-01": {
    "claim": "The formula y = w·s + c describes one editor model, gpt-oss. Here s is the caution supplied, y is the caution in the final answer, w is the share passed along, and c is what the editor adds itself.",
-   "detail": "In Cell 46, within each set of nine scenarios, w was 0.172 and 0.326 for gpt-oss, both above zero by a clear margin. For Phi-4 it was 0.105 and 0.170, and a review found both too close to call once the ranges were computed over scenarios instead of runs. So the second test did not hold up. The review also showed what w mostly reflects. The editor's answer is 18% to 30% as long as the specialists' text and carries 18% to 31% as many caveat sentences. Caveat sentences make up about the same share of the answer as of the input (19% against 18% in the newer scenarios, 10% against 13% in the original ones). Whether caveats are lost more than other content is the question for Cell 66.",
+   "detail": "In Cell 46, within each set of nine scenarios, w was 0.172 and 0.326 for gpt-oss, both above zero by a clear margin. For Phi-4 it was 0.105 and 0.170, and a review found both too close to call once the ranges were computed over scenarios instead of runs. So the second test did not hold up. The review also showed what w mostly reflects. The editor's answer is 18% to 30% as long as the specialists' text and carries 18% to 31% as many caveat sentences. Caveat sentences make up about the same share of the answer as of the input (19% against 18% in the newer scenarios, 10% against 13% in the original ones). Cell 66 asked whether caveats are lost more than other content and could not settle it.",
    "cells": [
     "30",
     "46",
@@ -593,7 +593,7 @@
   },
   "S3-14": {
    "claim": "We used to report that 17% of the specialists' caveat sentences survived in the editor's prose, and that this matched our earlier estimates.",
-   "detail": "The 17% in Cell 48 came from a scoring bug. Caveats that ran over several lines were cut to their first line, often a single table character that matches almost any report. Scored on the full sentences the figure is 3%, and it counts only word-for-word copies. The match with earlier estimates was an accident of the bug. Cell 66 measures whether caveats are conveyed.",
+   "detail": "The 17% in Cell 48 came from a scoring bug. Caveats that ran over several lines were cut to their first line, often a single table character that matches almost any report. Scored on the full sentences the figure is 3%, and it counts only word-for-word copies. The match with earlier estimates was an accident of the bug. Cell 66 tried to measure whether caveats are conveyed and could not settle it.",
    "cells": [
     "48",
     "66"
@@ -647,7 +647,7 @@
   },
   "S4-16": {
    "claim": "Two AI judges agreeing on most sentences does not show they measure anything, when nearly every sentence gets the same answer.",
-   "detail": "Our two-judge sentence labels agreed on 83% to 91% of sentences, and we accepted them against a bar of 70%. But most sentences carry no caveat, so two judges answering independently would agree 64% to 88% of the time by luck. Beyond luck, the agreement is weak. Of the sentences either judge flagged, both flagged about one in four. The judges also found only 66% of sentences containing the phrase \"modeled at\" and 35% of those containing \"taken to be\". No label has been compared with a person's. Cell 62 does that, and every count made with these labels is provisional until then.",
+   "detail": "Our two-judge sentence labels agreed on 83% to 91% of sentences, and we accepted them against a bar of 70%. But most sentences carry no caveat, so two judges answering independently would agree 64% to 88% of the time by luck. Beyond luck, the agreement is weak. Of the sentences either judge flagged, both flagged about one in four. The judges also found only 66% of sentences containing the phrase \"modeled at\" and 35% of those containing \"taken to be\". No label has been compared with a person's. Cell 62 was meant to do that and could not, so every count made with these labels stays provisional.",
    "cells": [
     "IV",
     "23",
@@ -674,7 +674,7 @@
   },
   "S4-19": {
    "claim": "Labels our notebook called analyst-written were produced by the AI assistant that also designed the experiments.",
-   "detail": "This covers the 20 practice sentences in Cell 23, the sorting of made-up citations in Cell 56, the 41 key-figure labels in Cell 57, and the questions and planted facts in Cells 44, 47 and 51. When one source writes the questions and labels the outcomes, the labels are not an independent check. No sentence label, preference or reader decision in the project comes from a person. Cells 62 and 66 add blind labels from the author.",
+   "detail": "This covers the 20 practice sentences in Cell 23, the sorting of made-up citations in Cell 56, the 41 key-figure labels in Cell 57, and the questions and planted facts in Cells 44, 47 and 51. When one source writes the questions and labels the outcomes, the labels are not an independent check. No sentence label, preference or reader decision in the project comes from a person. Cells 62 and 66 were meant to add blind labels from the author, which could not be provided.",
    "cells": [
     "23",
     "44",
@@ -709,7 +709,7 @@
   },
   "S5-13": {
    "claim": "Does the editor catch a wrong figure when the scenario states the right one?",
-   "detail": "Partly answered in October 2026. When the scenario stated the figure, three editor models almost never followed a note that misquoted it (0, 1 and 0 of 122 runs in Cell 63). Two of them were too weak at the arithmetic for a formal test. None mentioned the mismatch, so we say the editors follow the scenario, not that they catch errors. When two sources disagreed, the one listed first usually won, in Cell 63 and in the full live system (Cell 67), where the final answer almost never showed that two figures existed.",
+   "detail": "Answered in October 2026 by Cells 63 and 67, with a narrower wording than the question. When the scenario states the figure, the editor's answer follows the scenario and not a note that misquotes it, and the reply does not mention the misquote. Nothing shows the editor noticed the conflict, so we do not say it catches errors. When two sources disagree and the scenario is silent, the one listed first usually wins. Both results are now in the list of current claims.",
    "cells": [
     "47",
     "59",
@@ -798,6 +798,29 @@
   "S4-22": {
    "claim": "Our script for spotting a figure in a text missed figures written in typeset form, and that decided a checkpoint by two questions.",
    "detail": "The script looks for a figure's digits. The editor model sometimes writes thousands in a typeset form that the script does not read. In Cell 63 it found a stated figure in 94 of 122 replies when 111 contained it. We noted that on 2 October 2026 but did not repair the script before Cell 67 ran. There a checkpoint needed the figure in 46 of 61 specialist texts. The script counted 44, and the two it missed were typeset figures. We scored the cell again with the repair and kept both results. A pass mark that close to the line is decided by the counting tool, so such a tool has to be tried on the writing habits of the model whose text it will read.",
+   "cells": [
+    "63",
+    "67"
+   ]
+  },
+  "S1-26": {
+   "claim": "When the scenario states a figure, the editor's answer follows the scenario and not a note that misquotes it. It does not mention the misquote.",
+   "detail": "In Cell 63, on 61 questions with computed answers, a note quoted one input figure wrongly. When the scenario itself stated the right figure, the main editor's answer followed the wrong one in 0 of 122 runs, against 112 of 122 when the note was the only source. Two other editor models gave 1 and 0 of 122, though both were too weak at the arithmetic for a formal test. No reply told the reader about the misquote, and the editor took no longer on those runs. So we say the answer follows the scenario. We do not say the editor catches errors, since an editor that ignored the notes would score the same.",
+   "cells": [
+    "63"
+   ]
+  },
+  "S1-27": {
+   "claim": "When two sources give different figures and the scenario gives none, the one listed first usually wins. Whether the reader is told depends on the editor.",
+   "detail": "In Cell 63, among answers that followed one of two disagreeing notes, about three in four followed the note listed first, for all three editor models. The main editor showed both figures in 17% of replies, Phi-4 in 97% and qwen3-vl in 67%. In the full live system (Cell 67), 35 of 43 such answers followed the specialist listed first. The editor's own list of disagreements named both figures in 31 of 61 runs, but the final answer showed both in 2. No editor can tell which note is right, so a second source only gives the right figure a chance of being picked. The order results were worked out after the runs.",
+   "cells": [
+    "63",
+    "67"
+   ]
+  },
+  "S6-16": {
+   "claim": "Say the editor's answer follows a figure. Do not say it catches, verifies or checks one.",
+   "detail": "Adopted on 5 October 2026 after Cell 63. The editor used the scenario's figure over a misquoting note in every run, but nothing it wrote showed it had noticed the conflict, and an editor that never read the notes would have scored the same. So the wording stays with what was observed. The same rule asks that Cell 67's results always be quoted together with their correction: first scored as a failed checkpoint, then scored again after a counting fault was repaired.",
    "cells": [
     "63",
     "67"

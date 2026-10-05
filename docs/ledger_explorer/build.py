@@ -644,7 +644,7 @@ STUDIES = [
     ("transport-battery", "analysis", ["entry-7088", "entry-7122"]),
     ("gates", "tool", ["entry-8972", "entry-9039"]),
     ("integration", "engineering", ["entry-9080"]),
-    ("board-review", "audit", ["entry-9592", "entry-10723"]),
+    ("board-review", "audit", ["entry-9592", "entry-10723", "entry-12508"]),
 ]
 sys.path.insert(0, HERE)
 import build_data  # noqa: E402

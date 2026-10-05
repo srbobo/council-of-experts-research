@@ -55,7 +55,7 @@
    "kind": "limits",
    "does": "Before any specialist answers, the planning step lists the figures the answer depends on, such as rates, deadlines and eligibility rules. It then writes each specialist a self-contained question and makes sure every key figure appears in at least two of those questions.",
    "why": "With two sources for a figure, the editor picks one. In Cell 47 a planted value appeared in 90% of answers when it was the only source and in 45% when a second specialist held a different value, and the second value appeared in half the answers. The planted value could not be checked against the scenario, so this shows the editor choosing between sources, not catching an error. Tested live, the planning step found about 63% of the key figures, and it was best at the ones nobody had stated, finding 81% of those (Cell 57). It then put each figure into two specialists' questions in 40 of 40 plans, and the second specialist's value appeared 43 points more often (Cell 59). The drop in the planted value was too close to call there.",
-   "limits": "The effect only covers the figures the planning step finds. It was complete for some figures and absent for others, and two explanations for that pattern were tested and failed (Cells 49 and 50). Nothing in the editor's answer shows that two values were on the table. A specialist passes along a fact it was privately given only when its question is about that fact (Cell 58). Cells 63 and 67 test a wrong figure that can be checked.",
+   "limits": "The effect only covers the figures the planning step finds. It was complete for some figures and absent for others, and two explanations for that pattern were tested and failed (Cells 49 and 50). Nothing in the editor's answer shows that two values were on the table. A specialist passes along a fact it was privately given only when its question is about that fact (Cell 58). Cells 63 and 67 tested a wrong figure that can be checked. The editor follows the scenario's own figure, and between two disagreeing specialists it usually follows the one listed first.",
    "cells": [
     "35",
     "37",
@@ -88,8 +88,8 @@
    "status": "Tested and kept, with limits",
    "kind": "limits",
    "does": "The system copies each specialist's caveats, assumptions and confidence into a separate Assumptions and caveats section attached to the end of the report. The editor never rewrites this section and gets no instructions about being careful.",
-   "why": "The editor's answer is about 30% as long as the specialists' text and repeats 3% of their caveat sentences word for word (Cell 48, corrected in October 2026). Whether it conveys caveats less often than other content has not been measured yet (Cell 66). Telling the editor to keep them only produces the exact phrase the instruction names (Cell 41 and PD-13). And AI judges mark answers down a little when they carry that scripted phrase (Cell 43). The separate section holds every caveat by construction. When a caveat that should change a decision was placed only in that section, an AI reader changed its decision 69 points more often than with an irrelevant caveat in the same place (Cell 51).",
-   "limits": "Whether judges mark reports down for having the section was too close to call (Cell 48). The reader in Cell 51 was a model told to use anything attached, and the section held one sentence. Cell 64 tests other readers and longer sections. The assembled harness also builds this section with a simpler method than Cell 48 tested, listing about 5 caveats per report where that method gives a median of 11.",
+   "why": "The editor's answer is about 30% as long as the specialists' text and repeats 3% of their caveat sentences word for word (Cell 48, corrected in October 2026). Whether it conveys caveats less often than other content could not be settled (Cell 66). Telling the editor to keep them only produces the exact phrase the instruction names (Cell 41 and PD-13). And AI judges mark answers down a little when they carry that scripted phrase (Cell 43). The separate section holds every caveat by construction. When a caveat that should change a decision was placed only in that section, an AI reader changed its decision 69 points more often than with an irrelevant caveat in the same place (Cell 51).",
+   "limits": "Whether judges mark reports down for having the section was too close to call (Cell 48). The reader in Cell 51 was a model told to use anything attached, and the section held one sentence. Cell 64 repeated this with six reader models and longer sections, and it held. The assembled harness also builds this section with a simpler method than Cell 48 tested, listing about 5 caveats per report where that method gives a median of 11.",
    "cells": [
     "30",
     "41",
@@ -322,7 +322,7 @@
   },
   {
    "title": "The scoring of caveats is itself under check",
-   "text": "The two AI judges whose sentence labels count caveats agree little beyond chance. Cell 62 compares them with a person's labels, and until then every caveat count on this page is provisional.",
+   "text": "The two AI judges whose sentence labels count caveats agree little beyond chance. Cell 62 was meant to compare them with a person's labels and could not, so every caveat count on this page is provisional.",
    "cells": [
     "62"
    ]

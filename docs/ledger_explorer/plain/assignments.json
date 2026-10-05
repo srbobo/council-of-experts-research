@@ -2475,6 +2475,12 @@
        "end": 11892,
        "kind": "note",
        "heading": "CELL 63 READING (2026-10-04) — two more editors: neither follows a note that the case contradicts (1 of 244 runs), but both fail the clean-layout check, and with two conflicting notes each behaves differently from the main editor: phi4 shows both figures in 97% of replies, qwen3-vl deliberates until its allowance runs out in 61%"
+      },
+      {
+       "line": 12490,
+       "end": 12507,
+       "kind": "note",
+       "heading": "CELL 63 NOTE (2026-10-05) — the author accepts the narrower wording: the answer \"follows the case\"; the registration's consequence line (\"catches a wrong figure\") is not used"
       }
      ],
      "matrix_row": null
@@ -2508,6 +2514,12 @@
        "end": 11547,
        "kind": "note",
        "heading": "CELL 64 READING (2026-10-03) — six readers, 3,300 reads: the appended caveat is used by four readers Cell 51 never tried, the instruction clause makes no difference, and nine other lines cost about a tenth of the uptake"
+      },
+      {
+       "line": 12552,
+       "end": 12563,
+       "kind": "correction",
+       "heading": "CELL 64 CORRECTION (2026-10-05) — the six readers come from five developers, not \"four model families\"; no figure changes"
       }
      ],
      "matrix_row": null
@@ -2680,6 +2692,13 @@
        "end": 10758,
        "heading": "RUN QUEUE (2026-10-01) — how the registered steps are run and written down",
        "parts": []
+      },
+      {
+       "id": "entry-12508",
+       "line": 12508,
+       "end": 12551,
+       "heading": "RUN QUEUE COMPLETE (2026-10-05) — all ten steps of the queue registered on 2026-10-01 and amended on 2026-10-02 have run; what each returned, and what was pushed when",
+       "parts": []
       }
      ]
     }
@@ -2730,7 +2749,7 @@
     "cols": [
      "Writers invent qualification with no upstream source",
      "**Cell 38: 4/12 = 0.333 [0.138, 0.609]** on upstream CONFIRMED at exactly zero by the validated instrument",
-     "first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded **2026-10-01: counted with the two-judge sentence labels, which are under check (finding #16, Cell 62); provisional until then.**"
+     "first defensible zero-supply measurement; no lexicon in system or instrument; earlier regex-stratum rates superseded **2026-10-01: counted with the two-judge sentence labels, which could not be checked against a person (finding #16; Cell 62 was not evaluable); provisional.**"
     ]
    },
    {
@@ -2920,7 +2939,7 @@
     "cols": [
      "An instructed caveat phrase costs preference with the same two judges — **all-pairs figures since 2026-10-01**",
      "gpt-oss: \"modeled at\" **0.413** (-0.087 [-0.144, -0.031], p = 0.009), \"taken to be\" **0.440** (-0.058 [-0.118, +0.003], p = 0.06). qwen3-vl: 0.448 (p = 0.17) and 0.448 (-0.052 [-0.092, -0.012], p = 0.023). 18 scenarios each. Earlier decided-only shares: 0.261, 0.317, 0.276, 0.217",
-     "Two of four judge-by-phrase comparisons at p < 0.05, all four in the same direction (was stated as three of four excluding 0.5). Counterbalanced phrases. Consistent with published findings that AI judges mark down text that expresses uncertainty. Local model judges only; Cell 65 pending"
+     "Two of four judge-by-phrase comparisons at p < 0.05, all four in the same direction (was stated as three of four excluding 0.5). Counterbalanced phrases. Consistent with published findings that AI judges mark down text that expresses uncertainty. Local model judges only; Cell 65 could not widen the judge pool (three of four added judges choose by position)"
     ]
    },
    {
@@ -2982,7 +3001,7 @@
     "cols": [
      "**A second source with a different figure changes the answer about half the time** — restated 2026-10-01 (was \"engineered redundancy is causal ... halves corruption adoption\")",
      "Cell 47, 8 items, item-level: planted figure stated 36/40 with one source, 18/40 with two: **+0.450 [+0.095, +0.805], p = 0.031**. Second source's figure stated 0/40 against 20/40: +0.500 [+0.090, +0.910], p = 0.063. Per item the planted figure went 1.0 to 1.0, 1.0 to 0.8, 1.0 to 0.0, 1.0 to 0.0, 1.0 to 0.2, 1.0 to 0.6, 1.0 to 1.0, 0.2 to 0.0",
-     "The drop holds on eight items. The reading changes: the planted figure appears nowhere in the case and the question asks for it, so repeating it is compliance, and it could not be checked; with two sources the editor states one or the other about evenly, item by item, and nothing in the answer shows that two figures were on the table. \"Halves\", \"is causal\" and \"error immunity\" are retired (§3). Cell 63 tests a wrong figure that can be checked; Cell 67 the live chain on 61 items"
+     "The drop holds on eight items. The reading changes: the planted figure appears nowhere in the case and the question asks for it, so repeating it is compliance, and it could not be checked; with two sources the editor states one or the other about evenly, item by item, and nothing in the answer shows that two figures were on the table. \"Halves\", \"is causal\" and \"error immunity\" are retired (§3). Cell 63 then tested a wrong figure that can be checked and Cell 67 the live chain on 61 items (rows added 2026-10-05 below and the Cell 59 row)"
     ]
    },
    {
@@ -3005,7 +3024,7 @@
     "cols": [
      "**An appended caveat list holds every caveat by construction, and a reader model acts on a decisive appended sentence** — corrected 2026-10-01",
      "Cell 48: list 1.000 (built from the sentences it is scored on); editor's prose **61/2037 = 0.030** word for word. The published 0.174 was a parsing error (CELL 48 CORRECTION). Preference with the list attached, all pairs: 26/25/65 = 0.504, p = 1.0, 17 scenarios: no penalty detected, absence not claimed. Cell 51, 11 items, item-level: relevant minus irrelevant appended sentence **+0.691 [+0.427, +0.955], p = 0.004** (gpt-oss reader); second reader (qwen2.5) +0.455 [+0.104, +0.805], p = 0.06",
-     "0.030 is a word-for-word copy rate, not a rate of caveats lost; whether caveats are conveyed, and less often than ordinary sentences, is untested (Cell 66). \"Third convergent transport measurement\" is withdrawn: the agreement came from the bug. Reader scope: a model reader (the main one wrote the report), told to use \"anything attached\", a list of one sentence placed before the question, a decisive fact written for the item, a shorter control sentence (165 against 291 characters), 11 of 18 items after the pilot check. Cell 64 (2026-10-03) repeated it on four readers Cell 51 did not use, pooled **+0.515 [+0.277, +0.753], p = 0.004**; removing the \"anything attached\" clause changed uptake by −0.017 [−0.087, +0.054]; ten lines instead of one cost −0.118 [−0.206, −0.031]. Six readers from four families now; still a decisive planted fact, a shorter control sentence, and no person read anything"
+     "0.030 is a word-for-word copy rate, not a rate of caveats lost; whether caveats are conveyed, and less often than ordinary sentences, is untested (Cell 66). \"Third convergent transport measurement\" is withdrawn: the agreement came from the bug. Reader scope: a model reader (the main one wrote the report), told to use \"anything attached\", a list of one sentence placed before the question, a decisive fact written for the item, a shorter control sentence (165 against 291 characters), 11 of 18 items after the pilot check. Cell 64 (2026-10-03) repeated it on four readers Cell 51 did not use, pooled **+0.515 [+0.277, +0.753], p = 0.004**; removing the \"anything attached\" clause changed uptake by −0.017 [−0.087, +0.054]; ten lines instead of one cost −0.118 [−0.206, −0.031]. Six readers from five developers now; still a decisive planted fact, a shorter control sentence, and no person read anything"
     ]
    },
    {
@@ -3176,7 +3195,7 @@
     "cols": [
      "**The rebuilt system against the old pipeline: no preference difference detected** — corrected 2026-10-01",
      "Cell 61, all pairs, scenario-level: gpt-oss 27/21/59 = **0.528**, +0.031 [-0.069, +0.132], p = 0.57; qwen3-vl 5/10/93 = **0.477**, -0.023 [-0.060, +0.014], p = 0.31. Decided-only shares were 0.562 [0.375, 0.765] (48 pairs) and 0.333 [0.083, 0.562] (15 pairs): the second does not exclude a large loss, so \"large effects excluded in both directions\" holds for the first judge only",
-     "No equivalence margin was set in advance, so \"no cost\" is not claimed. One inquiry makes about fourteen model calls against four and took 14 to 18 minutes (§3). The comparison arm was stored three weeks earlier. The system's caveat extractor is a document-level, one-quote-per-kind version (5.0 caveats per report), not the sentence-level lists of Cell 48 (median 11). No outcome other than judge preference was measured on the assembled system; Cell 67 is the first"
+     "No equivalence margin was set in advance, so \"no cost\" is not claimed. One inquiry makes about fourteen model calls against four and took 14 to 18 minutes (§3). The comparison arm was stored three weeks earlier. The system's caveat extractor is a document-level, one-quote-per-kind version (5.0 caveats per report), not the sentence-level lists of Cell 48 (median 11). Until Cell 67 no outcome other than judge preference had been measured on the assembled system; its live-chain result is in the Cell 59 row"
     ]
    },
    {
@@ -3215,9 +3234,50 @@
      "why it survives"
     ],
     "cols": [
-     "Twenty instrument-validity findings",
+     "Twenty-two instrument-validity findings",
      "see §4",
      "these are *about* measurement, so no instrument confound applies"
+    ]
+   },
+   {
+    "id": "S1-26",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 52,
+    "cells": [
+     "63"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**When the case states a figure, the editor's answer follows the case and not a note that misquotes it; the reply does not mention the misquote** — added 2026-10-05",
+     "Cell 63, 61 questions with computed answers, 14 templates, main editor gpt-oss:20b: the misquoted figure is followed in 0/122 runs against 112/122 when the note is the only source, **+0.923 [+0.840, +1.005], p = 0.0001** (registered primary). Clean-layout check 119/122. No reply mentions the note (0/122). Repeat editors: phi4 1/122, qwen3-vl 0/122",
+     "Registered, scored by script, one factor (where the figure sits). SCOPE: \"follows\", not \"catches\" or \"verifies\" (wording accepted by the author 2026-10-05): an editor that never read the notes would score the same, and the editor's output is no longer on those runs. Scripted one-sentence notes on arithmetic and rule questions. Both repeat editors fail their own clean-layout check (0.746, 0.877 against 0.90), so their figures are reported, not tested"
+    ]
+   },
+   {
+    "id": "S1-27",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 53,
+    "cells": [
+     "63",
+     "67"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**When two sources give different figures and the case gives none, the answer follows the one listed first about three times in four; whether the reader is told depends on the editor** — added 2026-10-05",
+     "Cell 63: first-listed share among runs following either note 0.745 [0.664, 0.826] (gpt-oss, 226 runs), 0.791 (phi4), 0.735 (qwen3-vl). Both figures shown in the reply: gpt-oss 41/244 (0.186 [0.087, 0.285], registered P63.4), phi4 236/244, qwen3-vl 164/244 (148 of its replies cut at the 4,096-token allowance before an answer). Cell 67, live chain: of 43 answers following either holder, 35 follow the one listed first; the list of disagreements names both figures in 31/61 runs and the final answer in 2/61",
+     "The layouts and the shuffle were registered and assigned; the first-listed statistics were computed after the data were seen and are reported, not tested. SCOPE: listing order is tied to the label \"Analyst A\" (Cell 63) and to the healthcare role (Cell 67); no editor can tell which note is right, so \"the second source helps\" means only that the right figure gets a chance of being picked"
     ]
    },
    {
@@ -3225,7 +3285,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 57,
+    "line": 59,
     "cells": [
      "30",
      "46",
@@ -3247,7 +3307,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 58,
+    "line": 60,
     "cells": [
      "25"
     ],
@@ -3267,7 +3327,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 59,
+    "line": 61,
     "cells": [
      "29"
     ],
@@ -3287,7 +3347,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 60,
+    "line": 62,
     "cells": [
      "27",
      "28",
@@ -3310,7 +3370,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 61,
+    "line": 63,
     "cells": [
      "25"
     ],
@@ -3330,7 +3390,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 62,
+    "line": 64,
     "cells": [
      "29"
     ],
@@ -3350,7 +3410,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 68,
+    "line": 70,
     "cells": [
      "35",
      "37",
@@ -3372,7 +3432,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 69,
+    "line": 71,
     "cells": [
      "13",
      "25"
@@ -3393,7 +3453,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 70,
+    "line": 72,
     "cells": [
      "13"
     ],
@@ -3413,7 +3473,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 71,
+    "line": 73,
     "cells": [
      "13",
      "25"
@@ -3434,7 +3494,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 72,
+    "line": 74,
     "cells": [
      "25"
     ],
@@ -3454,7 +3514,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 73,
+    "line": 75,
     "cells": [
      "27",
      "28",
@@ -3476,7 +3536,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 74,
+    "line": 76,
     "cells": [
      "28"
     ],
@@ -3496,7 +3556,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 75,
+    "line": 77,
     "cells": [
      "19"
     ],
@@ -3516,7 +3576,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 76,
+    "line": 78,
     "cells": [
      "29"
     ],
@@ -3536,7 +3596,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 77,
+    "line": 79,
     "cells": [
      "25"
     ],
@@ -3556,7 +3616,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 78,
+    "line": 80,
     "cells": [
      "8",
      "14"
@@ -3577,7 +3637,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 79,
+    "line": 81,
     "cells": [
      "8B"
     ],
@@ -3597,7 +3657,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 80,
+    "line": 82,
     "cells": [
      "26"
     ],
@@ -3617,7 +3677,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 81,
+    "line": 83,
     "cells": [
      "48",
      "66"
@@ -3630,7 +3690,7 @@
     "cols": [
      "Prose carries 0.174 of caveats; \"third convergent transport measurement\"",
      "CELL 48 CORRECTION 2026-10-01 (parsing error)",
-     "0.030 word for word; whether caveats are conveyed is Cell 66"
+     "0.030 word for word; whether caveats are conveyed was Cell 66's question, which it could not settle"
     ]
    },
    {
@@ -3638,7 +3698,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 82,
+    "line": 84,
     "cells": [
      "47"
     ],
@@ -3658,7 +3718,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 83,
+    "line": 85,
     "cells": [
      "30",
      "46"
@@ -3679,7 +3739,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 84,
+    "line": 86,
     "cells": [
      "61"
     ],
@@ -3699,7 +3759,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 85,
+    "line": 87,
     "cells": [
      "45",
      "49",
@@ -3721,7 +3781,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 86,
+    "line": 88,
     "cells": [
      "46"
     ],
@@ -3741,7 +3801,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 90,
+    "line": 92,
     "cells": [
      "8",
      "13",
@@ -3757,7 +3817,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 91,
+    "line": 93,
     "cells": [
      "20",
      "21"
@@ -3772,7 +3832,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 92,
+    "line": 94,
     "cells": [
      "7a",
      "23"
@@ -3787,7 +3847,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 93,
+    "line": 95,
     "cells": [],
     "header": null,
     "cols": [
@@ -3799,7 +3859,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 94,
+    "line": 96,
     "cells": [
      "8",
      "14",
@@ -3815,7 +3875,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 95,
+    "line": 97,
     "cells": [
      "8B"
     ],
@@ -3829,7 +3889,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 96,
+    "line": 98,
     "cells": [
      "19"
     ],
@@ -3843,7 +3903,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 97,
+    "line": 99,
     "cells": [
      "13",
      "30"
@@ -3858,7 +3918,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 98,
+    "line": 100,
     "cells": [
      "30",
      "IV"
@@ -3873,7 +3933,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 99,
+    "line": 101,
     "cells": [
      "25",
      "27",
@@ -3890,7 +3950,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 100,
+    "line": 102,
     "cells": [
      "37",
      "40"
@@ -3905,7 +3965,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 101,
+    "line": 103,
     "cells": [
      "7b"
     ],
@@ -3919,7 +3979,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 102,
+    "line": 104,
     "cells": [
      "13",
      "30"
@@ -3934,7 +3994,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 103,
+    "line": 105,
     "cells": [
      "43",
      "43-R"
@@ -3949,7 +4009,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 104,
+    "line": 106,
     "cells": [
      "32",
      "33"
@@ -3964,7 +4024,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 105,
+    "line": 107,
     "cells": [
      "23",
      "IV",
@@ -3974,7 +4034,7 @@
     ],
     "header": null,
     "cols": [
-     "**Raw agreement at a skewed base rate is not validity** — the two-judge sentence labels were accepted at raw agreement of 0.83 to 0.91 against a 0.70 bar; chance agreement at those base rates is 0.64 to 0.88 and Cohen's kappa is **0.19 to 0.41** (Cells 41, 46, 30/31; 46,455 + 16,869 + 5,697 decisions). Of the sentences either judge flags, both flag about one in four. The tool was validated on a sample chosen to be rich in positives (kappa 0.51 to 0.66) and deployed at natural prevalence. On sentences that are positives by construction it finds 0.66 (\"modeled at\") and 0.35 (\"taken to be\"). No label has been compared with a person's; Cell 62 does that. Every count made with the both-judges rule is provisional until then."
+     "**Raw agreement at a skewed base rate is not validity** — the two-judge sentence labels were accepted at raw agreement of 0.83 to 0.91 against a 0.70 bar; chance agreement at those base rates is 0.64 to 0.88 and Cohen's kappa is **0.19 to 0.41** (Cells 41, 46, 30/31; 46,455 + 16,869 + 5,697 decisions). Of the sentences either judge flags, both flag about one in four. The tool was validated on a sample chosen to be rich in positives (kappa 0.51 to 0.66) and deployed at natural prevalence. On sentences that are positives by construction it finds 0.66 (\"modeled at\") and 0.35 (\"taken to be\"). No label has been compared with a person's; Cell 62 was registered to do that and could not (the labels were not available). Every count made with the both-judges rule is provisional until then."
     ]
    },
    {
@@ -3982,7 +4042,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 106,
+    "line": 108,
     "cells": [
      "48"
     ],
@@ -3996,7 +4056,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 107,
+    "line": 109,
     "cells": [
      "43",
      "46",
@@ -4012,7 +4072,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 108,
+    "line": 110,
     "cells": [
      "23",
      "44",
@@ -4033,7 +4093,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 109,
+    "line": 111,
     "cells": [],
     "header": null,
     "cols": [
@@ -4045,7 +4105,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 110,
+    "line": 112,
     "cells": [
      "43",
      "43-R",
@@ -4061,7 +4121,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 111,
+    "line": 113,
     "cells": [
      "63",
      "67"
@@ -4076,7 +4136,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 115,
+    "line": 117,
     "cells": [
      "30"
     ],
@@ -4090,7 +4150,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 116,
+    "line": 118,
     "cells": [
      "38"
     ],
@@ -4104,7 +4164,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 117,
+    "line": 119,
     "cells": [
      "30",
      "38"
@@ -4119,7 +4179,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 118,
+    "line": 120,
     "cells": [
      "27",
      "28",
@@ -4135,7 +4195,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 119,
+    "line": 121,
     "cells": [
      "13"
     ],
@@ -4149,7 +4209,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 120,
+    "line": 122,
     "cells": [],
     "header": null,
     "cols": [
@@ -4161,7 +4221,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 121,
+    "line": 123,
     "cells": [
      "36"
     ],
@@ -4175,7 +4235,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 122,
+    "line": 124,
     "cells": [
      "36",
      "60"
@@ -4190,7 +4250,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 123,
+    "line": 125,
     "cells": [
      "40"
     ],
@@ -4204,7 +4264,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 124,
+    "line": 126,
     "cells": [
      "37"
     ],
@@ -4218,7 +4278,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 125,
+    "line": 127,
     "cells": [
      "62"
     ],
@@ -4232,7 +4292,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 126,
+    "line": 128,
     "cells": [
      "46",
      "48",
@@ -4248,7 +4308,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 127,
+    "line": 129,
     "cells": [
      "47",
      "59",
@@ -4257,7 +4317,7 @@
     ],
     "header": null,
     "cols": [
-     "**Does the editor catch a wrong figure it could check?** PARTLY ANSWERED 2026-10-02 (Cell 63, main editor gpt-oss:20b, scripted notes, 610 runs on 61 questions with computed answers; registered 2026-10-01). When the case states the figure, the answer follows the case: a note's wrong figure is followed in 0/122 runs against 112/122 when the note is the only source (**+0.923 [+0.840, +1.005], p = 0.0001**, 14 templates), and no reply mentions the misquote (0/122). That is \"follows the case\", not \"catches\": nothing observed shows the conflict was noticed. When two notes conflict and the case is silent, the answer follows the first-listed note in 170/244 runs, and both figures appear in 41/244 replies (0.186 [0.087, 0.285] by template), so the disagreement mostly does not reach the reader. **Repeat editors (2026-10-04):** phi4 and qwen3-vl follow the misquoting note in 1/122 and 0/122 runs, but both fail their own clean-layout check (C0 right 0.746 and 0.877 against 0.90), so their tables are reported, not tested. With conflicting notes phi4 shows both figures in 236/244 replies and qwen3-vl in 164/244 (148 of its replies are cut at the 4,096-token allowance before an answer); hiding the disagreement is a property of gpt-oss, not of editors in general. First-listed share among runs following either note: 0.745, 0.791, 0.735. **Live chain (Cell 67, 2026-10-05):** first scored as a failed delivery check (two detector misses); re-scored with the detector repaired at the author's decision: second source's figure used (P67.2 supported), fall in the wrong figure not established (P67.1 falsified at p = 0.055), disagreement not shown in the final answer (P67.3 supported); figures in the Cell 59 row of §1. Across Cells 63 and 67, a conflict between two sources is settled by listing order (first-listed share 0.75 scripted, 35 of 43 live)."
+     "~~Does the editor catch a wrong figure it could check?~~ **ANSWERED 2026-10-05 (Cells 63 and 67), with a narrower wording:** the answer follows a figure the case states over a note that misquotes it, and does not mention the misquote; \"catches\" is not shown. With two conflicting sources and a silent case, listing order decides. See the two rows added to §1 and the Cell 59 row for the live chain."
     ]
    },
    {
@@ -4265,7 +4325,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 128,
+    "line": 130,
     "cells": [
      "51",
      "64"
@@ -4280,7 +4340,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 129,
+    "line": 131,
     "cells": [
      "43",
      "43-R",
@@ -4296,7 +4356,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 130,
+    "line": 132,
     "cells": [
      "36",
      "60",
@@ -4312,7 +4372,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 131,
+    "line": 133,
     "cells": [
      "26"
     ],
@@ -4326,7 +4386,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 135,
+    "line": 137,
     "cells": [
      "37"
     ],
@@ -4340,7 +4400,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 136,
+    "line": 138,
     "cells": [
      "23"
     ],
@@ -4354,7 +4414,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 137,
+    "line": 139,
     "cells": [
      "IV"
     ],
@@ -4368,7 +4428,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 138,
+    "line": 140,
     "cells": [],
     "header": null,
     "cols": [
@@ -4380,7 +4440,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 139,
+    "line": 141,
     "cells": [
      "19"
     ],
@@ -4394,7 +4454,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 140,
+    "line": 142,
     "cells": [],
     "header": null,
     "cols": [
@@ -4406,7 +4466,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 141,
+    "line": 143,
     "cells": [],
     "header": null,
     "cols": [
@@ -4418,7 +4478,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 142,
+    "line": 144,
     "cells": [
      "36",
      "37",
@@ -4434,7 +4494,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 143,
+    "line": 145,
     "cells": [
      "31"
     ],
@@ -4448,7 +4508,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 144,
+    "line": 146,
     "cells": [],
     "header": null,
     "cols": [
@@ -4460,7 +4520,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 145,
+    "line": 147,
     "cells": [
      "43"
     ],
@@ -4474,7 +4534,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 146,
+    "line": 148,
     "cells": [
      "62"
     ],
@@ -4488,7 +4548,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 147,
+    "line": 149,
     "cells": [],
     "header": null,
     "cols": [
@@ -4500,7 +4560,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 148,
+    "line": 150,
     "cells": [
      "54"
     ],
@@ -4514,11 +4574,26 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 149,
+    "line": 151,
     "cells": [],
     "header": null,
     "cols": [
      "**Scope words** (2026-10-01): \"specialists\" are role prompts on the editor model unless a separate model is named; judges and readers are local models of 7 to 30B; nothing is claimed about people. The published Mixture-of-Agents recipe is not the pipeline tested here and is not called \"the recipe\"."
+    ]
+   },
+   {
+    "id": "S6-16",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 152,
+    "cells": [
+     "63",
+     "67"
+    ],
+    "header": null,
+    "cols": [
+     "**Verbs for the figure results** (2026-10-05): the editor's answer \"follows\" the case or a note; it is not said to \"catch\", \"verify\", \"check\" or be \"immune to\" a wrong figure, because nothing observed shows the conflict was noticed. Cell 67's results are quoted with their correction (first scored as a failed check, re-scored with the figure detector repaired)."
     ]
    }
   ]

@@ -12486,3 +12486,77 @@ of the twelve candidates.
 label, is not validity; nothing here upgrades the instrument). 6 (all
 figures are reported, none tested). 7 (the SFU figure is not called
 recall).
+
+## CELL 63 NOTE (2026-10-05) — the author accepts the narrower wording: the answer "follows the case"; the registration's consequence line ("catches a wrong figure") is not used
+
+The CELL 63 READING of 2026-10-02 recommended a narrower sentence than the
+one the registration's consequence line allowed, because nothing observed
+shows that the conflict between the case and the note was noticed. The
+author accepted that wording on 2026-10-05. From here on the paper, the
+ledger and the site say:
+
+> When the case states the figure, the editor's answer follows the case
+> and not a note that misquotes it (0 of 122 runs for the main editor; 1
+> of 122 and 0 of 122 for the two repeat editors), and the reply does not
+> mention the misquote.
+
+"Catches", "verifies", "checks" and "is immune to" are not used for this
+result. The verdict lines of CELL 63 are unchanged. With the repeat
+editors and CELL 67 now in, the result moves from the open questions to
+the claims table of `docs/STATUS.md` (§1), with that scope.
+
+## RUN QUEUE COMPLETE (2026-10-05) — all ten steps of the queue registered on 2026-10-01 and amended on 2026-10-02 have run; what each returned, and what was pushed when
+
+The queue described in the RUN QUEUE entry of 2026-10-01 ended on
+2026-10-05T20:27:26Z. Every step ran once to completion; no step failed
+and none was skipped. The machine went to battery twice and did not stop.
+
+| step | finished (UTC) | hours | outcome by the registered rules |
+|---|---|---|---|
+| Cell 62 judges | 10-02 01:43 | 2.0 | six judges, 404 of 404 sentences each |
+| Cell 63 main editor | 10-02 13:49 | 12.1 | check passes; four predictions supported |
+| Cell 66 judging | 10-02 22:25 | 8.6 | 1,710 pairs, both judges, all parsed |
+| Cell 64 readers | 10-03 07:56 | 9.5 | all six readers count; two predictions supported, one falsified |
+| Cell 65 judges | 10-04 06:30 | 22.6 | one of four added judges counts; three predictions not evaluable |
+| Cell 63 repeat editors | 10-05 03:13 | 20.7 | both fail their own clean-layout check; tables reported |
+| Cell 67 live chain | 10-05 15:27 | 12.2 | check fails at 44 of 61; re-scored at 46 of 61 the same day (correction) |
+| Cell 66 check | 10-05 18:16 | 2.8 | three parts pass, one fails; the comparison is blocked |
+| Cell 66 comparison | 10-05 18:16 | 0.0 | not evaluable; rates equal at 0.696 |
+| Cell 62 check | 10-05 20:27 | 2.2 | no reference; judge-only figures reported |
+
+About 93 hours of machine time against the 70 estimated; the two-answer
+judge prompts of Cell 65 and the non-reasoning editors of the Cell 63
+repeat took about twice their estimates.
+
+**Changes made after registration, each in its own entry:** the author's
+blind labels for Cells 62 and 66 could not be provided and were replaced
+before any judge answer was read (CELL 66 AMENDMENT, CELL 62 AMENDMENT,
+2026-10-02); Cell 67 was scored a second time with a tool fault repaired
+(CELL 67 CORRECTION, 2026-10-05); the wording of Cell 63's main result
+was narrowed (CELL 63 NOTE, 2026-10-05).
+
+**Publication.** Registrations were committed at 6402fc0 (2026-10-01
+23:41Z) and the amendments at 29f491f (2026-10-02). Pushes to the public
+repository: 2026-10-02 00:33Z (registrations and corrections),
+2026-10-03 20:48Z, 2026-10-05 00:28Z and 2026-10-05 22:02Z. The public
+site stayed on its 2026-09-24 build throughout, with builds paused; the
+one deploy that publishes all of the above follows this entry.
+
+**What the six experiments leave open:** a human check of the sentence
+judges and of the conveyed judge; judges of 14B and above from other
+model families; human readers; whether another prompt format works for
+small judges; an editor other than gpt-oss:20b that passes the
+clean-layout check; CELL 68, the equal-cost accuracy comparison, which
+is a design only.
+
+## CELL 64 CORRECTION (2026-10-05) — the six readers come from five developers, not "four model families"; no figure changes
+
+The CELL 64 READING of 2026-10-03 says the appended-caveat result "holds
+for six readers from four model families". The six readers are
+gpt-oss:20b (OpenAI), qwen2.5:7b and qwen3-vl:30b (Alibaba), phi4:14b
+(Microsoft), llama3:8b (Meta) and mistral:7b (Mistral AI): five
+developers. Four is the number of readers Cell 51 had not used. The same
+reading describes Cell 51's first limit loosely; as the CELL 51 CORRECTION
+has it, that limit is two readers, one of which wrote the report (the
+other reached p = 0.06 alone). No number, test or verdict is affected.
+The ledger, the site text and the paper say "five developers".
