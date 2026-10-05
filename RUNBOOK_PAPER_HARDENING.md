@@ -12138,3 +12138,125 @@ what the three-sentence shortlist misses (one judge reads the whole answer; pair
   caveat    n = 30   fully 0.200   partly 0.233   no 0.567
   ordinary  n = 30   fully 0.200   partly 0.367   no 0.433
 ```
+
+## CELL 66 READING (2026-10-05) — the amended check passes on public human labels and two known-value parts and fails the third (an altered figure still called FULLY in 5 of 25), so the comparison stays blocked; shown beside it, caveats and matched ordinary sentences are conveyed at the same rate, 0.696 each, with an interval too wide for the band
+
+This is the analyst's reading of the two entries above (the check record
+and the scoring of the comparison). The verdict words are the ones the
+registered scripts printed and nothing here changes them. Figures the
+scripts do not print come from `bench/analysis/cell66/reading_checks.py`
+and are marked *not registered*.
+
+### The check's run
+
+1,120 judge calls on 560 statements (300 FRANK sentences, 50 + 160 + 50
+known-value items), 2026-10-05T15:30:49Z to 18:15:58Z. Every record
+carries the amendment's registration commit (29f491f) and one runner hash
+(6a0388787a198d81); temperature 0; every reply parsed; no context-limit
+hit. The smoke stage ran on two validation-split sentences and one
+repeat-6 sentence outside the samples. The `head` field changes once
+(the Cell 67 reading was committed during the run).
+
+### The amended P66.0, part by part
+
+| part | what it tests | result | bar | |
+|---|---|---|---|---|
+| A | both judges FULLY against unanimous human "no error" (FRANK, 300) | kappa 0.742, F1 0.906 | 0.60 and 0.80 | passes |
+| K1 | 50 sentences copied from the answer | FULLY by both in 50 | at least 0.90 | passes |
+| K2 | a figure altered in a statement both judges had called FULLY | still FULLY in 5 of 25 (0.200); PARTLY in 18 | at most 0.10 | **fails** |
+| K3 | 50 statements from another scenario | conveyed in 2 | at most 0.05 | passes |
+
+**P66.0 FAILS on K2, and P66.1 is NOT EVALUABLE with this tool, recorded
+as blocked.** That is the verdict of record.
+
+What the parts show (*judge by judge figures are the script's; the K2
+inspection is not registered*):
+
+- Against people, the two-judge rule is good at telling a supported
+  sentence from a distorted one on news summaries: 131 of 150 supported
+  sentences called FULLY, 16 of 150 distorted ones. gpt-oss alone is
+  nearly as good (kappa 0.705); qwen3-vl alone is lenient (kappa 0.480,
+  FULLY for 73 of 150 distorted sentences). The pair is carried by
+  gpt-oss.
+- K2 is where it fails, and the leniency is again qwen3-vl's: of the
+  statements each judge called FULLY, the altered form stays FULLY for 8
+  of 31 (gpt-oss) and 20 of 40 (qwen3-vl).
+- The five failing pairs, read one by one: one is a fault in the item
+  builder (it took "900" out of "$1 900" and produced "$1 1125"); in one
+  the original figure was never in the passages ("30 days" against "4–6
+  weeks"), so the original FULLY was already lenient; three are plain
+  misses of a changed figure in the passage (a 510(k) reference, an
+  article number, $1,300 against $1,600). Dropping the builder's fault
+  leaves 4 of 24; counting only the plain misses, 3 of 25. No reading
+  brings it to the bar. The builder also altered identifiers such as
+  article numbers, which are figures only in form; the registered rule
+  did not exclude them and they are counted.
+
+So the tool can be trusted for "is this content there at all" (A, K1,
+K3) and cannot for "is it there with its figure intact" (K2). The
+registered rule required all four, and it fails.
+
+### The comparison, as the scoring stage prints it whatever the check says
+
+| | n | conveyed at least partly | conveyed fully |
+|---|---|---|---|
+| caveat sentences | 855 | 0.696 | 0.270 |
+| matched ordinary sentences | 855 | 0.696 | 0.260 |
+
+Scenario level, the 14 scenarios with at least five matched caveats:
+caveats minus ordinary +0.004 [−0.128, +0.135], p = 0.95 (at least
+partly) and +0.006 [−0.060, +0.072] (fully). Over all 17 scenarios:
++0.052 [−0.089, +0.194] and −0.044 [−0.135, +0.046]. The two judges agree
+with each other on "conveyed at all" at kappa 0.572.
+
+Two things follow, neither of them a test result:
+
+- Had the check passed, P66.1 would still have been NOT EVALUABLE: the
+  interval spans zero and is wider than the ±0.10 band the registration
+  set for "about as often". The attainability note said this would happen
+  if scenarios differed by more than about 0.17; they did.
+- Nothing here suggests caveats are lost more than ordinary content. The
+  point estimates are equal to three decimals. A selective loss or gain
+  of more than about 0.13 is unlikely on these figures, from a tool that
+  failed one of its four checks.
+
+**The whole-answer bound (P66.2).** For 60 pairs the rule called not
+conveyed, one judge read the whole answer: it found the statement
+conveyed at least partly in 13 of 30 caveats and 17 of 30 ordinary
+sentences. The three-sentence shortlist therefore misses about half of
+what it calls absent, and the true conveyed rates are nearer 0.83 to 0.87
+than 0.70, by a model's reading.
+
+### Limits
+
+- The human labels are for news summaries, not advisory answers.
+- K2's builder was written by the analyst and has the two faults named
+  above; they were not caught by the dry run, which looked at a sample of
+  items, not at all 80.
+- The comparison's judges are the two in the check; no third judge and no
+  person.
+
+### Consequences
+
+- **Ledger and paper.** The question "are caveats conveyed less often
+  than ordinary sentences" stays open and blocked on a validated tool.
+  The paper may say what was measured and that it cannot be claimed: the
+  rates were equal, the tool failed one check, the interval was too wide.
+  The claim that the editor "loses caution in particular" has no support
+  from this cell, and neither has its denial. The word-for-word rate
+  (0.030) and the slope remain what they were: measures of copying and of
+  length.
+- **The label task.** `bench/labels/cell66_conveyed` is still on file. If
+  the author's labels are ever made, the original P66.0 can be scored; the
+  comparison has now been seen, so those labels would no longer be blind
+  to it and the entry would have to say so.
+- No new experiment is proposed here.
+
+### Checklist items that bite on this reading
+
+3 (the tool was checked at this task and failed one part; the part it
+failed is the one caveats, as conditions and limits, depend on most). 4
+and 12 (the band and the K2 bar were fixed before the data; both decided
+the outcome and neither is moved). 6 (the K2 inspection and the
+per-judge reading were made after the data were seen). 7 ("equal rates"
+is reported as a figure, not as "caveats survive").

@@ -2579,6 +2579,12 @@
        "end": 12141,
        "kind": "verdict",
        "heading": "CELL 66 VERDICT (2026-10-05) — 1,710 pairs; verdict lines as printed by the registered script after the amended check, reading to follow"
+      },
+      {
+       "line": 12142,
+       "end": 12263,
+       "kind": "note",
+       "heading": "CELL 66 READING (2026-10-05) — the amended check passes on public human labels and two known-value parts and fails the third (an altered figure still called FULLY in 5 of 25), so the comparison stays blocked; shown beside it, caveats and matched ordinary sentences are conveyed at the same rate, 0.696 each, with an interval too wide for the band"
       }
      ],
      "matrix_row": null
@@ -4216,7 +4222,7 @@
     ],
     "header": null,
     "cols": [
-     "**Are caveats conveyed less often than ordinary sentences?** Cell 66, registered 2026-10-01. The slope and the word-for-word rate do not answer this. Judging finished 2026-10-02 (3,420 calls, all parsed); the 120-pair label task is drawn. Nothing from the judges has been read. **Amended 2026-10-02:** the author cannot label; P66.0 is replaced, before any verdict was read, by a check against public human labels (FRANK, 300 sentences, same bars) and 260 known-value items; the comparison is read only if it passes."
+     "**Are caveats conveyed less often than ordinary sentences?** NOT EVALUABLE 2026-10-05 (Cell 66, amended check). The two-judge rule passed against public human labels (FRANK: kappa 0.742, F1 0.906), on verbatim sentences (50/50) and on wrong-scenario statements (2/50), and failed on altered figures (still FULLY in 5 of 25 against a bar of 0.10), so P66.1 is blocked. Shown beside it: conveyed at least partly 0.696 for caveats and 0.696 for matched ordinary sentences (855 each); scenario-level difference +0.004 [-0.128, +0.135], wider than the registered ±0.10 band in any case. No support for selective loss of caveats and none for its absence. Blocked on a validated tool; the slope and the word-for-word rate do not answer this."
     ]
    },
    {

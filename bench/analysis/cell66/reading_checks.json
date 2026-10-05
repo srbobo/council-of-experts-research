@@ -1,0 +1,93 @@
+{
+ "integrity": {
+  "calls": 1120,
+  "registration": [
+   "29f491f"
+  ],
+  "script_sha": [
+   "6a0388787a198d81"
+  ],
+  "head_commits": [
+   "b8c178b",
+   "eaa8c61"
+  ],
+  "digests": [
+   "17052f91a42e",
+   "c871fc73fabc"
+  ],
+  "ctx_hit": 0,
+  "done_reason": {
+   "stop": 1120
+  },
+  "unparsed": 0,
+  "temperature": [
+   0.0
+  ],
+  "first_utc": "2026-10-05T15:30:49Z",
+  "last_utc": "2026-10-05T18:15:58Z",
+  "items_by_part": {
+   "A": 300,
+   "K1": 50,
+   "K2": 160,
+   "K3": 50
+  }
+ },
+ "K2": {
+  "per_judge": {
+   "gpt-oss:20b": {
+    "originals_fully": 31,
+    "partly": 22,
+    "fully": 8,
+    "no": 1
+   },
+   "qwen3-vl:30b-a3b-instruct": {
+    "originals_fully": 40,
+    "fully": 20,
+    "partly": 19,
+    "no": 1
+   }
+  },
+  "both_fully_both_forms": [
+   {
+    "pair": 44,
+    "figure": "900",
+    "altered_figure": "1125",
+    "original_figure_in_passages": true,
+    "statement": "Without these numbers you can only guess at whether $1\u202f900/month is justified."
+   },
+   {
+    "pair": 48,
+    "figure": "510",
+    "altered_figure": "638",
+    "original_figure_in_passages": true,
+    "statement": "Submit pre\u2011market notification (510(k)) or de\u202fnovo request."
+   },
+   {
+    "pair": 51,
+    "figure": "30",
+    "altered_figure": "38",
+    "original_figure_in_passages": false,
+    "statement": "**Run a quick audit** \u2013 use EMR or scheduling software to pull the last 30 days of appointment outcomes."
+   },
+   {
+    "pair": 60,
+    "figure": "45",
+    "altered_figure": "34",
+    "original_figure_in_passages": true,
+    "statement": "However, because the *controller* resides in the UK (a third country), the data leave the EU and must satisfy Article\u202f45(2) \u2013 i.e., a safeguard such as SCCs or adequacy."
+   },
+   {
+    "pair": 78,
+    "figure": "1,300",
+    "altered_figure": "1,600",
+    "original_figure_in_passages": true,
+    "statement": "The group can demonstrate an *average per\u2011member cost* of \u2264\u202f$1,300 CPM (including all care)."
+   }
+  ]
+ },
+ "K3": {
+  "gpt-oss:20b": 5,
+  "qwen3-vl:30b-a3b-instruct": 2,
+  "both": 2
+ }
+}

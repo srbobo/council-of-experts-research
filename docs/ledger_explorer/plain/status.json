@@ -700,7 +700,7 @@
   },
   "S5-12": {
    "claim": "Are caveats conveyed in the final answer less often than ordinary sentences?",
-   "detail": "Cell 66's two AI judges finished all 1,710 cases on 2 October 2026. The author's 120 blind labels, which were to check the judges first, are not possible. So, before anything from the judges was read, the check was replaced by one against 300 human-labeled sentences from a public benchmark and 260 cases with a known answer. The comparison is read only if that check passes. The formula's share w and the word-for-word copy rate do not answer this question, because the editor shortens everything.",
+   "detail": "Not answered. In Cell 66 two AI judges rated 855 caveats and 855 matched ordinary sentences, and both kinds were conveyed at least partly 70% of the time. But the judges failed one of four checks set in advance: when a figure in a sentence was changed, they still called it fully conveyed in 5 of 25 cases. The difference between the two kinds could also plausibly be 13 points either way. So the result supports no claim in either direction. The formula's share w and the word-for-word copy rate do not answer this question either, because the editor shortens everything.",
    "cells": [
     "46",
     "48",

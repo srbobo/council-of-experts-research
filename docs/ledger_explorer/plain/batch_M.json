@@ -242,32 +242,32 @@
   },
   "66": {
    "title": "Are caveats lost more than ordinary sentences?",
-   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. Since the author cannot label 120 cases, the judges will be checked on public human labels instead. The runs finished on 5 October 2026.",
+   "description": "Two AI judges decided whether 855 caveat sentences and 855 matched ordinary sentences were conveyed in the editor's answer. Both kinds came out at 70%. But the judges failed one of four checks set in advance, so the comparison cannot be relied on and the question stays open.",
    "outcome": "stopped",
-   "size": "1,710 pairs judged by two AI judges, checked on public labels",
+   "size": "1,710 cases judged, plus 560 cases to check the judges",
    "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
    "expectations": [
     {
      "id": "P66.0",
-     "text": "The judges' rule would pass a check against human labels: at first the author's 120 blind labels, now 300 public human-labeled sentences plus 260 cases with a known answer.",
+     "text": "The judges' rule would pass a check against human labels: at first the author's 120 blind labels, later 300 public human-labeled sentences plus 260 cases with a known answer.",
      "outcome": "failed",
-     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
+     "note": "Did not hold up. The judges matched people's labels on 300 public sentences and passed two tests with known answers. They failed the third: when one figure in a sentence was changed, they still called it fully conveyed in 5 of 25 cases."
     },
     {
      "id": "P66.1",
      "text": "Caveat sentences would be conveyed less often than ordinary sentences of similar length from the same text.",
-     "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "outcome": "not-tested",
+     "note": "Could not be graded because the judges failed their check. For the record, caveats and ordinary sentences were both conveyed at least partly 70% of the time, and the plausible range was too wide to call them equal."
     },
     {
      "id": "P66.2",
      "text": "We would report how often caveats and ordinary sentences are conveyed fully or partly, and how often a judge reading the whole answer finds something the shortlist missed.",
      "outcome": "not-graded",
-     "note": "Reported without a pass/fail test. The figures are in the result entry below."
+     "note": "Reported without a pass/fail test. Fully conveyed: 27% of caveats and 26% of ordinary sentences. Reading the whole answer found about half of the sentences the short check had called missing."
     }
    ],
-   "found": "The comparison between caveats and ordinary sentences was scored on 5 October 2026. By the rules written down in advance, 0 of the 1 graded expectations held up, 0 did not, and 1 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "If caveats are conveyed less often, the paper can say the editor drops caution in particular, and by how much. If they are conveyed about as often, the claim that prose loses caution is withdrawn in favor of a plainer one: the answer is shorter than its sources and keeps caveats in proportion.",
+   "found": "The two AI judges finished all 1,710 cases on 2 October 2026. The author could not label 120 cases to check them, so before anything was read we replaced that check with four tests, run on 5 October.\n\nThe judges passed three. On 300 summary sentences from a public benchmark, they agreed well with people on whether a sentence is supported by its article. They called all 50 sentences copied straight from an answer fully conveyed. And they rejected 48 of 50 sentences taken from a different scenario. They failed the fourth. When we changed one figure in a sentence they had called fully conveyed, they still called it fully conveyed in 5 of 25 cases, against a limit of 1 in 10. One of the two judges missed the change half the time. By the rules written down in advance, the comparison could therefore not be graded.\n\nThe comparison itself came out even. Caveats and matched ordinary sentences were each conveyed at least partly in 70% of cases, and fully in 27% and 26%. Across scenarios the difference could plausibly be 13 points either way, too wide for the margin we had set for calling them equal, so it could not have been graded even with a passing check. A judge that read the whole answer found about half of the sentences the short check had called missing.",
+   "means": "We still cannot say whether the editor drops caveats more than other content. Nothing here suggests it does, since the two rates were the same. But the judges cannot be trusted on whether a figure or condition came through intact, which is what matters most for a caveat, and the range is too wide. The paper says what was measured and makes no claim either way. The earlier numbers stay what they were: the 3% word-for-word rate measures copying, and the share w measures length.",
    "later": null,
    "entries": {
     "10466": {
@@ -291,14 +291,19 @@
      "summary": "Written down on 2 October 2026 before anything from the judges was read. The 120 blind labels the author could not provide are replaced by two checks with the same pass marks. One uses 300 human-labeled summary sentences from the public FRANK benchmark, the other 260 cases with a known answer built from unused material. The comparison is read only if that check passes."
     },
     "12087": {
-     "label": "Note",
-     "title": "The AI judges were checked against public human labels and known values",
-     "summary": "Instead of the author's labels, the two AI judges were checked on 5 October 2026 against 300 human-labeled summary sentences from a public benchmark and 260 cases built with a known answer. The pass or fail of that check decides whether the caveat comparison may be read."
+     "label": "Result",
+     "title": "The judges were checked: three tests passed, one failed",
+     "summary": "On 5 October 2026 the two AI judges were scored on 300 human-labeled public sentences and 260 cases with a known answer. They passed on the human labels, on copied sentences and on sentences from another scenario. They failed on sentences with one figure changed. This entry holds the script's output exactly as printed."
     },
     "12112": {
      "label": "Result",
-     "title": "The comparison scored: results by the rules set in advance",
-     "summary": "The comparison between caveats and ordinary sentences was scored on 5 October 2026. Of the 1 graded expectations, 0 held up, 0 did not and 1 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+     "title": "The comparison scored, but it cannot be graded",
+     "summary": "Because the judges failed their check, the main expectation could not be graded under the rules written down in advance. The script still prints the comparison: caveats and ordinary sentences were conveyed at the same rate. This entry holds the output exactly as printed."
+    },
+    "12142": {
+     "label": "Note",
+     "title": "What the failed check means, and what the even result does not show",
+     "summary": "The judges are reliable on whether content is there at all and unreliable on whether a figure came through unchanged. One of the five failures was a fault in our own test items, and four stand. The even result does not show that caveats survive, because the range is too wide and the tool failed a check. The question stays open."
     }
    }
   },
