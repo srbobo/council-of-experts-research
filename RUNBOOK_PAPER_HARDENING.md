@@ -12305,3 +12305,184 @@ CELL 62 AMENDED — the sentence judges without a person's labels (reported, no 
    all six, at least three                                      0.225                     0.045                 0.315               0.085
    all six, at least four                                       0.130                     0.025                 0.225               0.045
 ```
+
+## CELL 67 CORRECTION (2026-10-05) — RE-SCORED VERDICT, the figure detector's format miss repaired at the author's decision: P67.0 PASSES (46 of 61), P67.1 FALSIFIED, P67.2 SUPPORTED, P67.3 SUPPORTED; the first scoring, a failed check at 44 of 61, stays on record above
+
+**What is corrected.** The registered scoring looks for a figure in a text
+by its digits (`_has_figure`, `train/run_cell63_checkable.py`). It does
+not match a figure the model typesets with LaTeX thousands separators
+(5{,}200). In this cell that missed the planted figure in two of specialist
+A's texts (items t5_v0 and t8_v0) and the right figure in three of
+specialist B's (t3_v1, t5_v2, t7_v2). The delivery check was first scored
+at 44 of 61 against a bar of 0.75, two short, and the three predictions
+were recorded NOT EVALUABLE (CELL 67 VERDICT, CELL 67 READING).
+
+**Why it is a correction and not a change of rule.** The miss is the
+tool's, not the chain's: the figures are in the texts. It was recorded on
+2026-10-02 in the CELL 63 READING, three days before this cell ran,
+together with a repaired check that removes those separators and changes
+nothing else (`_has_figure_tolerant`,
+`bench/analysis/cell63/reading_checks.py`, commit 1df7265, byte-identical
+since). The fault lay in not carrying that repair into this cell before it
+ran. The author decided on 2026-10-05 to record a re-scoring with it.
+
+**What is and is not changed.** Only the five fields that depend on the
+detector are recomputed from the stored texts; the repaired check only
+adds matches. The registered scoring stage is then run unchanged
+(`bench/analysis/cell67/rescore.py`; no model is called;
+`rescored.json` is written and `measured.json` is left as first scored).
+The bar, the predictions, their rules, the answer parser and every run are
+as registered. A figure written as " k" in one of A's texts is still
+not counted.
+
+**The margin.** The check now passes with one item to spare: 46 of 61 is
+0.754 against 0.75. It is reported as a pass by the registered rule and as
+that narrow.
+
+```
+CELL 67 RE-SCORED (correction of 2026-10-05) — figure fields recomputed with LaTeX separators removed;
+everything between the rules below is printed by the registered scoring stage run on those fields.
+Fields that changed (the repaired check only adds matches):
+  wrong_in_A: 4 run records  ['t5_v0|bare', 't5_v0|redundancy', 't8_v0|bare', 't8_v0|redundancy']
+  right_in_B: 3 run records  ['t3_v1|redundancy', 't5_v2|redundancy', 't7_v2|redundancy']
+  wrong_in_B: 0 run records
+  tensions_both_figures: 0 run records
+  answer_both_figures: 0 run records
+
+==============================================================================
+CELL 67 — the wrong figure in the live chain
+==============================================================================
+runs 122; plan could not be parsed 0; set aside for a context-limit hit 0
+
+  arm            n   right   wrong   other  no answer  both figures in answer
+  bare          61   0.033   0.508   0.459      0.000                   0.033
+  redundancy    61   0.311   0.393   0.295      0.000                   0.033
+
+P67.0  did the figures reach the specialists' texts? wrong figure in A's text 0.754; right figure in B's text (redundancy arm) 0.836  (bar 0.75 each) -> PASSES
+
+P67.1  final answer follows the wrong figure, bare minus redundancy: +0.130 [+0.010, +0.250]  sign-flip p = 0.0547  (k = 14 templates, 61 items)
+P67.2  final answer is right, redundancy minus bare:               +0.290 [+0.188, +0.393]  sign-flip p = 0.0002  (k = 14 templates, 61 items)
+P67.3  redundancy arm, final answer mentions both figures: 0.032 [-0.015, 0.080]  (k = 14 templates)
+
+VERDICT LINES (as registered)
+  P67.0: PASSES
+  P67.1: FALSIFIED — +0.130 [+0.010, +0.250]  sign-flip p = 0.0547  (k = 14 templates, 61 items)
+  P67.2: SUPPORTED — +0.290 [+0.188, +0.393]  sign-flip p = 0.0002  (k = 14 templates, 61 items)
+  P67.3: SUPPORTED — expectation: below 0.5
+
+descriptive
+  redundancy arm, runs where both figures reached the specialists' texts (n = 42): right 0.333, wrong 0.548, other 0.119, none 0.000
+  bare: tension list names both figures 0.016; follow-up went to A 0.311, B 0.180, C 0.262, nobody 0.246; B's text shows the wrong figure 0.066
+  redundancy: tension list names both figures 0.508; follow-up went to A 0.377, B 0.262, C 0.197, nobody 0.164; B's text shows the wrong figure 0.016
+  redundancy, follow-up to A (n = 23): right 0.130, wrong 0.609
+  redundancy, follow-up to B (n = 16): right 0.750, wrong 0.062
+
+wrote bench/analysis/cell67/rescored.json; bench/analysis/cell67/measured.json is unchanged (first scoring)
+```
+
+**Reading of the re-scored lines.**
+
+- P67.1, the primary: with a second source the wrong figure is followed
+  less often by 0.130 [+0.010, +0.250], sign-flip p = 0.0547. The rule
+  asked for p below 0.05, so the prediction is not met; the t-interval
+  excludes zero and the exact test does not, which is the edge of what 14
+  templates can show. As in Cell 59, the fall in the planted figure is not
+  established.
+- P67.2: right answers rise by 0.290 [+0.188, +0.393], p = 0.0002. The
+  second source's figure is used.
+- P67.3: the final answer shows both figures in 2 of 61 runs, 0.032
+  [-0.015, 0.080]. The disagreement does not reach the reader, although
+  the editor's own list of disagreements names both figures in 31 of 61
+  runs (CELL 67 READING).
+
+**Standing of the two scorings.** Both are on record. The first is what
+the registered script returned. The second is what the registered rules
+return once a tool fault, documented before the run, is repaired; it was
+made after the data were seen and is labelled a correction wherever it is
+quoted. The statistics of P67.1 to P67.3 are the same in both; only
+whether they may be read as tests differs.
+
+**Consequence for tools.** The digit check is not to be registered again
+in its unrepaired form (finding 22 in `docs/STATUS.md`).
+
+## CELL 62 READING (2026-10-05) — without a person's labels: the six judges agree with each other at kappa 0.27 to 0.71, each stored judge agrees with its own earlier label at 0.42 to 0.71, and the deployed rule marks 9% of human-marked speculation sentences as hedging; the caveat counts stay PROVISIONAL
+
+This is the analyst's reading of the CELL 62 CHECK RECORD above. Nothing
+here is a test: P62.0 to P62.2 are NOT EVALUABLE for want of a reference
+(CELL 62 AMENDMENT), and the figures below are the reported parts.
+
+### The run
+
+240 judge calls (six judges, 400 SFU sentences in batches of ten),
+2026-10-05T18:19:17Z to 20:26:59Z; every batch parsed at the first
+attempt; registration commit 29f491f, one runner hash (c1b09e8488d6eed5).
+The smoke stage ran on ten sentences outside the sample. The 404-sentence
+judge labels are those of the CELL 62 RUN RECORD of 2026-10-01 (all six
+judges, 404 of 404).
+
+### 1. The judges against each other and against themselves (404 sampled sentences)
+
+| kind | kappa between judges, lowest / median / highest | stored pair | gpt-oss against its stored label | qwen2.5 against its stored label |
+|---|---|---|---|---|
+| modeled | 0.27 / 0.51 / 0.71 | 0.54 | 0.71 | 0.42 |
+| hedging | 0.30 / 0.48 / 0.66 | 0.61 | 0.66 | 0.57 |
+| jurisd | 0.52 / 0.59 / 0.71 | 0.56 | 0.59 | 0.54 |
+
+- These kappas are on the stratified sample, where about a sixth of the
+  sentences carry each kind. They are not comparable with finding 16's
+  0.19 to 0.41, which are on whole collections where the kinds are rare;
+  the same judges, the same disagreements, a different base rate.
+- A judge shown the same sentence again in a different batch of ten
+  agrees with its own earlier label at kappa 0.42 to 0.71 (raw 0.85 to
+  0.93). So a share of the disagreement between judges is not a
+  difference between models at all: it is the label moving with the
+  batch. No rule that combines judges removes that.
+- The latent-class estimate, which assumes the judges err independently,
+  puts the hit rate of the two stored judges at 0.71 and 0.53 (modeled),
+  0.83 and 0.71 (hedging), 0.71 and 0.75 (jurisd), with false alarms of
+  0.01 to 0.06. A rule that needs both would then find about 0.4 to 0.6
+  of the sentences that carry a kind. The independence it assumes is
+  unlikely for models reading the same wording, so this is an optimistic
+  bound and not a measurement of recall.
+
+### 2. The neighbouring construct (SFU Review Corpus, 400 sentences, weighted to the corpus)
+
+| judge or rule | speculation sentences marked hedging | cue-free sentences marked hedging |
+|---|---|---|
+| deployed rule (stored pair, both) | 0.090 | 0.010 |
+| stored pair, either | 0.295 | 0.045 |
+| gpt-oss alone | 0.230 | 0.010 |
+| qwen2.5 alone | 0.155 | 0.045 |
+| phi4 alone | 0.470 | 0.190 |
+| qwen3-vl alone | 0.210 | 0.045 |
+| llama3 alone | 0.170 | 0.055 |
+| mistral alone | 0.165 | 0.110 |
+| all six, at least two | 0.350 | 0.100 |
+
+As the amendment said, the constructs differ: a review sentence with
+"could" or "I think" is speculation to the annotators and is not a stated
+condition. The figure is therefore not a recall. What it shows: the
+judges respond to uncertainty wording (every judge marks cue sentences
+more often than cue-free ones, the deployed rule nine times as often),
+they are far from interchangeable (phi4 marks one cue-free sentence in
+five, gpt-oss one in a hundred), and the deployed rule is the strictest
+of the twelve candidates.
+
+### What this leaves
+
+- The counts of caveat sentences in Cells 30, 31, 38, 41 and 46 stay
+  PROVISIONAL, as the registration fixed for the case with no usable
+  reference. The paper says the sentence instrument was never compared
+  with a person, gives the judge-to-judge and judge-to-self agreement
+  above, and marks every figure that rests on it.
+- The label task (`bench/labels/cell62_sentences`) stays on file. The
+  judge labels are now published with the cell, so labels made later
+  would not be blind to them unless the labeller keeps away from the file.
+- No new experiment is proposed here.
+
+### Checklist items that bite on this reading
+
+3 (agreement among models, with themselves or with a neighbouring human
+label, is not validity; nothing here upgrades the instrument). 6 (all
+figures are reported, none tested). 7 (the SFU figure is not called
+recall).

@@ -2422,6 +2422,12 @@
        "end": 12308,
        "kind": "note",
        "heading": "CELL 62 CHECK RECORD (2026-10-05) — no person's labels: judge-only statistics and the public speculation-label figure; output of the registered check script"
+      },
+      {
+       "line": 12408,
+       "end": 12489,
+       "kind": "note",
+       "heading": "CELL 62 READING (2026-10-05) — without a person's labels: the six judges agree with each other at kappa 0.27 to 0.71, each stored judge agrees with its own earlier label at 0.42 to 0.71, and the deployed rule marks 9% of human-marked speculation sentences as hedging; the caveat counts stay PROVISIONAL"
       }
      ],
      "matrix_row": null
@@ -2625,6 +2631,12 @@
        "end": 12086,
        "kind": "note",
        "heading": "CELL 67 READING (2026-10-05) — the live chain on 61 items: the delivery check fails by two items that the figure detector misreads, so the three predictions stay NOT EVALUABLE as registered; reported beside them, a second source lifts right answers from 2 to 19 of 61, and which figure wins follows the order the specialists are listed in"
+      },
+      {
+       "line": 12309,
+       "end": 12407,
+       "kind": "verdict",
+       "heading": "CELL 67 CORRECTION (2026-10-05) — RE-SCORED VERDICT, the figure detector's format miss repaired at the author's decision: P67.0 PASSES (46 of 61), P67.1 FALSIFIED, P67.2 SUPPORTED, P67.3 SUPPORTED; the first scoring, a failed check at 44 of 61, stays on record above"
       }
      ],
      "matrix_row": null
@@ -3120,7 +3132,7 @@
     "cols": [
      "**In the live chain the second source's figure is used; the drop in the planted figure is not established** — both halves stated since 2026-10-01",
      "Cell 59, 8 items, item-level: second source's figure stated 2/40 bare against 19/40 planned, **+0.425 [+0.285, +0.565], p = 0.008**. Planted figure stated 25/40 against 18/40, +0.175 [-0.069, +0.419], p = 0.22. Assignment 40/40 plans; conveyance 0.85 to 0.95",
-     "The planner was told which quantity to cover. Figures are scored by matching text, after four format repairs. Cell 67 (2026-10-05) repeated the live chain on 61 items with a computed answer: its delivery check failed by two items (44/61 against 0.75; both are figure-detector format misses, finding 22), so its predictions are NOT EVALUABLE and its figures are reported, not tested: right answers 2/61 bare against 19/61 with a second source (+0.290 [+0.188, +0.393]); wrong figure followed 31/61 against 24/61 (+0.130 [+0.010, +0.250], p = 0.055); final answer shows both figures in 2/61 though the list of disagreements names both in 31/61; of 43 answers following either holder, 35 follow the one listed first. Cell 58's halt finding stands: notes are conveyed only into sub-questions that concern them"
+     "The planner was told which quantity to cover. Figures are scored by matching text, after four format repairs. Cell 67 (2026-10-05) repeated the live chain on 61 items with a computed answer. First scored, its delivery check failed at 44/61 against 0.75 and its predictions were NOT EVALUABLE; both missing items were figure-detector format misses (finding 22). **Re-scored the same day with the detector repaired, at the author's decision (CELL 67 CORRECTION):** the check passes at 46/61 (0.754, one item to spare); P67.2 SUPPORTED, right answers 2/61 bare against 19/61 with a second source (**+0.290 [+0.188, +0.393], p = 0.0002**); P67.1 FALSIFIED by the registered rule, wrong figure followed 31/61 against 24/61 (+0.130 [+0.010, +0.250], p = 0.055); P67.3 SUPPORTED, the final answer shows both figures in 2/61 runs though the list of disagreements names both in 31/61. Not registered: of 43 answers following either holder, 35 follow the one listed first. Quote these with the correction attached. Cell 58's halt finding stands: notes are conveyed only into sub-questions that concern them"
     ]
    },
    {
@@ -4056,7 +4068,7 @@
     ],
     "header": null,
     "cols": [
-     "**A digit-matching figure detector misses figures the model typesets, and a bar met or missed by one item is then decided by the detector** — the `_has_figure` check (Cells 63 and 67) does not match LaTeX thousands separators (5{,}200): in Cell 63's clean layout it found the stated figure in 94 of 122 replies where 111 hold it (recorded 2026-10-02); in Cell 67 it missed 2 of 46 specialist texts and the registered delivery check failed at 44/61 against 46 needed (2026-10-05). Known-value checks need the format range of the model that will write the text, measured before the bar is registered"
+     "**A digit-matching figure detector misses figures the model typesets, and a bar met or missed by one item is then decided by the detector** — the `_has_figure` check (Cells 63 and 67) does not match LaTeX thousands separators (5{,}200): in Cell 63's clean layout it found the stated figure in 94 of 122 replies where 111 hold it (recorded 2026-10-02); in Cell 67 it missed 2 of 46 specialist texts and the registered delivery check failed at 44/61 against 46 needed (2026-10-05; re-scored with the repaired check the same day, CELL 67 CORRECTION). Known-value checks need the format range of the model that will write the text, measured before the bar is registered"
     ]
    },
    {
@@ -4212,7 +4224,7 @@
     ],
     "header": null,
     "cols": [
-     "**Do the two-judge sentence labels agree with a person?** Cell 62, registered 2026-10-01: 404 sentences, the author's blind labels twice a week apart, six local judges. Until it reports, every count made with the labels is provisional. **Amended 2026-10-02:** the author cannot label; P62.0 to P62.2 are NOT EVALUABLE and the counts stay PROVISIONAL. Judge-only agreement and a public-corpus check (SFU speculation cues) are reported instead."
+     "**Do the two-judge sentence labels agree with a person?** NOT EVALUABLE (Cell 62; amended 2026-10-02, reported 2026-10-05): the author cannot label, so P62.0 to P62.2 have no reference and every count made with the labels stays PROVISIONAL. Reported without a bar, on 404 stratified sentences: kappa between pairs of six judges 0.27 to 0.71 (median about 0.5; stored pair 0.54 to 0.61), each stored judge against its own earlier label 0.42 to 0.71. On public speculation labels (SFU reviews, a neighbouring construct) the deployed rule marks 0.090 of cue sentences and 0.010 of cue-free ones. None of this is validity."
     ]
    },
    {
@@ -4245,7 +4257,7 @@
     ],
     "header": null,
     "cols": [
-     "**Does the editor catch a wrong figure it could check?** PARTLY ANSWERED 2026-10-02 (Cell 63, main editor gpt-oss:20b, scripted notes, 610 runs on 61 questions with computed answers; registered 2026-10-01). When the case states the figure, the answer follows the case: a note's wrong figure is followed in 0/122 runs against 112/122 when the note is the only source (**+0.923 [+0.840, +1.005], p = 0.0001**, 14 templates), and no reply mentions the misquote (0/122). That is \"follows the case\", not \"catches\": nothing observed shows the conflict was noticed. When two notes conflict and the case is silent, the answer follows the first-listed note in 170/244 runs, and both figures appear in 41/244 replies (0.186 [0.087, 0.285] by template), so the disagreement mostly does not reach the reader. **Repeat editors (2026-10-04):** phi4 and qwen3-vl follow the misquoting note in 1/122 and 0/122 runs, but both fail their own clean-layout check (C0 right 0.746 and 0.877 against 0.90), so their tables are reported, not tested. With conflicting notes phi4 shows both figures in 236/244 replies and qwen3-vl in 164/244 (148 of its replies are cut at the 4,096-token allowance before an answer); hiding the disagreement is a property of gpt-oss, not of editors in general. First-listed share among runs following either note: 0.745, 0.791, 0.735. **Live chain (Cell 67, 2026-10-05):** delivery check failed by two detector misses, predictions NOT EVALUABLE; reported figures are in the Cell 59 row of §1. Across Cells 63 and 67, a conflict between two sources is settled by listing order (first-listed share 0.75 scripted, 35 of 43 live). **Still open:** a re-scoring of Cell 67 with the repaired detector is the author's decision."
+     "**Does the editor catch a wrong figure it could check?** PARTLY ANSWERED 2026-10-02 (Cell 63, main editor gpt-oss:20b, scripted notes, 610 runs on 61 questions with computed answers; registered 2026-10-01). When the case states the figure, the answer follows the case: a note's wrong figure is followed in 0/122 runs against 112/122 when the note is the only source (**+0.923 [+0.840, +1.005], p = 0.0001**, 14 templates), and no reply mentions the misquote (0/122). That is \"follows the case\", not \"catches\": nothing observed shows the conflict was noticed. When two notes conflict and the case is silent, the answer follows the first-listed note in 170/244 runs, and both figures appear in 41/244 replies (0.186 [0.087, 0.285] by template), so the disagreement mostly does not reach the reader. **Repeat editors (2026-10-04):** phi4 and qwen3-vl follow the misquoting note in 1/122 and 0/122 runs, but both fail their own clean-layout check (C0 right 0.746 and 0.877 against 0.90), so their tables are reported, not tested. With conflicting notes phi4 shows both figures in 236/244 replies and qwen3-vl in 164/244 (148 of its replies are cut at the 4,096-token allowance before an answer); hiding the disagreement is a property of gpt-oss, not of editors in general. First-listed share among runs following either note: 0.745, 0.791, 0.735. **Live chain (Cell 67, 2026-10-05):** first scored as a failed delivery check (two detector misses); re-scored with the detector repaired at the author's decision: second source's figure used (P67.2 supported), fall in the wrong figure not established (P67.1 falsified at p = 0.055), disagreement not shown in the final answer (P67.3 supported); figures in the Cell 59 row of §1. Across Cells 63 and 67, a conflict between two sources is settled by listing order (first-listed share 0.75 scripted, 35 of 43 live)."
     ]
    },
    {

@@ -64,8 +64,11 @@
    "commit": "2d82cc4"
   },
   "c62-check": {
-   "state": "running",
-   "started_utc": "2026-10-05T18:16:08Z"
+   "state": "done",
+   "started_utc": "2026-10-05T18:16:08Z",
+   "finished_utc": "2026-10-05T20:27:22Z",
+   "attempts": 1,
+   "commit": "c3d2044"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

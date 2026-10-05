@@ -3,9 +3,9 @@
  "cells": {
   "62": {
    "title": "Do the AI judges' sentence labels agree with a person's?",
-   "description": "The author was to label 404 saved sentences blind, twice, to check six AI judges. That is not possible, so no pass or fail can be given. We report what the judges show without a reference, and how they respond to human-marked uncertainty words.",
-   "outcome": "not-run",
-   "size": "AI judging done, no person's labels, judge figures to come",
+   "description": "The author was to label 404 saved sentences blind, to check six AI judges. That was not possible, so no pass or fail can be given. The judges agree with each other only moderately, and each changes some of its own labels on a second look. The caveat counts stay provisional.",
+   "outcome": "stopped",
+   "size": "404 sentences by six judges, plus 400 review sentences",
    "why": "Most of the project's caveat counts come from two AI judges labeling sentences, with a caveat counted only when both flag it. A review in October 2026 found that the two agree little beyond what luck would give, and that no label had ever been compared with a person's. Until that comparison is made, every count that uses the method is provisional. This cell makes the comparison. It also tries four more judges, to see whether some other rule for combining judges would do better.",
    "expectations": [
     {
@@ -29,12 +29,12 @@
     {
      "id": "P62.3",
      "text": "We would report how each judge and each rule compares with the person, how judges compare with each other, and whether a judge repeats its own earlier label.",
-     "outcome": "not-tested",
-     "note": "Reported without a pass/fail test, in the parts that need no person's labels, plus a public-collection check."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. Judges agreed with each other at 0.27 to 0.71 on a scale where 1 is perfect. Each original judge agreed with its own earlier label at 0.42 to 0.71."
     }
    ],
-   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. The plan needed the author's own labels, twice a week apart, as the reference. On 2 October 2026 that turned out not to be possible, so we wrote down what can still be measured. That is how far the six judges agree with each other on each kind of caveat, and how far the two original judges agree with their own earlier labels. We also estimate each judge's accuracy in a way that assumes they err independently. We also check them on 400 product-review sentences from a public collection where people marked words of uncertainty. That last check is reported without a pass mark, because that collection marks uncertainty in general and our judges look for stated conditions, which is not the same thing. None of this can validate the caveat counts, which stay provisional.",
-   "means": "Without a person's labels, the project cannot say whether its caveat counts are right, and the paper says so. The counts in Cells 30, 38, 41 and 46 stay provisional. The judge-only figures show how much the judges disagree among themselves, which bounds how far any count can be trusted.",
+   "found": "The six AI judges finished labeling the 404 sentences on 1 October 2026. The plan needed the author's own labels as the reference. That turned out not to be possible, so the three graded expectations could not be tested. On 5 October we recorded what can be measured without a person.\n\nOn a scale where 0 is chance and 1 is perfect agreement, pairs of judges agreed at 0.27 to 0.71 depending on the pair and the kind of caveat, with the middle pair near 0.5. The two original judges agreed with each other at 0.54 to 0.61. Shown the same sentence a second time among different neighbors, each original judge agreed with its own earlier label at only 0.42 to 0.71. So part of the disagreement is a judge's label shifting from one batch to the next, which no way of combining judges removes.\n\nWe also ran the judges on 400 product-review sentences from a public collection where people had marked words of uncertainty. The rule the project used marked 9% of the sentences people had marked and 1% of the others. People there marked any wording of doubt, while our judges look for stated conditions, so this is not a score. It shows the judges respond to such wording and that they differ widely: one judge marked 1 unmarked sentence in 5, another 1 in 100.",
+   "means": "Without a person's labels, the project cannot say whether its caveat counts are right, and the paper says so. The counts in Cells 30, 38, 41 and 46 stay provisional. What we can say is that the judges are only moderately consistent with each other and with themselves, so any count built on them carries that looseness.",
    "later": null,
    "entries": {
     "10047": {
@@ -58,9 +58,14 @@
      "summary": "Written down on 2 October 2026 before the judges' labels were scored. The three expectations that needed the author's labels cannot be tested. Instead we report how far the six judges agree with each other and an accuracy estimate that needs no reference. We also report how they respond to 400 review sentences with human-marked uncertainty words. The caveat counts stay provisional."
     },
     "12264": {
-     "label": "Note",
+     "label": "Result",
      "title": "What the judges show without a person's labels",
-     "summary": "Because no person could label the sentences, on 5 October 2026 we recorded how far the six AI judges agree with each other and how they respond to 400 review sentences with human-marked uncertainty cues from a public corpus. No pass or fail is possible without a reference, so the caveat counts stay provisional."
+     "summary": "On 5 October 2026 we recorded how far the six AI judges agree with each other and with their own earlier labels, and how they respond to 400 review sentences with human-marked uncertainty words. No pass or fail is possible without a reference. This entry holds the script's output exactly as printed."
+    },
+    "12408": {
+     "label": "Note",
+     "title": "Moderate agreement, and labels that shift between batches",
+     "summary": "Pairs of judges agreed at 0.27 to 0.71 on a scale where 1 is perfect, and each original judge matched its own earlier label at only 0.42 to 0.71. On public review sentences the project's rule was the strictest of twelve. None of this checks the judges against a person, so the caveat counts stay provisional."
     }
    }
   },
@@ -314,34 +319,34 @@
   },
   "67": {
    "title": "Does a second source help in the full live system?",
-   "description": "The 61 computed-answer questions of Cell 63 went through the full live system, with a wrong figure in one specialist's notes and, in one version, the right figure in a second specialist's. A checkpoint failed by two questions, so the results are reported without a pass or fail.",
-   "outcome": "stopped",
+   "description": "The 61 questions of Cell 63 went through the full live system, with a wrong figure in one specialist's notes and, in one version, the right figure in a second specialist's. The second source got the right figure used more often but did not reliably push the wrong one out.",
+   "outcome": "mixed",
    "size": "61 questions, two versions each, 710 model calls",
    "why": "Cell 59 ran this design live on 8 questions and scored answers by matching figures in text. The editor used the second specialist's value, but whether the planted value appeared less often was too close to call. This cell repeats it on 61 questions where the final answer is a number a script can check, with both versions run in the same session. It is the first test of the assembled system on something other than AI judges' preference.",
    "expectations": [
     {
      "id": "P67.0",
      "text": "The wrong figure would show up in the first specialist's text, and the right one in the second specialist's text, in at least 75% of runs. Otherwise the rest cannot be read.",
-     "outcome": "failed",
-     "note": "Did not hold up, by a hair. The wrong figure showed in the first specialist's text for 44 of 61 questions, 2 short of the mark. Both missing cases were our counting script failing to read a figure written in typeset form."
+     "outcome": "held",
+     "note": "Held up, narrowly, after a correction. First scored as failed at 44 of 61, because our counting script could not read figures in typeset form. With that fault repaired the count is 46 of 61, one more than needed."
     },
     {
      "id": "P67.1",
      "text": "The final answer would follow the wrong figure less often when a second specialist holds the right one.",
-     "outcome": "not-tested",
-     "note": "Could not be graded because the checkpoint failed. The wrong figure was followed in 31 of 61 runs with one source and 24 of 61 with two, a difference that would not have met the rule set in advance."
+     "outcome": "failed",
+     "note": "Did not hold up. The wrong figure was followed in 31 of 61 runs with one source and 24 with two. The difference, 13 points, fell just short of the mark set in advance."
     },
     {
      "id": "P67.2",
      "text": "The final answer would be correct more often when a second specialist holds the right figure.",
-     "outcome": "not-tested",
-     "note": "Could not be graded because the checkpoint failed. Right answers rose from 2 of 61 with one source to 19 of 61 with two, a difference that would have met the rule."
+     "outcome": "held",
+     "note": "Held up. Right answers rose from 2 of 61 with one source to 19 of 61 with a second specialist holding the right figure."
     },
     {
      "id": "P67.3",
      "text": "When two specialists hold different figures, the final answer would mention both in fewer than half of runs.",
-     "outcome": "not-tested",
-     "note": "Could not be graded because the checkpoint failed. The final answer showed both figures in 2 of 61 runs, far below half."
+     "outcome": "held",
+     "note": "Held up. The final answer showed both figures in 2 of 61 runs, far below half, so the reader almost never learned that two figures existed."
     },
     {
      "id": "P67.4",
@@ -350,8 +355,8 @@
      "note": "Reported without a pass/fail test. The editor's own list of disagreements named both figures in 31 of 61 runs. Of 43 answers that followed one of the two specialists, 35 followed the one listed first."
     }
    ],
-   "found": "The full live system finished both versions of the 61 questions on 5 October 2026. The plan had a checkpoint: the wrong figure had to show up in the first specialist's text for at least 75% of questions. Our counting script found it in 44 of 61, two short, so by the rules written down in advance the three main expectations could not be graded. Both missing cases were the script failing to read a figure the model had written in typeset form, a fault we had noted three days earlier. Counting those, the checkpoint would have passed with one to spare. We left the result as the plan's rules give it.\n\nReported without a pass or fail: with one wrong source, the final answer followed the wrong figure in 31 of 61 runs and was right in 2. With a second specialist holding the right figure, it was right in 19 and wrong in 24. Which figure won depended on the order the specialists were listed in. Of 43 answers that followed one of the two, 35 followed the one listed first, because the follow-up question went to that specialist.\n\nThe editor's own list of disagreements named both figures in 31 of 61 runs, but the final answer showed both in only 2. And when the figure reached no specialist's text, the system still gave a number in every run, never saying the figure was missing.",
-   "means": "In the full system a second source helps the right figure get used, about as Cell 59 found on 8 questions. It does not reliably push the wrong one out, and the reader almost never learns that two figures existed. The step that lists disagreements sees the conflict half the time and still does not pass it on. Which specialist is listed first decides the outcome more than anything else, here and in Cell 63. The figure-counting script needs repair before it is used again, and whether to re-score this cell with the repaired version is the author's decision.",
+   "found": "The full live system finished both versions of the 61 questions on 5 October 2026. The plan had a checkpoint: the wrong figure had to show up in the first specialist's text for at least 75% of questions. Our counting script found it in 44 of 61, two short, and the three main expectations were first recorded as impossible to grade. Both missing cases were the script failing to read a figure the model had written in typeset form, a fault we had noted three days earlier and not repaired. The author decided to score the cell again with the fault repaired and nothing else changed. The checkpoint then passed with one question to spare, 46 of 61. Both scorings are kept in the notebook.\n\nWith one wrong source, the final answer followed the wrong figure in 31 of 61 runs and was right in 2. With a second specialist holding the right figure, it was right in 19 and wrong in 24. The rise in right answers was clear. The fall in wrong ones, 13 points, fell just short of the mark set in advance.\n\nWhich figure won depended on the order the specialists were listed in. Of 43 answers that followed one of the two, 35 followed the one listed first. The editor's own list of disagreements named both figures in 31 of 61 runs, but the final answer showed both in only 2. When the figure reached no specialist's text, the system still gave a number every time.",
+   "means": "In the full system a second source helps the right figure get used, about as Cell 59 found on 8 questions. It does not reliably push the wrong one out, and the reader almost never learns that two figures existed. The step that lists disagreements sees the conflict half the time and still does not pass it on. Which specialist is listed first decides the outcome more than anything else, here and in Cell 63. The checkpoint passed by a single question only after a correction, so these results should be quoted with that history attached.",
    "later": null,
    "entries": {
     "10572": {
@@ -367,7 +372,12 @@
     "11927": {
      "label": "Note",
      "title": "Why the checkpoint failed, and what the runs show anyway",
-     "summary": "Both questions that sank the checkpoint were our counting script misreading a typeset figure. We kept the result as the rules give it and report the rest without a pass or fail. A second source raised right answers from 2 to 19 of 61. The specialist listed first usually won. The editor's list of disagreements named both figures in half of runs, the final answer in 2."
+     "summary": "Both questions that sank the checkpoint were our counting script misreading a typeset figure. We first kept the result as the rules gave it. A second source raised right answers from 2 to 19 of 61. The specialist listed first usually won. The editor's list of disagreements named both figures in half of runs, the final answer in 2. The next entry scores the cell again."
+    },
+    "12309": {
+     "label": "Correction",
+     "title": "Scored again with the counting fault repaired",
+     "summary": "The author decided to score the cell again after repairing the script's failure to read typeset figures, a fault noted three days before the runs. Nothing else changed. The checkpoint passed at 46 of 61. The fall in wrong answers did not meet its mark, and the other two expectations held up. The first scoring stays in the notebook beside this one."
     }
    }
   },

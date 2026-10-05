@@ -1,0 +1,65 @@
+{
+ "n": 122,
+ "bare": {
+  "n": 61,
+  "right": 2,
+  "wrong": 31,
+  "other": 28,
+  "none": 0,
+  "both_figures": 2
+ },
+ "redundancy": {
+  "n": 61,
+  "right": 19,
+  "wrong": 24,
+  "other": 18,
+  "none": 0,
+  "both_figures": 2
+ },
+ "P67.0": {
+  "wrong_in_A": 0.7540983606557377,
+  "right_in_B": 0.8360655737704918,
+  "pass": true
+ },
+ "P67.1": {
+  "mean": 0.12976190476190477,
+  "lo": 0.009995491604604473,
+  "hi": 0.24952831791920507,
+  "p": 0.0546875,
+  "k": 14,
+  "items": 61
+ },
+ "P67.2": {
+  "mean": 0.2904761904761905,
+  "lo": 0.1877675064063442,
+  "hi": 0.3931848745460368,
+  "p": 0.000244140625,
+  "k": 14,
+  "items": 61
+ },
+ "P67.3": {
+  "mean": 0.03214285714285715,
+  "lo": -0.015363037723946087,
+  "hi": 0.07964875200966037,
+  "k": 14
+ },
+ "rescored": {
+  "detector": "bench/analysis/cell63/reading_checks.py::_has_figure_tolerant (commit 1df7265, 2026-10-02)",
+  "changed_fields": {
+   "wrong_in_A": [
+    "t5_v0|bare",
+    "t5_v0|redundancy",
+    "t8_v0|bare",
+    "t8_v0|redundancy"
+   ],
+   "right_in_B": [
+    "t3_v1|redundancy",
+    "t5_v2|redundancy",
+    "t7_v2|redundancy"
+   ],
+   "wrong_in_B": [],
+   "tensions_both_figures": [],
+   "answer_both_figures": []
+  }
+ }
+}
