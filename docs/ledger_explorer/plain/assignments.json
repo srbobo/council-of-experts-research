@@ -2451,6 +2451,12 @@
        "end": 11082,
        "kind": "note",
        "heading": "CELL 63 READING (2026-10-02) — main editor: when the case states the figure the answer follows the case in all 122 runs and no reply mentions the misquoting note; when two notes conflict the answer follows the first-listed one in 170 of 244 runs and 41 replies show both figures"
+      },
+      {
+       "line": 11702,
+       "end": 11760,
+       "kind": "note",
+       "heading": "CELL 63 RUN RECORD (2026-10-04) — two more editor models (phi4:14b, qwen3-vl:30b); tables as printed by the registered script"
       }
      ],
      "matrix_row": null

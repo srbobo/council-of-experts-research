@@ -121,6 +121,11 @@
      "label": "Note",
      "title": "What the result shows and what it does not",
      "summary": "The editor used the scenario's figure over a misquoting note in every run, but never mentioned the mismatch. So we say it follows the scenario, and we do not say it catches errors. With two disagreeing notes it mostly took the first one listed, and about 1 reply in 5 let the reader see the disagreement. Three runs needed a second try. We read 60 replies ourselves to check the script's count."
+    },
+    "11702": {
+     "label": "Note",
+     "title": "Two more editor models ran the same test",
+     "summary": "Phi-4 and qwen3-vl ran the same 610 prompts, finishing on 4 October 2026. Their tables are in the notebook entry. The pass or fail results stay those of the main editor model."
     }
    }
   },

@@ -29,8 +29,15 @@
    "commit": "ffc28be"
   },
   "c65-judges": {
+   "state": "done",
+   "started_utc": "2026-10-03T07:56:22Z",
+   "finished_utc": "2026-10-04T06:30:47Z",
+   "attempts": 1,
+   "commit": "ef172e1"
+  },
+  "c63-repeat": {
    "state": "running",
-   "started_utc": "2026-10-03T07:56:22Z"
+   "started_utc": "2026-10-04T06:30:51Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"
