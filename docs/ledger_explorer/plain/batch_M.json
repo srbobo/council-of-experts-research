@@ -294,43 +294,43 @@
   },
   "67": {
    "title": "Does a second source help in the full live system?",
-   "description": "The 61 computed-answer questions of Cell 63 go through the full live system. One specialist's private notes hold a wrong figure. In one version a second specialist's notes hold the right one. A script checks the final answer. Planned. It runs only if Cell 63's first check passes.",
-   "outcome": "not-run",
-   "size": "Planned: 61 questions, two versions each",
+   "description": "The 61 computed-answer questions of Cell 63 go through the full live system. One specialist's private notes hold a wrong figure. In one version a second specialist's notes hold the right one. A script checks the final answer. The runs finished on 5 October 2026.",
+   "outcome": "stopped",
+   "size": "61 questions, two versions each",
    "why": "Cell 59 ran this design live on 8 questions and scored answers by matching figures in text. The editor used the second specialist's value, but whether the planted value appeared less often was too close to call. This cell repeats it on 61 questions where the final answer is a number a script can check, with both versions run in the same session. It is the first test of the assembled system on something other than AI judges' preference.",
    "expectations": [
     {
      "id": "P67.0",
      "text": "The wrong figure would show up in the first specialist's text, and the right one in the second specialist's text, in at least 75% of runs. Otherwise the rest cannot be read.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. In Cell 59 specialists passed on their figures in 85% to 95% of runs."
+     "outcome": "failed",
+     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P67.1",
      "text": "The final answer would follow the wrong figure less often when a second specialist holds the right one.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. This is the main expectation of the cell."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P67.2",
      "text": "The final answer would be correct more often when a second specialist holds the right figure.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P67.3",
      "text": "When two specialists hold different figures, the final answer would mention both in fewer than half of runs.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The cell has not run."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P67.4",
      "text": "We would report what happens when both figures reach the specialists' texts, whether the editor's list of disagreements names both, and where the follow-up question goes.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "Not run yet. A trial of the whole chain on a question outside the set took about ten minutes and returned a correct final answer. The planning step once used up its length allowance while thinking, as in Cell 61, so the short steps were given the larger allowance that Cell 61 ended with.",
+   "found": "The full live system finished both versions of the 61 questions on 5 October 2026. By the rules written down in advance, 0 of the 3 graded expectations held up, 0 did not, and 3 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "The results show whether giving a figure to a second specialist changes what the full system answers, and whether a disagreement between two specialists reaches the reader. The specialists here are the editor model in three roles, and the questions are arithmetic and rule questions, not the advisory scenarios.",
    "later": null,
    "entries": {
@@ -338,6 +338,11 @@
      "label": "Plan",
      "title": "The wrong figure through the full live system",
      "summary": "The figure is removed from the scenario and reaches the system only through a specialist's private notes. Both versions share the same plan and the same texts from the two specialists whose notes do not change. One run per question and version, 61 pairs, scored by a script against the computed answers."
+    },
+    "11893": {
+     "label": "Result",
+     "title": "Runs finished: results by the rules set in advance",
+     "summary": "The full live system finished both versions of the 61 questions on 5 October 2026. Of the 3 graded expectations, 0 held up, 0 did not and 3 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   },

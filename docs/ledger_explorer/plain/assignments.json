@@ -2574,8 +2574,8 @@
     {
      "id": "67",
      "current_title": "the wrong figure in the live chain, scored by a computed answer",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P67.0",
       "P67.1",
@@ -2589,6 +2589,12 @@
        "end": 10674,
        "kind": "prereg",
        "heading": "CELL 67 PRE-REGISTRATION (2026-10-01) — the wrong figure in the live chain, scored by a computed answer"
+      },
+      {
+       "line": 11893,
+       "end": 11926,
+       "kind": "verdict",
+       "heading": "CELL 67 VERDICT (2026-10-05) — the live chain on 61 items; verdict lines as printed by the registered script, reading to follow"
       }
      ],
      "matrix_row": null

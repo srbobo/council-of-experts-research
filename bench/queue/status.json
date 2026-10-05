@@ -36,8 +36,15 @@
    "commit": "ef172e1"
   },
   "c63-repeat": {
+   "state": "done",
+   "started_utc": "2026-10-04T06:30:51Z",
+   "finished_utc": "2026-10-05T03:13:15Z",
+   "attempts": 1,
+   "commit": "c3083d6"
+  },
+  "c67-livechain": {
    "state": "running",
-   "started_utc": "2026-10-04T06:30:51Z"
+   "started_utc": "2026-10-05T03:13:19Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"
