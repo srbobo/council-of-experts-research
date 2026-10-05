@@ -57,8 +57,15 @@
    "commit": "22eb52c"
   },
   "c66-measure": {
+   "state": "done",
+   "started_utc": "2026-10-05T18:16:04Z",
+   "finished_utc": "2026-10-05T18:16:04Z",
+   "attempts": 0,
+   "commit": "2d82cc4"
+  },
+  "c62-check": {
    "state": "running",
-   "started_utc": "2026-10-05T18:16:04Z"
+   "started_utc": "2026-10-05T18:16:08Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

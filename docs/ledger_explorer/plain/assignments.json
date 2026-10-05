@@ -2416,6 +2416,12 @@
        "end": 11334,
        "kind": "amendment",
        "heading": "CELL 62 AMENDMENT (2026-10-02) — no person's labels: P62.0 to P62.2 are NOT EVALUABLE; the judge-only parts of P62.3 are reported, with a neighbouring-construct check against public speculation labels (SFU Review Corpus) added as a reported figure"
+      },
+      {
+       "line": 12264,
+       "end": 12308,
+       "kind": "note",
+       "heading": "CELL 62 CHECK RECORD (2026-10-05) — no person's labels: judge-only statistics and the public speculation-label figure; output of the registered check script"
       }
      ],
      "matrix_row": null

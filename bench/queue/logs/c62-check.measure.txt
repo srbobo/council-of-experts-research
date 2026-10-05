@@ -1,0 +1,38 @@
+==============================================================================
+CELL 62 AMENDED — the sentence judges without a person's labels (reported, no bar)
+==============================================================================
+  P62.0: NOT EVALUABLE — no person's labels
+  P62.1: NOT EVALUABLE — no reference
+  P62.2: NOT EVALUABLE — no reference
+
+1. The 404-sentence sample: 404 sentences labelled by all six judges
+   kind modeled: share flagged gpt-oss 0.14, qwen2.5 0.12, phi4 0.17, qwen3-vl 0.12, llama3 0.13, mistral 0.07
+     kappa between judges: lowest 0.27, median 0.51, highest 0.71; stored pair 0.54
+     gpt-oss against its own stored label: raw 0.93, kappa 0.71
+     qwen2.5 against its own stored label: raw 0.88, kappa 0.42
+     latent-class estimate: prevalence 0.18; hit rates gpt-oss 0.71, qwen2.5 0.53, phi4 0.81, qwen3-vl 0.64, llama3 0.62, mistral 0.29; false alarms gpt-oss 0.02, qwen2.5 0.03, phi4 0.03, qwen3-vl 0.01, llama3 0.03, mistral 0.02
+   kind hedging: share flagged gpt-oss 0.18, qwen2.5 0.13, phi4 0.20, qwen3-vl 0.13, llama3 0.09, mistral 0.25
+     kappa between judges: lowest 0.30, median 0.48, highest 0.66; stored pair 0.61
+     gpt-oss against its own stored label: raw 0.89, kappa 0.66
+     qwen2.5 against its own stored label: raw 0.91, kappa 0.57
+     latent-class estimate: prevalence 0.17; hit rates gpt-oss 0.83, qwen2.5 0.71, phi4 0.88, qwen3-vl 0.68, llama3 0.41, mistral 0.76; false alarms gpt-oss 0.05, qwen2.5 0.01, phi4 0.07, qwen3-vl 0.02, llama3 0.02, mistral 0.14
+   kind jurisd: share flagged gpt-oss 0.17, qwen2.5 0.22, phi4 0.18, qwen3-vl 0.20, llama3 0.14, mistral 0.19
+     kappa between judges: lowest 0.52, median 0.59, highest 0.71; stored pair 0.56
+     gpt-oss against its own stored label: raw 0.89, kappa 0.59
+     qwen2.5 against its own stored label: raw 0.85, kappa 0.54
+     latent-class estimate: prevalence 0.23; hit rates gpt-oss 0.71, qwen2.5 0.75, phi4 0.75, qwen3-vl 0.85, llama3 0.57, mistral 0.67; false alarms gpt-oss 0.01, qwen2.5 0.06, phi4 0.02, qwen3-vl 0.01, llama3 0.01, mistral 0.05
+
+2. SFU Review Corpus: 400 of 400 sentences labelled by all six judges (pool {'speculation': 3895, 'none': 11809}); weighted to the corpus
+   judge or rule                         cue sentences marked hedging   cue-free marked hedging   cue marked any kind   cue-free any kind
+   gpt-oss alone                                                0.230                     0.010                 0.270               0.020
+   qwen2.5 alone                                                0.155                     0.045                 0.170               0.065
+   phi4 alone                                                   0.470                     0.190                 0.495               0.220
+   qwen3-vl alone                                               0.210                     0.045                 0.295               0.080
+   llama3 alone                                                 0.170                     0.055                 0.340               0.200
+   mistral alone                                                0.165                     0.110                 0.305               0.230
+   instrument pair re-judged, both                              0.090                     0.010                 0.095               0.015
+   instrument pair re-judged, either                            0.295                     0.045                 0.345               0.070
+   three largest, at least two                                  0.275                     0.035                 0.325               0.070
+   all six, at least two                                        0.350                     0.100                 0.480               0.200
+   all six, at least three                                      0.225                     0.045                 0.315               0.085
+   all six, at least four                                       0.130                     0.025                 0.225               0.045

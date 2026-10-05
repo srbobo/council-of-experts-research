@@ -56,6 +56,11 @@
      "label": "Change to the plan",
      "title": "No person's labels: what can still be measured",
      "summary": "Written down on 2 October 2026 before the judges' labels were scored. The three expectations that needed the author's labels cannot be tested. Instead we report how far the six judges agree with each other and an accuracy estimate that needs no reference. We also report how they respond to 400 review sentences with human-marked uncertainty words. The caveat counts stay provisional."
+    },
+    "12264": {
+     "label": "Note",
+     "title": "What the judges show without a person's labels",
+     "summary": "Because no person could label the sentences, on 5 October 2026 we recorded how far the six AI judges agree with each other and how they respond to 400 review sentences with human-marked uncertainty cues from a public corpus. No pass or fail is possible without a reference, so the caveat counts stay provisional."
     }
    }
   },

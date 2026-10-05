@@ -1,0 +1,2809 @@
+{
+"seed": 62,
+"pool": {
+"speculation": 3895,
+"none": 11809
+},
+"items": [
+{
+"id": "BOOKS/no13done#6",
+"text": "He and his wife are at a difficult time in their marriage, with him spending as much as 18 hrs at the office, she fills her time by going to medical school, and becomes a doctor, now neither has the time for the other--and divorce is inevitable.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no14done#7",
+"text": "The book is written in traditional Patterson style of no frills.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "BOOKS/no14done#70",
+"text": "However, if you can get out now, do it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no16done#33",
+"text": "And when Frankenstein recounts the story told to him by the monster, yet another layer is added to this tissue of boredom.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no16done#46",
+"text": "Yet this message is merely hinted at and not drawn out to any clear explication or moral.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "BOOKS/no16done#52",
+"text": "Yet their differences are great too, for where Victor pursues science and rationality in his studies, his reactions devolve into hysterics and passivity; while the monster, who comes into existence with no learning and no one to instruct him, resorts to empirical analysis of the world and consistently acts vigorously on the basis of his analyses.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "BOOKS/no17done#21",
+"text": "I'd suggest it only if you've read all of her other books, but until then, leave it on the library shelf!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no17done#7",
+"text": "This wasn't the story line at all - there was a hint at the paranormal and psychic abilities, but only a hint.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "BOOKS/no17done#9",
+"text": "The story was more based on Nell trying to clear Adam's name when bid rigging and construction scams are investigated by law enforcement agencies and her husband's name seems to be at the center of it all.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no1done#30",
+"text": "(Perhaps they had understandably glazed over.)",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no1done#35",
+"text": "For more vivid descriptions of people and places and events in an atmosphere of mystery, read Crichton, or Ian Fleming - or even Tom Clancy!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no22done#16",
+"text": "The minikin, which has now transformed into a monster with tentacles (sounds like something that came out of a cartoon ...\"oooh scary \") begins chasing them all over town.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no22done#18",
+"text": "We find out that she is rich beyond anything Tommy can even being to fathom.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no24done#16",
+"text": "On the other hand, in the \"black \" part of town, someone is killing little kids near the school where Cross ' children attend.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no24done#23",
+"text": "Turns out that Some Washington insiders wanted the President dead.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no4done#23",
+"text": "This is all disconcerting to the reader  while a touch of romance might have been nice for the story, Grisham made Luke 7 instead of, say, 15.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no4done#41",
+"text": "But, as with any form of art, when you experience the masters (the above 5), it makes the Grishams of the world seem less spectacular.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no4done#5",
+"text": "Like the young boy in Grishams The Client, Luke seems much older than his years, and speaks quite unlike any 7 year old I have encountered.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/no4done#9",
+"text": "I actually took my soon-to-be 5 year old daughter to see where she stood when placed beside me.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no6done#20",
+"text": "Interesting, and I did chuckle a few times.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/no9done#9",
+"text": "Maybe it was the situation that didn't ring true?",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "BOOKS/yes11done#45",
+"text": "There are some graphic parts which made me mad to read, but I don't believe it would be too much for anyone to handle.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "BOOKS/yes12done#26",
+"text": "This book has all that anyone could want.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/yes12done#7",
+"text": "Later on they give into their feelings and open up to each other.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes15done#59",
+"text": "And I thought about my great-grandfather, the first Curtis Edmonds, who was born in Alabama almost 120 years ago, and who assuredly did pick cotton there, and on a dirt farm near Milford, Texas, and on another farm in Archer County.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes18done#7",
+"text": "I have no problem with Grisham trying to branch out into other genres.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes20done#6",
+"text": "In the story, Luke is witness to racial tension, the birth of his illegitimate cousin, the murder of a local bully (out behind the cotton gin) and the murder of a field hand.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes21done#26",
+"text": "Together, they flee from the police interrogation and start to decipher the clues to discover why Sauniere was killed and to figure out Sauniere's secret.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes23done#29",
+"text": "Of course, I would also like to pique your interest, so here goes: before the patriarchic religions appeared, goddess worship played a large role in religion but this dissipated over the years.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/yes23done#39",
+"text": "I highly recommend The Da Vinci Code.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes25done#20",
+"text": "I also felt there was sort of a minor problem with an underdeveloped sub-plot (I won't give it away, but we know what sub-plots usually involve).",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes25done#9",
+"text": "The first code leads to a second code, and so on and so forth ...and as the book progresses you find yourself trying to solve the codes, it really keeps you hooked.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "BOOKS/yes9done#16",
+"text": "Flagg has been in the kingdom for years; as long as anyone can remember.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "BOOKS/yes9done#25",
+"text": "Thomas knows a secret that could destroy him and is slowly driving him mad.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no10done#72",
+"text": "Engine noise is somewhat intrusive, partially because this particular engine seems to be rather \"grumbly. \"",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no12done#10",
+"text": "It is flatter than roadkill and only slightly more attractive.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no12done#24",
+"text": "Now that is a car they should be offering to the American public, rather than the shoddy heap of garbage that is the Taurus.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no14done#3",
+"text": "One of the main reasons why Taurus made it into the nascar races because Taurus was building a name for themselves of making powerfull cars. in 1995 Taurus came out with their ultimate car which was the 3.8liter v6 SHO taurus folks let me tell you if you ever get a chance to ride in a 3.8 liter v6 SHO taurus do so because the minute that person lays his foot on the pedal your jaw will be in the back seat.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no15done#45",
+"text": "The front bucket seats are a major complaint, I found them hard to the 'butt touch', and offered little back support.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no17done#15",
+"text": "Cornering in the dry on stock rubber similarly brings out the lack of corner-exit drive, and a sinking feeling as applying power has the nose of the car heading for hedges and low-flying pedestrians.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no19done#118",
+"text": "But there is no way to lock the eject button to protect from a parking attendant, mechanic, etc. stealing one or more of the CD's.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/no19done#132",
+"text": "Then when you leave your car with someone else (that you didn't trust), you could just pop the cartridge out of the dash and take it with you, addressing the possible issue with CD theft.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no19done#147",
+"text": "For instance, traffic is stopping in front of you and you want to move across 5 lanes form the left lane to the right lane.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no19done#149",
+"text": "-Glove box and console boxes have hard plastic interiors and should be padded with felt to stop rattles when loose items move around in these storage areas.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no19done#189",
+"text": "There aren't any squeaks or rattles yet.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no19done#221",
+"text": "Not so on the Altima.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "CARS/no1done#20",
+"text": "Its shade is far too orange for my taste.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no1done#25",
+"text": "I have used the fold down rear seats many times in my own car, and would greatly miss this feature.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no1done#68",
+"text": "It might significantly affect your evaluation of the car.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no20done#12",
+"text": "The ride was very stiff and loud and the acceleration seemed sluggish.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no22done#82",
+"text": "Or if your Lincoln-Mercury dealer is much more convenient than your Ford dealer, it's a no-brainer.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no24done#20",
+"text": "They dismissed the situation as \"normal \" again.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no25done#24",
+"text": "One of the popular things is SUV tagging.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no25done#4",
+"text": "Of course, unless you have $40,000+ to spend on one, you are going to have a high car payment.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/no25done#45",
+"text": "I recommend outlining why you need an SUV, maybe a minivan would be better because you can save $10,000 to $15,000, have a safer, more versatile vehicle and get better gas mileage.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no2done#15",
+"text": "I would rather drive the 200 HP Accord V6 than this.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no3done#21",
+"text": "Please heed my warning and don't risk your time and money into a Ford focus.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "CARS/no4done#1",
+"text": "I drove it for more than a week, so I think that I was able to see the good and the bad sides of driving this particular car.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/no7done#23",
+"text": "cash back 6.9% interest or 1000.00 cash back and 7.99% interest.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes12done#2",
+"text": "I don't think it looks bad, per se, but I can't tell you exactly what the issue I have actually is.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes12done#22",
+"text": "Maybe your thighs are pressing against the side supports, or the lumbar support is jutting into your back a tad too much, or maybe even that darned seatbelt extension is about an inch too long, and it's poking your beer belly.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes12done#30",
+"text": "The steering wheel and gear shifter are exactly where they should be in relation to the driver.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes12done#63",
+"text": "There is no pronounced over- or understeer, unless you really want it to be there.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes14done#2",
+"text": "The Mustang for 2002 comes in 4 models, the 2 base trim lines which feature a 190 horsepower 3.8 liter engine that is offered in either a convertible or coupe.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes14done#37",
+"text": "(a 1,140 watt System is available if you want to blow your ear drums out .)",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes14done#48",
+"text": "Price, Warranty, and Reliability: The 2002 Mustang starts out at around $16K for the base modeled coupes.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes15done#106",
+"text": "Sometimes, body flex is apparent in the convertible due to the suspension not absorbing all road abnormalities but this can be expected in any convertible.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes15done#11",
+"text": "I couldn't agree more.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes15done#110",
+"text": "I probably have about 10,000 miles left on them and then it will be time to get new rubber.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes15done#112",
+"text": "I would like a tire with a little better traction in wet and snowy conditions, if possible.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes15done#116",
+"text": "If I had to complain about only one thing in this vehicle, this would be it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes15done#126",
+"text": "Despite the small nit-picky complaints I had in the previous section, I am very pleased with this vehicle.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes15done#23",
+"text": "This really is a love-hate relationship.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes16done#22",
+"text": "As for city driving this car is a dream, it is not to big to be a pain to drive around the city and at the same time it is big enough to be noticed.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "CARS/yes19done#28",
+"text": "All the other cars I've mentioned with the exception of the Protege ES use a disc/drum setup, but it would have been nice if Mitsubishi had installed four wheel disc brakes (on the OZ at least) for increased stopping power.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes19done#44",
+"text": "I am going to grad school and wanted to get a much more economical car that was more suited to my needs.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes21done#35",
+"text": "At higher speeds, the steering has a tendency to wander on smooth roads, especially if the surface is a tad slick; and its high profile gives the vehicle just a hint of tippiness through high-speed turns.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes21done#56",
+"text": "Seating is mediocre at best; the padding a bit sparse for these old bones (but then again, I'm about twice the target age).",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes21done#85",
+"text": "It's better suited to hauling - either in the cargo bay or on a trailer - than it is to elegance.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes22done#33",
+"text": "But hey, this is an SUV, folks.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes22done#40",
+"text": "The seats are canvas, and can be removed and hosed down.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes23done#4",
+"text": "Take the Xterra, for instance.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes24done#2",
+"text": "Don't ask me what Jaguar looks like a Nissan Altima, but apparently the person who made that AD knew something I didn't or was in need of prescription glasses.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes24done#43",
+"text": "Price, Warranty, and Reliability:",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes25done#21",
+"text": "The Integra had only four cylinders, and sometimes while merging onto highways it gave me cause to pray!",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes25done#93",
+"text": "Everyone uses hazards in those storms to help other cars see them.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes25done#95",
+"text": "In a bad storm or emergency situation, it would be hard to locate the hazard light button without taking your eyes off of the road.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes2done#6",
+"text": "I kind of see the resemblence of the high beam curve outs a little.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes4done#34",
+"text": "-260 hp (Type-S), 225hp for the TL",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes4done#70",
+"text": "The one problem I have with the interior is the foot emergency brake.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes6done#124",
+"text": "I have not driven the standard CL, so I can only guess at how it compares.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes6done#23",
+"text": "Though roughly the same sizethe largest dimensional change is a two inch increase in lengththe new car appears much larger.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes6done#59",
+"text": "Apparently the extra length and weight went towards the flowing exterior lines rather than the interior.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes6done#73",
+"text": "Your passengers might think you're having trouble growing up.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes7done#1",
+"text": "It comes with pretty much everything standard.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes7done#63",
+"text": "TCS  Traction Control System  This feature keeps your car straight  and not sliding and spinning after those fast sharp curves.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "CARS/yes7done#99",
+"text": "However, if youre looking more into performance, and are willing to shell out a few more thousands, then I would maybe consider Lexuss IS300.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes9done#104",
+"text": "Together, they combined to provide effortless smooth shifts.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes9done#108",
+"text": "Even with my high expectations, the Focus SVT surprised me.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes9done#133",
+"text": "As it stands, I?m not sure I could deal with the Focus SVT as a daily driver.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes9done#149",
+"text": "You can save another grand by doing without power windows/locks/mirrors, keyless entry, and the CD changer, but this does n?t",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "CARS/yes9done#41",
+"text": "These might be more awkward to use than levers, but they allow you to get the setting exactly where you want it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "CARS/yes9done#42",
+"text": "Lack, rubber ringed knobs don ?t hurt.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "CARS/yes9done#47",
+"text": "I drove a Pontiac Vibe immediately after driving the Focus, and its doors included no such handle, only an indent in the armrest too shallow and too far to the rear to do any good.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no10done#25",
+"text": "If you want lots of software (especially games), then buy a PC.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no10done#31",
+"text": "Plus even if you could there is almost nothing to upgrade to.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no14done#0",
+"text": "I purchased this product because I like \" thinking different. \"",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no14done#10",
+"text": "Thus, here I am now, waiting for my check to come in the mail.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no15done#0",
+"text": "My father works in the Marketing and Advertising business, and bought one of these monsters.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no15done#28",
+"text": "Apple is no longer the wonderful system that does exactly what it's told.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no18done#70",
+"text": "Some of which can not be un-installed except by reload(i .e.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no20done#105",
+"text": "I would encourage new buyers to do this themselves, before putting any data onto the drive.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no20done#128",
+"text": "You can always choose to install it at a later date.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no20done#130",
+"text": "There is a driver disk for the Modem drivers.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no20done#173",
+"text": "She is attempting to resolve this matter at this time.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no20done#176",
+"text": "1) I ordered a system and upgraded the standard keyboard and mouse to the Dell Wireless Combo for $65.00.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no20done#25",
+"text": "1 430-0462 Cyberlink Software Decoding for DVD Drives with six channels",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no20done#256",
+"text": "Also, you may wish to look into purchasing the PC of your choice with NO SOFTWARE.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no20done#66",
+"text": "I do not use the 56K Conextant WinModem since I have Cable Access for the internet.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no20done#71",
+"text": "Inside there are two 7-pin serial-ATA connectors on the motherboard.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no21done#127",
+"text": "Also, as our company is sub-contracted by a Dell agent, your support is usually provided by a sub-contracted local computer store or individual.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#173",
+"text": "tired of being on the phone for what seems like hours with someone truly unhelpful. \"\" Yes,",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#182",
+"text": "And calling it a Dimension, or whatever.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#196",
+"text": "If you like large names and fancy marketing, buy a gateway system.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#20",
+"text": "Can you believe a computer company is still installing 250W power supplies in their computers?",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#60",
+"text": "Most, if not all microboards have around 2 PCI slots and an AGP slot.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no21done#84",
+"text": "Or another question for turn of the century.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no22done#16",
+"text": "More importantly, one should not pay top dollar for a computer advertised as the top model of its size, only to have to compromise certain features, how many programs operating, or speed, etc.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no24done#18",
+"text": "I dropped the powerbook, only about 4 inches to the tabletop, but I dropped it, AND IT COMPLETELY CRUMPED UP!! Like a car with crumple zones, and that's when I saw how THIN the titanium really is.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no25done#23",
+"text": "\" Yahoo! Drive - Its your hard drive on the internet.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no5done#22",
+"text": "Even my paid Apple authorized technicians have had difficulties working out the wrinkles.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no6done#25",
+"text": "this also takes up more time and slows everything down.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no6done#62",
+"text": "I guess theres a reason Windows PC's are so popular, they just seem to work better.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no7done#1",
+"text": "My difficulties with using this product are numerous, and the fact that Mac has only 5% of the market share on computers is fully understandable; they make a terrible product that is not very compatible with standard software, the Microsoft Office Suite of applications.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/no7done#10",
+"text": "Worse, word and excel seem to lack features that are standard devices on the PC.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/no8done#7",
+"text": "I handled the purchase of one for my college newspaper and it burned up within two weeks of its arrival.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes10done#129",
+"text": "To go to the beginning or end of the line on the Mac, you need to use the up and down arrow keys.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes10done#192",
+"text": "A 10 page album will run about $30.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes10done#209",
+"text": "Select this icon and it connects directly into Apples online music download service called the Apple Music Store.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes10done#273",
+"text": "I believe you can make minor changes, such as text color and size, but that's it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes10done#283",
+"text": "It also adds a title of the page, which you can overwrite, as well as an area where you can write a description of the event related to the photos on the page.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes10done#287",
+"text": "You can then go back to your homepage in .Mac and edit the text for that link.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes10done#290",
+"text": "In other words, you don't need to worry about the impact that changing or eliminating one page has on another page.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes10done#40",
+"text": "It is amazing how much more comfortable it is (especially at 6'3\") to have the screen up nice and high.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes10done#52",
+"text": "I think anyone buying simply on specs will probably buy a PC, as they are leading the pack from a hardware per dollar standpoint.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes12done#11",
+"text": "The monitor is so crisp I can focus across the room.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes13done#11",
+"text": "The ram arrived at my house the same day as the computer and printer...",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes13done#19",
+"text": "What does this mean to the average joe?",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes13done#27",
+"text": "I'd estimate with the stock ram it only took about 15-20 seconds to startup.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes13done#29",
+"text": "On screen, you are first greeted with some sweet music to help get you through the apple registration process, where you will set up your internet connection.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes13done#56",
+"text": "I would have kept it there for the extra screen real estate but the refresh rate is painfully low and I kept getting headaches from looking at it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes13done#66",
+"text": "Leo approved of his pic.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes14done#30",
+"text": "But memory is cheap and very easy to install; just flip the emac upside down and undo the hatch.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes15done#4",
+"text": "this was an easy task that does require a philips screwdriver, but that by following the instructions provided in the user manual, even a novice user should be able to perform.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes16done#23",
+"text": "For you, I can say that this system works just like the other Apple systems, just much faster.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes17done#109",
+"text": "Originally, I envisioned this computer serving as the \"family computer \" where I could write Epinions, my husband could surf the net, and our young children could play games.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes17done#66",
+"text": "I appreciate the extra port, though I suspect I'll still need a hub at some point.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes17done#80",
+"text": "Dont let appearances fool you, though.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes17done#99",
+"text": "One thing that s taking awhile to get use to is the location of the power button.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes18done#122",
+"text": "Built-in microphone for speech recognition and audio recording",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes18done#150",
+"text": "Weight: 21.3 pounds (9.7 kg) (7)",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes19done#17",
+"text": "(I also believe this is just the \"nature of the beast \" with flat panel monitors) The screen pivoting feature is wonderful in a room where I am constantly showing my work to people around me.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes19done#20",
+"text": "I know I know, you never know with computers and whatever you buy is typically outdated within 6 months anyways, but with this machine I went by past experience with iMacs always being 15 inches.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes21done#7",
+"text": "Regardless, here is what I like and do not like when it comes to the Sony VAIO PCG-FRV27 Notebook.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes21done#82",
+"text": "However, I would have liked to see Sony utilize a better battery.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes22done#15",
+"text": "I finally managed to play with several Inspirons in Tokyo, but was disappointed by their cheap, creaky plastic parts and the keyboard with substandard key spacing and key travel.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes23done#5",
+"text": "We added a leather case which brought the cost to $2377 before tax with a 1 Year Limited Warranty plus 1 Year At-Home Service.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes24done#53",
+"text": "I also wish the PCMCIA card adapter was easier to eject.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes2done#18",
+"text": "I'm not talking hmm I think that is a little brighter.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes2done#3",
+"text": "They should give it a try.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes2done#40",
+"text": "Battery life is not something I am concerned about, but this one is only about an hour and a half.. probably due to the awesome display.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes2done#41",
+"text": "In the car I can plug into the cigarette lighter though, and the hotel of course has jacks, airlines also have plug-ins if you have the adapter..",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes2done#54",
+"text": "This would be very good as a desk top replacement for a college student in a dorm, or as an additional home unit in another room or something.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes3done#11",
+"text": "But I must tell that is computer isn't perfect.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes3done#21",
+"text": "Well might be it save some battery life ... Speaking about battery.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes3done#30",
+"text": "I bought it for more than 1700 $(with a 100$mail in rebate ,and some other catches:)) but now it cost about 1300-1400.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes3done#5",
+"text": "Well someone can wonder why there is floppy disc reader?",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes4done#28",
+"text": "but don;t let that alone be the reason to buy this. the keys are a bit stiff and springy which is great for the tactile typers, but if you have carpal tunnel, like i do, it does tend to aggravate it somewhat, which is why i use an external keyboard that has softer keys.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes4done#36",
+"text": "all in all the touchpad is responsive and sometimes the cursors can jump around when using it, so I would recommend using an external mouse, like the logitech mx700.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes6done#37",
+"text": "It's free packaged Software are a plus, and the new Operating Sustem is brilliant!",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes9done#15",
+"text": "I set it on my desktop (fortunately for me, I don't use one of the \" computer cubbies \" so popular with home-office furniture - the G5 very likely wouldn't fit, being about 10% larger than my old Dual G4), plugged in the power cable, the USB cable for the keyboard and mouse, the video cable to the monitor, and the network cable to the hub.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COMPUTERS/yes9done#50",
+"text": "The analog audio-out port is also available to plug in a regular set of powered speakers.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COMPUTERS/yes9done#7",
+"text": "Then I spent another week waiting, checking the FedEx tracking website for progress, and making sure someone was here to receive the package when it arrived.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no13done#12",
+"text": "A separate blade serves to peel off those nasty purplish and papery scales from the stalks, and does this with dispatch.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no16done#8",
+"text": "Don't leave food in it.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no22done#2",
+"text": "It is obviously extremely heavy on it's own without any food in it, and the price tag is quite hefty as well.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no23done#14",
+"text": "The owner's manual suggests not using a dishwasher to clean.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/no24done#6",
+"text": "and would you believe they didn't stand behind their \" Lifetime Limited Waranty \" due to their explanation of telling me that is was not defective.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/no25done#0",
+"text": "Lodge is celebrating 100 years of making pans cast from iron.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no25done#44",
+"text": "You rub that in and then heat the pan on 200 degrees for a couple of hours.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no2done#9",
+"text": "To be honest I think that it is stamped there just to make you believe that they are stainless steel and keep you from immediately demanding a refund.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/no3done#3",
+"text": "We kept screwing them back in time after time and they kept loosening up.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no4done#5",
+"text": "She said because she spent all of her time scrubbing and soaking them so now she uses non-stick.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/no5done#5",
+"text": "Second, I dropped a Farberware pan once and it cracked in the rim.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes10done#12",
+"text": "If you don't want to take the time to wash by hand and don't care what your pots and pans look like, you might want to invest in something less expensive.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes11done#22",
+"text": "And the part that isn't supposed to heat -- the stay-cool handle -- doesn't get hot, unless you use the All-Clad Stainless 1-Quart Sauce Pan in the oven.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes11done#44",
+"text": "The key to success with this pan, like any other, is to know its capabilities when matched with your cooking appliance, whether it be gas or electric.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes12done#9",
+"text": "The best thing about the Whirley Pop is just how easy it is to use.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes13done#16",
+"text": "These range from sprinkling cheese on after to mixing up as trail mix or baking a chocolate popcorn treat in the oven.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes13done#31",
+"text": "Put 2 tablespoons of oil and ½ cup of popcorn in the bucket (or buy the bagged oil and corn combos and pour in).",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes13done#56",
+"text": "Whirley Pop can go in the dishwasher, but I dont have one )-: It only takes a few seconds to hand-wash the popper, so that s not a big deal.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes14done#0",
+"text": "Let me start by making two things very clear.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes14done#14",
+"text": "There is a wooden for holding the popper and it stays pretty cool at all times.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes16done#53",
+"text": "In order to simmer and reduce the sauce a bit, knowing I was on the clock, I made use of the wide, flat expanse of the sauté pan rather than a larger pot requiring more cooking time for the same results.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes16done#87",
+"text": "I either confused him or impressed him.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes16done#93",
+"text": "I wonder if local contractors have ever planned kitchens around cookware before?",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes16done#95",
+"text": "I have not had to make use of the warranty, and can't imagine needing to do so.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes17done#12",
+"text": "The pumper then pops up and extends above the lid about 3\" or so.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes17done#34",
+"text": "And of course to adequately wash and rinse a head of lettuce it's best to break it up anyway.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes17done#45",
+"text": "Try it for serving popcorn, potato chips, or snacks as well.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes19done#44",
+"text": "It isn't dishwasher friendly either.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes1done#61",
+"text": " stainless steel surrounding the aluminum from top to bottom, side to side and all the way to the end of the handle.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes22done#4",
+"text": "I had ground my old Ecco peeler in the garbage disposal by accident and needed something to replace it.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes23done#2",
+"text": "There is a so called professional cookware that is made from hard anodized aluminum I think it is spelled Calaphon, DON'T waste your hard earned money on this hard anodized cookware, and then there is a very famous chef from Austria that sells his own cookware on HSN network and he claims he uses it in his restaurants.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes24done#21",
+"text": "i have almost every piece in that line.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes24done#28",
+"text": "then there is analon, circulon.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes25done#1",
+"text": "A full set, and, yes, if need be, an expensive set!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes25done#46",
+"text": "Downright elegant looking ... very streamlined / modern looking",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "COOKWARE/yes4done#18",
+"text": "Baking/browning is also possible though I would never bake in them myself.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes4done#23",
+"text": "Or, if everything goes in your dishwasher, pop your FMCC in - it's safe!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes6done#24",
+"text": "I can get a spaghetti cooker, a chafing dish, and other styles to match my collection.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "COOKWARE/yes6done#32",
+"text": "What I Like About This Set",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/no10done#16",
+"text": "I could have road all day around the highly commercialized area.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no10done#50",
+"text": "We of course did not touch this.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/no12done#18",
+"text": "The breakfast was far from good as the bacon was dried up and the coffee was dull.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/no15done#27",
+"text": "It's dated, so I would only try it with one of the 2 for 1 coupons from the freebie mags, such as What's On.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no1done#12",
+"text": "The room isn't especially large, and the hubbub of traffic makes it a less dignified and special place than the decor would suggest.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no1done#22",
+"text": "Our choices were offered in such a desultory, offhand, \"take it or leave it \" fashion that I got peeved and loudly suggested that we indeed leave it and find lodging elsewhere.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no20done#1",
+"text": "Checking in, there was absolutely no recognition of my platinum status.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/no20done#19",
+"text": "Our coat hooks were loose.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/no25done#8",
+"text": "Then there was the sheer tackyness of it all.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/no2done#1",
+"text": "However, the experience we had at the Ritz-Carlton Boston was completely uncharacteristic of my other experiences and can only be summed up by saying it was HORRIBLE.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no2done#51",
+"text": "The doormen recognized us and chatted with us each day when wed return from shopping or sightseeing, and they remembered our names and details about us, which was nice.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no2done#58",
+"text": "If you want a convenient location, excellent service, and fine accommodations, move about one block down to the Four Seasons.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no3done#24",
+"text": "I would never stay there again.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/no3done#8",
+"text": "We were too far from the elevators, the roller coaster on top of the tower does not operate all night long, so that left us curious, but anxious to move rooms.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/no4done#46",
+"text": "Our 'suite ' was nothing more than a standard room with one king bed, and a small sofa and chair jammed into the other corner, a totally generic 'shoebox ' of a room that even a discount chain hotel would be embarassed to lay claim to.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no4done#71",
+"text": "He asked if our 'problems ' had been resolved!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no6done#25",
+"text": "That's when the action picks up.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/no7done#10",
+"text": "Our room, with the nasty old carpet and the hole in the bathroom door, was not what I expected after spending so much money for a vacation!",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/no7done#6",
+"text": "In Vegas one does not sleep very much in the town that never sleeps!!!",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/no7done#9",
+"text": "The food was still wonderful, the casino is still the only won I could win ANY money at, but the service was not up to par.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/no8done#12",
+"text": "All the beds I checked out seem to be on a concrete platform.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/no9done#12",
+"text": "If you were coming into the hotel from the outside, you could gain access from any door without using a room key.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes11done#51",
+"text": "Not too surprising - that is a recurring theme at this hotel.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes12done#22",
+"text": "Huge picture windows face out over the lake, and outdoor fireplaces were burning on the lakefront patio where a well-bundled, impervious-to-cold crowd sipped cocktails.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes12done#5",
+"text": "My husband and I visited the week before Christmas, and the numerous, beautifully decorated lobby trees only enhanced the ambiance.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes14done#41",
+"text": "While it may not be the newest or most spectacular, Treasure Island has nearly as much to offer as the other strip hotels.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes15done#48",
+"text": "Treasure Island has so much to offer it has to be one of the best on the Las Vegas Strip.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes15done#5",
+"text": "This marvelous hotel, upon your arrival, will immediately take you back to the time of Captain Hook.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes16done#24",
+"text": "Both hotels are magnificent, offering large, beautiful rooms; first-class service; a beautiful view; a lovely beach; and the shortest possible route to Epcot Center.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes17done#27",
+"text": "If you feel like relaxing indoors, you can sit down in one of the comfortable chairs or couches in the lobby.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes17done#58",
+"text": "The Service: There are many different services that are offered at the Beach Club.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes17done#63",
+"text": "There are facilities right at your fingertips where you can rent boats, play tennis, volleyball or even croquet.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes1done#21",
+"text": "Another amenity is the \" Cubs Den \" where your children can go for fun at night while the parents get a night out to themselves.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes20done#1",
+"text": "I was really a bit frightened that it would be, well, stinky.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes21done#24",
+"text": "Table minimums are usually $5, though an occasional $3 blackjack table can be found on weekday afternoons.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes22done#0",
+"text": "The Golden Nugget is the best hotel in downtown Las Vegas by far!",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes23done#53",
+"text": "If everything goes well well go back again for another occasion.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes24done#58",
+"text": "We ate a meal at the Yacht Club resort and we found it somewhat inconvenient to take a crowded bus to and from the Magic Kingdom after our own experiences of simply taking the monorail to the Magic Kingdom.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes2done#3",
+"text": "***RESORT LOBBY, RESTAURANTS, and AMENITIES***",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes3done#15",
+"text": "The Wilderness Lodge is one of what are sometimes called the \" Magic Kingdom Resorts \" at Walt Disney World.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "HOTELS/yes3done#16",
+"text": "It is considered one of the deluxe resorts which means it is a little more expensive than most of the other Disney Resorts.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes3done#6",
+"text": "The next morning a personalized, autographed picture of the Little Mermaid was slid under our door wishing that Emily would feel well enough to come visit in person.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes3done#62",
+"text": "In addition to the towel rack there is hook to hang clothes or wet towels on as well as a clothes line that can be pulled across the length of the bathtub.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes3done#99",
+"text": "You can go down to the beach but I have not been to the water to tell you whether it s swim-able  or not.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes6done#20",
+"text": "Also, I've been told that people are welcome to request additional sandwiches or pastries, but I don't actually know of anyone who has ever tried that.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes7done#11",
+"text": "Anything from a business trip to a family vacation, The Ritz can make anyone feel satisfied.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes8done#117",
+"text": "The Dock is a great place to grab a light lunch or a snack.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes8done#127",
+"text": "Other dining choices include Dondero's which is supposed to be a fabulous Italian restaurant and a restaurant in the Anara Spa.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "HOTELS/yes8done#134",
+"text": "It's the heart that makes the difference.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no10done#9",
+"text": "I had such high hopes for this flick (calling this a 'film ' would be an insult to true 'films '), and I honestly thought that Myers would be able to bring a spastic, if childlike charm, to the role of The Cat.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no11done#38",
+"text": "Sean Hayes shines through the rest of cast, but only in one of his roles.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no11done#47",
+"text": "I realize that younger children might not get them, but then WHY include them?",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/no16done#15",
+"text": "Or belching ....or showing his buttcrack!!!!!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no17done#12",
+"text": "Youll probably have screaming kids who want to see this film.it is on steroids the way it runs all over the place but they may be entertained.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no17done#9",
+"text": "This is a short book which should have remained a cartoon classic on tv.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no18done#11",
+"text": "When The Cat unleashes the Things from their crate, the family dog gets a hold of the lock.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no1done#10",
+"text": "The film begins when former UCLA teacher Katherine Watson (Julia Roberts) who arrives at the station for Wellesley College, an all-womens school in Massachusetts where shes been hired to teach in the art department for its students.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no1done#7",
+"text": "Apparently, it is nt nor should it even be compared to Dead Poets Society.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/no22done#2",
+"text": "I'm not sure if I just got over them, or if it's just because they are all the same.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no24done#1",
+"text": "Anyone old enough to remember the TV series CIRCLE OF FEAR or NIGHT GALLERY?",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no2done#23",
+"text": "I think she may just be having a little too much fun playing miserable roles (falling on the ice comes to mind) when in real life, she is anything but.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no2done#35",
+"text": "I'm not sure what exactly Mona Lisa Smile sets out to say, except that maybe nothing is as it seems.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/no4done#28",
+"text": "Well, in The Last Samurai, there is a scene EXACTLY like it!! Except, instead of boxing gloves, they're wooden swords.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no4done#38",
+"text": "Other than the rip offs, I find it very funny how Tom Cruise, the all-mighty white man, it the only survivor of the entire Samurai army.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no4done#6",
+"text": "Review - Don't let this movie fool you.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MOVIES/no6done#22",
+"text": "No really, stop laughing.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MOVIES/no6done#35",
+"text": "It's a completely disconnect the brain, plan on wasting some money and a few hours of your life, and go see it.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no7done#5",
+"text": "The opening scenes are a letter-perfect take-off on the Rankin-Bass Christmas TV specials.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/no7done#9",
+"text": "If ever there was a pregnant premise for comedy, a naive, six-foot-tall elf set loose in unforgiving New York City ought to be it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/no8done#35",
+"text": "She's a legally blonde ... something, I don't remember (my bad!) and she is hosting a party at her house that night.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MOVIES/no9done#38",
+"text": "What, his buddy Ron Howard wasn't available?",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes10done#14",
+"text": "He did nt seem to be a bad guy, just someone who managed to get off track in life as his main focus became dollar signs and not being happy with his life.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes10done#34",
+"text": "The film could have easily descended into being a farce, but he kept it in line.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes12done#2",
+"text": "He finds him, and at first is not accepted.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes13done#5",
+"text": "Well this is a movie that you would want to see to bring back that Christmas cheer.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes15done#17",
+"text": "That story was not an exceedingly long one, so as you can imagine the film has been extended quite a bit with original material in order to make it a feature length film.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes15done#46",
+"text": "How do they like it?",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes15done#6",
+"text": "Its important for a reader to identify this, and then take any advice in a review accordingly.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes17done#14",
+"text": "I would like to see more character establishment.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes17done#15",
+"text": "Plus, the role that Downey Jr. played was a little unclear--was he an obstacle or not?",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes18done#23",
+"text": "And, of course, the boy learns to be a man in the process.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes1done#34",
+"text": "Throughout the film the material was sensitively and honestly handled in this same manner.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes20done#10",
+"text": "I am one who analyzes films enough to predict the next action taken, but this film gave a few surprises (I will be creating films as a computer animator, thus I analyze).",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes21done#18",
+"text": "Her beautiful smile is breathtaking and could melt ice off the Rocky Mountains.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes22done#19",
+"text": "Over the course of the movie, Marcus does his best to keep Willie out of trouble.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes23done#27",
+"text": "What's more, he has somehow, against all odds, made a friend.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes23done#37",
+"text": "Take \" The Cat in the Hat \"'s Spencer Breslin, add about seventy-five pounds, yellow-crusted underwear, ill-fitting shorts, and an intensely eyes-locked-on-you manner that is as creepy as it is amusing, and you can understand why this kid gets pounded on every day.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes23done#57",
+"text": "It's the same message as \" It's a Wonderful Life\", albeit delivered with a lot more f-words and flying liquor bottles.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes2done#34",
+"text": "The other small complaint I could express regards the Hollywood furor that develops around the Knapely women.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes5done#30",
+"text": "Algren is housed with the family of the samurai that he killed in battle.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes5done#48",
+"text": "Now let's move on to two of my (normally) favorite producers/writers/directors in the world - Edward Zwick and Marshall Herskovitz.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes5done#53",
+"text": "This movie was too long (I had to pee) and very predictable in parts (I rolled my eyes).",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MOVIES/yes7done#28",
+"text": "If anyone in the movie gave a better performance than Cruise, it was him.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MOVIES/yes9done#8",
+"text": "I forced my reluctant wife (who had no interest) to see it, and she left the theatre happily surprised.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/no10done#19",
+"text": "However, if you can get your hands on Please Hammer at garage sale prices, or a single of U Cant Touch This, make sure to pick it up: Cant Touch is a must-have for every music collection!",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no12done#142",
+"text": "Those will definetely provide enjoyment, a LOT more than this.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no12done#67",
+"text": "Featuring a scratch snare, some very low chimes, and a simple drum loop with no bass, the atmosphere is seemingly non-existant and the song is low, im guessing so that the emcees could flex their vocal muscles.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MUSIC/no12done#72",
+"text": "Snoop does his sort of charismatic flow which everybody knows, and his rhymes are below average, but not as terrible as i thought they would be.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MUSIC/no12done#95",
+"text": "Even though the beat is worth listening to, the rapper Fam-Lay is the worst emcee ive heard thusfar on this album, yes hes worse than Nelly.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no13done#37",
+"text": "Other than Busta Bus and Jay-Z, they also got Nelly, Ludacris, N.O.R.E., Snoop, Old Dirty Bastard, and the duo of Nas and Kelis.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no13done#51",
+"text": "It an interesting track called Losers that should've been the theme song for Revenge of the Nerds.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no14done#19",
+"text": "In his last verse it is still pretty weak but some of his lyrics are a bit better at first then he just falls off a cliff.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no14done#29",
+"text": "His lyrics on the second verse aren't too bad but the subject matter is awful, and once the chorus comes around again you will be slamming your head against the wall.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/no14done#39",
+"text": "Jazze Pha takes care of the chorus and Sleepy does his thing at the end of the song.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no14done#8",
+"text": "After Ali's dismal sales Murphy Lee is setting out to prove that he can sell.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no17done#81",
+"text": "I Got Y'all - 0 - This song features Bow Wow rappin to the females again.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no17done#89",
+"text": "Lil Bow Wow spits some pretty introspective lyrics in his first verse about opinions on him and his life, but he is just trying to grow up.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no18done#2",
+"text": "Needless to say, I won't be shouting praises for Bow Wow's \" Unleashed \" anytime soon.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/no19done#1",
+"text": "The idea of a CD with rappers teaming up with rock bands to do re-makes of hip hop classics just seemed like such a great idea.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no20done#11",
+"text": "The other album highlights can be summed up in a couple paragraphs.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no21done#106",
+"text": "The prince of D Block Jae Hood comes up to bat and knocks out a homer, like he had a corked bat.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no21done#131",
+"text": "Reminese comes up next and rips it as usual.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no21done#22",
+"text": "He really doesn't make sence when he raps and his metafores are crap.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/no22done#69",
+"text": "On here, Baby brings in former-underground sell-outs The Clipse to help Baby try to rap.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no22done#7",
+"text": "These guys gave Hip Hop a bad name, and it was only a matter of time before they fell.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no2done#23",
+"text": "To experience the official Demigod sound, just skip to the final song on here as all of the MCs show up and boasts their skills.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no3done#50",
+"text": "Very soothing, for a rap song at least.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no3done#60",
+"text": "Cam'Ron has a very original and classy style that you can listen to over and over again.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no4done#1",
+"text": "Why would any of you want an album where all you here is how much money",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/no5done#105",
+"text": "Track 12 - Leave Me Alone",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no6done#3",
+"text": "The album was supposed to be a movement toward feminest hip-hop... it din't make it.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MUSIC/no8done#21",
+"text": "That is the chorus, it is said four times.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no9done#59",
+"text": "This satisfies (a) of my process to mainstream success.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/no9done#73",
+"text": "\" Guess what?  he proclaims.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes12done#25",
+"text": "actually, i wish the whole song was dumped.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes13done#12",
+"text": "replicates his \" Superthug\" success from years ago.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes13done#23",
+"text": "Hip hop heads may wish to bypass the diversity on \" Clones, \" via the three rock contributions found mid-album.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/yes15done#18",
+"text": "9. Rap's A Hustle (*****)",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes15done#70",
+"text": "Even with the album appearing done, after about two minutes of waiting after the Fallen Soldiers (Remix) ends, another track starts up.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes16done#10",
+"text": "The Proxy - **12. 2 More Dead** - 13.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes17done#61",
+"text": "\" Cliff Hanger \" is a throwback to the days of classic hip-hop, when MCs did nt have to take themselves so seriously.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes18done#56",
+"text": "Overall, this remains one of the best tracks on the album, without the added help of guests or scratching, two of the main strengths of the album as a whole.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "MUSIC/yes21done#22",
+"text": "Sad to think that this group will always remain beneath mainstream radar, never reaching more than a cult status, but then again, isn't that the point?",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes21done#4",
+"text": "The original five was cut to just three, Jise, Q-Unique, and Swel 79.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes22done#30",
+"text": "10. How Many - Like all the other songs, Zion strives to be creative and not just resort to any old subject matter.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes23done#38",
+"text": "Shoutin curses at the sky/Instrumentals be the lullaby/Rhyme stimuli, / now come along, And vibe as we praise most high/You be trippin'/",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes23done#69",
+"text": "\" Inner Light \" is as positive as you can get about us.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/yes24done#106",
+"text": "If there's one word to describe this track, that would be it.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/yes24done#56",
+"text": "After a few seconds a nice bassline comes in and serves as perfect compliment to the samples.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes24done#60",
+"text": "A very busy beat, but it works.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "MUSIC/yes25done#14",
+"text": "That's all fine, in fact I really like the fact that a lot of hip-hop is about just having fun, but I think it can be more than that and have a message or say something somewhat profound.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "MUSIC/yes2done#26",
+"text": "Then it shifts from a narrative to a battle track, and he calmly rips apart Jon Saxton's label, rapping like he couldn't care less about the label, yet dropping vicious lines.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no11done#10",
+"text": "What I mean by this is if a name exists in my directory with a phone number, I want that directory name to display instead of the default caller-ID name.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no14done#2",
+"text": "These phones were purchased to replace a similar Vtech set and there is no comparison between the 2 systems.",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "PHONES/no16done#12",
+"text": "Then I transfered the phone list from our old phones to the new phones (manually of course).",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/no17done#0",
+"text": "Pros: Easy to find Talk button.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/no18done#9",
+"text": "Messages are put in box 1 by default, and you can set a code for boxes 2 and 3.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no25done#0",
+"text": "I've had the 2431 for 3 years.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/no25done#2",
+"text": "It works fine for the first 5 or 10 minutes and that's when the volume fades.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no4done#4",
+"text": "The feature set is fine but the the phone dies before you can get a chance to enjoy them.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no6done#1",
+"text": "For the price, I expected decent quality.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/no8done#3",
+"text": "My findings seem to indicate that you simply cannot get the voice clarity and sound quality from ANY digital cordless that you can from an analog phone, period.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "PHONES/yes11done#10",
+"text": "Any unit can page any other, and there are kits that include a console unit that contains a charger and a multifaceted digital answering machine.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes11done#19",
+"text": "Our family has always been happy with Panasonic products, looks like our new phones are no exception ...",
+"speculation": false,
+"negation": true,
+"w": 59.045
+},
+{
+"id": "PHONES/yes14done#18",
+"text": "*/SYM Digital security (I'm not really sure how \" secure \" the digital security touted on some of today's cordless units is, but it's comforting to at least feel like you're protected from eavesdropping and other people placing calls through your line)",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes14done#20",
+"text": "*/SYM I used to have a phone with a backlit keypad and found it to be a very handy feature.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes14done#23",
+"text": "Therefore, I decided that if I was going to go with another Panasonic, I was going to make sure the unit was powered by a NI-MH (Nickel Metal Hydride) battery pack.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes15done#16",
+"text": "You would not be able to listen into a digital cordless transmission as easily.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "PHONES/yes17done#2",
+"text": "We already own another 2.4GHz Panasonic cordless phone and we love it so we decided to stick with Panasonic and the 2.4GHz line:",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes18done#0",
+"text": "Our Sony phones died after 7 years ...which I don't think is too bad for a cordless phone.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "PHONES/yes19done#27",
+"text": "If you need to check the receptionist mailbox(Reffered to as The General Delivery Mailbox) you can press 4 then after the messages are heard then press 4 again and it will get you back to your mailbox.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes1done#22",
+"text": "This phone really sounds exactly like a good corded phone.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes1done#33",
+"text": "The base station can be used stand-alone as a speakerphone if there is no handset handy.",
+"speculation": true,
+"negation": true,
+"w": 19.475
+},
+{
+"id": "PHONES/yes1done#9",
+"text": "You can also buy a package that contains the base station and TWO handsets (Model KX-TG5110M), which you can usually find for around $265.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes20done#18",
+"text": "We would have liked to use several mailboxes to announce address and appointment information.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes20done#4",
+"text": "After reading reviews here at Epinions we decided to change to the Panasonic KX-TG2000B.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes21done#3",
+"text": "I have a second line wired to my office only so expanding it elsewhere in the house won't be necessary.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes21done#4",
+"text": "I may add a cordless unit for downstairs in case I'm there or when I have small meetings in my living room.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes22done#13",
+"text": "Mostly, it sounds like you're under water.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes22done#14",
+"text": "Oh - one last thing - once a call is answered by a handset, you can't just turn on another handset and join in.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes22done#4",
+"text": "The individual phones were a problem for me because I would regularly put the phone in the wrong base station; some of the cordless phones out there aren't real tolerant of that.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes23done#10",
+"text": "When a call comes in you can save the caller ID info directly into your phone.",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes23done#9",
+"text": "It doesn't have a mute button but it does have a hold button, which is even better.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes2done#29",
+"text": "Which is the way to go if you can (but that is another review).",
+"speculation": true,
+"negation": false,
+"w": 19.475
+},
+{
+"id": "PHONES/yes3done#1",
+"text": "I am a professional in the business telecommunications field specializing in Key and PBX system design.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes5done#7",
+"text": "I'd recommend it - especially for people with wireless 802.11b networks.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes8done#1",
+"text": "My choices were limited due to the features I wanted.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+},
+{
+"id": "PHONES/yes8done#4",
+"text": "I was forced to apologize to her during the blackout in August because it was the only phone in the house that worked.",
+"speculation": false,
+"negation": false,
+"w": 59.045
+}
+]
+}
