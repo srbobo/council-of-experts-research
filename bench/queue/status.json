@@ -50,8 +50,15 @@
    "commit": "eaa8c61"
   },
   "c66-check": {
+   "state": "done",
+   "started_utc": "2026-10-05T15:28:43Z",
+   "finished_utc": "2026-10-05T18:16:00Z",
+   "attempts": 1,
+   "commit": "22eb52c"
+  },
+  "c66-measure": {
    "state": "running",
-   "started_utc": "2026-10-05T15:28:43Z"
+   "started_utc": "2026-10-05T18:16:04Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

@@ -2536,8 +2536,8 @@
     {
      "id": "66",
      "current_title": "are caveats lost more than ordinary sentences?",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P66.0",
       "P66.1",
@@ -2573,6 +2573,12 @@
        "end": 12111,
        "kind": "note",
        "heading": "CELL 66 CHECK RECORD (2026-10-05) — the amended P66.0 scored against public human labels and known values; output of the registered check script"
+      },
+      {
+       "line": 12112,
+       "end": 12141,
+       "kind": "verdict",
+       "heading": "CELL 66 VERDICT (2026-10-05) — 1,710 pairs; verdict lines as printed by the registered script after the amended check, reading to follow"
       }
      ],
      "matrix_row": null

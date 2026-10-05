@@ -242,31 +242,31 @@
   },
   "66": {
    "title": "Are caveats lost more than ordinary sentences?",
-   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. Since the author cannot label 120 cases, the judges will be checked on public human labels instead.",
-   "outcome": "not-run",
-   "size": "AI judging done, a check on public labels queued",
+   "description": "For 285 caveat sentences and 285 ordinary sentences of similar length, two AI judges decide whether each is conveyed in the editor's answer. The judging is done. Since the author cannot label 120 cases, the judges will be checked on public human labels instead. The runs finished on 5 October 2026.",
+   "outcome": "stopped",
+   "size": "1,710 pairs judged by two AI judges, checked on public labels",
    "why": "The editor's answer is about 30% as long as the specialists' text, so most sentences of any kind are left out. The corrected word-for-word figure of 3% (Cell 48) misses caveats restated in the editor's words, and the formula's share w (Cell 46) mostly reflects length. Neither says whether caveats are dropped more than other content. A review in October 2026 asked for that comparison. This cell makes it, and first checks the scoring against a person's labels.",
    "expectations": [
     {
      "id": "P66.0",
      "text": "The judges' rule would pass a check against human labels: at first the author's 120 blind labels, now 300 public human-labeled sentences plus 260 cases with a known answer.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. The replacement check was written down on 2 October 2026 and runs after the current queue."
+     "outcome": "failed",
+     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P66.1",
      "text": "Caveat sentences would be conveyed less often than ordinary sentences of similar length from the same text.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. This is the main expectation of the cell, and it could also come out even or the other way."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P66.2",
      "text": "We would report how often caveats and ordinary sentences are conveyed fully or partly, and how often a judge reading the whole answer finds something the shortlist missed.",
-     "outcome": "not-tested",
-     "note": "Not tested yet. Reported without a pass/fail test."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "The two AI judges finished all 1,710 cases on 2 October 2026. The plan had the author label 120 cases blind to check the judges before the comparison could be read. That turned out not to be possible, so on the same day, before anything from the judges was read, we wrote down a replacement check and queued it. The judges will be scored on 300 human-labeled summary sentences from a public benchmark (FRANK), where people marked whether a sentence is supported by its article, with the same pass marks as before. They will also be scored on 260 cases with a known answer, built from answers the experiment does not use. Those are sentences copied from the answer itself, sentences with one figure changed by a fixed rule, and sentences from a different scenario. Only if that check passes will the comparison be read. Nothing about the comparison has been computed or shown.",
+   "found": "The comparison between caveats and ordinary sentences was scored on 5 October 2026. By the rules written down in advance, 0 of the 1 graded expectations held up, 0 did not, and 1 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "If caveats are conveyed less often, the paper can say the editor drops caution in particular, and by how much. If they are conveyed about as often, the claim that prose loses caution is withdrawn in favor of a plainer one: the answer is shorter than its sources and keeps caveats in proportion.",
    "later": null,
    "entries": {
@@ -294,6 +294,11 @@
      "label": "Note",
      "title": "The AI judges were checked against public human labels and known values",
      "summary": "Instead of the author's labels, the two AI judges were checked on 5 October 2026 against 300 human-labeled summary sentences from a public benchmark and 260 cases built with a known answer. The pass or fail of that check decides whether the caveat comparison may be read."
+    },
+    "12112": {
+     "label": "Result",
+     "title": "The comparison scored: results by the rules set in advance",
+     "summary": "The comparison between caveats and ordinary sentences was scored on 5 October 2026. Of the 1 graded expectations, 0 held up, 0 did not and 1 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   },

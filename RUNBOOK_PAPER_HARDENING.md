@@ -12108,3 +12108,33 @@ Part B — known values on repeat 6 (unused by the experiment)
   VERDICT LINE (amended P66.0, as registered)
   P66.0: FAILS — part(s) K2 below the bar; P66.1 is NOT EVALUABLE with this tool (blocked)
 ```
+
+## CELL 66 VERDICT (2026-10-05) — 1,710 pairs; verdict lines as printed by the registered script after the amended check, reading to follow
+
+Recorded automatically by the run queue (step `c66-measure`, 2026-10-05T18:16:04Z, commit 22eb52c checked out, 0 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 66 — are caveats lost more than ordinary content?
+==============================================================================
+pairs 1710; with both judges' verdicts 1710
+the two judges against each other (conveyed at all): raw 0.848  kappa 0.572
+
+the rule against public human labels and known values (CELL 66 AMENDMENT): A passes, K1 passes, K2 fails, K3 passes
+P66.0 FAILS — amended check; bars as registered
+
+P66.2  how much is conveyed (the rule; all usable pairs)
+  caveat    n =  855   conveyed at least partly 0.696   conveyed fully 0.270
+  ordinary  n =  855   conveyed at least partly 0.696   conveyed fully 0.260
+
+P66.1  caveats minus matched ordinary sentences, scenario level (scenarios with at least 5 matched caveats)
+  conveyed at least partly   main           +0.004 [-0.128, +0.135]  sign-flip p = 0.9514  (k = 14)
+  conveyed at least partly   all scenarios  +0.052 [-0.089, +0.194]  sign-flip p = 0.4502  (k = 17)
+  conveyed fully             main           +0.006 [-0.060, +0.072]  sign-flip p = 0.8591  (k = 14)
+  conveyed fully             all scenarios  -0.044 [-0.135, +0.046]  sign-flip p = 0.3301  (k = 17)
+VERDICT LINE (as registered): P66.1 NOT EVALUABLE — the rule failed its check (P66.0); recorded as blocked, not as a null
+
+what the three-sentence shortlist misses (one judge reads the whole answer; pairs the rule called not conveyed):
+  caveat    n = 30   fully 0.200   partly 0.233   no 0.567
+  ordinary  n = 30   fully 0.200   partly 0.367   no 0.433
+```
