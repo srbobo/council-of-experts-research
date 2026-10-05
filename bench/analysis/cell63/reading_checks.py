@@ -99,6 +99,15 @@ def check_writer(rows: list[dict], all_rows: list[dict], items: dict[str, dict],
     for k, v in integ.items():
         print(f"   {k}: {v}")
 
+    # ---- A2. replies cut at the token allowance (done_reason "length"): scored "no answer" when the
+    # final line was never reached; not the same as an empty reply and not a context-limit hit
+    cut = {c: {"cut": sum(r["audit"].get("done_reason") == "length" for r in rows if r["cond"] == c),
+               "cut_and_no_answer": sum(r["audit"].get("done_reason") == "length" and r["outcome"] == "none" for r in rows if r["cond"] == c),
+               "no_answer": sum(r["outcome"] == "none" for r in rows if r["cond"] == c)} for c in CONDS}
+    out["cut_at_allowance"] = cut
+    print("A2. replies cut at the token allowance, by layout: "
+          + ", ".join(f"{c} {v['cut']} (no answer {v['no_answer']})" for c, v in cut.items()))
+
     # ---- B. second tries
     order = {r["run_id"]: i for i, r in enumerate(all_rows)}
     retried = []

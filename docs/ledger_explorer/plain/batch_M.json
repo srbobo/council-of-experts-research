@@ -61,9 +61,9 @@
   },
   "63": {
    "title": "Does the editor catch a wrong figure it could check?",
-   "description": "On 61 questions with computed answers, the editor never followed a note's wrong figure when the scenario stated the right one. When two notes disagreed it mostly used the first one listed and rarely told the reader. Two more editor models are still to run.",
+   "description": "On 61 questions with computed answers, three editor models never followed a note's wrong figure when the scenario stated the right one. When two notes disagreed, each mostly used the first one listed, but only the main editor hid the disagreement from the reader.",
    "outcome": "held",
-   "size": "610 runs with the main editor model",
+   "size": "1,830 runs, 610 for each of three editor models",
    "why": "Cells 47 and 59 planted a value the editor could not check, and asked for it by name, so repeating it showed little. A review in October 2026 asked for a test where checking is possible. Here every question has a computed answer that changes when one input figure changes. In one setup the scenario itself states the right figure while a note quotes a wrong one, so the error can be caught. In others the figure appears only in the notes. Nothing tells the editor to include or check the figure.",
    "expectations": [
     {
@@ -94,7 +94,7 @@
      "id": "P63.4",
      "text": "When two notes quote different figures, the editor's reply would mention both figures in fewer than half of runs.",
      "outcome": "held",
-     "note": "Held up. Both figures appeared in 41 of 244 replies (17%). Averaged over the 14 kinds of question it was 19%, plausibly 9% to 29%. Our own read of 60 replies put the share that showed the disagreement near 1 in 5."
+     "note": "Held up for the main editor: both figures appeared in 41 of 244 replies (17%). It did not carry over. Phi-4 showed both figures in 97% of its replies and qwen3-vl in 67%, so this is a trait of one editor."
     },
     {
      "id": "P63.5",
@@ -103,8 +103,8 @@
      "note": "Reported without a pass/fail test. The first note listed won in 170 of 244 runs (70%), and the larger figure in 133 of 226. Other answers were 2% to 8% of runs in each setup. Two runs of 610 gave no answer."
     }
    ],
-   "found": "The main editor model, gpt-oss-20B, finished 610 runs on 2 October 2026. With the right figure stated and quoted, it answered correctly in 119 of 122 runs (98%).\n\nWhen a note misquoted a figure that the scenario itself stated, the answer never followed the note (0 of 122 runs). When the note was the only source, the answer followed its wrong figure in 112 of 122 runs (92%). No reply told the reader that a note disagreed with the scenario. The editor used the scenario's figure and said nothing, and it took no longer than usual.\n\nWhen two notes gave different figures and the scenario gave none, the answer followed the first note listed in 170 of 244 runs (70%) and the second in 56. With one right and one wrong note, the wrong figure was followed in 62 of 122 runs (51%). Both figures appeared in 41 of 244 replies (17%). We read 60 of those replies ourselves to check the script's count. Counting replies that pointed out the disagreement without quoting both figures, about 1 in 5 let a reader see that two figures existed.\n\nThree runs needed a second try, because the model used up its whole length allowance while thinking and returned nothing.",
-   "means": "The editor does not pass on a note's wrong figure when the scenario states the right one. That is narrower than saying it catches errors. Nothing in its replies shows it noticed the mismatch. When the scenario is silent and two notes disagree, a second note helps only by chance. The editor picks one, usually the first, and in about 4 of 5 replies the reader is not told there was a choice. A design that relies on a second source needs a separate step that reports the disagreement. Cell 67 tests that in the full live system. The same 610 prompts still have to run on two other editor models.",
+   "found": "The main editor, gpt-oss-20B, finished 610 runs on 2 October 2026, and two more editors, Phi-4 and qwen3-vl, ran the same prompts by 4 October. The main editor answered correctly in 119 of 122 runs when the right figure was stated and quoted. The other two managed 91 and 107 of 122, below the 90% mark set in advance, so their results are reported without a pass or fail.\n\nWhen a note misquoted a figure that the scenario itself stated, almost no answer followed the note: 0, 1 and 0 of 122 runs for the three editors. When the note was the only source, the answer followed its wrong figure in 112, 89 and 104 runs. None of the editors told the reader about the misquote.\n\nWhen two notes gave different figures and the scenario gave none, the editors differed. The main editor picked one, usually the first listed, and showed both figures in only 41 of 244 replies (17%). Phi-4 showed both figures in 97% of replies and in a quarter of them gave an answer for each. Qwen3-vl showed both in 67%, but in 148 of 244 replies it kept weighing the two until it ran out of its length allowance and gave no answer. Where an editor did choose, the first note listed won about three times in four for all three.\n\nFor the main editor, three runs needed a second try because the model used up its allowance while thinking.",
+   "means": "An editor does not pass on a note's wrong figure when the scenario states the right one. That held for three editors, though two of them were too weak at the arithmetic for a formal test. It is narrower than saying they catch errors, since none mentioned the mismatch. When the scenario is silent and two notes disagree, no editor can tell which is right, and the first one listed usually wins. Whether the reader learns of the disagreement depends on the editor: ours hid it, the other two showed it. A design that relies on a second source needs a step that reports the disagreement, which Cell 67 tests in the full live system.",
    "later": null,
    "entries": {
     "10164": {
@@ -123,9 +123,14 @@
      "summary": "The editor used the scenario's figure over a misquoting note in every run, but never mentioned the mismatch. So we say it follows the scenario, and we do not say it catches errors. With two disagreeing notes it mostly took the first one listed, and about 1 reply in 5 let the reader see the disagreement. Three runs needed a second try. We read 60 replies ourselves to check the script's count."
     },
     "11702": {
-     "label": "Note",
+     "label": "Result",
      "title": "Two more editor models ran the same test",
-     "summary": "Phi-4 and qwen3-vl ran the same 610 prompts, finishing on 4 October 2026. Their tables are in the notebook entry. The pass or fail results stay those of the main editor model."
+     "summary": "Phi-4 and qwen3-vl ran the same 610 prompts, finishing on 4 October 2026. This entry holds the scoring script's tables exactly as printed. The pass or fail results stay those of the main editor model. Our reading is the next entry."
+    },
+    "11761": {
+     "label": "Note",
+     "title": "What carried over to the other two editors and what did not",
+     "summary": "Neither of the two added editors followed a misquoting note when the scenario stated the figure, 1 run in 244. Both fell short of the 90% mark on the clean setup, so their tables are reported without a pass or fail. With two disagreeing notes, Phi-4 showed both figures in 97% of replies, and qwen3-vl ran out of its length allowance in 61% of them."
     }
    }
   },

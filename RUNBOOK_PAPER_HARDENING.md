@@ -11757,3 +11757,135 @@ CELL 63 — a wrong figure the editor could check
   C3+C4 reply mentions both figures: +0.694 [+0.532, +0.855]  (k = 14 templates)
   C3 order: right when listed first 0.474 (n=19), when listed second 0.250 (n=20)
 ```
+
+## CELL 63 READING (2026-10-04) — two more editors: neither follows a note that the case contradicts (1 of 244 runs), but both fail the clean-layout check, and with two conflicting notes each behaves differently from the main editor: phi4 shows both figures in 97% of replies, qwen3-vl deliberates until its allowance runs out in 61%
+
+This is the analyst's reading of the CELL 63 RUN RECORD above (the repeat
+editors). The verdict lines of this cell are the main editor's and are
+unchanged. Figures the registered script does not print come from
+`bench/analysis/cell63/reading_checks.py`, rerun for all three editors;
+they are marked *not registered*.
+
+### The run
+
+- phi4:14b: 610 runs from 2026-10-04T06:30:51Z to 16:32:03Z (10.0
+  hours); qwen3-vl:30b-a3b-instruct: 610 runs from 16:32:52Z to
+  2026-10-05T03:10:29Z (10.6 hours). The registration estimated five to
+  seven hours each.
+- Every record carries registration commit 6402fc0 and the runner hash of
+  the main editor's runs (9242098ae47432a8); one model build each;
+  temperature 0.6 and the registered 4,096-token allowance. No run hit
+  the context limit, none was dropped, no reply was empty and none needed
+  a second try.
+- **Replies cut at the allowance** (*not registered*). The scoring stage
+  sets aside context-limit hits only. qwen3-vl's reply ended at 4,096
+  tokens, before any final answer line, in 4, 6 and 6 of 122 runs in C0
+  to C2 and in **80 and 68 of 122 in C3 and C4**. Those are scored "no
+  answer". They are not refusals to choose: the replies work the problem,
+  reach the conflict, and go round it ("we have no way to know … but
+  wait") until the allowance ends. phi4 and gpt-oss have none.
+
+### Each repeat editor's own check (P63.0)
+
+| editor | C0 right | check |
+|---|---|---|
+| gpt-oss:20b (main) | 119 of 122 (0.975) | passes |
+| phi4:14b | 91 of 122 (0.746) | **fails** |
+| qwen3-vl:30b-a3b-instruct | 107 of 122 (0.877) | **fails** |
+
+Under the registration each editor's P63.1 to P63.4 need its own C0 at
+0.90 or more, so for both repeat editors those are NOT EVALUABLE and the
+tables below are reported, not tested. phi4 misses on arithmetic (C0
+right is 0.17 to 0.30 on templates t8, t7 and r5 and 0.75 or more on the
+other eleven); qwen3-vl's 15 misses are 11 wrong numbers and 4 cut-off
+replies.
+
+### The tables, as counts of 122
+
+| layout | | gpt-oss | phi4 | qwen3-vl |
+|---|---|---|---|---|
+| C1, case contradicts the note | follows the note | 0 | 1 | 0 |
+| | right | 116 | 96 | 109 |
+| C2, note is the only source | follows the note | 112 | 89 | 104 |
+| C3, wrong note and right note | right / wrong / other / no answer | 52 / 62 / 8 / 0 | 44 / 37 / 28 / 13 | 14 / 25 / 1 / 82 |
+| | both figures in the reply | 25 | 116 | 87 |
+| C4, two wrong notes | follows one / other / no answer | 112 / 8 / 2 | 80 / 25 / 17 | 45 / 7 / 70 |
+| | both figures in the reply | 16 | 120 | 77 |
+
+### What repeats and what does not
+
+**Repeats on all three editors: a note that misquotes a figure the case
+states is not followed.** 0, 1 and 0 of 122 runs, against 112, 89 and 104
+when the note is the only source. The right-answer rate with the
+misquoting note is each editor's own clean-layout rate (116 against 119;
+96 against 91; 109 against 107). The misquote is rarely mentioned by any
+of them: the note's figure appears in 2, 3 and 9 of 122 C1 replies,
+against 2, 2 and 3 in C0, where it is nowhere in the prompt. This part of
+the main reading holds beyond the main editor, with the caution that two
+of the three editors did not pass the check that makes their tables
+testable.
+
+**Does not repeat: what happens when two notes conflict.** The main
+reading said the disagreement mostly does not reach the reader. That is
+a property of gpt-oss, not of editors in general:
+
+- gpt-oss picks one figure and shows both in 41 of 244 replies (17%).
+- phi4 shows both figures in 236 of 244 (97%). In 62 of those replies it
+  works the answer out under each figure and prints two answer lines; the
+  parser scores the last such line when it stands alone (32 replies) and
+  "no answer" otherwise (30). So a quarter of phi4's conflict replies
+  decline to choose, and its "follows" counts include 32 replies that
+  gave both answers (*not registered*).
+- qwen3-vl shows both figures in 164 of 244 (67%) and reaches a final
+  answer in only 92; 148 replies are cut at the allowance.
+
+**Repeats where it can be seen: the first-listed note wins.** Among runs
+whose answer follows one of the two notes, the first-listed share by
+template is 0.745 [0.664, 0.826] for gpt-oss, 0.791 [0.691, 0.891] for
+phi4 and 0.735 [0.564, 0.907] for qwen3-vl (*not registered*; 226, 160
+and 84 runs). For phi4 the figure is, if anything, held down by the 32
+two-answer replies scored by their last line.
+
+### What changes in the main reading
+
+- P63.4's verdict stands for the main editor. The sentence "the
+  disagreement mostly does not reach the reader" must name the editor:
+  true of gpt-oss:20b (17%), false of phi4:14b (97%) and of qwen3-vl
+  (67%, usually without an answer).
+- The second-source reading is unchanged in its core: no editor can tell
+  which note is right, and where one is chosen it is mostly the first
+  listed. What differs is whether the choice is visible.
+- gpt-oss is the only reasoning model of the three; its deliberation is
+  hidden and its replies are short. Whether that is why it alone hides
+  the conflict cannot be said from three models.
+
+### Limits
+
+- Both repeat editors fail their own clean-layout check, so nothing in
+  their tables is a registered test.
+- The 4,096-token allowance was registered for them from the smoke test
+  on a clean item; it is too small for qwen3-vl when notes conflict. Its
+  C3 and C4 "no answer" rates measure the allowance as much as the model.
+- The answer parser takes the last line that starts with ANSWER. It was
+  built for single answers (Cell 60) and mis-scores replies that give
+  two.
+
+### Consequences
+
+- **Ledger and paper.** The §5 row is updated: the case-over-note result
+  is seen on three editors (0, 1, 0 of 122), with two of them below the
+  0.90 check; the conflict behaviour is editor-specific. CELL 67 runs the
+  main editor only, in the live chain.
+- No new experiment is proposed here. A repeat with a larger allowance
+  for qwen3-vl, or a parser that recognises two-answer replies, would
+  each be a new registration.
+
+### Checklist items that bite on this reading
+
+3 (the parser and the "no answer" class were validated for single-answer
+replies; both mis-handle these editors' conflict replies, and the counts
+say how often). 6 (all per-editor contrasts were computed after the data
+were seen). 7 (the main reading's sentence about the reader was worded
+for editors in general and is narrowed to the one it describes). 11
+(cut-off replies, two-answer replies and "other" are reported for every
+editor and layout).

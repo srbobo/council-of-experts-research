@@ -709,7 +709,7 @@
   },
   "S5-13": {
    "claim": "Does the editor catch a wrong figure when the scenario states the right one?",
-   "detail": "Partly answered by Cell 63 on 2 October 2026, for the main editor model. When the scenario stated the figure, the answer never followed a note that misquoted it (0 of 122 runs, against 112 of 122 when the note was the only source). No reply mentioned the mismatch, so we say the editor follows the scenario, not that it catches errors. When two notes disagreed, the answer followed the first one listed in 170 of 244 runs and both figures appeared in 41 replies. Still to come: the same prompts on two other editor models, and Cell 67, which runs the questions through the full live system.",
+   "detail": "Partly answered by Cell 63 in October 2026. When the scenario stated the figure, three editor models almost never followed a note that misquoted it (0, 1 and 0 of 122 runs), though two of them were too weak at the arithmetic for a formal test. None mentioned the mismatch, so we say the editors follow the scenario, not that they catch errors. When two notes disagreed, each mostly took the first one listed. Only the main editor hid the disagreement. Still to come: Cell 67, which runs the questions through the full live system.",
    "cells": [
     "47",
     "59",
