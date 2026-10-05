@@ -12083,3 +12083,28 @@ computed after the data were seen). 8 (arms were assigned; the order
 split is observational across items, since order came with the shuffle).
 11 (no run gives "no answer"; a chain that always answers is reported as
 that, not as success).
+
+## CELL 66 CHECK RECORD (2026-10-05) — the amended P66.0 scored against public human labels and known values; output of the registered check script
+
+Recorded automatically by the run queue (step `c66-check`, 2026-10-05T18:16:00Z, commit b8c178b checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 66 AMENDED P66.0 — the conveyed judge against public human labels and known values
+==============================================================================
+statements 560; without a parsed verdict from both judges 0 (set aside)
+
+Part A — FRANK, 300 sentences (150 no-error, 150 error), weighted to a pool of {'no_error': 1625, 'error': 843}
+  both_fully                       kappa 0.742  precision 0.940  recall 0.873  F1 0.906  counts tp/fp/fn/tn 131/16/19/134
+  conveyed_rule_reported           kappa 0.686  precision 0.873  recall 0.927  F1 0.899  counts tp/fp/fn/tn 139/39/11/111
+  gpt-oss:20b alone                kappa 0.705  precision 0.917  recall 0.873  F1 0.894  counts tp/fp/fn/tn 131/23/19/127
+  qwen3-vl:30b-a3b-instruct alone  kappa 0.480  precision 0.786  recall 0.927  F1 0.850  counts tp/fp/fn/tn 139/73/11/77
+
+Part B — known values on repeat 6 (unused by the experiment)
+  K1 verbatim answer sentences FULLY by both: 1.000 (n = 50; bar at least 0.9)
+  K2 altered figure: originals FULLY by both 25 of 80; altered form FULLY by both 0.200, PARTLY 0.720 (bar at most 0.1; needs 15 originals)
+  K3 other scenario conveyed by the rule: 0.040 (n = 50; bar at most 0.05)
+
+  VERDICT LINE (amended P66.0, as registered)
+  P66.0: FAILS — part(s) K2 below the bar; P66.1 is NOT EVALUABLE with this tool (blocked)
+```

@@ -2567,6 +2567,12 @@
        "end": 11264,
        "kind": "amendment",
        "heading": "CELL 66 AMENDMENT (2026-10-02) — the person's labels are replaced by a check against public human labels (FRANK) and a known-value check on unused material; registered before any judge answer is read"
+      },
+      {
+       "line": 12087,
+       "end": 12111,
+       "kind": "note",
+       "heading": "CELL 66 CHECK RECORD (2026-10-05) — the amended P66.0 scored against public human labels and known values; output of the registered check script"
       }
      ],
      "matrix_row": null

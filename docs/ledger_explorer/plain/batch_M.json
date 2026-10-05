@@ -289,6 +289,11 @@
      "label": "Change to the plan",
      "title": "The author's labels replaced by public human labels and known answers",
      "summary": "Written down on 2 October 2026 before anything from the judges was read. The 120 blind labels the author could not provide are replaced by two checks with the same pass marks. One uses 300 human-labeled summary sentences from the public FRANK benchmark, the other 260 cases with a known answer built from unused material. The comparison is read only if that check passes."
+    },
+    "12087": {
+     "label": "Note",
+     "title": "The AI judges were checked against public human labels and known values",
+     "summary": "Instead of the author's labels, the two AI judges were checked on 5 October 2026 against 300 human-labeled summary sentences from a public benchmark and 260 cases built with a known answer. The pass or fail of that check decides whether the caveat comparison may be read."
     }
    }
   },

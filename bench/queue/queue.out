@@ -12,3 +12,7 @@
 2026-10-04T06:30:51Z STEP START c63-repeat
 2026-10-05T03:13:19Z STEP DONE c63-repeat commit c3083d6
 2026-10-05T03:13:19Z STEP START c67-livechain
+2026-10-05T15:27:49Z STEP DONE c67-livechain commit eaa8c61
+2026-10-05T15:27:49Z QUEUE COMPLETE
+2026-10-05T15:28:43Z QUEUE START pid 39811 steps ['c62-judges', 'c63-primary', 'c66-conveyed', 'c64-readers', 'c65-judges', 'c63-repeat', 'c67-livechain', 'c66-check', 'c66-measure', 'c62-check']
+2026-10-05T15:28:43Z STEP START c66-check

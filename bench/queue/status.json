@@ -43,8 +43,15 @@
    "commit": "c3083d6"
   },
   "c67-livechain": {
+   "state": "done",
+   "started_utc": "2026-10-05T03:13:19Z",
+   "finished_utc": "2026-10-05T15:27:45Z",
+   "attempts": 1,
+   "commit": "eaa8c61"
+  },
+  "c66-check": {
    "state": "running",
-   "started_utc": "2026-10-05T03:13:19Z"
+   "started_utc": "2026-10-05T15:28:43Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"
