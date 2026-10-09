@@ -60,6 +60,12 @@ STEPS = [
     ("c62-check", [["train/run_cell62_check.py", "build"], ["train/run_cell62_check.py", "smoke"],
                    ["train/run_cell62_check.py", "judge"]],
      ["train/run_cell62_check.py", "measure"]),
+    # CELL 68 EXECUTION (2026-10-09): screen, then arms a, b, b2, c, then arm d (last, so it can be dropped)
+    ("c68-screen", [["train/run_cell68_equalcost.py", "screen"]], ["train/run_cell68_equalcost.py", "screenreport"]),
+    ("c68-runs", [["train/run_cell68_equalcost.py", "runs"], ["train/run_cell68_equalcost.py", "runs"]],
+     ["train/run_cell68_equalcost.py", "measure"]),
+    ("c68-chain", [["train/run_cell68_equalcost.py", "chain"], ["train/run_cell68_equalcost.py", "chain"]],
+     ["train/run_cell68_equalcost.py", "measure"]),
 ]
 MODELS = ["gpt-oss:20b", "qwen2.5:7b-instruct", "phi4:14b", "qwen3-vl:30b-a3b-instruct",
           "llama3:8b-instruct-q4_K_M", "mistral:7b-instruct-v0.3-q4_K_M", "nomic-embed-text"]
@@ -112,6 +118,16 @@ def gate_c67() -> str | None:
     return None if ok else "Cell 63's clean-layout check (P63.0) did not pass for the editor model"
 
 
+def gate_c68() -> str | None:
+    """Cell 68's arms run only if the screen kept enough questions."""
+    p = ROOT / "bench" / "analysis" / "cell68" / "screen.json"
+    try:
+        scr = json.loads(p.read_text())
+    except Exception:                                           # noqa: BLE001
+        return "Cell 68's screen has no recorded result"
+    return None if scr.get("pass") else f"Cell 68's screen kept {len(scr.get('keep', []))} questions, fewer than the 60 needed"
+
+
 def run_stage(step: str, cmd: list[str], log: Path) -> int:
     with log.open("a", encoding="utf-8") as fh:
         fh.write(f"\n===== {now()} $ {' '.join(cmd)}\n")
@@ -128,8 +144,8 @@ def run_step(step: str, stages: list[list[str]], scoring: list[str] | None, st: 
     save_status(st)
     event(f"STEP START {step}")
     info = {"attempts": 0}
-    if step == "c67-livechain":
-        reason = gate_c67()
+    if step in ("c67-livechain", "c68-runs", "c68-chain"):
+        reason = gate_c67() if step == "c67-livechain" else gate_c68()
         if reason:
             info.update({"reason": reason, "finished_utc": now()})
             commit = _record(queue_record, step, "skipped", "", info)

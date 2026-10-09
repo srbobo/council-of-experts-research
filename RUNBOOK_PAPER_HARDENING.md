@@ -12560,3 +12560,222 @@ reading describes Cell 51's first limit loosely; as the CELL 51 CORRECTION
 has it, that limit is two readers, one of which wrote the report (the
 other reached p = 0.06 alone). No number, test or verdict is affected.
 The ledger, the site text and the paper say "five developers".
+
+## CELL 68 EXECUTION REGISTRATION (2026-10-09, before any call on the test pool) — MMLU-Pro law, health and business; a fifth setup so that the key comparison changes one thing; screen, sizes and rules frozen
+
+**Status.** The design entry of 2026-10-01 (CELL 68 PRE-REGISTRATION) left
+the items, the screen's sizes and the sample size to this entry. On
+2026-10-09 the author approved downloading the question set and the library
+that reads it, and asked for the runs to start ("Approved, download
+MMLU-Pro and pyarrow and start running the chain"). When this entry is
+committed, no question from the test pool has been sent to a model. The
+only calls so far are a timing and parser check on the 15 validation
+questions of the three categories, which are not in the test pool
+(results below). Runner: `train/run_cell68_equalcost.py`; manifest of the
+downloaded files: `docs/EXTERNAL_DATA.md`.
+
+### Items
+
+- **Source.** MMLU-Pro (Wang et al., 2024), test split, MIT licence,
+  `bench/external/mmlu_pro/test-00000-of-00001.parquet`, SHA-256
+  `0e24a191…9ad8`, checked by the runner on every load. Ten-option
+  multiple choice with a fixed key. Categories law (1,101 questions),
+  health (818) and business (789). Options that read "N/A" are padding
+  and are dropped, and the key is remapped; 649 of the 2,708 questions
+  have fewer than ten options after that.
+- **Why not the candidates named in the design** (MedQA, LegalBench,
+  FinQA or TAT-QA). They were listed as candidates. MMLU-Pro has the three
+  fields in one format with one scoring rule, records each question's
+  original source, and is one 4 MB file under a permissive licence.
+  FinQA would have needed table arithmetic scored with a tolerance, and
+  most LegalBench tasks are two-way classifications, where the screen's
+  middle band sits near chance.
+- **Order of candidates.** Within each category, questions are taken in
+  the order of SHA-256 of `cell68|q<question_id>`. No one chose the order.
+
+### Screen (single model only)
+
+Direct draws with the arm (a) prompt. A question is kept when the model is
+right in two to four of six draws. Draws stop as soon as the decision is
+fixed (two right and two wrong: keep; five right or five wrong: reject),
+which gives the same decision as six draws on every one of the 64
+possible sequences (checked by `selftest`). A draw with no parseable
+letter, an empty reply or a context-limit hit counts as wrong in the
+screen. The categories are screened in turn, one candidate at a time. A
+category stops at **50 kept questions or 400 candidates**, whichever
+comes first. **If fewer than 60 questions are kept in all, the runs do not
+start** and the screen is reported alone. The screen never sees a pipeline
+answer, and its draws are never reused as arm data (fresh draws are
+unbiased for the kept questions; reused ones would not be).
+
+### Setups (arms), one model, the same kept questions, one session
+
+gpt-oss:20b plays every part, with its default reasoning setting.
+
+| arm | what | model calls |
+|---|---|---|
+| (a) direct | one answer; scored as the mean over the four draws of a replicate | 1 |
+| (b) vote | the four direct draws of the replicate; plurality of their letters, a tie going to the tied letter drawn first | 4 |
+| (b2) plain drafts and editor | direct draws 0 to 2 of the replicate, given to the editor | 4 |
+| (c) pipeline | three role-prompted drafts (healthcare, legal, finance), given to the same editor | 4 |
+| (d) assembled chain | the Cell 60 and 67 chain: quantities, plan, three specialists with sub-questions, tension list, one follow-up, final answer | about 8 |
+
+- **Prompts.** Direct draws: system "You are an analyst answering a
+  question for a decision-maker. Be careful and exact."; user: the
+  question, the lettered options, and "Work step by step, then end your
+  reply with a final line of exactly: ANSWER: <letter>". Pipeline drafts:
+  the same user message under the three role system prompts of Cell 30
+  (`SEATS`). Editor, for (b2) and (c) alike: "You are the lead analyst.
+  Three analysts have written the contributions below. Answer the
+  decision-maker's question. Work step by step, then end your reply with a
+  final line of exactly: ANSWER: <letter>", with the drafts labelled
+  ANALYST A, B, C, then the question. In (c) the order of the three roles
+  is shuffled per question and replicate (seeded). The chain uses the
+  prompts of Cells 60 and 67 unchanged, except that the final step asks
+  for a letter.
+- **(b2) and (c) differ in one thing**: the system prompt of the three
+  drafts. Same model, temperature (0.7), allowance (16,384 tokens), user
+  message, editor prompt, editor temperature (0.6) and pile format.
+- **(a), (b) and (b2) share draws.** Their differences are differences
+  between ways of using the same draws.
+- **Cost.** (b), (b2) and (c) each make four calls. Tokens differ and are
+  reported per arm. (a) makes one call and (d) about eight, so P68.1 and
+  P68.3 compare systems at unequal cost.
+- **Replicates.** Every arm is run **three** times per kept question.
+  Seeds are fixed per run id. A run that hits the context limit is set
+  aside and counted, never scored. A chain run whose plan cannot be parsed
+  in three tries counts as no answer (a wrong answer at system level) and
+  is reported.
+- **Order.** The screen, then arms (a), (b), (b2) and (c) for every kept
+  question, then arm (d) for every kept question. Arm (d) runs last so
+  that it can be stopped without losing the others.
+
+### Outcome and analysis
+
+Exact match of the parsed letter against the key, by script, and the share
+of runs that give a letter at all (reported per arm). The parser takes the
+last line beginning with ANSWER and accepts the letter alone or in
+brackets, bold or `\boxed{}`; anything else is no answer.
+
+Each question's accuracy in an arm is its mean over replicates. A
+comparison is the mean of question-level differences, with a t-interval
+over questions and a sign-flip test. The design asked for clustering on
+source and topic where the set gives one. MMLU-Pro gives a source, but
+law is almost all one source (1,003 of 1,101 from professional law), so
+clusters would be few and uneven. The question is therefore the unit,
+and results are also reported by category and by source.
+
+### Predictions and verdict rules
+
+Smallest difference worth detecting: 0.05.
+
+- **P68.1.** The pipeline (c) is more accurate than one direct answer (a).
+  A system comparison at four calls against one.
+- **P68.2 (primary).** The pipeline (c) is more accurate than the same
+  editor given three plain drafts (b2). This is the one-factor test of
+  whether the roles add anything beyond sampling the model several times.
+- **P68.3.** The assembled chain (d) is no more than 0.05 less accurate
+  than the pipeline (c). A system comparison.
+
+For P68.1 and P68.2: SUPPORTED if the interval's lower end is above 0;
+FALSIFIED if its upper end is below 0; otherwise NOT SHOWN, with a note
+when the upper end is below 0.05 (any advantage is smaller than the
+smallest difference worth detecting). For P68.3: SUPPORTED if the lower
+end is above −0.05; FALSIFIED if the upper end is below 0; otherwise NOT
+SHOWN. No correction for three tests; P68.2 is the primary.
+
+Descriptive, no verdict: the design's original P68.2, pipeline (c) minus
+vote (b), which differs in two things (roles, and editor instead of a
+vote); vote minus one answer; plain drafts with the editor minus the vote
+and minus one answer; every comparison by category and by source; tokens
+per arm; how often the pipeline's final letter is one of its drafts'
+letters.
+
+### Changes from the design, from the pre-recommendation checklist
+
+1. **One factor.** The design's P68.2 compared the pipeline with a vote of
+   four. That differs in two things: the roles, and an editor instead of
+   a vote. Arm (b2) is added and P68.2 now compares (c) with (b2). The
+   original comparison is reported as descriptive.
+2. **Bar attainability.** The design's P68.3 ("at least as accurate") had
+   no margin. It now has one of 0.05 (see the attainability table).
+3. **Instrument validity.** The answer parser was read by hand on the
+   validation replies before this entry (below), after the digit detector
+   of Cells 63 and 67 missed typeset figures.
+4. **Verdict words.** A third word, NOT SHOWN, separates an interval that
+   includes zero from one below zero.
+5. **Analysis unit.** Questions instead of source clusters (above).
+
+### Attainability (checklist item 12)
+
+Every kept question has a single-model accuracy between one third and two
+thirds on the screen, so no arm starts at a floor or a ceiling. Expected
+half-widths of the 95% interval for a question-level difference, from a
+simulation with independent arms and question accuracies spread across
+that band:
+
+| kept questions | 1 replicate | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 90 | 0.143 | 0.103 | 0.085 | 0.074 |
+| 150 | 0.111 | 0.080 | 0.066 | 0.057 |
+
+With 150 questions and three replicates, P68.1 and P68.2 can be
+SUPPORTED with even odds when the true difference is about 0.07. A
+true difference of 0.05 will usually come out NOT SHOWN. P68.3 can be
+SUPPORTED with even odds only when the chain is in fact about 0.02 or
+more ahead of the pipeline; if the two are equal it will usually be NOT
+SHOWN. These limits are stated now so that a NOT SHOWN is read as a limit
+of size and not as evidence of no difference.
+
+### Timing and parser check (validation split, before this entry)
+
+Run 2026-10-09 23:00Z to 23:47Z (`train/run_cell68_equalcost.py smoke`,
+replies in `bench/analysis/cell68/smoke.jsonl`; not registered data). One
+direct draw on each of 12 validation questions, and one replicate of every
+arm on one question per category (q5 health, q15 business, q65 law).
+
+| unit | runs | gave a letter | right | median seconds | median tokens | context-limit hits |
+|---|---|---|---|---|---|---|
+| direct draw | 24 | 24 | 19 | 34 | 856 | 0 |
+| plain drafts and editor (editor call) | 3 | 3 | 3 | 12 | 894 | 0 |
+| pipeline (four calls) | 3 | 3 | 3 | 140 | 4,225 | 0 |
+| assembled chain (eight calls) | 3 | 3 | 3 | 505 | 20,315 | 0 |
+
+**Parser read.** The AI assistant read the last lines of all 33 replies.
+Every reply ended with an ANSWER line, written as "ANSWER: J", "**ANSWER:
+J**" or "Answer: F", and in all 33 the parsed letter is the letter on that
+line. No reply was left unparsed.
+
+**Timing.** One question through every arm once took 777 to 781 seconds:
+about 280 for arms (a) to (c) and about 500 for the chain. The screen costs
+about 5.1 draws of about 34 seconds per candidate. Projected machine time:
+the screen 30 to 50 hours (500 to 900 candidates); arms (a) to (c) about
+35 hours for 150 questions; the chain about 60 hours. About six days in
+all. The replicate count stays at three, the figure given to the author
+before the approval.
+
+The three full runs were on easy questions (every draft agreed), so they
+show the plumbing works, not how the arms differ.
+
+### Known limits, stated before the runs
+
+- **Contamination.** MMLU-Pro is public (2024), and gpt-oss may have seen
+  its questions. That affects every arm alike, but it may shrink the room
+  any setup has to improve.
+- **The screen favours unclear questions.** Questions the model gets
+  right about half the time include questions whose key is disputed or
+  wrong. Such questions add noise to every arm, and a setup that copies
+  a common wrong answer is not penalised relative to the key it shares.
+- **Two of the three roles are off-topic on every question.** A law
+  question goes to a healthcare and a finance analyst as well. That is how
+  the system is built, and this test measures the system as built.
+- **One model.** Every arm is gpt-oss:20b. The result says nothing about
+  pipelines that mix models.
+
+### Checklist items that bite
+
+1 (one factor: arm b2 added), 3 (parser read by hand), 4 and 12 (the
+attainability table; P68.3 margin), 5 (paired on the same questions, one
+session), 6 (MMLU-Pro is public; nothing from it had been run here), 9
+(the vote and the plain-drafts setup are the cheaper alternatives the
+review named), 11 (share of runs with a letter, per arm).

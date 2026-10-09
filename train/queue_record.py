@@ -30,12 +30,13 @@ PLAIN = ROOT / "docs" / "ledger_explorer" / "plain"
 BATCH = PLAIN / "batch_M.json"
 Q = ROOT / "bench" / "queue"
 PY = sys.executable
-TRAILER = "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+TRAILER = "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
-VERDICT_RE = re.compile(r"\b(P6\d\.\d):?\s+(NOT EVALUABLE|SUPPORTED|FALSIFIED|REVERSED|PASSES|FAILS|MIXED)")
+VERDICT_RE = re.compile(r"\b(P6\d\.\d):?\s+(NOT EVALUABLE|NOT SHOWN|SUPPORTED|FALSIFIED|REVERSED|PASSES|FAILS|MIXED)")
 WORD_TO_OUTCOME = {"SUPPORTED": "held", "PASSES": "held", "FALSIFIED": "failed", "FAILS": "failed",
-                   "REVERSED": "reversed", "NOT EVALUABLE": "unclear", "MIXED": "partly"}
+                   "REVERSED": "reversed", "NOT EVALUABLE": "unclear", "NOT SHOWN": "unclear",
+                   "MIXED": "partly"}
 NOTE = {
     "held": "Held up, by the rule written down in advance. A fuller account follows.",
     "failed": "Did not hold up, by the rule written down in advance. A fuller account follows.",
@@ -139,6 +140,35 @@ STEPS = {
         "what": "The full live system finished both versions of the 61 questions on {long}.",
         "paths": ["bench/analysis/cell67", "bench/runs/cell67_livechain.jsonl"],
     },
+    # CELL 68 EXECUTION (2026-10-09)
+    "c68-screen": {
+        "cell": "68", "kind": "note",
+        "heading": "CELL 68 SCREEN RECORD ({date}) — which public questions leave room to improve; output of the registered screen",
+        "label": "Note", "title": "The screen picked the questions with room to improve",
+        "summary": ("On {long} the single model finished answering candidate questions six times each, stopping early once "
+                    "the result was fixed. Only questions it got right two to four times in six were kept. No pipeline "
+                    "answer was made before this list was fixed."),
+        "size": "Screen done, runs next",
+        "paths": ["bench/analysis/cell68", "bench/runs/cell68_screen.jsonl"],
+    },
+    "c68-runs": {
+        "cell": "68", "kind": "verdict", "reported": ["P68.3"],
+        "skip_why": "The check exists because the comparison needs enough questions on which the single model is unsure. ",
+        "heading": "CELL 68 VERDICT ({date}) — single answer, vote, plain drafts with the editor, and the pipeline; verdict lines as printed by the registered script, reading to follow",
+        "label": "Result", "title": "Runs finished: results by the rules set in advance",
+        "size": "Four setups on the screened questions; the assembled chain still to run",
+        "what": "The single answer, the vote, the plain drafts with the editor, and the specialist pipeline finished on {long}.",
+        "paths": ["bench/analysis/cell68", "bench/runs/cell68_runs.jsonl"],
+    },
+    "c68-chain": {
+        "cell": "68", "kind": "verdict",
+        "skip_why": "The check exists because the comparison needs enough questions on which the single model is unsure. ",
+        "heading": "CELL 68 VERDICT ({date}) — the assembled chain added; verdict lines as printed by the registered script, reading to follow",
+        "label": "Result", "title": "The assembled chain finished: results by the rules set in advance",
+        "size": "Five setups on the screened questions",
+        "what": "The assembled chain finished on {long}, so all five setups are now scored.",
+        "paths": ["bench/analysis/cell68", "bench/runs/cell68_runs.jsonl"],
+    },
 }
 
 
@@ -193,9 +223,10 @@ def record(step: str, state: str, output: str, info: dict) -> str | None:
         line = _append_runbook(heading, body)
         c["outcome"], c["size"] = "stopped", "Not run: a checkpoint set in advance was not passed"
         c["found"] = (f"This cell did not run. Its plan said it would run only if an earlier check passed, and on {long} "
-                      "that check had not passed. No runs were made and nothing was scored. The check exists because the "
-                      "test is only meaningful if the editor can work out these answers when it is given the right figures. "
-                      "The notebook entry below records the reason the queue gave for skipping it.")
+                      "that check had not passed. No runs were made and nothing was scored. "
+                      + meta.get("skip_why", "The check exists because the test is only meaningful if the editor can work "
+                                 "out these answers when it is given the right figures. ")
+                      + "The notebook entry below records the reason the queue gave for skipping it.")
         c["entries"][str(line)] = {"label": "Stopped", "title": "Not run: a checkpoint set in advance was not passed",
                                    "summary": (f"The plan for this cell said it would run only if an earlier check passed. "
                                                f"On {long} that check had not passed, so the queue skipped the cell and made no runs.")}

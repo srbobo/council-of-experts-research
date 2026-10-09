@@ -2669,6 +2669,12 @@
        "end": 10722,
        "kind": "prereg",
        "heading": "CELL 68 PRE-REGISTRATION (2026-10-01) — DESIGN ONLY, not scheduled: the founding question on public items with headroom"
+      },
+      {
+       "line": 12564,
+       "end": 12782,
+       "kind": "note",
+       "heading": "CELL 68 EXECUTION REGISTRATION (2026-10-09, before any call on the test pool) — MMLU-Pro law, health and business; a fifth setup so that the key comparison changes one thing; screen, sizes and rules frozen"
       }
      ],
      "matrix_row": null
