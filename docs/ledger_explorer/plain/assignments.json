@@ -2681,6 +2681,12 @@
        "end": 12794,
        "kind": "note",
        "heading": "CELL 68 SCREEN RECORD (2026-10-13) — which public questions leave room to improve; output of the registered screen"
+      },
+      {
+       "line": 12795,
+       "end": 12879,
+       "kind": "note",
+       "heading": "CELL 68 SCREEN READING (2026-10-13) — 136 questions kept (law 50, health 50, business 36 at the cap); five were kept on replies with no readable letter; a check that leaves them out is fixed now, before any setup's result is read"
       }
      ],
      "matrix_row": null

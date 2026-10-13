@@ -12791,3 +12791,88 @@ Recorded automatically by the run queue (step `c68-screen`, 2026-10-13T09:16:22Z
   business        400    36              0.842   2030
 SCREEN: 136 items kept (runs need 60) -> PASS
 ```
+
+## CELL 68 SCREEN READING (2026-10-13) — 136 questions kept (law 50, health 50, business 36 at the cap); five were kept on replies with no readable letter; a check that leaves them out is fixed now, before any setup's result is read
+
+Written while step `c68-runs` was running. Nothing from the setups' runs
+(`bench/runs/cell68_runs.jsonl`) has been read for this entry. Figures
+come from `bench/analysis/cell68/screen_checks.py`, which reads only the
+screen's draws.
+
+**What ran.** 4,958 single-model draws on 974 candidate questions, from
+2026-10-09 23:48Z to 2026-10-13 09:16Z (81.5 hours). Law reached its 50
+after 193 candidates. Health reached 50 after 381. Business stopped at
+the 400-candidate cap with 36. In all 136 questions were kept, more than
+the 60 the runs need. No draw hit the context limit, and seven needed a
+second try after an empty reply.
+
+| section | candidates | kept | share of draws right | mean seconds per draw |
+|---|---|---|---|---|
+| law | 193 | 50 | 0.421 | 57 |
+| health | 381 | 50 | 0.750 | 33 |
+| business | 400 | 36 | 0.842 | 76 |
+
+**Time.** The screen took 81 hours against the 30 to 50 projected in the
+registration. Two things account for it. Health and business kept far
+fewer questions than law (one in eight and one in eleven, against one in
+four), and business questions that need a calculation often took several
+minutes of reasoning, up to 15,484 output tokens. The machine also slept
+for five hours on 2026-10-10 (lid closed on battery, 14:16Z to 19:16Z),
+which stretched two draws to two and three hours of clock time. Those
+draws finished normally on waking and are scored as they came.
+
+**Which questions were kept.** Law is almost all professional law (46 of
+50). Health is spread over eight sources, with professional medicine
+kept least often (6 of 113 screened). Business is mostly the
+calculation-heavy STEMEZ set (22 of 36), then marketing (7), management
+(3) and finance from TheoremQA (3). The business breakdown will have wide
+intervals with 36 questions.
+
+**How the counts read.** Because draws stop once the decision is fixed,
+most kept questions were decided after four draws (two right, two
+wrong): 66 of 136. The count of right draws is out of the draws used,
+not out of six.
+
+**Wrong answers agree with each other.** In 85 of the 136 kept questions,
+every wrong draw (two or more) chose the same letter. So most kept
+questions have one competing answer, not scattered guesses. That is the
+case where a vote of four can go either way. It is also where a disputed
+or wrong key would show. Nothing about the setups is predicted from it.
+
+**Replies with no readable letter.** 38 of 4,958 draws (0.8%) gave no
+letter the registered parser accepts, and the screen counts them as
+wrong, as registered.
+
+| kind | draws |
+|---|---|
+| two or more letters on the ANSWER line, such as "ANSWER: FG" | 17 |
+| an ANSWER line in another form | 13 |
+| a bare letter as the whole reply | 5 |
+| no ANSWER line | 3 |
+
+The rule is right for replies naming two letters. The question has one
+key, and such a reply does not choose. The rule is strict for the bare
+letters and for a letter given only in a boxed formula. Eight kept
+questions have at least one unread draw. In five of them the unread
+replies give the key letter in one of those strict-rule forms: q449
+(boxed D), q557 (boxed "Answer B" twice), q6382 (bare A twice), q6690
+(bare A) and q6741 (bare E twice). Read leniently, four of the five
+would have been rejected as too easy (five or six right), and q6690
+would have needed more draws. The other three (q1291, q6333, q6740) are
+kept because of two-letter replies, which is correct by the rule.
+
+**A check fixed now.** With the setups' results, the three predictions'
+comparisons will also be reported without the five questions q449, q557,
+q6382, q6690 and q6741. This check is chosen after the screen and before
+any result of the setups has been read. It is not a registered test. The
+registered verdicts stay those of all 136 questions. The same parser
+scores every setup, and the share of runs giving a letter is reported
+per setup. That share shows whether this strictness falls harder on one
+setup than another, for example on the single answer against the
+editor.
+
+**Revised timing.** Step `c68-runs` began at 09:16Z. Its own progress line
+projects about 50 hours for 136 questions, about 22 minutes per question
+for three replicates, against the 35 hours registered. The chain step
+would then take about 80 hours. Expected end of `c68-runs` about
+2026-10-15 11:00Z, and of the chain about 2026-10-18 to 19.

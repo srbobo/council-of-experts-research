@@ -395,7 +395,7 @@
    "title": "Is the pipeline better than asking one model four times?",
    "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions, and three of them cost four calls each. The runs started on 9 October 2026.",
    "outcome": "not-run",
-   "size": "Screen done, runs next",
+   "size": "136 questions kept, setups running",
    "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
    "expectations": [
     {
@@ -417,7 +417,7 @@
      "note": "Running. It is scored after the other setups, because the rebuilt system runs last."
     }
    ],
-   "found": "Not finished. The questions come from MMLU-Pro, a public set of ten-option questions, in its law, health and business sections. First the single model answers candidate questions up to six times, and only questions it gets right two to four times in six are kept, up to 50 per section. Then five setups answer every kept question three times: one direct answer, a vote of four answers, three plain drafts combined by an editor, three specialist drafts combined by the same editor, and the rebuilt system. Answers are scored against the set's answer key by a script.",
+   "found": "Not finished. The questions come from MMLU-Pro, a public set of ten-option questions, in its law, health and business sections. The screen ended on 13 October 2026 with 136 questions on which the single model is right only part of the time. It kept 50 in law and 50 in health. Business reached the limit of 400 questions tried with 36. In most of them the wrong answers all pick the same other option. Five setups now answer every kept question three times: one direct answer, a vote of four answers, three plain drafts combined by an editor, three specialist drafts combined by the same editor, and the rebuilt system. A script scores each answer against the set's answer key.",
    "means": "Until this finishes, the project has no evidence that the specialist roles add accuracy beyond asking one model several times. The plan was changed before any run so that the main test changes only one thing, and a vote of four answers is still reported.",
    "later": null,
    "entries": {
@@ -435,6 +435,11 @@
      "label": "Note",
      "title": "The screen picked the questions with room to improve",
      "summary": "On 13 October 2026 the single model finished answering candidate questions six times each, stopping early once the result was fixed. Only questions it got right two to four times in six were kept. No pipeline answer was made before this list was fixed."
+    },
+    "12795": {
+     "label": "Note",
+     "title": "What the screen kept, and five questions to check",
+     "summary": "The screen kept 136 questions in 81 hours, longer than planned, because health and business questions were mostly too easy for the model. Five questions were kept only because some replies gave the letter in a form the scoring script does not read. The results will also be shown without those five, a check chosen before any setup's answers were looked at."
     }
    }
   }
