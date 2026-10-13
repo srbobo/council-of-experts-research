@@ -395,7 +395,7 @@
    "title": "Is the pipeline better than asking one model four times?",
    "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions, and three of them cost four calls each. The runs started on 9 October 2026.",
    "outcome": "not-run",
-   "size": "Running: screen first, then five setups",
+   "size": "Screen done, runs next",
    "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
    "expectations": [
     {
@@ -430,6 +430,11 @@
      "label": "Plan",
      "title": "The run plan fixed before any test question was asked",
      "summary": "On 9 October 2026 the questions, the screen, the five setups and the scoring rules were fixed before any test question went to a model. A fifth setup was added so the main test changes one thing only, the instructions the three drafts are written under."
+    },
+    "12783": {
+     "label": "Note",
+     "title": "The screen picked the questions with room to improve",
+     "summary": "On 13 October 2026 the single model finished answering candidate questions six times each, stopping early once the result was fixed. Only questions it got right two to four times in six were kept. No pipeline answer was made before this list was fixed."
     }
    }
   }

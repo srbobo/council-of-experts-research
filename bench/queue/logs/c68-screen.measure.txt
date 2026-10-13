@@ -1,0 +1,5 @@
+  category   screened  kept  right (all draws)  draws
+  law             193    50              0.421    991
+  health          381    50              0.750   1937
+  business        400    36              0.842   2030
+SCREEN: 136 items kept (runs need 60) -> PASS

@@ -12779,3 +12779,15 @@ attainability table; P68.3 margin), 5 (paired on the same questions, one
 session), 6 (MMLU-Pro is public; nothing from it had been run here), 9
 (the vote and the plain-drafts setup are the cheaper alternatives the
 review named), 11 (share of runs with a letter, per arm).
+
+## CELL 68 SCREEN RECORD (2026-10-13) — which public questions leave room to improve; output of the registered screen
+
+Recorded automatically by the run queue (step `c68-screen`, 2026-10-13T09:16:22Z, commit 6448f19 checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+  category   screened  kept  right (all draws)  draws
+  law             193    50              0.421    991
+  health          381    50              0.750   1937
+  business        400    36              0.842   2030
+SCREEN: 136 items kept (runs need 60) -> PASS
+```
