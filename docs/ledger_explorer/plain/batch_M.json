@@ -393,31 +393,31 @@
   },
   "68": {
    "title": "Is the pipeline better than asking one model four times?",
-   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions, and three of them cost four calls each. The runs started on 9 October 2026.",
-   "outcome": "not-run",
-   "size": "136 questions kept, setups running",
+   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions, and three of them cost four calls each. The runs started on 9 October 2026. The runs finished on 16 October 2026.",
+   "outcome": "mixed",
+   "size": "Four setups on the screened questions; the assembled chain still to run",
    "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
    "expectations": [
     {
      "id": "P68.1",
      "text": "The specialist pipeline would be more accurate than one direct answer from the same model.",
-     "outcome": "not-tested",
-     "note": "Running. The pipeline costs four calls and the single answer one."
+     "outcome": "held",
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P68.2",
      "text": "The specialist pipeline would be more accurate than the same model writing three plain drafts that the same editor then combines.",
-     "outcome": "not-tested",
-     "note": "Running. This is the main test. The two setups differ only in the instructions the three drafts are written under."
+     "outcome": "unclear",
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P68.3",
      "text": "The rebuilt system would be no more than five points less accurate than the plain specialist pipeline.",
-     "outcome": "not-tested",
-     "note": "Running. It is scored after the other setups, because the rebuilt system runs last."
+     "outcome": "not-graded",
+     "note": "Reported without a pass/fail test. The figures are in the result entry below."
     }
    ],
-   "found": "Not finished. The questions come from MMLU-Pro, a public set of ten-option questions, in its law, health and business sections. The screen ended on 13 October 2026 with 136 questions on which the single model is right only part of the time. It kept 50 in law and 50 in health. Business reached the limit of 400 questions tried with 36. In most of them the wrong answers all pick the same other option. Five setups now answer every kept question three times: one direct answer, a vote of four answers, three plain drafts combined by an editor, three specialist drafts combined by the same editor, and the rebuilt system. A script scores each answer against the set's answer key.",
+   "found": "The single answer, the vote, the plain drafts with the editor, and the specialist pipeline finished on 16 October 2026. By the rules written down in advance, 1 of the 2 graded expectations held up, 0 did not, and 1 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "Until this finishes, the project has no evidence that the specialist roles add accuracy beyond asking one model several times. The plan was changed before any run so that the main test changes only one thing, and a vote of four answers is still reported.",
    "later": null,
    "entries": {
@@ -440,6 +440,11 @@
      "label": "Note",
      "title": "What the screen kept, and five questions to check",
      "summary": "The screen kept 136 questions in 81 hours, longer than planned, because health and business questions were mostly too easy for the model. Five questions were kept only because some replies gave the letter in a form the scoring script does not read. The results will also be shown without those five, a check chosen before any setup's answers were looked at."
+    },
+    "12880": {
+     "label": "Result",
+     "title": "Runs finished: results by the rules set in advance",
+     "summary": "The single answer, the vote, the plain drafts with the editor, and the specialist pipeline finished on 16 October 2026. Of the 2 graded expectations, 1 held up, 0 did not and 1 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   }

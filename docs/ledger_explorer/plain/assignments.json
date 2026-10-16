@@ -2656,8 +2656,8 @@
     {
      "id": "68",
      "current_title": "DESIGN ONLY, not scheduled: the founding question on public items with headroom",
-     "status_parsed": "registered",
-     "never_ran": true,
+     "status_parsed": "mixed",
+     "never_ran": false,
      "pids": [
       "P68.1",
       "P68.2",
@@ -2687,6 +2687,12 @@
        "end": 12879,
        "kind": "note",
        "heading": "CELL 68 SCREEN READING (2026-10-13) — 136 questions kept (law 50, health 50, business 36 at the cap); five were kept on replies with no readable letter; a check that leaves them out is fixed now, before any setup's result is read"
+      },
+      {
+       "line": 12880,
+       "end": 12924,
+       "kind": "verdict",
+       "heading": "CELL 68 VERDICT (2026-10-16) — single answer, vote, plain drafts with the editor, and the pipeline; verdict lines as printed by the registered script, reading to follow"
       }
      ],
      "matrix_row": null

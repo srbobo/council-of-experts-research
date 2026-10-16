@@ -71,8 +71,15 @@
    "commit": "c3d2044"
   },
   "c68-screen": {
+   "state": "done",
+   "started_utc": "2026-10-09T23:48:08Z",
+   "finished_utc": "2026-10-13T09:16:22Z",
+   "attempts": 1,
+   "commit": "9b8dec1"
+  },
+  "c68-runs": {
    "state": "running",
-   "started_utc": "2026-10-09T23:48:08Z"
+   "started_utc": "2026-10-13T09:16:26Z"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"
