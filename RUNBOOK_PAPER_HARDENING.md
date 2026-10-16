@@ -12921,3 +12921,114 @@ descriptive (registered as descriptive, not tests)
 
   pipeline: final letter is one a proposer gave 0.961; proposers' letters parsed 0.984
 ```
+
+## CELL 68 READING (2026-10-16) — four calls beat one by 7 points, but a vote of four plain answers gains as much; the roles are not shown to add accuracy over plain drafts given the same editor
+
+Written while step `c68-chain` runs. Rows of the chain are not read here.
+Figures beyond the registered output come from
+`bench/analysis/cell68/reading_checks.py`. Everything in this entry except
+the verdict lines and section A was computed after the results were seen,
+and is descriptive.
+
+**The registered verdicts.**
+
+| prediction | difference (question level, 95% interval) | verdict |
+|---|---|---|
+| P68.1: pipeline minus one direct answer (4 calls against 1) | +0.070 [+0.018, +0.123], p = 0.009 | SUPPORTED |
+| P68.2 (primary): pipeline minus three plain drafts with the same editor | +0.022 [−0.034, +0.078], p = 0.49 | NOT SHOWN |
+| P68.3: chain minus pipeline | waits for step `c68-chain` | — |
+
+Accuracy over 136 questions and three replicates: one direct answer
+0.496, vote of four 0.561, plain drafts with the editor 0.544, pipeline
+0.566. Every run gave a readable letter in 98.8% to 100% of cases. No run
+hit the context limit and none was set aside. The single answer's 0.496
+on fresh draws shows the screen did its job: the kept questions are ones
+the model gets right about half the time, so no setup started at a
+ceiling.
+
+**The gain over one answer is matched by sampling.** A plain vote of four
+direct answers gains +0.066 [+0.031, +0.100] over one answer. The
+pipeline minus that vote is +0.005 [−0.061, +0.071], the design's
+original two-factor comparison. Plain drafts with the editor gain +0.048
+[+0.005, +0.092] over one answer. So on these questions the four-call
+pipeline's advantage over one call is about the size of what four calls
+of any kind gain. The registered primary test, roles against plain
+drafts with everything else equal, comes out at +0.022. Its interval
+runs from −0.034 to +0.078. That is a limit of size: an advantage of up to
+about 8 points for the roles, or a disadvantage of up to 3, is still
+possible. It is not evidence that the roles add nothing.
+
+**Wording rule from this reading.** Write "the pipeline beat one answer,
+and a vote of four plain answers did as well", never "the roles explain
+the gain" or "the roles add nothing".
+
+**A. The check fixed before the results (screen reading).** Without the
+five questions kept on unreadable replies (q449, q557, q6382, q6690,
+q6741), nothing moves: P68.1 +0.069 [+0.014, +0.123], P68.2 +0.023
+[−0.035, +0.081], pipeline minus vote +0.003, vote minus one answer
++0.066.
+
+**B. The drafts themselves.** A role-prompted draft is no more accurate
+than a plain direct draw: −0.008 [−0.041, +0.025] at question level
+(draft accuracy 0.488 against 0.497). By section and role, none of the
+gaps is large, and the role that matches the section is not the best one:
+the legal analyst on law 0.453 (direct 0.442), the healthcare analyst on
+health 0.553 (direct 0.540), the finance analyst on business 0.435
+(direct 0.509, and the healthcare analyst 0.556). These cells hold 108
+to 150 drafts each from 36 to 50 questions, and differences of this size
+are within their noise.
+
+**C. What the editor does.** In both setups the editor mostly follows
+the majority of its three drafts. It gives a letter no draft gave in
+3 to 4% of replicates, and it overrules three unanimous drafts in 5 of
+408 in each setup. When the drafts split two to one, it takes the
+minority letter in about one case in seven. It does so as often when that
+moves it away from the right answer as toward it (plain drafts: 29
+rescues of a right minority, 29 departures from a right majority; role
+drafts: 27 and 30). Final accuracy against the majority of its own three
+drafts: plain drafts 0.544 against 0.547, role drafts 0.566 against 0.529.
+The editor thus adds nothing over a vote of plain drafts and about 4
+points over a vote of role drafts. A plausible reason, not tested, is that
+role drafts carry more reasoning: one plain draft in three is a bare
+ANSWER line after the model's hidden reasoning (median 372 characters),
+against one role draft in seven (median 1,229 characters). This is part of
+what the role prompt changes, not a second factor.
+
+**D. No order effect.** The final letter equals the draft listed first,
+second and third in 0.65, 0.66 and 0.64 of plain-draft replicates and
+0.67, 0.63 and 0.67 of pipeline replicates. On three-way splits the
+editor chose each position about equally often. The first-listed
+preference of Cell 63 does not appear here. There the contributions
+conflicted on a figure, and here they disagree on a choice.
+
+**E. Unreadable answers.** 17 of 1,632 direct draws (1.0%), 3 of 408
+plain-draft editor replies and 5 of 408 pipeline replies gave no letter
+the registered parser reads. A lenient reading would give the key in 4
+of the 17 direct draws and in none of the others, so the strict parser
+lowers the single answer's accuracy by at most 0.003. It does not touch
+the comparison between the two editor setups.
+
+**F. Cost.** Tokens per run: one answer 1,960; vote 7,839; plain drafts
+with the editor 7,421; pipeline 7,936. The three four-call setups are
+within 7% of each other, so P68.2 and the vote comparison are at matched
+cost by tokens as well as by calls. Clock time: the pipeline's four calls
+took 270 seconds on average, four plain draws about 310.
+
+**G. By section.** Every section's P68.2 interval includes zero (law
++0.047, health +0.013, business 0.000). The pipeline's gain over one
+answer is largest in business (+0.102 [−0.001, +0.205]) and smallest in
+health (+0.047). Single-draw accuracy by replicate ranges 0.45 to 0.54,
+so the replicates are similar.
+
+**What this changes.** This is the project's first test of its founding
+question with room to improve and with sampling held equal. On public
+ten-option questions in law, health and business, for gpt-oss:20b, a
+council of three role-prompted analysts and an editor answers more
+accurately than one call. But a plain vote of four answers does as well,
+and the same editor given three plain drafts comes within 2 points. The
+roles have not been shown to add accuracy beyond sampling the model
+several times. The answer is limited to one model, to multiple-choice
+questions the model gets right about half the time, and to differences
+larger than about 6 points. The chain (P68.3) is scored when step
+`c68-chain` ends, projected about 2026-10-18 17:00Z (18 of 136 questions
+in 7.7 hours).

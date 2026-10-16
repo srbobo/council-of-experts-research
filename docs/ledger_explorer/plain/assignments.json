@@ -2693,6 +2693,12 @@
        "end": 12924,
        "kind": "verdict",
        "heading": "CELL 68 VERDICT (2026-10-16) — single answer, vote, plain drafts with the editor, and the pipeline; verdict lines as printed by the registered script, reading to follow"
+      },
+      {
+       "line": 12925,
+       "end": 13035,
+       "kind": "note",
+       "heading": "CELL 68 READING (2026-10-16) — four calls beat one by 7 points, but a vote of four plain answers gains as much; the roles are not shown to add accuracy over plain drafts given the same editor"
       }
      ],
      "matrix_row": null
