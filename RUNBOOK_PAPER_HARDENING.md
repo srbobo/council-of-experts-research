@@ -13032,3 +13032,49 @@ questions the model gets right about half the time, and to differences
 larger than about 6 points. The chain (P68.3) is scored when step
 `c68-chain` ends, projected about 2026-10-18 17:00Z (18 of 136 questions
 in 7.7 hours).
+
+## CELL 68 VERDICT (2026-10-18) — the assembled chain added; verdict lines as printed by the registered script, reading to follow
+
+Recorded automatically by the run queue (step `c68-chain`, 2026-10-18T19:33:25Z, commit 986de2e checked out, 1 attempt(s)). The block below is the unedited output of the registered scoring stage. Its verdict words come from rules fixed in the registration above; nothing in this entry is an interpretation. The analyst's reading follows as a separate entry.
+
+```
+==============================================================================
+CELL 68 — the founding question at equal cost, on public items with headroom
+==============================================================================
+screen: 136 items kept; law 50 of 193 (draw accuracy 0.421); health 50 of 381 (draw accuracy 0.750); business 36 of 400 (draw accuracy 0.842)
+
+  arm                                items  runs  accuracy  answered  set aside  tokens/run
+  a  direct, one answer                136  1632     0.496     0.990          0        1960
+  b  vote of four direct               136   408     0.561     1.000          0        7839
+  b2 three direct + editor             136   408     0.544     0.993          0        7421
+  c  pipeline: three roles + editor    136   408     0.566     0.988          0        7936
+  d  assembled chain                   136   408     0.456     0.946          0       23204
+  chain runs whose plan could not be parsed (scored as no answer): 2
+
+P68.1  pipeline minus one direct answer (system level, 4 calls vs 1): +0.070 [+0.018, +0.123]  sign-flip p = 0.0090  (n = 136 items)
+P68.2  pipeline minus three direct + the same editor (one factor):  +0.022 [-0.034, +0.078]  sign-flip p = 0.4875  (n = 136 items)
+P68.3  chain minus pipeline (system level; margin -0.05):         -0.110 [-0.176, -0.044]  sign-flip p = 0.0016  (n = 136 items)
+
+VERDICT LINES (as registered)
+  P68.1: SUPPORTED — +0.070 [+0.018, +0.123]  sign-flip p = 0.0090  (n = 136 items)
+  P68.2: NOT SHOWN — the interval includes zero
+  P68.3: FALSIFIED — the chain is less accurate: -0.110 [-0.176, -0.044]  sign-flip p = 0.0016  (n = 136 items)
+
+descriptive (registered as descriptive, not tests)
+  pipeline minus vote of four (the design's P68.2; two factors)   +0.005 [-0.061, +0.071]  sign-flip p = 0.9447  (n = 136 items)
+  vote of four minus one answer                                   +0.066 [+0.031, +0.100]  sign-flip p = 0.0004  (n = 136 items)
+  three direct + editor minus vote of four (4 calls each)         -0.017 [-0.071, +0.036]  sign-flip p = 0.5972  (n = 136 items)
+  three direct + editor minus one answer                          +0.048 [+0.005, +0.092]  sign-flip p = 0.0343  (n = 136 items)
+
+  by category (P68.1, P68.2, P68.3 differences)
+   law       1: +0.072 [-0.027, +0.170]  sign-flip p = 0.1622  (n = 50 items)   2: +0.047 [-0.066, +0.159]  sign-flip p = 0.4784  (n = 50 items)   3: -0.107 [-0.229, +0.016]  sign-flip p = 0.1087  (n = 50 items)
+   health    1: +0.047 [-0.032, +0.125]  sign-flip p = 0.2569  (n = 50 items)   2: +0.013 [-0.065, +0.092]  sign-flip p = 0.8625  (n = 50 items)   3: -0.067 [-0.176, +0.043]  sign-flip p = 0.2876  (n = 50 items)
+   business  1: +0.102 [-0.001, +0.205]  sign-flip p = 0.0627  (n = 36 items)   2: +0.000 [-0.103, +0.103]  sign-flip p = 1.0000  (n = 36 items)   3: -0.176 [-0.290, -0.062]  sign-flip p = 0.0075  (n = 36 items)
+
+  by original source, 10 or more items (P68.2 difference)
+   ori_mmlu-professional_law         +0.043 [-0.069, +0.156]  sign-flip p = 0.5215  (n = 46 items)
+   stemez-Business                   -0.015 [-0.131, +0.101]  sign-flip p = 1.0000  (n = 22 items)
+   ori_mmlu-nutrition                +0.089 [-0.089, +0.266]  sign-flip p = 0.4375  (n = 15 items)
+
+  pipeline: final letter is one a proposer gave 0.961; proposers' letters parsed 0.984
+```

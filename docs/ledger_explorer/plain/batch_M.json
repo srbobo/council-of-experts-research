@@ -393,31 +393,31 @@
   },
   "68": {
    "title": "Is the pipeline better than asking one model four times?",
-   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions. Four finished on 16 October 2026, and the rebuilt system is still running.",
+   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions. Four finished on 16 October 2026, and the rebuilt system is still running. The runs finished on 18 October 2026.",
    "outcome": "mixed",
-   "size": "136 questions, four of five setups done",
+   "size": "Five setups on the screened questions",
    "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
    "expectations": [
     {
      "id": "P68.1",
      "text": "The specialist pipeline would be more accurate than one direct answer from the same model.",
      "outcome": "held",
-     "note": "Held up. The pipeline beat one direct answer by 7 points, with four calls against one."
+     "note": "Held up, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P68.2",
      "text": "The specialist pipeline would be more accurate than the same model writing three plain drafts that the same editor then combines.",
      "outcome": "unclear",
-     "note": "Too close to call. The pipeline led the plain drafts by 2 points, and anything from 3 points behind to 8 ahead is still possible."
+     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
     },
     {
      "id": "P68.3",
      "text": "The rebuilt system would be no more than five points less accurate than the plain specialist pipeline.",
-     "outcome": "not-tested",
-     "note": "Waits for the rebuilt system, which is still running."
+     "outcome": "failed",
+     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
     }
    ],
-   "found": "On 136 public questions where the model alone was right about half the time, the specialist pipeline was right in 56.6% of answers and one direct answer in 49.6%. That gap of 7 points held up by the rule set in advance. But asking the model four times and taking a vote did as well, at 56.1%. The same editor given three plain drafts instead of three specialist drafts reached 54.4%. The pipeline's lead over those plain drafts is 2 points, and the range the data allow runs from 3 points behind to 8 points ahead. So the test could not tell whether the specialist roles help. Leaving out five questions with scoring doubts changed nothing.",
+   "found": "The assembled chain finished on 18 October 2026, so all five setups are now scored. By the rules written down in advance, 1 of the 3 graded expectations held up, 1 did not, and 1 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
    "means": "Four calls beat one, but four calls of any kind did about equally well. The specialist roles have not been shown to add accuracy beyond asking one model several times. This holds for one model and ten-option questions, and only differences larger than about 6 points could have been seen.",
    "later": null,
    "entries": {
@@ -450,6 +450,11 @@
      "label": "Note",
      "title": "Four calls beat one, and a vote of four did as well",
      "summary": "The pipeline beat one direct answer by 7 points, but a vote of four plain answers gained as much. The specialist drafts were no more accurate than plain ones. The editor mostly followed the majority of its drafts, and it did not favour the first one listed."
+    },
+    "13036": {
+     "label": "Result",
+     "title": "The assembled chain finished: results by the rules set in advance",
+     "summary": "The assembled chain finished on 18 October 2026, so all five setups are now scored. Of the 3 graded expectations, 1 held up, 1 did not and 1 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
     }
    }
   }
