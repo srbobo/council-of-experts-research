@@ -28,7 +28,7 @@ whether judges from other model families share the two judges' preferences).
 The author could not provide the blind labels two experiments needed, so both
 were changed before any result was read; one experiment was scored a second
 time after a counting fault was repaired. All of this is in the runbook, with
-the paper now at draft v0.4.
+the paper now at draft v0.5.
 
 **Cell 68 (9 to 18 October 2026)** put the founding question to a test with room
 to improve and equal cost: 136 public questions (MMLU-Pro law, health and
@@ -36,7 +36,7 @@ business) on which the model alone is right about half the time. Four calls
 beat one, by 7 points for the role-prompted pipeline, but a vote of four plain
 answers did as well, so the roles are not shown to add accuracy over sampling
 the same model. The full rebuilt system was 11 points less accurate than the
-plain pipeline on these questions. Paper v0.4 predates this result.
+plain pipeline on these questions. Paper draft v0.5 reports it.
 
 **Public site:** <https://councilofexperts.netlify.app> shows every cell in plain
 language, the claims, a glossary, the harness, and the saved run data.
@@ -46,7 +46,7 @@ language, the claims, a glossary, the harness, and the saved run data.
 | If you want… | Read |
 |---|---|
 | The findings, in plain language | [docs/PLAIN_LANGUAGE_COMPANION.md](docs/PLAIN_LANGUAGE_COMPANION.md) or the public site |
-| The paper (draft v0.4: rewritten after the October 2026 review, with the results of Cells 62 to 67) | [docs/paper_combined.pdf](docs/paper_combined.pdf) (source: [paper_combined.tex](docs/paper_combined.tex)) |
+| The paper (draft v0.5: rewritten after the October 2026 review, with the results of Cells 62 to 68) | [docs/paper_combined.pdf](docs/paper_combined.pdf) (source: [paper_combined.tex](docs/paper_combined.tex)) |
 | The review and what it changed | [docs/BOARD_REVIEW_2026-10-01.md](docs/BOARD_REVIEW_2026-10-01.md); corrected figures in [bench/analysis/stage0/report.txt](bench/analysis/stage0/report.txt) |
 | What the program claims today, and how sure it is | [docs/STATUS.md](docs/STATUS.md), the authoritative claims record |
 | Every experiment, in order, with its full reasoning | [RUNBOOK_PAPER_HARDENING.md](RUNBOOK_PAPER_HARDENING.md), the lab notebook the site is built from |
@@ -134,5 +134,5 @@ Commit each finished labels file before any scoring (the tool prints the command
 
 ## Status
 
-Personal research, not a product. Current paper draft: v0.4, October 2026
+Personal research, not a product. Current paper draft: v0.5, October 2026
 (corrected after the review, with the six experiments that followed it).

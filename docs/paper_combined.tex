@@ -38,7 +38,7 @@
 \newcommand{\ci}[2]{\ensuremath{[#1,\,#2]}}
 
 \title{\LARGE\bfseries What a Small Role-Prompted Aggregation Pipeline Does with Instructed Phrases, Planted Figures and Caveats:\\ A Registered Component Study on One 20B Model}
-\author{\textbf{Sam Bobo}\\ \small Draft v0.4, October 2026. Adds the six experiments registered after an internal review; supersedes v0.3.}
+\author{\textbf{Sam Bobo}\\ \small Draft v0.5, October 2026. Adds the equal-cost accuracy experiment (68); supersedes v0.4.}
 \date{}
 
 \begin{document}
@@ -55,9 +55,9 @@ Mixture-of-Agents pipelines send a task to several proposer models and
 have an aggregator write the final answer. We study a much smaller
 relative of that design on local hardware: one 20B model writes the
 answer from three contributions that, in most experiments, come from
-the same model under one-sentence role prompts. Across 67 numbered
-experiments registered before they ran, the last six after an internal
-review, four groups of results hold. (1)~An instruction to label
+the same model under one-sentence role prompts. Across 68 numbered
+experiments registered before they ran, the last seven after an internal
+review, five groups of results hold. (1)~An instruction to label
 estimates with a named phrase produces the phrase in two thirds of
 answers (378 runs), and a synonym chosen the day before behaves the
 same. (2)~Two local LLM judges prefer the pipeline's answer to a single
@@ -74,12 +74,21 @@ first about three times in four. (4)~Six reader models from five
 developers change their decision when a decisive sentence is appended to
 a report ($+0.52$ pooled over four new readers, 11 items), without
 being told to read attachments, and with a loss of about $0.12$ when it
-is one line among ten. A design assembled from these observations
+is one line among ten. (5)~On 136 public ten-option questions
+(MMLU-Pro law, health and business) screened so that one answer from
+the model is right about half the time, the pipeline was right in
+$0.566$ of runs against $0.496$ for one answer ($+0.070$
+\ci{+0.018}{+0.123}), but a vote of four plain answers reached $0.561$
+at the same number of calls, and the same aggregator given three plain
+drafts $0.544$: the role prompts are not shown to add accuracy ($+0.022$
+\ci{-0.034}{+0.078}). A design assembled from these observations
 showed no detectable difference in judge preference from the plain
-pipeline at about three and a half times the model calls; in its live
-chain, scored a second time after a tool fault was repaired, a second
-source raised right answers from $2$ to $19$ of $61$ and the conflict
-appeared in $2$ of $61$ final answers. Two questions
+pipeline at about three and a half times the model calls, was $0.110$
+\ci{0.044}{0.176} less accurate than the plain pipeline on the public
+questions, and in its live chain, scored a second time after a tool
+fault was repaired, a second source raised right answers from $2$ to
+$19$ of $61$ and the conflict appeared in $2$ of $61$ final answers. Two
+questions
 stayed unanswered: the sentence-level judge used throughout agrees
 little beyond chance and could not be compared with a person, and a
 test of whether caveats are conveyed less often than other sentences
@@ -106,8 +115,8 @@ expectation that specialists contribute knowledge and caution a single
 generalist would lack.
 
 This project began with one question: does such a council of
-specialists answer better than one model? At the scale we could run,
-the answer was no on every measure available to us. On a 60-item
+specialists answer better than one model? On the project's own item
+sets the question could not be answered. On a 60-item
 battery with checkable answers a single 20B model answered $57$ of $59$
 items correctly and a specialist-plus-aggregator pipeline $56$ of $60$;
 two harder batteries stopped at a ceiling
@@ -124,6 +133,10 @@ contributions, supply it?
 \item Can a follow-up question to a proposer, or a list of caveats
 appended to the report, change the outcome?
 \end{enumerate}
+
+\noindent Experiment 68 then returned to the first question with public
+questions that leave room to improve and with setups of equal cost
+(Section~\ref{sec:accuracy}).
 
 Prior work has answered parts of these at larger scale. Aggregation
 pipelines have been evaluated on accuracy as well as preference
@@ -146,13 +159,17 @@ figure stated in the question over a contribution that misquotes it,
 and with two conflicting contributions it follows the one listed first
 about three times in four (Sections~\ref{sec:select}
 and~\ref{sec:checkable}); and reader models act on a decisive appended
-sentence (Section~\ref{sec:res-channel}). We also describe a design
-assembled from these observations (Section~\ref{sec:harness}) and
-report that it showed no difference from the plain pipeline in judge
-preference, and that in its live chain a second source got the right
-figure used more often without reliably displacing the wrong one and
-without the conflict reaching the final answer
-(Section~\ref{sec:headtohead}).
+sentence (Section~\ref{sec:res-channel}). On public multiple-choice
+questions the pipeline is more accurate than one answer, and a vote of
+four plain answers is as accurate as the pipeline
+(Section~\ref{sec:accuracy}). We also describe a design assembled from
+these observations (Section~\ref{sec:harness}) and report that it
+showed no difference from the plain pipeline in judge preference, that
+in its live chain a second source got the right figure used more often
+without reliably displacing the wrong one and without the conflict
+reaching the final answer (Section~\ref{sec:headtohead}), and that its
+chain was less accurate than the plain pipeline on the public questions
+(Section~\ref{sec:accuracy}).
 
 \textbf{What changed from v0.2.} An internal review found errors in the
 earlier draft that the repository itself exposes. They are listed in
@@ -176,6 +193,14 @@ repaired. One result is worded more narrowly than its registration
 allowed. All four changes are in Appendix~\ref{app:deviations}, and
 Appendix~\ref{app:v03} lists the statements of v0.3 that this draft
 alters.
+
+\textbf{What changed from v0.4.} Draft v0.4 listed experiment 68, the
+comparison of accuracy at equal cost, as a design. It was given an
+execution entry on 9 October 2026, ran until 18 October, and is
+reported in Section~\ref{sec:accuracy}. Before it ran, a fifth setup was
+added so that its primary test changes one thing, and one prediction was
+given a margin (Appendix~\ref{app:deviations}). Appendix~\ref{app:v04}
+lists the statements of v0.4 that this draft alters.
 
 \begin{figure*}[t]
 \centering
@@ -232,9 +257,11 @@ system.
 contributions and the aggregator prompt above. The \emph{single answer}
 is the same model answering the scenario with the same prompt minus the
 sentence that mentions contributions. The pipeline costs four model
-calls and the single answer one. No comparison of equal cost
-(for example several samples of the single model with a vote
-\cite{wang2023selfconsistency,li2024moreagents}) was run.
+calls and the single answer one. Comparisons of equal cost (several
+samples of the single model with a vote
+\cite{wang2023selfconsistency,li2024moreagents}, and plain samples
+combined by the same aggregator \cite{li2025selfmoa}) were run only in
+experiment 68, on accuracy (Section~\ref{sec:accuracy}).
 
 \textbf{Scenarios and items.} Eighteen advisory scenarios were written
 for the project, spanning healthcare, legal and finance content.
@@ -246,16 +273,18 @@ answers a generator computes, each with one input figure that can be
 raised or lowered so that the computed answer changes. Scenarios,
 items, planted facts and the labels the project notebook calls
 analyst-authored were produced with an AI assistant (see the statement
-before the references). No public benchmark is used to evaluate the
-pipeline. Two public datasets with human labels are used only to check
-judges: FRANK \cite{pagnoni2021frank} and the SFU Review Corpus
-annotated for speculation \cite{konstantinova2012sfu}.
+before the references). One public benchmark is used to evaluate the
+pipeline, in experiment 68 only: the law, health and business questions
+of MMLU-Pro \cite{wang2024mmlupro}. Two public datasets with human
+labels are used only to check judges: FRANK \cite{pagnoni2021frank} and
+the SFU Review Corpus annotated for speculation
+\cite{konstantinova2012sfu}.
 
 \textbf{Registration.} Each experiment has a written entry made before
 it ran, with predictions, the result that would count as failure, and a
 computation from existing runs of whether the outcome could occur
-often enough to measure. There are 65 such entries for the 68 numbered
-experiments (experiment 68 is a design that has not run). The entries are in the project's version history ahead of
+often enough to measure. There are 66 such entries for the 68 numbered
+experiments (experiment 68 has a design entry and an execution entry). The entries are in the project's version history ahead of
 the corresponding results. They are self-registered, and the run
 records for experiments 25 to 60 were added to the history weeks after
 their results and carry no timestamps, so the order of registration and
@@ -264,8 +293,10 @@ October 2026 carry time, model digest, seed and settings. The
 registrations of experiments 62 to 67 were committed before any of
 their runs and pushed to the public repository 70 minutes before the
 first run of experiment 63; for experiment 62 the push came 50 minutes
-after its judge calls had begun. Deviations from the registrations are
-listed in Appendix~\ref{app:deviations}.
+after its judge calls had begun. The execution entry of experiment 68
+was committed 9 seconds before its first call on a test question and
+pushed four days later, after its screen had finished. Deviations from
+the registrations are listed in Appendix~\ref{app:deviations}.
 
 \textbf{Instruments.} \emph{Exact phrase}: containment of an instructed
 phrase. In 2{,}907 text spans from runs without any instruction, no
@@ -293,6 +324,9 @@ and under the altered input. \emph{Figure present}: whether a figure's
 digits occur in a text. As registered, this check does not match a
 figure typeset with LaTeX thousands separators, which decided one
 registered check by two items (Section~\ref{sec:headtohead}).
+\emph{Option letter} (experiment 68): the letter on the last line that
+begins with ``ANSWER'', compared with the benchmark's key; a reply with
+no such letter, or with two, counts as wrong and is reported.
 
 \textbf{Preference score.} For a pair judged in both orders let $s=1$
 if the first-named side wins both, $s=0$ if it loses both and
@@ -319,8 +353,10 @@ reported''. Table~\ref{tab:claims} lists the five statements we treat
 as the paper's main claims, with Holm-adjusted $p$-values
 \cite{holm1979}; they were chosen after the results were known, so the
 adjustment describes rather than protects. The primary predictions of
-experiments 62 to 67 were named before the runs;
+experiments 62 to 68 were named before the runs;
 Table~\ref{tab:planned} gives their outcomes by the registered rules.
+With more than 20 units the sign-flip test uses 20{,}000 random sign
+patterns instead of all of them.
 Everything else is descriptive.
 
 \begin{table*}[t]
@@ -519,7 +555,9 @@ unchanged.
 Three limits apply. The pipeline answer costs four calls and the single
 answer one; sampling one model several times and aggregating is known
 to help \cite{li2025selfmoa,li2024moreagents}, so the role structure
-has not been shown to add anything. The judges are local models whose
+has not been shown to add anything. On accuracy, the one outcome
+measured at equal cost, a vote of four plain answers did as well as the
+pipeline (Section~\ref{sec:accuracy}). The judges are local models whose
 single judgments mostly follow position, and at 7 to 8B follow it
 entirely, so a pool of judges at this scale cannot widen the evidence.
 And no person judged a pair.
@@ -856,10 +894,11 @@ the matching fine-tuned specialist plus the aggregator $56$ of $60$
 batteries with script-computed answers (36
 multi-step computations, 30 rule-interaction items) put the single
 model at $0.977$ and $0.983$, and were stopped before any pipeline run
-because there was no headroom. We have no evidence that the pipeline
-gives more correct answers than one model; on the one battery where
+because there was no headroom. On the one in-house battery where
 both ran, the difference was indistinguishable from zero and nominally
-against the pipeline.
+against the pipeline. Experiment 68 repeated the comparison on public
+questions screened for headroom and at equal cost
+(Section~\ref{sec:accuracy}).
 
 \textbf{Fine-tuned proposers.} Two medical fine-tunes of one base model
 shifted in-domain framework vocabulary by $+0.232$
@@ -1031,7 +1070,8 @@ the aggregator does not rewrite. Orange: the follow-up loop. The
 measurements are from separate experiments on separate parts
 (Section~\ref{sec:results}); they are not outcomes of the assembled
 system, which has been evaluated on judge preference and, for its live
-chain, on a planted wrong figure (Section~\ref{sec:headtohead}).}
+chain, on a planted wrong figure (Section~\ref{sec:headtohead}) and on
+accuracy (Section~\ref{sec:accuracy}).}
 \label{fig:arch}
 \end{figure*}
 
@@ -1334,7 +1374,188 @@ against $0.20$).
 
 \textbf{What has not been measured.} The assembled system's effect on
 caveats reaching a reader has not been measured as a system, and its
-appended list and its screen played no part in experiment 67.
+appended list and its screen played no part in experiments 67 and 68.
+
+\section{Accuracy at Equal Cost on Public Questions}
+\label{sec:accuracy}
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}
+\toprule
+Setup & calls & tokens & letter & right \\
+\midrule
+(a) one direct answer & 1 & 1{,}960 & $0.990$ & $0.496$ \\
+(b) vote of four direct answers & 4 & 7{,}839 & $1.000$ & $0.561$ \\
+(b2) three direct + aggregator & 4 & 7{,}421 & $0.993$ & $0.544$ \\
+(c) three role-prompted + aggregator & 4 & 7{,}936 & $0.988$ & $0.566$ \\
+(d) assembled chain & 7--12 & 23{,}204 & $0.946$ & $0.456$ \\
+\bottomrule
+\end{tabular}
+\caption{Experiment 68: 136 MMLU-Pro questions, three replicates of
+every setup, \texttt{gpt-oss:20b} in every part. Setup (c) is the plain
+pipeline; (b2) is called ``plain drafts'' in the text. ``Tokens'': mean prompt
+and output tokens per run. ``Letter'': share of runs that gave a
+readable option letter. ``Right'': accuracy, the mean over questions of
+each question's mean over replicates. Setup (a) is scored on all four
+direct draws of each replicate (1{,}632 runs); the others on 408 runs
+each. No run hit the context limit. The chain made a median of 8 calls.}
+\label{tab:accuracy}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.74\columnwidth,height=5.2cm,xmin=-0.2,xmax=0.15,
+  ytick={1,2,3,4,5,6},
+  yticklabels={{chain $-$ pipeline},{pipeline $-$ plain drafts},
+  {chain $-$ one answer},{pipeline $-$ one answer},
+  {plain drafts $-$ one answer},{vote $-$ one answer}},
+  ymin=0.4,ymax=6.6,xlabel={difference in accuracy (95\% interval)},
+  xtick={-0.1,0,0.1},minor xtick={-0.15,-0.05,0.05},
+  xticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2},
+  tick label style={font=\scriptsize},xlabel style={font=\small},
+  axis line style={inkmut},xmajorgrids,grid style={inkmut!22}]
+\addplot+[only marks,mark=*,mark size=2.2pt,color=accent,
+  error bars/.cd,x dir=both,x explicit,error bar style={line width=0.9pt}]
+  coordinates {
+  (-0.110,1) += (0.066,0) -= (0.066,0)
+  (0.022,2) += (0.056,0) -= (0.056,0)
+  (-0.040,3) += (0.054,0) -= (0.054,0)
+  (0.070,4) += (0.053,0) -= (0.052,0)
+  (0.048,5) += (0.044,0) -= (0.043,0)
+  (0.066,6) += (0.034,0) -= (0.035,0)};
+\addplot[dashed,inkmut] coordinates {(0,0.4) (0,6.6)};
+\end{axis}
+\end{tikzpicture}
+\caption{Experiment 68, question-level paired differences with
+$t$-intervals over 136 questions. ``Plain drafts'' is setup (b2): three
+direct answers given to the same aggregator as the pipeline. The
+second row from the bottom is the registered primary test (P68.2); the
+bottom row is P68.3, whose registered margin was $-0.05$.}
+\label{fig:accuracy}
+\end{figure}
+
+The project's first question, whether a council of specialists answers
+better than one model, had stopped at a ceiling on its own item sets
+(Section~\ref{sec:smaller}), and every preference result compared four
+calls with one. Experiment 68 was registered as a design on 1 October
+2026 to address both, and given an execution entry on 9 October that
+fixed the items, the screen, the setups and the rules before any test
+question was sent to a model.
+
+\textbf{Questions.} The law, health and business questions of the
+MMLU-Pro test split \cite{wang2024mmlupro}: 2{,}708 multiple-choice
+questions with up to ten options and a fixed key. \textbf{Screen.} In an
+order fixed by a hash of each question's identifier, the single model
+answered each candidate up to six times with the direct-answer prompt,
+and a question was kept if it was right in two to four of the six. Draws
+stopped once that decision was fixed, which gives the same decision as
+six draws in every possible sequence. Each section stopped at 50 kept
+questions or 400 candidates. The screen kept 136 questions: law 50 of
+193 candidates, health 50 of 381 and business 36 of 400, where the
+model's screen draws were right in $0.42$, $0.75$ and $0.84$ of cases.
+The screen never saw a pipeline answer, and its draws were not reused.
+
+\textbf{Setups.} Five setups answered every kept question three times
+in one session, with \texttt{gpt-oss:20b} in every part
+(Table~\ref{tab:accuracy}). Setups (a), (b) and (b2) share the four
+direct draws of each replicate: (a) is their mean accuracy, (b) the
+plurality of their letters, and (b2) gives three of them to the
+aggregator. Setup (c) gives the aggregator three answers written under
+the healthcare, legal and finance role prompts of
+Section~\ref{sec:setup} instead. Setups (b2) and (c) differ only in the
+proposers' system prompt: the user message (the question, its options
+and a request to end with an answer line), temperature, token allowance,
+aggregator prompt and the format of the contributions are the same, and
+(b), (b2) and (c) each make four calls with token counts within 7\% of
+each other. So that the aggregator prompt is true of both setups, it
+says three analysts wrote the contributions, labels them A to C in a
+shuffled order and asks for an answer line; otherwise it is the prompt
+of Section~\ref{sec:setup}. Setup (d) is the chain of Section~\ref{sec:harness}: a
+planning step, three proposers with sub-questions and a roster, the
+required list of disagreements, one routed follow-up with the reply
+filter, and the aggregator's final step. It differs from the design in
+three ways: the screen was not repeated before the run, no caveat list
+was built (it is attached after the answer and could not change it),
+and the final prompt adds the request to answer exactly and end with an
+answer line, as setups (a) to (c) do.
+
+\textbf{Predictions.} P68.1: the pipeline (c) is more accurate than one
+answer (a). P68.2, the primary: the pipeline (c) is more accurate than
+the plain drafts (b2), the test of whether the role prompts add
+anything beyond sampling. P68.3: the chain (d) is no more than $0.05$
+less accurate than the pipeline (c). A prediction is supported when its
+question-level interval lies above zero ($-0.05$ for P68.3), fails when
+it lies below zero, and is otherwise not shown. Computed before the
+runs, 150 questions and three replicates give a half-width of about
+$0.07$, so a difference of $0.05$ would usually not be shown.
+
+\textbf{Results.} One answer was right in $0.496$ of runs, which shows
+that the screen left room on both sides. The pipeline was right in
+$0.566$: P68.1 is supported ($+0.070$ \ci{+0.018}{+0.123}, $p=0.009$).
+Against the plain drafts given the same aggregator it led by $+0.022$
+\ci{-0.034}{+0.078} ($p=0.49$), so P68.2 is not shown. The interval
+leaves room for a gain of up to about 8 points from the role prompts,
+or a loss of 3; it is a limit of size, not evidence that they add
+nothing. The chain was right in $0.456$: P68.3 fails ($-0.110$
+\ci{-0.176}{-0.044}, $p=0.002$), and against one answer it was $-0.040$
+\ci{-0.094}{+0.014} (Figure~\ref{fig:accuracy}).
+
+\textbf{Where the gain over one answer comes from.} The rest of this
+section was computed after the results were seen. A vote of four plain
+answers gained $+0.066$ \ci{+0.031}{+0.100} over one answer, and the
+pipeline minus the vote, the comparison the design first registered, is
+$+0.005$ \ci{-0.061}{+0.071}. A role-prompted draft is no more accurate
+than a plain one ($-0.008$ \ci{-0.041}{+0.025}), and the role that
+matches the question's section was not consistently the most accurate
+(in business it was the least). The
+aggregator mostly follows the majority of its three drafts. It gave a
+letter none of them gave in 3 to 4\% of replicates, overruled three
+unanimous drafts in 5 of 408 in each setup, and on two-to-one splits
+took the minority letter in about one case in seven, moving away from
+the right answer as often as toward it. Its accuracy against the
+majority of its own drafts was $0.544$ against $0.547$ for plain drafts
+and $0.566$ against $0.529$ for role-prompted drafts. A plausible reason
+for the difference, not tested, is that role-prompted drafts carry more
+reasoning: one plain draft in three is a bare answer line, against one
+role-prompted draft in seven. The final letter matched the draft listed
+first, second and third about equally often ($0.65$, $0.66$ and $0.64$
+for plain drafts), so the first-listed preference of
+Section~\ref{sec:checkable}, where contributions conflicted on a
+figure, does not appear when they disagree on a choice.
+
+\textbf{The chain.} The chain gave no readable letter in $5.4\%$ of runs
+against $1.2\%$ for the pipeline, but this does not explain its result:
+among runs that gave a letter it was right in $0.482$ against $0.573$,
+and a lenient reading of its unreadable replies moves the difference to
+$-0.105$. Its errors also differ in kind. Of its wrong letters, $32\%$
+are the letter the model's direct answers chose most often for that
+question, against about $50\%$ for every other setup: the chain's errors
+are less often the model's own usual wrong answer.
+The follow-up went to the healthcare proposer in 233 of 408 runs,
+including 86 of 150 on law questions, because the router takes the
+first role named in the list. Which part of the chain costs accuracy is
+not identified: the comparison changes several parts at once, and the
+experiment stored the chain's final reply but not its plan,
+contributions or list. The chain was built for open advisory questions
+with a written report; these are knowledge questions with one key, which
+may be the hardest case for dividing a question into three
+sub-questions. The result says nothing about its reports.
+
+\textbf{Checks and limits.} After the screen and before any setup's
+result was read, five kept questions were found to owe their place to
+replies that gave the right letter in a form the registered parser does
+not read (a bare letter, or a letter inside a formula); without them
+the three registered comparisons and the comparisons with the vote move
+by at most $0.002$. The questions are
+public and may be in the model's training data. A screen for questions
+the model is unsure about also selects questions whose key is disputed
+or wrong; such questions add noise to every setup alike. Two of the
+three role prompts are off-topic on every question, as the design
+intends. Business has 36 questions and its section-level intervals are
+wide. And all of it is one model.
 
 \section{Limitations}
 \label{sec:limits}
@@ -1344,8 +1565,10 @@ appended list and its screen played no part in experiment 67.
 not hold for different or larger models, or for proposers that differ
 from the aggregator.
 
-\textbf{The baseline is not the published method and is not matched for
-cost.} See Section~\ref{sec:setup}.
+\textbf{The baseline is not the published method, and cost is matched
+only for accuracy.} See Section~\ref{sec:setup}. Every result on
+preference, figures and caveats compares four calls with one; only
+experiment 68 compares setups of equal cost.
 
 \textbf{No human measurement.} Every judge is a local model of 7 to
 30B and every reader is a model. No sentence label, preference or
@@ -1373,7 +1596,9 @@ comparison of caveats with ordinary sentences is not evaluable
 (Section~\ref{sec:transport}).
 
 \textbf{Few units.} Claims rest on 5 to 18 items or scenarios written
-in-house, or on 14 templates of scripted questions. Several effects are
+in-house, on 14 templates of scripted questions, or, for accuracy, on
+136 public questions in which differences under about 6 points cannot
+be seen. Several effects are
 all-or-nothing by item. The results on figures that can be checked come
 from arithmetic and rule questions with one-sentence contributions, not
 from the advisory scenarios.
@@ -1384,32 +1609,38 @@ planted figure; a list scored against the sentences it was built from;
 a decisive sentence placed before the question; a proposer handed the
 deciding fact; a question that points to the contributions for a figure
 only they contain. These tests show that a route works. They do not show
-how the pipeline behaves on inputs nobody arranged.
+how the pipeline behaves on inputs nobody arranged. Experiment 68 is the
+exception: its questions were written by others and chosen only for
+being uncertain for the single model.
 
 \textbf{Registration.} The registrations are the author's own, in the
 author's repository, and until October 2026 the run records could not
 show when they were made. Deviations occurred, among them two
-registrations amended before their data were read and one experiment
-scored a second time (Appendix~\ref{app:deviations}).
+registrations amended before their data were read, one experiment
+scored a second time, and one design changed in its execution entry
+before it ran (Appendix~\ref{app:deviations}).
 
 \textbf{Many tests.} About ninety registered predictions were made over
 the program, of which about 35 were recorded as failed. The five
-claims of Table~\ref{tab:claims} were selected afterwards. The six
-experiments added in this draft made 26 more: 10 were supported or
+claims of Table~\ref{tab:claims} were selected afterwards. The seven
+experiments added since draft v0.3 made 29 more: 11 were supported or
 passed (three of them only after the second scoring of experiment 67),
-2 failed, 1 check failed, 7 could not be evaluated and 6 were reported
-without a test.
+3 failed, 1 check failed, 7 could not be evaluated, 1 was not shown and
+6 were reported without a test.
 
 \textbf{Error rate of the record.} The project notebook logs four
 errors in code that printed verdicts, three text-matching errors, five
 token-budget failures, one illustrative quotation in an early draft
 that was not real data, and one experiment run on the wrong condition.
 The review behind draft v0.3 found two more defects in headline
-numbers. In the six experiments added here, a text-matching check
+numbers. In the experiments added since draft v0.3, a text-matching check
 missed typeset figures and decided one registered check by two items,
 the answer parser mis-scored replies that gave two answers, and a set
-of test items built to check a judge contained a malformed item. Others
-may remain.
+of test items built to check a judge contained a malformed item. In
+experiment 68 the letter parser did not read a bare letter or a letter
+inside a formula, which kept five easy questions in the screen, and
+the chain's intermediate texts were not stored, so the part that cost
+accuracy cannot be traced. Others may remain.
 
 \section{Related Work}
 \label{sec:related}
@@ -1421,7 +1652,10 @@ shows that aggregating repeated samples of the single best model
 outperforms mixing different models, on AlpacaEval and on MMLU, CRUX
 and MATH, and sampling one model many times with a vote scales with the
 number of samples \cite{li2024moreagents,wang2023selfconsistency}.
-These are the missing baselines of Section~\ref{sec:pref}. A single
+These are the missing baselines of Section~\ref{sec:pref}; experiment
+68 ran both at equal cost on accuracy, and its result, that role
+prompts did not separate from plain samples of one model, is in line
+with Self-MoA's (Section~\ref{sec:accuracy}). A single
 strongly prompted agent can match multi-agent discussion
 \cite{wang2024rebuttal}. The earlier draft said that every published
 MoA number came from a preference judge; that was wrong.
@@ -1469,15 +1703,16 @@ earlier experiment that swaps the phrase named by an instruction under
 otherwise identical prompts, or of one that tests an appended caveat
 list with a matched irrelevant control.
 
-\section{The Six Experiments Registered After the Review}
+\section{The Seven Experiments Registered After the Review}
 \label{sec:planned}
 
 Six experiments were registered on 1 October 2026, each redesigned for
 one person on one machine and each addressing a limitation of draft
 v0.3. They ran back to back between 1 and 5 October in about 93 hours
-of machine time. Table~\ref{tab:planned} gives each outcome by the
-rules written before the runs. A seventh experiment is registered as a
-design only.
+of machine time. A seventh, registered the same day as a design, was
+given an execution entry on 9 October and ran from 9 to 18 October in
+about 212 hours. Table~\ref{tab:planned} gives each outcome by the
+rules written before the runs.
 
 \begin{table*}[t]
 \centering\footnotesize
@@ -1492,31 +1727,41 @@ No. & Question & Outcome by the registered rules \\
 65 & Does the judge preference repeat with judges from other families? & \textbf{Not evaluable.} Three of four added judges chose the first-listed answer in at least 98\% of judgments and did not count; the fourth leaned the same way as the earlier judges ($+0.060$) (Section~\ref{sec:pref}). \\
 66 & Are caveats conveyed less often than ordinary sentences? & \textbf{Not evaluable.} After an amendment, the judges passed three of four checks and failed the fourth. The rates were equal ($0.696$ each), with an interval wider than the registered band (Section~\ref{sec:transport}). \\
 67 & Does a second source help in the assembled chain? & First scored: \textbf{check failed} ($44/61$), predictions not evaluable. Re-scored after a repair to the text-matching check: check passes ($46/61$); primary \textbf{not met} (wrong figure followed $31/61$ against $24/61$, $p=0.055$); the second source's figure is used (\textbf{supported}, $+0.290$); the conflict is in $2/61$ final answers (\textbf{supported}) (Section~\ref{sec:headtohead}). \\
-68 & Is the pipeline more accurate than the same model sampled four times? & Design only; not run. It needs public items screened for headroom and four arms of equal cost. \\
+68 & Is the pipeline more accurate than the same model sampled four times? & On 136 public questions with room to improve: the pipeline beats one answer (\textbf{supported}, $+0.070$, $p=0.009$); against three plain drafts given the same aggregator, the primary test, \textbf{not shown} ($+0.022$ \ci{-0.034}{+0.078}); a vote of four plain answers did as well as the pipeline; the assembled chain fell more than the registered margin below the pipeline (\textbf{failed}, $-0.110$, $p=0.002$) (Section~\ref{sec:accuracy}). \\
 \bottomrule
 \end{tabular}
 \caption{The experiments registered on 1 October 2026 and their
 outcomes. The primary predictions were named in the registrations.
 Experiments 62 and 66 were amended on 2 October, before any of their
 judge answers was read; experiment 67 was scored a second time on 5
-October (Appendix~\ref{app:deviations}).}
+October; experiment 68's execution entry of 9 October added a setup and
+changed its primary prediction before any run
+(Appendix~\ref{app:deviations}).}
 \label{tab:planned}
 \end{table*}
 
-Two of the six added to what the paper claims (63 and 64). One
+Two of the first six added to what the paper claims (63 and 64). One
 qualified the assembled design (67). Three could not answer their
 question (62, 65 and 66), and in each case the reason is a property of
 the measuring tools available to one person with local models: no human
 labels, judges of 7 to 8B that choose by position, and a conveyed judge
-that misses an altered figure one time in five.
+that misses an altered figure one time in five. The seventh (68) gave
+the project's first question its first test with room to improve and
+equal cost, for one model: more accurate than one answer, not
+distinguishable from sampling the model several times, and the
+assembled chain was less accurate.
 
 What remains open is therefore much of what draft v0.3 listed: a human
 check of the sentence judges and of the conveyed judge; preference
 judges of 14B and above from other model families, and human judges;
 human readers; an aggregator other than \texttt{gpt-oss:20b} that
-passes the clean-layout check of experiment 63; the equal-cost accuracy
-comparison of experiment 68; a second annotator, an independent rerun
-of the analysis and a much larger model.
+passes the clean-layout check of experiment 63; whether role prompts
+add a few points of accuracy, which would need about four times the
+replicates or questions of experiment 68; which part of the assembled
+chain costs accuracy; whether the accuracy results hold for another
+model or for open questions with a checkable answer; a second
+annotator, an independent rerun of the analysis and a much larger
+model.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -1530,13 +1775,18 @@ instructed phrase down. The aggregator's answer follows a figure stated
 in the question over a contribution that misquotes it, without
 mentioning the misquote. Given two contributions that conflict, it
 follows one of them, usually the first listed, and the model studied
-most rarely says there were two. And reader models from five
-developers act on a decisive sentence appended to the report.
+most rarely says there were two. Reader models from five developers act
+on a decisive sentence appended to the report. And on 136 public
+questions that leave room to improve, the pipeline is more accurate
+than one answer, but no more accurate than a vote of four plain answers
+at the same number of calls.
 
 A design assembled from these observations was indistinguishable from
-the plain pipeline on a weak preference test. In its live chain a
-second source got the right figure used more often, and the step meant
-to expose disagreements listed them without passing them on. Three
+the plain pipeline on a weak preference test, and on the public
+questions its chain was 11 points less accurate than the plain
+pipeline. In its live chain a second source got the right figure used
+more often, and the step meant to expose disagreements listed them
+without passing them on. Three
 questions the review raised could not be answered by one person with
 local models: whether the sentence judges match a person, whether
 caveats are conveyed less often than other content, and whether the
@@ -1549,8 +1799,9 @@ agreement between judges says little when one answer dominates.
 Intervals over a handful of scenarios need methods built for few
 clusters. A text-matching check has to be tried on the writing habits
 of the model whose text it will read. Small judges given two long
-answers choose the first. And a number that lands inside the expected
-range still needs checking.
+answers choose the first. A pipeline compared with one call should also
+be compared with the same number of plain calls. And a number that
+lands inside the expected range still needs checking.
 
 \section*{Use of AI Assistance}
 
@@ -1559,12 +1810,14 @@ It proposed and drafted most of the registrations and the experiment
 code, wrote the scenarios, test items, planted facts and the labels the
 project notebook calls analyst-authored, ran the analyses, conducted
 the three internal audits and the October 2026 review, ran and
-monitored the six experiments that followed, wrote the readings of
-their results, proposed the two amendments and the checks that replaced
-the author's labels, and drafted this text. The author directed the
-work, decided what was run and what is claimed, decided the amendments,
-the second scoring of experiment 67 and the wording of the result of
-experiment 63, and takes responsibility for the content. Because one source wrote the items and labelled several
+monitored the seven experiments that followed, wrote the readings of
+their results, proposed the two amendments, the checks that replaced
+the author's labels and the changes to experiment 68's design, and
+drafted this text. The author directed the work, decided what was run
+and what is claimed, decided the amendments, the second scoring of
+experiment 67, the wording of the result of experiment 63 and the
+download of the public questions for experiment 68, and takes
+responsibility for the content. Because one source wrote the items and labelled several
 outcomes, results that depend on those labels should be read with that
 in mind.
 
@@ -1577,13 +1830,15 @@ produced by \url{train/run_stage0_corrections.py} (output in
 and its reproduction script are \url{docs/BOARD_REVIEW_2026-10-01.md}
 and \url{bench/analysis/board_review/checks.py}. Experiments 62 to 67
 are registered at commit \texttt{6402fc0} and the two amendments at
-\texttt{29f491f}; each of their run records carries its registration
-commit, the hash of the script that made it, the model digest, the seed
-and the time. Figures quoted beyond the registered outputs come from
-the \url{reading_checks.py} script in each experiment's analysis
+\texttt{29f491f}; experiment 68's execution entry is at
+\texttt{ddabf2a} and its runner is
+\url{train/run_cell68_equalcost.py}. Each of their run records carries
+its registration commit, the hash of the script that made it, the model
+digest, the seed and the time. Figures quoted beyond the registered
+outputs come from the check scripts in each experiment's analysis
 directory, and the second scoring of experiment 67 from
 \url{bench/analysis/cell67/rescore.py}. The sources, licences and
-checksums of the two public datasets are in
+checksums of the three public datasets are in
 \url{docs/EXTERNAL_DATA.md}. None of these scripts calls a model.
 
 \section*{Impact Statement}
@@ -1595,7 +1850,10 @@ involve no human participants. They should not be used to justify
 deploying such a pipeline for real advice. The observation that an
 aggregator given two different figures follows the one listed first,
 and that the model studied most does so without flagging the conflict,
-is a reason for caution wherever such pipelines are used.
+is a reason for caution wherever such pipelines are used. So is the
+finding that, on the questions tested, a fuller pipeline was less
+accurate than a simple one, and a plain vote matched the role-prompted
+pipeline.
 
 \begin{thebibliography}{99}
 \bibitem{wang2024moa} J.~Wang, J.~Wang, B.~Athiwaratkun, C.~Zhang,
@@ -1669,6 +1927,9 @@ nominal scales. \emph{Educational and Psychological Measurement},
 \bibitem{pagnoni2021frank} A.~Pagnoni, V.~Balachandran, Y.~Tsvetkov.
 Understanding factuality in abstractive summarization with FRANK: a
 benchmark for factuality metrics. \emph{NAACL}, 2021.
+\bibitem{wang2024mmlupro} Y.~Wang et al. MMLU-Pro: a more robust and
+challenging multi-task language understanding benchmark.
+\emph{NeurIPS Datasets and Benchmarks}, 2024.
 \bibitem{konstantinova2012sfu} N.~Konstantinova, S.~C.~M.~de~Sousa,
 N.~P.~Cruz, M.~J.~Ma\~na, M.~Taboada, R.~Mitkov. A review corpus
 annotated for negation, speculation and their scope. \emph{LREC}, 2012.
@@ -1781,6 +2042,34 @@ the live chain, with a correction (Section~\ref{sec:headtohead}).
 ``catches a wrong figure when the case contradicts it.'' This draft
 says the answer follows the question's figure.
 
+\section{Changes from Draft v0.4}
+\label{app:v04}
+
+\textbf{1. Cost.} Earlier: ``No comparison of equal cost \ldots\ was
+run.'' Experiment 68 ran two, on accuracy (Section~\ref{sec:accuracy}).
+
+\textbf{2. Accuracy.} Earlier: ``We have no evidence that the pipeline
+gives more correct answers than one model.'' On public questions that
+leave room to improve it does ($+0.070$), and a vote of four plain
+answers does as well.
+
+\textbf{3. Public benchmarks.} Earlier: ``No public benchmark is used to
+evaluate the pipeline.'' Experiment 68 uses MMLU-Pro.
+
+\textbf{4. The assembled system.} Earlier: evaluated on judge
+preference and, for its live chain, on a planted figure. Its chain has
+now been evaluated on accuracy and was less accurate than the plain
+pipeline.
+
+\textbf{5. Experiment 68.} Earlier: ``Design only; not run'', with four
+arms. It ran with five (Table~\ref{tab:planned}), and the comparison
+with a vote that the design called its key test is reported as
+descriptive because it changes two things at once.
+
+\textbf{6. Counts.} Earlier: 65 registration entries for 68 experiments;
+26 predictions in the experiments after the review. Now 66 entries and
+29 predictions.
+
 \section{Deviations from Registrations}
 \label{app:deviations}
 
@@ -1836,6 +2125,30 @@ contributions conflict.
 the public repository 50 minutes after experiment 62's judge calls had
 begun and before any run of the other five. Two steps took about twice
 their estimated time; no design was changed for that.
+\item Experiment 68, execution entry (9 October 2026, before any call on
+a test question): MMLU-Pro replaced the candidate question sets the
+design named (MedQA, LegalBench, FinQA or TAT-QA). The setup of three
+plain drafts with the aggregator was added, and the primary prediction
+changed from the pipeline against the vote, which differs in two
+things, to the pipeline against those drafts; the vote comparison is
+reported as descriptive. P68.3 was given a margin of $-0.05$, a third
+verdict word (``not shown'') was added, and the unit of analysis is the
+question rather than clusters of sources, since law is almost one
+source. A timing and parser check on the 15 validation questions of the
+three sections, which are not in the test set, preceded the entry.
+\item Experiment 68, timing: the entry was committed 9 seconds before
+the first screen call and pushed to the public repository on 13
+October, after the screen and during the runs. The screen took 81 hours
+against 30 to 50 projected, and business stopped at its cap with 36
+questions. The runs of setups (a) to (c) took 70 hours against 35, and
+the chain 60.5 hours, including a stall of about two hours while a
+second program used the model server; no data were affected.
+\item Experiment 68, after the screen and before any result: a check
+leaving out five questions kept on unreadable replies was fixed and is
+reported beside the registered results.
+\item Experiment 68, the chain: as registered, its final prompt adds the
+request for an answer line, and the screen and caveat list of the
+design were not run (Section~\ref{sec:accuracy}).
 \end{itemize}
 
 \section{Experimental Details}
@@ -1920,6 +2233,18 @@ shuffled per item; plan and two proposer texts shared between arms;
 first attempt. The follow-up went to the holder of the wrong figure in
 23 of 61 redundancy runs, to the holder of the right figure in 16, to
 the third proposer in 12 and to nobody in 10.
+
+\textbf{Accuracy (68).} Screen: 974 candidates, $4{,}958$ direct
+draws, temperature $0.7$, a $16{,}384$-token allowance; 38 draws gave no
+readable letter (17 named two or more letters). In 85 of the 136 kept
+questions every wrong screen draw chose the same letter. Runs: three
+replicates of each setup; proposer and direct draws at temperature
+$0.7$, aggregator at $0.6$, $16{,}384$ tokens; the chain's intermediate
+steps at $4{,}096$. Unreadable replies: 17 of $1{,}632$ direct draws, 3
+and 5 of 408 for the two aggregator setups, 22 of 408 for the chain (2
+whose plan could not be parsed). Mean seconds per run: direct draw 78,
+pipeline 270, chain about 530. In the chain no follow-up was sent in
+115 of 408 runs.
 
 \section{The Sentence Instrument}
 \label{app:instruments}
