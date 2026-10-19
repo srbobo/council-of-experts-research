@@ -85,8 +85,11 @@
    "commit": "3a841d8"
   },
   "c68-chain": {
-   "state": "running",
-   "started_utc": "2026-10-16T07:04:28Z"
+   "state": "done",
+   "started_utc": "2026-10-16T07:04:28Z",
+   "finished_utc": "2026-10-18T19:33:25Z",
+   "attempts": 1,
+   "commit": "4d6f288"
   }
  },
  "queue_started_utc": "2026-10-01T23:43:19Z"

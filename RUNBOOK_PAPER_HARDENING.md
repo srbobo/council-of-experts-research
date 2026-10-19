@@ -13078,3 +13078,101 @@ descriptive (registered as descriptive, not tests)
 
   pipeline: final letter is one a proposer gave 0.961; proposers' letters parsed 0.984
 ```
+
+## CELL 68 READING (2026-10-19) — the assembled chain is 11 points less accurate than the plain pipeline and no better than one answer; Cell 68 complete
+
+Figures beyond the registered output come from
+`bench/analysis/cell68/chain_checks.py`. Everything in this entry except
+the verdict lines and the check without the five questions was computed
+after the results were seen, and is descriptive.
+
+**The registered verdict.** P68.3, chain minus pipeline with a margin of
+−0.05: **−0.110 [−0.176, −0.044]**, p = 0.002, FALSIFIED. The chain was
+right in 0.456 of runs, the pipeline in 0.566. Step `c68-chain` ran
+from 2026-10-16 07:04Z to 2026-10-18 19:33Z (60.5 hours, including a
+stall of about 2 hours 20 minutes on 2026-10-16, described below).
+
+**Against the other setups.**
+
+| chain minus | difference (question level) |
+|---|---|
+| one direct answer | −0.040 [−0.094, +0.014], p = 0.15 |
+| vote of four | −0.105 [−0.176, −0.034], p = 0.006 |
+| plain drafts with the editor | −0.088 [−0.157, −0.020], p = 0.017 |
+| pipeline | −0.110 [−0.176, −0.044], p = 0.002 |
+
+Without the five questions kept on unreadable replies: −0.112 [−0.180,
+−0.043]. So the chain, at about 23,000 tokens and eight calls a run,
+was no more accurate than one call of about 2,000 tokens, and less
+accurate than every four-call setup.
+
+**Silence is not the cause.** The chain gave no readable letter in 22 of
+408 runs (5.4%, against 1.2% for the pipeline). Two had a plan that could
+not be parsed, 11 had no ANSWER line, and the rest had an ANSWER line
+with no letter, two letters or "None". A lenient reading would find the
+key in 2 of the 22, which moves the difference only to −0.105 [−0.172,
+−0.039]. Among runs that gave a letter, the chain was right in 0.482 and
+the pipeline in 0.573.
+
+**It makes different mistakes.** Of the chain's 200 wrong letters, 32%
+are the letter the model's direct draws chose most often for that
+question. For one direct draw, the plain-draft editor and the pipeline
+the figure is 50%, 55% and 51%. So the chain does not only fail where the
+model alone fails: it moves away from answers the model alone gets right,
+toward other wrong options.
+
+**What can and cannot be said about why.** The chain differs from the
+pipeline in several ways at once: a quantities step, a plan that splits
+the question into three sub-questions, specialists who answer their
+sub-question and not the question, a tension list, a follow-up to one
+specialist and a final step. This is a system comparison and does not
+identify the part that costs accuracy. The runner stored the chain's
+final reply and its call records but not the intermediate texts (plan,
+sub-questions, contributions, tension list), so they cannot be read now.
+Two observations, neither a cause: the follow-up went to the healthcare
+analyst in 233 of 408 runs, including 86 of 150 on law questions and 76
+of 108 on business questions, because the router takes the first role
+named in the tension list. And in the 115 runs with no follow-up the
+chain was right in 0.383, against 0.498 when the healthcare analyst was
+asked (an observational split).
+
+**Scope.** The chain was built for open advisory questions, with a plan
+for each one. These are ten-option knowledge questions with one key,
+which may be the worst case for splitting a question into domain
+sub-questions. The result says the assembled system loses accuracy on
+this kind of question. It says nothing about its open-ended reports,
+where Cell 61 found no preference difference.
+
+**The stall on 2026-10-16.** At about 23:00Z a second client began calling
+the model server: seven "generate" requests, which the queue does not
+use, and status polls every six seconds. No other client appears in the
+server log for the whole ten days. The queue's requests then made no
+progress until 01:26Z, when the server's model process restarted. Every
+chain run written carries the registered runner checksum and seed, none
+hit the context limit, and all 408 finished, so the stall cost time, not
+data.
+
+**Cell 68 as a whole.** On 136 public questions where the model alone is
+right about half the time, with one model in every part:
+
+- four calls beat one (pipeline +0.070, vote +0.066, plain drafts with
+  the editor +0.048);
+- the role prompts are not shown to add accuracy over plain drafts given
+  the same editor (+0.022 [−0.034, +0.078]), and role drafts are no more
+  accurate than plain draws;
+- the assembled chain falls 11 points below the plain pipeline and does
+  no better than one call.
+
+The founding question, whether a council of role-prompted specialists
+answers better than one model, now has its first test with room to
+improve and equal cost. Its answer is: better than one call, not
+distinguishable from sampling the same model several times, and the
+fuller system is worse. The claims file has two new rows, notes on the
+accuracy, preference and Cell 61 rows, and directive 17 on wording.
+
+**What stays open.** Whether the roles add a few points (the interval
+allows up to 8): about four times the questions would be needed to see
+3. Which part of the chain costs accuracy: a run that stores the
+intermediate texts, or one that removes one step at a time. Whether any
+of this holds for another model or for open questions with a checkable
+answer.

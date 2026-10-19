@@ -42,10 +42,11 @@
   },
   "S1-06": {
    "claim": "Whether the council makes answers more accurate cannot be tested at this scale: a single model already gets nearly every well-specified question right, so there is no room to improve.",
-   "detail": "In Cell 36 all three setups scored 92% to 97%, and only 3 of 59 paired questions came out differently. Cell 60 then built harder questions. On multi-step arithmetic a single model got 211 of 216 runs right, and only 5 of 36 questions fell in the difficulty range we needed. On questions about interacting rules it got 177 of 180 right, with 3 of 30 in range. A rule written down before the second round said to stop after two failed attempts, so we stopped. Questions were screened on the single model alone, and the council never ran on them. This covers questions where every rule and figure is given. The case for the council now rests on its three measured gains.",
+   "detail": "In Cell 36 all three setups scored 92% to 97%, and only 3 of 59 paired questions came out differently. Cell 60 then built harder questions. A single model still got 211 of 216 arithmetic runs right and 177 of 180 runs on interacting rules, with too few questions in the difficulty range we needed. A rule set in advance said to stop after two failed attempts, so we stopped. This covers questions where every rule and figure is given. Updated in October 2026: Cell 68 tested accuracy on public questions picked so the model alone was right about half the time, in the two claims added that month.",
    "cells": [
     "36",
-    "60"
+    "60",
+    "68"
    ]
   },
   "S1-07": {
@@ -72,12 +73,13 @@
   },
   "S1-10": {
    "claim": "Two AI judges on our machine preferred an answer combined from several drafts over a single direct answer from the same model.",
-   "detail": "We showed each pair in both orders and counted every pair, with a pair the judge split by position as half a win. The combined answer scored 61% with the gpt-oss judge (Cell 43) and 58% with qwen3-vl (Cell 43-R), a clear preference in both. We first reported 82% and 79%, counting only the pairs each judge called the same way in both orders. Limits: four model calls against one, with no comparison of equal cost. The judges pick the first answer they read 80% to 89% of the time. No person judged a pair. In Cell 65 three added small judges chose by reading order alone and could not be counted, and a fourth, phi4, leaned the same way at about half the margin. The claim keeps its two judges.",
+   "detail": "We showed each pair in both orders and counted every pair, with a pair split by position as half a win. The combined answer scored 61% with the gpt-oss judge (Cell 43) and 58% with qwen3-vl (Cell 43-R). We first reported 82% and 79%, counting only pairs called the same way in both orders. The judges pick the first answer they read 80% to 89% of the time, and no person judged a pair. In Cell 65 three added small judges chose by reading order alone. Updated in October 2026: Cell 68 measured accuracy at equal cost, and a vote of four plain answers did as well as the pipeline. So the roles are still not shown to add anything over asking the model several times.",
    "cells": [
     "41",
     "43",
     "43-R",
-    "65"
+    "65",
+    "68"
    ]
   },
   "S1-11": {
@@ -183,11 +185,12 @@
   },
   "S1-23": {
    "claim": "AI judges showed no clear preference between the rebuilt system's reports and the old system's. The rebuilt system costs about three times as many model calls.",
-   "detail": "In Cell 61 we paired full reports from the rebuilt system, which we call the harness, with the old system's, on 18 scenarios. Counting every pair, with split pairs as half, the main judge scored the harness 53% and a second judge 48%, both too close to call. We first wrote that large wins and losses were ruled out. That holds for the main judge only. We set no margin in advance for calling the two equal, so we do not claim the added parts cost nothing. One question takes about 14 model calls against 4, and 14 to 18 minutes. The old system's reports were saved three weeks earlier. The harness also builds its caveats section with a simpler method than the one tested in Cell 48.",
+   "detail": "In Cell 61 we paired full reports from the rebuilt system with the old system's, on 18 scenarios. Counting every pair, with split pairs as half, the main judge scored the rebuilt system 53% and a second judge 48%, both too close to call. We set no margin in advance for calling the two equal, so we do not claim the added parts cost nothing. One question takes about 14 model calls against 4. The old system's reports were saved three weeks earlier. Updated in October 2026: on accuracy, Cell 68 found the rebuilt system 11 points less accurate than the old pipeline on public multiple-choice questions.",
    "cells": [
     "43",
     "48",
-    "61"
+    "61",
+    "68"
    ]
   },
   "S1-24": {
@@ -498,17 +501,19 @@
   },
   "S5-07": {
    "claim": "Do the specialist models make answers more accurate on facts they must remember, rather than rules and figures the question supplies?",
-   "detail": "Cell 36 only tested applying stated rules to stated figures, so it says nothing about remembered facts such as statutes, dosing tables or market rates. Testing recall needs a set of questions whose facts come from outside sources, not written by us from memory.",
+   "detail": "Cell 36 only tested applying stated rules to stated figures, so it says nothing about remembered facts such as statutes, dosing tables or market rates. Testing recall needs a set of questions whose facts come from outside sources, not written by us from memory. Partly addressed in October 2026: on public knowledge questions in Cell 68, specialist drafts were no more accurate than plain ones, and the specialist matching the question's field did no better than the others.",
    "cells": [
-    "36"
+    "36",
+    "68"
    ]
   },
   "S5-08": {
-   "claim": "Would harder questions reveal an accuracy difference between the council and a single model?",
-   "detail": "Cell 36's questions were too easy: every setup scored 92% to 97%, so its finding of no difference is weak. Cell 60 later built two harder sets, and the single model still scored about 98% on both. So for questions where every rule and figure is given, we now treat the accuracy question as untestable at this scale (see the claims we stand behind).",
+   "claim": "Would harder questions reveal an accuracy difference between the council and a single model? Answered in October 2026.",
+   "detail": "Cell 36's questions were too easy: every setup scored 92% to 97%, so its finding of no difference is weak. Cell 60 later built two harder sets, and the single model still scored about 98% on both. So for questions where every rule and figure is given, we now treat the accuracy question as untestable at this scale (see the claims we stand behind). Answered in October 2026 by Cell 68, with public questions on which the model alone was right about half the time. Four calls beat one, the specialist roles did not separate from asking the model several times, and the full rebuilt system fell below the plain pipeline.",
    "cells": [
     "36",
-    "60"
+    "60",
+    "68"
    ]
   },
   "S5-09": {
@@ -736,7 +741,7 @@
   },
   "S5-16": {
    "claim": "Is the specialist pipeline better than asking the same model four times and taking a vote?",
-   "detail": "Cell 68 fixes a design for this on public questions where a single model is right about half the time. It is not scheduled, because it needs public question sets to be downloaded first.",
+   "detail": "Not shown, as of 16 October 2026. In Cell 68 the pipeline beat one answer by 7 points, and a vote of four plain answers gained almost exactly as much. Against three plain drafts given the same editor, the specialist roles gained 2 points, plausibly from 3 behind to 8 ahead. So the question stays open for small differences. Seeing a gain of 3 points would take about four times as many questions.",
    "cells": [
     "36",
     "60",
@@ -824,6 +829,28 @@
    "cells": [
     "63",
     "67"
+   ]
+  },
+  "S1-28": {
+   "claim": "With room to improve and the same number of model calls, the specialist pipeline beats one answer, but a vote of four plain answers does as well. The specialist roles are not shown to add accuracy.",
+   "detail": "Cell 68 used 136 public ten-option questions in law, health and business, picked so the model alone was right about half the time. One answer was right in 49.6% of runs, a vote of four answers in 56.1%, three plain drafts combined by an editor in 54.4%, and three specialist drafts combined by the same editor in 56.6%. The pipeline beat one answer by 7 points, which held up. Against the plain drafts it led by 2 points, plausibly from 3 behind to 8 ahead, so the test could not tell. This is one model on one kind of question, and the question set is public.",
+   "cells": [
+    "68"
+   ]
+  },
+  "S1-29": {
+   "claim": "On multiple-choice questions, the full rebuilt system is less accurate than the plain specialist pipeline.",
+   "detail": "In Cell 68 the rebuilt system, with its plan, sub-questions, list of disagreements and follow-up question, was right in 45.6% of runs against 56.6% for the plain pipeline. That is 11 points lower, plausibly 4 to 18, and it was no better than a single answer. It sometimes gave no clear answer, but it was also worse when it did answer. Its wrong answers were often ones the model alone did not favour. The test compares whole systems, so it does not show which added part costs accuracy. The rebuilt system was designed for open advisory questions, and this result says nothing about those.",
+   "cells": [
+    "61",
+    "68"
+   ]
+  },
+  "S6-17": {
+   "claim": "Say the pipeline beat one answer and a vote of four plain answers did as well. Do not say the roles explain the gain or add nothing.",
+   "detail": "Adopted on 16 October 2026 after Cell 68. The pipeline's lead over one answer matched what four calls of any kind gained, and the test of the roles alone could not tell either way. The rebuilt system's lower accuracy is quoted as a comparison of whole systems on multiple-choice questions, without naming one part as the cause.",
+   "cells": [
+    "68"
    ]
   }
  }

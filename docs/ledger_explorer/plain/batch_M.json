@@ -393,32 +393,32 @@
   },
   "68": {
    "title": "Is the pipeline better than asking one model four times?",
-   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answer the same questions. Four finished on 16 October 2026, and the rebuilt system is still running. The runs finished on 18 October 2026.",
+   "description": "The project's first question, tested on public questions where a single model is right about half the time. Five setups of the same model answered the same 136 questions three times each. The runs finished on 18 October 2026.",
    "outcome": "mixed",
-   "size": "Five setups on the screened questions",
+   "size": "136 questions, five setups, three times each",
    "why": "The project began by asking whether a council of specialists answers better than one model. Three of our own question sets could not tell, because the single model was already right 92% to 98% of the time (Cells 36, 60 and 60-R). Every preference result also compared four model calls with one. A review in October 2026 named the missing comparison: the same model asked four times, with a vote. This entry fixes the design now so that later results cannot shape it.",
    "expectations": [
     {
      "id": "P68.1",
      "text": "The specialist pipeline would be more accurate than one direct answer from the same model.",
      "outcome": "held",
-     "note": "Held up, by the rule written down in advance. A fuller account follows."
+     "note": "Held up. The pipeline beat one direct answer by 7 points, with four calls against one."
     },
     {
      "id": "P68.2",
      "text": "The specialist pipeline would be more accurate than the same model writing three plain drafts that the same editor then combines.",
      "outcome": "unclear",
-     "note": "Too close to call, by the rule written down in advance. A fuller account follows."
+     "note": "Too close to call. The pipeline led the plain drafts by 2 points, and anything from 3 points behind to 8 ahead is still possible."
     },
     {
      "id": "P68.3",
      "text": "The rebuilt system would be no more than five points less accurate than the plain specialist pipeline.",
      "outcome": "failed",
-     "note": "Did not hold up, by the rule written down in advance. A fuller account follows."
+     "note": "Did not hold up. The rebuilt system was 11 points less accurate than the plain pipeline, plausibly 4 to 18."
     }
    ],
-   "found": "The assembled chain finished on 18 October 2026, so all five setups are now scored. By the rules written down in advance, 1 of the 3 graded expectations held up, 1 did not, and 1 were too close to call or only partly held. The scoring script's full output is in the notebook entry below. A fuller account, with the numbers in plain form, follows.",
-   "means": "Four calls beat one, but four calls of any kind did about equally well. The specialist roles have not been shown to add accuracy beyond asking one model several times. This holds for one model and ten-option questions, and only differences larger than about 6 points could have been seen.",
+   "found": "On 136 public questions where the model alone was right about half the time, the specialist pipeline was right in 56.6% of answers and one direct answer in 49.6%. That gap of 7 points held up by the rule set in advance. But asking the model four times and taking a vote did as well, at 56.1%. The same editor given three plain drafts reached 54.4%, and the pipeline's 2-point lead over it was too small to call. The full rebuilt system did worst, at 45.6%. It fell 11 points below the plain pipeline, which failed the expectation that it would be no more than 5 points behind, and it was no better than one answer.",
+   "means": "Four calls beat one, but four calls of any kind did about equally well, so the specialist roles have not been shown to add accuracy. The fuller rebuilt system lost accuracy on these questions, and the test cannot say which of its added parts is to blame. This holds for one model and ten-option questions.",
    "later": null,
    "entries": {
     "10675": {
@@ -453,8 +453,13 @@
     },
     "13036": {
      "label": "Result",
-     "title": "The assembled chain finished: results by the rules set in advance",
+     "title": "The rebuilt system scored by the rules set in advance",
      "summary": "The assembled chain finished on 18 October 2026, so all five setups are now scored. Of the 3 graded expectations, 1 held up, 1 did not and 1 were too close to call or only partly held, by the rules written down in advance. A fuller account follows."
+    },
+    "13082": {
+     "label": "Note",
+     "title": "The rebuilt system lost accuracy, and Cell 68 is complete",
+     "summary": "The rebuilt system was right 11 points less often than the plain pipeline and no more often than one answer. It was also worse when it did give an answer, and its mistakes were often new ones. The test does not show which added part is to blame."
     }
    }
   }

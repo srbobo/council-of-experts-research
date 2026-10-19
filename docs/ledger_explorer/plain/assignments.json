@@ -2705,6 +2705,12 @@
        "end": 13081,
        "kind": "verdict",
        "heading": "CELL 68 VERDICT (2026-10-18) — the assembled chain added; verdict lines as printed by the registered script, reading to follow"
+      },
+      {
+       "line": 13082,
+       "end": 13179,
+       "kind": "note",
+       "heading": "CELL 68 READING (2026-10-19) — the assembled chain is 11 points less accurate than the plain pipeline and no better than one answer; Cell 68 complete"
       }
      ],
      "matrix_row": null
@@ -2858,7 +2864,8 @@
     "line": 32,
     "cells": [
      "36",
-     "60"
+     "60",
+     "68"
     ],
     "header": [
      "claim",
@@ -2868,7 +2875,7 @@
     "cols": [
      "**The accuracy question is RESOLVED: untestable for lack of headroom at this scale** — a council cannot add accuracy where the direct writer is at ceiling",
      "Cell 36 (0.92–0.97, 3 discordant of 59); Cell 60 arithmetic battery: direct 0.977 over 216 runs, 5/36 items in the registered difficulty band; Cell 60-R rule-interaction battery: direct **0.983** over 180 runs, 3/30 in band — the two-strikes rule (frozen before the second round) fires",
-     "three convergent ceilings across both constructible difficulty dimensions (multi-step computation; rule-path selection); screening was baseline-only and blind to council performance; no council run was spent against ceiling items. Scope: WELL-SPECIFIED items only — under-specified or adversarial constructions are a different question and register anew. §0's case for the council now rests entirely and explicitly on the three measured gains"
+     "three convergent ceilings across both constructible difficulty dimensions (multi-step computation; rule-path selection); screening was baseline-only and blind to council performance; no council run was spent against ceiling items. Scope: WELL-SPECIFIED items only — under-specified or adversarial constructions are a different question and register anew. §0's case for the council now rests entirely and explicitly on the three measured gains. **Note 2026-10-18:** Cell 68 tested accuracy WITH headroom on 136 public MMLU-Pro questions screened to a single-answer accuracy near one half (two rows below the Cell 63 rows); this row's ceiling finding stands for the in-house batteries"
     ]
    },
    {
@@ -2942,7 +2949,8 @@
      "41",
      "43",
      "43-R",
-     "65"
+     "65",
+     "68"
     ],
     "header": [
      "claim",
@@ -2952,7 +2960,7 @@
     "cols": [
      "The pipeline answer is preferred to a single answer by two local AI judges — **all-pairs figures since 2026-10-01**",
      "Cell 43 (gpt-oss): 36 wins / 8 losses / 82 split pairs, all-pairs score **0.611**, scenario-level +0.111 [+0.065, +0.157], p = 0.0005, 18 scenarios. Cell 43-R (qwen3-vl): 26/7/93, **0.575**, +0.075 [+0.023, +0.128], p = 0.012. The earlier 0.818 and 0.788 were shares of the 35% and 26% of pairs each judge decided the same way in both orders",
-     "Direction holds for both judges; survives length-matching. SCOPE: four calls of one model against one call, with no comparison of equal cost, so the roles are not shown to add anything beyond sampling the model several times; judges are 20B and 30B local models that pick the first-listed answer in 80% to 89% of single judgments; no person judged a pair. Cell 65 (2026-10-04) tried four judges from other families: three (7B to 8B) chose the first-listed answer in 98% to 100% of judgments and do not count; phi4 (14B) alone leans the same way, +0.060 [+0.005, +0.114], 70 pairs decided, agreeing with the stored judges on 47 of 56 pairs both decided. The registered test is NOT EVALUABLE; this row keeps its two judges. Cell 68 (design only) is the equal-cost test"
+     "Direction holds for both judges; survives length-matching. SCOPE: four calls of one model against one call, with no comparison of equal cost, so the roles are not shown to add anything beyond sampling the model several times; judges are 20B and 30B local models that pick the first-listed answer in 80% to 89% of single judgments; no person judged a pair. Cell 65 (2026-10-04) tried four judges from other families: three (7B to 8B) chose the first-listed answer in 98% to 100% of judgments and do not count; phi4 (14B) alone leans the same way, +0.060 [+0.005, +0.114], 70 pairs decided, agreeing with the stored judges on 47 of 56 pairs both decided. The registered test is NOT EVALUABLE; this row keeps its two judges. Cell 68 (2026-10-16) measured accuracy at equal cost: the pipeline beat one answer, and a vote of four plain answers did as well (row below), so the role structure is still not shown to add anything over sampling"
     ]
    },
    {
@@ -3221,7 +3229,8 @@
     "cells": [
      "43",
      "48",
-     "61"
+     "61",
+     "68"
     ],
     "header": [
      "claim",
@@ -3231,7 +3240,7 @@
     "cols": [
      "**The rebuilt system against the old pipeline: no preference difference detected** — corrected 2026-10-01",
      "Cell 61, all pairs, scenario-level: gpt-oss 27/21/59 = **0.528**, +0.031 [-0.069, +0.132], p = 0.57; qwen3-vl 5/10/93 = **0.477**, -0.023 [-0.060, +0.014], p = 0.31. Decided-only shares were 0.562 [0.375, 0.765] (48 pairs) and 0.333 [0.083, 0.562] (15 pairs): the second does not exclude a large loss, so \"large effects excluded in both directions\" holds for the first judge only",
-     "No equivalence margin was set in advance, so \"no cost\" is not claimed. One inquiry makes about fourteen model calls against four and took 14 to 18 minutes (§3). The comparison arm was stored three weeks earlier. The system's caveat extractor is a document-level, one-quote-per-kind version (5.0 caveats per report), not the sentence-level lists of Cell 48 (median 11). Until Cell 67 no outcome other than judge preference had been measured on the assembled system; its live-chain result is in the Cell 59 row"
+     "No equivalence margin was set in advance, so \"no cost\" is not claimed. One inquiry makes about fourteen model calls against four and took 14 to 18 minutes (§3). The comparison arm was stored three weeks earlier. The system's caveat extractor is a document-level, one-quote-per-kind version (5.0 caveats per report), not the sentence-level lists of Cell 48 (median 11). Until Cell 67 no outcome other than judge preference had been measured on the assembled system; its live-chain result is in the Cell 59 row. **Note 2026-10-18:** on accuracy, Cell 68 found the assembled system LESS accurate than the old pipeline by 0.110 [0.044, 0.176] on public multiple-choice questions (row below)"
     ]
    },
    {
@@ -3317,11 +3326,52 @@
     ]
    },
    {
+    "id": "S1-28",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 54,
+    "cells": [
+     "68"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**With room to improve and equal cost, the pipeline beats one answer, and a vote of four plain answers does as well; the roles are not shown to add accuracy** — added 2026-10-16",
+     "Cell 68, 136 public MMLU-Pro questions (law 50, health 50, business 36) on which the single model was right in 2 to 4 of 6 screen draws; gpt-oss:20b in every part; three replicates; question-level differences. Accuracy: one answer 0.496, vote of four 0.561, three plain drafts + editor 0.544, three role drafts + the same editor (pipeline) 0.566. P68.1 pipeline minus one answer **+0.070 [+0.018, +0.123]**, p = 0.009, SUPPORTED. P68.2 (primary, one factor: the drafts' system prompt) pipeline minus plain drafts + editor **+0.022 [-0.034, +0.078]**, p = 0.49, NOT SHOWN. Vote minus one answer +0.066 [+0.031, +0.100]; pipeline minus vote +0.005 [-0.061, +0.071]. Role drafts are no more accurate than direct draws (-0.008 [-0.041, +0.025])",
+     "Same model, same questions, same session, three four-call setups within 7% in tokens; scored by exact match against the public key; the check without five questions kept on unreadable replies changes nothing. SCOPE: one model; ten-option questions the model gets right about half the time; differences under about 6 points cannot be seen, so this is NOT evidence that the roles add nothing (an advantage up to 8 points is inside the interval). MMLU-Pro is public and may be in the model's training data"
+    ]
+   },
+   {
+    "id": "S1-29",
+    "section": 1,
+    "section_title": "LIVE claims",
+    "kind": "believe",
+    "line": 55,
+    "cells": [
+     "61",
+     "68"
+    ],
+    "header": [
+     "claim",
+     "evidence",
+     "why it survives"
+    ],
+    "cols": [
+     "**The assembled system is less accurate than the plain pipeline on multiple-choice questions** — added 2026-10-18",
+     "Cell 68, same 136 questions and three replicates: assembled chain 0.456 against pipeline 0.566, P68.3 chain minus pipeline **-0.110 [-0.176, -0.044]**, p = 0.002, FALSIFIED (registered margin -0.05). Chain minus one answer -0.040 [-0.094, +0.014]. It gave no readable letter in 5.4% of runs (pipeline 1.2%), but it is also worse among runs that answered (0.482 against 0.573). Only 32% of its wrong letters are the model's usual wrong letter, against about 50% for every other setup",
+     "A system comparison: the chain differs from the pipeline in planning, sub-questions, the tension list and a follow-up, so WHICH part costs accuracy is not identified, and the runner did not store the intermediate texts. The follow-up went to the healthcare analyst in 233 of 408 runs, including 86 of 150 on law questions. SCOPE: multiple-choice questions where the model is unsure; the chain was built for open advisory questions, and this says nothing about those"
+    ]
+   },
+   {
     "id": "S2-01",
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 59,
+    "line": 61,
     "cells": [
      "30",
      "46",
@@ -3343,7 +3393,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 60,
+    "line": 62,
     "cells": [
      "25"
     ],
@@ -3363,7 +3413,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 61,
+    "line": 63,
     "cells": [
      "29"
     ],
@@ -3383,7 +3433,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 62,
+    "line": 64,
     "cells": [
      "27",
      "28",
@@ -3406,7 +3456,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 63,
+    "line": 65,
     "cells": [
      "25"
     ],
@@ -3426,7 +3476,7 @@
     "section": 2,
     "section_title": "PROVISIONAL — form supported, values pending re-measurement",
     "kind": "tentative",
-    "line": 64,
+    "line": 66,
     "cells": [
      "29"
     ],
@@ -3446,7 +3496,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 70,
+    "line": 72,
     "cells": [
      "35",
      "37",
@@ -3468,7 +3518,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 71,
+    "line": 73,
     "cells": [
      "13",
      "25"
@@ -3489,7 +3539,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 72,
+    "line": 74,
     "cells": [
      "13"
     ],
@@ -3509,7 +3559,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 73,
+    "line": 75,
     "cells": [
      "13",
      "25"
@@ -3530,7 +3580,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 74,
+    "line": 76,
     "cells": [
      "25"
     ],
@@ -3550,7 +3600,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 75,
+    "line": 77,
     "cells": [
      "27",
      "28",
@@ -3572,7 +3622,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 76,
+    "line": 78,
     "cells": [
      "28"
     ],
@@ -3592,7 +3642,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 77,
+    "line": 79,
     "cells": [
      "19"
     ],
@@ -3612,7 +3662,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 78,
+    "line": 80,
     "cells": [
      "29"
     ],
@@ -3632,7 +3682,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 79,
+    "line": 81,
     "cells": [
      "25"
     ],
@@ -3652,7 +3702,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 80,
+    "line": 82,
     "cells": [
      "8",
      "14"
@@ -3673,7 +3723,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 81,
+    "line": 83,
     "cells": [
      "8B"
     ],
@@ -3693,7 +3743,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 82,
+    "line": 84,
     "cells": [
      "26"
     ],
@@ -3713,7 +3763,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 83,
+    "line": 85,
     "cells": [
      "48",
      "66"
@@ -3734,7 +3784,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 84,
+    "line": 86,
     "cells": [
      "47"
     ],
@@ -3754,7 +3804,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 85,
+    "line": 87,
     "cells": [
      "30",
      "46"
@@ -3775,7 +3825,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 86,
+    "line": 88,
     "cells": [
      "61"
     ],
@@ -3795,7 +3845,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 87,
+    "line": 89,
     "cells": [
      "45",
      "49",
@@ -3817,7 +3867,7 @@
     "section": 3,
     "section_title": "WITHDRAWN — must not appear as claims",
     "kind": "withdrawn",
-    "line": 88,
+    "line": 90,
     "cells": [
      "46"
     ],
@@ -3837,7 +3887,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 92,
+    "line": 94,
     "cells": [
      "8",
      "13",
@@ -3853,7 +3903,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 93,
+    "line": 95,
     "cells": [
      "20",
      "21"
@@ -3868,7 +3918,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 94,
+    "line": 96,
     "cells": [
      "7a",
      "23"
@@ -3883,7 +3933,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 95,
+    "line": 97,
     "cells": [],
     "header": null,
     "cols": [
@@ -3895,7 +3945,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 96,
+    "line": 98,
     "cells": [
      "8",
      "14",
@@ -3911,7 +3961,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 97,
+    "line": 99,
     "cells": [
      "8B"
     ],
@@ -3925,7 +3975,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 98,
+    "line": 100,
     "cells": [
      "19"
     ],
@@ -3939,7 +3989,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 99,
+    "line": 101,
     "cells": [
      "13",
      "30"
@@ -3954,7 +4004,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 100,
+    "line": 102,
     "cells": [
      "30",
      "IV"
@@ -3969,7 +4019,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 101,
+    "line": 103,
     "cells": [
      "25",
      "27",
@@ -3986,7 +4036,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 102,
+    "line": 104,
     "cells": [
      "37",
      "40"
@@ -4001,7 +4051,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 103,
+    "line": 105,
     "cells": [
      "7b"
     ],
@@ -4015,7 +4065,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 104,
+    "line": 106,
     "cells": [
      "13",
      "30"
@@ -4030,7 +4080,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 105,
+    "line": 107,
     "cells": [
      "43",
      "43-R"
@@ -4045,7 +4095,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 106,
+    "line": 108,
     "cells": [
      "32",
      "33"
@@ -4060,7 +4110,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 107,
+    "line": 109,
     "cells": [
      "23",
      "IV",
@@ -4078,7 +4128,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 108,
+    "line": 110,
     "cells": [
      "48"
     ],
@@ -4092,7 +4142,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 109,
+    "line": 111,
     "cells": [
      "43",
      "46",
@@ -4108,7 +4158,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 110,
+    "line": 112,
     "cells": [
      "23",
      "44",
@@ -4129,7 +4179,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 111,
+    "line": 113,
     "cells": [],
     "header": null,
     "cols": [
@@ -4141,7 +4191,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 112,
+    "line": 114,
     "cells": [
      "43",
      "43-R",
@@ -4157,7 +4207,7 @@
     "section": 4,
     "section_title": "Instrument-validity findings (all LIVE)",
     "kind": "tool-lesson",
-    "line": 113,
+    "line": 115,
     "cells": [
      "63",
      "67"
@@ -4172,7 +4222,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 117,
+    "line": 119,
     "cells": [
      "30"
     ],
@@ -4186,7 +4236,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 118,
+    "line": 120,
     "cells": [
      "38"
     ],
@@ -4200,7 +4250,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 119,
+    "line": 121,
     "cells": [
      "30",
      "38"
@@ -4215,7 +4265,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 120,
+    "line": 122,
     "cells": [
      "27",
      "28",
@@ -4231,7 +4281,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 121,
+    "line": 123,
     "cells": [
      "13"
     ],
@@ -4245,7 +4295,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 122,
+    "line": 124,
     "cells": [],
     "header": null,
     "cols": [
@@ -4257,13 +4307,14 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 123,
+    "line": 125,
     "cells": [
-     "36"
+     "36",
+     "68"
     ],
     "header": null,
     "cols": [
-     "Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery)"
+     "Do the domain seats buy RECALL accuracy? (Cell 36 measured reasoning, not recall; needs an externally sourced battery.) **Partly addressed 2026-10-16 (Cell 68):** on public knowledge questions, role-prompted drafts were no more accurate than plain ones (-0.008 [-0.041, +0.025]), and the analyst matching the question's field did no better than the others"
     ]
    },
    {
@@ -4271,14 +4322,15 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 124,
+    "line": 126,
     "cells": [
      "36",
-     "60"
+     "60",
+     "68"
     ],
     "header": null,
     "cols": [
-     "Would a harder battery separate the arms? (Cell 36 hit a ceiling at 0.92-0.97; its null is weak)"
+     "~~Would a harder battery separate the arms?~~ **ANSWERED 2026-10-16 (Cell 68):** with questions screened to a single-answer accuracy near one half, four calls beat one, the roles did not separate from plain sampling, and the assembled chain fell below the pipeline"
     ]
    },
    {
@@ -4286,7 +4338,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 125,
+    "line": 127,
     "cells": [
      "40"
     ],
@@ -4300,7 +4352,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 126,
+    "line": 128,
     "cells": [
      "37"
     ],
@@ -4314,7 +4366,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 127,
+    "line": 129,
     "cells": [
      "62"
     ],
@@ -4328,7 +4380,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 128,
+    "line": 130,
     "cells": [
      "46",
      "48",
@@ -4344,7 +4396,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 129,
+    "line": 131,
     "cells": [
      "47",
      "59",
@@ -4361,7 +4413,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 130,
+    "line": 132,
     "cells": [
      "51",
      "64"
@@ -4376,7 +4428,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 131,
+    "line": 133,
     "cells": [
      "43",
      "43-R",
@@ -4392,7 +4444,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 132,
+    "line": 134,
     "cells": [
      "36",
      "60",
@@ -4400,7 +4452,7 @@
     ],
     "header": null,
     "cols": [
-     "**Is the role-prompted pipeline better than the same model sampled four times?** Cell 68 is a design only; it needs public question sets and is not scheduled."
+     "**Is the role-prompted pipeline better than the same model sampled four times?** NOT SHOWN 2026-10-16 (Cell 68): the pipeline beat one answer (+0.070) and a vote of four plain answers did as well (+0.066); against plain drafts with the same editor the roles gain +0.022 [-0.034, +0.078]. OPEN for differences under about 6 points; a test that could see 3 points needs about four times the questions."
     ]
    },
    {
@@ -4408,7 +4460,7 @@
     "section": 5,
     "section_title": "BLOCKED — open questions awaiting an instrument",
     "kind": "open",
-    "line": 133,
+    "line": 135,
     "cells": [
      "26"
     ],
@@ -4422,7 +4474,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 137,
+    "line": 139,
     "cells": [
      "37"
     ],
@@ -4436,7 +4488,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 138,
+    "line": 140,
     "cells": [
      "23"
     ],
@@ -4450,7 +4502,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 139,
+    "line": 141,
     "cells": [
      "IV"
     ],
@@ -4464,7 +4516,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 140,
+    "line": 142,
     "cells": [],
     "header": null,
     "cols": [
@@ -4476,7 +4528,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 141,
+    "line": 143,
     "cells": [
      "19"
     ],
@@ -4490,7 +4542,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 142,
+    "line": 144,
     "cells": [],
     "header": null,
     "cols": [
@@ -4502,7 +4554,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 143,
+    "line": 145,
     "cells": [],
     "header": null,
     "cols": [
@@ -4514,7 +4566,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 144,
+    "line": 146,
     "cells": [
      "36",
      "37",
@@ -4530,7 +4582,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 145,
+    "line": 147,
     "cells": [
      "31"
     ],
@@ -4544,7 +4596,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 146,
+    "line": 148,
     "cells": [],
     "header": null,
     "cols": [
@@ -4556,7 +4608,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 147,
+    "line": 149,
     "cells": [
      "43"
     ],
@@ -4570,7 +4622,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 148,
+    "line": 150,
     "cells": [
      "62"
     ],
@@ -4584,7 +4636,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 149,
+    "line": 151,
     "cells": [],
     "header": null,
     "cols": [
@@ -4596,7 +4648,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 150,
+    "line": 152,
     "cells": [
      "54"
     ],
@@ -4610,7 +4662,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 151,
+    "line": 153,
     "cells": [],
     "header": null,
     "cols": [
@@ -4622,7 +4674,7 @@
     "section": 6,
     "section_title": "Standing methodological directives",
     "kind": "rule",
-    "line": 152,
+    "line": 154,
     "cells": [
      "63",
      "67"
@@ -4630,6 +4682,20 @@
     "header": null,
     "cols": [
      "**Verbs for the figure results** (2026-10-05): the editor's answer \"follows\" the case or a note; it is not said to \"catch\", \"verify\", \"check\" or be \"immune to\" a wrong figure, because nothing observed shows the conflict was noticed. Cell 67's results are quoted with their correction (first scored as a failed check, re-scored with the figure detector repaired)."
+    ]
+   },
+   {
+    "id": "S6-17",
+    "section": 6,
+    "section_title": "Standing methodological directives",
+    "kind": "rule",
+    "line": 155,
+    "cells": [
+     "68"
+    ],
+    "header": null,
+    "cols": [
+     "**Wording for the accuracy result** (2026-10-16): write \"the pipeline beat one answer, and a vote of four plain answers did as well\"; never \"the roles explain the gain\" or \"the roles add nothing\". Quote the assembled chain's accuracy result as a system comparison on multiple-choice questions, without naming a part as the cause."
     ]
    }
   ]

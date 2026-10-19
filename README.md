@@ -8,8 +8,8 @@ Apple Silicon with Ollama, and no paid API is used.
 It started in May 2026 as a prototype. From July it became a series of
 experiments ("cells"), each with its expectations written down before it ran:
 61 through September 2026, and six more run between 1 and 5 October 2026 (Cells
-62 to 67; Cell 68 is a design only). The result so far is one paper draft and a
-redesigned system (the harness).
+62 to 67), and Cell 68 between 9 and 18 October 2026. The result so far is one
+paper draft and a redesigned system (the harness).
 
 **October 2026 review.** A review of the whole program
 ([docs/BOARD_REVIEW_2026-10-01.md](docs/BOARD_REVIEW_2026-10-01.md)) did not
@@ -29,6 +29,14 @@ The author could not provide the blind labels two experiments needed, so both
 were changed before any result was read; one experiment was scored a second
 time after a counting fault was repaired. All of this is in the runbook, with
 the paper now at draft v0.4.
+
+**Cell 68 (9 to 18 October 2026)** put the founding question to a test with room
+to improve and equal cost: 136 public questions (MMLU-Pro law, health and
+business) on which the model alone is right about half the time. Four calls
+beat one, by 7 points for the role-prompted pipeline, but a vote of four plain
+answers did as well, so the roles are not shown to add accuracy over sampling
+the same model. The full rebuilt system was 11 points less accurate than the
+plain pipeline on these questions. Paper v0.4 predates this result.
 
 **Public site:** <https://councilofexperts.netlify.app> shows every cell in plain
 language, the claims, a glossary, the harness, and the saved run data.
